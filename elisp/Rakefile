@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 :mode ruby-mode -*-
+RSENSE_DIR = "./rsense-0.3"
+
+desc "prepare rsense's environment"
+task :make_rsense => :dependencies do
+  DOT_RSENSE = File.join(ENV["HOME"] + "/.rsense")
+  if File.exist? DOT_RSENSE
+    "make sure, you already have had ~/.rsense directory"
+  else
+    puts "creating ~/.rsense"
+    `cd ./rsense-0.3 && chmod +x ./bin/rsense && \
+     RBENV_VERSION=1.8.7-p358 ruby ./etc/config.rb > ~/.rsense`
+  end
+end
+
+desc "solve dependencies for rsense"
+task :dependencies do
+  puts "install dependencies"
+  `sudo apt-get install -y openjdk-7-jdk`
+end
+
+desc "default"
+task :default do
+  puts "TASKS: "
+  puts `rake -T`
+end
+
+# source-code-pro : https://github.com/adobe-fonts/source-code-pro
+# anonymous-pro: http://www.marksimonson.com/fonts/view/anonymous-pro
+# My favorite beautiful fonts: "Droid Sans Mono" "Ricty" "VL Gothic"

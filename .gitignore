@@ -1,0 +1,42 @@
+# -*- mode: gitignore; -*-
+# https://github.com/github/gitignore/blob/master/Global/Emacs.gitignore
+*~
+*.elc
+*.dat
+\#*\#
+.\#*
+/.emacs.desktop
+/.emacs.desktop.lock
+auto-save-list
+tramp
+
+# Org-mode
+.org-id-locations
+*_archive
+# flymake-mode
+*_flymake.*
+# elpa packages
+/elpa/
+# reftex files
+*.rel
+# AUCTeX auto folder
+/auto/
+# cask packages
+.cask/
+
+# My configuration
+/.emacs/ido.last
+/.emacs/url/cookies
+/.emacs/snapshot.el
+/.emacs/image-dired/*
+/.emacs/tramp
+/.emacs/.eshell/lastdir
+/.emacs/.eshell/history
+/.emacs/eww-bookmarks
+/.emacs/url/cache/*
+/.emacs/lookup/
+/.emacs/javadoc-cache/
+/.emacs/elnode/*
+/elisp/develop*
+/.emacs/srecode-map.el
+/misc/go-skkserv/go-skkserv

@@ -1,0 +1,36 @@
+;;; init_flymake-java.el --- init file flymake.el for Java
+
+;; Copyright (C) 2014 by Yuta Yamada
+
+;; Author: Yuta Yamada <cokesboy"at"gmail.com>
+
+;;; License:
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;;; Commentary:
+
+;;; Code:
+
+;; flymake
+(require 'init_flymake)
+(require 'flymake-java)
+(add-to-list 'java-mode-hook 'flymake-java-load)
+
+(provide 'init_flymake-java)
+
+;; Local Variables:
+;; coding: utf-8
+;; mode: emacs-lisp
+;; End:
+
+;;; init_flymake-java.el ends here

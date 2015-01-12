@@ -40,8 +40,6 @@
                             (auto-complete)))
  (bm status "installed" recipe
      (:name bm :pkgname "joodland/bm" :website "http://joodland.github.com/bm/" :type github :description "Visible, persistent, buffer local, bookmarks"))
- (bpe status "installed" recipe
-      (:name bpe :type git :url "https://github.com/yuutayamada/bpe.git"))
  (buffer-move status "installed" recipe
               (:name buffer-move :description "Swap buffers without typing C-x b on each window" :type emacswiki :features buffer-move))
  (c-eldoc status "installed" recipe
@@ -51,8 +49,6 @@
         (:name calfw :type github :pkgname "kiwanami/emacs-calfw" :load-path "." :description "A calendar framework for Emacs (with support for `org-mode', `howm' and iCal files)" :website "https://github.com/kiwanami/emacs-calfw"))
  (calfw-gcal status "installed" recipe
              (:name calfw-gcal :type git :url "https://github.com/myuhe/calfw-gcal.el.git"))
- (capitalizer status "installed" recipe
-              (:name capitalizer :type git :url "https://github.com/yuutayamada/capitalizer-el.git"))
  (cider status "installed" recipe
         (:name cider :description "CIDER is a Clojure IDE and REPL." :type github :pkgname "clojure-emacs/cider" :depends
                (dash queue clojure-mode pkg-info)))
@@ -82,6 +78,8 @@
                :url "https://github.com/skk-dev/ddskk.git"))
  (deferred status "installed" recipe
    (:name deferred :type git :description "I added package" :url "https://github.com/kiwanami/emacs-deferred.git"))
+ (direx status "installed" recipe
+        (:name direx :type git :url "https://github.com/m2ym/direx-el.git"))
  (dockerfile-mode status "installed" recipe
                   (:name dockerfile-mode :description "An emacs mode for handling Dockerfiles." :type github :pkgname "spotify/dockerfile-mode" :post-init
                          (progn
@@ -89,8 +87,6 @@
                                         '("Dockerfile\\'" . dockerfile-mode)))))
  (eclim status "installed" recipe
         (:name eclim :type git :url "https://github.com/senny/emacs-eclim.git"))
- (eiji status "installed" recipe
-       (:name eiji :type git :url "https://github.com/yuutayamada/eiji.git"))
  (el-get status "installed" recipe
          (:name el-get :website "https://github.com/dimitri/el-get#readme" :description "Manage the external elisp bits and pieces you depend upon." :type github :branch "master" :pkgname "dimitri/el-get" :info "." :compile
                 ("el-get.*\\.el$" "methods/")
@@ -131,6 +127,8 @@
         (:name esxml :type github :pkgname "tali713/esxml"))
  (evil status "installed" recipe
        (:name evil :type git :url "https://github.com/emacsmirror/evil.git"))
+ (evil-anzu status "installed" recipe
+            (:name evil-anzu :type git :url "https://github.com/syohex/emacs-evil-anzu.git"))
  (evil-numbers status "installed" recipe
                (:name evil-numbers :website "http://github.com/cofi/evil-numbers" :description "Increment/decrement numbers in Evil, the extensible vim\n       emulation layer. Like C-a/C-x in vim.\n\n       After installation, you will need to add a key-binding for evil-numbers.\n       For example:\n\n       (define-key evil-normal-state-map (kbd \"C-c +\") 'evil-numbers/inc-at-pt)\n       (define-key evil-normal-state-map (kbd \"C-c -\") 'evil-numbers/dec-at-pt)" :type github :pkgname "cofi/evil-numbers" :features evil-numbers :depends evil))
  (eww-lnum status "installed" recipe
@@ -146,10 +144,6 @@
            (:name flycheck :type git :depends
                   (f pkg-info)
                   :url "https://github.com/flycheck/flycheck.git"))
- (flycheck-java status "installed" recipe
-                (:name flycheck-java :type git :depends
-                       (flycheck)
-                       :url "https://github.com/akorobov/flycheck-java.git"))
  (flycheck-tip status "installed" recipe
                (:name flycheck-tip :depends
                       (flycheck)
@@ -163,8 +157,6 @@
                         (add-hook 'coffee-mode-hook 'flymake-coffee-load)))
  (flymake-easy status "installed" recipe
                (:name flymake-easy :type git :url "https://github.com/purcell/flymake-easy.git"))
- (flymake-java status "installed" recipe
-               (:name flymake-java :type git :url "https://github.com/yuutayamada/flymake-java-el.git"))
  (flymake-json status "installed" recipe
                (:name flymake-json :type git :url "https://github.com/purcell/flymake-json.git"))
  (flymake-less status "installed" recipe
@@ -218,12 +210,16 @@
                     (:name google-translater :type git :url "https://github.com/manzyuk/google-translate.git"))
  (goto-chg status "installed" recipe
            (:name goto-chg :description "Goto the point of the most recent edit in the buffer." :type emacswiki :features goto-chg))
+ (gradle-mode status "installed" recipe
+              (:name gradle-mode :type github :pkgname "jacobono/emacs-gradle-mode" :description "Minor mode for emacs to run gradle from emacs and not have to go to a terminal!"))
  (grammar status "installed" recipe
           (:name grammar :type svn :url "http://bcui-emacs.googlecode.com/svn/trunk/grammar"))
  (grep-a-lot status "installed" recipe
              (:name grep-a-lot :auto-generated t :type emacswiki :description "manages multiple search results buffers for grep.el" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/grep-a-lot.el"))
  (grep-edit status "installed" recipe
             (:name grep-edit :type git :url "https://github.com/emacsmirror/grep-edit.git"))
+ (groovy-emacs-mode status "installed" recipe
+                    (:name groovy-emacs-mode :description "A groovy major mode, grails minor mode, and a groovy inferior mode." :type github :pkgname "Groovy-Emacs-Modes/groovy-emacs-modes"))
  (hangman status "installed" recipe
           (:name hangman :type git :url "https://github.com/yuutayamada/hangman.git"))
  (haskell-commnader status "installed" recipe
@@ -265,13 +261,6 @@
              (:name helm-gtags :type git :url "https://github.com/syohex/emacs-helm-gtags.git"))
  (helm-migemo status "installed" recipe
               (:name helm-migemo :type git :url "https://github.com/emacs-helm/helm-migemo.git"))
- (helm-rb status "installed" recipe
-          (:name helm-rb :type git :url "https://github.com/yuutayamada/helm-rb.git" :depends
-                 (helm helm-ag-r)))
- (helm-shell-history status "installed" recipe
-                     (:name helm-shell-history :type git :url "https://github.com/yuutayamada/helm-shell-history.git"))
- (helm-skk-rules status "installed" recipe
-                 (:name helm-skk-rules :type git :url "https://github.com/yuutayamada/helm-skk-rules.git"))
  (helm-swoop status "installed" recipe
              (:name helm-swoop :type git :url "https://github.com/ShingoFukuyama/helm-swoop.git"))
  (highlight-indentation status "installed" recipe
@@ -316,8 +305,6 @@
              (:name jstestmacs :type git :url "https://github.com/yuutayamada/jstestmacs.git"))
  (key-chord status "installed" recipe
             (:name key-chord :description "Map pairs of simultaneously pressed keys to commands." :type emacswiki :features "key-chord"))
- (keyboard-converter-el status "installed" recipe
-                        (:name keyboard-converter-el :type git :url "https://github.com/yuutayamada/keyboard-converter-el.git"))
  (kv status "installed" recipe
      (:name kv :description "Key/Value collection type functions: for alists, hashtables and plists. Useful stuff." :type github :pkgname "nicferrier/emacs-kv"))
  (less-css-mode status "installed" recipe
@@ -367,8 +354,6 @@
                    (:name multiple-cursors :description "An experiment in adding multiple cursors to emacs" :type github :pkgname "magnars/multiple-cursors.el"))
  (myhistory status "installed" recipe
             (:name myhistory :type git :url "https://github.com/yuutayamada/myhistory.git"))
- (mykie status "installed" recipe
-        (:name mykie :type git :url "https://github.com/yuutayamada/mykie-el.git"))
  (names status "installed" recipe
         (:name names :type git :url "https://github.com/Bruce-Connor/names.git"))
  (navi2ch status "installed" recipe
@@ -475,8 +460,6 @@
             (:name rust-mode :type http :url "https://raw.github.com/mozilla/rust/master/src/etc/emacs/rust-mode.el" :description "Emacs mode for Rust"))
  (s status "installed" recipe
     (:name s :description "The long lost Emacs string manipulation library." :type github :pkgname "magnars/s.el"))
- (sbtp status "installed" recipe
-       (:name sbtp :type git :url "https://github.com/yuutayamada/sbtp.git"))
  (scala-mode2 status "installed" recipe
               (:name scala-mode2 :type github :pkgname "hvesalai/scala-mode2"))
  (sdic status "installed" recipe
@@ -487,8 +470,6 @@
                             (:name sequential-command-config :type http :url "http://www.emacswiki.org/cgi-bin/wiki/download/sequential-command-config.el"))
  (set-perl5lib status "installed" recipe
                (:name set-perl5lib :type http :url "http://coderepos.org/share/browser/lang/elisp/set-perl5lib/set-perl5lib.el?format=txt" :description "set path into PERL5LIB if its file path includes 'lib' directory" :website "http://d.hatena.ne.jp/sun-basix/20080117/1200528765" :localname "set-perl5lib.el"))
- (skk-b status "installed" recipe
-        (:name skk-b :type git :url "https://github.com/yuutayamada/skk-b-el.git"))
  (slime status "installed" recipe
         (:name slime :type git :url "https://github.com/slime/slime.git" :load-path
                ("./" "./contrib")))
@@ -506,8 +487,6 @@
            (:name splitter :type http :url "https://raw.githubusercontent.com/chumpage/chumpy-windows/master/splitter.el"))
  (sql-indent status "installed" recipe
              (:name sql-indent :type git :url "https://github.com/yuutayamada/sql-indent.git"))
- (stem status "installed" recipe
-       (:name stem :type git :url "https://github.com/yuutayamada/stem.git"))
  (sudo-ext status "installed" recipe
            (:name sudo-ext :type http :url "http://www.emacswiki.org/cgi-bin/wiki/download/sudo-ext.el"))
  (tabbar status "installed" recipe
@@ -535,7 +514,5 @@
  (yasnippet status "installed" recipe
             (:name yasnippet :website "https://github.com/capitaomorte/yasnippet.git" :description "YASnippet is a template system for Emacs." :type github :pkgname "capitaomorte/yasnippet" :compile "yasnippet.el" :submodule nil :build
                    (("git" "submodule" "update" "--init" "--" "snippets"))))
- (yim status "installed" recipe
-      (:name yim :type git :url "https://github.com/yuutayamada/yim.git"))
  (zen-coding status "installed" recipe
              (:name zen-coding :type git :url "https://github.com/rooney/zencoding.git")))

@@ -20,8 +20,7 @@
 ;;; Commentary:
 
 ;;; Code:
-
-(require 'vars)
+(require 'my_paths)
 
 (let* ((recipes   (concat el-get-dir "el-get/recipes/")))
   (defconst el-get-recipe-path-elpa      (concat recipes "elpa"))
@@ -82,6 +81,9 @@
     (:name calfw-gcal
            :type git
            :url "https://github.com/myuhe/calfw-gcal.el.git")
+    (:name direx
+           :type git
+           :url "https://github.com/m2ym/direx-el.git")
     (:name ddskk
            :type git
            :build '("make")
@@ -90,6 +92,9 @@
            :type git
            :description "I added package"
            :url "https://github.com/kiwanami/emacs-deferred.git")
+    (:name evil-anzu
+           :type git
+           :url "https://github.com/syohex/emacs-evil-anzu.git")
     (:name eshell-better-prompt
            :type git
            :url "https://github.com/yuutayamada/eshell-better-prompt.git")

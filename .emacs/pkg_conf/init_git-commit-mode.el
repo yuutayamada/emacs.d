@@ -43,6 +43,8 @@
     (unless (equal buffer (current-buffer))
       (switch-to-buffer-other-window buffer))))
 
+(define-key git-commit-mode-map (kbd "C-c C-c") 'git-commit-commit)
+
 (add-hook 'magit-mode-hook
           '(lambda ()
              (setq my/magit-status-buffer (current-buffer))))

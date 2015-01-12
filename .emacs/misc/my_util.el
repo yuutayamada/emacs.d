@@ -141,8 +141,9 @@ file prefix by PREFIX."
            do (apply
                `((lambda ()
                    (with-eval-after-load ,(match-string 1 f)
-                     (require
-                      (quote ,(intern (format "init_%s" (match-string 1 f)))))))))))
+                     (condition-case err
+                         (require (quote ,(intern (format "init_%s" (match-string 1 f)))))
+                       (error err))))))))
 
 (provide 'my_util)
 

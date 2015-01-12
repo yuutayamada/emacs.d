@@ -40,6 +40,8 @@
         evil-insert-state-modes nil
         evil-motion-state-modes nil))
 
+(add-to-list 'evil-emacs-state-modes 'eshell-mode)
+
 (advice-add 'evil-insert-state :override 'evil-emacs-state)
 
 ;;;;;;;;;;;;;;;;;

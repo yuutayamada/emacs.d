@@ -8,9 +8,8 @@
 (require 'vars)
 
 ;; Load files with `with-eval-after-load' func from `package-conf-dir'.
-(condition-case err
-    (my/add-after-load-files "init_" package-conf-dir)
-  (error err))
+(my/add-after-load-files "init_" package-conf-dir)
+(my/add-after-load-files "init_" (concat package-conf-dir "builtin"))
 
 ;; TODO: Load from file
 (autoloader-autoloads
@@ -71,6 +70,7 @@
  ("eww-lnum" eww-lnum-follow eww-lnum-universal)
  ;; F
  ("flymake-json" flymake-json-maybe-load)
+ ("flymake-java" flymake-java-load)
  ("flycheck-tip" flycheck-tip-cycle)
  ("flymake-shell" flymake-shell-load)
  ("fold_dwim" fold-dwim-toggle fold-dwim-show-all fold-dwim-hide-all)
@@ -133,6 +133,7 @@
  ;; J
  ("jade" sws-mode jade-mode)
  ("javadoc-lookup" javadoc-lookup)
+ ("java-import" add-java-import)
  ("js2-mode" js2-mode)
  ("js-console" js-console)
  ("jsfmt" jsfmt-before-save jsfmt)

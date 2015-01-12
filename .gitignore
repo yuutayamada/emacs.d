@@ -37,6 +37,5 @@ tramp
 /.emacs/lookup/
 /.emacs/javadoc-cache/
 /.emacs/elnode/*
-/elisp/develop*
 /.emacs/srecode-map.el
 /misc/go-skkserv/go-skkserv

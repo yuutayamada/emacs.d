@@ -6,11 +6,12 @@
 (require 'cl-lib)
 (require 'my_paths)
 (require 'my_util)
-(let ((develop (concat elisp-dir "develop/"))
+
+(let ((dev (concat elisp-dir "self/"))
       ;; for Emacs -Q option
       (sitelisp "/usr/share/emacs/site-lisp/"))
   (my/add-load-path-subdir
-   `(,el-get-dir ,package-dir ,config-dir ,develop ,sitelisp)))
+   `(,el-get-dir ,package-dir ,config-dir ,dev ,sitelisp)))
 
 ;; MEMO prerequisite el-get-package
 ;; mykie grep-a-lot image-dired+ capitalizer slime s keyboard-converter

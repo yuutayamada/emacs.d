@@ -1,0 +1,39 @@
+[submodule "elisp/self/mykie"]
+	path = elisp/self/mykie
+	url = https://github.com/yuutayamada/mykie-el.git
+[submodule "elisp/self/bpe"]
+	path = elisp/self/bpe
+	url = https://github.com/yuutayamada/bpe.git
+[submodule "elisp/self/capitalizer"]
+	path = elisp/self/capitalizer
+	url = https://github.com/yuutayamada/capitalizer-el.git
+[submodule "elisp/self/eiji"]
+	path = elisp/self/eiji
+	url = https://github.com/yuutayamada/eiji.git
+[submodule "elisp/self/helm-skk-rules"]
+	path = elisp/self/helm-skk-rules
+	url = https://github.com/yuutayamada/helm-skk-rules.git
+[submodule "elisp/self/keyboard-converter-el"]
+	path = elisp/self/keyboard-converter-el
+	url = https://github.com/yuutayamada/keyboard-converter-el.git
+[submodule "elisp/self/sbtp"]
+	path = elisp/self/sbtp
+	url = https://github.com/yuutayamada/sbtp.git
+[submodule "elisp/self/helm-shell-history"]
+	path = elisp/self/helm-shell-history
+	url = https://github.com/yuutayamada/helm-shell-history.git
+[submodule "elisp/self/skk-b"]
+	path = elisp/self/skk-b
+	url = https://github.com/yuutayamada/skk-b-el.git
+[submodule "elisp/self/stem"]
+	path = elisp/self/stem
+	url = https://github.com/yuutayamada/stem.git
+[submodule "elisp/self/yim"]
+	path = elisp/self/yim
+	url = https://github.com/yuutayamada/yim.git
+[submodule "elisp/self/helm-rb"]
+	path = elisp/self/helm-rb
+	url = https://github.com/yuutayamada/helm-rb.git
+[submodule "elisp/self/flycheck-java"]
+	path = elisp/self/flycheck-java
+	url = https://github.com/yuutayamada/flycheck-java.git

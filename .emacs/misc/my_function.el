@@ -64,7 +64,7 @@
     (t (my/whitespace-mode)))
   ;; flycheck or other syntax check tool
   (cl-case major-mode
-    ((scala-mode clojure-mode java-mode coffee-mode)
+    ((scala-mode clojure-mode coffee-mode)
      nil)
     (json-mode
      (flymake-mode t)
@@ -238,29 +238,24 @@ The SELECTED argument is opacity that window is selected."
   (define-key map (kbd ":") (lambda () (interactive) (insert ";"))))
 
 (defun my/ssh-add ()
-  "Add ssh-key if it was needed when using magit. You may neeed ssh-askpath."
+  "Add ssh-key if it was needed when using magit. You may neeed ssh-askpath.
+
+Example of my/keys
+ (\"git@github.com\\|https://github.com\" . \"~/.ssh/rsa_github_key\")"
   (interactive)
-  (let* ((github    (assoc-default :github    my/keys))
-         (bitbucket (assoc-default :bitbucket my/keys))
-         (heroku    (assoc-default :heroku    my/keys))
-         (ssh-add
-          (lambda (filepath)
-            (unless (string< "" (shell-command-to-string
-                                 ;; -F $XDG_CONFIG_HOME/ssh/config
-                                 (concat "ssh-add -l | grep "
-                                         (expand-file-name filepath))))
-              (shell-command (concat "ssh-add " (expand-file-name filepath))))))
-         match)
+  (let* ((p (point))
+         remote-url)
     (goto-char (point-min))
-    (when (search-forward-regexp
-           "^Remote:   master @ .* (\\(.*\\))" nil t)
-      (setq match (match-string 0))
-      (when (string-match "@bitbucket.org" match)
-        (funcall ssh-add bitbucket))
-      (when (string-match "git@github.com\\|https://github.com" match)
-        (funcall ssh-add github))
-      (when (string-match "git@heroku.com" match)
-        (funcall ssh-add heroku)))))
+    (when (search-forward-regexp "^Remote: .+ @ .* (\\(.*\\))" nil t)
+      (setq remote-url (match-string 0))
+      (cl-loop for (regex . remote) in my/keys
+               if (string-match regex remote-url)
+               do ((lambda (file)
+                     (unless (zerop (shell-command
+                                     (concat "ssh-add -l | grep " file)))
+                       (shell-command (concat "ssh-add " file))))
+                   (expand-file-name remote))))
+    (goto-char p)))
 
 (defun my/get-buffer-string-from (file)
   ""

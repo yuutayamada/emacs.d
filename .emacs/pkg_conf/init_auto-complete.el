@@ -1,4 +1,4 @@
-;;; init_auto-complete.el --- init file for autocomplete.el
+;;; init_auto-complete.el --- init file for autocomplete.el -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013 by Yuta Yamada
 
@@ -20,6 +20,8 @@
 ;;; Commentary:
 
 ;;; Code:
+
+(require 'cl-lib)
 (require 'vars)
 (require 'mykie)
 (require 'my_autoload)
@@ -65,10 +67,10 @@
 
 (defun my/ac-add-sources-for-prog ()
   "Add ac-sources for each programming-mode."
-  (lexical-let ((add-source
+  (let ((add-source
                  (lambda (s)
                    (setq ac-sources (append `(,s) my/ac-sources-default)))))
-    (case major-mode
+    (cl-case major-mode
       (go-mode      (funcall add-source 'ac-source-go))
       (haskell-mode (add-to-list 'ac-sources 'ac-source-ghc-mod)))))
 

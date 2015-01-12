@@ -79,4 +79,3 @@ See URL `http://www.veripool.org/wiki/verilator'."
 ;; End:
 
 ;;; init_flycheck.el ends here
-;; verilator --lint-only -Wall -Wno-'Unsupported or unknown PLI call: $dumpfile'

@@ -8,8 +8,10 @@
 (require 'my_autoload)
 (require 'cc-vars)
 
+;; cc-mode includes several major-mode like c-mode, c++-mode or java-mode.
 (add-hook 'c-mode-hook   'c-turn-on-eldoc-mode)
 (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)
+(add-hook 'java-mode-hook (lambda () (require 'init_java)))
 
 ;;; cc-mode links
 ;; cc-mode manual       : http://www.delorie.com/gnu/docs/emacs/cc-mode_32.html
@@ -45,10 +47,11 @@
                 ;; switch, case indent
                 (case-label . 2))))
 
+;; Define style
 (setq c-default-style
       '((java-mode . "my-java")
-        (awk-mode . "awk")
-        (other . "gnu")))
+        (awk-mode  . "awk")
+        (other     . "gnu")))
 
 (provide 'init_cc-mode)
 

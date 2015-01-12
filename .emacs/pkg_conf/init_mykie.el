@@ -56,14 +56,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (mykie:set-keys with-self-key
   ;; NOTE
-  ;; number is NOT allow :C-u & :region&C-u keyword
+  ;; number keys are NOT allowed :C-u and :region&C-u keywords
   "1" :region sort-lines
   "2" :region (sort-lines ; sort-lines with reverse
                t (region-beginning) (region-end))
   "3" :region fill-region
   "4" :region align
 
-  "a" :C-u anzu-query-replace-at-cursor-thing
+  "a"
+  :C-u anzu-query-replace-at-cursor-thing
+
+  "i" :C-u&java-mode add-java-import
   "c" :C-u (my/open-calendar)
   "f" :C-u! racer-find-definition
       :region (mykie:do-while "f" indent-rigidly
@@ -104,7 +107,7 @@
                        :C-u   helm-go
                        :C-u*2 helm-go-show-packages)
              :java-mode my/lookup-android-docs
-             :ruby-mode helm-rb
+             ;; :ruby-mode helm-rb
              :lisp-mode slime-documentation-lookup)
   :C-u     (mykie
             :default (kill-whole-line)
@@ -317,7 +320,7 @@
          :go-mode               (if (Y/go-mode-deploy-android-app)
                                     (my/quickrun-dwim))
          :haskell-mode          my/runghc
-         :ruby-mode             xmp
+         ;; :ruby-mode             xmp
          :emacs-lisp-mode       lispxmp
          :lisp-interaction-mode lispxmp
          :scala-mode            my/execute-from-current-file)
@@ -628,3 +631,4 @@
 ;; End:
 
 ;;; init_mykie.el ends here
+

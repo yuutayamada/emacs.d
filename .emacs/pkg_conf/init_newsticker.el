@@ -16,3 +16,10 @@
 
 
 (provide 'init_newsticker)
+
+;; Local Variables:
+;; coding: utf-8
+;; mode: emacs-lisp
+;; End:
+
+;;; init_newsticker.el ends here

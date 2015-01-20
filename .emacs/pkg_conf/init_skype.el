@@ -1,4 +1,4 @@
-(require 'vars)
+
 (require 'skype)
 
 ;;skype

@@ -13,18 +13,14 @@
 (add-hook 'before-save-hook
           (lambda ()
             ;; Format source code before save.
-            (let
-                ((cmd
-                  (cl-case major-mode
-                    (js2-mode (when (executable-find "jsfmt") 'jsfmt))
-                    (go-mode  'gofmt-before-save))))
+            (let ((cmd
+                   (cl-case major-mode
+                     (js2-mode (when (executable-find "jsfmt") 'jsfmt))
+                     (go-mode  'gofmt-before-save))))
               (when cmd (call-interactively cmd)))))
 
 ;; flycheck without prog-mode
 (add-hook 'nxml-mode-hook 'flycheck-mode)
-
-;; Dired
-(add-hook 'dired-mode-hook '(lambda () (require 'init_dired)))
 
 ;; Capitalize configuration
 (add-hook 'after-change-major-mode-hook
@@ -40,10 +36,10 @@
 ;;;* TEXT-MODE
 (add-hook 'text-mode-hook
           '(lambda ()
-             (yas-global-mode t)
              (my/whitespace-mode)
              (outline-minor-mode t)
-             (flyspell-mode t)))
+             (unless (bound-and-true-p mykie:prog-mode-flag)
+               (flyspell-mode t))))
 
 ;;;* org-trello
 (add-hook 'org-mode-hook
@@ -52,14 +48,6 @@
                         (string-match
                          (expand-file-name "~/trello/") buffer-file-name))
                (org-trello-mode))))
-
-;;;* BUILT-IN
-;; Do not display ^M
-(add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m)
-;; Use org-table in mail-mode
-(add-hook 'mail-mode-hook 'turn-on-orgtbl)
-;; Attach executable attribute when saving a file with #!
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Java
 (add-hook 'java-mode-hook '(lambda () (require 'init_java)))

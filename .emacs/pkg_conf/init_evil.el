@@ -1,36 +1,24 @@
-;;; init_evil.el --- init file for evil-mode
+;;; init_evil.el --- init file for evil-mode -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; MEMO
 ;; v, Shift v, C-v : switch visual-mode
+;; Use `evil-add-hjkl-bindings' function to add hjkl binding to a key map.
 ;;; Code:
 (require 'evil)
-(require 'mykie)
+(require 'my_autoload)
 (require 'cl-lib)
 
-;; Override Evil's keybinds
-(cl-dolist (map `(,evil-normal-state-map
-                  ,evil-motion-state-map
-                  ;; I added this only for C-z
-                  ,evil-emacs-state-map))
-  (mykie:set-keys map
-    "C-e" "C-o" "C-r" "C-s" "C-t" "C-w" "C-z" "C-^" "C-="
-    "M-n" "M-p"))
+;; Set default emacs state ;;
+;; This is an upside using emacs state; using emacs state as default doesn't
+;; involve evil keymap on other emacs based modes like dired or etc.
+(setq evil-default-state 'emacs)
+;; But, use normal-state on find-file.
+(add-hook 'find-file-hook 'evil-normal-state)
+;; Use emacs-state as insert mode.
+(advice-add 'evil-insert-state :override 'evil-emacs-state)
 
-(setq evil-default-cursor      'box ; 'hbar box
-      evil-normal-state-cursor '("#Ff00ff")
-      evil-insert-state-cursor '("#4169e1" (bar . 2))
-      evil-emacs-state-cursor  '("#00ced1" (bar . 2))
-      evil-cross-lines t
-      ;; Do not move eol when normal state
-      evil-move-cursor-back t)
-
-(advice-add 'other-window-or-split :after 'evil-refresh-cursor)
-(add-hook 'find-file-hook 'evil-refresh-cursor)
-
-(setq ;; Use emacs state as default
- evil-default-state 'emacs)
-
+;; Emacs state than evil states
 (when (or evil-insert-state-modes evil-motion-state-modes)
   (setq evil-emacs-state-modes
         (append evil-emacs-state-modes
@@ -40,25 +28,50 @@
         evil-insert-state-modes nil
         evil-motion-state-modes nil))
 
-(add-to-list 'evil-emacs-state-modes 'eshell-mode)
+;; Prior specific mode keybinding than Evil keybind.
+;; this configuration is needed if I use normal state as default state
+;; instead of emacs state, so now this configuration is not efficient...
+(setq evil-emacs-state-modes
+      (append evil-emacs-state-modes
+              '(eww-mode git-commit-mode git-rebase-mode dired-mode
+                         mew-message-mode mew-summary-mode fundamental-mode)))
 
-(advice-add 'evil-insert-state :override 'evil-emacs-state)
-
-;;;;;;;;;;;;;;;;;
 ;; KEY BINDING ;;
-;;;;;;;;;;;;;;;;;
+;; Unbind needless keys
+(cl-loop with maps = `(evil-normal-state-map
+                       evil-motion-state-map
+                       evil-emacs-state-map)
+         with avoid-keys = '("C-e" "C-o" "C-r" "C-s" "C-t" "C-w" "C-z"
+                             "C-^" "C-=" "M-n" "M-p")
+         for map in maps
+         do (apply `((lambda () (mykie:set-keys ,map ,@avoid-keys)))))
+
+;; NORMAL STATE
+(mykie:set-keys evil-normal-state-map
+  "/" isearch-forward ; use ace-isearch
+  "U" undo-tree-visualize)
 
 ;; MOTION STATE
 (mykie:set-keys evil-motion-state-map
-  "SPC"   :default scroll-up-command
-  "S-SPC" :default scroll-down-command
-  ";"     :default evil-ex
-  ","     :default ace-jump-word-mode)
+  "SPC"   scroll-up-command
+  "S-SPC" scroll-down-command
+  ";"     evil-ex
+  ","     ace-jump-word-mode)
+
+;; Create SPC keymap for normal state
+(mykie:define-prefix-key evil-motion-state-map "SPC"
+  nil
+  "c"   show-cheat-sheet
+  "o"   my/toggle-opacity
+  "g"   grep
+  "h"   helm-descbinds
+  "SPC" mykie:vi-faker)
 
 ;;;;;;;;;;;;;;;;;
 ;; my function ;;
 ;;;;;;;;;;;;;;;;;
 (defun Y-evil-key-exist-p (key)
+  "My debug function to examine evil's KEY bind."
   (interactive)
   (cl-loop for m in '(evil-normal-state-map
                       evil-motion-state-map
@@ -71,136 +84,34 @@
            if (and m (lookup-key (symbol-value m) (kbd key)))
            collect m))
 
-;;;;;;;;;;;;;;;;;;;;;;
-;; work in progress ;;
-;;;;;;;;;;;;;;;;;;;;;;
-;; ;; Create SPC keymap for normal state
-;; (let ((map 'my/evil-state-spc-map))
-;;   (my/define-prefix-key evil-normal-state-map map (kbd "SPC"))
-;;   (mykie:set-keys map
-;;     "a"   :default auto-capitalize-mode
-;;     "c"   :default show-cheat-sheet
-;;     "m"   :default flymake-mode
-;;     "o"   :default my/toggle-opacity
-;;     "r"   :default read-only-mode
-;;     "s"   :default my/toggle-flyspell
-;;     "g"   :default grep
-;;     "j"   :default (global-key-binding (kbd "C-M-j"))
-;;     "z"   :default (global-key-binding (kbd "C-z"))
-;;     "h"   :default helm-descbinds
-;;     "SPC" :default my/magit-status))
+;; HIGHLIGHT Cursor or etc.
+(setq evil-default-cursor      'box ; You can specify: 'hbar or 'box
+      evil-normal-state-cursor '("#Ff00ff")
+      evil-insert-state-cursor '("#4169e1" (bar . 2))
+      evil-emacs-state-cursor  '("#00ced1" (bar . 2))
+      evil-cross-lines t
+      ;; Do not move eol when normal state
+      evil-move-cursor-back t)
 
-;; ;;; INSERT STATE
-;; ;: Use Emacs's keybind
-;; (setcdr evil-insert-state-map nil)
-;; (define-key evil-insert-state-map (kbd "<muhenkan>") 'evil-normal-state)
+(advice-add 'other-window-or-split :after 'evil-refresh-cursor)
+(add-hook 'find-file-hook 'evil-refresh-cursor)
 
-;; (when (display-graphic-p) ;; return t if Emacs was GUI
-;;   ;; This is faster than above [escape] and it can use at terminal.
-;;   ;; Because below key doesn't need evil-esc-delay.
-;;   (define-key evil-insert-state-map (kbd "C-[") 'evil-normal-state))
+(defun Y/evil-change-highlight ()
+  "Change highlight color of line."
+  (let ((attributes
+         (cl-case evil-state
+           (emacs  '("#444488" "#ffffff" nil))
+           (normal '("#e80000" "#ffffff" nil))
+           (insert '("#00cd00" "#ffffff" nil))
+           (visual '("#006fa0" "#ffffff" nil))
+           (t      '(nil nil t)))))
+    (Y/change-style attributes)))
 
-;; ;;; MOTION STATE
-;; (mykie:set-keys evil-motion-state-map "n" "p")
-
-;; ;; Bind other function to C-p and C-n, Use those function
-;; ;; if evil-paste-pop or evil-paste-pop-next was failed.
-;; (let ((setup
-;;        (lambda (func-name move-func)
-;;          (eval
-;;           `(defadvice ,func-name
-;;              (around evil-paste-or-move-line activate)
-;;              (condition-case err
-;;                  ad-do-it
-;;                (error (if (eq this-command (quote ,func-name))
-;;                           (call-interactively (quote ,move-func))
-;;                         (signal (car err) (cdr err))))))))))
-;;   (funcall setup 'evil-paste-pop-next (global-key-binding (kbd "C-n")))
-;;   (funcall setup 'evil-paste-pop      (global-key-binding (kbd "C-p"))))
-;; (defadvice evil-paste-after
-
-;;   (around ad-evil-paste-after activate)
-;;   (if buffer-read-only
-;;       (call-interactively (global-key-binding (kbd "C-p")))
-;;     ad-do-it
-;;     (message "yank")))
-
-;; ;; Function
-;; (defun my/turn-to-evil-normal-state ()
-;;   (interactive)
-;;   (if (and evil-mode (and (not (evil-normal-state-p))
-;;                           (not (evil-visual-state-p))))
-;;       (evil-normal-state t)
-;;     nil))
-
-;; ;; Turn on evil insert state before use cua to prevent visual mode
-;; (defadvice cua-set-rectangle-mark
-;;   (around ad-switch-to-insert-state activate)
-;;   (when evil-mode
-;;     (evil-insert-state t))
-;;   ad-do-it)
-
-;; (add-hook 'text-mode-hook
-;;           '(lambda ()
-;;              (when evil-mode
-;;                (if buffer-read-only
-;;                    (evil-motion-state t)
-;;                  (evil-insert-state t)))))
-
-;; (add-hook 'org-src-mode-hook
-;;           '(lambda ()
-;;              (if (and evil-mode (org-src-edit-buffer-p))
-;;                  (evil-insert-state t))))
-
-;; ;; Avoid evil keybinds
-;; (defun my/evil-inject-hjkl-keybinds+ (keymap &optional additional)
-;;   ""
-;;   (when (keymapp keymap)
-;;     (evil-make-overriding-map keymap)
-;;     (when additional
-;;       (evil-add-hjkl-bindings keymap nil
-;;         "s" (lookup-key global-map (kbd "C-v"))
-;;         ;; "t" (lookup-key global-map (kbd "M-v"))
-;;         " " (lookup-key evil-normal-state-map (kbd "SPC"))))
-;;     (unless evil-mode
-;;       (evil-emacs-state))))
-
-;; (add-hook 'evil-after-load-hook
-;;           '(lambda ()
-;;              ;; helm
-;;              (evil-make-overriding-map helm-map)
-;;              ;; windows.el
-;;              (evil-make-overriding-map win:switch-map)
-;;              ;; dired
-;;              (my/evil-inject-hjkl-keybinds+ dired-mode-map)
-;;              ;; view-mode
-;;              (my/evil-inject-hjkl-keybinds+ view-mode-map)
-;;              ;; mew
-;;              (add-hook 'mew-draft-mode-hook
-;;                        '(lambda ()
-;;                           (when (evil-normal-state-p)
-;;                             (evil-insert-state t))))
-;;              (cl-dolist (map `(,mew-summary-mode-map))
-;;                (my/evil-inject-hjkl-keybinds+ map))
-;;              ;; lookup.el
-;;              (my/evil-inject-hjkl-keybinds+ lookup-summary-mode-map)
-;;              (my/evil-inject-hjkl-keybinds+ lookup-content-mode-map)
-;;              ;; isearch
-;;              (my/evil-inject-hjkl-keybinds+ isearch-mode-map)
-;;              ;; eww
-;;              (my/evil-inject-hjkl-keybinds+ eww-mode-map t)
-;;              ;; erc
-;;              (my/evil-inject-hjkl-keybinds+ erc-mode-map)))
-
-;; (dolist (hook '(minibuffer-setup-hook))
-;;   (add-hook hook
-;;             '(lambda ()
-;;                (let ((evil-echo-state nil))
-;;                  (unless (evil-insert-state-p)
-;;                    (when evil-mode
-;;                      (evil-insert-state t)))))))
-
-;; (unless evil-mode (evil-emacs-state))
+(cl-loop for func in '(evil-change-state evil-refresh-cursor)
+         do (apply `((lambda ()
+                       (advice-add (quote ,func) :after
+                                   (lambda (&rest _args)
+                                     (Y/evil-change-highlight)))))))
 
 (provide 'init_evil)
 

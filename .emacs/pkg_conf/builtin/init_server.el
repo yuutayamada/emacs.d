@@ -23,13 +23,13 @@
 
 (require 'server)
 
+(add-hook 'server-visit-hook
+          (lambda ()
+            (set-terminal-coding-system 'utf-8)
+            (set-keyboard-coding-system 'utf-8)))
+
 (when (server-running-p "server")
-  (defalias 'exit 'save-buffers-kill-emacs)
-  ;;emacsclient -cでアクセス時の設定
-  (add-hook 'server-visit-hook
-            (lambda ()
-              (set-terminal-coding-system 'utf-8)
-              (set-keyboard-coding-system 'utf-8))))
+  (defalias 'exit 'save-buffers-kill-emacs))
 
 (provide 'init_server)
 

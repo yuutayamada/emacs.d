@@ -40,6 +40,44 @@
     (normal-top-level-add-subdirs-to-load-path))
   (cd origin))
 
+;;;* Coding system
+(let*
+    ((set-coding-system
+      (lambda (coding)
+        (set-clipboard-coding-system coding)
+        (prefer-coding-system coding)
+        (set-file-name-coding-system coding)
+        (set-keyboard-coding-system coding)
+        (set-default-coding-systems coding)
+        (set-terminal-coding-system coding)
+        (setq file-name-coding-system coding
+              buffer-file-coding-system coding
+              locale-coding-system coding)
+        (add-to-list 'process-coding-system-alist `("git" . ,coding))
+        (add-to-list 'auto-coding-alist `("COMMIT_EDITMSG" . ,coding))
+        (defconst org-export-coding-system coding)))
+     (decide-coding-system
+      (lambda ()
+        (if (string-match "linux-gnu" system-configuration)
+            'utf-8
+          ;; I don't know other environment
+          'utf-8))))
+  (funcall set-coding-system (funcall decide-coding-system)))
+
+;;;;;;;;;;;
+;; TITLE ;;
+;;;;;;;;;;;
+(setq frame-title-format (format "emacs@%s : %%f" (system-name)))
+
+;;;;;;;;;;;
+;; LIMIT ;;
+;;;;;;;;;;;
+(defconst recentf-max-menu-items  100)
+(defconst recentf-max-saved-items 10000)
+(setq max-lisp-eval-depth         100000
+      history-length              10000
+      max-specpdl-size            1000000)
+
 ;;;* yes or no -> y or n
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -47,10 +85,18 @@
 (setq completion-ignore-case t
       read-file-name-completion-ignore-case t)
 
-;;;* Avoid needless bars
+;;;* Avoid needless bar
 (menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+
+;;;* AUTO SAVE
+;; you can turn off auto saving by setting nil to `auto-save-default'
+(setq auto-save-default t
+      auto-save-timeout 30   ; Number of seconds
+      auto-save-interval 300 ; Number of input events
+      ;; 自動保存ファイル（#ファイル名#）の設定
+      ;; 参考: http://openlab.dino.co.jp/2009/02/25/185332417.html#more-417
+      auto-save-file-name-transforms `((".*/.*" ,temporary-file-directory t))
+      delete-auto-save-files t)
 
 ;;;* BACKUP(files.el)
 (setq make-backup-files t
@@ -87,7 +133,9 @@
 ;; global-revert-mode
 (global-auto-revert-mode t)
 
-;; Configuration for copy and past
+;;; Copy and Past
+;; http://emacswiki.org/emacs/CopyAndPaste
+;; http://stackoverflow.com/questions/5288213/how-can-i-paste-the-selected-region-outside-of-emacs/14659015#14659015
 (setq select-enable-clipboard t)
 
 ;;;* newline configurations
@@ -102,8 +150,32 @@
 ;; C-x V -> find variable definition
 (find-function-setup-keys)
 
+;;;* uniqify
+;; attach directory name if file name is duplicated
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+;;; hooks
+;; Do not display ^M
+(add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m)
+;; Use org-table in mail-mode
+(add-hook 'mail-mode-hook 'turn-on-orgtbl)
+;; Attach executable attribute when saving a file with #!
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
+;; flyspell
+;; avoid (crazy) keybinds
+(defconst flyspell-mode-map '())
+
 ;; Generic-mode(http://www.emacswiki.org/emacs/GenericMode)
 (require 'generic-x)
+
+;; Get rid of default org-mode path to avoid conflict between default
+;; and org-mode of el-get.
+(require 'cl-lib)
+(setq load-path
+      (cl-loop for path in load-path
+               unless (string-match "/git.savannah.gnu.org/emacs/lisp/org$" path)
+               collect path))
 
 (provide 'site-start)
 

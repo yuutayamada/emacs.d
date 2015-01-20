@@ -23,18 +23,37 @@
 (require 'org)
 (require 'ob-go)
 (require 'init_org-mobile)
-(require 'my_autoload)
 (require 'init_org-indent)
+(require 'mykie)
 ;; Footer information
 (defconst org-html-postamble "")
 
-;; (setq org-export-latex-date-format "%Y-%m-%d")
-;; (setq org-ditaa-jar-path "~/emacs.d/utils/jditaa/jditaa.jar"))
+;; Modify header
+(defun Y/org-html-export-to-html (professor class)
+  "Add PROFESSOR name and CLASS to the html header.
+For my college life."
+  (interactive)
+  (let* ((prof (format "Professor %s" professor))
+         (file (replace-regexp-in-string "_" " " (file-name-base)))
+         (org-html-preamble-format
+          `(("en" ,(mapconcat 'identity `("%a" ,prof ,class ,file "%T") "<br />")))))
+    (call-interactively 'org-html-export-to-html)))
+
+(require 'cl-lib)
+(define-key org-mode-map (kbd "C-x p")
+  '(lambda () (interactive)
+     (cl-loop for (class . prof) in Y/prof-alist
+              if (string-match class (buffer-file-name))
+              do (cl-return (Y/org-html-export-to-html prof class)))))
 
 (defadvice org-export-dispatch (around ad-load-latex-init-file activate)
   "Load latex init file."
   (require 'init_latex)
   ad-do-it)
+
+;; org this is for debugging.
+(with-no-warnings
+  (setq org-element-use-cache nil))
 
 (setq org-file-apps
       '((auto-mode . emacs)
@@ -88,7 +107,6 @@
 
 (add-hook 'org-mode-hook
           '(lambda ()
-             ;; (require 'init_yasnippet)
              (mykie:set-keys org-mode-map "C-a" "C-e" "RET" "C-j" "C-," "C-.")
              (auto-complete-mode t)
              (unless (string-match "blog\\|article" buffer-file-name)
@@ -116,12 +134,6 @@ The BOL means beginning of line, the EOL means end of line."
 ;;   (switch-to-buffer b)
 ;;   (setq hoge (libxml-parse-html-region (point-min) (point-max) nil t))
 ;;   (switch-to-buffer origin))
-
-;; (require 'cl-lib)
-;; (cl-loop for (a . b) in hoge
-;;          collect a)
-;; (cdr (nth 2 hoge))
-
 
 (provide 'init_org)
 

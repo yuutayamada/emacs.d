@@ -31,7 +31,7 @@
   ""
   (let* ((boot-p (zerop (shell-command "pgrep eclimd")))
          (answer (and (not boot-p) (y-or-n-p "Use eclim? "))))
-    (when answer 
+    (when answer
       (call-interactively 'start-eclimd))
     answer))
 
@@ -44,6 +44,16 @@
   (around avoid-this activate)
   (when (eq 'java-mode major-mode)
     ad-do-it))
+
+;; Maybe I don't use eclim anymore...
+;; (defun my/java-boot-eclim ()
+;;   "Boot eclim."
+;;   (when (and (not (string-match "^\\*Org Src .*\\*" (buffer-name)))
+;;              (string-match "/src/.*\\.java$" buffer-file-truename)
+;;              (my/boot-eclim)
+;;              (eclim--project-name))
+;;     (eclim-mode)
+;;     (ac-emacs-eclim-config)))
 
 (provide 'init_eclim)
 

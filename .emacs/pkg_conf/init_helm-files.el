@@ -29,17 +29,17 @@
     ad-do-it))
 
 ;; (require 'init_filecache)
-(require 'helm-ghq)
+;; (require 'helm-ghq)
 (setq helm-for-files-preferred-list
-  '(helm-source-recentf
-    helm-source-buffers-list
-    helm-source-file-cache
-    helm-source-ghq
-    helm-source-files-in-current-dir
-    ;; comment out this is too heavy for me.
-    ;; helm-source-bookmarks
-    ;; helm-source-locate
-    ))
+      '(helm-source-file-cache
+        ;; helm-source-ghq
+        ;; helm-source-recentf
+        ;; helm-source-buffers-list
+        ;; helm-source-files-in-current-dir
+        ;; comment out this is too heavy for me.
+        ;; helm-source-bookmarks
+        ;; helm-source-locate
+        ))
 
 (provide 'init_helm-files)
 

@@ -18,19 +18,10 @@
   (require 'init_javadoc-lookup)
   ;; To use auto-java-complete, you need to prepare ~/.java_base.tag file
   ;; See Install file in auto-java-complete.
-  (require 'init_auto-java-complete))
+  (when (file-exists-p "~/.java_base.tag")
+    (ajc-java-complete-mode t)))
 
 (add-hook 'java-mode-hook 'Y/java-init)
-
-;; Maybe I don't use eclim anymore...
-;; (defun my/java-boot-eclim ()
-;;   "Boot eclim."
-;;   (when (and (not (string-match "^\\*Org Src .*\\*" (buffer-name)))
-;;              (string-match "/src/.*\\.java$" buffer-file-truename)
-;;              (my/boot-eclim)
-;;              (eclim--project-name))
-;;     (eclim-mode)
-;;     (ac-emacs-eclim-config)))
 
 (provide 'init_java)
 

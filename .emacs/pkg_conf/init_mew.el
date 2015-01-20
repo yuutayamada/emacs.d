@@ -1,22 +1,5 @@
 ;;; init_mew.el --- init file for mew.el
 
-;; Copyright (C) 2013 by Yuta Yamada
-
-;; Author: Yuta Yamada <cokesboy"at"gmail.com>
-
-;;; License:
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;; Commentary:
 ;; If first time what use the mew,
 ;; perhaps you should update state that type by C-u Z
@@ -28,17 +11,8 @@
 
 ;;; Code:
 
-;; load this before use `win-switch-to-window'
-(require 'init_windows)
-(require 'cl-lib)
-(defadvice mew (around ad-switch-buffer activate)
-  "Switch to buffer."
-  ;; 13 = m -> meaning mail
-  (win-switch-to-window 1 13)
-  (delete-other-windows)
-  ad-do-it)
-
 (require 'my_autoload)
+(require 'cl-lib)
 
 ;; Set jvgrep as search program to find Japanese words
 (when (executable-find "jvgrep")
@@ -50,9 +24,7 @@
 (require 'mew)
 (require 'notifications nil t)
 (require 'auth-source)
-(require 'init_w3m)
 (require 'mew-w3m)
-(require 'init_eww)
 
 (define-key mew-draft-header-map (kbd "C-c C-i") 'helm-ag-r-google-contacts-list)
 (define-key mew-draft-body-map   (kbd "C-c C-k") 'mew-draft-kill)

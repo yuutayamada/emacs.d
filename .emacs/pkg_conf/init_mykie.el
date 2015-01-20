@@ -18,21 +18,25 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;; Commentary:
-;; memo : http://www.linux-france.org/article/appli/emacs/manuel/html/key-bindings.html
+;; memo
+;; http://www.linux-france.org/article/appli/emacs/manuel/html/key-bindings.html
+;;
+;; Vector
+;; [?\C->], [?\C-<], [(hiragana-katakana)]
 ;;; Code:
 
 (require 'mykie)
 (require 'my_autoload)
-(require 'init_keyboard-converter)
 
-;;;;;;;;;;;;;;;;;;;;
 ;; mykie.el setup ;;
-;;;;;;;;;;;;;;;;;;;;
 (setq mykie:use-major-mode-key-override 'both
       ;; mykie:use-fuzzy-order nil
       mykie:normal-conditions
       (append mykie:normal-conditions
               '((:error . (error-tip-error-p))
+                (:evil-emacs  . (eq (bound-and-true-p evil-state) 'emacs))
+                (:evil-normal . (eq (bound-and-true-p evil-state) 'narmal))
+                (:evil-insert . (eq (bound-and-true-p evil-state) 'insert))
                 (:hs-hidden     . (and mykie:prog-mode-flag
                                        (condition-case err
                                            (hs-already-hidden-p)
@@ -51,9 +55,7 @@
       mykie:minor-mode-ignore-list '())
 (mykie:initialize)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; self-insert-command keys ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (mykie:set-keys with-self-key
   ;; NOTE
   ;; number keys are NOT allowed :C-u and :region&C-u keywords
@@ -68,21 +70,25 @@
 
   "i" :C-u&java-mode add-java-import
   "c" :C-u (my/open-calendar)
-  "f" :C-u! racer-find-definition
-      :region (mykie:do-while "f" indent-rigidly
-                              "u" undo)
-  "g" :C-u! my/helm-gtags ; helm-gtags-dwim
-      :region my/ginger-region
-  "l" :C-u my/lookup
+  "f"
+  :C-u! racer-find-definition
+  :region (mykie:do-while "f" indent-rigidly
+                          "u" undo)
+  "g"
+  :C-u! my/helm-gtags ; helm-gtags-dwim
+  :region my/ginger-region
+  "l" :C-u Y/lookup
   "m" :C-u mew
   "r" :region rectangle-number-lines
+  "s"
+  :C-u flop-frame ; swap left and right
+  :C-u*2 transpose-frame
+  :C-u*3 flip-frame ; swap up and down
   "t" :C-u (my/twit t)
   "u" :C-u (undo-tree-visualize)
   "w" :C-u (message "test this is w"))
 
-;;;;;;;;;;;;;
 ;; C-[a-z] ;;
-;;;;;;;;;;;;;
 (mykie:set-keys nil ; nil means global-map
 
   "C-a"
@@ -118,7 +124,9 @@
   :default    (seq-end)
   :org-mode   (org-seq-end)
   :C-u        eww
-  :C-u*2      (evil-mode)
+  :C-u*2      (if (bound-and-true-p evil-mode)
+                  (evil-mode 0)
+                (evil-mode))
   :region&C-u align
 
   "C-f"
@@ -133,11 +141,6 @@
   :C-u (mykie
         :C-u*2 (my/copy-current-file-name)
         t (forward-char 1))
-  ;; :region (mykie:do-while
-  ;;          "l" my/region-extender
-  ;;          "h" (my/region-extender "b")
-  ;;          "j" (my/region-extender "n")
-  ;;          "k" (my/region-extender "p"))
   :C-u&url    (browse-url-firefox mykie:current-thing)
 
   "C-h"
@@ -151,6 +154,7 @@
   :skk-active     (skk-kakutei)
   :skk-on         (skk-kakutei)
   :C-u&url        (browse-url-at-point)
+  :C-u*2          jazzradio
   :email          (message mykie:current-thing)
   :mew-draft-mode newline-and-indent
   :C-u&eolp       (cl-case major-mode
@@ -211,9 +215,8 @@
   :grep-mode kill-this-buffer
 
   "C-r"
-  :default helm-recentf
-  :git-commit-mode helm-ag-r-git-logs
-  :C-u     helm-ghq
+  :default ido-switch-buffer
+  :C-u Y/ido-find-ghq-dirs
 
   "C-s"
   :default isearch-forward
@@ -246,7 +249,8 @@
   :default yank
   :C-u     (helm-c-yas-complete)
 
-  "C-z" :default (require 'init_windows)
+  "C-z"
+  :default ido-find-file
 
   "C--" :default text-scale-decrease
   "C->" :default win-next-window
@@ -259,25 +263,22 @@
 
   "C-8" :default (cider-turn-on-eldoc-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;
 ;; SUPER KEY BINDING ;;
-;;;;;;;;;;;;;;;;;;;;;;;
 (mykie:set-keys global-map
   "s-s" t win-switch-menu)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; RESTRACTED KEYBINDS                 ;;
+;; RESTRICTED KEYBINDS                 ;;
 ;; Below keys Can not uses at terminal ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Testing without :default
 (mykie:set-keys nil
-  "C-S-d" :default  doctor
-  "C-S-g" :default  ger
-  "C-S-m" :default  mew
-  "C-S-n" :default  global-linum-mode
-  "C-S-o" :default  remember
-  "C-S-t" :default  twit
-  "C-S-w" :default  w3m
-  "C-S-h" :default  helm-descbinds
+  "C-S-d" doctor
+  "C-S-g" ger
+  "C-S-m" mew
+  "C-S-n" global-linum-mode
+  "C-S-o" remember
+  "C-S-t" twit
+  "C-S-w" w3m
+  "C-S-h" helm-descbinds
 
   "C-;"
   :region  (if buffer-read-only
@@ -291,13 +292,9 @@
 
   ;; "C-."
   ;; :default
+  "C-," eiji:search)
 
-  "C-,"
-  :default eiji:search)
-
-;;;;;;;;;;;;;;;;;;;;
 ;; C-c prefix map ;;
-;;;;;;;;;;;;;;;;;;;;
 (mykie:set-keys global-map
   "C-c s"
   :default my/w3m-search
@@ -347,14 +344,16 @@
 
   "C-c m" :default  goto-line)
 
-;;;;;;;;;;;;;;;;
 ;; C-x keymap ;;
-;;;;;;;;;;;;;;;;
 ;; Control x map(for other keymap testing)
 (mykie:set-keys ctl-x-map
   "C" t save-buffers-kill-emacs)
 
 (mykie:set-keys global-map
+  "C-x g" grep
+  "C-x C-f"
+  :default ido-find-file
+
   "C-x C-c"
   :default save-buffers-kill-terminal ; or delete frame?
   :C-u     save-buffers-kill-emacs
@@ -362,57 +361,46 @@
   :default my/open-junk-today
   :C-u     open-junk-file)
 
-;;;;;;;;;;
 ;; f0-9 ;;
-;;;;;;;;;;
 (mykie:set-keys global-map
-  "<f1>"         :default winner-undo
-  "<f2>"         :default winner-redo
-  "S-<f1>"       :default my/load-color-theme
-  "<f5>"         :default my/revert-buffer
-  "<f7>"         :default point-undo
-  "S-<f7>"       :default point-redo
-  "<f8>"         :default goto-last-change
-  "S-<f8>"       :default goto-last-change-reverse
-  "<f9>"         :default my/toggle-opacity
-  "<f10>"        :default my/festival-read-buffer
-  "S-<f10>"      :default my/load-color-theme
-  "<f11>"        :default my/open-calendar
-  "<f12>"        :default helm-skk-rules
-  "S-<f12>"      :default my/screen-shot)
+  "<f1>"     winner-undo
+  "<f2>"     winner-redo
+  "S-<f1>"   my/load-color-theme
+  "<f5>"     my/revert-buffer
+  "<f7>"     point-undo
+  "S-<f7>"   point-redo
+  "<f8>"     goto-last-change
+  "S-<f8>"   goto-last-change-reverse
+  "<f9>"     my/toggle-opacity
+  "<f10>"    my/festival-read-buffer
+  "S-<f10>"  my/load-color-theme
+  "<f11>"    my/open-calendar
+  "<f12>"    helm-skk-rules
+  "S-<f12>"  my/screen-shot)
 
-;;;;;;;;;;
 ;; TABS ;;
-;;;;;;;;;;
+;; memo: there is a difference between <tab> and TAB
+;; http://stackoverflow.com/questions/1792326/how-do-i-bind-a-command-to-c-i-without-changing-tab
 (mykie:set-keys nil
   "TAB"
-  ;; :hs-hidden hs-show-block ;; fix this error occured
   :markdown-header markdown-cycle
   :default indent-for-tab-command
-  :repeat yas-expand
-  "S-TAB"       :default my/insert ; C-S-TAB
-  "M-TAB"       :default auto-complete
-  [(C-tab)]     :default fold-dwim-toggle
-  [(backtab)]   :default my/toggle-opacity
-  [(super tab)] :default pcomplete)
+  "S-TAB"       my/insert ; C-S-TAB
+  "M-TAB"       auto-complete
+  [(C-tab)]     fold-dwim-toggle
+  [(backtab)]   my/toggle-opacity
+  [(super tab)] pcomplete)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; NON ALPHABETICAL CHARACTER ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (mykie:set-keys nil
-  "M-;"  t comment-dwim
-  "M-["  t bm-next
-  "M-]"  t bm-previous
-  "C-\]" t my/grammar-check
-  "C-\\" t mozc-mode ; toggle-input-method ;my/festival
-  "C-/"
-  :default helm-swoop
-  :C-u!    helm-multi-swoop
-  "C-*"  t undo)
+  "M-;"  comment-dwim
+  "M-["  bm-next
+  "M-]"  bm-previous
+  "C-\]" esc-map
+  "C-\\" mozc-mode ; toggle-input-method ;my/festival
+  "C-*" undo)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TRANSLATE KEYS TO USE SAME POSITION ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (apply
  `((lambda ()
      (mykie:set-keys nil
@@ -426,14 +414,13 @@
        ;; C-'
        ,(concat "C-" (keyboard-converter-find ":"))
        :default loga-lookup-in-popup
-       :region comment-box
+       :region (let ((comment-style 'aligned))
+                 (call-interactively 'comment-region))
        ;; C-+
        ,(concat "C-" (keyboard-converter-find "~"))
        :default show-cheat-sheet))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Japanese keyboard only ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (mykie:set-keys nil
   [(henkan)]
   :default           (yim-convert)
@@ -458,37 +445,62 @@
              (error (buf-move-right)))
   :C-u     git-messenger:popup-message)
 
-;;;;;;;;;;;;;
-;; RET key ;;
-;;;;;;;;;;;;;
+;; Gimmick keybinds
 (mykie:set-keys nil
-  "C-m"
-  :org-mode (org-return)
+  "A-m" ; C-m
+  :default (newline)
+  :C-u (mykie:do-while "m" my/replicate-current-line)
+  :C-u*2 (Y/iso-transl-toggle-minor-mode)
+  :C-u*3 helm-ucs ; math symbols
+  :evil-emacs   (evil-change-state 'normal)
+  :evil-insert  (evil-change-state 'normal))
+
+;; RET key ;;
+(mykie:set-keys nil
+  "RET"
   :default  (newline)
-  :C-u      (mykie:do-while "m" my/replicate-current-line)
+  :org-mode (org-return)
 
   "M-RET"        :default my/multi-term-current-buffer
   "<C-return>"   :default cua-set-rectangle-mark
   "<C-M-return>" :default my/multi-term)
 
-;;;;;;;;;;;;;;;
+;; TODO: make :on-enter, :on-exit
+(mykie:define-prefix-key global-map "M-j"
+  (lambda ()
+    (not (or (member last-command
+                     '(mc/keyboard-quit
+                       self-insert-command
+                       mc/insert-numbers))
+             (eq last-command-event (string-to-char "q")))))
+  ;; multiple-cursors ;;
+  "a"   mc/mark-all-like-this
+  "q"   t nil
+  "n"   mc/skip-to-next-like-this
+  "p"   mc/skip-to-previous-like-this
+  "j"   mc/mark-next-like-this
+  "k"   mc/mark-previous-like-this
+  "m"   mc/mark-more-like-this-extended
+  "u"   mc/unmark-next-like-this
+  "U"   mc/unmark-previous-like-this
+  "*"   mc/mark-all-like-this
+  "M-j" mc/mark-all-like-this-dwim
+  "i"   mc/insert-numbers
+  "o"   mc/sort-regions
+  "O"   mc/reverse-regions)
+
 ;; M- prefix ;;
-;;;;;;;;;;;;;;;
 (mykie:set-keys nil
   "M-c"
   :default seq-capitalize-backward-word
+
   "M-h"
   :default mark-paragraph
-  :C-u     (mykie:do-while "h" hs-hide-all
-                           "s" hs-show-all)
+  :C-u     (mykie:do-while "h" hs-hide-all "s" hs-show-all)
+
   "M-o"
   :default (yim-convert)
   :prog    (mykie :c-mode helm-gtags-select)
-
-  "M-j"
-  :default yim-convert
-  ;; :comment mozc-mode
-  :prog    (mykie :go-mode godef-jump)
 
   "M-l"
   :default seq-downcase-backward-word
@@ -514,7 +526,8 @@
   :default seq-upcase-backward-word
 
   "M-x"
-  :default  helm-M-x
+  :default helm-M-x
+  :C-u! execute-extended-command ; for emergency
 
   "M-y"
   :default  helm-show-kill-ring
@@ -529,39 +542,38 @@
   :region  kill-ring-save
   :C-u     (eiji:search))
 
-;;;;;;;;;;;;;;;;;
 ;; C-M- prefix ;;
-;;;;;;;;;;;;;;;;;
 (mykie:set-keys global-map
-  "C-M-g" :default grep
-          :C-u     my/refactor
+  "C-M-g"
+  :default grep
+  :C-u     my/refactor
   "C-M-h" :default howm-menu
-  "C-M-j" :default my/load-mc-init-file
   "C-M-n" :default tabbar-forward
   "C-M-p" :default tabbar-backward)
 
-;;;;;;;;;;;;;;;;
 ;; M-g prefix ;;
-;; (goto-map) ;;
-;;;;;;;;;;;;;;;;
-(mykie:set-keys nil
-  "M-g s"   :default magit-status
-  "M-g M-s" :default magit-status
-  "M-g M-h" :default my/toggle-hide-show
-  "M-g M-r" :default remember
-  "M-g M-t" :default toggle-truncate-lines
-  "M-g M-g"
-  :default mode-compile
-  :coffee-mode coffee-compile-file
-  "M-g M-k" :default mode-compile-kill
-  "M-g M-i" :default loga-interactive-command
-  "M-g M-u" :default loga-lookup-at-manually
-  "M-g M-a" :default loga-add
+;; (goto-map & windows.el prefix keymap) ;;
+;; Note that windows.el uses a to z key to switch window(frame), so
+;; do not override the a_to_z keymap.
+(mykie:set-keys goto-map
+  "1" e2wm:dp-code
+  "2" e2wm:dp-two
+  "3" e2wm:dp-doc
+  "0" (if (e2wm:pst-get-instance)
+          (e2wm:stop-management)
+        (e2wm:start-management))
+  "M-s" (find-file "~/share/doc/study/2015spring")
+  "M-h" my/toggle-hide-show
+  "M-r" remember
+  "M-t" toggle-truncate-lines
+  "M-g" win-toggle-window
+  "M-k" mode-compile-kill
+  "M-i" loga-interactive-command
+  "M-u" loga-lookup-at-manually
+  "M-a" loga-add
   )
 
-;;;;;;;;;;;;;;;;
 ;; Arrow keys ;;
-;;;;;;;;;;;;;;;;
 (mykie:set-keys global-map
   "<S-up>"       :default windmove-up
   "<S-down>"     :default windmove-down
@@ -570,9 +582,7 @@
   "<C-S-up>"     :default my/increase-opacity
   "<C-S-down>"   :default my/decrease-opacity)
 
-;;;;;;;;;;;;;;;
 ;; SPACE key ;;
-;;;;;;;;;;;;;;;
 (mykie:set-keys nil
   "C-SPC"
   :default set-mark-command
@@ -581,13 +591,18 @@
   ;; "S-SPC" :default scroll-down-command
   )
 
-;;;;;;;;;;;;;;
+;; Escape ;;
+(mykie:set-keys esc-map
+  "ESC" :default magit-status)
+
 ;; TOY FUNC ;;
-;;;;;;;;;;;;;;
 (defun mykie:vi-faker ()
   (interactive)
+  (let ((attributes '("white" "black" nil)))
+    (Y/change-style attributes))
   (let
-      ((scroll (lambda (direction)
+      ((Y/inhibit-change-color t)
+       (scroll (lambda (direction)
                  (condition-case err
                      (cl-case direction
                        (next     (call-interactively 'next-line))
@@ -596,21 +611,36 @@
                        (down     (scroll-down-command)))
                    (error err)))))
     (mykie:loop
+     "e" (if (e2wm:pst-get-instance)
+             (e2wm:stop-management)
+           (e2wm:start-management))
+     "1" e2wm:dp-code
+     "2" e2wm:dp-two
+     "3" e2wm:dp-htwo
+     "4" e2wm:dp-doc
+     ">" e2wm:pstset-next-pst-command
+     "<" e2wm:pstset-prev-pst-command
      ;; show hide
      "H" hs-hide-all
      "S" hs-show-all
+     "t" hs-toggle-hiding
      ;; vi style
      "h" backward-char
      "j" (funcall scroll 'next)
      "k" (funcall scroll 'previous)
      "l" forward-char
+     ;; window move
+     "B" windmove-left
+     "N" windmove-down
+     "P" windmove-up
+     "F" windmove-right
      ;; less
      "f" (funcall scroll 'up)
      "b" (funcall scroll 'down)
-     ;; ace-jump
-     "s" (return (call-interactively 'ace-jump-mode)))))
+     "/" (return (call-interactively 'isearch-forward))))
+  (hs-show-all))
 
-;; Overridden keys
+;; Overridden keys ;;
 (defvar my/overriding-mode-map (make-sparse-keymap))
 (mykie:set-keys my/overriding-mode-map
   "<delete>"    :default follow-mode
@@ -618,7 +648,7 @@
   "<pause>"     :default scroll-other-window-down
   "<backspace>" :default my/toggle-flyspell)
 
-;; Override helm-map to use DDSKK's function
+;; Override helm-map to use DDSKK's function ;;
 (add-hook 'helm-before-initialize-hook
           '(lambda ()
              (mykie:attach-mykie-func-to 'helm)))

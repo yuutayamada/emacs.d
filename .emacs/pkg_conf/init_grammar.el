@@ -20,7 +20,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'vars)
 (require 'my_autoload)
 (require 'grammar)
 (let ((exe-file (concat el-get-dir "grammar/grammar")))

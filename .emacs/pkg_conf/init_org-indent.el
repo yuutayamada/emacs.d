@@ -25,7 +25,9 @@
 (unless (display-graphic-p)
   ;; if current Emacs is in Terminal.
   ;; then use "|" to end of indent.(124) ;1474
-  (setq org-indent-boundary-char 1474))
+  ;; 32 is just space
+  (setq org-indent-boundary-char 32) ; 1474
+  )
 
 ;; org-indent-mode-turns-off-org-adapt-indentation nil
 (setq org-startup-indented t)

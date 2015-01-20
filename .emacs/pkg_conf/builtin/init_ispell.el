@@ -1,34 +1,10 @@
-;;; init_ispell.el --- init file for ispell
+;;; init_ispell.el --- init file for ispell -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2013 by Yuta Yamada
-
-;; Author: Yuta Yamada <cokesboy"at"gmail.com>
-
-;;; License:
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;; Commentary:
 
 ;;; Code:
 
 (require 'ispell)
-
-(add-hook 'ispell-initialize-spellchecker-hook
-          ;; I couldn't use ispell in latest Emacs(25.0.x)
-          ;; because so I load below ispell instead. 12/24/2014
-          ;; I know this is dirty code...
-          '(lambda ()
-             (load "/usr/share/emacs/site-lisp/dictionaries-common/ispell" t)))
 
 ;; my/get-aspell-capital-words
 (with-no-warnings

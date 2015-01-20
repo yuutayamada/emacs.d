@@ -1,7 +1,7 @@
 ;;; -*- coding: utf-8; mode: emacs-lisp; -*-
 (require 'sbtp)
-(require 'vars)
+
 (setq sbtp-prompt-string "> "
-      sbtp-lang my/lang)
+      sbtp-lang "ja_JP.UTF-8")
 
 (provide 'init_sbtp)

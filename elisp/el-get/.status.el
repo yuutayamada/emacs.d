@@ -8,6 +8,8 @@
            (:name ac-slime :website "https://github.com/purcell/ac-slime" :description "Emacs auto-complete plugin for Slime symbols" :type github :depends
                   (slime)
                   :pkgname "purcell/ac-slime"))
+ (ace-isearch status "installed" recipe
+              (:name ace-isearch :type git :url "https://GitHub.com/tam17aki/ace-isearch.git"))
  (ace-jump-mode status "installed" recipe
                 (:name ace-jump-mode :website "https://github.com/winterTTr/ace-jump-mode/wiki" :description "A quick cursor location minor mode for emacs." :type github :pkgname "winterTTr/ace-jump-mode" :prepare
                        (eval-after-load "ace-jump-mode"
@@ -68,6 +70,8 @@
                (:name company-mode :type git :url "https://github.com/company-mode/company-mode.git"))
  (css-eldoc status "installed" recipe
             (:name css-eldoc :website "https://github.com/zenozeng/css-eldoc" :description "eldoc plugin for CSS" :type github :pkgname "zenozeng/css-eldoc"))
+ (ctable status "installed" recipe
+         (:name ctable :description "Table Component for elisp" :type github :pkgname "kiwanami/emacs-ctable"))
  (dash status "installed" recipe
        (:name dash :description "A modern list api for Emacs. No 'cl required." :type github :pkgname "magnars/dash.el"))
  (db status "installed" recipe
@@ -85,6 +89,8 @@
                          (progn
                            (add-to-list 'auto-mode-alist
                                         '("Dockerfile\\'" . dockerfile-mode)))))
+ (e2wm status "installed" recipe
+       (:name e2wm :description "simple window manager for emacs" :website "https://github.com/kiwanami/emacs-window-manager" :type github :pkgname "kiwanami/emacs-window-manager" :depends window-layout :features "e2wm"))
  (eclim status "installed" recipe
         (:name eclim :type git :url "https://github.com/senny/emacs-eclim.git"))
  (el-get status "installed" recipe
@@ -121,6 +127,9 @@
                 (:name emacs-milkode :type git :url "https://github.com/ongaeshi/emacs-milkode.git"))
  (emacs-skype status "installed" recipe
               (:name emacs-skype :type git :url "https://github.com/kiwanami/emacs-skype.git"))
+ (epc status "installed" recipe
+      (:name epc :description "An RPC stack for Emacs Lisp" :type github :pkgname "kiwanami/emacs-epc" :depends
+             (deferred ctable)))
  (eshell-better-prompt status "installed" recipe
                        (:name eshell-better-prompt :type git :url "https://github.com/yuutayamada/eshell-better-prompt.git"))
  (esxml status "installed" recipe
@@ -148,8 +157,6 @@
                (:name flycheck-tip :depends
                       (flycheck)
                       :type github :pkgname "yuutayamada/flycheck-tip"))
- (flymake status "installed" recipe
-          (:name flymake :type git :url "https://github.com/illusori/emacs-flymake.git"))
  (flymake-coffee status "installed" recipe
                  (:name flymake-coffee :type github :pkgname "purcell/flymake-coffee" :description "Flymake support for coffee script" :website "http://github.com/purcell/flymake-coffee" :depends
                         (flymake-easy)
@@ -287,6 +294,11 @@
        (:name jade :type git :url "https://github.com/brianc/jade-mode.git"))
  (javadoc-lookup status "installed" recipe
                  (:name javadoc-lookup :type git :url "https://github.com/skeeto/javadoc-lookup.git"))
+ (jazzradio status "installed" recipe
+            (:name jazzradio :type git :url "https://github.com/syohex/emacs-jazzradio.git"))
+ (jedi status "installed" recipe
+       (:name jedi :description "An awesome Python auto-completion for Emacs" :type github :pkgname "tkf/emacs-jedi" :submodule nil :depends
+              (epc auto-complete python-environment)))
  (js2-mode status "installed" recipe
            (:name js2-mode :type git :url "https://github.com/mooz/js2-mode.git" :build
                   ("make")))
@@ -318,7 +330,9 @@
  (logito status "installed" recipe
          (:name logito :type github :pkgname "sigma/logito" :description "logging library for Emacs" :website "http://github.com/sigma/logito"))
  (lookup status "installed" recipe
-         (:name lookup :type github :url "https://github.com/lookup2/lookup2.git"))
+         (:name lookup :type github :build
+                ("./autogen.sh && ./configure && make")
+                :url "https://github.com/lookup2/lookup2.git"))
  (lua-mode status "installed" recipe
            (:name lua-mode :description "A major-mode for editing Lua scripts" :depends
                   (ample-regexps)
@@ -365,6 +379,8 @@
                (:name node-console :type git :url "https://github.com/yuutayamada/node-console"))
  (noflet status "installed" recipe
          (:name noflet :type git :url "https://github.com/nicferrier/emacs-noflet.git"))
+ (nyan-mode status "installed" recipe
+            (:name nyan-mode :description "Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!" :type github :pkgname "TeMPOraL/nyan-mode" :features nyan-mode))
  (ob-go status "installed" recipe
         (:name ob-go :type git :depends
                (org-mode)
@@ -437,6 +453,9 @@
                        (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests" t)
                        (add-to-list 'auto-mode-alist
                                     '("\\.pp$" . puppet-mode)))))
+ (python-environment status "installed" recipe
+                     (:name python-environment :description "Python virtualenv API for Emacs Lisp" :type github :pkgname "tkf/emacs-python-environment" :depends
+                            (deferred)))
  (queue status "installed" recipe
         (:name queue :description "Queue data structure" :type elpa))
  (quickrun status "installed" recipe
@@ -479,8 +498,6 @@
                   (:name smart-tabs-mode :type git :url "https://github.com/jcsalomon/smarttabs.git"))
  (smartparens status "installed" recipe
               (:name smartparens :description "Autoinsert pairs of defined brackets and wrap regions" :type github :pkgname "Fuco1/smartparens" :depends dash))
- (smartrep status "installed" recipe
-           (:name smartrep :type git :url "https://github.com/myuhe/smartrep.el.git"))
  (smtpmail-multi status "installed" recipe
                  (:name smtpmail-multi :type http :url "http://www.emacswiki.org/emacs-en/download/smtpmail-multi.el"))
  (splitter status "installed" recipe
@@ -491,10 +508,14 @@
            (:name sudo-ext :type http :url "http://www.emacswiki.org/cgi-bin/wiki/download/sudo-ext.el"))
  (tabbar status "installed" recipe
          (:name tabbar :description "Display a tab bar in the header line." :type github :pkgname "dholm/tabbar" :lazy t))
+ (transpose-frame status "installed" recipe
+                  (:name transpose-frame :type git :url "https://github.com/emacsmirror/transpose-frame.git"))
  (tron-theme status "installed" recipe
              (:name tron-theme :type git :url "https://github.com/ivanmarcin/emacs-tron-theme.git"))
  (twittering-mode status "installed" recipe
                   (:name twittering-mode :type git :url "https://github.com/hayamiz/twittering-mode.git"))
+ (undo-tree status "installed" recipe
+            (:name undo-tree :type git :url "https://github.com/emacsmirror/undo-tree.git"))
  (viewer status "installed" recipe
          (:name viewer :auto-generated t :type emacswiki :description "View-mode extension" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/viewer.el"))
  (vlf status "installed" recipe
@@ -505,6 +526,8 @@
       (:name web :description "A useful HTTP client in EmacsLisp" :depends fakir :type github :pkgname "nicferrier/emacs-web"))
  (web-mode status "installed" recipe
            (:name web-mode :type git :url "https://github.com/fxbois/web-mode.git"))
+ (window-layout status "installed" recipe
+                (:name window-layout :description "window layout manager" :website "https://github.com/kiwanami/emacs-window-layout" :type github :pkgname "kiwanami/emacs-window-layout" :features "window-layout"))
  (windows status "installed" recipe
           (:name windows :type http :url "http://www.gentei.org/~yuuji/software/euc/windows.el"))
  (xclip status "installed" recipe

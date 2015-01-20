@@ -3,7 +3,7 @@
 ;; it's Ruby gem: http://hitode909.hatenablog.com/entry/20110421/1303274561
 (require 'skk-vars)
 (require 'skk-server)
-(require 'vars)
+(require 'my_paths)
 
 (defconst skk-server-host "0.0.0.0")
 (defconst skk-server-prog (concat yy/branch "misc/go-skkserv/go-skkserv"))

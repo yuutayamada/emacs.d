@@ -29,9 +29,7 @@
   (format "%s/from-mobile.org" org-mobile-directory))
 (defconst org-mobile-files '("~/mobileOrg/"))
 
-(require 'my_autoload)
 (require 'org-mobile)
-(require 'init_mykie)
 
 (defun org-mobile-dir-p ()
   "Return non-nil if `default-directory' is related org-mobile directory."

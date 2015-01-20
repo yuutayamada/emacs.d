@@ -1,4 +1,4 @@
-;;; init.el --- init file for my Emacs
+;;; init.el --- init file for my Emacs -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; work in progress
 ;;; Code:
@@ -10,48 +10,90 @@
  ;; Set GC limit to boot rapidly
  gc-cons-threshold (* 1024 1024 1024))
 
+;; Name "root" as base frame name. (emacs --daemon)
+(when (equal 1 (length (frame-list)))
+  (set-frame-name "root"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PREREQUISITE CONFIGURATION ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'site-start)  ; BUILTIN, etc.
 (require 'my_paths)    ; PATH CONFIGURATION
-(require 'vars)        ; ENVIRONMENT VARIABLES
-(require 'my_autoload) ; AUTOLOAD CONFIGURATION
+(require 'my_util)     ; load general functions
 
-;;; EL-GET
+;; Prepare load-paths
+(let ((dev (concat elisp-dir "self/")))
+  (Y/add-load-path-subdir
+   `(,el-get-dir ,package-dir ,config-dir ,dev)))
+
+;; Avoid default org-mode
+(require 'cl-lib)
+(setq load-path
+      (cl-loop for path in load-path
+               unless (or (string-match "^/usr/share/.+/org$" path))
+               collect path))
+
+;;;;;;;;;;;;
+;; EL-GET ;;
+;;;;;;;;;;;;
 ;; If el-get doesn't exist, then download it (with missing packages).
 ;; Otherwise ignore the loading.
-(unless (file-exists-p
-         (concat (bound-and-true-p el-get-dir) "el-get/el-get.el"))
-  (require 'init_el-get))
+(unless (file-exists-p (concat el-get-dir "el-get/el-get.el"))
+  (require 'init_el-get)
+  (Y/add-load-path-subdir `(,el-get-dir)))
 
-;;; INIT SCRIPT
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; AUTOLOAD CONFIGURATION ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Note: this file should loads after el-get configuration or it will fail.
+(require 'my_autoload)
+
+;;;;;;;;;;;;;;;;;
+;; INIT SCRIPT ;;
+;;;;;;;;;;;;;;;;;
 (condition-case err
-    (progn
-      ;; Load only necessary files for less loading time
-      (my/load-packages my/default-load-files)
-      ;; Apply my color theme for some packages
-      (load-theme 'my_pkg_colors t)
-      ;; Ensure applying color theme from booting emacsclient directly.
-      (my/apply-color-theme))
-  (error (message (format "Init function error: %s" err))
-         (when (eq 'help-for-help (lookup-key global-map (kbd "C-h")))
-           (my/set-basic-keys))))
+    ;; Load only necessary files for less loading time
+    (Y/load-packages
+     '(depend_main   ; this file should load than other files.
+       init_recentf  ; for helm-mini
+       tabbar        ; turn on tabbar
+       my_automode   ; define mode ext
+       my_hooks      ; define hooks
+       init_windows  ; load windows.el before mykie
+       init_mykie    ; define my keybinds
+       ))
+  (error (message (format "Init function error: %s" err))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Highlight error(s) or warning(s) ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (when (one-window-p)
   (view-echo-area-messages)
   (when (switch-to-buffer-other-window (get-buffer "*Messages*"))
     (highlight-phrase "error" 'error)
     (highlight-phrase "\\(.*newer than byte-compiled.*\n\\|warning\\)" 'warning)))
 
-;;; DELAYED CONFIGURATION
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DELAYED CONFIGURATION ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load some convenient packages(like auto-complete) when user opens a file.
 ;; This is for less loading time as well.(and it is loaded only once)
-(add-hook 'find-file-hook 'my/after-load-function)
+(add-hook 'find-file-hook 'Y/after-load-function)
 
-;; redefine GC threshold
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; FRAME CONFIGURATION ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Manipulate changing color of bg or fg, copying, pasting or
+;; etc. when Emacs creates new frame (i.e., using emacsclient, editing
+;; git commit or etc.)
+(add-hook 'after-make-frame-functions 'Y/frame-init-func)
+
+;; Refresh GC threshold
 (setq gc-cons-threshold (* 8 1024 1024))
 
+;;;;;;;;;;;;;;;
+;; boot time ;;
+;;;;;;;;;;;;;;;
 ;; Show boot time at *message* buffer
 ;; because emacs-init-time is not precise.
 (message-startup-time (current-time))
@@ -60,8 +102,6 @@
 ;; wc -l /.emacs/*.el ./.emacs/*/*.el
 ;; ...
 ;; 11182 total
-;; =====Emacs loaded in 536ms =======
-;; =====Emacs-version: 25.0.50.1=====
 
 (provide 'init)
 

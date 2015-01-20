@@ -20,7 +20,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'vars)
 (require 'init_helm-ag-r)
 (require 'helm-rb)
 

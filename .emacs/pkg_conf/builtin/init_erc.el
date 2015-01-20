@@ -25,7 +25,7 @@
 (require 'erc-join)
 (require 'cl-lib)
 
-(defun start-irc ()
+(defun Y/start-irc ()
   "Connect to IRC."
   (interactive)
   (let* ((nickname "uta"))

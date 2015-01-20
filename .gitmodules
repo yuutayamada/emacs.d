@@ -37,3 +37,6 @@
 [submodule "elisp/self/flycheck-java"]
 	path = elisp/self/flycheck-java
 	url = https://github.com/yuutayamada/flycheck-java.git
+[submodule "elisp/self/flycheck-android-lint"]
+	path = elisp/self/flycheck-android-lint
+	url = https://github.com/yuutayamada/flycheck-android-lint-el.git

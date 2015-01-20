@@ -3,15 +3,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'cl-lib)
-
-;; Get rid of default org-mode path to avoid conflict between default
-;; and org-mode of el-get.
-(setq load-path
-      (cl-loop for path in load-path
-               unless (string-match "/git.savannah.gnu.org/emacs/lisp/org$" path)
-               collect path))
-
 (let* ((branch
         (expand-file-name
          (format "%s../" (car (split-string (getenv "EMACSLOADPATH") ":")))))
@@ -35,8 +26,7 @@
     (defconst auto-save-list-file-name     (format "%sauto-save-list/.saves-"
                                                    user-dir))
     (defconst recentf-save-file            (format "%s.recentf"  user-dir))
-    (defconst savehist-file                (format "%s.savehist" user-dir))
-    (defconst ido-save-directory-list-file (format "%s.ido.last" user-dir))))
+    (defconst savehist-file                (format "%s.savehist" user-dir))))
 
 (provide 'my_paths)
 

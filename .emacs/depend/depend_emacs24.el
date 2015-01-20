@@ -6,6 +6,11 @@
 ;; scroll-up-line, scroll-down-line
 ;;; Code:
 
+(require 'my_util)
+(when (version< emacs-version "24.4")
+  (autoloader-autoloads
+   ("cua-base" cua-set-rectangle-mark cua-rectangle cua-cut-rectangle)))
+
 (unless (facep 'modeline)
   (copy-face 'mode-line 'modeline))
 

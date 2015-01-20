@@ -7,7 +7,21 @@
 (custom-theme-set-faces
  'my_pkg_colors
 
- ;;; PACKAGE COLORS ;;;
+ `(default ((t (:background
+                ,(assoc-default 'background-color
+                                (cadr window-system-default-frame-alist)))
+               (:foreground
+                ,(assoc-default 'foreground-color
+                                (cadr window-system-default-frame-alist))))))
+
+ ;; override manoj-dark's configuration
+ '(font-lock-function-name-face ((t :height unspecified)))
+
+ ;;;;;;;;;;;;;;;;;;;;
+ ;; PACKAGE COLORS ;;
+ ;;;;;;;;;;;;;;;;;;;;
+ ;; hl-line
+ '(hl-line ((t :foreground unspecified)))
 
  ;; eshell
  '(eshell-prompt ((t :foreground "yellow" :weight bold :slant italic)))
@@ -55,12 +69,19 @@
                              :weight     extra-bold
                              :underline  t
                              :inherit    nil)))
+
  '(diff-refine-change  ((t :inherit 'diff-changed)))
- '(diff-refine-added   ((t :inherit 'diff-refine-change
-                           :background "#000080"
-                           :foreground "#FFFFFF")))
- '(diff-refine-removed ((t :inherit 'diff-refine-change
-                           :background "#Ff0000"
+ `(diff-refine-added   ((t :inherit 'diff-added
+                           :background ,(if (display-graphic-p)
+                                            "#000080"
+                                          "#00CDCD")
+                           :foreground ,(if (display-graphic-p)
+                                            "#FFFFFF"
+                                          "#000000"))))
+ `(diff-refine-removed ((t :inherit 'diff-removed
+                           :background ,(if (display-graphic-p)
+                                            "#FF0000"
+                                          "#CD0000")
                            :foreground "#000000")))
 
  ;; eldoc
@@ -86,15 +107,22 @@
  ;; grammar.el
  '(grammar-error-face  ((t :background "#Ff6347"
                            :foreground "#000000")))
-
+ ;; Ace jump
+ '(ace-jump-face-foreground ((t :background "red"
+                                :foreground "#Ffff00")))
  ;; Helm
  '(helm-source-header  ((t :background nil :foreground "#FFFF00")))
- '(helm-selection      ((t :background "#5f0000")))
+ '(helm-match          ((t :foreground "#Ff00ff")))
+ '(helm-grep-match     ((t :foreground "#ff00ff")))
+ '(helm-selection      ((t :background "#121212" :underline t
+                           :inherit hl-line)))
 
  ;; isearch
  '(isearch-fail        ((t :background nil
                            :inherit font-lock-warning-face)))
-
+ ;; lookup
+ '(lookup-heading-1-face ((t :foreground "#87d7ff")))
+ '(lookup-reference-face ((t :foreground "#Ffff87")))
  ;; navi2ch
  '(navi2ch-list-category-face
    ((t :foreground nil
@@ -153,6 +181,8 @@
  '(mmm-default-submode-face ((t (:foreground nil :background "#000000"))))
 
  ;; Org-mode
+ '(org-document-title   ((t :foreground "#D7ff00")))
+ '(org-document-info    ((t :foreground "#D7ff00")))
  '(org-level-4          ((t :foreground "#FFA54F")))
  '(org-block-background ((t :background nil)))
  '(org-table            ((t :foreground "#FFDEAD")))
@@ -201,13 +231,16 @@
                                :background "#0000d7")))
 
  ;; tabbar
- '(tabbar-default ((t :background nil :foreground "white")))
+ '(tabbar-default ((t :inherit 'tty-menu-disabled-face
+                      ;; :background "black" :foreground "white"
+                      )))
  '(tabbar-selected
-   ((t :inherit 'font-lock-variable-name-face
-       :foreground nil
+   ((t :inherit 'tabbar-default
+       :foreground "red"
+       :background "white"
        :box '(:line-width 1 :color "red" :style pressed-button))))
  '(tabbar-unselected
-   ((t :inherit 'font-lock-comment-face
+   ((t :inherit 'tabbar-default
        :foreground nil
        :box '(:line-width 1 :color "white" :style relessed-button))))
 

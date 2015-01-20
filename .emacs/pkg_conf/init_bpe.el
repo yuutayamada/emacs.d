@@ -27,7 +27,6 @@
 ;;     ("blog name 3".  "~/articles/blog3")))
 
 ;;; Code:
-(require 'vars)
 (require 'init_org)
 
 (require 'bpe)

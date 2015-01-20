@@ -22,8 +22,6 @@
 ;;; Code:
 
 (require 'cl-lib)
-(require 'vars)
-(require 'mykie)
 (require 'my_autoload)
 (defconst ac-dictionary-directories (concat el-get-dir "auto-complete/dict"))
 (require 'auto-complete-config)
@@ -32,7 +30,7 @@
 ;; To change TAB key's behavior:
 ;; (define-key ac-completing-map (kbd "TAB") 'ac-start)
 (ac-set-trigger-key "TAB")
-(setq ac-auto-start (if ac-trigger-key nil 3 ))
+(setq ac-auto-start (if ac-trigger-key nil 3))
 
 (setq
  ac-ignore-case 'smart
@@ -47,6 +45,7 @@
 
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
+(define-key ac-menu-map (kbd "RET") nil)
 
 ;;; Sources
 ;; ac-source-abbrev

@@ -20,7 +20,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'vars)
 (require 'recentf)
 
 (recentf-mode 1)

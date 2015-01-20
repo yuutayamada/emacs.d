@@ -5,11 +5,10 @@
 (require 'my_autoload)
 (require 'sgml-mode)
 
-(define-key html-mode-map (kbd "<f6>") 
+(define-key html-mode-map (kbd "<f6>")
   (lambda ()
     (interactive)
-    (web-mode)
-    (flymake-mode 0)))
+    (web-mode)))
 
 (define-key html-mode-map (kbd "C-c C-c") 'browse-url-of-file)
 

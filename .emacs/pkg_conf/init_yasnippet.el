@@ -9,10 +9,13 @@
 (when (bound-and-true-p my/yasnippet-dir)
   (defconst yas-snippet-dirs `(,my/yasnippet-dir)))
 
-(yas-global-mode 1)
+(require 'mykie)
+(mykie:set-keys yas-minor-mode-map
+  "A-i" :default yas-expand
+  "TAB" :default yas-expand)
 
-;; from http://www.emacswiki.org/emacs/Yasnippet
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
+  "See http://www.emacswiki.org/emacs/Yasnippet."
   (when (featurep 'popup)
     (popup-menu*
      (mapcar
@@ -28,6 +31,9 @@
 
 (setq yas-prompt-functions
       '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
+
+;; turn on yas global mode
+(yas-global-mode 1)
 
 (provide 'init_yasnippet)
 

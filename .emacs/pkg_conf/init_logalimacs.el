@@ -1,6 +1,5 @@
 ;;; -*- coding: utf-8; mode: emacs-lisp; -*-
 
-(require 'vars)
 (require 'my_function)
 (require 'init_eiji)
 

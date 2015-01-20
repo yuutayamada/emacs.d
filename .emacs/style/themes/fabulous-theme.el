@@ -28,7 +28,9 @@
 
  ;; Default
  '(cursor  ((t (:foreground "#F8F8F0"))))
- '(default ((t (:background nil :foreground "#ffffff"))))
+ ;; Note: do not specify unspecified-fg as foreground, it can not load
+ ;; from other color theme.
+ '(default ((t (:background "unspecified-bg"))))
 
  ;; Region
  '(region ((t (:background "blue"))))

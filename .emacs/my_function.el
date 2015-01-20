@@ -21,14 +21,12 @@
 
 ;;; Code:
 (require 'cl-lib)
-(require 'vars)
+(require 'my_paths)
 (require 'my_autoload)
 
 (defun Y-init-prog-style ()
   "Init all programming languages configuration."
   (interactive)
-  ;; Load my programming styles
-  (require 'init_cc-mode)
   (require 'init_smart-tabs-mode)
   (setq-local truncate-lines t)
   ;; GNU GLOBAL
@@ -71,14 +69,12 @@
      (flymake-json-maybe-load))
     (t (flycheck-mode t)))
   ;; lambda -> Greek symbol's lambda
-  (prettify-symbols-mode t)
+  (unless prettify-symbols-mode
+    (prettify-symbols-mode t))
   (cl-case major-mode
     ;; lisp
     ((clojure-mode emacs-lisp-mode lisp-mode)
-     (paredit-mode t))
-    ;; html
-    (html-mode
-     (require 'init_mmm-mode))))
+     (paredit-mode t))))
 
 (defun banish ()
   "Move cursor to corner."
@@ -93,6 +89,15 @@
           (funcall get-param 'width)))
     (set-mouse-position (selected-frame) (max width 50) (max height 10))))
 
+(defun Y/ido-find-ghq-dirs ()
+  "Find file from my favorite resource."
+  (interactive)
+  (let* ((ghq-dirs     (bound-and-true-p Y/ghq-dirs))
+         (match (ido-completing-read "ghq: " ghq-dirs)))
+    (cond ((bufferp (get-buffer match))
+           (switch-to-buffer (get-buffer match)))
+          (t (find-file match)))))
+
 (defun other-window-or-split ()
   "Move buffer or split when buffer was one."
   (interactive)
@@ -105,6 +110,21 @@
     (other-window 1))
   (banish))
 
+(defvar Y/inhibit-change-color nil)
+(defun Y/change-color (face bg fg ul)
+  "Change highlight color to which correspond to FACE, BG, FG, UL."
+  (unless Y/inhibit-change-color
+    (set-face-attribute
+     face nil :background bg :foreground fg :underline  ul)))
+
+(defun Y/change-style (attributes)
+  "Change looking of window."
+  (cl-loop with faces = (cl-loop for face in '(mode-line powerline-active1 powerline-active2)
+                                 if (facep face)
+                                 collect face)
+           for face in faces
+           do (apply `((lambda () (Y/change-color (quote ,face) ,@attributes))))))
+
 (defun my/define-prefix-key (keymap new-map-name new-prefix-key)
   ""
   (if (not (equal (lookup-key keymap new-prefix-key) new-map-name))
@@ -116,13 +136,14 @@
 (defun clean-mode-line ()
   "Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'."
   (interactive)
-  (cl-loop for (mode . mode-str) in mode-line-cleaner-alist
-           do
-           (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
-             (when old-mode-str
-               (setcar old-mode-str mode-str))
-             (when (eq mode major-mode)
-               (setq mode-name mode-str)))))
+  (when (bound-and-true-p mode-line-cleaner-alist)
+    (cl-loop for (mode . mode-str) in mode-line-cleaner-alist
+             do
+             (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
+               (when old-mode-str
+                 (setcar old-mode-str mode-str))
+               (when (eq mode major-mode)
+                 (setq mode-name mode-str))))))
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
 (add-hook 'find-file-hook 'clean-mode-line)
 
@@ -243,19 +264,16 @@ The SELECTED argument is opacity that window is selected."
 Example of my/keys
  (\"git@github.com\\|https://github.com\" . \"~/.ssh/rsa_github_key\")"
   (interactive)
-  (let* ((p (point))
-         remote-url)
-    (goto-char (point-min))
-    (when (search-forward-regexp "^Remote: .+ @ .* (\\(.*\\))" nil t)
-      (setq remote-url (match-string 0))
+  (when (bound-and-true-p my/keys)
+    (let* ((p (point))
+           (remote-url (shell-command-to-string "echo -n `git remote -v`")))
       (cl-loop for (regex . remote) in my/keys
                if (string-match regex remote-url)
                do ((lambda (file)
                      (unless (zerop (shell-command
                                      (concat "ssh-add -l | grep " file)))
                        (shell-command (concat "ssh-add " file))))
-                   (expand-file-name remote))))
-    (goto-char p)))
+                   (expand-file-name remote))))))
 
 (defun my/get-buffer-string-from (file)
   ""
@@ -383,7 +401,7 @@ Example of my/keys
     (calendar-exit)
     (insert day)))
 
-(defun my/lookup (&optional word)
+(defun Y/lookup (&optional word)
   "Search English word's meaning from my dictionaries.
 If user specified WORD then search form it."
   (interactive)
@@ -397,10 +415,20 @@ If user specified WORD then search form it."
       (with-no-warnings
         (mykie
          :default (lookup-pattern (funcall get-word))
-         :repeat  (my/festival    (funcall get-word))
+         :lookup-summary-mode (lookup-pattern (funcall get-word t))
+         ;; :repeat  (my/festival    (funcall get-word))
          :C-u     (lookup-pattern (funcall get-word t))
          :region-handle-flag 'copy
          :region  (lookup-pattern mykie:region-str))))))
+
+(defun Y/get-auth-info (machine &rest keywords)
+  ""
+  (cl-loop with info = (car (auth-source-search :host machine :login :port))
+           for kw in keywords
+           for data = (plist-get info kw)
+           if (functionp data)
+           collect (funcall data)
+           else collect data))
 
 (defun my/delete-trailing-space (word)
   ""
@@ -431,15 +459,14 @@ If user specified WORD then search form it."
 (defun my/kill-backward-word ()
   ""
   (unless (when (and (looking-at " ")
-                     (string-match " "
-                                   (char-to-string
-                                    (char-before))))
+                     (string-match " " (char-to-string (char-before))))
             (just-one-space 1)
             (backward-char)
             t)
     (if (string-match "^ *\n$" (thing-at-point 'line))
         (delete-blank-lines)
-      (if (bound-and-true-p cua--rectangle)
+      (if (and (bound-and-true-p cua--rectangle)
+               (fboundp 'cua-cut-rectangle))
           (cua-cut-rectangle t)
         (save-excursion
           (save-restriction

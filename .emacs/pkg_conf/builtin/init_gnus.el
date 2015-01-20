@@ -50,9 +50,6 @@
 (require 'gnus-agent)
 (require 'smtpmail-multi)
 
-(my/set-keybinds :map gnus-summary-mode-map
-                 "C-o" nil)
-
 ;; Use gnu-topic-mode by default
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 ;; Save group and topic structure before quit Gnus

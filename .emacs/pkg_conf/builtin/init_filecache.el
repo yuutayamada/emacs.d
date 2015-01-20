@@ -21,8 +21,17 @@
 
 ;;; Code:
 
+;; TODO: fix this style
+(require 'my_paths)
+(defconst my/filecache-directories
+  `((:recursive . (,config-dir
+                   "~/share/doc/study/"
+                   "~/share/doc/cheat_sheets/"
+                   ,(expand-file-name (concat user-emacs-directory "../"))
+                   ,package-conf-dir))
+    (:normal . ("~/" ,elisp-dir))))
+
 (require 'filecache)
-(require 'vars)
 (require 'cl-lib)
 
 (setq file-cache-filter-regexps

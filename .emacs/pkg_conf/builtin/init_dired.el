@@ -6,10 +6,10 @@
 
 (require 'wdired)
 (require 'init_image-dired+)
-(require 'my_autoload)
 (require 'mykie)
 
 (mykie:set-keys dired-mode-map
+  "RET"     :default dired-find-file
   "/"       :default dired-isearch-filenames-regexp
   "I"       :default (image-dired-show-all-from-dir default-directory)
   "'"       :default helm-ag-r-from-git-repo
@@ -17,8 +17,8 @@
   "C-t"     :default dired-display-file
   "M-RET"   :default my/multi-term-current-buffer
   [tab]     :default (Y-open-file-as-root (dired-file-name-at-point))
-  "C-o"     nil
   "r"       :default wdired-change-to-wdired-mode
+  "C-o"
   "C-c C-c" :default compile
   "o"       :default (lambda ()
                        (interactive)
@@ -29,10 +29,6 @@
   (interactive "f")
   (when (y-or-n-p "Do you want to open as Root? ")
     (set-buffer (find-file (format "/sudo::%s" filename)))))
-
-;;; attach directory name if file name was duplicated
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 (provide 'init_dired)
 

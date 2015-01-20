@@ -21,7 +21,6 @@
 
 ;;; Code:
 
-(require 'vars)
 (require 'cl-lib)
 (require 'package)
 

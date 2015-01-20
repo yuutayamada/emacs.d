@@ -1,28 +1,11 @@
 ;;; init_el-get.el --- init file for el-get.el
 
-;; Copyright (C) 2013 by Yuta Yamada
-
-;; Author: Yuta Yamada <cokesboy"at"gmail.com>
-
-;;; License:
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;; Commentary:
 
 ;;; Code:
 (require 'my_paths)
 
-(let* ((recipes   (concat el-get-dir "el-get/recipes/")))
+(let* ((recipes (concat el-get-dir "el-get/recipes/")))
   (defconst el-get-recipe-path-elpa      (concat recipes "elpa"))
   (defconst el-get-recipe-path-emacswiki (concat recipes "emacswiki")))
 
@@ -35,6 +18,9 @@
   '((:name ac-mozc
            :type git
            :url "https://github.com/igjit/ac-mozc.git")
+    (:name ace-isearch
+           :type git
+           :url "https://GitHub.com/tam17aki/ace-isearch.git")
     (:name ac-skk
            :type git
            :url "https://github.com/myuhe/ac-skk.el.git")
@@ -122,6 +108,10 @@
            :type git
            :depends (f pkg-info)
            :url "https://github.com/flycheck/flycheck.git")
+    (:name flycheck-ocaml
+           :type git
+           :depends (flycheck)
+           :url "https://github.com/flycheck/flycheck-ocaml.git")
     (:name flycheck-java
            :type git
            :depends (flycheck)
@@ -129,6 +119,7 @@
     (:name flycheck-tip
            :depends (flycheck)
            :type github
+           :depends (let-alist) ; for another package
            :pkgname "yuutayamada/flycheck-tip")
     (:name f
            :type git
@@ -180,6 +171,8 @@
            :url "https://github.com/immerrr/lua-mode.git")
     (:name lookup
            :type github
+           ;; Don't forget! ndeb needs eblook command
+           :build ("./autogen.sh && ./configure && make")
            :url "https://github.com/lookup2/lookup2.git")
     (:name less-css-mode
            :type git
@@ -189,7 +182,8 @@
            :url "https://github.com/lugecy/lingr-el.git")
     (:name flymake
            :type git
-           :url "https://github.com/illusori/emacs-flymake.git")
+           :url "https://github.com/illusori/emacs-flymake.git"
+           :builtin "23")
     (:name flymake-easy
            :type git
            :url "https://github.com/purcell/flymake-easy.git")
@@ -287,6 +281,9 @@
     (:name jade
            :type git
            :url "https://github.com/brianc/jade-mode.git")
+    (:name jazzradio
+           :type git
+           :url "https://github.com/syohex/emacs-jazzradio.git")
     (:name javadoc-lookup
            :type git
            :url "https://github.com/skeeto/javadoc-lookup.git")
@@ -429,6 +426,11 @@
     (:name html-helper-mode
            :type git
            :url "https://github.com/emacsmirror/html-helper-mode.git")
+    (:name let-alist
+           :website "http://elpa.gnu.org/packages/let-alist.html"
+           :description "Easily let-bind values of an assoc-list by their names"
+           :type elpa
+           :builtin "25")
     (:name mozrepl
            :type git
            :url "https://github.com/bard/mozrepl.git"
@@ -491,12 +493,18 @@
     (:name sql-indent
            :type git
            :url "https://github.com/yuutayamada/sql-indent.git")
+    (:name transpose-frame
+           :type git
+           :url "https://github.com/emacsmirror/transpose-frame.git")
     (:name tron-theme
            :type git
            :url "https://github.com/ivanmarcin/emacs-tron-theme.git")
     (:name twittering-mode
            :type git
            :url "https://github.com/hayamiz/twittering-mode.git")
+    (:name undo-tree
+           :type git
+           :url "https://github.com/emacsmirror/undo-tree.git")
     (:name vlf ; view large files
            :type git
            :url "https://github.com/m00natic/vlfi.git")
@@ -524,7 +532,7 @@
            :url "https://github.com/rooney/zencoding.git")))
 
 ;; EL-GET
-;; if user hadn't el-get package then load it.
+;; if user doesn't have el-get package then load it.
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
@@ -536,7 +544,12 @@
       (eval-print-last-sexp))))
 
 (condition-case err
-    (with-no-warnings (el-get 'sync))
+    (with-no-warnings
+      ;; For my emacs.d test
+      (when (and (< emacs-major-version 25)
+                 (bound-and-true-p Y/on-test))
+        (el-get-install 'let-alist))
+      (el-get 'sync))
   (error err))
 
 ;; system-uses-terminfo

@@ -45,13 +45,6 @@
     (my/twit-select-user-name))
   (twit))
 
-(defadvice twit
-  (around ad-init-function activate)
-  "Switch to t `windows' buffer before do twit."
-  ;; 20 = t -> twit
-  (win-switch-to-window 1 20)
-  ad-do-it)
-
 (setq twittering-initial-timeline-spec-string
       (append
        (list ":home"

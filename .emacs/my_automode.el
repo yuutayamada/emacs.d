@@ -8,7 +8,6 @@
 (require 'my_util)
 
 (my/def-auto-mode
- actionscript-mode     "\\.as\\'"
  c-mode                "\\.\\(c\\|h\\)\\'"
  c++-mode              "\\.\\(C\\|cc\\|cxx\\|cpp\\|cp\\|hh\\|H\\|hpp\\|hxx\\)\\'"
  common-lisp-mode      "\\.\\(lisp\\|l\\|cl\\|lsp\\)\\'"
@@ -23,7 +22,6 @@
  haskell-mode          "\\.hs\\'"
  haskell-cabal-mode    "\\.cabal\\'"
  literate-haskell-mode "\\.lhs\\'"
- js2-mode              "\\.js\\'"
  jade-mode             "\\.\\(jade\\|amber\\)\\'"
  lua-mode              "\\.lua\\'"
  markdown-mode         "\\.\\(md\\|mkd\\|mkdn\\|markdown\\)\\'"

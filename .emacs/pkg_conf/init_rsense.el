@@ -1,6 +1,5 @@
 ;;; -*- coding: utf-8; mode: emacs-lisp; -*-
 
-(require 'vars)
 (require 'ruby-mode)
 
 ;; (require 'init_auto-complete)

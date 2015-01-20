@@ -1,57 +1,61 @@
-;;; init_windows.el --- init file for windows.el
-
-;; Copyright (C) 2013 by Yuta Yamada
-
-;; Author: Yuta Yamada <cokesboy"at"gmail.com>
-
-;;; License:
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;;; init_windows.el --- init file for windows.el -*- lexical-binding: t; -*-
 ;;; Commentary:
+;; Prefix key + C-r -> select save, load, etc.
 ;;; Code:
-
 ;;;* windows.el configuration
-(defconst win:switch-prefix (kbd "C-z"))
+
+;; Note that those variables should load before the `require windows' or
+;; this configuration will fail.
+(defconst win:switch-prefix (kbd "M-g")) ; fake prefix
 (defconst win:use-frame     nil)
-(defconst win:base-key      (1- (string-to-char "a")))
+(defconst win:base-key      (- (string-to-char "a") 1))
 (defconst win:max-configs   27)
 (defconst win:quick-selection nil)
 (defconst revive:ignore-buffer-pattern "^ \\*")
-(require 'vars)
-(defconst win:configuration-file (format "%s%s" config-dir "var/.windows"))
 
 (require 'windows)
 (require 'revive)
-(require 'mykie)
 
-(defadvice win-switch-to-window (around reset-bg-color activate)
-  ad-do-it
-  (my/reset-bg-color))
+;; For emacsclient
+(add-hook 'after-make-frame-functions
+          '(lambda (frame) (win:startup-with-window)))
 
-(win:startup-with-window)
+;; For normal Emacs
+(when (and (not (daemonp))
+           (zerop win:current-config)
+           (= (length (frame-list)) 1))
+  (win:startup-with-window))
 
-(mykie:set-keys win:switch-menu-map
-  "e"  t win-switch-menu-select-directly
-  ";"  t win-switch-menu)
+(require 'my_autoload)
+(defadvice win-switch-to-window (around Y/win-switch-fixed-place activate)
+  "Configure to move fixed place."
+  (let* ((d default-directory)
+         (key (char-to-string last-input-event))
+         (keynum (string-to-char key))
+         num)
+    (when (string-match "^[a-z]$" key)
+      (setq num (- keynum win:base-key))
+      (when (null (elt win:configs num))
+        (setf (elt win:configs num) (or (elt win:configs 0)
+                                        (elt win:configs 1)))))
+    ad-do-it
+    (let ((c (char-to-string (+ win:current-config win:base-key))))
+      (pcase c ; frame name of windows.el
+        (`"d" (Y/lookup))
+        (`"s" (magit-status d) (delete-other-windows))
+        (`"j" (jazzradio))
+        (`"l"
+         (unless (string-match "lingr" (buffer-name))
+           (apply
+            (macroexpand
+             `(lingr-login ,@(Y/get-auth-info "lingr" :user :secret))))))
+        (`"m" (delete-other-windows) (mew))
+        (`"o" (find-file "~/Dropbox/MobileOrg/todo.org"))
+        (`"t" (my/twit t))))))
 
-(global-unset-key win:switch-prefix)
-(global-set-key (kbd win:switch-prefix) win:switch-map)
-(mykie:global-set-key (concat win:switch-prefix " " win:switch-prefix)
-  t win-toggle-window)
-
-(require 'server)
-(unless (server-running-p)
-  (define-key ctl-x-map "\C-c" 'see-you-again))
+;; The merged keybinds precede left side argument than right side.
+(setq goto-map (keymap--merge-bindings win:switch-map goto-map))
+(global-set-key (kbd "M-g") goto-map)
 
 (provide 'init_windows)
 

@@ -67,10 +67,31 @@
    :sources Y/helm/android-source
    :buffer "*helm android install*"))
 
+(defun Y/android-mode-browse-docs (&optional offline)
+  "Browse android function by using local android document from SDK directory.
+If you set OFFLINE as boolean variable, then use offline resource."
+  (interactive)
+  ;; Do not use other browse function, they might encode # mark and
+  ;; Firefox didn't support the encoded # mark in my environment.
+  (cl-flet ((browse-url-url-encode-chars (text _) text))
+    (let ((func (thing-at-point 'word))
+          (sdk  (getenv "ANDROID_SDK_HOME")))
+      (when sdk
+        (browse-url-of-file
+         (if offline
+             (format "%s/docs/offline.html" sdk)
+           (format "%s/docs/index.html#q=%s" sdk
+                   (read-from-minibuffer "Search: " func))))))))
+
 (require 'mykie)
 (mykie:set-keys android-mode-map
-  "C-c i" :default Y/android-install-apk
+  "C-c i"
+  :default Y/android-install-apk
+  :C-u     android-build-install
   "C-c d" :default Y/android-remove-apk
+  "C-c p"
+  :default Y/android-mode-browse-docs
+  :C-u     (Y/android-mode-browse-docs t)
   "M-q"
   :default Y/android-mode-deploy
   :C-u     (Y/android-mode-deploy t))

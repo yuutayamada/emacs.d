@@ -1,0 +1,205 @@
+;;; autoload --- my autoload file
+
+;;; Commentary:
+;;; Code:
+;; Set pair of file name and function's list
+;; auto-capitalize(Note I'm using emacswiki's auto-capitalize)
+;; A
+("auto-complete"
+ ac-set-trigger-key my/ac-add-sources-for-prog ac-flyspell-workaround)
+("auto-async-byte-compile"
+ auto-async-byte-compile auto-async-byte-compile-mode
+ enable-auto-async-byte-compile-mode)
+("auth-source" auth-source-search)
+("android-mode" android-create-project android-mode)
+("ace-jump-mode" ace-jump-do)
+;; B
+("bpe" bpe:post-article)
+("bm" my/ispell-word-or-kill-region)
+("browse-url" browse-url-interactive-arg)
+;; C
+("capitalizer" capitalizer-mode capitalizer-comment-or-string-p)
+("calfw" cfw:howm-schedule-inline calendar-date-string
+ my/open-calendar exit-calendar calendar-cursor-to-date)
+("calendar" calendar-exit)
+("comint" comint-send-string)
+("css-eldoc" turn-on-css-eldoc)
+("cc-mode" c-toggle-auto-newline c-toggle-hungry-state)
+("cider" cider-mode cider-turn-on-eldoc-mode)
+("lips-mode" common-lisp-mode lisp-mode)
+;; D
+("diff-mode" diff-mode my/apply-diff-face diff-refine-hunk)
+;; E
+("eclim-tip" eclim-tip-cycle eclim-tip-cycle-reverse)
+("erc" Y/start-irc)
+("e2wm" e2wm:pst-get-instance e2wm:stop-management e2wm:dp-two e2wm:dp-code)
+("el-get"
+ el-get-package-exists-p el-get-install el-get-list-packages el-get-update
+ el-get-remove)
+("eclim" eclim--project-name my/boot-eclim ac-emacs-eclim-config)
+;; F
+("flymake-json" flymake-json-maybe-load)
+("flymake-shell" flymake-shell-load)
+("flycheck" flycheck-mode error-tip-error-p)
+("flycheck-tip" flycheck-tip-cycle)
+("flycheck-java" flycheck-java-android-project-p)
+("fold_dwim" fold-dwim-toggle fold-dwim-show-all fold-dwim-hide-all)
+("my_font" my/set-combined-font)
+("festival"
+ festival-start festival-stop festival-say
+ festivalp my/festival my/festival-read-buffer)
+("flyspell"
+ turn-on-flyspell flyspell-mode-on my/toggle-flyspell
+ flyspell-generic-progmode-verify)
+;; G
+;; grep was moved to my_builtin-configs.el
+("ghc" ; Make sure ~/.cabel/share/ghc-mode-*/ and do compiling
+ ghc-init ghc-select-completion-symbol ghc-resolve-package-name)
+("goto-chg" goto-last-change goto-last-change-reverse)
+("google-translate" my/google-translate)
+("go-mode" gofmt)
+("grammar" grammar-mode grammar-check my/grammar-check)
+("google-contacts" google-contacts-update-bbdb)
+("ginger-api" my/ginger-region ginger-rephrase)
+;; H
+("haskell-mode" haskell-mode switch-to-haskell haskell-commnader)
+("helm-ag-r"
+ helm-ag-r helm-ag-r-current-file helm-ag-r-from-git-repo
+ helm-ag-r-google-contacts-list helm-ag-r-pype
+ helm-ag-r-shell-history helm-ag-r-git-logs)
+("helm-utils" helm-find-file-as-root)
+("helm-shell-history" helm-shell-history)
+("helm-commit-message" helm-show-git-commit-messages)
+("helm-gtags" helm-gtags-select my/helm-gtags)
+("helm-shell-history" helm-complete-shell-history)
+("helm-rb" helm-rb)
+("helm-github-issues" helm-github-issues)
+("helm-c-yasnippet"
+ helm-c-yas-complete helm-c-yas-visit-snippet-file
+ helm-c-yas-create-snippet-on-region)
+("highlight-indentation" highlight-indentation-current-column-mode)
+("howm" howm-menu)
+("hangman" hangman)
+("hideshow" hs-show-block hs-already-hidden-p hs-show-all hs-hide-all)
+;; I
+;; J
+("jade" sws-mode jade-mode)
+("js-console" js-console)
+("jsfmt" jsfmt-before-save jsfmt)
+;; K
+("keyboard-converter" keyboard-converter-find)
+;; L
+("lingr" lingr-login)
+("lispxmp" lispxmp)
+("logalimacs"
+ eiji:search
+ loga-lookup-in-buffer loga-lookup-in-buffer-light loga-lookup-in-popup
+ loga-fallback loga-decide-source-word my/search-pronunciation)
+("lookup"
+ my/lookup-by-ace-jump my/helm-lookup-history myhistory-save-search-history
+ myhistory-save-remembered-history)
+;; M
+("magit" my/magit-status magit-get-top-dir magit-rebase-info
+ magit-anything-modified-p magit-no-commit-p)
+("markdown-mode" markdown-cycle)
+;; need before load
+("masaw" masaw masaw-mode)
+("mykie"
+ mykie:loop mykie:do-while mykie:set-keys mykie mykie:attach-mykie-func-to
+ mykie:make-overlay-keymap-func mykie:define-prefix-key)
+("multi-term" my/multi-term my/multi-term-current-buffer)
+("mozc" mozc-mode)
+("my_util" my/load-packages my/after-load-function Y/server-init-func)
+("myanything-c-pdfgrep" my/anything-pdfgrep)
+("my_function" Y/lookup Y/ido-find-file Y/get-auth-info
+ Y-init-prog-style Y/change-color Y/change-style
+ my/ssh-add my/file-exists-p my/execute-from-current-file
+ other-window-or-split my/newline-and-indent
+ my/get-aspell-capital-words my/screen-shot my/remap-semicolon
+ my/org-src-code-buffer-p my/in-dir-p
+ my/get-above-dir-name my/define-prefix-key
+ my/reset-bg-color
+ my/copy-current-file-name my/festival my/kill-backward-word my/kill-line)
+("my_sdic" sdic-describe-word-at-point sdic)
+("minor-mode-hack"
+ show-minor-mode-map-priority lower-minor-mode-map-alist
+ raise-minor-mode-map-alist)
+;; N
+;; R
+("rubydb3x" rubydb)
+;; O
+("org-trello" org-trello-mode)
+("open-junk-file" open-junk-file my/open-junk-today)
+("outline" my/hs-hide-all)
+("org"
+ org-mode org-src-edit-buffer-p org-return-indent my/org-dwim
+ org-in-src-block-p org-table-p)
+("org-mobile" my/org-mobile-dwim org-mobile-dir-p)
+;; P
+;; ("paren" show-paren-mode)
+("pane" pane-toggle-window-structure)
+("paredit" paredit-kill)
+("package"
+ package-list-packages-no-fetch list-packages package-list-packages)
+("point-undo" point-undo point-redo)
+("popup" popup-tip)
+;; add this autoload function to avoid a warning
+("powerline" powerline-default-theme my/change-powerline-color)
+;; Q
+("quickrun" my/quickrun-dwim)
+;; S
+("stem" stem:stripping-suffix stem:stripping-inflection stem-english)
+("sequential-command-config"
+ seq-home seq-end org-seq-home org-seq-end seq-upcase-backward-word
+ seq-capitalize-backward-word seq-downcase-backward-word)
+("sbtp"
+ sbtp-begging-of-line sbtp-console-send sbtp-console-send-line
+ sbtp-console-send-current-page)
+("scala-mode" my/ensime-goto-next-error scala-mode)
+("smart-tabs-mode"
+ smart-tabs-mode smart-tabs-mode-enable smart-tabs-mode-advice
+ smart-tabs-insinuate)
+("s" s-chomp)
+("skype" skype)
+("skk-server" skk-server-live-p my/boot-skk-server)
+("skk-macs" skk-erase-prefix)
+("sql" sql-set-product)
+("slime" slime slime-connect slime-connected-p slime-mode)
+;; T
+("transpose-frame" transpose-frame flip-frame flop-frame)
+("twittering-mode" twit my/twit)
+("thingatpt" word-at-point)
+("text-translator" text-translator-all-by-auto-selection)
+;; U
+("undo-tree"
+ undo-tree-redo undo-tree-undo undo-tree-visualize global-undo-tree-mode)
+;; V
+("vc-git" vc-git-mode-line-string vc-git-branches vc-git-conflicted-files
+ vc-git-root)
+;; W
+("w3m" w3m my/w3m-search w3m-minor-mode w3m-browse-url w3m-find-file)
+("whitespace"
+ my/set-truncate-notification-locally my/whitespace-mode)
+("windmove"
+ windmove-up windmove-down windmove-left windmove-right)
+("winner" winner-undo winner-redo)
+;; Y
+("yim"
+ yim-convert yim-abbrev skk-current-input-mode
+ helm-skk-rules skk-j-mode-on my-skk-toggle-j-mode-and-latin-mode)
+;; Z
+("zencoding" my/zencoding-expand)
+;; below packages need specification of INIT
+("init_iso-transl" Y/iso-transl-toggle-minor-mode)
+("init_xmp" xmp)
+("init_windows"
+ win-switch-menu resume-windows win-switch-to-window
+ my/define-windows-prefix-key)
+
+;; Local Variables:
+;; coding: utf-8
+;; mode: emacs-lisp
+;; no-byte-compile: t
+;; End:
+
+;;; my_autoload ends here

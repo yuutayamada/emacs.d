@@ -24,7 +24,6 @@
 ;; http://cx4a.org/software/rsense/manual.html
 
 ;;; Code:
-(require 'vars)
 (require 'my_autoload)
 (require 'ruby-mode)
 

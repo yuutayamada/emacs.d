@@ -1,5 +1,6 @@
-;;; -*- coding: utf-8; mode: emacs-lisp; -*-
 
+;;; Commentary:
+;;; Code:
 (require 'cl-lib)
 (require 'grep-a-lot)
 (grep-a-lot-setup-keys)

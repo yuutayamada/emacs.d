@@ -40,3 +40,6 @@
 [submodule "elisp/self/flycheck-android-lint"]
 	path = elisp/self/flycheck-android-lint
 	url = https://github.com/yuutayamada/flycheck-android-lint-el.git
+[submodule "elisp/self/ffinder"]
+	path = elisp/self/ffinder
+	url = https://github.com/yuutayamada/ffinder-el.git

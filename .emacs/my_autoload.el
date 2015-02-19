@@ -11,6 +11,9 @@
 ;; Load my autoload configurations
 (apply `((lambda () (autoloader-autoloads ,@(Y/get-autoloads)))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; AUTOMATED FUNCTION LOADING ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autoload file of git.savannah.gnu.org/emacs/lisp/emacs
 (require 'loaddefs)
 

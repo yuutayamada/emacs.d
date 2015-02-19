@@ -108,9 +108,7 @@ For my college life."
 (add-hook 'org-mode-hook
           '(lambda ()
              (mykie:set-keys org-mode-map "C-a" "C-e" "RET" "C-j" "C-," "C-.")
-             (auto-complete-mode t)
-             (unless (string-match "blog\\|article" buffer-file-name)
-               (auto-fill-mode t))))
+             (auto-complete-mode t)))
 
 (defun my/display-image (&optional bol eol)
   "Show inline image in `org-mode'.

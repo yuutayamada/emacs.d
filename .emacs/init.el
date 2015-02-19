@@ -79,11 +79,14 @@
 ;; Load some convenient packages(like auto-complete) when user opens a file.
 ;; This is for less loading time as well.(and it is loaded only once)
 (add-hook 'find-file-hook 'Y/after-load-function)
+;; Use EVIL normal mode in actual real file.
+(add-hook 'find-file-hook  'evil-normal-state)
+(add-hook 'after-save-hook 'evil-normal-state)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; FRAME CONFIGURATION ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Manipulate changing color of bg or fg, copying, pasting or
+;; Manipulate changing color of bg, fg, copying, pasting, or
 ;; etc. when Emacs creates new frame (i.e., using emacsclient, editing
 ;; git commit or etc.)
 (add-hook 'after-make-frame-functions 'Y/frame-init-func)

@@ -52,6 +52,13 @@ The SPEC is `font-spec', CHAR_FROM and CHAR_TO are range of char."
                       (cons   spec)
                       (nil    nil))))
 
+(defun Y/adjust-font ()
+  "Font configuration."
+  (when (and ;; (display-graphic-p (selected-frame))
+         (not (equal "fontset-default"
+                     (assoc-default 'font default-frame-alist))))
+    (my/change-font-partially `(:family "Anonymous Pro") "λ")))
+
 (provide 'my_font)
 
 ;; Local Variables:

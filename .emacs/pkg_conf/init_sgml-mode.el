@@ -1,5 +1,4 @@
-;;; -*- coding: utf-8; mode: emacs-lisp; -*-
-
+;;; init_sgml-mode.el --- init file for sgml/html-mode
 ;;; Commentary:
 ;;; Code:
 (require 'my_autoload)

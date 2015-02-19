@@ -37,7 +37,7 @@
 (setq file-cache-filter-regexps
       (append file-cache-filter-regexps
               ;; 無視したいファイルの正規表現を指定もできる
-              '("^\\.#" "\\.cache$")))
+              '("^\\.#" "\\.cache$" "\\.tdb$")))
 
 (cl-loop for (s . dirs) in my/filecache-directories
          if (eq s :recursive)
@@ -45,6 +45,28 @@
                   dirs)
          if (eq s :naormal)
          do (file-cache-add-directory-list dirs))
+
+(require 'ido)
+(defconst Y/ghq-root (shell-command-to-string "echo -n `ghq root`"))
+
+(defun Y/filecache-ido-find-file ()
+  "My file cache find-file."
+  (interactive)
+  (let* ((list (append file-cache-alist ido-virtual-buffers))
+         (filename
+          (substring-no-properties
+           (ido-completing-read "cache: " list)))
+         (tmp-file-name (assoc-default filename list))
+         (file (cl-typecase tmp-file-name
+                 (string tmp-file-name)
+                 (list (cl-case (length tmp-file-name)
+                         (1 (format "%s%s" (car tmp-file-name) filename))
+                         (t (format "%s%s" (ido-completing-read "where? " tmp-file-name)
+                                    filename)))))))
+    (cond ((file-exists-p file)
+           (find-file file))
+          ((bufferp (get-buffer file))
+           (switch-to-buffer (get-buffer file))))))
 
 (provide 'init_filecache)
 

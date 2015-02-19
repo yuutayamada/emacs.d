@@ -1,7 +1,5 @@
 ;;; test.el --- test my Emacs configuration on Travis CI
-
 ;;; Commentary:
-
 ;;; Code:
 
 (defconst Y/on-test t)
@@ -21,6 +19,7 @@
 (assert (equal (getenv "EMACSLOADPATH")
                "/home/travis/build/yuutayamada/emacs.d/.emacs/:"))
 
+;; test my init file with el-get loading
 (require 'init)
 
 (provide 'test)

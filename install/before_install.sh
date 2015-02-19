@@ -4,5 +4,5 @@ sudo apt-get update -qq
 sudo apt-get install -y texinfo install-info eblook
 # For lookup.el(ndeb)
 sudo apt-get install -y eblook
-# For copy
+# For copy on terminal
 sudo apt-get install -y xclip

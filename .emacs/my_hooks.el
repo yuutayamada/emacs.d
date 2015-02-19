@@ -38,6 +38,7 @@
           '(lambda ()
              (my/whitespace-mode)
              (outline-minor-mode t)
+             (pangu-spacing-mode t)
              (unless (bound-and-true-p mykie:prog-mode-flag)
                (flyspell-mode t))))
 

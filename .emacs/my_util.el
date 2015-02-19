@@ -33,21 +33,8 @@
   "Load convenient functions only once."
   (require 'init_isearch)
   (require 'init_auto-capitalize)
-  (with-no-warnings
-    (if (display-graphic-p) ; if GUI Emacs
-        (and (require 'powerline)
-             (powerline-default-theme)
-             (my/change-powerline-color :box "#7fffd4"))
-      (nyan-mode)))
-  (Y/adjust-font)
-  (remove-hook 'find-file-hook 'my/after-load-function))
-
-(defun Y/adjust-font ()
-  "Font configuration."
-  (when (and ;; (display-graphic-p (selected-frame))
-         (not (equal "fontset-default"
-                     (assoc-default 'font default-frame-alist))))
-    (my/change-font-partially `(:family "Anonymous Pro") "λ")))
+  (with-no-warnings (nyan-mode t))
+  (remove-hook 'find-file-hook 'Y/after-load-function))
 
 (defun Y/frame-init-func (&optional frame)
   "Init function when Emacs connects new server with FRAME object."

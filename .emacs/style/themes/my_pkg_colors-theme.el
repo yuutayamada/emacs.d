@@ -17,6 +17,9 @@
  ;; override manoj-dark's configuration
  '(font-lock-function-name-face ((t :height unspecified)))
 
+ ;; grep or etc.
+ '(success ((t :foreground "#00ffd7")))
+
  ;;;;;;;;;;;;;;;;;;;;
  ;; PACKAGE COLORS ;;
  ;;;;;;;;;;;;;;;;;;;;
@@ -260,7 +263,12 @@
                                   :underline  "#222222")))
  '(whitespace-line            ((t :underline "#696969")))
  '(whitespace-space-after-tab ((t :background "#121212"
-                                  :foreground "#Ff6347"))))
+                                  :foreground "#Ff6347")))
+ ;; wgrep.el
+ '(wgrep-face ((t :bakground "#0000ff")))
+ '(wgrep-file-face ((t :bakground "#0000ff")))
+ '(wgrep-delete-face ((t :background "#0000ff")))
+)
 
 ;;;###autoload
 (when load-file-name

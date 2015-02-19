@@ -2,19 +2,21 @@
 
 ;;; Commentary:
 ;; MEMO
-;; v, Shift v, C-v : switch visual-mode
+;; vim cheat sheet:  http://www.fprintf.net/vimCheatSheet.html
+;; macro: register macro: q [a-zA-Z] and then do something then push q
+;; text-object: http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
+;; To call registered the macro, push @ [a-z-A-Z] that you pushed before.
 ;; Use `evil-add-hjkl-bindings' function to add hjkl binding to a key map.
 ;;; Code:
+
 (require 'evil)
 (require 'my_autoload)
 (require 'cl-lib)
 
 ;; Set default emacs state ;;
 ;; This is an upside using emacs state; using emacs state as default doesn't
-;; involve evil keymap on other emacs based modes like dired or etc.
+;; involve evil keymap on other emacs based modes like dired.
 (setq evil-default-state 'emacs)
-;; But, use normal-state on find-file.
-(add-hook 'find-file-hook 'evil-normal-state)
 ;; Use emacs-state as insert mode.
 (advice-add 'evil-insert-state :override 'evil-emacs-state)
 
@@ -36,36 +38,73 @@
               '(eww-mode git-commit-mode git-rebase-mode dired-mode
                          mew-message-mode mew-summary-mode fundamental-mode)))
 
+(defadvice evil-normal-state (around Y/prevent-on-emacs-mode activate)
+  "Prevent turn to Emacs state on specific modes."
+  (unless (member major-mode evil-emacs-state-modes)
+    ad-do-it))
+
 ;; KEY BINDING ;;
 ;; Unbind needless keys
 (cl-loop with maps = `(evil-normal-state-map
                        evil-motion-state-map
                        evil-emacs-state-map)
-         with avoid-keys = '("C-e" "C-o" "C-r" "C-s" "C-t" "C-w" "C-z"
+         with avoid-keys = '("C-e" "C-r" "C-s" "C-t" "C-w" "C-z"
+                             "C-i" "C-o"
                              "C-^" "C-=" "M-n" "M-p")
          for map in maps
          do (apply `((lambda () (mykie:set-keys ,map ,@avoid-keys)))))
 
 ;; NORMAL STATE
 (mykie:set-keys evil-normal-state-map
-  "/" isearch-forward ; use ace-isearch
-  "U" undo-tree-visualize)
+  "U" undo-tree-visualize
+  ";" evil-ex)
 
-;; MOTION STATE
-(mykie:set-keys evil-motion-state-map
-  "SPC"   scroll-up-command
-  "S-SPC" scroll-down-command
-  ";"     evil-ex
-  ","     ace-jump-word-mode)
+(defun Y/toggle-background-color ()
+  "Toggle background color."
+  (interactive)
+  (unless (display-graphic-p)
+    (let ((color (if (equal "unspecified" (face-attribute 'default :background))
+                     "black"
+                   "unspecified")))
+      (set-face-background 'default color nil))))
 
 ;; Create SPC keymap for normal state
 (mykie:define-prefix-key evil-motion-state-map "SPC"
-  nil
-  "c"   show-cheat-sheet
-  "o"   my/toggle-opacity
-  "g"   grep
-  "h"   helm-descbinds
-  "SPC" mykie:vi-faker)
+  (:keep
+   (lambda () (member (char-to-string last-command-event)
+                 '("h" "j" "k" "l" "f" "b" "t" "r" "+" "-"
+                   "F" "B" "N" "P"
+                   "" "" "" "" "	" "")))
+   :before (lambda () (Y/change-style '("#00bfff" "red" nil) 1))
+   :after  (lambda () (Y/change-style nil 0)))
+  "q" :default nil ; this means just a quit and do not insert q
+  "c" show-cheat-sheet
+  "o" evil-normal-state
+  "g" grep
+  "t" tabbar-forward
+  "r" tabbar-backward
+  "f" scroll-up
+  "b" scroll-down
+  "z" Y/toggle-background-color
+  "C-f" ffinder-jump
+  "C-b" ffinder-jump-to-begging
+  "C-n" evil-numbers/inc-at-pt
+  "C-p" evil-numbers/dec-at-pt
+  ;; window move
+  "B" windmove-left
+  "N" windmove-down
+  "P" windmove-up
+  "F" windmove-right
+  "SPC" magit-status)
+
+;; MOTION STATE
+(mykie:set-keys evil-motion-state-map
+  "+"     evil-numbers/inc-at-pt
+  "-"     evil-numbers/dec-at-pt)
+
+;; VISUAL STATE
+(mykie:set-keys evil-visual-state-map
+  ";" comment-dwim)
 
 ;;;;;;;;;;;;;;;;;
 ;; my function ;;
@@ -100,11 +139,12 @@
   "Change highlight color of line."
   (let ((attributes
          (cl-case evil-state
-           (emacs  '("#444488" "#ffffff" nil))
-           (normal '("#e80000" "#ffffff" nil))
-           (insert '("#00cd00" "#ffffff" nil))
-           (visual '("#006fa0" "#ffffff" nil))
-           (t      '(nil nil t)))))
+           (emacs   '("#444488" "#ffffff" nil))
+           (normal  '("#e80000" "#ffffff" nil))
+           (insert  '("#00cd00" "#ffffff" nil))
+           (visual  '("#006fa0" "#ffffff" nil))
+           (replace '("#00af87" "#ffffff" nil))
+           (t       '(nil nil t)))))
     (Y/change-style attributes)))
 
 (cl-loop for func in '(evil-change-state evil-refresh-cursor)
@@ -112,6 +152,10 @@
                        (advice-add (quote ,func) :after
                                    (lambda (&rest _args)
                                      (Y/evil-change-highlight)))))))
+
+;; evil surround
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 (provide 'init_evil)
 

@@ -37,7 +37,9 @@
  el-get-package-exists-p el-get-install el-get-list-packages el-get-update
  el-get-remove)
 ("eclim" eclim--project-name my/boot-eclim ac-emacs-eclim-config)
+("evil" evil-normal-state)
 ;; F
+("ffinder" ffinder-jump ffinder-jump-to-begging)
 ("flymake-json" flymake-json-maybe-load)
 ("flymake-shell" flymake-shell-load)
 ("flycheck" flycheck-mode error-tip-error-p)
@@ -191,6 +193,7 @@
 ("zencoding" my/zencoding-expand)
 ;; below packages need specification of INIT
 ("init_iso-transl" Y/iso-transl-toggle-minor-mode)
+("init_filecache" Y/filecache-ido-find-file)
 ("init_xmp" xmp)
 ("init_windows"
  win-switch-menu resume-windows win-switch-to-window

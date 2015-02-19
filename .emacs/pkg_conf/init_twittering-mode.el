@@ -40,10 +40,11 @@
                  (concat "Set twittering-private-info-file to "
                          twittering-private-info-file)))))
 
-(defun my/twit (select)
-  (when select
+(defadvice twit (around Y/set-privete-file activate)
+  ""
+  (unless (get-buffer ":home")
     (my/twit-select-user-name))
-  (twit))
+  ad-do-it)
 
 (setq twittering-initial-timeline-spec-string
       (append

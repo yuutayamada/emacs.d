@@ -4,6 +4,8 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
+	"fmt"
 	"net/http"
 	"net/url"
 
@@ -11,7 +13,23 @@ import (
 	"github.com/akiym/go-skkserv"
 )
 
-var port = ":55200"
+// From skk-server.el
+// skkserv の起動オプションは下記の通り。
+//     skkserv [-d] [-p NNNN] [JISHO]
+//     `-d'     ディバッグ・モード
+//     `-p NNNN'     通信用のポート番号としてNNNNを使う.
+//     `~/JISYO'     ~/JISYOを辞書として利用.
+var port string
+
+func init() {
+	p := flag.String("p", "55200", "Port number")
+	debug := flag.Bool("d", false, "debug flag")
+	flag.Parse()
+	if *debug {
+		fmt.Println("Debug...")
+	}
+	port = ":" + string(*p)
+}
 
 type GoogleIMESKK struct{}
 

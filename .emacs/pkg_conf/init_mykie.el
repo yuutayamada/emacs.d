@@ -30,12 +30,17 @@
 
 ;; mykie.el setup ;;
 (setq mykie:use-major-mode-key-override 'both
+      mykie:region-conditions
+      (append mykie:region-conditions
+              '((:evil-visual . (eq (bound-and-true-p evil-visual-selection) 'char))
+                (:evil-visual-line . (eq (bound-and-true-p evil-visual-selection) 'line))
+                (:evil-visual-block . (eq (bound-and-true-p evil-visual-selection) 'block))))
       ;; mykie:use-fuzzy-order nil
       mykie:normal-conditions
       (append mykie:normal-conditions
               '((:error . (error-tip-error-p))
                 (:evil-emacs  . (eq (bound-and-true-p evil-state) 'emacs))
-                (:evil-normal . (eq (bound-and-true-p evil-state) 'narmal))
+                (:evil-normal . (eq (bound-and-true-p evil-state) 'normal))
                 (:evil-insert . (eq (bound-and-true-p evil-state) 'insert))
                 (:hs-hidden     . (and mykie:prog-mode-flag
                                        (condition-case err
@@ -84,9 +89,14 @@
   :C-u flop-frame ; swap left and right
   :C-u*2 transpose-frame
   :C-u*3 flip-frame ; swap up and down
-  "t" :C-u (my/twit t)
   "u" :C-u (undo-tree-visualize)
-  "w" :C-u (message "test this is w"))
+  "w"
+  ;; :C-u (message (format "C-u is %s" current-prefix-arg))
+  :C-u! (message (format "test C-u! : %s" current-prefix-arg))
+  ;; :C-u!
+  :C-u*2! (message (format "%s" current-prefix-arg))
+  :C-u*3 (message (format "%s" current-prefix-arg))
+  )
 
 ;; C-[a-z] ;;
 (mykie:set-keys nil ; nil means global-map
@@ -197,12 +207,9 @@
                "p" git-gutter:previous-hunk)
 
   "C-o"
-  :default (other-window-or-split)
-  :C-u (mykie
-        :java-mode javadoc-lookup
-        :clojure-mode clojure-cheatsheet
-        :default helm-c-apropos)
-  :C-u*2 (my/reset-bg-color (read-from-minibuffer "bg color: "))
+  :default evil-normal-state
+  :evil-normal ffinder-jump
+  :C-u helm-c-apropos
 
   "C-p"
   :default    previous-line
@@ -249,19 +256,14 @@
   :default yank
   :C-u     (helm-c-yas-complete)
 
-  "C-z"
-  :default ido-find-file
-
-  "C--" :default text-scale-decrease
-  "C->" :default win-next-window
-  "C-<" :default win-prev-window
-
-  "C-0" :default my/helm-lookup-history
-  "C-3" :default my/toggle-show-hide
-
-  "C-4" :default helm-show-mykie-keywords
-
-  "C-8" :default (cider-turn-on-eldoc-mode))
+  "C-z" other-window-or-split
+  "C--" text-scale-decrease
+  "C->" win-next-window
+  "C-<" win-prev-window
+  "C-0" my/helm-lookup-history
+  "C-3" my/toggle-show-hide
+  "C-4" helm-show-mykie-keywords
+  "C-8" (cider-turn-on-eldoc-mode))
 
 ;; SUPER KEY BINDING ;;
 (mykie:set-keys global-map
@@ -340,23 +342,25 @@
          :scala-mode sbtp-console-send-line)
 
   "C-c C-o"
-  :default pane-toggle-window-structure
-
-  "C-c m" :default  goto-line)
+  :default pane-toggle-window-structure)
 
 ;; C-x keymap ;;
+;; Default keymap for C-x commands.
+;; The normal global definition of the character C-x indirects to this keymap.
 ;; Control x map(for other keymap testing)
 (mykie:set-keys ctl-x-map
   "C" t save-buffers-kill-emacs)
 
 (mykie:set-keys global-map
-  "C-x g" grep
-  "C-x C-f"
-  :default ido-find-file
+  "C-x g"   grep
+  "C-x C-f" ido-find-file
 
   "C-x C-c"
   :default save-buffers-kill-terminal ; or delete frame?
   :C-u     save-buffers-kill-emacs
+
+  "C-x o" (mykie:do-while "o" other-window-or-split)
+
   "C-x j"
   :default my/open-junk-today
   :C-u     open-junk-file)
@@ -383,8 +387,10 @@
 ;; http://stackoverflow.com/questions/1792326/how-do-i-bind-a-command-to-c-i-without-changing-tab
 (mykie:set-keys nil
   "TAB"
-  :markdown-header markdown-cycle
   :default indent-for-tab-command
+  :markdown-header markdown-cycle
+  :evil-normal (mykie :prog ffinder-jump-to-begging
+                      :org-mode org-cycle)
   "S-TAB"       my/insert ; C-S-TAB
   "M-TAB"       auto-complete
   [(C-tab)]     fold-dwim-toggle
@@ -453,7 +459,8 @@
   :C-u*2 (Y/iso-transl-toggle-minor-mode)
   :C-u*3 helm-ucs ; math symbols
   :evil-emacs   (evil-change-state 'normal)
-  :evil-insert  (evil-change-state 'normal))
+  :evil-insert  (evil-change-state 'normal)
+  :org-mode (org-return))
 
 ;; RET key ;;
 (mykie:set-keys nil
@@ -467,15 +474,20 @@
 
 ;; TODO: make :on-enter, :on-exit
 (mykie:define-prefix-key global-map "M-j"
-  (lambda ()
-    (not (or (member last-command
-                     '(mc/keyboard-quit
-                       self-insert-command
-                       mc/insert-numbers))
-             (eq last-command-event (string-to-char "q")))))
+  (:exit
+   (lambda ()
+     (or (member last-command
+                 '(mc/keyboard-quit
+                   self-insert-command
+                   mc/insert-numbers))
+         (eq last-command-event (string-to-char "q"))))
+   :before
+   (lambda () (Y/change-style '("blue" "black" nil) 1))
+   :after
+   (lambda () (Y/change-style nil 0)))
   ;; multiple-cursors ;;
   "a"   mc/mark-all-like-this
-  "q"   t nil
+  "q"   :default nil
   "n"   mc/skip-to-next-like-this
   "p"   mc/skip-to-previous-like-this
   "j"   mc/mark-next-like-this
@@ -564,10 +576,11 @@
         (e2wm:start-management))
   "M-s" (find-file "~/share/doc/study/2015spring")
   "M-h" my/toggle-hide-show
-  "M-r" remember
+  "M-r" win-switch-menu
   "M-t" toggle-truncate-lines
   "M-g" win-toggle-window
   "M-k" mode-compile-kill
+  "M-l" goto-line
   "M-i" loga-interactive-command
   "M-u" loga-lookup-at-manually
   "M-a" loga-add
@@ -598,18 +611,15 @@
 ;; TOY FUNC ;;
 (defun mykie:vi-faker ()
   (interactive)
-  (let ((attributes '("white" "black" nil)))
-    (Y/change-style attributes))
-  (let
-      ((Y/inhibit-change-color t)
-       (scroll (lambda (direction)
-                 (condition-case err
-                     (cl-case direction
-                       (next     (call-interactively 'next-line))
-                       (previous (call-interactively 'previous-line))
-                       (up       (scroll-up-command))
-                       (down     (scroll-down-command)))
-                   (error err)))))
+  (Y/change-style '("white" "black" nil) 1)
+  (let ((scroll (lambda (direction)
+                  (condition-case err
+                      (cl-case direction
+                        (next     (call-interactively 'next-line))
+                        (previous (call-interactively 'previous-line))
+                        (up       (scroll-up-command))
+                        (down     (scroll-down-command)))
+                    (error err)))))
     (mykie:loop
      "e" (if (e2wm:pst-get-instance)
              (e2wm:stop-management)
@@ -638,6 +648,7 @@
      "f" (funcall scroll 'up)
      "b" (funcall scroll 'down)
      "/" (return (call-interactively 'isearch-forward))))
+  (Y/change-style '("white" "black" nil) 0)
   (hs-show-all))
 
 ;; Overridden keys ;;

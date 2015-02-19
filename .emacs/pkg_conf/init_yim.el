@@ -4,22 +4,13 @@
 
 ;;; Code:
 (require 'my_autoload)
+(require 'yim)
+;; (defadvice skk-latin-mode-on (around ad-trash-un-kakutei-string activate)
+;;   ad-do-it
+;;   (my/trash-un-kakutei-string))
 
-(defadvice skk-latin-mode-on (around ad-trash-un-kakutei-string activate)
-  ad-do-it
-  (my/trash-un-kakutei-string))
-
-(defun my/trash-un-kakutei-string ()
-  (skk-erase-prefix 'clean))
-
-(defadvice yim-convert (around ad-boot-server activate)
-  (if (skk-server-live-p)
-      ad-do-it
-    (my/boot-skk-server)))
-
-(defadvice yim-convert (around yim-convert-ad activate)
-  ad-do-it
-  (skk-j-mode-on))
+(advice-add 'skk-latin-mode-on :after (lambda () (skk-erase-prefix 'clean)))
+(advice-add 'yim-convert :after (lambda () (skk-j-mode-on)))
 
 (provide 'init_yim)
 

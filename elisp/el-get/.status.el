@@ -140,6 +140,10 @@
             (:name evil-anzu :type git :url "https://github.com/syohex/emacs-evil-anzu.git"))
  (evil-numbers status "installed" recipe
                (:name evil-numbers :website "http://github.com/cofi/evil-numbers" :description "Increment/decrement numbers in Evil, the extensible vim\n       emulation layer. Like C-a/C-x in vim.\n\n       After installation, you will need to add a key-binding for evil-numbers.\n       For example:\n\n       (define-key evil-normal-state-map (kbd \"C-c +\") 'evil-numbers/inc-at-pt)\n       (define-key evil-normal-state-map (kbd \"C-c -\") 'evil-numbers/dec-at-pt)" :type github :pkgname "cofi/evil-numbers" :features evil-numbers :depends evil))
+ (evil-surround status "installed" recipe
+                (:name evil-surround :type git :depends
+                       (evil)
+                       :url "https://github.com/timcharper/evil-surround.git"))
  (eww-lnum status "installed" recipe
            (:name eww-lnum :type git :description "Hit A Hint implementation for eww" :url "https://github.com/m00natic/eww-lnum.git"))
  (f status "installed" recipe
@@ -223,8 +227,6 @@
           (:name grammar :type svn :url "http://bcui-emacs.googlecode.com/svn/trunk/grammar"))
  (grep-a-lot status "installed" recipe
              (:name grep-a-lot :auto-generated t :type emacswiki :description "manages multiple search results buffers for grep.el" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/grep-a-lot.el"))
- (grep-edit status "installed" recipe
-            (:name grep-edit :type git :url "https://github.com/emacsmirror/grep-edit.git"))
  (groovy-emacs-mode status "installed" recipe
                     (:name groovy-emacs-mode :description "A groovy major mode, grails minor mode, and a groovy inferior mode." :type github :pkgname "Groovy-Emacs-Modes/groovy-emacs-modes"))
  (hangman status "installed" recipe
@@ -428,6 +430,8 @@
                  (:name package-latest :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/HEAD:/lisp/emacs-lisp/package.el" :load-path "./"))
  (pane status "installed" recipe
        (:name pane :type git :url "https://github.com/yuutayamada/pane.git"))
+ (pangu-spacing status "installed" recipe
+                (:name pangu-spacing :type git :url "https://github.com/coldnew/pangu-spacing.git"))
  (paredit status "installed" recipe
           (:name paredit :description "Minor mode for editing parentheses" :type http :prepare
                  (progn
@@ -445,8 +449,6 @@
  (popwin status "installed" recipe
          (:name popwin :description "Popup Window Manager." :website "https://github.com/m2ym/popwin-el" :type github :pkgname "m2ym/popwin-el" :load-path
                 ("." "misc")))
- (powerline status "installed" recipe
-            (:name powerline :type git :url "https://github.com/milkypostman/powerline.git"))
  (puppet-mode status "installed" recipe
               (:name puppet-mode :description "A simple mode for editing puppet manifests" :type github :pkgname "lunaryorn/puppet-mode" :website "https://github.com/lunaryorn/puppet-mode" :prepare
                      (progn
@@ -518,6 +520,11 @@
             (:name undo-tree :type git :url "https://github.com/emacsmirror/undo-tree.git"))
  (viewer status "installed" recipe
          (:name viewer :auto-generated t :type emacswiki :description "View-mode extension" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/viewer.el"))
+ (vimrc-mode status "installed" recipe
+             (:name vimrc-mode :description "Enables syntax highlighting for .vimrc/_vimrc files" :type github :pkgname "mcandre/vimrc-mode" :prepare
+                    (progn
+                      (add-to-list 'auto-mode-alist
+                                   '(".vim\\(rc\\|peratorrc\\)?$" . vimrc-mode)))))
  (vlf status "installed" recipe
       (:name vlf :type git :url "https://github.com/m00natic/vlfi.git"))
  (w3m status "installed" recipe
@@ -526,6 +533,8 @@
       (:name web :description "A useful HTTP client in EmacsLisp" :depends fakir :type github :pkgname "nicferrier/emacs-web"))
  (web-mode status "installed" recipe
            (:name web-mode :type git :url "https://github.com/fxbois/web-mode.git"))
+ (wgrep status "installed" recipe
+        (:name wgrep :type git :url "https://github.com/mhayashi1120/Emacs-wgrep.git"))
  (window-layout status "installed" recipe
                 (:name window-layout :description "window layout manager" :website "https://github.com/kiwanami/emacs-window-layout" :type github :pkgname "kiwanami/emacs-window-layout" :features "window-layout"))
  (windows status "installed" recipe

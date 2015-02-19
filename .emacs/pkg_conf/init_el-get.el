@@ -78,6 +78,10 @@
            :type git
            :description "I added package"
            :url "https://github.com/kiwanami/emacs-deferred.git")
+    (:name evil-surround
+           :type git
+           :depends (evil)
+           :url "https://github.com/timcharper/evil-surround.git")
     (:name evil-anzu
            :type git
            :url "https://github.com/syohex/emacs-evil-anzu.git")
@@ -322,6 +326,9 @@
            :type git
            :depends (org-mode)
            :url "https://github.com/pope/ob-go.git")
+    (:name pangu-spacing
+           :type git
+           :url "https://github.com/coldnew/pangu-spacing.git")
     (:name powerline
            :type git
            :url "https://github.com/milkypostman/powerline.git")
@@ -518,6 +525,9 @@
     (:name web-mode
            :type git
            :url "https://github.com/fxbois/web-mode.git")
+    (:name wgrep
+           :type git
+           :url "https://github.com/mhayashi1120/Emacs-wgrep.git")
     (:name windows
            :type http
            :url "http://www.gentei.org/~yuuji/software/euc/windows.el")

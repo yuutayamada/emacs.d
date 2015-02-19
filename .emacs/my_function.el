@@ -92,8 +92,12 @@
 (defun Y/ido-find-ghq-dirs ()
   "Find file from my favorite resource."
   (interactive)
-  (let* ((ghq-dirs     (bound-and-true-p Y/ghq-dirs))
-         (match (ido-completing-read "ghq: " ghq-dirs)))
+  (let* ((ghq-dirs (bound-and-true-p Y/ghq-dirs))
+         (code-dirs (cl-loop with root = "~/code"
+                             for dir in (directory-files root)
+                             unless (string-match "^\\(\\.\\|\\.\\.\\)$" dir)
+                             collect (format "%s/%s" root dir)))
+         (match (ido-completing-read "ghq: " (append ghq-dirs code-dirs))))
     (cond ((bufferp (get-buffer match))
            (switch-to-buffer (get-buffer match)))
           (t (find-file match)))))
@@ -117,21 +121,32 @@
     (set-face-attribute
      face nil :background bg :foreground fg :underline  ul)))
 
-(defun Y/change-style (attributes)
-  "Change looking of window."
-  (cl-loop with faces = (cl-loop for face in '(mode-line powerline-active1 powerline-active2)
-                                 if (facep face)
-                                 collect face)
-           for face in faces
-           do (apply `((lambda () (Y/change-color (quote ,face) ,@attributes))))))
+(defvar Y/mode-line-change-faces
+  (cl-loop for face in '(mode-line powerline-active1 powerline-active2)
+           if (facep face)
+           collect face))
 
-(defun my/define-prefix-key (keymap new-map-name new-prefix-key)
-  ""
-  (if (not (equal (lookup-key keymap new-prefix-key) new-map-name))
-      (progn
-        (define-prefix-command new-map-name)
-        (define-key keymap new-prefix-key new-map-name))
-    "The keymap is already exists"))
+(defvar Y/default-mode-line-face
+  (cl-loop for face in Y/mode-line-change-faces
+           collect (cons face (face-all-attributes face))))
+
+(defun Y/change-style (attributes &optional inhibit)
+  "Change looking of window."
+  (when (or (not Y/inhibit-change-color)
+            inhibit)
+    (let* ((faces Y/mode-line-change-faces))
+      (cl-loop for face in faces
+               if attributes
+               do (apply `((lambda () (Y/change-color (quote ,face) ,@attributes))))
+               else do (let ((attrs (assoc-default face Y/default-mode-line-face)))
+                         (Y/change-color
+                          face
+                          (assoc-default :background attrs)
+                          (assoc-default :foreground attrs)
+                          (assoc-default :underline  attrs))))))
+  (cl-case inhibit
+    (1 (setq Y/inhibit-change-color t))
+    (0 (setq Y/inhibit-change-color nil))))
 
 (defun clean-mode-line ()
   "Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'."

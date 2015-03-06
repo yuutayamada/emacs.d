@@ -143,6 +143,7 @@
   :default    forward-char
   :skk-on     skk-b-move-henkan-point-fwd
   :skk-active skk-b-move-henkan-point-fwd
+  :C-u&url (browse-url-firefox mykie:current-thing)
   :C-u&prog (mykie
              :haskell-mode
              (mykie
@@ -151,8 +152,6 @@
   :C-u (mykie
         :C-u*2 (my/copy-current-file-name)
         t (forward-char 1))
-  :C-u&url    (browse-url-firefox mykie:current-thing)
-
   "C-h"
   :default delete-backward-char
   :ido     ido-delete-backward-updir

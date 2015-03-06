@@ -53,6 +53,11 @@
 ;; Java
 (add-hook 'java-mode-hook '(lambda () (require 'init_java)))
 
+;; http link overlay without org-mode
+(add-hook 'text-mode-hook     'Y/ov-turn-on-http-overlay)
+(add-hook 'markdown-mode-hook 'Y/ov-turn-on-http-overlay)
+(add-hook 'prog-mode-hook     'Y/ov-turn-on-http-overlay)
+
 (provide 'my_hooks)
 
 ;; Local Variables:

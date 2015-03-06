@@ -195,6 +195,8 @@
 ("init_iso-transl" Y/iso-transl-toggle-minor-mode)
 ("init_filecache" Y/filecache-ido-find-file)
 ("init_xmp" xmp)
+("init_ov" Y/ov-toggle-http-overlay Y/ov-turn-off-http-overlay
+ Y/ov-turn-on-http-overlay Y/ov-http-overlay-at-point-p)
 ("init_windows"
  win-switch-menu resume-windows win-switch-to-window
  my/define-windows-prefix-key)
@@ -205,4 +207,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; my_autoload ends here
+;;; autoload ends here

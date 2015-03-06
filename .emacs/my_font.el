@@ -1,7 +1,5 @@
 ;;; my_font.el --- init file for font set
 
-;; Copyright (C) 2014 by Yuta Yamada
-
 ;;; Commentary:
 ;; If you have problem char-width against ambiguous characters like §
 ;; try this : (use-cjk-char-width-table 'ja_JP)
@@ -12,7 +10,7 @@
 ;;   http://csbruce.com/software/utf-8.html
 ;;   http://macemacsjp.sourceforge.jp/matsuan/FontSettingJp.html
 
-;; - How to examine character of the point -> use 'C-u C-x ='
+;; - How to examine character of the point -> use 'C-u C-x =' or `describe-char'
 ;; - XLFD (X Logical Font Description)
 ;;     -maker-family-weight-slant-widthtype-style...->
 ;;      ->...-pixels-height-horiz-vert-spacing-width-registry-encoding

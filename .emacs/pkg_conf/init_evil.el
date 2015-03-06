@@ -106,6 +106,11 @@
 (mykie:set-keys evil-visual-state-map
   ";" comment-dwim)
 
+;; Mykielize evil keybinds
+(mykie:attach-mykie-func-to 'evil-normal-state)
+(mykie:attach-mykie-func-to 'evil-motion-state)
+(mykie:initialize)
+
 ;;;;;;;;;;;;;;;;;
 ;; my function ;;
 ;;;;;;;;;;;;;;;;;

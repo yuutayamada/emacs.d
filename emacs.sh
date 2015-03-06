@@ -6,9 +6,13 @@ emacsclient="emacsclient"
 daemon_name="GNU"
 
 # You may specify frame parameters at .Xresources as well.
-## Note ##
 # http://www.gnu.org/software/emacs/manual/html_node/emacs/Resources.html#Resources
-fParam="((font . \"Ricty 12\"))"
+# How to set font
+# http://ergoemacs.org/emacs/emacs_list_and_set_font.html
+# This font configuration can only change GUI Emacs. (not terminal Emacs)
+fParam="(
+  (font . \"Inconsolata 12\") \
+)"
 
 epath=$(cd `dirname $0`; pwd)/.emacs/
 
@@ -48,8 +52,8 @@ function GUI_Emacs() {
 
 function EmacsClient() {
   color="TERM=xterm-256color"
-  client="${color} ${emacsclient} -F '${fParam}' -s ${daemon_name} ${option} $@ ${background}"
-  eval "${client}"
+  client="${emacsclient} -F '${fParam}' -s ${daemon_name} ${option} $@"
+  eval "${color} ${client} ${background}"
 }
 
 # GUI Emacs

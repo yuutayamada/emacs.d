@@ -1,30 +1,10 @@
 ;;; init_org.el --- init file for org-mode
-
-;; Copyright (C) 2013 by Yuta Yamada
-
-;; Author: Yuta Yamada <cokesboy"at"gmail.com>
-
-;;; License:
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;; Commentary:
-
 ;;; Code:
+
 (require 'org)
-(require 'ob-go)
 (require 'init_org-mobile)
-(require 'init_org-indent)
-(require 'mykie)
+
 ;; Footer information
 (defconst org-html-postamble "")
 
@@ -39,17 +19,18 @@ For my college life."
           `(("en" ,(mapconcat 'identity `("%a" ,prof ,class ,file "%T") "<br />")))))
     (call-interactively 'org-html-export-to-html)))
 
-(require 'cl-lib)
-(define-key org-mode-map (kbd "C-x p")
-  '(lambda () (interactive)
-     (cl-loop for (class . prof) in Y/prof-alist
-              if (string-match class (buffer-file-name))
-              do (cl-return (Y/org-html-export-to-html prof class)))))
-
-(defadvice org-export-dispatch (around ad-load-latex-init-file activate)
-  "Load latex init file."
-  (require 'init_latex)
-  ad-do-it)
+(add-hook 'org-mode-hook
+          '(lambda ()
+             (require 'mykie)
+             ;; un bind needless keybinds
+             (mykie:set-keys org-mode-map "C-a" "C-e" "RET" "C-j" "C-," "C-.")
+             (auto-complete-mode t)
+             ;; this is temporary function to produce a html file for my college homework
+             (define-key org-mode-map (kbd "C-x p")
+               '(lambda () (interactive)
+                  (cl-loop for (class . prof) in Y/prof-alist
+                           if (string-match class (buffer-file-name))
+                           do (cl-return (Y/org-html-export-to-html prof class)))))))
 
 ;; org this is for debugging.
 (with-no-warnings
@@ -105,24 +86,12 @@ For my college life."
         (newline-and-indent))
     (fill-region (point-at-bol) (point-at-eol))))
 
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (mykie:set-keys org-mode-map "C-a" "C-e" "RET" "C-j" "C-," "C-.")
-             (auto-complete-mode t)))
-
 (defun my/display-image (&optional bol eol)
   "Show inline image in `org-mode'.
 The BOL means beginning of line, the EOL means end of line."
   (when (eq major-mode 'org-mode)
     (org-display-inline-images
      t t (or bol (point-at-bol)) (or eol (point-at-eol)))))
-
-;; CSS format for export html
-(require 'ox-html) ; for org-html-head
-(let ((style-file (file-truename "~/.org-style.css")))
-  (when (file-exists-p style-file)
-    (setq org-html-head
-          (concat "<link rel=\"stylesheet\" href=\"" style-file "\" />"))))
 
 ;; https://support.google.com/blogger/answer/41400?hl=en
 ;; work in progress

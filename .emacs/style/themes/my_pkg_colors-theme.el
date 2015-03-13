@@ -19,6 +19,8 @@
 
  ;; grep or etc.
  '(success ((t :foreground "#00ffd7")))
+ ;; shadow
+ '(shadow  ((t :foreground "#505050")))
 
  ;;;;;;;;;;;;;;;;;;;;
  ;; PACKAGE COLORS ;;
@@ -64,6 +66,7 @@
  '(dired-symlink   ((t (:foreground "#66D9EF"))))
 
  ;; Diff
+ '(diff-context ((t :inherit shadow)))
  '(diff-changed ((t :background "#A0522D")))
  '(diff-added   ((t :foreground "#00BFFF" :background nil)))
  '(diff-removed ((t :foreground "#FF6A6A" :background nil)))

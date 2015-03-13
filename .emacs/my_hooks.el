@@ -58,6 +58,10 @@
 (add-hook 'markdown-mode-hook 'Y/ov-turn-on-http-overlay)
 (add-hook 'prog-mode-hook     'Y/ov-turn-on-http-overlay)
 
+;; view-mode
+(add-hook 'help-mode-hook 'view-mode)
+(add-hook 'Man-mode-hook 'view-mode)
+
 (provide 'my_hooks)
 
 ;; Local Variables:

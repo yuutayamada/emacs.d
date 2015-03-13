@@ -14,7 +14,11 @@
 (advice-add 'prettify-symbols-mode :before
             (lambda (&rest r)
               (cl-case major-mode
+                (haskell-mode
+                 (push '("\\" . ?ƛ) prettify-symbols-alist))
                 (js2-mode
+                 (push '("function" . ?ƛ) prettify-symbols-alist))
+                (lua-mode
                  (push '("function" . ?ƛ) prettify-symbols-alist))
                 (verilog-mode
                  (push '("begin" . ?{) prettify-symbols-alist)

@@ -1,9 +1,6 @@
-;;; init_latex.el --- init file for org latex
 
 ;;; Commentary:
-
 ;;; Code:
-
 (require 'ox-latex)
 
 (setq org-latex-default-class "extract"
@@ -81,11 +78,11 @@
 ("\\paragraph{%s}" . "\\paragraph*{%s}")
 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-(provide 'init_latex)
+(provide 'init_ox-latex)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_latex.el ends here
+;;; init_ox-latex.el ends here

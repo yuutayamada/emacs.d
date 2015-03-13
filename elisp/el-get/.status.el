@@ -272,6 +272,11 @@
               (:name helm-migemo :type git :url "https://github.com/emacs-helm/helm-migemo.git"))
  (helm-swoop status "installed" recipe
              (:name helm-swoop :type git :url "https://github.com/ShingoFukuyama/helm-swoop.git"))
+ (hi2 status "installed" recipe
+      (:name hi2 :description "Indentation module for Haskell mode" :type github :pkgname "errge/hi2" :prepare
+             (autoload 'turn-on-hi2 "hi2" nil t)
+             :depends
+             (haskell-mode)))
  (highlight-indentation status "installed" recipe
                         (:name highlight-indentation :description "Function for highlighting indentation" :type git :url "https://github.com/antonj/Highlight-Indentation-for-Emacs"))
  (hl-line+ status "installed" recipe

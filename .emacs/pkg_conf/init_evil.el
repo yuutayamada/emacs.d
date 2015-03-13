@@ -2,10 +2,10 @@
 
 ;;; Commentary:
 ;; MEMO
-;; vim cheat sheet:  http://www.fprintf.net/vimCheatSheet.html
+;; vim cheat sheet: http://www.fprintf.net/vimCheatSheet.html
 ;; macro: register macro: q [a-zA-Z] and then do something then push q
 ;; text-object: http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
-;; To call registered the macro, push @ [a-z-A-Z] that you pushed before.
+;; To call registered macros, push @ [a-z-A-Z].
 ;; Use `evil-add-hjkl-bindings' function to add hjkl binding to a key map.
 ;;; Code:
 
@@ -15,12 +15,13 @@
 
 ;; Set default emacs state ;;
 ;; This is an upside using emacs state; using emacs state as default doesn't
-;; involve evil keymap on other emacs based modes like dired.
+;; involve evil keymap on other emacs based modes. (i.e., dired)
 (setq evil-default-state 'emacs)
 ;; Use emacs-state as insert mode.
+;; Evil uses ESC key as `evil-esc' and I don't like this.
 (advice-add 'evil-insert-state :override 'evil-emacs-state)
 
-;; Emacs state than evil states
+;; Move evil states to emacs state.
 (when (or evil-insert-state-modes evil-motion-state-modes)
   (setq evil-emacs-state-modes
         (append evil-emacs-state-modes
@@ -30,8 +31,8 @@
         evil-insert-state-modes nil
         evil-motion-state-modes nil))
 
-;; Prior specific mode keybinding than Evil keybind.
-;; this configuration is needed if I use normal state as default state
+;; Prioritize specific mode keybinding than Evil keybind.
+;; This configuration is needed if I use normal state as default state
 ;; instead of emacs state, so now this configuration is not efficient...
 (setq evil-emacs-state-modes
       (append evil-emacs-state-modes
@@ -107,9 +108,10 @@
   ";" comment-dwim)
 
 ;; Mykielize evil keybinds
-(mykie:attach-mykie-func-to 'evil-normal-state)
-(mykie:attach-mykie-func-to 'evil-motion-state)
-(mykie:initialize)
+;; (mykie:attach-mykie-func-to 'evil-normal-state)
+;; this made a trouble which can not highlight region when I use C-v
+;; (mykie:attach-mykie-func-to 'evil-motion-state)
+;; (mykie:initialize)
 
 ;;;;;;;;;;;;;;;;;
 ;; my function ;;

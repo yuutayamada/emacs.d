@@ -1,36 +1,22 @@
 ;;; init_ispell.el --- init file for ispell -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-
+;; You can set ASPELL_CONF environment variable like this:
+;; export ASPELL_CONF="lang en_US; home-dir ${XDG_CONFIG_HOME}/aspell; sug-mode ultra;"
 ;;; Code:
 
 (require 'ispell)
 
-;; my/get-aspell-capital-words
+(setq ispell-program-name "aspell"
+      ispell-dictionary "american")
+
 (with-no-warnings
-  (let ((config (getenv "XDG_CONFIG_HOME"))
-        (setup (lambda ()
-                 (defvar my/aspell-capitalized-words
-                   (my/get-aspell-capital-words ispell-personal-dictionary))
-                 (setq auto-capitalize-words
-                       `("I" "English" "Japan" "ASAP" "Linux"
-                         "Japanese" "ASCII" "CPU" "Halloween"
-                         ,@my/aspell-capitalized-words)))))
-    (cond
-     ;; TODO: move configuration to ASPELL_CONF environment variable
-     ((executable-find "aspell")
-      (setq ispell-program-name "aspell"
-            ispell-personal-dictionary (concat config "/aspell/.aspell.en.pws")
-            ispell-dictionary "american"
-            ispell-extra-args  `("--sug-mode=ultra" "--lang=en_US"
-                                 ,(format "--home-dir=%s"
-                                          (concat config "/aspell")))))
-     ;; Hunspell is slow? If I used multilingual file.
-     ((executable-find "hunspell")
-      (setq ispell-program-name "hunspell"
-            ispell-personal-dictionary (concat config "/hunspell/.hunspell_en_US")
-            ispell-extra-args '("-d en_US, ja_JP"))))
-    (funcall setup)))
+  (defvar my/aspell-capitalized-words
+    (my/get-aspell-capital-words ispell-personal-dictionary))
+  (setq auto-capitalize-words
+        `("I" "English" "Japan" "ASAP" "Linux"
+          "Japanese" "ASCII" "CPU" "Halloween"
+          ,@my/aspell-capitalized-words)))
 
 ;; work around ispell's highlighting of Japanese characters
 (add-to-list 'ispell-skip-region-alist '("[^\000-\377]+"))

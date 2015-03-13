@@ -52,9 +52,8 @@
 
 (when (executable-find "ghq")
   (defvar Y/ghq-dirs
-    (cl-loop with root = (shell-command-to-string "echo -n `ghq root`")
-             for dir in (split-string (shell-command-to-string "ghq list") "\n")
-             collect (format "%s/%s" root dir))))
+    (cl-loop for dir in (split-string (shell-command-to-string "ghq list -p") "\n")
+             collect dir)))
 
 (require 'cl-lib)
 ;; Toggle feature ;;

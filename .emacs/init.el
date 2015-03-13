@@ -45,7 +45,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AUTOLOAD CONFIGURATION ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Note: this file should loads after el-get configuration or it will fail.
+;; Note: this file should loads after el-get configuration or
+;; it will fail.
 (require 'my_autoload)
 
 ;;;;;;;;;;;;;;;;;

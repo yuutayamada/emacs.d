@@ -176,8 +176,7 @@
 ("undo-tree"
  undo-tree-redo undo-tree-undo undo-tree-visualize global-undo-tree-mode)
 ;; V
-("vc-git" vc-git-mode-line-string vc-git-branches vc-git-conflicted-files
- vc-git-root)
+("vc-git" vc-git-mode-line-string vc-git-branches vc-git-root)
 ;; W
 ("w3m" w3m my/w3m-search w3m-minor-mode w3m-browse-url w3m-find-file)
 ("whitespace"

@@ -1,7 +1,9 @@
 ;;; init_helm-config.el --- init file for helm-config.el
 
 ;;; Commentary:
-
+;; The helm-config file is a group of autoload functions for helm, so
+;; you don't need worry about loading time.
+;; http://www.reddit.com/r/emacs/comments/2z7nbv/lean_helm_window/
 ;;; Code:
 
 (require 'cl-lib)
@@ -10,17 +12,18 @@
 (add-hook 'helm-before-initialize-hook
           '(lambda ()
              ;; Common configuration
-             (setq helm-candidate-number-limit 9999
+             (setq helm-candidate-number-limit 1000
                    helm-maybe-use-default-as-input t)
              ;; Unset key C-h to use normal C-h
              (define-key helm-map (kbd "C-h") nil)
              (require 'init_helm-migemo)))
 
-;; In the terminal Emacs, helm-colors function doesn't show candidates
-;; correctly. To work around this problem, set t to the `helm-always-two-windows'.
-;; (helm candidates result crashes when showing the result in left side)
-(defconst helm-always-two-windows t)
-(defconst helm-split-window-preferred-function 'split-window-sensibly)
+;; available option: 'same, 'other,'right, 'left, 'below, 'above
+(defconst helm-split-window-default-side 'other)
+
+;; other configurations
+;; (defconst helm-always-two-windows t)
+;; (defconst helm-split-window-preferred-function 'split-window-sensibly)
 
 (provide 'init_helm-config)
 

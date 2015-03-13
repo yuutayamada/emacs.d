@@ -1,4 +1,4 @@
-;;; init_quickrun.el --- init file for quickrun.el
+;;; init_quickrun.el --- init file for quickrun.el -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (require 'quickrun)
@@ -7,8 +7,9 @@
   "Do quickrun.
 You can specify 'ask and 'compile-only as symbol to DIRECTION."
   (interactive)
-  (let ((cmdkey (gethash (quickrun/find-from-major-mode-alist)
-                         quickrun/command-key-table))
+  (let ((base-buffer (current-buffer))
+        (cmdkey (gethash (quickrun/find-from-major-mode-alist)
+                            quickrun/command-key-table))
         (adjust-key (lambda (cmdkey)
                       (cl-case (intern cmdkey)
                         (lisp "lisp/clisp")
@@ -21,7 +22,9 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION."
                           (t nil)))
                        (quickrun-option-cmdkey cmdkey))
                    (call-interactively 'quickrun)))))
-    (funcall q-run (funcall adjust-key cmdkey) direction)))
+    (funcall q-run (funcall adjust-key cmdkey) direction)
+    (unless (eq (current-buffer) base-buffer)
+      (switch-to-buffer-other-window base-buffer))))
 
 ;; override Java
 (quickrun-add-command

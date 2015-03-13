@@ -184,16 +184,16 @@
   :default        (recenter-top-bottom)
   :skk-active     (yim-convert-to-katakana)
   :skk-on         (forward-char)
-  :C-u (mykie
-        :org-src  (my/org-dwim)
-        :org-mode (my/org-dwim)
-        :error  (mykie:do-while
-                 "n" (error-tip-cycle-dwim)
-                 "p" (error-tip-cycle-dwim-reverse)
-                 "g" (error-tip-delete-popup))
-        :scala-mode my/ensime-goto-next-error
-        t anzu-query-replace-regexp)
-  :C-u*2          (mykie :C-u! helm-github-issues)
+  :C-u! (mykie
+         :error  (mykie:do-while
+                  "n" (error-tip-cycle-dwim)
+                  "p" (error-tip-cycle-dwim-reverse)
+                  "g" (error-tip-delete-popup))
+         :org-src  (my/org-dwim)
+         :org-mode (my/org-dwim)
+         :scala-mode my/ensime-goto-next-error
+         t anzu-query-replace-regexp)
+  :C-u*2!         anzu-query-replace-at-cursor-thing
   :region         anzu-query-replace-regexp
   :region&C-u     query-replace-regexp
 
@@ -597,8 +597,10 @@
 ;; SPACE key ;;
 (mykie:set-keys nil
   "C-SPC"
+  ;; check transient-mark-mode if the region can not select
   :default set-mark-command
   :C-u     bm-toggle
+  ;;
   ;; TODO: implement function of smartchr.el
   ;; "S-SPC" :default scroll-down-command
   )

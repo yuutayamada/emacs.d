@@ -11,17 +11,15 @@
 ;; Load my autoload configurations
 (apply `((lambda () (autoloader-autoloads ,@(Y/get-autoloads)))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; AUTOMATED FUNCTION LOADING ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; AUTOMATICALLY-GENERATED FUNCTION LOADING ;;
 ;; autoload file of git.savannah.gnu.org/emacs/lisp/emacs
 (require 'loaddefs)
 
-;; Load autoload file of EL-GET
+;; EL-GET
 (add-to-list 'load-path el-get-dir)
 (require '.loaddefs)
 
-;; Load helm autoloads
+;; Helm
 (require 'helm-config)
 
 ;; Lookup.el

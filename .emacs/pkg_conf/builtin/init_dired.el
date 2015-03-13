@@ -1,7 +1,5 @@
 ;;; init_dired.el --- init file for dired.el
-
 ;;; Commentary:
-
 ;;; Code:
 
 (require 'wdired)
@@ -9,26 +7,44 @@
 (require 'mykie)
 
 (mykie:set-keys dired-mode-map
-  "RET"     :default dired-find-file
-  "/"       :default dired-isearch-filenames-regexp
-  "I"       :default (image-dired-show-all-from-dir default-directory)
-  "'"       :default helm-ag-r-from-git-repo
-  "="       :default dired-up-directory
-  "C-t"     :default dired-display-file
-  "M-RET"   :default my/multi-term-current-buffer
-  [tab]     :default (Y-open-file-as-root (dired-file-name-at-point))
-  "r"       :default wdired-change-to-wdired-mode
-  "C-o"
-  "C-c C-c" :default compile
-  "o"       :default (lambda ()
-                       (interactive)
-                       (popwin:find-file (dired-get-file-for-visit))))
+  "SPC"
+  :default   dired-omit-mode
+  :C-u       dired-dotfiles-toggle
+  "RET"      dired-find-file
+  "/"        dired-isearch-filenames-regexp
+  "I"        (image-dired-show-all-from-dir default-directory)
+  "'"        helm-ag-r-from-git-repo
+  "="        dired-up-directory
+  "C-t"      dired-display-file
+  "M-RET"    my/multi-term-current-buffer
+  [tab]      (Y-open-file-as-root (dired-file-name-at-point))
+  "r"        wdired-change-to-wdired-mode
+  "C-o"      nil
+  "C-c C-c"  compile
+  "o"        :default (lambda ()
+                        (interactive)
+                        (popwin:find-file (dired-get-file-for-visit))))
 
 (defun Y-open-file-as-root (filename)
   "Open file of FILENAME as root."
   (interactive "f")
   (when (y-or-n-p "Do you want to open as Root? ")
     (set-buffer (find-file (format "/sudo::%s" filename)))))
+
+;; I stole from http://www.emacswiki.org/emacs/DiredOmitMode
+(defvar-local dired-dotfiles-show-p t)
+(defun dired-dotfiles-toggle ()
+  "Show/hide dot-files."
+  (interactive)
+  (when (equal major-mode 'dired-mode)
+    (if dired-dotfiles-show-p
+        (progn
+          (dired-mark-files-regexp "^\\\.")
+          (dired-do-kill-lines)
+          (setq-local dired-dotfiles-show-p nil))
+      ;; otherwise just revert to re-show
+      (revert-buffer)
+      (setq-local dired-dotfiles-show-p t))))
 
 (provide 'init_dired)
 

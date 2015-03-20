@@ -59,12 +59,14 @@
  (clojure-mode status "installed" recipe
                (:name clojure-mode :website "https://github.com/clojure-emacs/clojure-mode" :description "Emacs support for the Clojure language." :type github :pkgname "clojure-emacs/clojure-mode"))
  (coffee-mode status "installed" recipe
-              (:name coffee-mode :website "http://ozmm.org/posts/coffee_mode.html" :description "Emacs Major Mode for CoffeeScript" :type github :pkgname "defunkt/coffee-mode" :features coffee-mode :post-init
+              (:name coffee-mode :website "http://ozmm.org/posts/coffee_mode.html" :description "Emacs Major Mode for CoffeeScript" :type github :pkgname "defunkt/coffee-mode" :features coffee-mode :prepare
                      (progn
                        (add-to-list 'auto-mode-alist
                                     '("\\.coffee$" . coffee-mode))
                        (add-to-list 'auto-mode-alist
-                                    '("Cakefile" . coffee-mode))
+                                    '("Cakefile" . coffee-mode)))
+                     :post-init
+                     (progn
                        (setq coffee-js-mode 'javascript-mode))))
  (company-mode status "installed" recipe
                (:name company-mode :type git :url "https://github.com/company-mode/company-mode.git"))
@@ -85,7 +87,7 @@
  (direx status "installed" recipe
         (:name direx :type git :url "https://github.com/m2ym/direx-el.git"))
  (dockerfile-mode status "installed" recipe
-                  (:name dockerfile-mode :description "An emacs mode for handling Dockerfiles." :type github :pkgname "spotify/dockerfile-mode" :post-init
+                  (:name dockerfile-mode :description "An emacs mode for handling Dockerfiles." :type github :pkgname "spotify/dockerfile-mode" :prepare
                          (progn
                            (add-to-list 'auto-mode-alist
                                         '("Dockerfile\\'" . dockerfile-mode)))))
@@ -96,7 +98,7 @@
  (el-get status "installed" recipe
          (:name el-get :website "https://github.com/dimitri/el-get#readme" :description "Manage the external elisp bits and pieces you depend upon." :type github :branch "master" :pkgname "dimitri/el-get" :info "." :compile
                 ("el-get.*\\.el$" "methods/")
-                :load "el-get.el" :post-init
+                :features el-get :post-init
                 (when
                     (memq 'el-get
                           (bound-and-true-p package-activated-list))
@@ -243,313 +245,324 @@
                         (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
                         (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))))
  (helm status "installed" recipe
-       (:name helm :description "Emacs incremental and narrowing framework" :type github :pkgname "emacs-helm/helm" :build
+       (:name helm :description "Emacs incremental and narrowing framework" :type github :pkgname "emacs-helm/helm" :autoloads "helm-autoloads" :build
               ("make")
               :build/darwin
               `(("make" ,(format "EMACS_COMMAND=%s" el-get-emacs)))
               :build/windows-nt
-              (with-temp-file "helm-autoload.el" nil)))
- (helm-ag-r status "installed" recipe
-            (:name helm-ag-r :type git :url "https://github.com/yuutayamada/helm-ag-r.git"))
- (helm-c-yasnippet status "installed" recipe
-                   (:name helm-c-yasnippet :type github :pkgname "emacs-helm/helm-c-yasnippet" :description "Helm source for yasnippet.el." :features helm-c-yasnippet :depends
-                          (helm yasnippet)))
- (helm-descbinds status "installed" recipe
-                 (:name helm-descbinds :type git :url "https://github.com/emacs-helm/helm-descbinds.git"))
- (helm-ghq status "installed" recipe
-           (:name helm-ghq :type git :url "https://github.com/masutaka/emacs-helm-ghq.git"))
- (helm-github-issues status "installed" recipe
-                     (:name helm-github-issues :type git :url "https://github.com/syohex/emacs-helm-github-issues.git"))
- (helm-go status "installed" recipe
-          (:name helm-go :type git :url "https://github.com/yuutayamada/helm-go.git"))
- (helm-google status "installed" recipe
-              (:name helm-google :depends
-                     (google)
-                     :type git :url "https://github.com/steckerhalter/helm-google.git"))
- (helm-gtags status "installed" recipe
-             (:name helm-gtags :type git :url "https://github.com/syohex/emacs-helm-gtags.git"))
- (helm-migemo status "installed" recipe
-              (:name helm-migemo :type git :url "https://github.com/emacs-helm/helm-migemo.git"))
- (helm-swoop status "installed" recipe
-             (:name helm-swoop :type git :url "https://github.com/ShingoFukuyama/helm-swoop.git"))
- (hi2 status "installed" recipe
-      (:name hi2 :description "Indentation module for Haskell mode" :type github :pkgname "errge/hi2" :prepare
-             (autoload 'turn-on-hi2 "hi2" nil t)
-             :depends
-             (haskell-mode)))
- (highlight-indentation status "installed" recipe
-                        (:name highlight-indentation :description "Function for highlighting indentation" :type git :url "https://github.com/antonj/Highlight-Indentation-for-Emacs"))
- (hl-line+ status "installed" recipe
-           (:name hl-line+ :auto-generated t :type emacswiki :description "Extensions to hl-line.el." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/hl-line+.el"))
- (hooglel status "installed" recipe
-          (:name hooglel :type github :pkgname "yuutayamada/hooglel-el"))
- (howm status "installed" recipe
-       (:name howm :website "http://howm.sourceforge.jp/" :description "Write fragmentarily and read collectively." :type http-tar :options
-              ("xzf")
-              :url "http://howm.sourceforge.jp/a/howm-1.4.1.tar.gz" :build
-              `(("./configure" ,(concat "--with-emacs=" el-get-emacs))
-                "make")))
- (html-helper-mode status "installed" recipe
-                   (:name html-helper-mode :type git :url "https://github.com/emacsmirror/html-helper-mode.git"))
- (htmlize status "installed" recipe
-          (:type github :pkgname "emacsmirror/htmlize" :name htmlize :website "http://www.emacswiki.org/emacs/Htmlize" :description "Convert buffer text and decorations to HTML." :type emacsmirror :localname "htmlize.el"))
- (image-dired+ status "installed" recipe
-               (:name image-dired+ :type git :description "I added image-dired+" :url "https://github.com/mhayashi1120/Emacs-image-diredx.git"))
- (inf-ruby status "installed" recipe
-           (:name inf-ruby :description "Inferior Ruby Mode - ruby process in a buffer." :type github :pkgname "nonsequitur/inf-ruby"))
- (jade status "installed" recipe
-       (:name jade :type git :url "https://github.com/brianc/jade-mode.git"))
- (javadoc-lookup status "installed" recipe
-                 (:name javadoc-lookup :type git :url "https://github.com/skeeto/javadoc-lookup.git"))
- (jazzradio status "installed" recipe
-            (:name jazzradio :type git :url "https://github.com/syohex/emacs-jazzradio.git"))
- (jedi status "installed" recipe
-       (:name jedi :description "An awesome Python auto-completion for Emacs" :type github :pkgname "tkf/emacs-jedi" :submodule nil :depends
-              (epc auto-complete python-environment)))
- (js2-mode status "installed" recipe
-           (:name js2-mode :type git :url "https://github.com/mooz/js2-mode.git" :build
-                  ("make")))
- (jsfmt status "installed" recipe
-        (:name jsfmt :type git :url "https://github.com/brettlangdon/jsfmt.el.git"))
- (json status "installed" recipe
-       (:name json :description "JavaScript Object Notation parser / generator" :type http :builtin "23" :url "http://edward.oconnor.cx/elisp/json.el"))
- (json-mode status "installed" recipe
-            (:name json-mode :type git :url "https://github.com/joshwnj/json-mode.git" :depends
-                   (json-reformat json-snatcher)))
- (json-reformat status "installed" recipe
-                (:name json-reformat :type git :url "https://github.com/gongo/json-reformat.git"))
- (json-snatcher status "installed" recipe
-                (:name json-snatcher :type git :url "https://github.com/Sterlingg/json-snatcher.git"))
- (jstestmacs status "installed" recipe
-             (:name jstestmacs :type git :url "https://github.com/yuutayamada/jstestmacs.git"))
- (key-chord status "installed" recipe
-            (:name key-chord :description "Map pairs of simultaneously pressed keys to commands." :type emacswiki :features "key-chord"))
- (kv status "installed" recipe
-     (:name kv :description "Key/Value collection type functions: for alists, hashtables and plists. Useful stuff." :type github :pkgname "nicferrier/emacs-kv"))
- (less-css-mode status "installed" recipe
-                (:name less-css-mode :type git :url "https://github.com/purcell/less-css-mode.git"))
- (lingr status "installed" recipe
-        (:name lingr :type git :url "https://github.com/lugecy/lingr-el.git"))
- (lispxmp status "installed" recipe
-          (:name lispxmp :description "Automagic emacs lisp code annotation" :type emacswiki :features "lispxmp"))
- (logalimacs status "installed" recipe
-             (:name logalimacs :type git :url "https://github.com/logaling/logalimacs.git"))
- (logito status "installed" recipe
-         (:name logito :type github :pkgname "sigma/logito" :description "logging library for Emacs" :website "http://github.com/sigma/logito"))
- (lookup status "installed" recipe
-         (:name lookup :type github :build
-                ("./autogen.sh && ./configure && make")
-                :url "https://github.com/lookup2/lookup2.git"))
- (lua-mode status "installed" recipe
-           (:name lua-mode :description "A major-mode for editing Lua scripts" :depends
-                  (ample-regexps)
-                  :type github :pkgname "immerrr/lua-mode"))
- (mag-menu status "installed" recipe
-           (:name mag-menu :type git :url "https://github.com/chumpage/mag-menu.git"))
- (magit status "installed" recipe
-        (:name magit :type git :build
-               ("make clean" "emacs -q --batch -L . -L ../git-modes/ -f batch-byte-compile *.el" "makeinfo -o magit.info magit.texi" "ginstall-info --dir=dir magit.info")
-               :depends
-               (git-modes)
-               :url "https://github.com/magit/magit.git"))
- (markdown-mode status "installed" recipe
-                (:name markdown-mode :type git :url "https://github.com/milkypostman/markdown-mode.git"))
- (mew status "installed" recipe
-      (:name mew :type git :build
-             ("./configure && make")
-             :url "https://github.com/kazu-yamamoto/Mew.git"))
- (migemo status "installed" recipe
-         (:name migemo :type git :url "https://github.com/emacs-jp/migemo.git"))
- (minor-mode-hack status "installed" recipe
-                  (:name minor-mode-hack :auto-generated t :type emacswiki :description "Change priority of minor-mode keymaps" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/minor-mode-hack.el"))
- (mmm-mode status "installed" recipe
-           (:name mmm-mode :type git :url "https://github.com/purcell/mmm-mode.git"))
- (mode-compile status "installed" recipe
-               (:name mode-compile :type git :url "https://github.com/yuutayamada/mode-compile.git"))
- (mozrepl status "installed" recipe
-          (:name mozrepl :type git :url "https://github.com/bard/mozrepl.git" :load-path
-                 ("./" "./chrome/content")))
- (multi-term status "installed" recipe
-             (:name multi-term :type http :url "http://www.emacswiki.org/emacs/download/multi-term.el"))
- (multiple-cursors status "installed" recipe
-                   (:name multiple-cursors :description "An experiment in adding multiple cursors to emacs" :type github :pkgname "magnars/multiple-cursors.el"))
- (myhistory status "installed" recipe
-            (:name myhistory :type git :url "https://github.com/yuutayamada/myhistory.git"))
- (names status "installed" recipe
-        (:name names :type git :url "https://github.com/Bruce-Connor/names.git"))
- (navi2ch status "installed" recipe
-          (:name navi2ch :type git :url "https://github.com/naota/navi2ch.git" :build
-                 ("./configure && make")
-                 :load-path
-                 ("./" "./contrib" "./doc")))
- (node-console status "installed" recipe
-               (:name node-console :type git :url "https://github.com/yuutayamada/node-console"))
- (noflet status "installed" recipe
-         (:name noflet :type git :url "https://github.com/nicferrier/emacs-noflet.git"))
- (nyan-mode status "installed" recipe
-            (:name nyan-mode :description "Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!" :type github :pkgname "TeMPOraL/nyan-mode" :features nyan-mode))
- (ob-go status "installed" recipe
-        (:name ob-go :type git :depends
-               (org-mode)
-               :url "https://github.com/pope/ob-go.git"))
- (open-junk-file status "installed" recipe
-                 (:name open-junk-file :description "Open a junk (memo) file to try-and-error" :type emacswiki :features "open-junk-file"))
- (org-mode status "installed" recipe
-           (:name org-mode :type git :description "I added org-mode" :build
-                  ("make clean" "make")
-                  :url "git://orgmode.org/org-mode.git"))
- (org-trello status "installed" recipe
-             (:name org-trello :type git :url "https://github.com/ardumont/org-trello.git" :depends
-                    (dash request elnode cl-lib json elnode s esxml kv)))
- (orgtbl-aggregate status "installed" recipe
-                   (:name orgtbl-aggregate :type git :url "https://github.com/tbanel/orgaggregate.git"))
- (ov status "installed" recipe
-     (:name ov :type git :url "https://github.com/ShingoFukuyama/ov.el.git"))
- (package status "installed" recipe
-          (:name package :description "ELPA implementation (\"package.el\") from Emacs 24" :builtin "24" :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/ba08b24186711eaeb3748f3d1f23e2c2d9ed0d09:/lisp/emacs-lisp/package.el" :shallow nil :features package :post-init
-                 (progn
-                   (let
-                       ((old-package-user-dir
-                         (expand-file-name
-                          (convert-standard-filename
-                           (concat
-                            (file-name-as-directory default-directory)
-                            "elpa")))))
-                     (when
-                         (file-directory-p old-package-user-dir)
-                       (add-to-list 'package-directory-list old-package-user-dir)))
-                   (setq package-archives
-                         (bound-and-true-p package-archives))
-                   (mapc
-                    (lambda
-                      (pa)
-                      (add-to-list 'package-archives pa 'append))
-                    '(("ELPA" . "http://tromey.com/elpa/")
-                      ("melpa" . "http://melpa.org/packages/")
-                      ("gnu" . "http://elpa.gnu.org/packages/")
-                      ("marmalade" . "http://marmalade-repo.org/packages/")
-                      ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
- (package-emacs23 status "installed" recipe
-                  (:name package-emacs23 :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el"))
- (package-latest status "installed" recipe
-                 (:name package-latest :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/HEAD:/lisp/emacs-lisp/package.el" :load-path "./"))
- (pane status "installed" recipe
-       (:name pane :type git :url "https://github.com/yuutayamada/pane.git"))
- (pangu-spacing status "installed" recipe
-                (:name pangu-spacing :type git :url "https://github.com/coldnew/pangu-spacing.git"))
- (paredit status "installed" recipe
-          (:name paredit :description "Minor mode for editing parentheses" :type http :prepare
-                 (progn
-                   (autoload 'enable-paredit-mode "paredit")
-                   (autoload 'disable-paredit-mode "paredit"))
-                 :url "http://mumble.net/~campbell/emacs/paredit.el"))
- (pcache status "installed" recipe
-         (:name pcache :description "persistent caching for Emacs" :type github :pkgname "sigma/pcache"))
- (pkg-info status "installed" recipe
-           (:name pkg-info :type git :url "https://github.com/lunaryorn/pkg-info.el.git"))
- (point-undo status "installed" recipe
-             (:name point-undo :auto-generated t :type emacswiki :description "undo/redo position" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/point-undo.el"))
- (popup status "installed" recipe
-        (:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :submodule nil :pkgname "auto-complete/popup-el"))
- (popwin status "installed" recipe
-         (:name popwin :description "Popup Window Manager." :website "https://github.com/m2ym/popwin-el" :type github :pkgname "m2ym/popwin-el" :load-path
-                ("." "misc")))
- (puppet-mode status "installed" recipe
-              (:name puppet-mode :description "A simple mode for editing puppet manifests" :type github :pkgname "lunaryorn/puppet-mode" :website "https://github.com/lunaryorn/puppet-mode" :prepare
-                     (progn
-                       (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests" t)
-                       (add-to-list 'auto-mode-alist
-                                    '("\\.pp$" . puppet-mode)))))
- (python-environment status "installed" recipe
-                     (:name python-environment :description "Python virtualenv API for Emacs Lisp" :type github :pkgname "tkf/emacs-python-environment" :depends
-                            (deferred)))
- (queue status "installed" recipe
-        (:name queue :description "Queue data structure" :type elpa))
- (quickrun status "installed" recipe
-           (:name quickrun :description "Run commands quickly" :website "https://github.com/syohex/emacs-quickrun" :type github :pkgname "syohex/emacs-quickrun" :features "quickrun"))
- (racer status "installed" recipe
-        (:name racer :type git :url "https://github.com/phildawes/racer.git"))
- (rainbow-delimiters status "installed" recipe
-                     (:name rainbow-delimiters :website "https://github.com/jlr/rainbow-delimiters#readme" :description "Color nested parentheses, brackets, and braces according to their depth." :type github :pkgname "jlr/rainbow-delimiters"))
- (request status "installed" recipe
-          (:name request :description "Easy HTTP request for Emacs Lisp" :type github :submodule nil :pkgname "tkf/emacs-request"))
- (revive status "installed" recipe
-         (:name revive :type http :url "http://www.gentei.org/~yuuji/software/revive.el"))
- (ruby-block status "installed" recipe
-             (:name ruby-block :type http :url "https://raw.github.com/emacsmirror/emacswiki.org/master/ruby-block.el" :description "highlight matching block"))
- (ruby-electric status "installed" recipe
-                (:name ruby-electric :description "Electric commands editing for ruby files" :type github :pkgname "qoobaa/ruby-electric" :post-init
-                       (add-hook 'ruby-mode-hook 'ruby-electric-mode)))
- (rubydb3x status "installed" recipe
-           (:name rubydb3x :type http :url "http://bugs.ruby-lang.org/projects/ruby-trunk/repository/raw/misc/rubydb3x.el"))
- (rust-mode status "installed" recipe
-            (:name rust-mode :type http :url "https://raw.github.com/mozilla/rust/master/src/etc/emacs/rust-mode.el" :description "Emacs mode for Rust"))
- (s status "installed" recipe
-    (:name s :description "The long lost Emacs string manipulation library." :type github :pkgname "magnars/s.el"))
- (scala-mode2 status "installed" recipe
-              (:name scala-mode2 :type github :pkgname "hvesalai/scala-mode2"))
- (sdic status "installed" recipe
-       (:name sdic :type git :url "https://github.com/emacsattic/sdic.git"))
- (sequential-command status "installed" recipe
-                     (:name sequential-command :type http :url "http://www.emacswiki.org/cgi-bin/wiki/download/sequential-command.el"))
- (sequential-command-config status "installed" recipe
-                            (:name sequential-command-config :type http :url "http://www.emacswiki.org/cgi-bin/wiki/download/sequential-command-config.el"))
- (set-perl5lib status "installed" recipe
-               (:name set-perl5lib :type http :url "http://coderepos.org/share/browser/lang/elisp/set-perl5lib/set-perl5lib.el?format=txt" :description "set path into PERL5LIB if its file path includes 'lib' directory" :website "http://d.hatena.ne.jp/sun-basix/20080117/1200528765" :localname "set-perl5lib.el"))
- (slime status "installed" recipe
-        (:name slime :type git :url "https://github.com/slime/slime.git" :load-path
-               ("./" "./contrib")))
- (slime-js status "installed" recipe
-           (:name slime-js :type git :url "https://github.com/swank-js/slime-js.git"))
- (smart-tabs-mode status "installed" recipe
-                  (:name smart-tabs-mode :type git :url "https://github.com/jcsalomon/smarttabs.git"))
- (smartparens status "installed" recipe
-              (:name smartparens :description "Autoinsert pairs of defined brackets and wrap regions" :type github :pkgname "Fuco1/smartparens" :depends dash))
- (smtpmail-multi status "installed" recipe
-                 (:name smtpmail-multi :type http :url "http://www.emacswiki.org/emacs-en/download/smtpmail-multi.el"))
- (splitter status "installed" recipe
-           (:name splitter :type http :url "https://raw.githubusercontent.com/chumpage/chumpy-windows/master/splitter.el"))
- (sql-indent status "installed" recipe
-             (:name sql-indent :type git :url "https://github.com/yuutayamada/sql-indent.git"))
- (sudo-ext status "installed" recipe
-           (:name sudo-ext :type http :url "http://www.emacswiki.org/cgi-bin/wiki/download/sudo-ext.el"))
- (tabbar status "installed" recipe
-         (:name tabbar :description "Display a tab bar in the header line." :type github :pkgname "dholm/tabbar" :lazy t))
- (transpose-frame status "installed" recipe
-                  (:name transpose-frame :type git :url "https://github.com/emacsmirror/transpose-frame.git"))
- (tron-theme status "installed" recipe
-             (:name tron-theme :type git :url "https://github.com/ivanmarcin/emacs-tron-theme.git"))
- (twittering-mode status "installed" recipe
-                  (:name twittering-mode :type git :url "https://github.com/hayamiz/twittering-mode.git"))
- (undo-tree status "installed" recipe
-            (:name undo-tree :type git :url "https://github.com/emacsmirror/undo-tree.git"))
- (viewer status "installed" recipe
-         (:name viewer :auto-generated t :type emacswiki :description "View-mode extension" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/viewer.el"))
- (vimrc-mode status "installed" recipe
-             (:name vimrc-mode :description "Enables syntax highlighting for .vimrc/_vimrc files" :type github :pkgname "mcandre/vimrc-mode" :prepare
-                    (progn
-                      (add-to-list 'auto-mode-alist
-                                   '(".vim\\(rc\\|peratorrc\\)?$" . vimrc-mode)))))
- (vlf status "installed" recipe
-      (:name vlf :type git :url "https://github.com/m00natic/vlfi.git"))
- (w3m status "installed" recipe
-      (:name w3m :type git :url "https://github.com/emacsmirror/w3m.git"))
- (web status "installed" recipe
-      (:name web :description "A useful HTTP client in EmacsLisp" :depends fakir :type github :pkgname "nicferrier/emacs-web"))
- (web-mode status "installed" recipe
-           (:name web-mode :type git :url "https://github.com/fxbois/web-mode.git"))
- (wgrep status "installed" recipe
-        (:name wgrep :type git :url "https://github.com/mhayashi1120/Emacs-wgrep.git"))
- (window-layout status "installed" recipe
-                (:name window-layout :description "window layout manager" :website "https://github.com/kiwanami/emacs-window-layout" :type github :pkgname "kiwanami/emacs-window-layout" :features "window-layout"))
- (windows status "installed" recipe
-          (:name windows :type http :url "http://www.gentei.org/~yuuji/software/euc/windows.el"))
- (xclip status "installed" recipe
-        (:name xclip :description "Emacs Interface to XClip" :type http :url "http://www.mail-archive.com/gnu-emacs-sources@gnu.org/msg01336/xclip.el"))
- (yaml-mode status "installed" recipe
-            (:name yaml-mode :type git :url "https://github.com/yoshiki/yaml-mode"))
- (yasnippet status "installed" recipe
-            (:name yasnippet :website "https://github.com/capitaomorte/yasnippet.git" :description "YASnippet is a template system for Emacs." :type github :pkgname "capitaomorte/yasnippet" :compile "yasnippet.el" :submodule nil :build
-                   (("git" "submodule" "update" "--init" "--" "snippets"))))
- (zen-coding status "installed" recipe
-             (:name zen-coding :type git :url "https://github.com/rooney/zencoding.git")))
+              (let
+                  ((generated-autoload-file
+                    (expand-file-name "helm-autoloads.el"))
+                   \
+                   (backup-inhibited t))
+              (update-directory-autoloads default-directory)
+              nil)))
+(helm-ag-r status "installed" recipe
+(:name helm-ag-r :type git :url "https://github.com/yuutayamada/helm-ag-r.git"))
+(helm-c-yasnippet status "installed" recipe
+(:name helm-c-yasnippet :type github :pkgname "emacs-helm/helm-c-yasnippet" :description "Helm source for yasnippet.el." :features helm-c-yasnippet :depends
+(helm yasnippet)))
+(helm-descbinds status "installed" recipe
+(:name helm-descbinds :type git :url "https://github.com/emacs-helm/helm-descbinds.git"))
+(helm-ghq status "installed" recipe
+(:name helm-ghq :type git :url "https://github.com/masutaka/emacs-helm-ghq.git"))
+(helm-github-issues status "installed" recipe
+(:name helm-github-issues :type git :url "https://github.com/syohex/emacs-helm-github-issues.git"))
+(helm-go status "installed" recipe
+(:name helm-go :type git :url "https://github.com/yuutayamada/helm-go.git"))
+(helm-google status "installed" recipe
+(:name helm-google :depends
+(google)
+:type git :url "https://github.com/steckerhalter/helm-google.git"))
+(helm-gtags status "installed" recipe
+(:name helm-gtags :type git :url "https://github.com/syohex/emacs-helm-gtags.git"))
+(helm-migemo status "installed" recipe
+(:name helm-migemo :type git :url "https://github.com/emacs-helm/helm-migemo.git"))
+(helm-swoop status "installed" recipe
+(:name helm-swoop :type git :url "https://github.com/ShingoFukuyama/helm-swoop.git"))
+(hi2 status "installed" recipe
+(:name hi2 :description "Indentation module for Haskell mode" :type github :pkgname "errge/hi2" :prepare
+(autoload 'turn-on-hi2 "hi2" nil t)
+:depends
+(haskell-mode)))
+(highlight-indentation status "installed" recipe
+(:name highlight-indentation :description "Function for highlighting indentation" :type git :url "https://github.com/antonj/Highlight-Indentation-for-Emacs"))
+(hl-line+ status "installed" recipe
+(:name hl-line+ :auto-generated t :type emacswiki :description "Extensions to hl-line.el." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/hl-line+.el"))
+(hooglel status "installed" recipe
+(:name hooglel :type github :pkgname "yuutayamada/hooglel-el"))
+(howm status "installed" recipe
+(:name howm :website "http://howm.sourceforge.jp/" :description "Write fragmentarily and read collectively." :type http-tar :options
+("xzf")
+:url "http://howm.sourceforge.jp/a/howm-1.4.1.tar.gz" :build
+`(("./configure" ,(concat "--with-emacs=" el-get-emacs))
+"make")))
+(html-helper-mode status "installed" recipe
+(:name html-helper-mode :type git :url "https://github.com/emacsmirror/html-helper-mode.git"))
+(htmlize status "installed" recipe
+(:type github :pkgname "emacsmirror/htmlize" :name htmlize :website "http://www.emacswiki.org/emacs/Htmlize" :description "Convert buffer text and decorations to HTML." :type emacsmirror :localname "htmlize.el"))
+(idle-require status "installed" recipe
+(:name idle-require :type git :url "https://github.com/nschum/idle-require.el.git"))
+(image-dired+ status "installed" recipe
+(:name image-dired+ :type git :description "I added image-dired+" :url "https://github.com/mhayashi1120/Emacs-image-diredx.git"))
+(inf-ruby status "installed" recipe
+(:name inf-ruby :description "Inferior Ruby Mode - ruby process in a buffer." :type github :pkgname "nonsequitur/inf-ruby"))
+(jade status "installed" recipe
+(:name jade :type git :url "https://github.com/brianc/jade-mode.git"))
+(javadoc-lookup status "installed" recipe
+(:name javadoc-lookup :type git :url "https://github.com/skeeto/javadoc-lookup.git"))
+(jazzradio status "installed" recipe
+(:name jazzradio :type git :url "https://github.com/syohex/emacs-jazzradio.git"))
+(jedi status "installed" recipe
+(:name jedi :description "An awesome Python auto-completion for Emacs" :type github :pkgname "tkf/emacs-jedi" :submodule nil :depends
+(epc auto-complete python-environment)))
+(js2-mode status "installed" recipe
+(:name js2-mode :type git :url "https://github.com/mooz/js2-mode.git" :build
+("make")))
+(jsfmt status "installed" recipe
+(:name jsfmt :type git :url "https://github.com/brettlangdon/jsfmt.el.git"))
+(json status "installed" recipe
+(:name json :description "JavaScript Object Notation parser / generator" :type http :builtin "23" :url "http://edward.oconnor.cx/elisp/json.el"))
+(json-mode status "installed" recipe
+(:name json-mode :type git :url "https://github.com/joshwnj/json-mode.git" :depends
+(json-reformat json-snatcher)))
+(json-reformat status "installed" recipe
+(:name json-reformat :type git :url "https://github.com/gongo/json-reformat.git"))
+(json-snatcher status "installed" recipe
+(:name json-snatcher :type git :url "https://github.com/Sterlingg/json-snatcher.git"))
+(jstestmacs status "installed" recipe
+(:name jstestmacs :type git :url "https://github.com/yuutayamada/jstestmacs.git"))
+(key-chord status "installed" recipe
+(:name key-chord :description "Map pairs of simultaneously pressed keys to commands." :type emacswiki :features "key-chord"))
+(kv status "installed" recipe
+(:name kv :description "Key/Value collection type functions: for alists, hashtables and plists. Useful stuff." :type github :pkgname "nicferrier/emacs-kv"))
+(less-css-mode status "installed" recipe
+(:name less-css-mode :type git :url "https://github.com/purcell/less-css-mode.git"))
+(let-alist status "installed" recipe
+(:name let-alist :website "http://elpa.gnu.org/packages/let-alist.html" :description "Easily let-bind values of an assoc-list by their names" :type elpa :builtin "25"))
+(lingr status "installed" recipe
+(:name lingr :type git :url "https://github.com/lugecy/lingr-el.git"))
+(lispxmp status "installed" recipe
+(:name lispxmp :description "Automagic emacs lisp code annotation" :type emacswiki :features "lispxmp"))
+(logalimacs status "installed" recipe
+(:name logalimacs :type git :url "https://github.com/logaling/logalimacs.git"))
+(logito status "installed" recipe
+(:name logito :type github :pkgname "sigma/logito" :description "logging library for Emacs" :website "http://github.com/sigma/logito"))
+(lookup status "installed" recipe
+(:name lookup :type github :build
+("./autogen.sh && ./configure && make")
+:url "https://github.com/lookup2/lookup2.git"))
+(lua-mode status "installed" recipe
+(:name lua-mode :type git :url "https://github.com/immerrr/lua-mode.git"))
+(mag-menu status "installed" recipe
+(:name mag-menu :type git :url "https://github.com/chumpage/mag-menu.git"))
+(magit status "installed" recipe
+(:name magit :type git :build
+("make clean" "emacs -q --batch -L . -L ../git-modes/ -f batch-byte-compile *.el" "makeinfo -o magit.info magit.texi" "ginstall-info --dir=dir magit.info")
+:depends
+(git-modes)
+:url "https://github.com/magit/magit.git"))
+(markdown-mode status "installed" recipe
+(:name markdown-mode :type git :url "https://github.com/milkypostman/markdown-mode.git"))
+(mew status "installed" recipe
+(:name mew :type git :build
+("./configure && make")
+:url "https://github.com/kazu-yamamoto/Mew.git"))
+(migemo status "installed" recipe
+(:name migemo :type git :url "https://github.com/emacs-jp/migemo.git"))
+(minor-mode-hack status "installed" recipe
+(:name minor-mode-hack :auto-generated t :type emacswiki :description "Change priority of minor-mode keymaps" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/minor-mode-hack.el"))
+(mmm-mode status "installed" recipe
+(:name mmm-mode :type git :url "https://github.com/purcell/mmm-mode.git"))
+(mode-compile status "installed" recipe
+(:name mode-compile :type git :url "https://github.com/yuutayamada/mode-compile.git"))
+(mozrepl status "installed" recipe
+(:name mozrepl :type git :url "https://github.com/bard/mozrepl.git" :load-path
+("./" "./chrome/content")))
+(multi-term status "installed" recipe
+(:name multi-term :type http :url "http://www.emacswiki.org/emacs/download/multi-term.el"))
+(multiple-cursors status "installed" recipe
+(:name multiple-cursors :description "An experiment in adding multiple cursors to emacs" :type github :pkgname "magnars/multiple-cursors.el"))
+(myhistory status "installed" recipe
+(:name myhistory :type git :url "https://github.com/yuutayamada/myhistory.git"))
+(names status "installed" recipe
+(:name names :type git :url "https://github.com/Bruce-Connor/names.git"))
+(navi2ch status "installed" recipe
+(:name navi2ch :type git :url "https://github.com/naota/navi2ch.git" :build
+("./configure && make")
+:load-path
+("./" "./contrib" "./doc")))
+(node-console status "installed" recipe
+(:name node-console :type git :url "https://github.com/yuutayamada/node-console"))
+(noflet status "installed" recipe
+(:name noflet :type git :url "https://github.com/nicferrier/emacs-noflet.git"))
+(nyan-mode status "installed" recipe
+(:name nyan-mode :description "Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!" :type github :pkgname "TeMPOraL/nyan-mode" :features nyan-mode))
+(ob-go status "installed" recipe
+(:name ob-go :type git :depends
+(org-mode)
+:url "https://github.com/pope/ob-go.git"))
+(open-junk-file status "installed" recipe
+(:name open-junk-file :description "Open a junk (memo) file to try-and-error" :type emacswiki :features "open-junk-file"))
+(org-mode status "installed" recipe
+(:name org-mode :type git :description "I added org-mode" :build
+("make clean" "make")
+:url "git://orgmode.org/org-mode.git"))
+(org-trello status "installed" recipe
+(:name org-trello :type git :url "https://github.com/ardumont/org-trello.git" :depends
+(dash request elnode cl-lib json elnode s esxml kv)))
+(orgtbl-aggregate status "installed" recipe
+(:name orgtbl-aggregate :type git :url "https://github.com/tbanel/orgaggregate.git"))
+(ov status "installed" recipe
+(:name ov :type git :url "https://github.com/ShingoFukuyama/ov.el.git"))
+(package status "installed" recipe
+(:name package :description "ELPA implementation (\"package.el\") from Emacs 24" :builtin "24" :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/ba08b24186711eaeb3748f3d1f23e2c2d9ed0d09:/lisp/emacs-lisp/package.el" :shallow nil :features package :post-init
+(progn
+(let
+((old-package-user-dir
+(expand-file-name
+(convert-standard-filename
+(concat
+(file-name-as-directory default-directory)
+"elpa")))))
+(when
+(file-directory-p old-package-user-dir)
+(add-to-list 'package-directory-list old-package-user-dir)))
+(setq package-archives
+(bound-and-true-p package-archives))
+(mapc
+(lambda
+(pa)
+(add-to-list 'package-archives pa 'append))
+'(("ELPA" . "http://tromey.com/elpa/")
+("melpa" . "http://melpa.org/packages/")
+("gnu" . "http://elpa.gnu.org/packages/")
+("marmalade" . "http://marmalade-repo.org/packages/")
+("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
+(package-emacs23 status "installed" recipe
+(:name package-emacs23 :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el"))
+(package-latest status "installed" recipe
+(:name package-latest :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/HEAD:/lisp/emacs-lisp/package.el" :load-path "./"))
+(pane status "installed" recipe
+(:name pane :type git :url "https://github.com/yuutayamada/pane.git"))
+(pangu-spacing status "installed" recipe
+(:name pangu-spacing :type git :url "https://github.com/coldnew/pangu-spacing.git"))
+(paredit status "installed" recipe
+(:name paredit :description "Minor mode for editing parentheses" :type http :prepare
+(progn
+(autoload 'enable-paredit-mode "paredit")
+(autoload 'disable-paredit-mode "paredit"))
+:url "http://mumble.net/~campbell/emacs/paredit.el"))
+(pcache status "installed" recipe
+(:name pcache :description "persistent caching for Emacs" :type github :pkgname "sigma/pcache"))
+(pkg-info status "installed" recipe
+(:name pkg-info :type git :url "https://github.com/lunaryorn/pkg-info.el.git"))
+(point-undo status "installed" recipe
+(:name point-undo :auto-generated t :type emacswiki :description "undo/redo position" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/point-undo.el"))
+(popup status "installed" recipe
+(:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :submodule nil :pkgname "auto-complete/popup-el"))
+(popwin status "installed" recipe
+(:name popwin :description "Popup Window Manager." :website "https://github.com/m2ym/popwin-el" :type github :pkgname "m2ym/popwin-el" :load-path
+("." "misc")))
+(puppet-mode status "installed" recipe
+(:name puppet-mode :description "A simple mode for editing puppet manifests" :type github :pkgname "lunaryorn/puppet-mode" :website "https://github.com/lunaryorn/puppet-mode" :prepare
+(progn
+(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests" t)
+(add-to-list 'auto-mode-alist
+'("\\.pp$" . puppet-mode)))))
+(python-environment status "installed" recipe
+(:name python-environment :description "Python virtualenv API for Emacs Lisp" :type github :pkgname "tkf/emacs-python-environment" :depends
+(deferred)))
+(queue status "installed" recipe
+(:name queue :description "Queue data structure" :type elpa))
+(quickrun status "installed" recipe
+(:name quickrun :description "Run commands quickly" :website "https://github.com/syohex/emacs-quickrun" :type github :pkgname "syohex/emacs-quickrun" :features "quickrun"))
+(racer status "installed" recipe
+(:name racer :type git :url "https://github.com/phildawes/racer.git"))
+(rainbow-delimiters status "installed" recipe
+(:name rainbow-delimiters :website "https://github.com/jlr/rainbow-delimiters#readme" :description "Color nested parentheses, brackets, and braces according to their depth." :type github :pkgname "jlr/rainbow-delimiters"))
+(request status "installed" recipe
+(:name request :description "Easy HTTP request for Emacs Lisp" :type github :submodule nil :pkgname "tkf/emacs-request"))
+(revive status "installed" recipe
+(:name revive :type http :url "http://www.gentei.org/~yuuji/software/revive.el"))
+(ruby-block status "installed" recipe
+(:name ruby-block :type http :url "https://raw.github.com/emacsmirror/emacswiki.org/master/ruby-block.el" :description "highlight matching block"))
+(ruby-electric status "installed" recipe
+(:name ruby-electric :description "Electric commands editing for ruby files" :type github :pkgname "qoobaa/ruby-electric" :post-init
+(add-hook 'ruby-mode-hook 'ruby-electric-mode)))
+(rubydb3x status "installed" recipe
+(:name rubydb3x :type http :url "http://bugs.ruby-lang.org/projects/ruby-trunk/repository/raw/misc/rubydb3x.el"))
+(rust-mode status "installed" recipe
+(:name rust-mode :type github :pkgname "rust-lang/rust-mode" :description "Emacs mode for Rust"))
+(s status "installed" recipe
+(:name s :description "The long lost Emacs string manipulation library." :type github :pkgname "magnars/s.el"))
+(scala-mode2 status "installed" recipe
+(:name scala-mode2 :type github :pkgname "hvesalai/scala-mode2"))
+(sdic status "installed" recipe
+(:name sdic :type git :url "https://github.com/emacsattic/sdic.git"))
+(sequential-command status "installed" recipe
+(:name sequential-command :type http :url "http://www.emacswiki.org/emacs/download/sequential-command.el"))
+(sequential-command-config status "installed" recipe
+(:name sequential-command-config :type http :url "http://www.emacswiki.org/emacs/download/sequential-command-config.el"))
+(set-perl5lib status "installed" recipe
+(:name set-perl5lib :type http :url "http://coderepos.org/share/browser/lang/elisp/set-perl5lib/set-perl5lib.el?format=txt" :description "set path into PERL5LIB if its file path includes 'lib' directory" :website "http://d.hatena.ne.jp/sun-basix/20080117/1200528765" :localname "set-perl5lib.el"))
+(slime status "installed" recipe
+(:name slime :type git :url "https://github.com/slime/slime.git" :load-path
+("./" "./contrib")))
+(slime-js status "installed" recipe
+(:name slime-js :type git :url "https://github.com/swank-js/slime-js.git"))
+(smart-tabs-mode status "installed" recipe
+(:name smart-tabs-mode :type git :url "https://github.com/jcsalomon/smarttabs.git"))
+(smartparens status "installed" recipe
+(:name smartparens :description "Autoinsert pairs of defined brackets and wrap regions" :type github :pkgname "Fuco1/smartparens" :depends dash))
+(smtpmail-multi status "installed" recipe
+(:name smtpmail-multi :type http :url "http://www.emacswiki.org/emacs-en/download/smtpmail-multi.el"))
+(splitter status "installed" recipe
+(:name splitter :type http :url "https://raw.githubusercontent.com/chumpage/chumpy-windows/master/splitter.el"))
+(sql-indent status "installed" recipe
+(:name sql-indent :type git :url "https://github.com/yuutayamada/sql-indent.git"))
+(sudo-ext status "installed" recipe
+(:name sudo-ext :type http :url "http://www.emacswiki.org/cgi-bin/wiki/download/sudo-ext.el"))
+(tabbar status "installed" recipe
+(:name tabbar :description "Display a tab bar in the header line." :type github :pkgname "dholm/tabbar" :lazy t))
+(transpose-frame status "installed" recipe
+(:name transpose-frame :type git :url "https://github.com/emacsmirror/transpose-frame.git"))
+(tron-theme status "installed" recipe
+(:name tron-theme :type git :url "https://github.com/ivanmarcin/emacs-tron-theme.git"))
+(twittering-mode status "installed" recipe
+(:name twittering-mode :type git :url "https://github.com/hayamiz/twittering-mode.git"))
+(undo-tree status "installed" recipe
+(:name undo-tree :type git :url "https://github.com/emacsmirror/undo-tree.git"))
+(viewer status "installed" recipe
+(:name viewer :auto-generated t :type emacswiki :description "View-mode extension" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/viewer.el"))
+(vimrc-mode status "installed" recipe
+(:name vimrc-mode :description "Enables syntax highlighting for .vimrc/_vimrc files" :type github :pkgname "mcandre/vimrc-mode" :prepare
+(progn
+(add-to-list 'auto-mode-alist
+'(".vim\\(rc\\|peratorrc\\)?$" . vimrc-mode)))))
+(vlf status "installed" recipe
+(:name vlf :type git :url "https://github.com/m00natic/vlfi.git"))
+(w3m status "installed" recipe
+(:name w3m :type git :url "https://github.com/emacsmirror/w3m.git"))
+(web status "installed" recipe
+(:name web :description "A useful HTTP client in EmacsLisp" :depends fakir :type github :pkgname "nicferrier/emacs-web"))
+(web-mode status "installed" recipe
+(:name web-mode :type git :url "https://github.com/fxbois/web-mode.git"))
+(wgrep status "installed" recipe
+(:name wgrep :type git :url "https://github.com/mhayashi1120/Emacs-wgrep.git"))
+(window-layout status "installed" recipe
+(:name window-layout :description "window layout manager" :website "https://github.com/kiwanami/emacs-window-layout" :type github :pkgname "kiwanami/emacs-window-layout" :features "window-layout"))
+(windows status "installed" recipe
+(:name windows :type http :url "http://www.gentei.org/~yuuji/software/euc/windows.el"))
+(xclip status "installed" recipe
+(:name xclip :description "Emacs Interface to XClip" :type http :url "http://www.mail-archive.com/gnu-emacs-sources@gnu.org/msg01336/xclip.el"))
+(yaml-mode status "installed" recipe
+(:name yaml-mode :type git :url "https://github.com/yoshiki/yaml-mode"))
+(yasnippet status "installed" recipe
+(:name yasnippet :website "https://github.com/capitaomorte/yasnippet.git" :description "YASnippet is a template system for Emacs." :type github :pkgname "capitaomorte/yasnippet" :features "yasnippet" :compile "yasnippet.el"))
+(yatemplate status "installed" recipe
+(:name yatemplate :depends
+(yasnippet)
+:type github :url "https://github.com/mineo/yatemplate.git"))
+(zen-coding status "installed" recipe
+(:name zen-coding :type git :url "https://github.com/rooney/zencoding.git")))

@@ -24,7 +24,7 @@
  literate-haskell-mode "\\.lhs\\'"
  jade-mode             "\\.\\(jade\\|amber\\)\\'"
  lua-mode              "\\.lua\\'"
- markdown-mode         "\\.\\(md\\|mkd\\|mkdn\\|markdown\\)\\'"
+ markdown-mode         "\\.\\(md\\|mdown\\|mkd\\|mkdn\\|markdown\\)\\'"
  org-mode              "\\.org\\'"
  cperl-mode            "\\.pl\\'"
  ruby-mode             "\\(\\.rb\\|[Rr]akefile\\|rake\\|Gemfile\\)\\'"

@@ -144,8 +144,7 @@ For example
        my/mew-gmail-prefixes))
 
 ;; save draft message before sending mail
-(defadvice mew-draft-send-message
-  (around ad-save-braft-buffer activate)
+(defadvice mew-draft-send-message (around ad-save-braft-buffer activate)
   (mew-draft-save-buffer)
   ad-do-it)
 

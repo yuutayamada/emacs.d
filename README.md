@@ -6,16 +6,19 @@ This repository is still work in progress.
 
 # How to use this repository?
 
-You can boot emacs as daemon in below configuration.(I'm configuring at .zlogin)
-Please change the file path of emacs and this file accordingly.
-
 ```sh
-emacs="${HOME}/local/vcs/git.savannah.gnu.org/emacs/src/emacs"
-emacsscript="$HOME/local/vcs/github.com/yuutayamada/emacs.d/emacs.sh"
-if test -f $emacs && test -f $emacsscript; then
-  source ${emacsscript}
-  if ! pgrep emacs > /dev/null; then
-    EmacsDaemon
-  fi
-fi
+emacsscript="path/to/this-repository/emacs.sh"
+epath="/.emacs/" source ${emacsscript}
+emacs
 ```
+
+## Change frame parameter
+You can set like this:
+```sh
+EMACS_FRAME_PARAMETERS=$(cat <<'END_HEREDOC'
+  (font . "Inconsolata 12")
+  (background-color . "black")
+END_HEREDOC
+)
+```
+

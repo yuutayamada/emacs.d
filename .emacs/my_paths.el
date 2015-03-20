@@ -21,6 +21,7 @@
   (defconst package-user-dir             (format "%spackage/" elisp-dir))
   ;; Override some variables
   (when (not (string= user-dir (expand-file-name "~/emacs.d")))
+    (defconst user-init-file               (format "%sinit" config-dir))
     (defconst eshell-directory-name        (format "%s.eshell/"     user-dir))
     (defconst save-place-file              (format "%s.save-places" user-dir))
     (defconst auto-save-list-file-name     (format "%sauto-save-list/.saves-"

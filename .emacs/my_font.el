@@ -15,9 +15,30 @@
 ;;     -maker-family-weight-slant-widthtype-style...->
 ;;      ->...-pixels-height-horiz-vert-spacing-width-registry-encoding
 
-;;; Code:
+;; Find fonts : (font-family-list)
+;; Rescale
 
+;; Font memo:
+;; mathematical fonts: stix, symbola
+;; install : ttf-ancient-fonts-symbola, fonts-stix
+
+;; example: use big font
+;; (set-fontset-font "fontset-default" nil (font-spec :size 15 :name "Symbola"))
+
+;;; Code:
 (require 'cl-lib)
+
+;; see also : http://www.hep.by/gnu/emacs/Fontsets.html
+(defun Y/init-fontset ()
+  "Set default(fallback) font."
+  (condition-case err
+      (cl-loop with fs = '("STIX" "STIX Math" "STIXGeneral" "Symbola"
+                           "DejaVu Sans Mono")
+               for font in fs
+               if (member font (font-family-list))
+               ;; Note that Symbola override Japanese "の" if you use prepend
+               do (set-fontset-font t 'unicode font nil 'append))
+    (error (message (format "Y/init-fontset: %s" err)))))
 
 (defun my/parse-xlfd-font-style (str)
   "Parse XLFD (X Logical Font Description) font style from STR."
@@ -27,35 +48,6 @@
            with attributes = (split-string str "-")
            for i from 0 upto (1- (length attributes))
            collect (cons (nth i index) (nth i attributes))))
-
-(defun my/define-jp-font (jp_font ratio)
-  "Work in progress."
-  (set-fontset-font "fontset-default" 'japanese-jisx0208
-                    `(,jp_font . "jisx0208.*"))
-
-  (set-fontset-font "fontset-default" 'katakana-jisx0201
-                    `(,jp_font . "jisx0201.*"))
-  (add-to-list 'face-font-rescale-alist
-               `(,(encode-coding-string jp_font 'emacs-mule) . ,ratio)))
-
-(defun my/change-font-partially (spec char_from &optional char_to)
-  "Change font partially.
-The SPEC is `font-spec', CHAR_FROM and CHAR_TO are range of char."
-  (set-fontset-font "fontset-default"
-                    (cons (string-to-char char_from)
-                          (string-to-char (or char_to char_from)))
-                    (cl-typecase spec
-                      (list (apply 'font-spec spec))
-                      (string spec)
-                      (cons   spec)
-                      (nil    nil))))
-
-(defun Y/adjust-font ()
-  "Font configuration."
-  (when (and ;; (display-graphic-p (selected-frame))
-         (not (equal "fontset-default"
-                     (assoc-default 'font default-frame-alist))))
-    (my/change-font-partially `(:family "Anonymous Pro") "λ")))
 
 (provide 'my_font)
 

@@ -1,66 +1,51 @@
 ;;; my_hooks.el --- my hooks configurations -*- lexical-binding: t; -*-
-
 ;;; Commentary:
-
+;; I'm going to put general hooks to here.
+;; see also : http://www.gnu.org/software/emacs/manual/html_node/elisp/Standard-Hooks.html
 ;;; Code:
 
-;; Load my programming configuration
-(add-hook 'prog-mode-hook 'Y-init-prog-style)
+;; For Terminal Emacs
+;; This hook called each time when you boot terminal Emacs.
+(add-hook 'terminal-init-xterm-hook 'turn-on-xclip)
 
-;; Byte compile emacs lisp files automatically
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+;; auto capitalize
+(add-hook 'first-change-hook 'auto-capitalize-mode)
 
-(add-hook 'before-save-hook
-          (lambda ()
-            ;; Format source code before save.
-            (let ((cmd
-                   (cl-case major-mode
-                     (js2-mode (when (executable-find "jsfmt") 'jsfmt))
-                     (go-mode  'gofmt-before-save))))
-              (when cmd (call-interactively cmd)))))
+;; New hook from emacs 24.4
+;; *** New hooks `focus-in-hook', `focus-out-hook'.
 
-;; flycheck without prog-mode
-(add-hook 'nxml-mode-hook 'flycheck-mode)
+;; Note that you CAN NOT apply `eval-after-load' to `text-mode'
+;; `startup',and `files' which is original file of `find-file-hook'
+;; due to the lack of `provide' function in those .el files. So you
+;; should use hooks instead to do so.
 
-;; Capitalize configuration
-(add-hook 'after-change-major-mode-hook
-          '(lambda ()
-             (unless (eq major-mode 'gold-mode)
-               (capitalizer-mode))))
+;;; files(find-file):
+;; git-gutter
+(add-hook 'find-file-hook 'git-gutter-mode)
+;; Use EVIL normal mode in actual real file.
+(add-hook 'find-file-hook 'evil-normal-state)
+;; auto-insert mode
+;; https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html
+;; check point max for lazy loading
+(add-hook 'find-file-hook #'(lambda () (when (eq (point-max) 1) (auto-insert))))
 
-(add-hook 'gold-mode-hook 'highlight-indentation-current-column-mode)
+;;; text-mode:
+(add-hook 'text-mode-hook 'my/whitespace-mode)
+(add-hook 'text-mode-hook 'pangu-spacing-mode)
+(add-hook 'text-mode-hook 'auto-complete-mode)
+(add-hook 'text-mode-hook #'(lambda () (run-with-idle-timer 3 nil 'flyspell-mode t)))
 
-;;;* CSS
-(add-hook 'css-mode-hook 'turn-on-css-eldoc)
-
-;;;* TEXT-MODE
+;; shrink http link(still experimental...)
 (add-hook 'text-mode-hook
-          '(lambda ()
-             (my/whitespace-mode)
-             (outline-minor-mode t)
-             (pangu-spacing-mode t)
-             (unless (bound-and-true-p mykie:prog-mode-flag)
-               (flyspell-mode t))))
-
-;;;* org-trello
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (when (and buffer-file-name
-                        (string-match
-                         (expand-file-name "~/trello/") buffer-file-name))
-               (org-trello-mode))))
-
-;; Java
-(add-hook 'java-mode-hook '(lambda () (require 'init_java)))
-
-;; http link overlay without org-mode
-(add-hook 'text-mode-hook     'Y/ov-turn-on-http-overlay)
-(add-hook 'markdown-mode-hook 'Y/ov-turn-on-http-overlay)
-(add-hook 'prog-mode-hook     'Y/ov-turn-on-http-overlay)
+          #'(lambda () (run-with-idle-timer 4 nil 'Y/ov-turn-on-http-overlay)))
+(add-hook 'prog-mode-hook
+          #'(lambda () (run-with-idle-timer 6 nil 'Y/ov-turn-on-http-overlay)))
+(add-hook 'markdown-mode-hook
+          #'(lambda () (run-with-idle-timer 3 nil 'Y/ov-turn-on-http-overlay)))
 
 ;; view-mode
 (add-hook 'help-mode-hook 'view-mode)
-(add-hook 'Man-mode-hook 'view-mode)
+(add-hook 'Man-mode-hook  'view-mode)
 
 (provide 'my_hooks)
 

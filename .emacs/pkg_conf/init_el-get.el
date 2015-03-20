@@ -265,6 +265,9 @@
     (:name hangman
            :type git
            :url "https://github.com/yuutayamada/hangman.git")
+    (:name idle-require
+           :type git
+           :url "https://github.com/nschum/idle-require.el.git")
     (:name image-dired+
            :type git
            :description "I added image-dired+"
@@ -465,10 +468,12 @@
            :pkgname "hvesalai/scala-mode2")
     (:name sequential-command
            :type http
-           :url "http://www.emacswiki.org/cgi-bin/wiki/download/sequential-command.el")
+           ;;    http://www.emacswiki.org/emacs/download/sequential-command.el
+           :url "http://www.emacswiki.org/emacs/download/sequential-command.el")
     (:name sequential-command-config
            :type http
-           :url "http://www.emacswiki.org/cgi-bin/wiki/download/sequential-command-config.el")
+           ;;    http://www.emacswiki.org/emacs/sequential-command-config.el
+           :url "http://www.emacswiki.org/emacs/download/sequential-command-config.el")
     (:name smart-tabs-mode
            :type git
            :url "https://github.com/jcsalomon/smarttabs.git")
@@ -531,6 +536,17 @@
     (:name windows
            :type http
            :url "http://www.gentei.org/~yuuji/software/euc/windows.el")
+    (:name yasnippet ; latest version
+           :website "https://github.com/capitaomorte/yasnippet.git"
+           :description "YASnippet is a template system for Emacs."
+           :type github
+           :pkgname "capitaomorte/yasnippet"
+           :features "yasnippet"
+           :compile "yasnippet.el")
+    (:name yatemplate
+           :depends (yasnippet)
+           :type github
+           :url "https://github.com/mineo/yatemplate.git")
     (:name yaml-mode
            :type git
            :url "https://github.com/yoshiki/yaml-mode")

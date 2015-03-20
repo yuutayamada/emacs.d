@@ -67,7 +67,7 @@
 
 ;; The merged keybinds precede left side argument than right side.
 (setq goto-map (keymap--merge-bindings win:switch-map goto-map))
-(global-set-key (kbd "M-g") goto-map)
+(global-set-key (kbd "M-g") goto-map) ; use M-g M-g
 
 (provide 'init_windows)
 

@@ -22,7 +22,7 @@
   "Turn on overlay."
   (interactive)
   ;; should I use this? : http://swatmac.info/?p=1064
-  (setq-local Y/http-overlay (ov-regexp "https?://[-#./+\\&!?=_:%[:alnum:]]+"))
+  (setq-local Y/http-overlay (ov-regexp "https?://[-~#./+\\&!?=_:%[:alnum:]]+"))
   (ov-set Y/http-overlay 'display "http://..." 'face 'link))
 
 (defun Y/ov-http-overlay-at-point-p ()

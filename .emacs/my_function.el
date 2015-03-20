@@ -24,58 +24,6 @@
 (require 'my_paths)
 (require 'my_autoload)
 
-(defun Y-init-prog-style ()
-  "Init all programming languages configuration."
-  (interactive)
-  (require 'init_smart-tabs-mode)
-  (setq-local truncate-lines t)
-  ;; GNU GLOBAL
-  (cl-case major-mode
-    (rust-mode (ggtags-mode t)))
-  ;; auto-complete or company-mode
-  (cl-case major-mode
-    (rust-mode (company-mode t))
-    (t (auto-complete-mode t)))
-  (hs-minor-mode t)
-  (cl-case major-mode
-    (ruby-mode (turn-on-smartparens-mode))
-    (t (show-paren-mode t)))
-  (savehist-mode 1)
-  (my/ac-add-sources-for-prog)
-  (git-gutter-mode t)
-  (rainbow-delimiters-mode)
-  (highlight-indentation-current-column-mode)
-  (flyspell-prog-mode)
-  ;; convenience functions related C
-  (cl-case major-mode
-    (;; C base programming languages
-     (c-mode c++-mode java-mode)
-     (c-toggle-auto-newline t)  ; insert newline after insert automatically
-     (c-toggle-hungry-state t)) ; delete needless space?
-    )
-  ;; aggressive-indent-mode | better indentation mode
-  ;; (aggressive-indent-mode t)
-  ;; indentation and whitespace
-  (cl-case major-mode
-    ((go-mode sql-mode)
-     (setq-local indent-tabs-mode t)) ; Use tab instead of space
-    (t (my/whitespace-mode)))
-  ;; flycheck or other syntax check tool
-  (cl-case major-mode
-    ((scala-mode clojure-mode coffee-mode)
-     nil)
-    (json-mode
-     (flymake-mode t)
-     (flymake-json-maybe-load))
-    (t (flycheck-mode t)))
-  ;; lambda -> Greek symbol's lambda
-  (unless prettify-symbols-mode
-    (prettify-symbols-mode t))
-  (cl-case major-mode
-    ;; lisp
-    ((clojure-mode emacs-lisp-mode lisp-mode)
-     (paredit-mode t))))
-
 (defun banish ()
   "Move cursor to corner."
   (interactive)
@@ -415,26 +363,6 @@ Example of my/keys
                (calendar-cursor-to-date t)))
     (calendar-exit)
     (insert day)))
-
-(defun Y/lookup (&optional word)
-  "Search English word's meaning from my dictionaries.
-If user specified WORD then search form it."
-  (interactive)
-  (lookup)
-  (let ((get-word (lambda (&optional ask)
-                    (my/delete-trailing-space
-                     (or (unless ask (word-at-point))
-                         (read-string "lookup: " (word-at-point)))))))
-    (if word
-        (lookup-pattern word)
-      (with-no-warnings
-        (mykie
-         :default (lookup-pattern (funcall get-word))
-         :lookup-summary-mode (lookup-pattern (funcall get-word t))
-         ;; :repeat  (my/festival    (funcall get-word))
-         :C-u     (lookup-pattern (funcall get-word t))
-         :region-handle-flag 'copy
-         :region  (lookup-pattern mykie:region-str))))))
 
 (defun Y/get-auth-info (machine &rest keywords)
   ""

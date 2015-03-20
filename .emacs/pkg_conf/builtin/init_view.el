@@ -17,8 +17,9 @@
   "SPC" View-scroll-page-backward
   "q"
   :default   view-mode
-  :Man-mode  View-quit-all
-  :help-mode View-quit-all)
+  :outline-mode View-quit-all
+  :Man-mode     View-quit-all
+  :help-mode    View-quit-all)
 
 (provide 'init_view)
 

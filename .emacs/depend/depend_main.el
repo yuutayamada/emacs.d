@@ -17,10 +17,6 @@
  ((string-match "mingw" system-configuration)
   (load "depend_windows")))
 
-;; For booting Emacs from terminal
-(when (not (display-graphic-p))
-  (require 'depend_terminal-emacs))
-
 (provide 'depend_main)
 
 ;; Local Variables:

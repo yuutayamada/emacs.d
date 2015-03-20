@@ -31,8 +31,8 @@
     ad-do-it))
 
 (when (and
-       (version= emacs-major-version "24")
-       (version= "3" emacs-minor-version))
+       (version= (format "%s" emacs-major-version) "24")
+       (version= "3" (format "%s" emacs-minor-version)))
   ;; There is a bug of Emacs 24.3?
   ;; https://github.com/m2ym/popwin-el/issues/93
   (defconst popwin:close-popup-window-timer-interval 0.1)

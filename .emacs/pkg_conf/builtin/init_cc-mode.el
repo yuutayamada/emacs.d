@@ -13,6 +13,19 @@
 (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)
 (add-hook 'java-mode-hook (lambda () (require 'init_java)))
 
+(require 'cl-lib)
+
+(add-hook 'prog-mode-hook
+          #'(lambda ()
+              ;; convenience functions related C
+              (cl-case major-mode
+                (;; C base programming languages
+                 (c-mode c++-mode java-mode)
+                 ;; insert newline after insert automatically
+                 (c-toggle-auto-newline t)
+                 ;; delete needless space?
+                 (c-toggle-hungry-state t)))))
+
 ;;; cc-mode links
 ;; cc-mode manual       : http://www.delorie.com/gnu/docs/emacs/cc-mode_32.html
 ;; indentation functions: http://www.delorie.com/gnu/docs/emacs/cc-mode_33.html

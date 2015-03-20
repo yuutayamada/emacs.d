@@ -178,7 +178,6 @@
   :grep-mode  kill-this-buffer
   :skk-active (yim-convert-to-katakana)
   :skk-on     (backward-char)
-  :C-u        paredit-kill
 
   "C-l"
   :default        (recenter-top-bottom)
@@ -222,7 +221,8 @@
 
   "C-r"
   :default ido-switch-buffer
-  :C-u Y/ido-find-ghq-dirs
+  :C-u     Y/ido-find-ghq-dirs
+  :C-u*2   remember-notes
 
   "C-s"
   :default isearch-forward
@@ -254,9 +254,11 @@
   "C-y"
   :default yank
   :C-u     (helm-c-yas-complete)
+  :C-u*2   (mouse-yank-primary (point))
 
   "C-z" other-window-or-split
   "C--" text-scale-decrease
+  "C-+" text-scale-increase
   "C->" win-next-window
   "C-<" win-prev-window
   "C-0" my/helm-lookup-history
@@ -270,7 +272,7 @@
 
 ;; RESTRICTED KEYBINDS                 ;;
 ;; Below keys Can not uses at terminal ;;
-;; Testing without :default
+;; Testing without :default            ;;
 (mykie:set-keys nil
   "C-S-d" doctor
   "C-S-g" ger
@@ -409,21 +411,20 @@
 (apply
  `((lambda ()
      (mykie:set-keys nil
-       ;; C-=
-       ,(concat "C-" (keyboard-converter-find "^"))
-       :default helm-c-apropos
-       :C-u     helm-colors
-       ;; C-:
-       ,(concat "C-" (keyboard-converter-find "+"))
-       :default text-scale-increase
+       ;; ;; C-=
+       ;; ,(concat "C-" (keyboard-converter-find "^"))
+       ;; :default helm-c-apropos
+       ;; :C-u     helm-colors
        ;; C-'
        ,(concat "C-" (keyboard-converter-find ":"))
        :default loga-lookup-in-popup
        :region (let ((comment-style 'aligned))
                  (call-interactively 'comment-region))
-       ;; C-+
-       ,(concat "C-" (keyboard-converter-find "~"))
-       :default show-cheat-sheet))))
+       ;; ;; C-+
+       ;; ,(concat "C-" (keyboard-converter-find "~"))
+       ;; :default show-cheat-sheet
+       )
+     )))
 
 ;; Japanese keyboard only ;;
 (mykie:set-keys nil
@@ -655,15 +656,15 @@
 ;; Overridden keys ;;
 (defvar my/overriding-mode-map (make-sparse-keymap))
 (mykie:set-keys my/overriding-mode-map
-  "<delete>"    :default follow-mode
-  "<insert>"    :default my/toggle-opacity
-  "<pause>"     :default scroll-other-window-down
-  "<backspace>" :default my/toggle-flyspell)
+  "<delete>"    follow-mode
+  "<insert>"    my/toggle-opacity
+  "<pause>"     scroll-other-window-down
+  ;; "<backsclipboadpace>" something
+  )
 
-;; Override helm-map to use DDSKK's function ;;
-(add-hook 'helm-before-initialize-hook
-          '(lambda ()
-             (mykie:attach-mykie-func-to 'helm)))
+;; Load isearch configuration
+(advice-add (global-key-binding (kbd "C-s")) :before
+            (lambda () (require 'init_isearch)))
 
 (provide 'init_mykie)
 

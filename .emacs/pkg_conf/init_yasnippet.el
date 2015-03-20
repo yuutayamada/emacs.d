@@ -4,10 +4,13 @@
 
 ;;; Code:
 (require 'auto-complete)
-(require 'yasnippet)
 
-(when (bound-and-true-p my/yasnippet-dir)
-  (defconst yas-snippet-dirs `(,my/yasnippet-dir)))
+(require 'yasnippet)
+(require 'my_paths)
+
+(defconst yas-snippet-dirs `(,(concat user-emacs-directory "snippets")
+                             ,(concat el-get-dir "yasnippet/yasmate/snippets")
+                             ,(concat el-get-dir "yasnippet/snippets")))
 
 (require 'mykie)
 (mykie:set-keys yas-minor-mode-map

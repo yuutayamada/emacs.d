@@ -7,16 +7,7 @@
 
 (require 'ispell)
 
-(setq ispell-program-name "aspell"
-      ispell-dictionary "american")
-
-(with-no-warnings
-  (defvar my/aspell-capitalized-words
-    (my/get-aspell-capital-words ispell-personal-dictionary))
-  (setq auto-capitalize-words
-        `("I" "English" "Japan" "ASAP" "Linux"
-          "Japanese" "ASCII" "CPU" "Halloween"
-          ,@my/aspell-capitalized-words)))
+(setq ispell-program-name "aspell")
 
 ;; work around ispell's highlighting of Japanese characters
 (add-to-list 'ispell-skip-region-alist '("[^\000-\377]+"))

@@ -39,8 +39,6 @@
 (setq
  ;; enable fuzzy matching
  ido-enable-flex-matching t
- ;; Show recentf buffers
- ido-use-virtual-buffers t
  ;; you can toggle by C-t
  ido-enable-regexp t
  ;; ido-max-work-directory-list 300

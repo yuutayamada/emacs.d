@@ -4,9 +4,6 @@
 
 (require 'cl-lib)
 
-;; I don't want to load emacs-lisp mode's configuration when boot time.
-(define-key lisp-interaction-mode-map (kbd "C-o") 'emacs-lisp-mode)
-
 (cl-loop with elisp-mode-hooks = '(emacs-lisp-mode-hook ielm-mode-hook)
          for hook in elisp-mode-hooks
          do (add-hook hook 'eldoc-mode))

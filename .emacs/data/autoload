@@ -50,9 +50,7 @@
 ("festival"
  festival-start festival-stop festival-say
  festivalp my/festival my/festival-read-buffer)
-("flyspell"
- turn-on-flyspell flyspell-mode-on my/toggle-flyspell
- flyspell-generic-progmode-verify)
+("flyspell" turn-on-flyspell flyspell-mode-on flyspell-generic-progmode-verify)
 ;; G
 ;; grep was moved to my_builtin-configs.el
 ("ghc" ; Make sure ~/.cabel/share/ghc-mode-*/ and do compiling
@@ -99,7 +97,7 @@
  loga-fallback loga-decide-source-word my/search-pronunciation)
 ("lookup"
  my/lookup-by-ace-jump my/helm-lookup-history myhistory-save-search-history
- myhistory-save-remembered-history)
+ myhistory-save-remembered-history Y/lookup)
 ;; M
 ("magit" my/magit-status magit-get-top-dir magit-rebase-info
  magit-anything-modified-p magit-no-commit-p)
@@ -111,10 +109,11 @@
  mykie:make-overlay-keymap-func mykie:define-prefix-key)
 ("multi-term" my/multi-term my/multi-term-current-buffer)
 ("mozc" mozc-mode)
-("my_util" my/load-packages my/after-load-function Y/server-init-func)
+("my_util" my/load-packages my/after-load-function Y/server-init-func
+ Y/apply-color-theme)
+("my_frameinit" Y/frame-init-func Y/set-default-window-frame-alist)
 ("myanything-c-pdfgrep" my/anything-pdfgrep)
-("my_function" Y/lookup Y/ido-find-file Y/get-auth-info
- Y-init-prog-style Y/change-color Y/change-style
+("my_function" Y/ido-find-file Y/get-auth-info Y/change-color Y/change-style
  my/ssh-add my/file-exists-p my/execute-from-current-file
  other-window-or-split my/newline-and-indent
  my/get-aspell-capital-words my/screen-shot my/remap-semicolon

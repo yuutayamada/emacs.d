@@ -20,7 +20,7 @@
                "/home/travis/build/yuutayamada/emacs.d/.emacs/:"))
 
 ;; test my init file with el-get loading
-(require 'init)
+(require 'site-start)
 
 (provide 'test)
 

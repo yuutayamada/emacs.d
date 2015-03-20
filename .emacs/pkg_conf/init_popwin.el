@@ -15,7 +15,7 @@
          ("*helm-go*|godoc" :position right :stick t)
          ("*Go output*" :dedicated t :position right)
          ("*Backtrace*")
-         ("*quickrun*")
+
          ("*sdic*" :noselect t)
          (" *auto-async-byte-compile*" :position right)
          ("*Colors*")
@@ -26,11 +26,13 @@
          ("\*Man .+\*" :regexp t :position right)
          ;; ("\\\*e?shell\\\*" :position right :regexp t)
          ;; ("^\*helm.+\*$" :regexp t)
+         ;; ("*quickrun*")
          (":home")
          ("*bpe*")
          ("*MozRepl*" :position bottom)
          ("*EIJIRO*" :position right)
          ("*ri(helm-rb)*")
+
          ;; Note:
          ;; `async shell command buffer' is not acceptable
          ;; when I use this buffer on popwin then this buffer is

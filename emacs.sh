@@ -1,50 +1,46 @@
-#!/bin/bash
+#!/bin/sh
 
+# USER VARIABLES #
 # Define emacs
 emacs="emacs"
 emacsclient="emacsclient"
-quick_option="--no-init-file \
-              --no-site-file \
-              --no-site-lisp \
-              --no-splash    \
-              --no-desktop   \
-              --no-loadup"
+
+# Set this to add extra directory path
+: epath:=""
+# frame parameter
+: ${EMACS_FRAME_PARAMETERS:=""}
+
+epath_default=$(cd `dirname $0`; pwd)
+Epath="${epath_default}${epath}"
+
+# daemon name
 daemon_name="GNU"
 
-# font memo
-# http://ergoemacs.org/emacs/emacs_list_and_set_font.html
-if test -f ~/.Xresouces; then
-  # You may specify frame parameters at ~/.Xresources.
-  # See also:
-  # https://www.gnu.org/software/emacs/manual/html_node/emacs/X-Resources.html
-  # http://www.gnu.org/software/emacs/manual/html_node/emacs/Resources.html#Resources
-  # Note that you may need "xrdb ~/.Xresources" command to update your config.
-  fParam=""
-else
-  fParam="-F '(\
-    (font . \"Inconsolata 12\") \
-  )'"
-fi
-
-epath=$(cd `dirname $0`; pwd)/.emacs/
+# Daemon option
+# I Omitted -q option from -Q because I couldn't find the way to set `initial-major-mode'.
+# -q option allows loading default.el.
+# --no-site-file
+d_option="--no-site-lisp --no-splash"
 
 # This EMACSLOADPATH env was introduced from Emacs 24.4, so please check your
 # Emacs version whether you have higher emacs than the version.
 if test -z $EMACSLOADPATH; then
   # Define load path for this repository
-  export EMACSLOADPATH="${epath}:"
+  export EMACSLOADPATH="${Epath}:"
 fi
 
-function EmacsDaemon() {
-  daemon="${emacs} --daemon=${daemon_name} -Q -l ${epath}init"
+EmacsDaemon () {
+  # memo
+  # emacs --xrm "emacs.Background: light green"
+  daemon="${emacs} ${d_option} --daemon=${daemon_name}"
   eval "${daemon}" >/dev/null 2>&1
 }
 
-function EmacsDwim() {
+EmacsDwim() {
   if ! pgrep emacs >/dev/null 2>&1; then
     EmacsDaemon && EmacsClient $@
-  elif jobs -s %terminalEmacs >/dev/null 2>&1; then
-    fg %terminalEmacs
+  elif jobs -s %TerminalEmacs >/dev/null 2>&1; then
+    fg %TerminalEmacs
   elif jobs -s %GUI_Emacs     >/dev/null 2>&1; then
     fg %GUI_Emacs
   elif jobs -s %EmacsClient   >/dev/null 2>&1; then
@@ -54,23 +50,30 @@ function EmacsDwim() {
   fi
 }
 
-function terminalEmacs() {
+TerminalEmacs() {
   option="-t" background="" EmacsDwim $@
 }
 
-function GUI_Emacs() {
+GUI_Emacs() {
   option="-c" background="&" EmacsDwim $@
 }
 
-function EmacsClient() {
+EmacsClient() {
   color="TERM=xterm-256color"
-  client="${emacsclient} ${fParam} -s ${daemon_name} -q ${option} $@"
+  if ! test -z ${EMACS_FRAME_PARAMETERS}; then
+    fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
+  else
+    fparam=""
+  fi
+  client="${emacsclient} ${fparam} -s ${daemon_name} -q ${option} $@"
   eval "${color} ${client} ${background}"
 }
 
 # GUI Emacs
 alias e='GUI_Emacs'
 # Terminal Emacs
-alias t='terminalEmacs'
+alias t='TerminalEmacs'
+# boot only daemon
+alias ed='EmacsDaemon'
 # For emergency
-alias baymax="${emacs} -l '${epath}init' &"
+alias baymax="${emacs} -q -D &"

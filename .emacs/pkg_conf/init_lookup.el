@@ -54,6 +54,27 @@
   (ace-jump-do
    (concat "\\b" (regexp-quote (make-string 1 (read-char "ace-jump: "))))))
 
+(require 'my_function)
+(defun Y/lookup (&optional word)
+  "Search English word's meaning from my dictionaries.
+If user specified WORD then search form it."
+  (interactive)
+  (lookup)
+  (let ((get-word (lambda (&optional ask)
+                    (my/delete-trailing-space
+                     (or (unless ask (word-at-point))
+                         (read-string "lookup: " (word-at-point)))))))
+    (if word
+        (lookup-pattern word)
+      (with-no-warnings
+        (mykie
+         :default (lookup-pattern (funcall get-word))
+         :lookup-summary-mode (lookup-pattern (funcall get-word t))
+         ;; :repeat  (my/festival    (funcall get-word))
+         :C-u     (lookup-pattern (funcall get-word t))
+         :region-handle-flag 'copy
+         :region  (lookup-pattern mykie:region-str))))))
+
 (require 'myhistory)
 
 (provide 'init_lookup)

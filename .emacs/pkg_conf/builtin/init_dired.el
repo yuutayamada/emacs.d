@@ -2,9 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'wdired)
-(require 'init_image-dired+)
+
 (require 'mykie)
+(require 'dired)
+
+(add-hook 'dired-mode-hook
+          '(lambda ()
+             (require 'init_image-dired+)
+             (require 'dired-x)
+             (require 'wdired)))
 
 (mykie:set-keys dired-mode-map
   "SPC"
@@ -19,7 +25,7 @@
   "M-RET"    my/multi-term-current-buffer
   [tab]      (Y-open-file-as-root (dired-file-name-at-point))
   "r"        wdired-change-to-wdired-mode
-  "C-o"      nil
+  "C-o"      ; nil
   "C-c C-c"  compile
   "o"        :default (lambda ()
                         (interactive)

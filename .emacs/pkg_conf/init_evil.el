@@ -18,7 +18,7 @@
 ;; involve evil keymap on other emacs based modes. (i.e., dired)
 (setq evil-default-state 'emacs)
 ;; Use emacs-state as insert mode.
-;; Evil uses ESC key as `evil-esc' and I don't like this.
+;; Evil uses ESC key as `evil-esc' and I don't like this due to the delay.
 (advice-add 'evil-insert-state :override 'evil-emacs-state)
 
 ;; Move evil states to emacs state.
@@ -72,10 +72,14 @@
 ;; Create SPC keymap for normal state
 (mykie:define-prefix-key evil-motion-state-map "SPC"
   (:keep
-   (lambda () (member (char-to-string last-command-event)
-                 '("h" "j" "k" "l" "f" "b" "t" "r" "+" "-"
-                   "F" "B" "N" "P"
-                   "" "" "" "" "	" "")))
+   (lambda () (cl-typecase last-command-event
+           (character (member
+                       (char-to-string last-command-event)
+                       '("h" "j" "k" "l" "f" "b" "t" "r" "+" "-"
+                         "F" "B" "N" "P" "" "" "" "" ""
+                         ;; Space and Tab
+                         " " "	")))
+           (t (member (vector last-command-event) `(,(kbd "S-SPC"))))))
    :before (lambda () (Y/change-style '("#00bfff" "red" nil) 1))
    :after  (lambda () (Y/change-style nil 0)))
   "q" :default nil ; this means just a quit and do not insert q
@@ -96,7 +100,9 @@
   "N" windmove-down
   "P" windmove-up
   "F" windmove-right
-  "SPC" magit-status)
+  ";" magit-status
+  "SPC"   scroll-up
+  "S-SPC" scroll-down)
 
 ;; MOTION STATE
 (mykie:set-keys evil-motion-state-map
@@ -159,6 +165,9 @@
                        (advice-add (quote ,func) :after
                                    (lambda (&rest _args)
                                      (Y/evil-change-highlight)))))))
+
+;; turn on evil after saved
+(add-hook 'after-save-hook 'evil-normal-state)
 
 ;; evil surround
 (require 'evil-surround)

@@ -66,8 +66,20 @@
 (defun Y/change-color (face bg fg ul)
   "Change highlight color to which correspond to FACE, BG, FG, UL."
   (unless Y/inhibit-change-color
+    (unless (display-graphic-p)
+      (xcc-change-cursor-color-and-shape bg))
     (set-face-attribute
      face nil :background bg :foreground fg :underline  ul)))
+
+;; http://www.emacswiki.org/emacs/UpdateAutoloads
+;; http://www.lunaryorn.com/2014/07/02/autoloads-in-emacs-lisp.html
+(defun Y/update-autoloads ()
+  "Call `update-directory-autoloads'."
+  (interactive)
+  (let ((generated-autoload-file (concat elisp-dir "self/Y-loaddefs.el"))
+        (dirs (cl-remove-if-not 'file-directory-p (directory-files (concat elisp-dir "self/") t))))
+    (apply `(update-directory-autoloads ,@dirs))
+    (byte-compile-file generated-autoload-file)))
 
 (defvar Y/mode-line-change-faces
   (cl-loop for face in '(mode-line powerline-active1 powerline-active2)
@@ -463,8 +475,7 @@ Example of my/keys
 ;; (browse-url-default-browser URL &rest ARGS)
 (defun my/w3m-or-mozila-browser-function (url &rest args)
   ""
-  (interactive
-   (browse-url-interactive-arg "URL: "))
+  (interactive (browse-url-interactive-arg "URL: "))
   (let
       ((new-session (car args)))
     (if (not (my/browse-condition-p url))

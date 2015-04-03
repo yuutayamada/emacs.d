@@ -173,6 +173,22 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
+(defun Y/evil-get-cursor-type ()
+  (let* ((spec (cl-case (bound-and-true-p evil-state)
+                 (emacs evil-emacs-state-cursor)
+                 (normal evil-normal-state-cursor)
+                 (insert evil-insert-state-cursor)
+                 (visual evil-visual-state-cursor)
+                 (motion evil-motion-state-cursor)
+                 (replace evil-replace-state-cursor)
+                 (operator evil-operator-state-cursor)
+                 (t evil-default-cursor)))
+         (type (cl-typecase spec
+                 (list   (cl-caadr spec))
+                 (symbol spec))))
+    (when (member type '(box hbar bar))
+      type)))
+
 (provide 'init_evil)
 
 ;; Local Variables:

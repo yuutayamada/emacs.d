@@ -53,17 +53,18 @@
         (let ((c (char-to-string (+ win:current-config win:base-key))))
           (pcase c ; frame name of windows.el
             (`"e" (delete-other-windows) (call-interactively 'eww))
-            (`"d" (Y/lookup))
+            ;; (`"d" (Y/lookup))
             (`"s" (delete-other-windows) (magit-status d))
-            (`"j" (jazzradio))
+            ;; (`"j" (jazzradio))
             (`"l"
              (unless (string-match "lingr" (buffer-name))
                (apply
                 (macroexpand
                  `(lingr-login ,@(Y/get-auth-info "lingr" :user :secret))))))
             (`"m" (delete-other-windows) (mew))
-            (`"o" (find-file "~/Dropbox/MobileOrg/todo.org"))
-            (`"t" (twit))))))))
+            ;; (`"o" (find-file "~/Dropbox/MobileOrg/todo.org"))
+            ;; (`"t" (twit))
+            ))))))
 
 ;; The merged keybinds precede left side argument than right side.
 (setq goto-map (keymap--merge-bindings win:switch-map goto-map))

@@ -1,6 +1,7 @@
 ;;; autoload --- my autoload file
 
 ;;; Commentary:
+;; FIX this
 ;;; Code:
 ;; Set pair of file name and function's list
 ;; auto-capitalize(Note I'm using emacswiki's auto-capitalize)
@@ -14,7 +15,6 @@
 ("android-mode" android-create-project android-mode)
 ("ace-jump-mode" ace-jump-do)
 ;; B
-("bpe" bpe:post-article)
 ("bm" my/ispell-word-or-kill-region)
 ("browse-url" browse-url-interactive-arg)
 ;; C
@@ -39,7 +39,6 @@
 ("eclim" eclim--project-name my/boot-eclim ac-emacs-eclim-config)
 ("evil" evil-normal-state)
 ;; F
-("ffinder" ffinder-jump ffinder-jump-to-begging)
 ("flymake-json" flymake-json-maybe-load)
 ("flymake-shell" flymake-shell-load)
 ("flycheck" flycheck-mode error-tip-error-p)
@@ -60,7 +59,8 @@
 ("go-mode" gofmt)
 ("grammar" grammar-mode grammar-check my/grammar-check)
 ("google-contacts" google-contacts-update-bbdb)
-("ginger-api" my/ginger-region ginger-rephrase)
+("ginger-api" ginger-rephrase)
+("init_ginger-api" my/ginger-region)
 ;; H
 ("haskell-mode" haskell-mode switch-to-haskell haskell-commnader)
 ("helm-ag-r"
@@ -68,11 +68,9 @@
  helm-ag-r-google-contacts-list helm-ag-r-pype
  helm-ag-r-shell-history helm-ag-r-git-logs)
 ("helm-utils" helm-find-file-as-root)
-("helm-shell-history" helm-shell-history)
 ("helm-commit-message" helm-show-git-commit-messages)
 ("helm-gtags" helm-gtags-select my/helm-gtags)
 ("helm-shell-history" helm-complete-shell-history)
-("helm-rb" helm-rb)
 ("helm-github-issues" helm-github-issues)
 ("helm-c-yasnippet"
  helm-c-yas-complete helm-c-yas-visit-snippet-file
@@ -149,7 +147,7 @@
 ;; Q
 ("quickrun" my/quickrun-dwim)
 ;; S
-("stem" stem:stripping-suffix stem:stripping-inflection stem-english)
+("stem" stem:stripping-suffix stem:stripping-inflection)
 ("sequential-command-config"
  seq-home seq-end org-seq-home org-seq-end seq-upcase-backward-word
  seq-capitalize-backward-word seq-downcase-backward-word)
@@ -170,7 +168,7 @@
 ("transpose-frame" transpose-frame flip-frame flop-frame)
 ("twittering-mode" twit my/twit)
 ("thingatpt" word-at-point)
-("text-translator" text-translator-all-by-auto-selection)
+;; ("text-translator" text-translator-all-by-auto-selection)
 ;; U
 ("undo-tree"
  undo-tree-redo undo-tree-undo undo-tree-visualize global-undo-tree-mode)
@@ -184,8 +182,7 @@
  windmove-up windmove-down windmove-left windmove-right)
 ("winner" winner-undo winner-redo)
 ;; Y
-("yim"
- yim-convert yim-abbrev skk-current-input-mode
+("yim" skk-current-input-mode
  helm-skk-rules skk-j-mode-on my-skk-toggle-j-mode-and-latin-mode)
 ;; Z
 ("zencoding" my/zencoding-expand)

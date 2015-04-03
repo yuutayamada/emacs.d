@@ -9,7 +9,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION."
   (interactive)
   (let ((base-buffer (current-buffer))
         (cmdkey (gethash (quickrun/find-from-major-mode-alist)
-                            quickrun/command-key-table))
+                         quickrun/command-key-table))
         (adjust-key (lambda (cmdkey)
                       (cl-case (intern cmdkey)
                         (lisp "lisp/clisp")
@@ -32,6 +32,10 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION."
  '((:compile-only . "javac -encoding utf-8 -source 1.7 -target 1.7 -Werror %o %s")
    (:exec         . ("javac -encoding utf-8 -source 1.7 -target 1.7 %o %s" "%c %N %a")))
  :override t)
+
+(quickrun-add-command "nim"
+                      '((:remove . ("%n" "nimcache/%S.c" "nimcache/%S.o")))
+                      :override t)
 
 ;; (quickrun-add-command
 ;;  "clojure"

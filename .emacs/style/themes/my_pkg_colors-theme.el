@@ -186,16 +186,6 @@
  ;; MMM-mode
  '(mmm-default-submode-face ((t (:foreground nil :background "#000000"))))
 
- ;; Org-mode
- '(org-document-title   ((t :foreground "#D7ff00")))
- '(org-document-info    ((t :foreground "#D7ff00")))
- '(org-level-4          ((t :foreground "#FFA54F")))
- '(org-block-background ((t :background nil)))
- '(org-table            ((t :foreground "#FFDEAD")))
- '(org-clock-overlay    ((t :background nil)))
- '(org-hide             ((t :foreground nil)))
- '(org-footnote         ((t :foreground "#5fffd7")))
-
  ;; popup/popwin
  '(popup-menu-selection-face ((t :background "#5c5cff"
                                  :foreground "#E5e5e5")))

@@ -17,9 +17,8 @@ Epath="${epath_default}${epath}"
 daemon_name="GNU"
 
 # Daemon option
-# I Omitted -q option from -Q because I couldn't find the way to set `initial-major-mode'.
-# -q option allows loading default.el.
-# --no-site-file
+# I wouldn't use -Q option because I couldn't find the way to set `initial-major-mode'.
+# To work around it, I'm using site-start.el file.
 d_option="--no-site-lisp --no-splash"
 
 # This EMACSLOADPATH env was introduced from Emacs 24.4, so please check your
@@ -59,14 +58,10 @@ GUI_Emacs() {
 }
 
 EmacsClient() {
-  color="TERM=xterm-256color"
-  if ! test -z ${EMACS_FRAME_PARAMETERS}; then
-    fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
-  else
-    fparam=""
-  fi
-  client="${emacsclient} ${fparam} -s ${daemon_name} -q ${option} $@"
-  eval "${color} ${client} ${background}"
+  [ ! -z ${EMACS_FRAME_PARAMETERS} ] && fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
+  [ -z "$@" ] && where=`pwd` || where="$@"
+  client="${emacsclient} ${fparam} -s ${daemon_name} -q ${option} ${where}"
+  eval "${client} ${background}"
 }
 
 # GUI Emacs
@@ -74,6 +69,6 @@ alias e='GUI_Emacs'
 # Terminal Emacs
 alias t='TerminalEmacs'
 # boot only daemon
-alias ed='EmacsDaemon'
+alias ed='EmacsDaemon &'
 # For emergency
 alias baymax="${emacs} -q -D &"

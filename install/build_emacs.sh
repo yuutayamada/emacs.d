@@ -21,8 +21,7 @@ git clean -xdf
 git checkout master
 git pull git://git.savannah.gnu.org/emacs.git
 
-# Yasnippet didn't work on latest Emacs
-git checkout emacs-24
+# git checkout emacs-24
 
 # configure
 ./autogen.sh

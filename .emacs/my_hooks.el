@@ -8,6 +8,11 @@
 ;; This hook called each time when you boot terminal Emacs.
 (add-hook 'terminal-init-xterm-hook 'turn-on-xclip)
 
+;; Use dark faces on Terminal Emacs (but, it doesn't change background)
+;; see also : https://www.gnu.org/software/emacs/manual/html_node/elisp/Terminal-Parameters.html
+(add-hook 'terminal-init-xterm-hook
+          '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
+
 ;; auto capitalize
 (add-hook 'first-change-hook 'auto-capitalize-mode)
 
@@ -35,13 +40,13 @@
 (add-hook 'text-mode-hook 'auto-complete-mode)
 (add-hook 'text-mode-hook #'(lambda () (run-with-idle-timer 3 nil 'flyspell-mode t)))
 
-;; shrink http link(still experimental...)
-(add-hook 'text-mode-hook
-          #'(lambda () (run-with-idle-timer 4 nil 'Y/ov-turn-on-http-overlay)))
-(add-hook 'prog-mode-hook
-          #'(lambda () (run-with-idle-timer 6 nil 'Y/ov-turn-on-http-overlay)))
-(add-hook 'markdown-mode-hook
-          #'(lambda () (run-with-idle-timer 3 nil 'Y/ov-turn-on-http-overlay)))
+;; ;; shrink http link(still experimental...)
+;; (add-hook 'text-mode-hook
+;;           #'(lambda () (run-with-idle-timer 4 nil 'Y/ov-turn-on-http-overlay)))
+;; (add-hook 'prog-mode-hook
+;;           #'(lambda () (run-with-idle-timer 6 nil 'Y/ov-turn-on-http-overlay)))
+;; (add-hook 'markdown-mode-hook
+;;           #'(lambda () (run-with-idle-timer 3 nil 'Y/ov-turn-on-http-overlay)))
 
 ;; view-mode
 (add-hook 'help-mode-hook 'view-mode)

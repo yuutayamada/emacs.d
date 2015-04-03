@@ -24,8 +24,14 @@
                (eshell-send-input)
                (eshell-redisplay)))
 
+;; em-term
+;; Configure this to show git log correctly.
+(defconst eshell-visual-subcommands '(("git" "log" "diff" "show")))
+(defconst eshell-visual-options '(("git" "--help")))
+
 (add-hook 'eshell-mode-hook
           '(lambda ()
+             (add-to-list 'eshell-visual-commands "vim")
              (mykie:set-keys eshell-mode-map
                "C-a"   eshell-bol
                "C-s"   helm-shell-history

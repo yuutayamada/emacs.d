@@ -1,7 +1,5 @@
 ((ac-mozc status "installed" recipe
           (:name ac-mozc :type git :url "https://github.com/igjit/ac-mozc.git"))
- (ac-python status "installed" recipe
-            (:name ac-python :description "Simple Python Completion Source for Auto-Complete" :depends auto-complete :type http :url "http://chrispoole.com/downloads/ac-python.el" :features ac-python))
  (ac-skk status "installed" recipe
          (:name ac-skk :type git :url "https://github.com/myuhe/ac-skk.el.git"))
  (ac-slime status "installed" recipe
@@ -235,6 +233,8 @@
           (:name hangman :type git :url "https://github.com/yuutayamada/hangman.git"))
  (haskell-commnader status "installed" recipe
                     (:name haskell-commnader :type github :pkgname "yuutayamada/haskell-commander-el"))
+ (haskell-emacs status "installed" recipe
+                (:name haskell-emacs :type github :pkgname "knupfer/haskell-emacs"))
  (haskell-mode status "installed" recipe
                (:name haskell-mode :description "A Haskell editing mode" :type github :pkgname "haskell/haskell-mode" :info "." :build
                       `(("make" ,(format "EMACS=%s" el-get-emacs)
@@ -276,6 +276,8 @@
 :type git :url "https://github.com/steckerhalter/helm-google.git"))
 (helm-gtags status "installed" recipe
 (:name helm-gtags :type git :url "https://github.com/syohex/emacs-helm-gtags.git"))
+(helm-hoogle status "installed" recipe
+(:name helm-hoogle :type git :url "https://github.com/markus1189/helm-hoogle.git"))
 (helm-migemo status "installed" recipe
 (:name helm-migemo :type git :url "https://github.com/emacs-helm/helm-migemo.git"))
 (helm-swoop status "installed" recipe
@@ -392,6 +394,8 @@
 ("./configure && make")
 :load-path
 ("./" "./contrib" "./doc")))
+(nim-mode status "installed" recipe
+(:name nim-mode :type github :pkgname "reactormonk/nim-mode" :description "Major mode for the Nim programming language"))
 (node-console status "installed" recipe
 (:name node-console :type git :url "https://github.com/yuutayamada/node-console"))
 (noflet status "installed" recipe
@@ -481,6 +485,9 @@
 (:name racer :type git :url "https://github.com/phildawes/racer.git"))
 (rainbow-delimiters status "installed" recipe
 (:name rainbow-delimiters :website "https://github.com/jlr/rainbow-delimiters#readme" :description "Color nested parentheses, brackets, and braces according to their depth." :type github :pkgname "jlr/rainbow-delimiters"))
+(rainbow-mode status "installed" recipe
+(:name rainbow-mode :description "Colorize color names in buffers" :type elpa :prepare
+(autoload 'rainbow-turn-on "rainbow-mode")))
 (request status "installed" recipe
 (:name request :description "Easy HTTP request for Emacs Lisp" :type github :submodule nil :pkgname "tkf/emacs-request"))
 (revive status "installed" recipe

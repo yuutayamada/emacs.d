@@ -15,7 +15,7 @@
 (require 'skk-macs)
 (require 'skk-azik)
 
-(setq ;; skk-byte-compile-init-file t
+(setq skk-byte-compile-init-file t
       skk-use-azik t
       skk-azik-keyboard-type 'jp106
       ;; 動的な補完を使う

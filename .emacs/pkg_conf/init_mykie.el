@@ -117,7 +117,7 @@
   :C-u&prog (mykie
              :c-mode helm-info-libc
              :haskell-mode (mykie
-                            :C-u   helm-hooglel-by-context
+                            :C-u   helm-hoogle
                             :C-u*2 helm-ghc-browse-document)
              :go-mode (mykie
                        :C-u   helm-go
@@ -160,6 +160,7 @@
 
   "C-j"
   :default        my/newline-and-indent
+  :python-mode    newline-and-indent
   :skk-active     (skk-kakutei)
   :skk-on         (skk-kakutei)
   :C-u&url        (browse-url-at-point)
@@ -315,6 +316,7 @@
   :grep-mode grep-edit-finish-edit
   :prog (mykie
          :default               my/quickrun-dwim
+         :nim-mode              quickrun
          :org-src               my/run-prog-from-tempfile
          :coffee-mode           node-console
          :go-mode               (if (Y/go-mode-deploy-android-app)

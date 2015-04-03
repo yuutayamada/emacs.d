@@ -212,9 +212,15 @@
     (:name haskell-commnader
            :type github
            :pkgname "yuutayamada/haskell-commander-el")
+    (:name haskell-emacs
+           :type github
+           :pkgname "knupfer/haskell-emacs")
     (:name hooglel
            :type github
            :pkgname "yuutayamada/hooglel-el")
+    (:name helm-hoogle
+           :type git
+           :url "https://github.com/markus1189/helm-hoogle.git")
     (:name helm-github-issues
            :type git
            :url "https://github.com/syohex/emacs-helm-github-issues.git")
@@ -387,7 +393,7 @@
     (:name magit
            :type git
            :build ("make clean"
-                   "emacs -q --batch -L . -L ../git-modes/ -f batch-byte-compile *.el"
+                   "emacs -Q --batch -L . -L ../git-modes/ -f batch-byte-compile *.el"
                    "makeinfo -o magit.info magit.texi"
                    "ginstall-info --dir=dir magit.info")
            :depends (git-modes)

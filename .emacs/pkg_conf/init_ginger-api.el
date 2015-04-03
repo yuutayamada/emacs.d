@@ -2,11 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'my_paths)
 (unless (bound-and-true-p ginger-end-point)
-  (load "~/hotdog/elisp/el-get/ginger-api/ginger-api"))
+  (load (concat el-get-dir "ginger-api/ginger-api")))
 
 (unless (fboundp 'ginger-rephrase)
-  (load "~/hotdog/elisp/el-get/ginger-rephrase-api/ginger-rephrase-api"))
+  (load (concat el-get-dir "ginger-rephrase-api/ginger-rephrase-api")))
 
 (defun my/ginger-region ()
   (interactive)

@@ -35,178 +35,185 @@
 
 ;;; Code:
 
-;; Set GC limit to boot rapidly
-(setq gc-cons-threshold (* 1024 1024 1024))
-(add-hook 'emacs-startup-hook
-          '(lambda ()
-             ;; Refresh GC threshold
-             (setq gc-cons-threshold (* 8 1024 1024))
-             (message (format "Welcome to Emacs(%s)" emacs-version))))
+;; Do not configure when --batch option
+(unless noninteractive
+  ;; Set GC limit to boot rapidly
+  (setq gc-cons-threshold (* 1024 1024 1024))
+  (add-hook 'emacs-startup-hook
+            '(lambda ()
+               ;; Refresh GC threshold
+               (setq gc-cons-threshold (* 8 1024 1024))
+               (message (format "Welcome to Emacs(%s)" emacs-version))))
 
-;; My core configuration files
-(add-hook 'after-init-hook '(lambda () (require 'Y-launch)))
+  ;; My core configuration files
+  (add-hook 'after-init-hook
+            '(lambda ()
+               (require 'Y-launch)
+               (when (version< "24.0.0" emacs-version)
+                 (require 'notifications) ; this needs Dbus
+                 (notifications-notify :title "Emacs Daemon"
+                                       :body  "Ready to start!!!"
+                                       :timeout 5000))))
 
-;; see also : https://www.gnu.org/software/emacs/manual/html_node/elisp/Terminal-Parameters.html
-(set-terminal-parameter nil 'background-mode 'dark)
+  (setq
+   ;; Load newer file than old file(this feature is from Emacs 24.4)
+   load-prefer-newer t
+   ;; Inhibit startup message/screen
+   inhibit-startup-message t
+   inhibit-startup-screen  t
+   package-enable-at-startup nil
+   ;; Basic display. Note that `emacs-basic-display' variable doesn't
+   ;; work on Emacs Daemon, so this is better way. (I think)
+   ;; memo: I changed scroll bar on Xresouces
+   menu-bar-mode nil
+   tool-bar-mode nil
+   )
 
-(setq
- ;; Load newer file than old file(this feature is from Emacs 24.4)
- load-prefer-newer t
- ;; Inhibit startup message/screen
- inhibit-startup-message t
- inhibit-startup-screen  t
- package-enable-at-startup nil
- ;; Basic display. Note that `emacs-basic-display' variable doesn't
- ;; work on Emacs Daemon, so this is better way. (I think)
- ;; memo: I changed scroll bar on Xresouces
- menu-bar-mode nil
- tool-bar-mode nil
- )
+  ;; truncate line
+  (setq-default truncate-lines t)
 
-;; truncate line
-(setq-default truncate-lines t)
+  ;; initial scratch buffer
+  ;; initial major-mode of *scratch* buffer
+  ;; (setq initial-major-mode 'emacs-lisp-mode)
+  (add-hook 'prog-mode-hook
+            #'(lambda () (when (and (eq major-mode initial-major-mode)
+                                    (equal "*scratch*" (buffer-name)))
+                           (let ((comment (if (member comment-start '(";"))
+                                              (concat comment-start comment-start)
+                                            comment-start)))
+                             (setq initial-scratch-message
+                                   (concat comment " This is scratch buffer.\n")))
+                           (run-with-idle-timer 5 nil 'eldoc-mode t))))
 
-;; initial scratch buffer
-;; initial major-mode of *scratch* buffer
-;; (setq initial-major-mode 'emacs-lisp-mode)
-(add-hook 'prog-mode-hook
-          #'(lambda () (when (and (eq major-mode initial-major-mode)
-                             (equal "*scratch*" (buffer-name)))
-                    (let ((comment (if (member comment-start '(";"))
-                                       (concat comment-start comment-start)
-                                     comment-start)))
-                      (setq initial-scratch-message
-                            (concat comment " This is scratch buffer.\n")))
-                    (run-with-idle-timer 5 nil 'eldoc-mode t))))
+  ;; Decide start up buffer
+  (setq initial-buffer-choice
+        #'(lambda ()
+            (when (and (one-window-p)
+                       (switch-to-buffer (get-buffer "*Messages*")))
+              (highlight-phrase "error" 'error)
+              (highlight-phrase "\\(.*newer than byte-compiled.*\n\\|warning\\)"
+                                'warning))))
 
-;; Decide start up buffer
-(setq initial-buffer-choice
-      #'(lambda ()
-          (when (and (one-window-p)
-                     (switch-to-buffer (get-buffer "*Messages*")))
-            (highlight-phrase "error" 'error)
-            (highlight-phrase "\\(.*newer than byte-compiled.*\n\\|warning\\)"
-                              'warning))))
-
-;; Use XDG_CONFIG_HOME as personal configuration file
-(let* ((emacs-conf-dir (format "%s/emacs/" (getenv "XDG_CONFIG_HOME")))
-       (emacsrc (format "%semacsrc" emacs-conf-dir)))
-  (when (file-exists-p emacsrc)
-    (setq user-emacs-directory emacs-conf-dir)
-    (load emacsrc)))
+  ;; Use XDG_CONFIG_HOME as personal configuration file
+  (let* ((emacs-conf-dir (format "%s/emacs/" (getenv "XDG_CONFIG_HOME")))
+         (emacsrc (format "%semacsrc" emacs-conf-dir)))
+    (when (file-exists-p emacsrc)
+      (setq user-emacs-directory emacs-conf-dir)
+      (load emacsrc)))
 
 ;;;* Coding system
-(prefer-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8) ; for eshell
+  (prefer-coding-system 'utf-8)
+  (set-terminal-coding-system 'utf-8) ; for eshell
 
-;; TITLE ;;
-(setq frame-title-format (format "emacs@%s : %%f" (system-name)))
+  ;; TITLE ;;
+  (setq frame-title-format (format "emacs@%s : %%f" (system-name)))
 
-;; LIMIT ;;
-(defconst recentf-max-menu-items  100)
-(defconst recentf-max-saved-items 10000)
-(setq max-lisp-eval-depth         100000
-      history-length              10000
-      max-specpdl-size            1000000)
+  ;; LIMIT ;;
+  (defconst recentf-max-menu-items  100)
+  (defconst recentf-max-saved-items 10000)
+  (setq max-lisp-eval-depth         100000
+        history-length              10000
+        max-specpdl-size            1000000)
 
 ;;;* yes or no -> y or n
-(fset 'yes-or-no-p 'y-or-n-p)
+  (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;;* COMPLETION
-(setq completion-ignore-case t
-      read-file-name-completion-ignore-case t)
+  (setq completion-ignore-case t
+        read-file-name-completion-ignore-case t)
 
 ;;;* AUTO SAVE
-;; you can turn off auto saving by setting nil to `auto-save-default'
-(setq auto-save-default t
-      auto-save-timeout 30   ; Number of seconds
-      auto-save-interval 300 ; Number of input events
-      ;; 自動保存ファイル（#ファイル名#）の設定
-      ;; 参考: http://openlab.dino.co.jp/2009/02/25/185332417.html#more-417
-      auto-save-file-name-transforms `((".*/.*" ,temporary-file-directory t))
-      delete-auto-save-files t)
+  ;; you can turn off auto saving by setting nil to `auto-save-default'
+  (setq auto-save-default t
+        auto-save-timeout 30   ; Number of seconds
+        auto-save-interval 300 ; Number of input events
+        ;; 自動保存ファイル（#ファイル名#）の設定
+        ;; 参考: http://openlab.dino.co.jp/2009/02/25/185332417.html#more-417
+        auto-save-file-name-transforms `((".*/.*" ,temporary-file-directory t))
+        delete-auto-save-files t)
 
 ;;;* BACKUP(files.el)
-(setq make-backup-files t
-      backup-directory-alist
-      (cons (cons "\\.*$" (expand-file-name "~/var/backups/emacs"))
-            backup-directory-alist)
-      version-control t
-      kept-new-versions 5
-      kept-old-versions 5
-      delete-old-versions t
-      vc-make-backup-files t)
+  (setq make-backup-files t
+        backup-directory-alist
+        (cons (cons "\\.*$" (expand-file-name "~/var/backups/emacs"))
+              backup-directory-alist)
+        version-control t
+        kept-new-versions 5
+        kept-old-versions 5
+        delete-old-versions t
+        vc-make-backup-files t)
 
-;; backup
-;; https://www.gnu.org/software/coreutils/manual/html_node/Backup-options.html
-;; VERSION_CONTROL env
+  ;; backup
+  ;; https://www.gnu.org/software/coreutils/manual/html_node/Backup-options.html
+  ;; VERSION_CONTROL env
 
 ;;;* save place of cursor
-(toggle-save-place-globally)
+  (toggle-save-place-globally)
 
-(setq kill-whole-line t ; kill line and new line at bol when non-nil
-      require-final-newline t
-      next-line-add-newlines nil)
+  (setq kill-whole-line t ; kill line and new line at bol when non-nil
+        require-final-newline t
+        next-line-add-newlines nil)
 
 ;;; etc.
-;; do not abbreviate among on displaying Emacs lisp
-(setq eval-expression-print-level  nil
-      eval-expression-print-length nil)
+  ;; do not abbreviate among on displaying Emacs lisp
+  (setq eval-expression-print-level  nil
+        eval-expression-print-length nil)
 
-;; Show image file in a buffer
-(auto-image-file-mode t)
-;; available to edit .gz file
-(auto-compression-mode t)
-;; global-revert-mode
-(global-auto-revert-mode t)
+  ;; Show image file in a buffer
+  (auto-image-file-mode t)
+  ;; available to edit .gz file
+  (auto-compression-mode t)
+  ;; global-revert-mode
+  (global-auto-revert-mode t)
 
 ;;; Copy and Past
-;; http://emacswiki.org/emacs/CopyAndPaste
-;; http://stackoverflow.com/questions/5288213/how-can-i-paste-the-selected-region-outside-of-emacs/14659015#14659015
-;; (setq select-enable-clipboard t)
+  ;; http://emacswiki.org/emacs/CopyAndPaste
+  ;; http://stackoverflow.com/questions/5288213/how-can-i-paste-the-selected-region-outside-of-emacs/14659015#14659015
+  ;; (setq select-enable-clipboard t)
 
 ;;;* newline configurations
-(setq eol-mnemonic-dos       "[CRLF]" ; DOS
-      eol-mnemonic-unix      "[LF]"   ; Unix
-      eol-mnemonic-mac       "[CR]"   ; Mac
-      eol-mnemonic-undecided "[?]")
+  (setq eol-mnemonic-dos       "[CRLF]" ; DOS
+        eol-mnemonic-unix      "[LF]"   ; Unix
+        eol-mnemonic-mac       "[CR]"   ; Mac
+        eol-mnemonic-undecided "[?]")
 
 ;;; BUILT IN PACKAGE CONFIGURATION ;;;
-;; ido
-(defconst ido-use-virtual-buffers t) ; Show recentf buffers
-(defconst ido-mode 'both)
+  ;; ido
+  (defconst ido-use-virtual-buffers t) ; Show recentf buffers
+  (defconst ido-mode 'both)
 
-;; uniqify
-;; attach directory name if file name is duplicated
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+  ;; uniqify
+  ;; attach directory name if file name is duplicated
+  (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 
 ;;; HOOKS (only from built in package)
-;; eldoc on eval minibuffer
-(add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode)
-;; Do not display ^M
-(add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m)
-;; Use org-table in mail-mode
-(add-hook 'mail-mode-hook 'turn-on-orgtbl)
-;; Attach executable attribute when saving a file with #!
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+  ;; eldoc on eval minibuffer
+  (add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode)
+  ;; Do not display ^M
+  (add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m)
+  ;; Use org-table in mail-mode
+  (add-hook 'mail-mode-hook 'turn-on-orgtbl)
+  ;; Attach executable attribute when saving a file with #!
+  (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 
 ;;; KEY BINDS ;;;
 
-;; find function
-;; C-x F -> find function
-;; C-x K -> find key definition
-;; C-x V -> find variable definition
-(find-function-setup-keys)
+  ;; find function
+  ;; C-x F -> find function
+  ;; C-x K -> find key definition
+  ;; C-x V -> find variable definition
+  (find-function-setup-keys)
 
-;; Avoid flyspell keybinds
-(defconst flyspell-mode-map '())
+  ;; Avoid flyspell keybinds
+  (defconst flyspell-mode-map '())
 
-(global-set-key (kbd "C-h")   'delete-backward-char)
-(global-set-key (kbd "M-;")   'comment-dwim)
-(global-set-key (kbd "C-x b") 'ido-switch-buffer)
-(define-key lisp-interaction-mode-map (kbd "C-j") nil)
+  (global-set-key (kbd "C-h")   'delete-backward-char)
+  (global-set-key (kbd "M-;")   'comment-dwim)
+  (global-set-key (kbd "C-x b") 'ido-switch-buffer)
+  (define-key lisp-interaction-mode-map (kbd "C-j") nil)
+  )
 
 (provide 'site-start)
 

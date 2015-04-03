@@ -13,6 +13,10 @@
 (Y/add-after-load-files "init_" (concat package-conf-dir "builtin"))
 (Y/add-after-load-files "init_" package-conf-dir)
 
+;; My libraries
+(add-to-list 'load-path (concat elisp-dir "self"))
+(require 'Y-loaddefs)
+
 ;; AUTOMATICALLY-GENERATED FUNCTION LOADING ;;
 ;; autoload file of git.savannah.gnu.org/emacs/lisp/emacs
 (message-startup-time "loaddefs")

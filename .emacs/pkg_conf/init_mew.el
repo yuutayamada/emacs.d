@@ -170,11 +170,12 @@ For example
             (local-set-key (kbd "O") 'mew-browse-url-at-point)
             (local-set-key (kbd "C-x m") 'mew-browse-url-at-point)))
 
-(with-no-warnings
-  (when (and (fboundp 'shr-render-region)
-             ;; \\[shr-render-region] requires Emacs to be compiled with libxml2.
-             (fboundp 'libxml-parse-html-region))
-    (setq mew-prog-text/html 'shr-render-region)))
+;; Comment out due to an error, which makes "Making
+;; after-change-functions buffer-local while locally let-bound!"
+;; (when (and (fboundp 'shr-render-region)
+;;            ;; \\[shr-render-region] requires Emacs to be compiled with libxml2.
+;;            (fboundp 'libxml-parse-html-region))
+;;   (defconst mew-prog-text/html 'shr-render-region))
 
 (provide 'init_mew)
 

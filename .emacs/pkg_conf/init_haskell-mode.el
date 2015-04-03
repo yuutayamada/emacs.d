@@ -19,6 +19,7 @@
 (require 'haskell-mode)
 (require 'haskell-mode-autoloads)
 (require 'my_autoload)
+(require 'helm-hoogle)
 
 (require 'haskell-customize)
 (setq haskell-process-suggest-remove-import-lines t

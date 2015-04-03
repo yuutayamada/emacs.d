@@ -21,14 +21,13 @@
 (setq inhibit-x-resources nil)
 
 (add-hook 'after-make-frame-functions 'Y/frame-init-func)
-
 (defun Y/frame-init-func (&optional frame)
   "Init function when Emacs connects new server with FRAME object."
   (let ((f (or frame (selected-frame))))
     (select-frame f)
     (if (< 2 (length (frame-list)))
         (Y/frame-set-window-config)
-      (when (display-graphic-p) (Y/init-fontset))
+      (Y/init-fontset)
       (Y/apply-color-theme-by-display)
       ;; The second arg means "do not change face."
       (frame-set-background-mode f t))

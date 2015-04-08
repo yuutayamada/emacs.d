@@ -43,3 +43,6 @@
 [submodule "elisp/self/ffinder"]
 	path = elisp/self/ffinder
 	url = https://github.com/yuutayamada/ffinder-el.git
+[submodule "elisp/self/xterm-cursor-changer"]
+	path = elisp/self/xterm-cursor-changer
+	url = https://github.com/yuutayamada/xterm-cursor-changer-el.git

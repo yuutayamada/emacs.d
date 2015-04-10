@@ -136,11 +136,12 @@
            if (and m (lookup-key (symbol-value m) (kbd key)))
            collect m))
 
-;; HIGHLIGHT Cursor or etc.
+;; HIGHLIGHT Cursor or etc. ;; hollow
 (setq evil-default-cursor      'box ; You can specify: 'hbar or 'box
-      evil-normal-state-cursor '("#Ff00ff")
-      evil-insert-state-cursor '("#4169e1" (bar . 2))
-      evil-emacs-state-cursor  '("#00ced1" (bar . 2))
+      evil-normal-state-cursor  '("#Ff00ff" (box . 2))
+      evil-insert-state-cursor  '("#4169e1" (bar . 2))
+      evil-emacs-state-cursor   '("#00ced1" (bar . 2))
+      evil-replace-state-cursor '("white"   box)
       evil-cross-lines t
       ;; Do not move eol when normal state
       evil-move-cursor-back t)
@@ -172,22 +173,6 @@
 ;; evil surround
 (require 'evil-surround)
 (global-evil-surround-mode 1)
-
-(defun Y/evil-get-cursor-type ()
-  (let* ((spec (cl-case (bound-and-true-p evil-state)
-                 (emacs evil-emacs-state-cursor)
-                 (normal evil-normal-state-cursor)
-                 (insert evil-insert-state-cursor)
-                 (visual evil-visual-state-cursor)
-                 (motion evil-motion-state-cursor)
-                 (replace evil-replace-state-cursor)
-                 (operator evil-operator-state-cursor)
-                 (t evil-default-cursor)))
-         (type (cl-typecase spec
-                 (list   (cl-caadr spec))
-                 (symbol spec))))
-    (when (member type '(box hbar bar))
-      type)))
 
 (provide 'init_evil)
 

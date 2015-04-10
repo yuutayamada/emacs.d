@@ -22,8 +22,6 @@
                 (t (run-with-idle-timer 3 nil 'flycheck-mode)))
               ;; flyspell-prog-mode
               (run-with-idle-timer 5 nil 'flyspell-prog-mode)
-              ;; Colorize color code
-              (run-with-idle-timer 6 nil 'rainbow-mode)
               (unless prettify-symbols-mode
                 (prettify-symbols-mode t))
               (highlight-indentation-current-column-mode)

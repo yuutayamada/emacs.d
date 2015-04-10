@@ -8,6 +8,13 @@
          for hook in elisp-mode-hooks
          do (add-hook hook 'eldoc-mode))
 
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (when (and (stringp buffer-file-name)
+                        (string-match custom-theme-directory
+                                      (file-name-directory buffer-file-name)))
+               (rainbow-mode t))))
+
 (provide 'init_elisp-mode)
 
 ;; Local Variables:

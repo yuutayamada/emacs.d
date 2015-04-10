@@ -42,16 +42,14 @@
 ;; Add load-path
 (setq-default flycheck-emacs-lisp-load-path load-path)
 
-(defadvice flycheck-mode
-  (around avoid-flycheck-if-needed activate)
+(defadvice flycheck-mode (around avoid-flycheck-if-needed activate)
   "Turn off flycheck in specific buffer."
   (unless (or (org-in-src-block-p)
               (member (buffer-name) '(".emacs" "*scratch*"))
               (string-match "^\\*Org Src .*\\*" (buffer-name)))
     ad-do-it))
 
-(defadvice flycheck-finish-syntax-check
-  (around ad-avoid-this-func activate)
+(defadvice flycheck-finish-syntax-check (around ad-avoid-this-func activate)
   "Avoid flycheck on org src buffer."
   (when (not (org-src-edit-buffer-p))
     ad-do-it))

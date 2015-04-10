@@ -149,6 +149,13 @@
 (advice-add 'other-window-or-split :after 'evil-refresh-cursor)
 (add-hook 'find-file-hook 'evil-refresh-cursor)
 
+;; xcc
+(defadvice evil-set-cursor (around Y/evil-change-cursor activate)
+  "Change cursor shape on xterm Emacs."
+  (if (xcc-xterm-p)
+      (xcc-change-cursor-color-and-shape-on-evil)
+    ad-do-it))
+
 (defun Y/evil-change-highlight ()
   "Change highlight color of line."
   (let ((attributes

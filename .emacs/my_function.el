@@ -66,8 +66,6 @@
 (defun Y/change-color (face bg fg ul)
   "Change highlight color to which correspond to FACE, BG, FG, UL."
   (unless Y/inhibit-change-color
-    (unless (display-graphic-p)
-      (xcc-change-cursor-color-and-shape bg))
     (set-face-attribute
      face nil :background bg :foreground fg :underline  ul)))
 

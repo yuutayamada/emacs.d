@@ -2,16 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 (require 'magit)
-(require 'mykie)
 
 (defadvice magit-push (around ad-ssh-add-if-it-was-needed activate)
   "Do ssh-add if it is needed."
   (my/ssh-add)
   ad-do-it)
 
-(defadvice magit-commit (around advice-name activate)
-  "Save current buffer."
-  (save-current-buffer ad-do-it))
+(add-hook 'git-commit-mode-hook
+          '(lambda ()
+             (define-key git-commit-mode-map (kbd "C-c C-c") 'git-commit-commit)))
 
 (provide 'init_magit)
 

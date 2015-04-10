@@ -186,6 +186,9 @@
  ;; MMM-mode
  '(mmm-default-submode-face ((t (:foreground nil :background "#000000"))))
 
+ ;; Org-mode
+ '(org-document-info-keyword ((t :inherit 'org-meta-line)))
+
  ;; popup/popwin
  '(popup-menu-selection-face ((t :background "#5c5cff"
                                  :foreground "#E5e5e5")))

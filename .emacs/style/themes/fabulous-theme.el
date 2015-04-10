@@ -38,7 +38,11 @@
 
  ;; Current line
  ;; '(highlight ((t (:foreground "#000000" :background "#C4BE89"))))
- '(hl-line   ((t (:background "black"))))
+ '(hl-line   ((t (:background "#111111"
+                              :foreground "#ffffff"
+                              :distant-foreground "#000000"
+                              :inverse t
+                              :box  (:line-width -1 :color "red")))))
 
  ;; link
  '(link       ((t :foreground "#00d7ff")))
@@ -51,10 +55,10 @@
 
  ;; Paren
  '(show-paren-match ((t (:foreground "yellow" :background "white"))))
- '(paren-face       ((t (:foreground "#A6E22A" :background nil))))
+ '(paren-face       ((t (:foreground "#a6e22a" :background nil))))
 
  ;; shadow
- '(shadow ((t (:foreground "#C6c6c6"))))
+ '(shadow ((t (:foreground "#c6c6c6"))))
 
  ;; Org-mode
  '(org-hide ((t (:inherit 'shadow :foreground nil))))

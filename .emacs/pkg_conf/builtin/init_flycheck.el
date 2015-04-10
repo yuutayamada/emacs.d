@@ -71,6 +71,15 @@ See URL `http://www.veripool.org/wiki/verilator'."
           line ": " (message) line-end))
   :modes verilog-mode)
 
+;; Nim
+(flycheck-define-checker nim-checker
+  "A Nim error checker"
+  :command ("nim" "check" source)
+  :error-patterns
+  ((warning line-start (file-name) "(" line ", " column ") Hint: "  (message) line-end)
+   (error   line-start (file-name) "(" line ", " column ") Error: " (message) line-end))
+  :modes (nim-mode))
+
 (provide 'init_flycheck)
 
 ;; Local Variables:

@@ -293,12 +293,6 @@
 (:name hl-line+ :auto-generated t :type emacswiki :description "Extensions to hl-line.el." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/hl-line+.el"))
 (hooglel status "installed" recipe
 (:name hooglel :type github :pkgname "yuutayamada/hooglel-el"))
-(howm status "installed" recipe
-(:name howm :website "http://howm.sourceforge.jp/" :description "Write fragmentarily and read collectively." :type http-tar :options
-("xzf")
-:url "http://howm.sourceforge.jp/a/howm-1.4.1.tar.gz" :build
-`(("./configure" ,(concat "--with-emacs=" el-get-emacs))
-"make")))
 (html-helper-mode status "installed" recipe
 (:name html-helper-mode :type git :url "https://github.com/emacsmirror/html-helper-mode.git"))
 (htmlize status "installed" recipe

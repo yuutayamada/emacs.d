@@ -9,6 +9,7 @@
 (unless (fboundp 'ginger-rephrase)
   (load (concat el-get-dir "ginger-rephrase-api/ginger-rephrase-api")))
 
+;;;###autoload
 (defun my/ginger-region ()
   (interactive)
   (when (fboundp 'ginger-region)

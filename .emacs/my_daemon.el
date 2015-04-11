@@ -21,6 +21,8 @@
 (setq inhibit-x-resources nil)
 
 (add-hook 'after-make-frame-functions 'Y/frame-init-func)
+
+;;;###autoload
 (defun Y/frame-init-func (&optional frame)
   "Init function when Emacs connects new server with FRAME object."
   (let ((f (or frame (selected-frame))))
@@ -42,6 +44,7 @@
            do (cl-return (set-window-configuration wc))
            finally (Y/apply-color-theme-by-display)))
 
+;;;###autoload
 (defun Y/set-default-window-frame-alist (frame)
   "Set `window-system-default-frame-alist' of FRAME."
   (let ((ws (window-system frame)))

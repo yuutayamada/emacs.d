@@ -23,6 +23,7 @@
 (require 'google-translate)
 (require 'thingatpt)
 
+;;;###autoload
 (defun my/google-translate (text)
   ""
   (let* ((pair '("en" "ja"))

@@ -5,6 +5,7 @@
 (require 'ov)
 (defvar-local Y/http-overlay nil)
 
+;;;###autoload
 (defun Y/ov-toggle-http-overlay ()
   "Overlay https?:// link."
   (interactive)
@@ -12,12 +13,14 @@
       (Y/ov-turn-off-http-overlay)
     (Y/ov-turn-on-http-overlay)))
 
+;;;###autoload
 (defun Y/ov-turn-off-http-overlay ()
   "Turn off overlay."
   (interactive)
   (cl-loop for overlay in Y/http-overlay
            do (delete-overlay overlay)))
 
+;;;###autoload
 (defun Y/ov-turn-on-http-overlay ()
   "Turn on overlay."
   (interactive)
@@ -25,6 +28,7 @@
   (setq-local Y/http-overlay (ov-regexp "https?://[-~#./+\\&!?=_:%[:alnum:]]+"))
   (ov-set Y/http-overlay 'display "http://..." 'face 'link))
 
+;;;###autoload
 (defun Y/ov-http-overlay-at-point-p ()
   "Whether the point is overlay-ed or not."
   (interactive)

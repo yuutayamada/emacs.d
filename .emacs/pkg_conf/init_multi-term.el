@@ -25,6 +25,7 @@
 (require 'cl-lib)
 (defvar-local my/multi-term-original-buffer nil)
 
+;;;###autoload
 (defun my/multi-term (&optional switch)
   (interactive)
   (let*
@@ -47,6 +48,7 @@
   (if (and (eq major-mode 'term-mode) (equal win:current-config 19))
       (switch-to-buffer my/multi-term-original-buffer)))
 
+;;;###autoload
 (defun my/multi-term-current-buffer ()
   (interactive)
   (my/multi-term t))

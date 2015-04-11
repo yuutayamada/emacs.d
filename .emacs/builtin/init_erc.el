@@ -25,6 +25,7 @@
 (require 'erc-join)
 (require 'cl-lib)
 
+;;;###autoload
 (defun Y/start-irc ()
   "Connect to IRC."
   (interactive)

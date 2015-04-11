@@ -12,6 +12,7 @@
  Y/iso-transl-minor-mode "Yuta's transl minor-mode"
  :init-value nil :lighter nil :keymap iso-transl-ctl-x-8-map)
 
+;;;###autoload
 (defun Y/iso-transl-toggle-minor-mode ()
   "Toggle `iso-transl-ctl-x-8-map' keybinds."
   (interactive)

@@ -82,6 +82,7 @@
     (org-display-inline-images
      t t (or bol (point-at-bol)) (or eol (point-at-eol)))))
 
+;;;###autoload
 (defun my/org-dwim ()
   "My convinience function for `org-mode'."
   (interactive)

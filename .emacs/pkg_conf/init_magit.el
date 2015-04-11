@@ -12,6 +12,14 @@
           '(lambda ()
              (define-key git-commit-mode-map (kbd "C-c C-c") 'git-commit-commit)))
 
+;; Set buffer switch function
+(setq magit-status-buffer-switch-function
+      '(lambda (buffer)
+         (win:switch-window 19)
+         (switch-to-buffer buffer)
+         (when (not (one-window-p))
+           (delete-other-windows))))
+
 (provide 'init_magit)
 
 ;; Local Variables:

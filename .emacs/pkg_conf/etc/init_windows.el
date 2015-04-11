@@ -54,7 +54,7 @@
           (pcase c ; frame name of windows.el
             (`"e" (delete-other-windows) (call-interactively 'eww))
             ;; (`"d" (Y/lookup))
-            (`"s" (delete-other-windows) (magit-status d))
+            ;; (`"s" (delete-other-windows) (magit-status d))
             ;; (`"j" (jazzradio))
             (`"l"
              (unless (string-match "lingr" (buffer-name))

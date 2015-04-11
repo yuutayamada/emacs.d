@@ -30,6 +30,7 @@
 (require 'ido)
 (defconst Y/ghq-root (shell-command-to-string "echo -n `ghq root`"))
 
+;;;###autoload
 (defun Y/filecache-ido-find-file ()
   "My file cache find-file."
   (interactive)

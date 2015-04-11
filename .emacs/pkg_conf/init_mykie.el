@@ -25,7 +25,7 @@
 ;; [?\C->], [?\C-<], [(hiragana-katakana)]
 ;;; Code:
 
-(require 'mykie)
+;; (require 'mykie)
 (require 'my_autoload)
 
 ;; mykie.el setup ;;
@@ -576,7 +576,8 @@
   "0" (if (e2wm:pst-get-instance)
           (e2wm:stop-management)
         (e2wm:start-management))
-  "M-s" (find-file "~/share/doc/study/2015spring")
+  "M-s" magit-status
+  "M-c" (find-file "~/share/doc/study/2015spring")
   "M-h" my/toggle-hide-show
   "M-r" win-switch-menu
   "M-t" toggle-truncate-lines

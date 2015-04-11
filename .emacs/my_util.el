@@ -11,6 +11,7 @@
       (cd dir)
       (normal-top-level-add-subdirs-to-load-path))))
 
+;;;###autoload
 (defun Y/load-packages (packages)
   "Load PACKAGES."
   (if (bound-and-true-p config-dir)
@@ -126,6 +127,7 @@ file prefix by PREFIX."
                               (error err)))))))))
 
 ;; Color theme ;;
+;;;###autoload
 (defun Y/apply-color-theme (new-theme hl-flag)
   "Use my transparent color theme if it is in terminal Emacs.
 Otherwise, use a dark theme.  The FRAME is frame object."

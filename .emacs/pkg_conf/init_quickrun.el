@@ -3,6 +3,7 @@
 ;;; Code:
 (require 'quickrun)
 
+;;;###autoload
 (defun my/quickrun-dwim (&optional direction)
   "Do quickrun.
 You can specify 'ask and 'compile-only as symbol to DIRECTION."

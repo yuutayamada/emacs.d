@@ -50,6 +50,7 @@
            (switch-to-buffer (get-buffer match)))
           (t (find-file match)))))
 
+;;;###autoload
 (defun other-window-or-split ()
   "Move buffer or split when buffer was one."
   (interactive)
@@ -63,21 +64,12 @@
   (banish))
 
 (defvar Y/inhibit-change-color nil)
+;;;###autoload
 (defun Y/change-color (face bg fg ul)
   "Change highlight color to which correspond to FACE, BG, FG, UL."
   (unless Y/inhibit-change-color
     (set-face-attribute
      face nil :background bg :foreground fg :underline  ul)))
-
-;; http://www.emacswiki.org/emacs/UpdateAutoloads
-;; http://www.lunaryorn.com/2014/07/02/autoloads-in-emacs-lisp.html
-(defun Y/update-autoloads ()
-  "Call `update-directory-autoloads'."
-  (interactive)
-  (let ((generated-autoload-file (concat elisp-dir "self/Y-loaddefs.el"))
-        (dirs (cl-remove-if-not 'file-directory-p (directory-files (concat elisp-dir "self/") t))))
-    (apply `(update-directory-autoloads ,@dirs))
-    (byte-compile-file generated-autoload-file)))
 
 (defvar Y/mode-line-change-faces
   (cl-loop for face in '(mode-line powerline-active1 powerline-active2)
@@ -88,6 +80,7 @@
   (cl-loop for face in Y/mode-line-change-faces
            collect (cons face (face-all-attributes face))))
 
+;;;###autoload
 (defun Y/change-style (attributes &optional inhibit)
   "Change looking of window."
   (when (or (not Y/inhibit-change-color)
@@ -179,6 +172,7 @@ The SELECTED argument is opacity that window is selected."
   (interactive)
   (my/set-opacity (max (- (my/get-opacity) 5) 0)))
 
+;;;###autoload
 (defun my/org-src-code-buffer-p ()
   ""
   (let* ((buffer (buffer-name)))
@@ -195,10 +189,10 @@ The SELECTED argument is opacity that window is selected."
       (c-mode (insert "->"))
       (haskell-mode (insert " -> "))
       (coffee-mode
-       (if (flyspell-generic-progmode-verify)
+       (if (eq (face-at-point) 'font-lock-comment-face)
            (funcall insertX "#{}")
          (insert " ->")))
-      ;; (calendar-mode       (my-insert-day))
+      (calendar-mode         (my-insert-day))
       (emacs-lisp-mode       (test))
       (makefile-gmake-mode   (funcall insertX "$()"))
       (python-mode           (insert "$"))
@@ -212,6 +206,7 @@ The SELECTED argument is opacity that window is selected."
   (interactive)
   (print (text-properties-at (point))))
 
+;;;###autoload
 (defun my/kill-line ()
   ""
   (if (not (bound-and-true-p mykie:prog-mode-flag))
@@ -219,6 +214,7 @@ The SELECTED argument is opacity that window is selected."
     (call-interactively 'paredit-kill)
     (indent-for-tab-command)))
 
+;;;###autoload
 (defun my/screen-shot ()
   ""
   (interactive)
@@ -226,11 +222,13 @@ The SELECTED argument is opacity that window is selected."
       (shell-command "gnome-screenshot > /dev/null")
     (shell-command "gnome-screenshot -a > /dev/null")))
 
+;;;###autoload
 (defun my/remap-semicolon (map)
   "Reverse Colon and Semi Colon at specified key MAP."
   (define-key map (kbd ";") (lambda () (interactive) (insert ":")))
   (define-key map (kbd ":") (lambda () (interactive) (insert ";"))))
 
+;;;###autoload
 (defun my/ssh-add ()
   "Add ssh-key if it was needed when using magit. You may neeed ssh-askpath.
 
@@ -258,6 +256,7 @@ Example of my/keys
     (switch-to-buffer current)
     words))
 
+;;;###autoload
 (defun my/get-aspell-capital-words (file)
   ""
   (if (file-exists-p file)
@@ -269,6 +268,7 @@ Example of my/keys
                collect word)
     (error (format "The file %s doesn't exist" file))))
 
+;;;###autoload
 (defun my/file-exists-p (file)
   "Search FILE recursively to check whether file is exist until home directory."
   (let* ((filename (concat "./" file))
@@ -303,12 +303,14 @@ Example of my/keys
       (if (file-exists-p major-file)
           (popwin:find-file major-file)))))
 
+;;;###autoload
 (defun my/get-above-dir-name ()
   ""
   (let* ((dirs (split-string (file-name-as-directory default-directory) "/"))
          (last (- (length dirs) 2)))
     (nth last dirs)))
 
+;;;###autoload
 (defun my/in-dir-p (directory)
   ""
   (string-match (format "^%s" (expand-file-name directory))
@@ -323,6 +325,7 @@ Example of my/keys
          (string-to-number (read-from-minibuffer "What is Fahrenheit?: "))))
     (minibuffer-message (* 0.555 (- Fahrenheit 32)))))
 
+;;;###autoload
 (defun my/execute-from-current-file (&optional statement)
   ""
   (interactive)
@@ -374,6 +377,7 @@ Example of my/keys
     (calendar-exit)
     (insert day)))
 
+;;;###autoload
 (defun Y/get-auth-info (machine &rest keywords)
   ""
   (cl-loop with info = (car (auth-source-search :host machine :login :port))
@@ -404,11 +408,13 @@ Example of my/keys
             (haskell-mode "/=")
             (t "!="))))
 
+;;;###autoload
 (defun my/copy-current-file-name ()
   ""
   (interactive)
   (kill-new buffer-file-truename))
 
+;;;###autoload
 (defun my/kill-backward-word ()
   ""
   (unless (when (and (looking-at " ")
@@ -451,6 +457,7 @@ Example of my/keys
           (evil-numbers/inc-at-pt 1))))
     (indent-for-tab-command)))
 
+;;;###autoload
 (defun my/newline-and-indent ()
   "My better newline and indent."
   (interactive)
@@ -550,6 +557,7 @@ Example of my/keys
                           'japanese-jisx0208
                           (cons font+size u)))))))
 
+;;;###autoload
 (defun my/reset-bg-color (&optional color)
   (interactive)
   (when (or (not (display-graphic-p (selected-frame)))

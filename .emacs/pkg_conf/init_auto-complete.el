@@ -64,6 +64,7 @@
                                 ac-source-yasnippet))
 (setq-default ac-sources my/ac-sources-default)
 
+;;;###autoload
 (defun my/ac-add-sources-for-prog ()
   "Add ac-sources for each programming-mode."
   (let ((add-source

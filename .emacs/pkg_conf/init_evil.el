@@ -138,7 +138,7 @@
 
 ;; HIGHLIGHT Cursor or etc. ;; hollow
 (setq evil-default-cursor      'box ; You can specify: 'hbar or 'box
-      evil-normal-state-cursor  '("#Ff00ff" (box . 2))
+      evil-normal-state-cursor  '("#Ff00ff" box)
       evil-insert-state-cursor  '("#4169e1" (bar . 2))
       evil-emacs-state-cursor   '("#00ced1" (bar . 2))
       evil-replace-state-cursor '("white"   box)

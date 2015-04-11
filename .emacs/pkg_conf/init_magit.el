@@ -15,7 +15,7 @@
 ;; Set buffer switch function
 (setq magit-status-buffer-switch-function
       '(lambda (buffer)
-         (win:switch-window 19)
+         (setq-local magit-restore-window-configuration (current-window-configuration))
          (switch-to-buffer buffer)
          (when (not (one-window-p))
            (delete-other-windows))))

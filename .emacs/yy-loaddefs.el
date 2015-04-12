@@ -3,6 +3,18 @@
 ;;; Code:
 
 
+;;;### (autoloads nil "builtin/init_autoload" "builtin/init_autoload.el"
+;;;;;;  (21802 21224 583228 990000))
+;;; Generated autoloads from builtin/init_autoload.el
+
+(autoload 'Y/make-autoload-files "builtin/init_autoload" "\
+Make autoload files from elisp directory.
+FILES should put a place where is located to elisp directory.
+
+\(fn &optional FILES)" t nil)
+
+;;;***
+
 ;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (21800
 ;;;;;;  27090 804531 721000))
 ;;; Generated autoloads from builtin/init_erc.el
@@ -47,6 +59,17 @@ My convinience function for `org-mode'.
 
 ;;;***
 
+;;;### (autoloads nil "builtin/init_smerge-mode" "builtin/init_smerge-mode.el"
+;;;;;;  (21802 19349 327260 164000))
+;;; Generated autoloads from builtin/init_smerge-mode.el
+
+(autoload 'Y/smerge-mode-keep-at-point "builtin/init_smerge-mode" "\
+
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads nil "my_daemon" "my_daemon.el" (21800 27918 868566
 ;;;;;;  51000))
 ;;; Generated autoloads from my_daemon.el
@@ -63,8 +86,8 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (21800 28324
-;;;;;;  332582 860000))
+;;;### (autoloads nil "my_function" "my_function.el" (21802 18166
+;;;;;;  431279 829000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -331,8 +354,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xclip.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21800 30081 899242
-;;;;;;  279000))
+;;;;;;  "site-start.el" "style/my_modeline.el") (21802 21318 222247
+;;;;;;  426000))
 
 ;;;***
 

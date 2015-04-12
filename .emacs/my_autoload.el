@@ -4,32 +4,17 @@
 (require 'my_paths)
 (require 'my_util)
 
-;; http://www.emacswiki.org/emacs/UpdateAutoloads
-;; http://www.lunaryorn.com/2014/07/02/autoloads-in-emacs-lisp.html
-(defun Y/update-autoloads (filename)
-  "Call `update-directory-autoloads'."
-  ;; .nosearch
-  (cl-loop with dirs = (cl-remove-if-not 'file-directory-p (directory-files (file-name-directory filename) t))
-           for dir in dirs
-           for d = (concat dir "/lisp")
-           if (file-directory-p d)
-           collect d into lisp-dir
-           finally (Y/update-autoload-file filename (append dirs lisp-dir))))
+(defconst Y/autoload-files `(,(concat elisp-dir  "self/Y-loaddefs.el")
+                             ,(concat config-dir "yy-loaddefs.el")))
 
-(defun Y/update-autoload-file (filename dirs)
-  (let ((generated-autoload-file filename))
-    (apply `(update-directory-autoloads ,@dirs))
-    (byte-compile-file generated-autoload-file)))
-
-(defun Y/update-autoload-self-directory ()
-  ""
-  (interactive)
-  (Y/update-autoloads (concat elisp-dir  "self/Y-loaddefs.el"))
-  (Y/update-autoloads (concat config-dir "yy-loaddefs.el")))
-
-(if (not (require 'yy-loaddefs nil t))
-    (Y/update-autoloads (concat config-dir "yy-loaddefs.el"))
-  (require 'yy-loaddefs))
+(condition-case err
+    (progn (require 'yy-loaddefs)
+           (add-to-list 'load-path (concat elisp-dir "self"))
+           (require 'Y-loaddefs))
+  (error (with-no-warnings
+           (Y/make-autoload-files Y/autoload-files)
+           (require 'yy-loaddefs)
+           (require 'Y-loaddefs))))
 
 ;; Load my autoload configurations
 (message-startup-time "autoload...")
@@ -39,12 +24,6 @@
 (message-startup-time "configuring init files")
 (Y/add-after-load-files "init_" (concat config-dir "builtin"))
 (Y/add-after-load-files "init_" package-conf-dir)
-
-;; My libraries
-(add-to-list 'load-path (concat elisp-dir "self"))
-(if (not (require 'Y-loaddefs nil t))
-    (Y/update-autoloads (concat elisp-dir "self/Y-loaddefs.el"))
-  (require 'Y-loaddefs))
 
 ;; AUTOMATICALLY-GENERATED FUNCTION LOADING ;;
 ;; autoload file of git.savannah.gnu.org/emacs/lisp/emacs

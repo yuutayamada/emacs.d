@@ -402,9 +402,9 @@
   [(super tab)] pcomplete)
 
 ;; NON ALPHABETICAL CHARACTER ;;
+;; Do not bind "M-[" because it will take over F5-F10 keybind of terminal Emacs.
 (mykie:set-keys nil
   "M-;"  comment-dwim
-  "M-["  bm-next
   "M-]"  bm-previous
   "C-\]" esc-map
   "C-\\" mozc-mode ; toggle-input-method ;my/festival

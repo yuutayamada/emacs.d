@@ -194,6 +194,7 @@
          :scala-mode my/ensime-goto-next-error
          t anzu-query-replace-regexp)
   :C-u*2!         anzu-query-replace-at-cursor-thing
+  :C-u*3! (message (format "%s" (face-at-point)))
   :region         anzu-query-replace-regexp
   :region&C-u     query-replace-regexp
 

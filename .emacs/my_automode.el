@@ -41,6 +41,10 @@
                        ("miniperl"   . cperl-mode))
          do (add-to-list 'interpreter-mode-alist pair))
 
+;; X default files
+(add-to-list 'auto-mode-alist
+             (cons (getenv "XAPPLRESDIR") 'conf-xdefaults-mode))
+
 (provide 'my_automode)
 
 ;; Local Variables:

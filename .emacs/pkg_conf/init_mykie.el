@@ -263,10 +263,11 @@
   "C-+" text-scale-increase
   "C->" win-next-window
   "C-<" win-prev-window
-  "C-0" my/helm-lookup-history
-  "C-3" my/toggle-show-hide
-  "C-4" helm-show-mykie-keywords
-  "C-8" (cider-turn-on-eldoc-mode))
+  ;; "C-0" my/helm-lookup-history
+  ;; "C-3" my/toggle-show-hide
+  ;; "C-4" helm-show-mykie-keywords
+  ;; "C-8" (cider-turn-on-eldoc-mode)
+  )
 
 ;; SUPER KEY BINDING ;;
 (mykie:set-keys global-map
@@ -658,12 +659,20 @@
 ;; Actually I set those values by xterm's resource file.
 ;; To examine key sequence, use those functions:
 ;;   (insert (format "%s"(read-key-sequence-vector "")))
-;;   (insert (format "%s"(read-key-sequence "")))
-(define-key function-key-map [27 91 51 52 99]  (kbd "C-;"))
-(define-key function-key-map [27 91 51 52 97]  (kbd "C-,"))
-(define-key function-key-map [27 91 51 52 126] (kbd "C-."))
-(define-key function-key-map [27 91 51 52 101] (kbd "C-'"))
-(define-key function-key-map [27 91 51 52 100] (kbd "S-SPC"))
+;; (describe-key [67108919]) C-7
+;; (describe-key [67108920]) C-8
+;;   (insert (format "%s"(read-key-sequence "")))[67108920]
+;; (string-to-vector "\e[29")
+;; [27 91 13] (char-to-string 100)
+
+(require 'cl-lib)
+(defvar xterm-keybinder-prefix "\e[29") ; M-[29
+(cl-loop with prefix = xterm-keybinder-prefix
+         for c in '(":" ";" "," "." "'" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9")
+         for def = (kbd (concat "C-" c))
+         do (define-key function-key-map (concat prefix c) def)
+         finally (progn ; treat irregular keybinds
+                   (define-key function-key-map (concat prefix " ") (kbd "S-SPC"))))
 
 (provide 'init_mykie)
 

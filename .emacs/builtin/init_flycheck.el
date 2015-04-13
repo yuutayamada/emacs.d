@@ -70,7 +70,7 @@ See URL `http://www.veripool.org/wiki/verilator'."
   :modes verilog-mode)
 
 ;; Nim
-(flycheck-define-checker nim-checker
+(flycheck-define-checker nim
   "A Nim error checker"
   :command ("nim" "check" source)
   :error-patterns

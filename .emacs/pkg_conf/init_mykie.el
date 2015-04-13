@@ -293,7 +293,9 @@
              (eshell-mode (delete-window))
              (t (eshell)))
   :default (helm-resume current-prefix-arg)
-  :clone ";"
+  "C-'"
+  :default magit-status
+  :region  align
 
   ;; "C-."
   ;; :default
@@ -409,25 +411,6 @@
   "C-\]" esc-map
   "C-\\" mozc-mode ; toggle-input-method ;my/festival
   "C-*" undo)
-
-;; TRANSLATE KEYS TO USE SAME POSITION ;;
-(apply
- `((lambda ()
-     (mykie:set-keys nil
-       ;; ;; C-=
-       ;; ,(concat "C-" (keyboard-converter-find "^"))
-       ;; :default helm-c-apropos
-       ;; :C-u     helm-colors
-       ;; C-'
-       ,(concat "C-" (keyboard-converter-find ":"))
-       :default loga-lookup-in-popup
-       :region (let ((comment-style 'aligned))
-                 (call-interactively 'comment-region))
-       ;; ;; C-+
-       ;; ,(concat "C-" (keyboard-converter-find "~"))
-       ;; :default show-cheat-sheet
-       )
-     )))
 
 ;; Japanese keyboard only ;;
 (mykie:set-keys nil
@@ -607,7 +590,7 @@
   :C-u     bm-toggle
   ;;
   ;; TODO: implement function of smartchr.el
-  ;; "S-SPC" :default scroll-down-command
+  "S-SPC" :default scroll-down-command
   )
 
 ;; Escape ;;
@@ -670,6 +653,18 @@
 (advice-add (global-key-binding (kbd "C-s")) :before
             (lambda () (require 'init_isearch)))
 
+;; Terminal keybind
+;; The below vector key sequences are depending on how you set the values.
+;; Actually I set those values by xterm's resource file.
+;; To examine key sequence, use those functions:
+;;   (insert (format "%s"(read-key-sequence-vector "")))
+;;   (insert (format "%s"(read-key-sequence "")))
+(define-key function-key-map [27 91 51 52 99]  (kbd "C-;"))
+(define-key function-key-map [27 91 51 52 97]  (kbd "C-,"))
+(define-key function-key-map [27 91 51 52 126] (kbd "C-."))
+(define-key function-key-map [27 91 51 52 101] (kbd "C-'"))
+(define-key function-key-map [27 91 51 52 100] (kbd "S-SPC"))
+
 (provide 'init_mykie)
 
 ;; Local Variables:
@@ -678,4 +673,3 @@
 ;; End:
 
 ;;; init_mykie.el ends here
-

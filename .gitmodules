@@ -46,3 +46,6 @@
 [submodule "elisp/self/xterm-cursor-changer"]
 	path = elisp/self/xterm-cursor-changer
 	url = https://github.com/yuutayamada/xterm-cursor-changer-el.git
+[submodule "elisp/self/xterm-keybinder-el"]
+	path = elisp/self/xterm-keybinder-el
+	url = https://github.com/yuutayamada/xterm-keybinder-el.git

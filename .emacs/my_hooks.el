@@ -7,6 +7,8 @@
 ;; For Terminal Emacs
 ;; This hook called each time when you boot terminal Emacs.
 (add-hook 'terminal-init-xterm-hook 'turn-on-xclip)
+(when (getenv "XTERM_VERSION")
+  (add-hook 'terminal-init-xterm-hook 'xterm-keybinder-setup))
 
 ;; Use dark faces on Terminal Emacs (but, it doesn't change background)
 ;; see also : https://www.gnu.org/software/emacs/manual/html_node/elisp/Terminal-Parameters.html

@@ -665,15 +665,6 @@
 ;; (string-to-vector "\e[29")
 ;; [27 91 13] (char-to-string 100)
 
-(require 'cl-lib)
-(defvar xterm-keybinder-prefix "\e[29") ; M-[29
-(cl-loop with prefix = xterm-keybinder-prefix
-         for c in '(":" ";" "," "." "'" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9")
-         for def = (kbd (concat "C-" c))
-         do (define-key function-key-map (concat prefix c) def)
-         finally (progn ; treat irregular keybinds
-                   (define-key function-key-map (concat prefix " ") (kbd "S-SPC"))))
-
 (provide 'init_mykie)
 
 ;; Local Variables:

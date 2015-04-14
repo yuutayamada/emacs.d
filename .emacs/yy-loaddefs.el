@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads nil "builtin/init_autoload" "builtin/init_autoload.el"
-;;;;;;  (21802 21224 583228 990000))
+;;;;;;  (21802 21471 319224 888000))
 ;;; Generated autoloads from builtin/init_autoload.el
 
 (autoload 'Y/make-autoload-files "builtin/init_autoload" "\
@@ -60,11 +60,11 @@ My convinience function for `org-mode'.
 ;;;***
 
 ;;;### (autoloads nil "builtin/init_smerge-mode" "builtin/init_smerge-mode.el"
-;;;;;;  (21802 19349 327260 164000))
+;;;;;;  (21802 21765 775219 993000))
 ;;; Generated autoloads from builtin/init_smerge-mode.el
 
 (autoload 'Y/smerge-mode-keep-at-point "builtin/init_smerge-mode" "\
-
+Treat merging at point by smerge way.
 
 \(fn)" t nil)
 
@@ -354,8 +354,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xclip.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21802 21318 222247
-;;;;;;  426000))
+;;;;;;  "site-start.el" "style/my_modeline.el") (21804 6257 561853
+;;;;;;  951000))
 
 ;;;***
 

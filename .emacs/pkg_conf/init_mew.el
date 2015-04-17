@@ -50,11 +50,6 @@ For example
                               :timeout 5000)
       (mew-biff-bark n))))
 
-(defun mew-spam-assassin-or-bsfilter (val)
-  ""
-  (let ((case-fold-search t))
-    (if (string-match "yes" val) ?D)))
-
 (defun my/generate-mew/gmail-alist-from (mail-prefix)
   ""
   (let ((inbox-name (concat "+inbox-" mail-prefix))
@@ -74,10 +69,7 @@ For example
       mew-use-suffix t
       ;; Manage unread topic
       mew-use-unread-mark t
-      ;; Spam configuration
-      mew-spam: "X-Spam-Flag:"
-      mew-inbox-action-alist
-      '(("X-Spam-Flag:" mew-spam-assassin-or-bsfilter))
+
       ;; Register password briefly
       ;; mew-use-cached-passwd t
       ;; if you use master password, you should use mew-pinentry
@@ -98,6 +90,15 @@ For example
       mew-use-text/html t
       ;; display as xml for xml
       mew-use-text/xml t)
+
+;; Spam
+(defun mew-spam-assassin-or-bsfilter (val)
+  (let ((case-fold-search t))
+    (if (string-match "yes" val) ?D)))
+
+(setq mew-spam: "X-Spam-Flag:"
+      mew-inbox-action-alist
+      '(("X-Spam-Flag:" mew-spam-assassin-or-bsfilter)))
 
 ;; -- CHARSET --
 (setq
@@ -131,7 +132,7 @@ For example
     ("use-smtp-auth"     . t)))
 
 (defun my/mew-create-alist (list)
-  ""
+  "Produce alist for my setting from LIST."
   (cl-loop with alist = '()
            for (title account) in list
            collect `(,title
@@ -139,12 +140,11 @@ For example
                      ,@(my/generate-mew/gmail-alist-from account))))
 
 ;; Switch to account by types "C" and renew summary by types "i"
-(setq mew-config-alist
-      (my/mew-create-alist
-       my/mew-gmail-prefixes))
+(setq mew-config-alist (my/mew-create-alist my/mew-gmail-prefixes))
 
-;; save draft message before sending mail
+;; Draft
 (defadvice mew-draft-send-message (around ad-save-braft-buffer activate)
+  "Save draft message before sending mail."
   (mew-draft-save-buffer)
   ad-do-it)
 

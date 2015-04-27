@@ -27,6 +27,7 @@
   "Init function when Emacs connects new server with FRAME object."
   (let ((f (or frame (selected-frame))))
     (select-frame f)
+    (when (getenv "XTERM_VERSION") (shell-command "transset -a 0.75"))
     (if (< 2 (length (frame-list)))
         (Y/frame-set-window-config)
       (Y/init-fontset)

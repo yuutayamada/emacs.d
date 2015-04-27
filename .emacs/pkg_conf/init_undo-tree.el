@@ -8,10 +8,10 @@
 (require 'mykie)
 ;; On terminal Emacs, I can't use C-q because tmux is using the key as prefix.
 (mykie:set-keys undo-tree-visualizer-mode-map
-  "q"   :default undo-tree-visualizer-abort
-  "C-g" :default undo-tree-visualizer-quit
-  "C-j" :default undo-tree-visualizer-quit
-  "RET" :default undo-tree-visualizer-quit)
+  "q"   undo-tree-visualizer-abort
+  "C-g" undo-tree-visualizer-quit
+  "C-j" undo-tree-visualizer-quit
+  "RET" undo-tree-visualizer-quit)
 
 (provide 'init_undo-tree)
 

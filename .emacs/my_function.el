@@ -55,7 +55,7 @@
   "Move buffer or split when buffer was one."
   (interactive)
   (when (one-window-p)
-    (if (< 90 (window-width))
+    (if (< (window-width) (window-height))
         (split-window-horizontally)
       (split-window-vertically)))
   (if current-prefix-arg

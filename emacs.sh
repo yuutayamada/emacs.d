@@ -61,7 +61,16 @@ EmacsClient() {
   [ ! -z ${EMACS_FRAME_PARAMETERS} ] && fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
   [ -z "$@" ] && where=`pwd` || where="$@"
   client="${emacsclient} ${fparam} -s ${daemon_name} -q ${option} ${where}"
-  eval "${client} ${background}"
+  if test -z $xtermopt; then
+    eval "${client} ${background}"
+  else
+    eval "xterm -xrm `${xtermopt}` -e \"export EMACSLOADPATH='${Epath}:' && ${client}\" &"
+  fi
+}
+
+XtermEmacs() {
+  xtermopt=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/xterm-option
+  TerminalEmacs
 }
 
 # GUI Emacs
@@ -70,5 +79,8 @@ alias e='GUI_Emacs'
 alias t='TerminalEmacs'
 # boot only daemon
 alias ed='EmacsDaemon &'
+# emacsclient on xterm
+alias ee='XtermEmacs'
+
 # For emergency
 alias baymax="${emacs} -q -D &"

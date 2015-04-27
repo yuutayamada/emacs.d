@@ -27,6 +27,12 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION."
     (unless (eq (current-buffer) base-buffer)
       (switch-to-buffer-other-window base-buffer))))
 
+(defadvice quickrun/default-outputter (around Y/guard-from-err activate)
+  "Work around http://lists.gnu.org/archive/html/bug-gnu-emacs/2014-06/msg00659.html."
+  (condition-case err
+      ad-do-it
+    (error err)))
+
 ;; override Java
 (quickrun-add-command
  "java"

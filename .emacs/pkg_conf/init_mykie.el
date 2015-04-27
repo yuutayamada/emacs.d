@@ -528,11 +528,9 @@
   :default helm-M-x
   :C-u! execute-extended-command ; for emergency
 
-  "M-y"
-  :default  helm-show-kill-ring
+  "M-y" helm-show-kill-ring
 
-  "M-z"
-  :default  my/toggle-outline
+  "M-z" Y/split-window-spirally
 
   "M-w"
   :default (if (bound-and-true-p cua--rectangle)

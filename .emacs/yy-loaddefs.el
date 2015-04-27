@@ -70,8 +70,8 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "my_daemon" "my_daemon.el" (21800 27918 868566
-;;;;;;  51000))
+;;;### (autoloads nil "my_daemon" "my_daemon.el" (21821 27468 367404
+;;;;;;  313000))
 ;;; Generated autoloads from my_daemon.el
 
 (autoload 'Y/frame-init-func "my_daemon" "\
@@ -86,12 +86,17 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (21802 18166
-;;;;;;  431279 829000))
+;;;### (autoloads nil "my_function" "my_function.el" (21822 30356
+;;;;;;  137563 671000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
 Move buffer or split when buffer was one.
+
+\(fn)" t nil)
+
+(autoload 'Y/split-window-spirally "my_function" "\
+
 
 \(fn)" t nil)
 
@@ -278,7 +283,7 @@ Whether the point is overlay-ed or not.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_quickrun" "pkg_conf/init_quickrun.el"
-;;;;;;  (21800 28719 148599 228000))
+;;;;;;  (21816 56080 839492 397000))
 ;;; Generated autoloads from pkg_conf/init_quickrun.el
 
 (autoload 'my/quickrun-dwim "pkg_conf/init_quickrun" "\
@@ -338,10 +343,11 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_mew.el" "pkg_conf/init_migemo.el" "pkg_conf/init_milkboy.el"
 ;;;;;;  "pkg_conf/init_mmm-mode.el" "pkg_conf/init_mode-compile.el"
 ;;;;;;  "pkg_conf/init_moz.el" "pkg_conf/init_mozc.el" "pkg_conf/init_multiple-cursors.el"
-;;;;;;  "pkg_conf/init_mykie.el" "pkg_conf/init_newsticker.el" "pkg_conf/init_node-console.el"
-;;;;;;  "pkg_conf/init_nyan-mode.el" "pkg_conf/init_open-junk-file.el"
-;;;;;;  "pkg_conf/init_org-mobile.el" "pkg_conf/init_org-trello.el"
-;;;;;;  "pkg_conf/init_outline.el" "pkg_conf/init_package.el" "pkg_conf/init_pangu-spacing.el"
+;;;;;;  "pkg_conf/init_mykie.el" "pkg_conf/init_newsticker.el" "pkg_conf/init_nim-mode.el"
+;;;;;;  "pkg_conf/init_node-console.el" "pkg_conf/init_nyan-mode.el"
+;;;;;;  "pkg_conf/init_open-junk-file.el" "pkg_conf/init_org-mobile.el"
+;;;;;;  "pkg_conf/init_org-trello.el" "pkg_conf/init_outline.el"
+;;;;;;  "pkg_conf/init_package.el" "pkg_conf/init_pangu-spacing.el"
 ;;;;;;  "pkg_conf/init_paredit.el" "pkg_conf/init_perl-mode.el" "pkg_conf/init_picture.el"
 ;;;;;;  "pkg_conf/init_popwin.el" "pkg_conf/init_powerline.el" "pkg_conf/init_python.el"
 ;;;;;;  "pkg_conf/init_refe.el" "pkg_conf/init_rsense.el" "pkg_conf/init_rust-mode.el"
@@ -354,8 +360,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xclip.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21804 6257 561853
-;;;;;;  951000))
+;;;;;;  "site-start.el" "style/my_modeline.el") (21822 30392 749229
+;;;;;;  92000))
 
 ;;;***
 

@@ -54,14 +54,18 @@
 (defun other-window-or-split ()
   "Move buffer or split when buffer was one."
   (interactive)
-  (when (one-window-p)
-    (if (< (window-width) (window-height))
-        (split-window-horizontally)
-      (split-window-vertically)))
+  (when (one-window-p) (Y/split-window-spirally))
   (if current-prefix-arg
       (other-window -1)
     (other-window 1))
   (banish))
+
+;;;###autoload
+(defun Y/split-window-spirally ()
+  (interactive)
+  (if (< (window-height) (window-width))
+      (split-window-horizontally)
+    (split-window-vertically)))
 
 (defvar Y/inhibit-change-color nil)
 ;;;###autoload

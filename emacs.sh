@@ -57,6 +57,10 @@ GUI_Emacs() {
   option="-c" background="&" EmacsDwim $@
 }
 
+XtermEmacs() {
+  xtermopt=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/xterm-option TerminalEmacs
+}
+
 EmacsClient() {
   [ ! -z ${EMACS_FRAME_PARAMETERS} ] && fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
   [ -z "$@" ] && where=`pwd` || where="$@"
@@ -68,19 +72,14 @@ EmacsClient() {
   fi
 }
 
-XtermEmacs() {
-  xtermopt=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/xterm-option
-  TerminalEmacs
-}
-
 # GUI Emacs
 alias e='GUI_Emacs'
 # Terminal Emacs
 alias t='TerminalEmacs'
+# emacsclient on xterm
+alias c='XtermEmacs'
 # boot only daemon
 alias ed='EmacsDaemon &'
-# emacsclient on xterm
-alias ee='XtermEmacs'
 
 # For emergency
 alias baymax="${emacs} -q -D &"

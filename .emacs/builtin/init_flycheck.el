@@ -76,7 +76,7 @@ See URL `http://www.veripool.org/wiki/verilator'."
   :error-patterns
   ((warning line-start (file-name) "(" line ", " column ") Hint: "  (message) line-end)
    (error   line-start (file-name) "(" line ", " column ") Error: " (message) line-end))
-  :modes (nim-mode))
+  :modes nim-mode)
 
 (provide 'init_flycheck)
 

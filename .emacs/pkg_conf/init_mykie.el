@@ -229,7 +229,7 @@
   "C-s"
   :default isearch-forward
   :git-commit-mode-map helm-ag-r-git-logs
-  :C-u!    ace-jump-mode
+  :C-u!    helm-swoop
   :C-u*2   (helm-ag-r-current-file)
 
   "C-t"
@@ -294,6 +294,7 @@
              (eshell-mode (delete-window))
              (t (eshell)))
   :default (helm-resume current-prefix-arg)
+
   "C-'"
   :default magit-status
   :region  align
@@ -411,7 +412,7 @@
   "M-]"  bm-previous
   "C-\]" esc-map
   "C-\\" mozc-mode ; toggle-input-method ;my/festival
-  "C-*" undo)
+  "C-*"  undo)
 
 ;; Japanese keyboard only ;;
 (mykie:set-keys nil

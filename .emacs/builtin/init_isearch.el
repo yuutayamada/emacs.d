@@ -6,7 +6,8 @@
 
 (require 'init_migemo)
 
-(add-hook 'isearch-mode-hook 'global-ace-isearch-mode)
+;; Temporary comment out
+;; (add-hook 'isearch-mode-hook 'global-ace-isearch-mode)
 
 (require 'mykie)
 (mykie:set-keys isearch-mode-map

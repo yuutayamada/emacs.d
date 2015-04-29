@@ -10,11 +10,11 @@
 
 (require 'mykie)
 (mykie:set-keys isearch-mode-map
-  "C-i" :default my/isearch-exit
-  "C-j" :default isearch-exit
-  "C-o" :default isearch-query-replace-regexp
-  "C-h" :default isearch-delete-char
-  "C-e" :default migemo-isearch-toggle-migemo)
+  "C-i" my/isearch-exit
+  "C-j" isearch-exit
+  "C-o" isearch-query-replace-regexp
+  "C-h" isearch-delete-char
+  "C-e" migemo-isearch-toggle-migemo)
 
 (provide 'init_isearch)
 

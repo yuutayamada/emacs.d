@@ -8,17 +8,15 @@
   (interactive)
   (save-excursion
     (line-move -1)
-    (if (looking-at "^$")
-        t
-      nil)))
+    (looking-at "^$")))
 
-;; (defadvice nim-indent-calculate-indentation (around check-whether-empty-line activate)
-;;   ""
-;;   ad-do-it
-;;   ;; (if (nim-empty-line-p)
-;;   ;;     0
-;;   ;;   ad-do-it)
-;;   )
+(defadvice nim-indent-calculate-levels (around Y/modify-indent-level activate)
+  "Set indent-level to 0 if previous line is empty line."
+  (if (nim-empty-line-p)
+      (setq
+       ;; nim-indent-levels
+       nim-indent-current-level 0)
+    ad-do-it))
 
 ;; auto-indent-mode
 ;; (add-to-list 'auto-indent-multiple-indent-modes 'nim-mode)

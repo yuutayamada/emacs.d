@@ -42,6 +42,9 @@
 ;; Add load-path
 (setq-default flycheck-emacs-lisp-load-path load-path)
 
+;; Add flycheck-package to the flycheck-checker
+(flycheck-package-setup)
+
 (defadvice flycheck-mode (around avoid-flycheck-if-needed activate)
   "Turn off flycheck in specific buffer."
   (unless (or (org-in-src-block-p)
@@ -53,6 +56,18 @@
   "Avoid flycheck on org src buffer."
   (when (not (org-src-edit-buffer-p))
     ad-do-it))
+
+;; Arduino
+(flycheck-define-checker arduino
+  ;; https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
+  "Arduino checker using Arduino IDE. (Require version 1.5+)"
+  ;; source, source-inplace, source-original
+  :command ("arduino" "--verify" source-original)
+  :error-patterns
+  (;; I don't make sure about this warning... How to emit a warning?
+   (warning line-start (file-name) ":" line ":" column ": warning: " (message) line-end)
+   (error   line-start (file-name) ":" line ":" column ": error: "   (message) line-end))
+  :modes arduino-mode)
 
 ;; verilog
 (flycheck-define-checker verilog-verilator

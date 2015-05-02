@@ -112,6 +112,10 @@
            :type git
            :depends (f pkg-info)
            :url "https://github.com/flycheck/flycheck.git")
+    (:name flycheck-package
+           :type github
+           :depends (flycheck)
+           :pkgname "purcell/flycheck-package")
     (:name flycheck-ocaml
            :type git
            :depends (flycheck)

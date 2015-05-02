@@ -23,6 +23,8 @@
                (:name android-mode :website "https://github.com/remvee/android-mode" :description "Emacs minor mode for Android application development" :type github :pkgname "remvee/android-mode"))
  (anzu status "installed" recipe
        (:name anzu :type git :url "https://github.com/syohex/emacs-anzu.git"))
+ (arduino-mode status "installed" recipe
+               (:name arduino-mode :website "https://github.com/bookest/arduino-mode" :description "Emacs major mode for Arduino development." :type github :pkgname "bookest/arduino-mode"))
  (auto-async-byte-compile status "installed" recipe
                           (:name auto-async-byte-compile :type git :url "https://github.com/emacsattic/auto-async-byte-compile.git"))
  (auto-capitalize status "installed" recipe
@@ -157,6 +159,10 @@
            (:name flycheck :type git :depends
                   (f pkg-info)
                   :url "https://github.com/flycheck/flycheck.git"))
+ (flycheck-package status "installed" recipe
+                   (:name flycheck-package :type github :depends
+                          (flycheck)
+                          :pkgname "purcell/flycheck-package"))
  (flycheck-tip status "installed" recipe
                (:name flycheck-tip :depends
                       (flycheck)

@@ -29,8 +29,6 @@ if test -z $EMACSLOADPATH; then
 fi
 
 EmacsDaemon () {
-  # memo
-  # emacs --xrm "emacs.Background: light green"
   daemon="${emacs} ${d_option} --daemon=${daemon_name}"
   eval "${daemon}" >/dev/null 2>&1
 }
@@ -58,6 +56,7 @@ GUI_Emacs() {
 }
 
 XtermEmacs() {
+  # Use xterm-keybinder.el to use C-M prefix keys on xterm.
   xtermopt=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/xterm-option TerminalEmacs
 }
 

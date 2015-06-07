@@ -15,7 +15,8 @@
 ;; EL-GET SOURCES
 (defconst
   el-get-sources
-  '((:name ac-mozc
+  '(;; A
+    (:name ac-mozc
            :type git
            :url "https://github.com/igjit/ac-mozc.git")
     (:name ace-isearch
@@ -47,26 +48,38 @@
     (:name anzu
            :type git
            :url "https://github.com/syohex/emacs-anzu.git")
+    ;; B
     (:name bpe
            :type git
            :url "https://github.com/yuutayamada/bpe.git")
-    (:name company-mode
+    (:name buttercup
+           :type github
+           :pkgname "jorgenschaefer/emacs-buttercup")
+    ;; C
+    (:name calfw-gcal
            :type git
-           :url "https://github.com/company-mode/company-mode.git")
+           :url "https://github.com/myuhe/calfw-gcal.el.git")
     (:name capitalizer
            :type git
            :url "https://github.com/yuutayamada/capitalizer-el.git")
+    (:name clojure-cheatsheet
+           :type git
+           :url "https://github.com/clojure-emacs/clojure-cheatsheet.git")
+    (:name company-mode
+           :type git
+           :url "https://github.com/company-mode/company-mode.git")
+    (:name company-c-headers
+           :type github
+           :pkgname "randomphrase/company-c-headers")
+    (:name cpp-auto-include
+           :type github
+           :pkgname "syohex/emacs-cpp-auto-include")
     (:name css-mode-github
            :type github
            :website "https://github.com/fberger/emacs-css-mode"
            :description "Major mode for editing CSS files."
            :pkgname "fberger/css-mode")
-    (:name clojure-cheatsheet
-           :type git
-           :url "https://github.com/clojure-emacs/clojure-cheatsheet.git")
-    (:name calfw-gcal
-           :type git
-           :url "https://github.com/myuhe/calfw-gcal.el.git")
+    ;; D
     (:name direx
            :type git
            :url "https://github.com/m2ym/direx-el.git")
@@ -78,6 +91,7 @@
            :type git
            :description "I added package"
            :url "https://github.com/kiwanami/emacs-deferred.git")
+    ;; E
     (:name evil-surround
            :type git
            :depends (evil)
@@ -108,6 +122,7 @@
            :type http
            :url "http://git.savannah.gnu.org/cgit/emacs.git/plain/lisp/net/eww.el"
            :depends (shr))
+    ;; F
     (:name flycheck
            :type git
            :depends (f pkg-info)
@@ -116,6 +131,14 @@
            :type github
            :depends (flycheck)
            :pkgname "purcell/flycheck-package")
+    (:name flycheck-nim
+           :type github
+           :depends (flycheck dash)
+           :pkgname "ALSchwalm/flycheck-nim")
+    (:name flycheck-irony
+           :type github
+           :depends (flycheck irony-mode)
+           :pkgname "Sarcasm/flycheck-irony")
     (:name flycheck-ocaml
            :type git
            :depends (flycheck)
@@ -201,9 +224,6 @@
     (:name flymake-java
            :type git
            :url "https://github.com/yuutayamada/flymake-java-el.git")
-    (:name git-modes
-           :type git
-           :url "https://github.com/magit/git-modes.git")
     (:name go-eldoc
            :type git
            :url "https://github.com/syohex/emacs-go-eldoc.git")
@@ -278,6 +298,9 @@
     (:name idle-require
            :type git
            :url "https://github.com/nschum/idle-require.el.git")
+    (:name irony-eldoc
+           :type github
+           :pkgname "ikirill/irony-eldoc")
     (:name image-dired+
            :type git
            :description "I added image-dired+"
@@ -320,6 +343,10 @@
     (:name logalimacs
            :type git
            :url "https://github.com/logaling/logalimacs.git")
+    (:name nim-mode
+           :type github
+           :depends (company-mode epc)
+           :pkgname "nim-lang/nim-mode")
     (:name ov
            :type git
            :url "https://github.com/ShingoFukuyama/ov.el.git")
@@ -395,13 +422,12 @@
            :build ("./configure && make")
            :url "https://github.com/kazu-yamamoto/Mew.git")
     (:name magit
-           :type git
-           :build ("make clean"
-                   "emacs -Q --batch -L . -L ../git-modes/ -f batch-byte-compile *.el"
-                   "makeinfo -o magit.info magit.texi"
-                   "ginstall-info --dir=dir magit.info")
-           :depends (git-modes)
-           :url "https://github.com/magit/magit.git")
+           :type github
+           :load-path ("../dash" "./lisp")
+           :compile ("./lisp")
+           :depends (dash)
+           :autoloads t
+           :pkgname "magit/magit")
     (:name mmm-mode
            :type git
            :url "https://github.com/purcell/mmm-mode.git")

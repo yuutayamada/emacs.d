@@ -8,11 +8,15 @@
 
 (add-hook 'prog-mode-hook
           #'(lambda ()
+              ;; Electric-indent-mode
+              (electric-indent-local-mode -1)
+              ;; Auto Completion
+              (company-mode t)
               ;; indentation and whitespace
               (cl-case major-mode
                 ((go-mode sql-mode)
                  (setq-local indent-tabs-mode t)) ; Use tab instead of space
-                (t (my/whitespace-mode)))
+                (t (whitespace-mode t)))
               ;; show paren
               (show-paren-mode t)
               ;; flycheck or other syntax check tool
@@ -33,7 +37,8 @@
               (let ((cmd
                      (cl-case major-mode
                        (js2-mode (when (executable-find "jsfmt") 'jsfmt))
-                       (go-mode  'gofmt-before-save))))
+                       (go-mode  'gofmt-before-save)
+                       ((c++-mode arduino-mode) 'cpp-auto-include))))
                 (when cmd (call-interactively cmd)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;

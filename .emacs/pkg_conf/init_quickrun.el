@@ -40,6 +40,25 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION."
    (:exec         . ("javac -encoding utf-8 -source 1.7 -target 1.7 %o %s" "%c %N %a")))
  :override t)
 
+;; %c: :command parameter
+;; %o: command options
+;; %s: source code name
+;; %S: source code name without extension
+;; %a: program argument
+;; %d: directory name
+;; %n: absolute path of source code without extension
+;; %N: source code path without extension
+;; %e: absolute path of source code with executable extension(.exe, .out, .class)
+;; %E: source code name with executable extension
+(quickrun-add-command
+ "go/go"
+ '((:exec . ((lambda ()
+               (if (string-match-p "_test\\.go\\'" (buffer-name))
+                   "%c test %o"
+                 ;; %s -> *.go to execute main package files
+                 "%c run *.go %o %a")))))
+ :override t)
+
 (quickrun-add-command "nim"
                       '((:remove . ("%n" "nimcache/%S.c" "nimcache/%S.o")))
                       :override t)

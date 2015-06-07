@@ -20,19 +20,11 @@
 ;;; Commentary:
 
 ;;; Code:
-
 (require 'cl-lib)
 (require 'package)
 
-(cl-loop with repositoryies = '(("melpa" . "http://melpa.org/packages/")
-                                ;; ("marmalade" .
-                                ;;  "http://marmalade-repo.org/packages/")
-                                )
-         for repository in repositoryies do
-         (add-to-list 'package-archives repository))
-
-;; load installed package that is pass to the load-path
-(package-initialize)
+;; MELPA
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 (provide 'init_package)
 

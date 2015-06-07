@@ -1,4 +1,6 @@
-((ac-mozc status "installed" recipe
+((ac-irony status "installed" recipe
+           (:name ac-irony :description "Auto-complete completion source for irony-mode." :type github :pkgname "Sarcasm/ac-irony"))
+ (ac-mozc status "installed" recipe
           (:name ac-mozc :type git :url "https://github.com/igjit/ac-mozc.git"))
  (ac-skk status "installed" recipe
          (:name ac-skk :type git :url "https://github.com/myuhe/ac-skk.el.git"))
@@ -37,6 +39,14 @@
                          (add-to-list 'ac-dictionary-directories
                                       (expand-file-name "dict" default-directory))
                          (ac-config-default))))
+ (auto-complete-c-headers status "installed" recipe
+                          (:name auto-complete-c-headers :website "https://github.com/mooz/auto-complete-c-headers" :description "An auto-complete source for C/C++ header files." :type github :pkgname "mooz/auto-complete-c-headers" :depends auto-complete :prepare
+                                 (progn
+                                   (defun ac--c-headers-init nil
+                                     (require 'auto-complete-c-headers)
+                                     (add-to-list 'ac-sources 'ac-source-c-headers))
+                                   (add-hook 'c-mode-hook 'ac--c-headers-init)
+                                   (add-hook 'c++-mode-hook 'ac--c-headers-init))))
  (auto-java-complete status "installed" recipe
                      (:name auto-java-complete :type git :url "https://github.com/emacs-java/auto-java-complete.git" :depends
                             (auto-complete)))
@@ -44,6 +54,8 @@
      (:name bm :pkgname "joodland/bm" :website "http://joodland.github.com/bm/" :type github :description "Visible, persistent, buffer local, bookmarks"))
  (buffer-move status "installed" recipe
               (:name buffer-move :description "Swap buffers without typing C-x b on each window" :type emacswiki :features buffer-move))
+ (buttercup status "installed" recipe
+            (:name buttercup :type github :pkgname "jorgenschaefer/emacs-buttercup"))
  (c-eldoc status "installed" recipe
           (:name c-eldoc :description "eldoc-mode plugin for C source code" :type github :pkgname "nflath/c-eldoc" :post-init
                  (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)))
@@ -54,22 +66,31 @@
  (cider status "installed" recipe
         (:name cider :description "CIDER is a Clojure IDE and REPL." :type github :pkgname "clojure-emacs/cider" :depends
                (dash queue clojure-mode pkg-info)))
+ (cl-lib status "installed" recipe
+         (:name cl-lib :builtin "24.3" :type elpa :description "Properly prefixed CL functions and macros" :url "http://elpa.gnu.org/packages/cl-lib.html"))
  (clojure-cheatsheet status "installed" recipe
                      (:name clojure-cheatsheet :type git :url "https://github.com/clojure-emacs/clojure-cheatsheet.git"))
  (clojure-mode status "installed" recipe
                (:name clojure-mode :website "https://github.com/clojure-emacs/clojure-mode" :description "Emacs support for the Clojure language." :type github :pkgname "clojure-emacs/clojure-mode"))
+ (cmake-mode status "installed" recipe
+             (:name cmake-mode :website "http://www.itk.org/Wiki/CMake/Editors/Emacs" :description "Provides syntax highlighting and indentation for CMakeLists.txt and *.cmake source files." :type http :url "http://cmake.org/gitweb?p=cmake.git;a=blob_plain;hb=master;f=Auxiliary/cmake-mode.el"))
  (coffee-mode status "installed" recipe
               (:name coffee-mode :website "http://ozmm.org/posts/coffee_mode.html" :description "Emacs Major Mode for CoffeeScript" :type github :pkgname "defunkt/coffee-mode" :features coffee-mode :prepare
                      (progn
                        (add-to-list 'auto-mode-alist
                                     '("\\.coffee$" . coffee-mode))
                        (add-to-list 'auto-mode-alist
-                                    '("Cakefile" . coffee-mode)))
-                     :post-init
-                     (progn
-                       (setq coffee-js-mode 'javascript-mode))))
+                                    '("Cakefile" . coffee-mode)))))
+ (company-c-headers status "installed" recipe
+                    (:name company-c-headers :type github :pkgname "randomphrase/company-c-headers"))
+ (company-irony status "installed" recipe
+                (:name company-irony :description "company-mode completion back-end for irony-mode" :type github :depends
+                       (company-mode irony-mode cl-lib)
+                       :pkgname "Sarcasm/company-irony"))
  (company-mode status "installed" recipe
                (:name company-mode :type git :url "https://github.com/company-mode/company-mode.git"))
+ (cpp-auto-include status "installed" recipe
+                   (:name cpp-auto-include :type github :pkgname "syohex/emacs-cpp-auto-include"))
  (css-eldoc status "installed" recipe
             (:name css-eldoc :website "https://github.com/zenozeng/css-eldoc" :description "eldoc plugin for CSS" :type github :pkgname "zenozeng/css-eldoc"))
  (ctable status "installed" recipe
@@ -159,6 +180,14 @@
            (:name flycheck :type git :depends
                   (f pkg-info)
                   :url "https://github.com/flycheck/flycheck.git"))
+ (flycheck-irony status "installed" recipe
+                 (:name flycheck-irony :type github :depends
+                        (flycheck irony-mode)
+                        :pkgname "Sarcasm/flycheck-irony"))
+ (flycheck-nim status "installed" recipe
+               (:name flycheck-nim :type github :depends
+                      (flycheck dash)
+                      :pkgname "ALSchwalm/flycheck-nim"))
  (flycheck-package status "installed" recipe
                    (:name flycheck-package :type github :depends
                           (flycheck)
@@ -202,8 +231,6 @@
              (:name git-gutter :type git :url "https://github.com/syohex/emacs-git-gutter.git"))
  (git-messenger status "installed" recipe
                 (:name git-messenger :description "Pops up commit messages at current line" :type github :pkgname "syohex/emacs-git-messenger"))
- (git-modes status "installed" recipe
-            (:name git-modes :type git :url "https://github.com/magit/git-modes.git"))
  (go-autocomplete status "installed" recipe
                   (:name go-autocomplete :description "An autocompletion daemon for the Go programming language." :type github :pkgname "nsf/gocode" :depends
                          (go-mode auto-complete)
@@ -223,6 +250,15 @@
             (:name gold-mode :type git :url "https://github.com/yuutayamada/gold-mode-el.git"))
  (google status "installed" recipe
          (:name google :type git :url "https://github.com/hober/google-el.git"))
+ (google-c-style status "installed" recipe
+                 (:name google-c-style :type http :description "Google's C/C++ style for c-mode." :url "http://google-styleguide.googlecode.com/svn/trunk/google-c-style.el" :prepare
+                        (progn
+                          (autoload 'google-set-c-style "google-c-style" nil t)
+                          (autoload 'google-make-newline-indent "google-c-style" nil t)
+                          (eval-after-load 'cc-styles
+                            '(progn
+                               (require 'google-c-style)
+                               (c-add-style "Google" google-c-style))))))
  (google-translater status "installed" recipe
                     (:name google-translater :type git :url "https://github.com/manzyuk/google-translate.git"))
  (goto-chg status "installed" recipe
@@ -309,6 +345,12 @@
 (:name image-dired+ :type git :description "I added image-dired+" :url "https://github.com/mhayashi1120/Emacs-image-diredx.git"))
 (inf-ruby status "installed" recipe
 (:name inf-ruby :description "Inferior Ruby Mode - ruby process in a buffer." :type github :pkgname "nonsequitur/inf-ruby"))
+(irony-eldoc status "installed" recipe
+(:name irony-eldoc :type github :pkgname "ikirill/irony-eldoc"))
+(irony-mode status "installed" recipe
+(:name irony-mode :description "A C/C++ minor mode for Emacs powered by libclang" :type github :pkgname "Sarcasm/irony-mode" :depends
+(cl-lib)
+:compile "\\.el$"))
 (jade status "installed" recipe
 (:name jade :type git :url "https://github.com/brianc/jade-mode.git"))
 (javadoc-lookup status "installed" recipe
@@ -359,11 +401,13 @@
 (mag-menu status "installed" recipe
 (:name mag-menu :type git :url "https://github.com/chumpage/mag-menu.git"))
 (magit status "installed" recipe
-(:name magit :type git :build
-("make clean" "emacs -q --batch -L . -L ../git-modes/ -f batch-byte-compile *.el" "makeinfo -o magit.info magit.texi" "ginstall-info --dir=dir magit.info")
+(:name magit :type github :load-path
+("../dash" "./lisp")
+:compile
+("./lisp")
 :depends
-(git-modes)
-:url "https://github.com/magit/magit.git"))
+(dash)
+:autoloads t :pkgname "magit/magit"))
 (markdown-mode status "installed" recipe
 (:name markdown-mode :type git :url "https://github.com/milkypostman/markdown-mode.git"))
 (mew status "installed" recipe
@@ -394,8 +438,6 @@
 ("./configure && make")
 :load-path
 ("./" "./contrib" "./doc")))
-(nim-mode status "installed" recipe
-(:name nim-mode :type github :pkgname "reactormonk/nim-mode" :description "Major mode for the Nim programming language"))
 (node-console status "installed" recipe
 (:name node-console :type git :url "https://github.com/yuutayamada/node-console"))
 (noflet status "installed" recipe

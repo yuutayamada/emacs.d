@@ -6,6 +6,7 @@
 (require 'auto-complete)
 
 (require 'yasnippet)
+(require 'helm-c-yasnippet)
 (require 'my_paths)
 
 (defconst yas-snippet-dirs `(,(concat user-emacs-directory "snippets")

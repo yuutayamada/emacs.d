@@ -77,22 +77,23 @@
   ;; (setq initial-major-mode 'emacs-lisp-mode)
   (add-hook 'prog-mode-hook
             #'(lambda () (when (and (eq major-mode initial-major-mode)
-                                    (equal "*scratch*" (buffer-name)))
-                           (let ((comment (if (member comment-start '(";"))
-                                              (concat comment-start comment-start)
-                                            comment-start)))
-                             (setq initial-scratch-message
-                                   (concat comment " This is scratch buffer.\n")))
-                           (run-with-idle-timer 5 nil 'eldoc-mode t))))
+                               (equal "*scratch*" (buffer-name)))
+                      (let ((comment (if (member comment-start '(";"))
+                                         (concat comment-start comment-start)
+                                       comment-start)))
+                        (setq initial-scratch-message
+                              (concat comment " This is scratch buffer.\n")))
+                      (run-with-idle-timer 5 nil 'eldoc-mode t))))
 
-  ;; Decide start up buffer
-  (setq initial-buffer-choice
-        #'(lambda ()
-            (when (and (one-window-p)
-                       (switch-to-buffer (get-buffer "*Messages*")))
-              (highlight-phrase "error" 'error)
-              (highlight-phrase "\\(.*newer than byte-compiled.*\n\\|warning\\)"
-                                'warning))))
+  ;; Dame???
+  ;; ;; Decide start up buffer
+  ;; (setq initial-buffer-choice
+  ;;       #'(lambda ()
+  ;;           (when (and (one-window-p)
+  ;;                      (switch-to-buffer (get-buffer "*Messages*")))
+  ;;             (highlight-phrase "error" 'error)
+  ;;             (highlight-phrase "\\(.*newer than byte-compiled.*\n\\|warning\\)"
+  ;;                               'warning))))
 
   ;; Use XDG_CONFIG_HOME as personal configuration file
   (let* ((emacs-conf-dir (format "%s/emacs/" (getenv "XDG_CONFIG_HOME")))
@@ -101,7 +102,7 @@
       (setq user-emacs-directory emacs-conf-dir)
       (load emacsrc)))
 
-;;;* Coding system
+  ;;* Coding system
   (prefer-coding-system 'utf-8)
   (set-terminal-coding-system 'utf-8) ; for eshell
 
@@ -115,14 +116,14 @@
         history-length              10000
         max-specpdl-size            1000000)
 
-;;;* yes or no -> y or n
+  ;;* yes or no -> y or n
   (fset 'yes-or-no-p 'y-or-n-p)
 
-;;;* COMPLETION
+  ;;* COMPLETION
   (setq completion-ignore-case t
         read-file-name-completion-ignore-case t)
 
-;;;* AUTO SAVE
+  ;;* AUTO SAVE
   ;; you can turn off auto saving by setting nil to `auto-save-default'
   (setq auto-save-default t
         auto-save-timeout 30   ; Number of seconds
@@ -132,7 +133,7 @@
         auto-save-file-name-transforms `((".*/.*" ,temporary-file-directory t))
         delete-auto-save-files t)
 
-;;;* BACKUP(files.el)
+  ;;* BACKUP(files.el)
   (setq make-backup-files t
         backup-directory-alist
         (cons (cons "\\.*$" (expand-file-name "~/var/backups/emacs"))
@@ -147,14 +148,14 @@
   ;; https://www.gnu.org/software/coreutils/manual/html_node/Backup-options.html
   ;; VERSION_CONTROL env
 
-;;;* save place of cursor
+  ;;* save place of cursor
   (toggle-save-place-globally)
 
   (setq kill-whole-line t ; kill line and new line at bol when non-nil
         require-final-newline t
         next-line-add-newlines nil)
 
-;;; etc.
+  ;; etc.
   ;; do not abbreviate among on displaying Emacs lisp
   (setq eval-expression-print-level  nil
         eval-expression-print-length nil)
@@ -166,18 +167,18 @@
   ;; global-revert-mode
   (global-auto-revert-mode t)
 
-;;; Copy and Past
+  ;; Copy and Past
   ;; http://emacswiki.org/emacs/CopyAndPaste
   ;; http://stackoverflow.com/questions/5288213/how-can-i-paste-the-selected-region-outside-of-emacs/14659015#14659015
   ;; (setq select-enable-clipboard t)
 
-;;;* newline configurations
+  ;;* newline configurations
   (setq eol-mnemonic-dos       "[CRLF]" ; DOS
         eol-mnemonic-unix      "[LF]"   ; Unix
         eol-mnemonic-mac       "[CR]"   ; Mac
         eol-mnemonic-undecided "[?]")
 
-;;; BUILT IN PACKAGE CONFIGURATION ;;;
+  ;; BUILT IN PACKAGE CONFIGURATION ;;
   ;; ido
   (defconst ido-use-virtual-buffers t) ; Show recentf buffers
   (defconst ido-mode 'both)
@@ -187,7 +188,7 @@
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 
-;;; HOOKS (only from built in package)
+  ;; HOOKS (only from built in package)
   ;; eldoc on eval minibuffer
   (add-hook 'eval-expression-minibuffer-setup-hook 'eldoc-mode)
   ;; Do not display ^M
@@ -198,7 +199,7 @@
   (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 
-;;; KEY BINDS ;;;
+  ;; KEY BINDS ;;
 
   ;; find function
   ;; C-x F -> find function
@@ -206,14 +207,12 @@
   ;; C-x V -> find variable definition
   (find-function-setup-keys)
 
-  ;; Avoid flyspell keybinds
-  (defconst flyspell-mode-map '())
-
   (global-set-key (kbd "C-h")   'delete-backward-char)
   (global-set-key (kbd "M-;")   'comment-dwim)
   (global-set-key (kbd "C-x b") 'ido-switch-buffer)
   (define-key lisp-interaction-mode-map (kbd "C-j") nil)
-  )
+
+  ) ; end of unless
 
 (provide 'site-start)
 

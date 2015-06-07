@@ -8,11 +8,6 @@
 (require 'auto-capitalize)
 (require 'capitalizer-auto-capitalize)
 
-(defadvice capitalizer-mode (around prevent-turn-on activate)
-  "Prevent capitalizer mode on specific `major-mode'."
-  (unless (member major-mode '(gold-mode))
-    ad-do-it))
-
 (setq auto-capitalize-words
       `("I" "English" "Japan" "ASAP" "Linux"
         "Japanese" "ASCII" "CPU" "Halloween"

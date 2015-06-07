@@ -24,41 +24,19 @@
 (require 'init_ediff)
 (require 'cl-lib)
 
-(defun my/mew-add-font-lock-for-diff (mode)
-  (interactive)
-  (let* ((diff-keywords-without-context
-          (cl-loop for keyword in diff-font-lock-keywords
-                   unless (and (ignore-errors (cl-cadadr keyword))
-                               (equal 'diff-context-face (cl-cadadr keyword)))
-                   collect keyword))
-         (keywords (append nil)))
-    (font-lock-add-keywords mode keywords)))
+;; diff options
+(setq diff-switches '("-u" "-p" "-N")
+      diff-use-changed-face t)
 
-(defun my/apply-diff-face ()
-  "Apply diff face."
-  (let* ((diff-hunk-header "^@@ -[0-9,]+ \\+[0-9,]+ @@[\n ]")
-                 (exists-p (lambda (header) (re-search-forward header nil t)))
-                 (limit 10))
-    (when (funcall exists-p diff-hunk-header)
-      (goto-char (point-min))
-      (while (funcall exists-p diff-hunk-header)
-        (setq limit (1- limit))
-        (diff-refine-hunk)
-        (when (zerop limit)
-          (cl-return nil))))))
-
-;; diffのオプション
-(setq diff-switches '("-u" "-p" "-N"))
-
-(defadvice diff-hunk-prev
-  (around ajust-buffer activate)
-  ad-do-it
-  (recenter-top-bottom 0))
-
-(defadvice diff-hunk-next
-  (around ajust-buffer activate)
-  ad-do-it
-  (recenter-top-bottom 0))
+;; (defun my/mew-add-font-lock-for-diff (mode)
+;;   (interactive)
+;;   (let* ((diff-keywords-without-context
+;;           (cl-loop for keyword in diff-font-lock-keywords
+;;                    unless (and (ignore-errors (cl-cadadr keyword))
+;;                                (equal 'diff-context-face (cl-cadadr keyword)))
+;;                    collect keyword))
+;;          (keywords (append nil)))
+;;     (font-lock-add-keywords mode keywords)))
 
 (provide 'init_diff-mode)
 

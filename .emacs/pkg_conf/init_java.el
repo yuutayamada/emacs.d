@@ -4,9 +4,9 @@
 ;; This file is loaded from java-mode-hook
 ;;; Code:
 
-(require 'my_autoload)
 (require 'cl-lib)
 (require 'flycheck-java)
+(require 'ajc-java-complete-config)
 
 (defconst flymake-java-default-android-sdk-version "21")
 
@@ -21,6 +21,7 @@
   (when (file-exists-p "~/.java_base.tag")
     (ajc-java-complete-mode t)))
 
+;;;###autoload
 (add-hook 'java-mode-hook 'Y/java-init)
 
 (provide 'init_java)

@@ -4,6 +4,8 @@
 ;; see also : http://www.gnu.org/software/emacs/manual/html_node/elisp/Standard-Hooks.html
 ;;; Code:
 
+(require 'cl-lib)
+
 ;; For Terminal Emacs
 ;; This hook called each time when you boot terminal Emacs.
 (add-hook 'terminal-init-xterm-hook 'turn-on-xclip)
@@ -16,7 +18,7 @@
           '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
 
 ;; auto capitalize
-(add-hook 'first-change-hook 'auto-capitalize-mode)
+(add-hook 'after-change-major-mode-hook 'auto-capitalize-mode)
 
 ;; New hook from emacs 24.4
 ;; *** New hooks `focus-in-hook', `focus-out-hook'.
@@ -36,19 +38,14 @@
 ;; check point max for lazy loading
 (add-hook 'find-file-hook #'(lambda () (when (eq (point-max) 1) (auto-insert))))
 
-;;; text-mode:
-(add-hook 'text-mode-hook 'my/whitespace-mode)
-(add-hook 'text-mode-hook 'pangu-spacing-mode)
-(add-hook 'text-mode-hook 'auto-complete-mode)
-(add-hook 'text-mode-hook #'(lambda () (run-with-idle-timer 3 nil 'flyspell-mode t)))
-
-;; ;; shrink http link(still experimental...)
-;; (add-hook 'text-mode-hook
-;;           #'(lambda () (run-with-idle-timer 4 nil 'Y/ov-turn-on-http-overlay)))
-;; (add-hook 'prog-mode-hook
-;;           #'(lambda () (run-with-idle-timer 6 nil 'Y/ov-turn-on-http-overlay)))
-;; (add-hook 'markdown-mode-hook
-;;           #'(lambda () (run-with-idle-timer 3 nil 'Y/ov-turn-on-http-overlay)))
+;;; Document based mode hooks
+(cl-loop with hooks = '(markdown-mode-hook org-mode-hook erc-mode-hook)
+         for hook in hooks
+         do (add-hook hook '(lambda ()
+                              (whitespace-mode t)
+                              (pangu-spacing-mode t)
+                              (auto-complete-mode t)
+                              (run-with-idle-timer 3 nil 'flyspell-mode t))))
 
 ;; view-mode
 (add-hook 'help-mode-hook 'view-mode)

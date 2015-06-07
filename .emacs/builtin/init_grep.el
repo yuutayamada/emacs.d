@@ -13,7 +13,7 @@
              '("^\\([0-9]*\\):\\(.*\\)\n"
                (1 compilation-warning-face)))
 
-;; Use ag if the command was exist, otherwise use grep
+;; Use ag if the command is exist, otherwise use grep
 (defconst grep-command-before-query
   (cond
    ((zerop (shell-command "which pt"))

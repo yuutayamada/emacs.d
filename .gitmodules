@@ -49,3 +49,12 @@
 [submodule "elisp/self/xterm-keybinder-el"]
 	path = elisp/self/xterm-keybinder-el
 	url = https://github.com/yuutayamada/xterm-keybinder-el.git
+[submodule "elisp/self/company-arduino"]
+	path = elisp/self/company-arduino
+	url = https://github.com/yuutayamada/company-arduino.git
+[submodule "elisp/self/picasm"]
+	path = elisp/self/picasm
+	url = https://github.com/yuutayamada/picasm.git
+[submodule "elisp/self/flycheck-arduino"]
+	path = elisp/self/flycheck-arduino
+	url = https://github.com/yuutayamada/flycheck-arduino.git

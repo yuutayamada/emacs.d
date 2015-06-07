@@ -6,7 +6,6 @@
 ;; http://stackoverflow.com/questions/7694887/is-there-a-command-line-utility-for-rendering-github-flavored-markdown
 (add-hook 'markdown-mode-hook
           '(lambda ()
-             (auto-complete-mode t)
              (mykie:set-keys markdown-mode-map
                "M-[" "M-n" "M-p")))
 

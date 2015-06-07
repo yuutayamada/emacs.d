@@ -67,6 +67,12 @@
       (split-window-horizontally)
     (split-window-vertically)))
 
+;;;###autoload
+(defun Y/reverse-transpose-chars ()
+  (interactive)
+  (transpose-chars -1)
+  (backward-char 1))
+
 (defvar Y/inhibit-change-color nil)
 ;;;###autoload
 (defun Y/change-color (face bg fg ul)
@@ -134,7 +140,7 @@
   "Byte-compile DIRS(if specified) or my configuration files."
   (interactive)
   (cl-loop for dir in (or dirs `(,config-dir))
-           do (byte-recompile-directory dir 0 nil)))
+           do (byte-recompile-directory dir 0 t)))
 
 ;;; For Color and Face
 (defun my/load-color-theme ()
@@ -288,7 +294,8 @@ Example of my/keys
     (when (file-exists-p filename)
       (expand-file-name filename))))
 
-(defun show-cheat-sheet ()
+;;;###autoload
+(defun Y/show-cheat-sheet ()
   ""
   (interactive)
   (let* ((file-name (cl-case major-mode
@@ -586,6 +593,11 @@ Example of my/keys
           :prompt "helm-characters: "
           :buffer "*helm-characters*"
           :candidates-in-buffer t))
+
+;;;###autoload
+(defun Y/echo-current-point ()
+  (interactive)
+  (print (format "current point is %i" (point))))
 
 ;; for scratch
 (defun test ()

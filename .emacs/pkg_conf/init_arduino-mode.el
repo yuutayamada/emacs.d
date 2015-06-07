@@ -5,11 +5,10 @@
 
 (add-hook 'arduino-mode-hook
           '(lambda ()
-             (flycheck-mode 1)
+             (irony-mode t) ;  activate company-arduino
+             (run-hooks 'prog-mode-hook) ; to activate flycheck and company-mode
              ;; My Arduino checker
-             (flycheck-select-checker 'arduino)))
-
-(require 'arduino-mode)
+             (flycheck-arduino-setup)))
 
 (provide 'init_arduino-mode)
 ;;; init_arduino-mode.el ends here

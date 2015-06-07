@@ -10,6 +10,8 @@
 
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
+             (when (fboundp 'electric-indent-local-mode)
+               (electric-quote-local-mode t))
              (when (and (stringp buffer-file-name)
                         (string-match custom-theme-directory
                                       (file-name-directory buffer-file-name)))

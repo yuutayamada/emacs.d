@@ -25,7 +25,7 @@
 ;; [?\C->], [?\C-<], [(hiragana-katakana)]
 ;;; Code:
 
-;; (require 'mykie)
+(require 'mykie)
 (require 'my_autoload)
 
 ;; mykie.el setup ;;
@@ -56,7 +56,7 @@
                 (:org-header . (and (eq 'org-mode major-mode)
                                     (org-on-heading-p)))
                 ("^:skk-\\(on\\|active\\)$" . (mykie:get-skk-state))))
-      mykie:major-mode-ignore-list '(magit-status-mode)
+      mykie:major-mode-ignore-list '(magit-status-mode magit-popup-mode)
       mykie:minor-mode-ignore-list '())
 (mykie:initialize)
 
@@ -70,8 +70,7 @@
   "3" :region fill-region
   "4" :region align
 
-  "a"
-  :C-u anzu-query-replace-at-cursor-thing
+  "a" :C-u anzu-query-replace-at-cursor-thing
 
   "i" :C-u&java-mode add-java-import
   "c" :C-u (my/open-calendar)
@@ -82,7 +81,7 @@
   "g"
   :C-u! my/helm-gtags ; helm-gtags-dwim
   :region my/ginger-region
-  "l" :C-u Y/lookup
+  ;; "l" :C-u Y/lookup
   "m" :C-u mew
   "r" :region rectangle-number-lines
   "s"
@@ -198,6 +197,15 @@
   :region         anzu-query-replace-regexp
   :region&C-u     query-replace-regexp
 
+  "C-m"
+  :default (newline)
+  :C-u (mykie:do-while "m" my/replicate-current-line)
+  :C-u*2 (Y/iso-transl-toggle-minor-mode)
+  :C-u*3 helm-ucs ; math symbols
+  :evil-emacs   (evil-change-state 'normal)
+  :evil-insert  (evil-change-state 'normal)
+  :org-mode (org-return)
+
   "C-n"
   :default    next-line
   :skk-on     skk-b-change-candidate-next
@@ -234,13 +242,12 @@
 
   "C-t"
   :default transpose-chars
-  :repeat  (my/google-translate
-            (read-string "google-translate: " (word-at-point)))
-  :C-u*2   (cl-case major-mode
-             (eshell-mode (delete-window))
-             (t (eshell)))
+  :C-u*2   buttercup-run-at-point
   :C-u     (my/google-translate (word-at-point))
   :region  (my/google-translate mykie:region-str)
+
+  "C-S-t"
+  :default Y/reverse-transpose-chars
 
   "C-v"
   :default scroll-up-command
@@ -263,6 +270,7 @@
   "C-+" text-scale-increase
   "C->" win-next-window
   "C-<" win-prev-window
+  "C-=" Y/show-cheat-sheet
   ;; "C-0" my/helm-lookup-history
   ;; "C-3" my/toggle-show-hide
   ;; "C-4" helm-show-mykie-keywords
@@ -278,12 +286,9 @@
 ;; Testing without :default            ;;
 (mykie:set-keys nil
   "C-S-d" doctor
-  "C-S-g" ger
   "C-S-m" mew
   "C-S-n" global-linum-mode
   "C-S-o" remember
-  "C-S-t" twit
-  "C-S-w" w3m
   "C-S-h" helm-descbinds
 
   "C-;"
@@ -439,17 +444,6 @@
              (error (buf-move-right)))
   :C-u     git-messenger:popup-message)
 
-;; Gimmick keybinds
-(mykie:set-keys nil
-  "A-m" ; C-m
-  :default (newline)
-  :C-u (mykie:do-while "m" my/replicate-current-line)
-  :C-u*2 (Y/iso-transl-toggle-minor-mode)
-  :C-u*3 helm-ucs ; math symbols
-  :evil-emacs   (evil-change-state 'normal)
-  :evil-insert  (evil-change-state 'normal)
-  :org-mode (org-return))
-
 ;; RET key ;;
 (mykie:set-keys nil
   "RET"
@@ -561,7 +555,7 @@
           (e2wm:stop-management)
         (e2wm:start-management))
   "M-s" magit-status
-  "M-c" (find-file "~/share/doc/study/2015spring")
+  "M-c" (find-file "~/share/doc/study/2015summer")
   "M-h" my/toggle-hide-show
   "M-r" win-switch-menu
   "M-t" toggle-truncate-lines

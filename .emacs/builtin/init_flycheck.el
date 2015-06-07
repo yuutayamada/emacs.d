@@ -1,73 +1,35 @@
 ;;; init_flycheck.el --- init file for flycheck.el
 
-;; Copyright (C) 2013 by Yuta Yamada
-
-;; Author: Yuta Yamada <cokesboy"at"gmail.com>
-
-;;; License:
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;; Commentary:
 
 ;;; Code:
-(defconst error-tip-timer-delay 0.3)
-
-;; (setq
-;;  ;; This variable is timer delay for moving.
-;;  ;; If you increase this, showing speed will be slow when you call
-;;  ;; flycheck-tip-cycle function continuously.
-;;  error-tip-timer-delay 0.5 ; default is 0.3
-;;  ;; This variable is timer delay that you talked about in this issue and
-;;  ;; this is flycheck's timer delay.
-;;  flycheck-display-errors-delay 0.3)
-;; (flycheck-tip-use-timer nil)
 
 (require 'my_autoload)
 (require 'flycheck)
-(require 'flycheck-tip)
 
-;; ;; You can specify 'normal, 'verbose or nil
+;; Flycheck-tip
+(require 'flycheck-tip)
+(defconst error-tip-timer-delay 0.3)
+(setq error-tip-notify-keep-messages t)
+;; You can specify 'normal, 'verbose or nil
 (flycheck-tip-use-timer 'normal)
 
-;; Add load-path
+;; Flycheck-package ;;
 (setq-default flycheck-emacs-lisp-load-path load-path)
+(flycheck-package-setup) ; Add flycheck-package to the flycheck-checker
 
-;; Add flycheck-package to the flycheck-checker
-(flycheck-package-setup)
-
-(defadvice flycheck-mode (around avoid-flycheck-if-needed activate)
+;; Prevent flycheck-mode on some context ;;
+(defadvice flycheck-mode (around Y/avoid-flycheck-if-needed activate)
   "Turn off flycheck in specific buffer."
   (unless (or (org-in-src-block-p)
               (member (buffer-name) '(".emacs" "*scratch*"))
               (string-match "^\\*Org Src .*\\*" (buffer-name)))
     ad-do-it))
 
-(defadvice flycheck-finish-syntax-check (around ad-avoid-this-func activate)
+(defadvice flycheck-finish-syntax-check (around Y/avoid-flycheck activate)
   "Avoid flycheck on org src buffer."
   (when (not (org-src-edit-buffer-p))
     ad-do-it))
-
-;; Arduino
-(flycheck-define-checker arduino
-  ;; https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
-  "Arduino checker using Arduino IDE. (Require version 1.5+)"
-  ;; source, source-inplace, source-original
-  :command ("arduino" "--verify" source-original)
-  :error-patterns
-  (;; I don't make sure about this warning... How to emit a warning?
-   (warning line-start (file-name) ":" line ":" column ": warning: " (message) line-end)
-   (error   line-start (file-name) ":" line ":" column ": error: "   (message) line-end))
-  :modes arduino-mode)
 
 ;; verilog
 (flycheck-define-checker verilog-verilator
@@ -83,15 +45,6 @@ See URL `http://www.veripool.org/wiki/verilator'."
    (error line-start "%Error: " (file-name) ":"
           line ": " (message) line-end))
   :modes verilog-mode)
-
-;; Nim
-(flycheck-define-checker nim
-  "A Nim error checker"
-  :command ("nim" "check" source)
-  :error-patterns
-  ((warning line-start (file-name) "(" line ", " column ") Hint: "  (message) line-end)
-   (error   line-start (file-name) "(" line ", " column ") Error: " (message) line-end))
-  :modes nim-mode)
 
 (provide 'init_flycheck)
 

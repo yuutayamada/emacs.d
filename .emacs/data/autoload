@@ -43,7 +43,6 @@
 ("festival"
  festival-start festival-stop festival-say
  festivalp my/festival my/festival-read-buffer)
-("flyspell" flyspell-mode-on)
 ;; G
 ;; grep was moved to my_builtin-configs.el
 ("ghc" ; Make sure ~/.cabel/share/ghc-mode-*/ and do compiling
@@ -88,34 +87,9 @@
 ("markdown-mode" markdown-cycle)
 ;; need before load
 ("masaw" masaw masaw-mode)
-;; ("mykie"
-;;  mykie:loop mykie:do-while mykie:set-keys mykie mykie:attach-mykie-func-to
-;;  mykie:make-overlay-keymap-func mykie:define-prefix-key)
-;; ("multi-term" my/multi-term my/multi-term-current-buffer)
 ("mozc" mozc-mode)
-;; ("my_util" Y/apply-color-theme)
 ;; ("my_frameinit" Y/frame-init-func Y/set-default-window-frame-alist)
 ;; ("myanything-c-pdfgrep" my/anything-pdfgrep)
-;; ("my_function"
-;;  ;; Y/get-auth-info
-;;  ;; Y/change-color Y/change-style
-;;  ;; my/ssh-add
-;;  ;; my/file-exists-p
-;;  ;; my/execute-from-current-file
-;;  ;; other-window-or-split
-;;  ;; my/newline-and-indent
-;;  ;; my/get-aspell-capital-words
-;;  ;; my/screen-shot
-;;  ;; my/remap-semicolon
-;;  ;; my/org-src-code-buffer-p
-;;  ;; my/in-dir-p
-;;  ;; my/get-above-dir-name
-;;  ;; my/define-prefix-key
-;;  ;; my/reset-bg-color
-;;  ;; my/copy-current-file-name
-;;  ;; my/festival
-;;  ;; my/kill-backward-word my/kill-line
-;;  )
 ;; ("my_sdic" sdic-describe-word-at-point sdic)
 ;; ("minor-mode-hack"
 ;;  show-minor-mode-map-priority lower-minor-mode-map-alist
@@ -174,8 +148,6 @@
 ("vc-git" vc-git-mode-line-string vc-git-branches vc-git-root)
 ;; W
 ("w3m" w3m my/w3m-search w3m-minor-mode w3m-browse-url w3m-find-file)
-("whitespace"
- my/set-truncate-notification-locally my/whitespace-mode)
 ("windmove"
  windmove-up windmove-down windmove-left windmove-right)
 ("winner" winner-undo winner-redo)

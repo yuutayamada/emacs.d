@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+;;;###autoload
+(defconst flyspell-mode-map '()) ; Avoid flyspell keybinds
+
 (require 'flyspell)
 
 (setq flyspell-use-meta-tab nil

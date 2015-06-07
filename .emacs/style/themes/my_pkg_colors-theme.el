@@ -1,6 +1,5 @@
-
+;;; my_pkg_colors-theme.el --- my set of color configuration
 ;;; Commentary:
-
 ;;; Code:
 (deftheme my_pkg_colors "my pkg color theme.")
 
@@ -14,6 +13,20 @@
                 ,(assoc-default 'foreground-color
                                 (cadr window-system-default-frame-alist))))))
 
+ ;; font-lock
+ ;; On XTerm Emacs some font locks can not display due to the missing
+ ;; color name.
+ '(font-lock-builtin-face       ((t :foreground "#1f71ab")))
+ '(font-lock-variable-name-face ((t :foreground "#adaab3")))
+ '(font-lock-constant-face      ((t :foreground "#a45bad")))
+ '(font-lock-keyword-face       ((t :foreground "#237fbf" :weight bold)))
+ '(font-lock-type-face          ((t :foreground "#c56ec3" :weight bold)))
+ '(font-lock-preprocessor-face  ((t :foreground "#5f87ff")))
+ '(font-lock-function-name-face ((t :foreground "#Afff87")))
+ '(font-lock-string-face        ((t :foreground "#2aa198")))
+ '(font-lock-comment-face       ((t :foreground "#2aa198")))
+ '(font-lock-warning-face       ((t :foreground "#dc752f"
+                                    :background "#292b2e")))
  ;; override manoj-dark's configuration
  '(font-lock-function-name-face ((t :height unspecified)))
 
@@ -54,9 +67,18 @@
  '(powerline-active2  ((t :foreground "white"
                           :background "#000080")))
  ;; Paren
- '(show-paren-match   ((t (:foreground "yellow" :background "#6a5acd"))))
- '(paren-face         ((t (:foreground "#A6E22A" :background nil))))
- '(nxml-tag-delimiter ((t (:foreground "#A6E22A"))))
+ '(show-paren-match   ((t :foreground "black" :background "#6a5acd")))
+ '(paren-face         ((t :foreground "#A6E22A" :background nil)))
+ '(nxml-tag-delimiter ((t :foreground "#A6E22A")))
+
+ ;; Company-mode
+ '(company-tooltip ((t :inherit 'popup-tip-face
+                       :foreground nil
+                       :background nil)))
+ '(company-tooltip-selection ((t :inherit 'popup-menu-selection-face
+                                 :background nil)))
+ '(company-tooltip-common ((t :foreground "#5f5fff")))
+ '(company-tooltip-common-selection ((t :foreground "white")))
 
  ;; DOCTYPE
  '(nxml-markup-declaration-delimiter ((t (:foreground "#74715D"))))
@@ -80,15 +102,15 @@
  `(diff-refine-added   ((t :inherit 'diff-added
                            :background ,(if (display-graphic-p)
                                             "#000080"
-                                          "#00CDCD")
+                                          "#87005f")
                            :foreground ,(if (display-graphic-p)
                                             "#FFFFFF"
-                                          "#000000"))))
+                                          "#00CDCD"))))
  `(diff-refine-removed ((t :inherit 'diff-removed
                            :background ,(if (display-graphic-p)
                                             "#FF0000"
                                           "#CD0000")
-                           :foreground "#000000")))
+                           :foreground "#ffffff")))
 
  ;; eldoc
  '(eldoc-highlight-function-argument ((t :underline t
@@ -179,6 +201,20 @@
  ;; Magit
  '(magit-log-sha1       ((t :foreground "#Ff0000")))
  '(magit-item-highlight ((t :inherit nil)))
+ '(magit-diff-removed ((t :foreground nil
+                          :background nil
+                          :inherit 'diff-removed)))
+ '(magit-diff-removed-highlight ((t :foreground nil
+                                    :background nil
+                                    :weight bold
+                                    :inherit 'diff-removed)))
+ '(magit-diff-added ((t :foreground nil
+                        :background nil
+                        :inherit 'diff-added)))
+ '(magit-diff-added-highlight ((t :foreground nil
+                                  :background nil
+                                  :weight bold
+                                  :inherit 'diff-added)))
 
  ;; Mew
  '(mew-face-body-comment ((t :foreground "#87afff")))
@@ -254,7 +290,8 @@
 
  ;; Whitespace-mode
  '(whitespace-tab             ((t :foreground "#0d0d0d")))
- '(whitespace-space           ((t :foreground "#7cfc00")))
+ '(whitespace-space           ((t :foreground "#7cfc00"
+                                  :weight bold)))
  '(whitespace-trailing        ((t :foreground "#222222"
                                   :underline  "#222222")))
  '(whitespace-line            ((t :underline "#696969")))
@@ -278,4 +315,4 @@
 ;; mode: emacs-lisp
 ;; End:
 
-;;; my_pkg_colors.el ends here
+;;; my_pkg_colors-theme.el ends here

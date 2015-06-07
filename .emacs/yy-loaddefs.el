@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads nil "builtin/init_autoload" "builtin/init_autoload.el"
-;;;;;;  (21802 21471 319224 888000))
+;;;;;;  (21901 6327 55722 955000))
 ;;; Generated autoloads from builtin/init_autoload.el
 
 (autoload 'Y/make-autoload-files "builtin/init_autoload" "\
@@ -15,8 +15,8 @@ FILES should put a place where is located to elisp directory.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (21800
-;;;;;;  27090 804531 721000))
+;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (21881
+;;;;;;  15874 466046 99000))
 ;;; Generated autoloads from builtin/init_erc.el
 
 (autoload 'Y/start-irc "builtin/init_erc" "\
@@ -34,6 +34,14 @@ Connect to IRC.
 My file cache find-file.
 
 \(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "builtin/init_flyspell" "builtin/init_flyspell.el"
+;;;;;;  (21881 15857 517550 172000))
+;;; Generated autoloads from builtin/init_flyspell.el
+
+(defconst flyspell-mode-map 'nil)
 
 ;;;***
 
@@ -70,8 +78,8 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "my_daemon" "my_daemon.el" (21821 27468 367404
-;;;;;;  313000))
+;;;### (autoloads nil "my_daemon" "my_daemon.el" (21825 10582 74777
+;;;;;;  69000))
 ;;; Generated autoloads from my_daemon.el
 
 (autoload 'Y/frame-init-func "my_daemon" "\
@@ -86,8 +94,8 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (21822 30356
-;;;;;;  137563 671000))
+;;;### (autoloads nil "my_function" "my_function.el" (21910 1646
+;;;;;;  308188 848000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -96,6 +104,11 @@ Move buffer or split when buffer was one.
 \(fn)" t nil)
 
 (autoload 'Y/split-window-spirally "my_function" "\
+
+
+\(fn)" t nil)
+
+(autoload 'Y/reverse-transpose-chars "my_function" "\
 
 
 \(fn)" t nil)
@@ -147,6 +160,11 @@ Example of my/keys
 Search FILE recursively to check whether file is exist until home directory.
 
 \(fn FILE)" nil nil)
+
+(autoload 'Y/show-cheat-sheet "my_function" "\
+
+
+\(fn)" t nil)
 
 (autoload 'my/get-above-dir-name "my_function" "\
 
@@ -208,13 +226,28 @@ Otherwise, use a dark theme.  The FRAME is frame object.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_auto-complete" "pkg_conf/init_auto-complete.el"
-;;;;;;  (21800 26732 392516 862000))
+;;;;;;  (21876 64599 189730 285000))
 ;;; Generated autoloads from pkg_conf/init_auto-complete.el
 
 (autoload 'my/ac-add-sources-for-prog "pkg_conf/init_auto-complete" "\
 Add ac-sources for each programming-mode.
 
 \(fn)" nil nil)
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_auto-complete-c-headers" "pkg_conf/init_auto-complete-c-headers.el"
+;;;;;;  (21881 15874 370043 290000))
+;;; Generated autoloads from pkg_conf/init_auto-complete-c-headers.el
+
+(autoload 'Y/ac-c-headers-init "pkg_conf/init_auto-complete-c-headers" "\
+Add ac-c-headers source to auto-complete source.
+
+\(fn)" nil nil)
+
+(add-hook 'c++-mode-hook 'Y/ac-c-headers-init)
+
+(add-hook 'c-mode-hook 'Y/ac-c-headers-init)
 
 ;;;***
 
@@ -229,6 +262,14 @@ Add ac-sources for each programming-mode.
 
 ;;;***
 
+;;;### (autoloads nil "pkg_conf/init_google-c-style" "pkg_conf/init_google-c-style.el"
+;;;;;;  (21877 26668 372376 285000))
+;;; Generated autoloads from pkg_conf/init_google-c-style.el
+
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+
+;;;***
+
 ;;;### (autoloads nil "pkg_conf/init_google-translate" "pkg_conf/init_google-translate.el"
 ;;;;;;  (21800 29695 408639 702000))
 ;;; Generated autoloads from pkg_conf/init_google-translate.el
@@ -237,6 +278,31 @@ Add ac-sources for each programming-mode.
 
 
 \(fn TEXT)" nil nil)
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_irony" "pkg_conf/init_irony.el"
+;;;;;;  (21885 16311 667011 891000))
+;;; Generated autoloads from pkg_conf/init_irony.el
+
+(add-hook 'c++-mode-hook 'irony-mode)
+
+(add-hook 'c-mode-hook 'irony-mode)
+
+(add-hook 'objc-mode-hook 'irony-mode)
+
+(autoload 'Y/irony-mode-setup "pkg_conf/init_irony" "\
+Setup irony-mode.
+
+\(fn)" nil nil)
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_java" "pkg_conf/init_java.el"
+;;;;;;  (21877 24542 664495 265000))
+;;; Generated autoloads from pkg_conf/init_java.el
+
+(add-hook 'java-mode-hook 'Y/java-init)
 
 ;;;***
 
@@ -283,7 +349,7 @@ Whether the point is overlay-ed or not.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_quickrun" "pkg_conf/init_quickrun.el"
-;;;;;;  (21816 56080 839492 397000))
+;;;;;;  (21876 64599 41726 169000))
 ;;; Generated autoloads from pkg_conf/init_quickrun.el
 
 (autoload 'my/quickrun-dwim "pkg_conf/init_quickrun" "\
@@ -300,9 +366,9 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "builtin/init_diff-mode.el" "builtin/init_dired-x.el" "builtin/init_dired.el"
 ;;;;;;  "builtin/init_doc-view.el" "builtin/init_ediff.el" "builtin/init_elisp-mode.el"
 ;;;;;;  "builtin/init_em-banner.el" "builtin/init_eshell.el" "builtin/init_eww.el"
-;;;;;;  "builtin/init_flycheck.el" "builtin/init_flymake.el" "builtin/init_flyspell.el"
-;;;;;;  "builtin/init_gnus.el" "builtin/init_grep.el" "builtin/init_ido.el"
-;;;;;;  "builtin/init_indent.el" "builtin/init_isearch.el" "builtin/init_ispell.el"
+;;;;;;  "builtin/init_flycheck.el" "builtin/init_flymake.el" "builtin/init_gnus.el"
+;;;;;;  "builtin/init_grep.el" "builtin/init_ido.el" "builtin/init_indent.el"
+;;;;;;  "builtin/init_info.el" "builtin/init_isearch.el" "builtin/init_ispell.el"
 ;;;;;;  "builtin/init_js.el" "builtin/init_lisp-mode.el" "builtin/init_nxml-mode.el"
 ;;;;;;  "builtin/init_ob.el" "builtin/init_org-indent.el" "builtin/init_ox-html.el"
 ;;;;;;  "builtin/init_ox-latex.el" "builtin/init_paren.el" "builtin/init_po-mode.el"
@@ -314,21 +380,22 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
 ;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "my_autoload.el"
 ;;;;;;  "my_automode.el" "my_font.el" "my_hooks.el" "my_paths.el"
-;;;;;;  "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
-;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_auto-async-byte-compile.el"
-;;;;;;  "pkg_conf/init_auto-capitalize.el" "pkg_conf/init_auto-java-complete.el"
-;;;;;;  "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el" "pkg_conf/init_calfw-gcal.el"
+;;;;;;  "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
+;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
+;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
+;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
+;;;;;;  "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw-gcal.el"
 ;;;;;;  "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el" "pkg_conf/init_clojure-mode.el"
-;;;;;;  "pkg_conf/init_coffee-mode.el" "pkg_conf/init_company.el"
-;;;;;;  "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el" "pkg_conf/init_el-get.el"
-;;;;;;  "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el" "pkg_conf/init_evil-macros.el"
-;;;;;;  "pkg_conf/init_evil-surround.el" "pkg_conf/init_evil.el"
-;;;;;;  "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
-;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_go-mode.el" "pkg_conf/init_grammar.el"
-;;;;;;  "pkg_conf/init_grep-a-lot.el" "pkg_conf/init_hangman.el"
-;;;;;;  "pkg_conf/init_haskell-emacs.el" "pkg_conf/init_haskell-font-lock.el"
-;;;;;;  "pkg_conf/init_haskell-mode.el" "pkg_conf/init_helm-ag-r.el"
-;;;;;;  "pkg_conf/init_helm-ag.el" "pkg_conf/init_helm-config.el"
+;;;;;;  "pkg_conf/init_coffee-mode.el" "pkg_conf/init_company-c-headers.el"
+;;;;;;  "pkg_conf/init_company.el" "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el"
+;;;;;;  "pkg_conf/init_el-get.el" "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el"
+;;;;;;  "pkg_conf/init_evil-macros.el" "pkg_conf/init_evil-surround.el"
+;;;;;;  "pkg_conf/init_evil.el" "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
+;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_go-mode.el"
+;;;;;;  "pkg_conf/init_grammar.el" "pkg_conf/init_grep-a-lot.el"
+;;;;;;  "pkg_conf/init_hangman.el" "pkg_conf/init_haskell-emacs.el"
+;;;;;;  "pkg_conf/init_haskell-font-lock.el" "pkg_conf/init_haskell-mode.el"
+;;;;;;  "pkg_conf/init_helm-ag-r.el" "pkg_conf/init_helm-ag.el" "pkg_conf/init_helm-config.el"
 ;;;;;;  "pkg_conf/init_helm-files.el" "pkg_conf/init_helm-github-issues.el"
 ;;;;;;  "pkg_conf/init_helm-go.el" "pkg_conf/init_helm-gtags.el"
 ;;;;;;  "pkg_conf/init_helm-migemo.el" "pkg_conf/init_helm-rb.el"
@@ -360,8 +427,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xclip.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21822 30392 749229
-;;;;;;  92000))
+;;;;;;  "site-start.el" "style/my_modeline.el") (21910 1720 118546
+;;;;;;  961000))
 
 ;;;***
 

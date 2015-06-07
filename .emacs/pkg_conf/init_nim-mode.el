@@ -4,22 +4,36 @@
 
 (require 'nim-mode)
 
-(defun nim-empty-line-p ()
+(add-hook 'nim-mode-hook
+          '(lambda ()
+             (require 'flycheck-nim)
+             (require 'company-nim)
+             (add-to-list 'company-backends 'company-nim)))
+
+;; need to build nimsuggest and move nimsuggest bin file to Nim's bin directory.
+(defconst nim-nimsuggest-path
+  (format "%s/github.com/nim-lang/Nim/bin/nimsuggest"
+          (shell-command-to-string "echo -n `ghq root`")))
+
+(defadvice nim-indent-line (around prevent-indent activate)
+  "Use previous indent level if the previous line is empty line."
+  (when (save-excursion
+          (forward-line -1)
+          (nim-info-current-line-empty-p))
+    (ad-set-arg 0 t))
+  ad-do-it)
+
+(defun Y/nim-smart-delete-backward-char ()
+  "If current line is just an empty line, indent backward.
+Otherwise, work as ‘backward-delete-char‘."
   (interactive)
-  (save-excursion
-    (line-move -1)
-    (looking-at "^$")))
+  (if (looking-back (rx line-start (1+ " ")) nil)
+      (nim-indent-line t)
+    (backward-delete-char 1)))
 
-(defadvice nim-indent-calculate-levels (around Y/modify-indent-level activate)
-  "Set indent-level to 0 if previous line is empty line."
-  (if (nim-empty-line-p)
-      (setq
-       ;; nim-indent-levels
-       nim-indent-current-level 0)
-    ad-do-it))
-
-;; auto-indent-mode
-;; (add-to-list 'auto-indent-multiple-indent-modes 'nim-mode)
+(define-key nim-mode-map (kbd "C-h") 'Y/nim-smart-delete-backward-char)
+(define-key nim-mode-map (kbd ";") (lambda () (interactive) (insert ":")))
+(define-key nim-mode-map (kbd ":") (lambda () (interactive) (insert ";")))
 
 (provide 'init_nim-mode)
 

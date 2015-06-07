@@ -6,7 +6,8 @@
 (let* ((branch
         (expand-file-name
          (format "%s../" (car (split-string (getenv "EMACSLOADPATH") ":")))))
-       (user-dir (expand-file-name user-emacs-directory)))
+       (user-dir (expand-file-name user-emacs-directory))
+       (cache-dir (format "%s/emacs/" (getenv "XDG_CACHE_HOME"))))
   (defconst yy/branch branch)
   ;; For My Emacs lisp configuration
   (defconst config-dir                   (format "%s.emacs/" branch))
@@ -21,13 +22,14 @@
   (defconst package-user-dir             (format "%spackage/" elisp-dir))
   ;; Override some variables
   (when (not (string= user-dir (expand-file-name "~/emacs.d")))
-    (defconst user-init-file               (format "%sinit" config-dir))
+    (defconst user-init-file               (format "%sY-launch" config-dir))
     (defconst eshell-directory-name        (format "%s.eshell/"     user-dir))
     (defconst save-place-file              (format "%s.save-places" user-dir))
     (defconst auto-save-list-file-name     (format "%sauto-save-list/.saves-"
                                                    user-dir))
     (defconst recentf-save-file            (format "%s.recentf"  user-dir))
-    (defconst savehist-file                (format "%s.savehist" user-dir))))
+    (defconst savehist-file                (format "%s.savehist" user-dir))
+    (defconst bookmark-default-file        (format "%sbookmarks" cache-dir))))
 
 (provide 'my_paths)
 

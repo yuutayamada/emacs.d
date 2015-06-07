@@ -48,8 +48,6 @@
     (erc :server "irc.freenode.net" :port 6667
          :full-name "Y eugene Y")))
 
-(add-hook 'erc-mode-hook 'flyspell-mode-on)
-
 ;; For tabbar mode
 (setq erc-header-line-uses-tabbar-p t)
 

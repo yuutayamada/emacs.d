@@ -70,7 +70,9 @@
   "3" :region fill-region
   "4" :region align
 
-  "a" :C-u anzu-query-replace-at-cursor-thing
+  "a"
+  :C-u anzu-query-replace-at-cursor-thing
+  :region align
 
   "i" :C-u&java-mode add-java-import
   "c" :C-u (my/open-calendar)

@@ -17,14 +17,16 @@
  ;; On XTerm Emacs some font locks can not display due to the missing
  ;; color name.
  '(font-lock-builtin-face       ((t :foreground "#1f71ab")))
- '(font-lock-variable-name-face ((t :foreground "#adaab3")))
+ '(font-lock-variable-name-face ((t :foreground "#5c5cff")))
  '(font-lock-constant-face      ((t :foreground "#a45bad")))
  '(font-lock-keyword-face       ((t :foreground "#237fbf" :weight bold)))
  '(font-lock-type-face          ((t :foreground "#c56ec3" :weight bold)))
  '(font-lock-preprocessor-face  ((t :foreground "#5f87ff")))
  '(font-lock-function-name-face ((t :foreground "#Afff87")))
  '(font-lock-string-face        ((t :foreground "#2aa198")))
- '(font-lock-comment-face       ((t :foreground "#2aa198")))
+
+ ;; '(font-lock-comment-face       ((t :foreground "#2aa198")))
+
  '(font-lock-warning-face       ((t :foreground "#dc752f"
                                     :background "#292b2e")))
  ;; override manoj-dark's configuration

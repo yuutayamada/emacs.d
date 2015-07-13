@@ -5,6 +5,10 @@
 ;;; Code:
 
 (require 'my_autoload)
+
+;; prevents "package XXX is not installable"
+(package-initialize)
+
 (require 'flycheck)
 
 ;; Flycheck-tip
@@ -12,7 +16,7 @@
 (defconst error-tip-timer-delay 0.3)
 (setq error-tip-notify-keep-messages t)
 ;; You can specify 'normal, 'verbose or nil
-(flycheck-tip-use-timer 'normal)
+(flycheck-tip-use-timer 'verbose)
 
 ;; Flycheck-package ;;
 (setq-default flycheck-emacs-lisp-load-path load-path)

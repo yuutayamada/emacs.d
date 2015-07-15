@@ -56,7 +56,7 @@
                 (:org-header . (and (eq 'org-mode major-mode)
                                     (org-on-heading-p)))
                 ("^:skk-\\(on\\|active\\)$" . (mykie:get-skk-state))))
-      mykie:major-mode-ignore-list '(magit-status-mode magit-popup-mode)
+      mykie:major-mode-ignore-list '()
       mykie:minor-mode-ignore-list '())
 (mykie:initialize)
 

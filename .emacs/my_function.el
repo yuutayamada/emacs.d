@@ -594,6 +594,23 @@ Example of my/keys
           :buffer "*helm-characters*"
           :candidates-in-buffer t))
 
+;; Eval and replace
+;;;###autoload
+(defun Y/eval-and-replace ()
+  "Eval and replace.
+This function distinguishes parenthesis and symbol accordingly."
+  (interactive)
+  (let ((thing (cond ((eq (char-before) ?\))
+                      'paren)
+                     ((thing-at-point 'symbol)
+                      'sym)))
+        (start (nth 2 (syntax-ppss (point))))
+        (end   (point))
+        (result (eval-last-sexp t)))
+    (delete-region start end)
+    (cl-case thing
+      (paren (insert result)))))
+
 ;;;###autoload
 (defun Y/echo-current-point ()
   (interactive)

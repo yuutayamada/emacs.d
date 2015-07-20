@@ -76,6 +76,9 @@
 
   "i" :C-u&java-mode add-java-import
   "c" :C-u (my/open-calendar)
+  "e"
+  :C-u&emacs-lisp-mode Y/eval-and-replace
+  :C-u&lisp-interaction-mode Y/eval-and-replace
   "f"
   :C-u! racer-find-definition
   :region (mykie:do-while "f" indent-rigidly

@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads nil "builtin/init_autoload" "builtin/init_autoload.el"
-;;;;;;  (21901 6327 55722 955000))
+;;;;;;  (21916 11118 629708 752000))
 ;;; Generated autoloads from builtin/init_autoload.el
 
 (autoload 'Y/make-autoload-files "builtin/init_autoload" "\
@@ -15,8 +15,8 @@ FILES should put a place where is located to elisp directory.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (21881
-;;;;;;  15874 466046 99000))
+;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (21916
+;;;;;;  11116 913651 774000))
 ;;; Generated autoloads from builtin/init_erc.el
 
 (autoload 'Y/start-irc "builtin/init_erc" "\
@@ -38,7 +38,7 @@ My file cache find-file.
 ;;;***
 
 ;;;### (autoloads nil "builtin/init_flyspell" "builtin/init_flyspell.el"
-;;;;;;  (21881 15857 517550 172000))
+;;;;;;  (21916 11116 437635 966000))
 ;;; Generated autoloads from builtin/init_flyspell.el
 
 (defconst flyspell-mode-map 'nil)
@@ -94,8 +94,8 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (21910 1646
-;;;;;;  308188 848000))
+;;;### (autoloads nil "my_function" "my_function.el" (21932 25580
+;;;;;;  507988 675000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -206,10 +206,20 @@ My better newline and indent.
 
 \(fn &optional COLOR)" t nil)
 
+(autoload 'Y/eval-and-replace "my_function" "\
+
+
+\(fn)" t nil)
+
+(autoload 'Y/echo-current-point "my_function" "\
+
+
+\(fn)" t nil)
+
 ;;;***
 
-;;;### (autoloads nil "my_util" "my_util.el" (21800 27832 680562
-;;;;;;  477000))
+;;;### (autoloads nil "my_util" "my_util.el" (21912 30253 266815
+;;;;;;  215000))
 ;;; Generated autoloads from my_util.el
 
 (autoload 'Y/load-packages "my_util" "\
@@ -226,7 +236,7 @@ Otherwise, use a dark theme.  The FRAME is frame object.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_auto-complete" "pkg_conf/init_auto-complete.el"
-;;;;;;  (21876 64599 189730 285000))
+;;;;;;  (21916 11116 85624 277000))
 ;;; Generated autoloads from pkg_conf/init_auto-complete.el
 
 (autoload 'my/ac-add-sources-for-prog "pkg_conf/init_auto-complete" "\
@@ -237,7 +247,7 @@ Add ac-sources for each programming-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_auto-complete-c-headers" "pkg_conf/init_auto-complete-c-headers.el"
-;;;;;;  (21881 15874 370043 290000))
+;;;;;;  (21916 11116 813648 453000))
 ;;; Generated autoloads from pkg_conf/init_auto-complete-c-headers.el
 
 (autoload 'Y/ac-c-headers-init "pkg_conf/init_auto-complete-c-headers" "\
@@ -263,7 +273,7 @@ Add ac-c-headers source to auto-complete source.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_google-c-style" "pkg_conf/init_google-c-style.el"
-;;;;;;  (21877 26668 372376 285000))
+;;;;;;  (21916 11116 257629 988000))
 ;;; Generated autoloads from pkg_conf/init_google-c-style.el
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
@@ -282,7 +292,7 @@ Add ac-c-headers source to auto-complete source.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_irony" "pkg_conf/init_irony.el"
-;;;;;;  (21885 16311 667011 891000))
+;;;;;;  (21916 11117 829682 190000))
 ;;; Generated autoloads from pkg_conf/init_irony.el
 
 (add-hook 'c++-mode-hook 'irony-mode)
@@ -299,7 +309,7 @@ Setup irony-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_java" "pkg_conf/init_java.el"
-;;;;;;  (21877 24542 664495 265000))
+;;;;;;  (21916 11116 257629 988000))
 ;;; Generated autoloads from pkg_conf/init_java.el
 
 (add-hook 'java-mode-hook 'Y/java-init)
@@ -349,7 +359,7 @@ Whether the point is overlay-ed or not.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_quickrun" "pkg_conf/init_quickrun.el"
-;;;;;;  (21876 64599 41726 169000))
+;;;;;;  (21916 11115 865616 970000))
 ;;; Generated autoloads from pkg_conf/init_quickrun.el
 
 (autoload 'my/quickrun-dwim "pkg_conf/init_quickrun" "\
@@ -378,19 +388,20 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "builtin/init_shr.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
 ;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
 ;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
-;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "my_autoload.el"
-;;;;;;  "my_automode.el" "my_font.el" "my_hooks.el" "my_paths.el"
-;;;;;;  "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
-;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
-;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
-;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
-;;;;;;  "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw-gcal.el"
-;;;;;;  "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el" "pkg_conf/init_clojure-mode.el"
-;;;;;;  "pkg_conf/init_coffee-mode.el" "pkg_conf/init_company-c-headers.el"
-;;;;;;  "pkg_conf/init_company.el" "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el"
-;;;;;;  "pkg_conf/init_el-get.el" "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el"
-;;;;;;  "pkg_conf/init_evil-macros.el" "pkg_conf/init_evil-surround.el"
-;;;;;;  "pkg_conf/init_evil.el" "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
+;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "emacs-custom.el"
+;;;;;;  "my_autoload.el" "my_automode.el" "my_font.el" "my_hooks.el"
+;;;;;;  "my_paths.el" "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el"
+;;;;;;  "pkg_conf/init_ace-jump-mode.el" "pkg_conf/init_android-mode.el"
+;;;;;;  "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el" "pkg_conf/init_auto-async-byte-compile.el"
+;;;;;;  "pkg_conf/init_auto-capitalize.el" "pkg_conf/init_auto-java-complete.el"
+;;;;;;  "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el"
+;;;;;;  "pkg_conf/init_calfw-gcal.el" "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el"
+;;;;;;  "pkg_conf/init_clojure-mode.el" "pkg_conf/init_coffee-mode.el"
+;;;;;;  "pkg_conf/init_company-c-headers.el" "pkg_conf/init_company.el"
+;;;;;;  "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el" "pkg_conf/init_el-get.el"
+;;;;;;  "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el" "pkg_conf/init_evil-macros.el"
+;;;;;;  "pkg_conf/init_evil-surround.el" "pkg_conf/init_evil.el"
+;;;;;;  "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
 ;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_go-mode.el"
 ;;;;;;  "pkg_conf/init_grammar.el" "pkg_conf/init_grep-a-lot.el"
 ;;;;;;  "pkg_conf/init_hangman.el" "pkg_conf/init_haskell-emacs.el"
@@ -427,8 +438,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xclip.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21910 1720 118546
-;;;;;;  961000))
+;;;;;;  "site-start.el" "style/my_modeline.el") (21928 30057 123551
+;;;;;;  673000))
 
 ;;;***
 

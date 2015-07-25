@@ -147,11 +147,6 @@
            :type git
            :depends (flycheck)
            :url "https://github.com/akorobov/flycheck-java.git")
-    (:name flycheck-tip
-           :depends (flycheck)
-           :type github
-           :depends (let-alist) ; for another package
-           :pkgname "yuutayamada/flycheck-tip")
     (:name f
            :type git
            :url "https://github.com/rejeep/f.el.git")

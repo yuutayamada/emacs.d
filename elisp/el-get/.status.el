@@ -192,10 +192,6 @@
                    (:name flycheck-package :type github :depends
                           (flycheck)
                           :pkgname "purcell/flycheck-package"))
- (flycheck-tip status "installed" recipe
-               (:name flycheck-tip :depends
-                      (flycheck)
-                      :type github :pkgname "yuutayamada/flycheck-tip"))
  (flymake-coffee status "installed" recipe
                  (:name flymake-coffee :type github :pkgname "purcell/flymake-coffee" :description "Flymake support for coffee script" :website "http://github.com/purcell/flymake-coffee" :depends
                         (flymake-easy)

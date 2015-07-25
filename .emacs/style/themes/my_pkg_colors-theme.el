@@ -17,7 +17,7 @@
  ;; On XTerm Emacs some font locks can not display due to the missing
  ;; color name.
  '(font-lock-builtin-face       ((t :foreground "#00ffaf")))
- '(font-lock-variable-name-face ((t :foreground "#5c5cff")))
+ '(font-lock-variable-name-face ((t :foreground "#00ffff")))
  '(font-lock-constant-face      ((t :foreground "#a45bad")))
  '(font-lock-keyword-face       ((t :foreground "#237fbf" :weight bold)))
  '(font-lock-type-face          ((t :foreground "#c56ec3" :weight bold)))

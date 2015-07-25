@@ -94,8 +94,8 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (21932 25580
-;;;;;;  507988 675000))
+;;;### (autoloads nil "my_function" "my_function.el" (21932 36634
+;;;;;;  126532 578000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -207,7 +207,8 @@ My better newline and indent.
 \(fn &optional COLOR)" t nil)
 
 (autoload 'Y/eval-and-replace "my_function" "\
-
+Eval and replace.
+This function distinguishes parenthesis and symbol accordingly.
 
 \(fn)" t nil)
 
@@ -388,20 +389,19 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "builtin/init_shr.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
 ;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
 ;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
-;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "emacs-custom.el"
-;;;;;;  "my_autoload.el" "my_automode.el" "my_font.el" "my_hooks.el"
-;;;;;;  "my_paths.el" "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el"
-;;;;;;  "pkg_conf/init_ace-jump-mode.el" "pkg_conf/init_android-mode.el"
-;;;;;;  "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el" "pkg_conf/init_auto-async-byte-compile.el"
-;;;;;;  "pkg_conf/init_auto-capitalize.el" "pkg_conf/init_auto-java-complete.el"
-;;;;;;  "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el"
-;;;;;;  "pkg_conf/init_calfw-gcal.el" "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el"
-;;;;;;  "pkg_conf/init_clojure-mode.el" "pkg_conf/init_coffee-mode.el"
-;;;;;;  "pkg_conf/init_company-c-headers.el" "pkg_conf/init_company.el"
-;;;;;;  "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el" "pkg_conf/init_el-get.el"
-;;;;;;  "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el" "pkg_conf/init_evil-macros.el"
-;;;;;;  "pkg_conf/init_evil-surround.el" "pkg_conf/init_evil.el"
-;;;;;;  "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
+;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "my_autoload.el"
+;;;;;;  "my_automode.el" "my_font.el" "my_hooks.el" "my_paths.el"
+;;;;;;  "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
+;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
+;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
+;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
+;;;;;;  "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw-gcal.el"
+;;;;;;  "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el" "pkg_conf/init_clojure-mode.el"
+;;;;;;  "pkg_conf/init_coffee-mode.el" "pkg_conf/init_company-c-headers.el"
+;;;;;;  "pkg_conf/init_company.el" "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el"
+;;;;;;  "pkg_conf/init_el-get.el" "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el"
+;;;;;;  "pkg_conf/init_evil-macros.el" "pkg_conf/init_evil-surround.el"
+;;;;;;  "pkg_conf/init_evil.el" "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
 ;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_go-mode.el"
 ;;;;;;  "pkg_conf/init_grammar.el" "pkg_conf/init_grep-a-lot.el"
 ;;;;;;  "pkg_conf/init_hangman.el" "pkg_conf/init_haskell-emacs.el"
@@ -438,8 +438,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xclip.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21928 30057 123551
-;;;;;;  673000))
+;;;;;;  "site-start.el" "style/my_modeline.el") (21940 5004 523120
+;;;;;;  808000))
 
 ;;;***
 

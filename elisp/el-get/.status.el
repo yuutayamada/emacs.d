@@ -599,8 +599,6 @@
 (:name window-layout :description "window layout manager" :website "https://github.com/kiwanami/emacs-window-layout" :type github :pkgname "kiwanami/emacs-window-layout" :features "window-layout"))
 (windows status "installed" recipe
 (:name windows :type http :url "http://www.gentei.org/~yuuji/software/euc/windows.el"))
-(xclip status "installed" recipe
-(:name xclip :description "Emacs Interface to XClip" :type http :url "http://www.mail-archive.com/gnu-emacs-sources@gnu.org/msg01336/xclip.el"))
 (yaml-mode status "installed" recipe
 (:name yaml-mode :type git :url "https://github.com/yoshiki/yaml-mode"))
 (yasnippet status "installed" recipe

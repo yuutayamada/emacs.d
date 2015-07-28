@@ -168,9 +168,34 @@
   (global-auto-revert-mode t)
 
   ;; Copy and Past
-  ;; http://emacswiki.org/emacs/CopyAndPaste
-  ;; http://stackoverflow.com/questions/5288213/how-can-i-paste-the-selected-region-outside-of-emacs/14659015#14659015
-  ;; (setq select-enable-clipboard t)
+  ;; Note that the names of original values are different on
+  ;; Emacs version. (x-select-... gui-select-...)
+  (defconst Y/original-cut-and-paste
+    `(,interprogram-cut-function . ,interprogram-paste-function))
+
+  (when (executable-find "xsel")
+    (setq interprogram-paste-function
+          (lambda ()
+            (funcall (if (display-graphic-p)
+                         (cdr Y/original-cut-and-paste)
+                       (lambda ()
+                         ;; After I changed xmodmap, I got strange error:
+                         ;; "xmodmap: please release the following keys within 2 seconds:..."
+                         ;; I'm not sure about the true reason, but the
+                         ;; ‘eshell-command-result’ was the work around.
+                         (eshell-command-result "xsel -b -o"))))))
+
+    (setq interprogram-cut-function
+          (lambda (text &optional _rest)
+            (funcall (if (display-graphic-p)
+                         (car Y/original-cut-and-paste)
+                       (lambda (text &optional _rest)
+                         (let* ((process-connection-type nil)
+                                (proc (start-process "xsel" "*Messages*" "xsel" "-b" "-i")))
+                           (process-send-string proc text)
+                           (process-send-eof proc))))
+                     text))))
+
 
   ;;* newline configurations
   (setq eol-mnemonic-dos       "[CRLF]" ; DOS

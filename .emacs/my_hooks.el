@@ -7,8 +7,6 @@
 (require 'cl-lib)
 
 ;; For Terminal Emacs
-;; This hook called each time when you boot terminal Emacs.
-(add-hook 'terminal-init-xterm-hook 'turn-on-xclip)
 (when (getenv "XTERM_VERSION")
   (add-hook 'terminal-init-xterm-hook 'xterm-keybinder-setup))
 

@@ -17,6 +17,13 @@
 (setq error-tip-notify-keep-messages t)
 ;; You can specify 'normal, 'verbose or nil
 (flycheck-tip-use-timer 'verbose)
+;; add icon
+(let ((pic "~/media/pictures/Clippy2.jpg"))
+  (when (file-exists-p pic)
+    (setq error-tip-notify-parametors
+          '(:title "It looks like you want to know current error(s):"
+                   :category "im.error"
+                   :app-icon pic))))
 
 ;; Flycheck-package ;;
 (setq-default flycheck-emacs-lisp-load-path load-path)

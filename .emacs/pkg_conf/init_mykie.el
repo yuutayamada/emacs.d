@@ -663,6 +663,11 @@
 ;; (string-to-vector "\e[29")
 ;; [27 91 13] (char-to-string 100)
 
+;; Avy with Hyper key
+(cl-loop for c from ?\s to ?~
+         for key = "SPC" then (char-to-string c) do
+         (global-set-key (kbd (format "H-%s" key)) 'avy-goto-char-by-input-event))
+
 (provide 'init_mykie)
 
 ;; Local Variables:

@@ -50,6 +50,9 @@
  (auto-java-complete status "installed" recipe
                      (:name auto-java-complete :type git :url "https://github.com/emacs-java/auto-java-complete.git" :depends
                             (auto-complete)))
+ (avy status "installed" recipe
+      (:name avy :description "Jump to things in Emacs tree-style." :type github :pkgname "abo-abo/avy" :depends
+             (cl-lib)))
  (bm status "installed" recipe
      (:name bm :pkgname "joodland/bm" :website "http://joodland.github.com/bm/" :type github :description "Visible, persistent, buffer local, bookmarks"))
  (buffer-move status "installed" recipe

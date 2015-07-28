@@ -262,6 +262,17 @@ Add ac-c-headers source to auto-complete source.
 
 ;;;***
 
+;;;### (autoloads nil "pkg_conf/init_avy" "pkg_conf/init_avy.el"
+;;;;;;  (21943 61929 410865 511000))
+;;; Generated autoloads from pkg_conf/init_avy.el
+
+(autoload 'avy-goto-char-by-input-event "pkg_conf/init_avy" "\
+
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads nil "pkg_conf/init_ginger-api" "pkg_conf/init_ginger-api.el"
 ;;;;;;  (21800 29732 464641 238000))
 ;;; Generated autoloads from pkg_conf/init_ginger-api.el
@@ -435,11 +446,11 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_smart-tabs-mode.el" "pkg_conf/init_smartparens.el"
 ;;;;;;  "pkg_conf/init_sql.el" "pkg_conf/init_tabbar.el" "pkg_conf/init_twittering-mode.el"
 ;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_w3m.el" "pkg_conf/init_web-mode.el"
-;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xclip.el"
-;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
+;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el"
+;;;;;;  "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21940 5004 523120
-;;;;;;  808000))
+;;;;;;  "site-start.el" "style/my_modeline.el") (21943 60363 300604
+;;;;;;  216000))
 
 ;;;***
 

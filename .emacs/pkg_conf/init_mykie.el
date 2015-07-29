@@ -663,10 +663,14 @@
 ;; (string-to-vector "\e[29")
 ;; [27 91 13] (char-to-string 100)
 
-;; Avy with Hyper key
-(cl-loop for c from ?\s to ?~
-         for key = "SPC" then (char-to-string c) do
-         (global-set-key (kbd (format "H-%s" key)) 'avy-goto-char-by-input-event))
+;; Bind Hyper key to jump over buffer.
+(require 'xterm-keybinder)
+(cl-loop for (c . C) in xterm-keybinder-key-pairs
+         for char = (if (eq c ?\s) "SPC" (string c))
+         for Char = (when C (downcase (string C)))
+         do (global-set-key (kbd (format "H-%s" char)) 'avy-goto-char-by-input-event)
+         if Char
+         do (global-set-key (kbd (format "H-S-%s" Char)) 'avy-goto-char-by-input-event))
 
 (provide 'init_mykie)
 

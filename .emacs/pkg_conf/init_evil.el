@@ -61,8 +61,6 @@
 ;; NORMAL STATE
 (mykie:set-keys evil-normal-state-map
   "U" undo-tree-visualize
-  "f" ace-jump-char-mode
-  "/" ace-jump-word-mode
   ";" evil-ex)
 
 (defun Y/toggle-background-color ()

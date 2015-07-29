@@ -7,7 +7,10 @@
 (add-hook 'markdown-mode-hook
           '(lambda ()
              (mykie:set-keys markdown-mode-map
-               "M-[" "M-n" "M-p")))
+               "M-[" "M-n" "M-p")
+             (when (let ((dir (locate-dominating-file buffer-file-name ".git")))
+                     (and dir (not (equal "~/" dir))))
+               (gfm-mode))))
 
 (provide 'init_markdown-mode)
 

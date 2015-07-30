@@ -368,19 +368,17 @@
 ;; Control x map(for other keymap testing)
 (mykie:set-keys ctl-x-map
   "C-b" Y/ido-find-ghq-dirs
-  "C"   save-buffers-kill-emacs)
 
-(mykie:set-keys global-map
-  "C-x g"   grep
-  "C-x C-f" ido-find-file
-
-  "C-x C-c"
+  "C-c"
   :default save-buffers-kill-terminal ; or delete frame?
   :C-u     save-buffers-kill-emacs
+  "c"      save-buffers-kill-emacs
 
-  "C-x o" (mykie:do-while "o" other-window-or-split)
+  "C-f" ido-find-file
+  "g"   grep
+  "o"   (mykie:do-while "o" other-window-or-split)
 
-  "C-x j"
+  "j"
   :default my/open-junk-today
   :C-u     open-junk-file)
 

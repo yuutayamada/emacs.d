@@ -367,7 +367,8 @@
 ;; The normal global definition of the character C-x indirects to this keymap.
 ;; Control x map(for other keymap testing)
 (mykie:set-keys ctl-x-map
-  "C" t save-buffers-kill-emacs)
+  "C-b" Y/ido-find-ghq-dirs
+  "C"   save-buffers-kill-emacs)
 
 (mykie:set-keys global-map
   "C-x g"   grep

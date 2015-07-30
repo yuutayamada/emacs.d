@@ -651,17 +651,6 @@
 (advice-add (global-key-binding (kbd "C-s")) :before
             (lambda () (require 'init_isearch)))
 
-;; Terminal keybind
-;; The below vector key sequences are depending on how you set the values.
-;; Actually I set those values by xterm's resource file.
-;; To examine key sequence, use those functions:
-;;   (insert (format "%s"(read-key-sequence-vector "")))
-;; (describe-key [67108919]) C-7
-;; (describe-key [67108920]) C-8
-;;   (insert (format "%s"(read-key-sequence "")))[67108920]
-;; (string-to-vector "\e[29")
-;; [27 91 13] (char-to-string 100)
-
 ;; Bind Hyper key to jump over buffer.
 (require 'xterm-keybinder)
 (cl-loop for (c . C) in xterm-keybinder-key-pairs

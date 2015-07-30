@@ -161,7 +161,16 @@
  (esxml status "installed" recipe
         (:name esxml :type github :pkgname "tali713/esxml"))
  (evil status "installed" recipe
-       (:name evil :type git :url "https://github.com/emacsmirror/evil.git"))
+       (:name evil :website "https://bitbucket.org/lyro/evil" :description "Evil is an extensible vi layer for Emacs. It\n       emulates the main features of Vim, and provides facilities\n       for writing custom extensions." :type hg :url "https://bitbucket.org/lyro/evil" :features evil :depends
+              (undo-tree goto-chg)
+              :build
+              (("make" "info" "all"))
+              :build/berkeley-unix
+              (("gmake" "info" "all"))
+              :build/darwin
+              `(("make" ,(format "EMACS=%s" el-get-emacs)
+                 "info" "all"))
+              :info "doc"))
  (evil-anzu status "installed" recipe
             (:name evil-anzu :type git :url "https://github.com/syohex/emacs-evil-anzu.git"))
  (evil-numbers status "installed" recipe

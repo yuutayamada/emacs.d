@@ -159,9 +159,6 @@
     (:name emacs-milkode
            :type git
            :url "https://github.com/ongaeshi/emacs-milkode.git")
-    (:name evil
-           :type git
-           :url "https://github.com/emacsmirror/evil.git")
     (:name eldoc-extension
            :type git
            :url "https://github.com/emacsmirror/eldoc-extension.git")

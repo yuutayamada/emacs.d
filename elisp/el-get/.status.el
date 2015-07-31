@@ -267,8 +267,8 @@
                             '(progn
                                (require 'google-c-style)
                                (c-add-style "Google" google-c-style))))))
- (google-translater status "installed" recipe
-                    (:name google-translater :type git :url "https://github.com/manzyuk/google-translate.git"))
+ (google-translate status "installed" recipe
+                   (:name google-translate :description "Emacs interface to Google Translate" :type github :pkgname "atykhonov/google-translate"))
  (goto-chg status "installed" recipe
            (:name goto-chg :description "Goto the point of the most recent edit in the buffer." :type emacswiki :features goto-chg))
  (gradle-mode status "installed" recipe

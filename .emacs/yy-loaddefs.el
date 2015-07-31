@@ -263,7 +263,7 @@ Add ac-c-headers source to auto-complete source.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_avy" "pkg_conf/init_avy.el"
-;;;;;;  (21943 61929 410865 511000))
+;;;;;;  (21946 27299 703707 858000))
 ;;; Generated autoloads from pkg_conf/init_avy.el
 
 (autoload 'avy-goto-char-by-input-event "pkg_conf/init_avy" "\
@@ -289,17 +289,6 @@ Add ac-c-headers source to auto-complete source.
 ;;; Generated autoloads from pkg_conf/init_google-c-style.el
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
-
-;;;***
-
-;;;### (autoloads nil "pkg_conf/init_google-translate" "pkg_conf/init_google-translate.el"
-;;;;;;  (21800 29695 408639 702000))
-;;; Generated autoloads from pkg_conf/init_google-translate.el
-
-(autoload 'my/google-translate "pkg_conf/init_google-translate" "\
-
-
-\(fn TEXT)" nil nil)
 
 ;;;***
 
@@ -414,10 +403,11 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_evil-macros.el" "pkg_conf/init_evil-surround.el"
 ;;;;;;  "pkg_conf/init_evil.el" "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
 ;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_go-mode.el"
-;;;;;;  "pkg_conf/init_grammar.el" "pkg_conf/init_grep-a-lot.el"
-;;;;;;  "pkg_conf/init_hangman.el" "pkg_conf/init_haskell-emacs.el"
-;;;;;;  "pkg_conf/init_haskell-font-lock.el" "pkg_conf/init_haskell-mode.el"
-;;;;;;  "pkg_conf/init_helm-ag-r.el" "pkg_conf/init_helm-ag.el" "pkg_conf/init_helm-config.el"
+;;;;;;  "pkg_conf/init_google-translate.el" "pkg_conf/init_grammar.el"
+;;;;;;  "pkg_conf/init_grep-a-lot.el" "pkg_conf/init_hangman.el"
+;;;;;;  "pkg_conf/init_haskell-emacs.el" "pkg_conf/init_haskell-font-lock.el"
+;;;;;;  "pkg_conf/init_haskell-mode.el" "pkg_conf/init_helm-ag-r.el"
+;;;;;;  "pkg_conf/init_helm-ag.el" "pkg_conf/init_helm-config.el"
 ;;;;;;  "pkg_conf/init_helm-files.el" "pkg_conf/init_helm-github-issues.el"
 ;;;;;;  "pkg_conf/init_helm-go.el" "pkg_conf/init_helm-gtags.el"
 ;;;;;;  "pkg_conf/init_helm-migemo.el" "pkg_conf/init_helm-rb.el"
@@ -449,8 +439,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el"
 ;;;;;;  "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21943 60363 300604
-;;;;;;  216000))
+;;;;;;  "site-start.el" "style/my_modeline.el") (21946 32489 459159
+;;;;;;  213000))
 
 ;;;***
 

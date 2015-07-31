@@ -458,9 +458,6 @@
     (:name git-messenger :description "Pops up commit messages at current line"
            :type github
            :pkgname "syohex/emacs-git-messenger")
-    (:name google-translater
-           :type git
-           :url "https://github.com/manzyuk/google-translate.git")
     (:name html-helper-mode
            :type git
            :url "https://github.com/emacsmirror/html-helper-mode.git")

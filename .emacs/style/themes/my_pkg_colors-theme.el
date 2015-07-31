@@ -226,6 +226,7 @@
 
  ;; Org-mode
  '(org-document-info-keyword ((t :inherit 'org-meta-line)))
+ '(org-hide ((t :foreground "black"))) ; set black to hide even transparent terminal Emacs
 
  ;; popup/popwin
  '(popup-menu-selection-face ((t :background "#5c5cff"

@@ -5,6 +5,23 @@
 (require 'grep)
 (require 'thingatpt)
 
+(defun Y/grep-jump-to-file ()
+  "Sadly my ‘compile-goto-erorr’ doesn't work now...
+So, I made my own."
+  (interactive)
+  (let ((file (thing-at-point 'filename)))
+    (when file
+      (when (string-match (rx (group (1+ any)) ":" (group (1+ num)) ":") file)
+        (let ((f (match-string 1 file))
+              (n (match-string 2 file))
+              (dir default-directory))
+          (windmove-left)
+          (find-file (format "%s%s" dir f))
+          (goto-char (point-min))
+          (forward-line (string-to-number n)))))))
+
+(define-key grep-mode-map (kbd "C-o") 'Y/grep-jump-to-file)
+
 ;;; For ag command
 (add-to-list 'grep-mode-font-lock-keywords
              '("^[~/].*\n"

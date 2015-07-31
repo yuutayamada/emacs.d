@@ -61,3 +61,6 @@
 [submodule "elisp/self/flycheck-tip"]
 	path = elisp/self/flycheck-tip
 	url = https://github.com/yuutayamada/flycheck-tip.git
+[submodule "elisp/self/nim-mode"]
+	path = elisp/self/nim-mode
+	url = https://github.com/yuutayamada/nim-mode.git

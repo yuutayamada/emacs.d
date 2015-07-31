@@ -37,10 +37,7 @@
 (setq evil-emacs-state-modes
       (append evil-emacs-state-modes
               '(eww-mode git-commit-mode git-rebase-mode dired-mode
-                         mew-message-mode mew-summary-mode fundamental-mode
-                         ;; new magit doesn't change to git-commit-mode
-                         ;; when entering COMMIT_EDITMSG buffer.
-                         text-mode)))
+                         mew-message-mode mew-summary-mode fundamental-mode)))
 
 (defadvice evil-normal-state (around Y/prevent-on-emacs-mode activate)
   "Prevent turn to Emacs state on specific modes."

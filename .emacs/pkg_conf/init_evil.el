@@ -48,11 +48,13 @@
     ad-do-it))
 
 ;; KEY BINDING ;;
+;; Memo
+;; C-r : redo
 ;; Unbind needless keys
 (cl-loop with maps = `(evil-normal-state-map
                        evil-motion-state-map
                        evil-emacs-state-map)
-         with avoid-keys = '("C-e" "C-r" "C-s" "C-t" "C-w" "C-z"
+         with avoid-keys = '("C-e" "C-s" "C-t" "C-w" "C-z"
                              "C-i" "C-o"
                              "C-^" "C-=" "M-n" "M-p")
          for map in maps

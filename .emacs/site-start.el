@@ -223,6 +223,10 @@
   ;; Attach executable attribute when saving a file with #!
   (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
+  ;; subword & superword
+  ;; http://ergoemacs.org/emacs/emacs_subword-mode_superword-mode.html
+  (global-subword-mode   1)
+  (global-superword-mode 1)
 
   ;; KEY BINDS ;;
 

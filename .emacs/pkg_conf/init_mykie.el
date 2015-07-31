@@ -74,34 +74,47 @@
   :C-u anzu-query-replace-at-cursor-thing
   :region align
 
+  "b"
+  :region comment-box
+
   "i" :C-u&java-mode add-java-import
   "c" :C-u (my/open-calendar)
+
   "e"
   :C-u&emacs-lisp-mode Y/eval-and-replace
   :C-u&lisp-interaction-mode Y/eval-and-replace
+
   "f"
   :C-u! racer-find-definition
   :region (mykie:do-while "f" indent-rigidly
                           "u" undo)
+
   "g"
   :C-u! my/helm-gtags ; helm-gtags-dwim
   :region my/ginger-region
+
   ;; "l" :C-u Y/lookup
   "m" :C-u mew
-  "r" :region rectangle-number-lines
+  "n"
+  :region     rectangle-number-lines
+  ;; Specify starting number by M-N number* or C-u number*
+  :region&C-u (rectangle-number-lines
+               (region-beginning) (region-end) current-prefix-arg)
+
   "s"
   :C-u flop-frame ; swap left and right
   :C-u*2 transpose-frame
   :C-u*3 flip-frame ; swap up and down
   "u" :C-u (undo-tree-visualize)
+
+  ;; Just testing json-encode
   "w"
-  ;; :C-u (message (format "C-u is %s" current-prefix-arg))
-  :C-u! (message (format "test C-u! : %s" current-prefix-arg))
-  ;; :C-u!
-  :C-u*2! (message (format "%s" current-prefix-arg))
+  :C-u!   google-translate-at-point
+  ;; :C-u*2!
   :C-u*3 (message (format "%s" current-prefix-arg))
   )
-
+;; 偉人
+;; (assoc-default "Japanese" google-translate-supported-languages-alist)
 ;; C-[a-z] ;;
 (mykie:set-keys nil ; nil means global-map
 
@@ -248,8 +261,8 @@
   "C-t"
   :default transpose-chars
   :C-u*2   buttercup-run-at-point
-  :C-u     (my/google-translate (word-at-point))
-  :region  (my/google-translate mykie:region-str)
+  :C-u     google-translate-at-point
+  :region  google-translate-at-point
 
   "C-S-t"
   :default Y/reverse-transpose-chars
@@ -365,22 +378,26 @@
 ;; C-x keymap ;;
 ;; Default keymap for C-x commands.
 ;; The normal global definition of the character C-x indirects to this keymap.
-;; Control x map(for other keymap testing)
-(mykie:set-keys ctl-x-map
+(mykie:set-keys ctl-x-map ; test other key map
+  ;; Note:
+  ;;   C-x c : helm binds helm related commands
+  ;;   C-x b : ido-switch-buffer
   "C-b" Y/ido-find-ghq-dirs
-
-  "C-c"
-  :default save-buffers-kill-terminal ; or delete frame?
-  :C-u     save-buffers-kill-emacs
-  "c"      save-buffers-kill-emacs
-
-  "C-f" ido-find-file
   "g"   grep
   "o"   (mykie:do-while "o" other-window-or-split)
 
   "j"
   :default my/open-junk-today
-  :C-u     open-junk-file)
+  :C-u     open-junk-file
+
+  "C-f" ido-find-file)
+
+;; I couldn't bind C-x C-c pair on above ctl-x-map...
+(mykie:set-keys nil
+  "C-x C-c"
+  :C-u     save-buffers-kill-emacs    ; remain emacs daemon
+  :default save-buffers-kill-terminal ; kill daemon as well
+  )
 
 ;; f0-9 ;;
 (mykie:set-keys global-map

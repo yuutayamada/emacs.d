@@ -29,8 +29,6 @@ git pull git://git.savannah.gnu.org/emacs.git
 ./configure \
   CFLAGS='-O3' \
   --with-x-toolkit=lucid --with-dbus -without-toolkit-scroll-bars --without-xim \
-  # This option from Emacs 25.1
-  --with-cairo
 
 # make or make bootstrap?
 make

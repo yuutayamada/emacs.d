@@ -39,6 +39,12 @@
     (setq win:current-config 1
           win:last-config 0)))
 
+(defadvice win:set-window-configuration (around Y/make-pseudo-config activate)
+  "Prevent config nil error."
+  (unless (ad-get-arg 0)
+    (ad-set-arg 0 (aref win:configs 1)))
+  ad-do-it)
+
 (require 'my_autoload)
 (defadvice win-switch-to-window (around Y/win-switch-fixed-place activate)
   "Configure to move fixed place."

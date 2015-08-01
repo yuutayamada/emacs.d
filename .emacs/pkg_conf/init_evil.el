@@ -183,6 +183,9 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
+;; Go through end of line (evil affects M-f command, so this config is essential.)
+(setq evil-move-beyond-eol t)
+
 (provide 'init_evil)
 
 ;; Local Variables:

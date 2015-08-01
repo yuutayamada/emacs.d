@@ -26,6 +26,11 @@
 (require 'auth-source)
 (require 'mew-w3m)
 
+(defadvice mew (around Y/switch-to-m-window activate)
+  "Switch m window."
+  (Y/win-switch-window ?m)
+  ad-do-it)
+
 (define-key mew-draft-header-map (kbd "C-c C-i") 'helm-ag-r-google-contacts-list)
 (define-key mew-draft-body-map   (kbd "C-c C-k") 'mew-draft-kill)
 

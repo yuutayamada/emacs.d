@@ -20,7 +20,7 @@
 ;; Set buffer switch function
 (setq magit-status-buffer-switch-function
       '(lambda (buffer)
-         (win:switch-window (1+ (- ?g ?a))) ; jump to 'g' window
+         (Y/win-switch-window ?g) ; jump to 'g' window
          (setq-local magit-restore-window-configuration (current-window-configuration))
          (switch-to-buffer buffer)
          (when (not (one-window-p))

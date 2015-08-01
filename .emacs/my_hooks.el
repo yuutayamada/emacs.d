@@ -32,7 +32,7 @@
 ;; Use Evil's normal mode in actual file.
 (add-hook 'find-file-hook
           '(lambda () ; don't activete normal state at magit's git commit buffer
-             (unless with-editor-mode (evil-normal-state))))
+             (unless (bound-and-true-p with-editor-mode) (evil-normal-state))))
 
 ;; auto-insert mode
 ;; https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html

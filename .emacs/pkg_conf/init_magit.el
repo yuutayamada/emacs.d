@@ -1,9 +1,6 @@
 ;;; init_magit.el --- init file for magit.el -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
-;; 65->90  (A to Z)
-;; 91->96  ("[" "\\" "]" "^" "_" "`")
-;; 97->122 (a to z)
 
 ;; nil    never show fine differences.
 ;; t      show fine differences for the current diff hunk only.
@@ -17,13 +14,10 @@
   (my/ssh-add)
   ad-do-it)
 
-;; TODO: check later
-;; 1 -> (magit-mode-get-buffer "*magit-rev: %a*" magit-revision-mode)
-;; 1 <- magit-mode-get-buffer: !non-local\ exit!
-
 ;; Set buffer switch function
 (setq magit-status-buffer-switch-function
       '(lambda (buffer)
+         (win:switch-window (1+ (- ?g ?a))) ; jump to 'g' window
          (setq-local magit-restore-window-configuration (current-window-configuration))
          (switch-to-buffer buffer)
          (when (not (one-window-p))

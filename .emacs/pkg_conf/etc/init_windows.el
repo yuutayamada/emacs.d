@@ -8,8 +8,8 @@
 ;; this configuration will fail.
 (defconst win:switch-prefix (kbd "M-g"))
 (defconst win:use-frame     nil)
-(defconst win:base-key      (- (string-to-char "a") 1))
-(defconst win:max-configs   27)
+(defconst win:base-key      (1- ?a))         ; starts from a of alphabet
+(defconst win:max-configs   (+ (- ?z ?a) 2)) ; end at z of alphabet
 (defconst win:quick-selection nil)
 (defconst revive:ignore-buffer-pattern "^ \\*")
 
@@ -75,6 +75,11 @@
 ;; The merged keybinds precede left side argument than right side.
 (setq goto-map (keymap--merge-bindings win:switch-map goto-map))
 (global-set-key (kbd "M-g") goto-map) ; use M-g M-g
+
+
+;;;###autoload
+(defun Y/win-switch-window (char-a-to-z)
+  (win:switch-window (1+ (- char-a-to-z ?a))))
 
 (provide 'init_windows)
 

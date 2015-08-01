@@ -403,7 +403,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_evil-macros.el" "pkg_conf/init_evil-surround.el"
 ;;;;;;  "pkg_conf/init_evil.el" "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
 ;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_go-mode.el"
-;;;;;;  "pkg_conf/init_google-translate.el" "pkg_conf/init_grammar.el"
+;;;;;;  "pkg_conf/init_google-translate-default-ui.el" "pkg_conf/init_grammar.el"
 ;;;;;;  "pkg_conf/init_grep-a-lot.el" "pkg_conf/init_hangman.el"
 ;;;;;;  "pkg_conf/init_haskell-emacs.el" "pkg_conf/init_haskell-font-lock.el"
 ;;;;;;  "pkg_conf/init_haskell-mode.el" "pkg_conf/init_helm-ag-r.el"
@@ -439,8 +439,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el"
 ;;;;;;  "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21946 32489 459159
-;;;;;;  213000))
+;;;;;;  "site-start.el" "style/my_modeline.el") (21948 36037 246540
+;;;;;;  797000))
 
 ;;;***
 

@@ -8,6 +8,7 @@
 
 ;; For Terminal Emacs
 (when (getenv "XTERM_VERSION")
+  (add-hook 'terminal-init-xterm-hook 'xterm-mouse-mode)
   (add-hook 'terminal-init-xterm-hook 'xterm-keybinder-setup))
 
 ;; Use dark faces on Terminal Emacs (but, it doesn't change background)

@@ -417,7 +417,7 @@
 (dash)
 :autoloads t :pkgname "magit/magit"))
 (markdown-mode status "installed" recipe
-(:name markdown-mode :type git :url "https://github.com/milkypostman/markdown-mode.git"))
+(:name markdown-mode :type github :pkgname "jrblevin/markdown-mode"))
 (mew status "installed" recipe
 (:name mew :type git :build
 ("./configure && make")

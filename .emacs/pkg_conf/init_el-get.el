@@ -424,8 +424,8 @@
            :type git
            :url "https://github.com/purcell/mmm-mode.git")
     (:name markdown-mode
-           :type git
-           :url "https://github.com/milkypostman/markdown-mode.git")
+           :type github
+           :pkgname "jrblevin/markdown-mode")
     (:name migemo
            :type git
            :url "https://github.com/emacs-jp/migemo.git")

@@ -677,6 +677,22 @@
          if Char
          do (global-set-key (kbd (format "H-S-%s" Char)) 'avy-goto-char-by-input-event))
 
+;; Mouse
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Mouse-Buttons.html
+(mykie:set-keys nil
+  "<mouse-1>" ; left click
+  :default mouse-set-point
+  :url     browse-url-at-point
+  :file    find-file-at-point
+  ;; [drag-mouse-1]
+  ;; [double-mouse-1]
+  ;; [drag-mouse-1] mouse-set-region
+  ;; [down-mouse-1] mouse-drag-region
+  ;; middle click
+  [mouse-2] mouse-yank-primary
+  ;; right click
+  [mouse-3] mouse-save-then-kill)
+
 (provide 'init_mykie)
 
 ;; Local Variables:

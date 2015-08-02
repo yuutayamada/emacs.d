@@ -140,6 +140,9 @@
  ;; Ace jump
  '(ace-jump-face-foreground ((t :background "red"
                                 :foreground "#Ffff00")))
+ ;;; avy
+ '(avy-lead-face-2 ((t :foreground "black" :background "#Ff00ff")))
+
  ;; Helm
  '(helm-source-header  ((t :background nil :foreground "#FFFF00")))
  '(helm-match          ((t :foreground "#Ff00ff")))

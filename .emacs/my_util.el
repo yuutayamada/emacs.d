@@ -29,29 +29,6 @@
                (funcall req (concat config-dir package-name) t))
     (error "Config-dir is not found")))
 
-;; Automode
-(cl-defun my/define-auto-mode (&keys without-dot &rest auto-mode-definitions)
-  (setq auto-mode-alist
-        (append auto-mode-alist
-                (cl-loop with len = (length auto-mode-definitions)
-                         with format = (if without-dot "%s\\'" "\\.%s\\'")
-                         for i from 0 to len by 2
-                         for extension  = (nth (1+ i) auto-mode-definitions)
-                         for mode = (nth i auto-mode-definitions)
-                         collect (cons (format format extension) mode)))))
-
-(defmacro my/def-auto-mode (&rest args)
-  "WIP"
-  `(cl-loop with a = (quote ,args)
-            with len = (1- (length a))
-            with alist = ()
-            for i from 0 to len by 2
-            for mode      = (nth i a)
-            for extension = (nth (1+ i) a)
-            collect (cons extension mode) into alist
-            finally (setq auto-mode-alist
-                          (append auto-mode-alist alist))))
-
 ;; AUTOLOADER
 (defmacro autoloader-autoloads (&rest args)
   ""

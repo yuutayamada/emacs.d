@@ -219,8 +219,8 @@ This function distinguishes parenthesis and symbol accordingly.
 
 ;;;***
 
-;;;### (autoloads nil "my_util" "my_util.el" (21912 30253 266815
-;;;;;;  215000))
+;;;### (autoloads nil "my_util" "my_util.el" (21953 19693 349465
+;;;;;;  607000))
 ;;; Generated autoloads from my_util.el
 
 (autoload 'Y/load-packages "my_util" "\
@@ -263,13 +263,21 @@ Add ac-c-headers source to auto-complete source.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_avy" "pkg_conf/init_avy.el"
-;;;;;;  (21946 27299 703707 858000))
+;;;;;;  (21951 48541 296848 148000))
 ;;; Generated autoloads from pkg_conf/init_avy.el
 
 (autoload 'avy-goto-char-by-input-event "pkg_conf/init_avy" "\
-
+Goto char with avy and move to ‘last-input-event’s char.
 
 \(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_crontab-mode" "pkg_conf/init_crontab-mode.el"
+;;;;;;  (21953 18928 706482 413000))
+;;; Generated autoloads from pkg_conf/init_crontab-mode.el
+
+(add-to-list 'auto-mode-alist (cons "\\(\\.cron\\(tab\\)?\\|cron\\(tab\\)?\\.?\\)\\'" 'crontab-mode))
 
 ;;;***
 
@@ -314,6 +322,14 @@ Setup irony-mode.
 ;;; Generated autoloads from pkg_conf/init_java.el
 
 (add-hook 'java-mode-hook 'Y/java-init)
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_markdown-mode" "pkg_conf/init_markdown-mode.el"
+;;;;;;  (21953 18083 440113 176000))
+;;; Generated autoloads from pkg_conf/init_markdown-mode.el
+
+(add-to-list 'auto-mode-alist (cons (concat "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)" "\\|PULLREQ_EDITMSG\\|COMMIT_EDITMSG\\|TAG_EDITMSG\\)\\'") 'gfm-mode))
 
 ;;;***
 
@@ -371,6 +387,14 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 ;;;***
 
+;;;### (autoloads nil "pkg_conf/init_web-mode" "pkg_conf/init_web-mode.el"
+;;;;;;  (21953 19501 38007 433000))
+;;; Generated autoloads from pkg_conf/init_web-mode.el
+
+(add-to-list 'auto-mode-alist (cons (rx "." (or "html" "phtml" "tpl.php" "erb" "mustache" "djhtml" (and (or "a" "g" "j") "sp") (and "as" (or "c" "p") "x")) line-end) 'web-mode))
+
+;;;***
+
 ;;;### (autoloads nil nil ("../test.el" "Y-launch.el" "builtin/init_align.el"
 ;;;;;;  "builtin/init_autoinsert.el" "builtin/init_browse-url.el"
 ;;;;;;  "builtin/init_cc-mode.el" "builtin/init_css-mode.el" "builtin/init_cua-base.el"
@@ -390,8 +414,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
 ;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
 ;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "my_autoload.el"
-;;;;;;  "my_automode.el" "my_font.el" "my_hooks.el" "my_paths.el"
-;;;;;;  "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
+;;;;;;  "my_font.el" "my_hooks.el" "my_paths.el" "pkg_conf/init_ac_irony.el"
+;;;;;;  "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
 ;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
 ;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
 ;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
@@ -418,9 +442,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_jstestmacs.el" "pkg_conf/init_keyboard-converter.el"
 ;;;;;;  "pkg_conf/init_keychord.el" "pkg_conf/init_logalimacs.el"
 ;;;;;;  "pkg_conf/init_lookup.el" "pkg_conf/init_lua-mode.el" "pkg_conf/init_magit.el"
-;;;;;;  "pkg_conf/init_markdown-mode.el" "pkg_conf/init_masaw.el"
-;;;;;;  "pkg_conf/init_mew.el" "pkg_conf/init_migemo.el" "pkg_conf/init_milkboy.el"
-;;;;;;  "pkg_conf/init_mmm-mode.el" "pkg_conf/init_mode-compile.el"
+;;;;;;  "pkg_conf/init_masaw.el" "pkg_conf/init_mew.el" "pkg_conf/init_migemo.el"
+;;;;;;  "pkg_conf/init_milkboy.el" "pkg_conf/init_mmm-mode.el" "pkg_conf/init_mode-compile.el"
 ;;;;;;  "pkg_conf/init_moz.el" "pkg_conf/init_mozc.el" "pkg_conf/init_multiple-cursors.el"
 ;;;;;;  "pkg_conf/init_mykie.el" "pkg_conf/init_newsticker.el" "pkg_conf/init_nim-mode.el"
 ;;;;;;  "pkg_conf/init_node-console.el" "pkg_conf/init_nyan-mode.el"
@@ -435,12 +458,11 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_skk.el" "pkg_conf/init_skype.el" "pkg_conf/init_slime.el"
 ;;;;;;  "pkg_conf/init_smart-tabs-mode.el" "pkg_conf/init_smartparens.el"
 ;;;;;;  "pkg_conf/init_sql.el" "pkg_conf/init_tabbar.el" "pkg_conf/init_twittering-mode.el"
-;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_w3m.el" "pkg_conf/init_web-mode.el"
-;;;;;;  "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el"
-;;;;;;  "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
-;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el"
-;;;;;;  "site-start.el" "style/my_modeline.el") (21948 36037 246540
-;;;;;;  797000))
+;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el"
+;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
+;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
+;;;;;;  "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el" "site-start.el"
+;;;;;;  "style/my_modeline.el") (21953 19725 182687 858000))
 
 ;;;***
 

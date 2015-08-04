@@ -228,6 +228,14 @@
   (global-subword-mode   1)
   (global-superword-mode 1)
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; General mode config ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;
+  (add-to-list 'auto-mode-alist (cons "\\.co?nf\\'" 'conf-mode))
+  (add-to-list 'auto-mode-alist (cons "\\..*ignore\\'" 'default-generic-mode))
+  ;; X default files
+  (add-to-list 'auto-mode-alist (cons (getenv "XAPPLRESDIR") 'conf-xdefaults-mode))
+
   ;; KEY BINDS ;;
 
   ;; find function

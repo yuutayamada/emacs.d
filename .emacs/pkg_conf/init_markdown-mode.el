@@ -3,14 +3,17 @@
 ;;; Code:
 (require 'markdown-mode)
 
+;;;###autoload
+(add-to-list 'auto-mode-alist
+             (cons (concat "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)"
+                           "\\|PULLREQ_EDITMSG\\|COMMIT_EDITMSG\\|TAG_EDITMSG\\)\\'")
+                   'gfm-mode))
+
 ;; http://stackoverflow.com/questions/7694887/is-there-a-command-line-utility-for-rendering-github-flavored-markdown
 (add-hook 'markdown-mode-hook
           '(lambda ()
-             (mykie:set-keys markdown-mode-map
-               "M-[" "M-n" "M-p")
-             (when (let ((dir (locate-dominating-file buffer-file-name ".git")))
-                     (and dir (not (equal "~/" dir))))
-               (gfm-mode))))
+             (when (eq 'markdown-mode major-mode) (gfm-mode))
+             (mykie:set-keys markdown-mode-map "M-n" "M-p")))
 
 ;; memo: install grip > ‘pip3 install grip‘
 (defvar Y/markdown-process nil)

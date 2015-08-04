@@ -215,15 +215,6 @@
   :region         anzu-query-replace-regexp
   :region&C-u     query-replace-regexp
 
-  "C-m"
-  :default (newline)
-  :C-u (mykie:do-while "m" my/replicate-current-line)
-  :C-u*2 (Y/iso-transl-toggle-minor-mode)
-  :C-u*3 helm-ucs ; math symbols
-  :evil-emacs   (evil-change-state 'normal)
-  :evil-insert  (evil-change-state 'normal)
-  :org-mode (org-return)
-
   "C-n"
   :default    next-line
   :skk-on     skk-b-change-candidate-next
@@ -416,21 +407,6 @@
   "<f12>"    helm-skk-rules
   "S-<f12>"  my/screen-shot)
 
-;; TABS ;;
-;; memo: there is a difference between <tab> and TAB
-;; http://stackoverflow.com/questions/1792326/how-do-i-bind-a-command-to-c-i-without-changing-tab
-(mykie:set-keys nil
-  "TAB"
-  :default indent-for-tab-command
-  :markdown-header markdown-cycle
-  :evil-normal (mykie :prog ffinder-jump-to-begging
-                      :org-mode org-cycle)
-  "S-TAB"       my/insert ; C-S-TAB
-  "M-TAB"       auto-complete
-  [(C-tab)]     fold-dwim-toggle
-  [(backtab)]   my/toggle-opacity
-  [(super tab)] pcomplete)
-
 ;; NON ALPHABETICAL CHARACTER ;;
 ;; Do not bind "M-[" because it will take over F5-F10 keybind of terminal Emacs.
 (mykie:set-keys nil
@@ -465,15 +441,66 @@
              (error (buf-move-right)))
   :C-u     git-messenger:popup-message)
 
+;; TABS ;;
+;; memo: there is a difference between <tab> and TAB
+;; http://stackoverflow.com/questions/1792326/how-do-i-bind-a-command-to-c-i-without-changing-tab
+(mykie:set-keys nil
+  "S-TAB"       my/insert ; C-S-TAB
+  "M-TAB"       auto-complete
+  [(C-tab)]     fold-dwim-toggle
+  [(backtab)]   my/toggle-opacity
+  [(super tab)] pcomplete)
+
+(mykie:global-set-key [tab]
+  :default indent-for-tab-command
+  :markdown-header markdown-cycle
+  :evil-normal (mykie :prog ffinder-jump-to-begging
+                      :org-mode org-cycle))
+
+;; (apply `((lambda ()
+;;            (mykie:set-keys nil
+;;              "A-i"
+;;              :default indent-for-tab-command
+;;              :C-u (print "ai dayo")))))
+(let ((A-i (lookup-key global-map (kbd "A-i"))))
+  (global-set-key (kbd "C-i")
+                  (lambda () (interactive)
+                    (call-interactively
+                     (if (display-graphic-p)
+                         (lookup-key global-map (kbd "A-i"))
+                       (lookup-key global-map [tab]))))))
+
 ;; RET key ;;
 (mykie:set-keys nil
-  "RET"
-  :default  (newline)
-  :org-mode (org-return)
+  "M-RET"        my/multi-term-current-buffer
+  "<C-return>"   cua-set-rectangle-mark
+  "<C-M-return>" my/multi-term
 
-  "M-RET"        :default my/multi-term-current-buffer
-  "<C-return>"   :default cua-set-rectangle-mark
-  "<C-M-return>" :default my/multi-term)
+  "A-m"
+  :default     (newline)
+  :C-u         (mykie:do-while "m" my/replicate-current-line)
+  :C-u*2       (Y/iso-transl-toggle-minor-mode)
+  :C-u*3       helm-ucs ; math symbols
+  :evil-emacs  (evil-change-state 'normal)
+  :evil-insert (evil-change-state 'normal)
+  :org-mode    (org-return)
+
+  [return] ; this guy works in GUI Emacs
+  :default  (newline)
+  :org-mode (org-return))
+
+;; GUI Emacs:
+;;   return key : [return]
+;;   C-m        : C-m
+;; Terminal Emacs:
+;;   return key : C-m
+;;   C-m        : A-m (by using xterm-keybinder.el)
+(global-set-key (kbd "C-m")
+                (lambda () (interactive)
+                  (call-interactively
+                   (if (display-graphic-p)
+                       (lookup-key global-map (kbd "A-m"))
+                     (lookup-key global-map [return])))))
 
 ;; TODO: make :on-enter, :on-exit
 (mykie:define-prefix-key global-map "M-j"

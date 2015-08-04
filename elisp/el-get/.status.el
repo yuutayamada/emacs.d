@@ -94,6 +94,8 @@
                (:name company-mode :type git :url "https://github.com/company-mode/company-mode.git"))
  (cpp-auto-include status "installed" recipe
                    (:name cpp-auto-include :type github :pkgname "syohex/emacs-cpp-auto-include"))
+ (crontab-mode status "installed" recipe
+               (:name crontab-mode :description "Mode for editing crontab files" :type http :url "http://web.archive.org/web/20080716014153/http://www.mahalito.net/~harley/elisp/crontab-mode.el"))
  (css-eldoc status "installed" recipe
             (:name css-eldoc :website "https://github.com/zenozeng/css-eldoc" :description "eldoc plugin for CSS" :type github :pkgname "zenozeng/css-eldoc"))
  (ctable status "installed" recipe

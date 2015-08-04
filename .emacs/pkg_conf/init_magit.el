@@ -11,6 +11,7 @@
 
 (define-key magit-status-mode-map (kbd "S-SPC") 'magit-diff-show-or-scroll-down)
 (define-key magit-log-mode-map    (kbd "S-SPC") 'magit-diff-show-or-scroll-down)
+(define-key magit-status-mode-map (kbd "A-i")   (lookup-key magit-status-mode-map (kbd "C-i")))
 
 (defadvice magit-push (around ad-ssh-add-if-it-was-needed activate)
   "Do ssh-add if it is needed."

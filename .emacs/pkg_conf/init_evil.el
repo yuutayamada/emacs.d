@@ -37,7 +37,7 @@
 (setq evil-emacs-state-modes
       (append evil-emacs-state-modes
               '(eww-mode git-commit-mode git-rebase-mode dired-mode
-                         mew-message-mode mew-summary-mode fundamental-mode)))
+                         mew-message-mode mew-summary-mode)))
 
 (defadvice evil-normal-state (around Y/prevent-on-emacs-mode activate)
   "Prevent turn to Emacs state on specific modes."
@@ -60,7 +60,12 @@
 ;; NORMAL STATE
 (mykie:set-keys evil-normal-state-map
   "U" undo-tree-visualize
-  ";" evil-ex)
+  "f" avy-goto-char
+  "F" avy-goto-word-1
+  ";" evil-ex
+  ;; ","
+  "t" transpose-chars
+  "T" Y/reverse-transpose-chars)
 
 (defun Y/toggle-background-color ()
   "Toggle background color."

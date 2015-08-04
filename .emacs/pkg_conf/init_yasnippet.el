@@ -15,7 +15,6 @@
 
 (require 'mykie)
 (mykie:set-keys yas-minor-mode-map
-  "A-i" :default yas-expand
   "TAB" :default yas-expand)
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)

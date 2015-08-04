@@ -672,7 +672,8 @@
 (require 'xterm-keybinder)
 (cl-loop for (c . C) in xterm-keybinder-key-pairs
          for char = (if (eq c ?\s) "SPC" (string c))
-         for Char = (when C (downcase (string C)))
+         for Char = (when C (if (eq c ?\s) "SPC" (downcase (string C))))
+         if char
          do (global-set-key (kbd (format "H-%s" char)) 'avy-goto-char-by-input-event)
          if Char
          do (global-set-key (kbd (format "H-S-%s" Char)) 'avy-goto-char-by-input-event))

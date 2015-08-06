@@ -457,11 +457,13 @@
   :evil-normal (mykie :prog ffinder-jump-to-begging
                       :org-mode org-cycle))
 
-;; (apply `((lambda ()
-;;            (mykie:set-keys nil
-;;              "A-i"
-;;              :default indent-for-tab-command
-;;              :C-u (print "ai dayo")))))
+(mykie:global-set-key (kbd "A-i")
+  :default indent-for-tab-command
+  :markdown-header markdown-cycle
+  :evil-normal (mykie :prog ffinder-jump-to-begging
+                      :org-mode org-cycle))
+
+;; WIP
 (let ((A-i (lookup-key global-map (kbd "A-i"))))
   (global-set-key (kbd "C-i")
                   (lambda () (interactive)
@@ -476,25 +478,21 @@
   "<C-return>"   cua-set-rectangle-mark
   "<C-M-return>" my/multi-term
 
+  ;; This key bind works if I activates xterm-keybinder's enable C-m
+  ;; key feature, but it's currently work in progress.
   "A-m"
   :default     (newline)
   :C-u         (mykie:do-while "m" my/replicate-current-line)
-  :C-u*2       (Y/iso-transl-toggle-minor-mode)
-  :C-u*3       helm-ucs ; math symbols
-  :evil-emacs  (evil-change-state 'normal)
-  :evil-insert (evil-change-state 'normal)
   :org-mode    (org-return)
 
-  [return] ; this guy works in GUI Emacs
+  ;; GUI Emacs can distinguish [return] key(Enter) and C-m key.
+  ;; But, on Terminal, it does not...
+  [return]
   :default  (newline)
+  :C-u      (mykie:do-while "m" my/replicate-current-line)
   :org-mode (org-return))
 
-;; GUI Emacs:
-;;   return key : [return]
-;;   C-m        : C-m
-;; Terminal Emacs:
-;;   return key : C-m
-;;   C-m        : A-m (by using xterm-keybinder.el)
+;; WIP
 (global-set-key (kbd "C-m")
                 (lambda () (interactive)
                   (call-interactively
@@ -516,20 +514,17 @@
    :after
    (lambda () (Y/change-style nil 0)))
   ;; multiple-cursors ;;
-  "a"   mc/mark-all-like-this
-  "q"   :default nil
-  "n"   mc/skip-to-next-like-this
-  "p"   mc/skip-to-previous-like-this
-  "j"   mc/mark-next-like-this
-  "k"   mc/mark-previous-like-this
-  "m"   mc/mark-more-like-this-extended
-  "u"   mc/unmark-next-like-this
-  "U"   mc/unmark-previous-like-this
-  "*"   mc/mark-all-like-this
-  "M-j" mc/mark-all-like-this-dwim
-  "i"   mc/insert-numbers
-  "o"   mc/sort-regions
-  "O"   mc/reverse-regions)
+  "q"     :default nil
+  "C-s"   mc/mark-next-like-this
+  "M-s"   mc/skip-to-next-like-this
+  "C-r"   mc/mark-previous-like-this
+  "M-r"   mc/skip-to-previous-like-this
+  "C-u"   mc/unmark-next-like-this
+  "M-u"   mc/unmark-previous-like-this
+  "M-j"   mc/mark-all-like-this-dwim
+  "C-M-i" mc/insert-numbers
+  "C-M-s" mc/sort-regions
+  "C-M-r" mc/reverse-regions)
 
 ;; M- prefix ;;
 (mykie:set-keys nil

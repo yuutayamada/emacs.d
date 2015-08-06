@@ -721,6 +721,24 @@
   ;; right click
   [mouse-3] mouse-save-then-kill)
 
+;; Helm (C-x c prefix)
+;;   C-x c 8 | helm-ucs (helm with mathematics symbol)
+;;   C-x c a | helm-apropos
+;;   C-x c b | helm-resume
+;;   C-x c c | helm-colors
+;;   C-x c e | helm-etags-select
+;;   C-x c f | helm-multi-files
+;;   C-x c F | helm-select-xfont
+;;   C-x c i | helm-semantic-or-imenu
+;;   C-x c I | helm-imenu-all-buffer
+;;   C-x c t | helm-top
+;;   C-x c p | helm-list-emacs-process
+;;   C-x c r | helm-regex
+;;   C-x c s | helm-surflaw
+;;   C-x c h g | Info gnus
+;;   C-x c h i | Info index elisp
+;;   C-x c h r | Info index emacs <- why is the suffix r? should be e...
+
 (provide 'init_mykie)
 
 ;; Local Variables:

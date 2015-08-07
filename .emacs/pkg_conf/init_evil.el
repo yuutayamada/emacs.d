@@ -47,6 +47,10 @@
 
 ;; KEY BINDING ;;
 ;; Memo
+;; Swap some keys before bindings
+(Y/swap-key evil-normal-state-map "j" "gj" "k" "gk")
+(Y/swap-key evil-motion-state-map ":" "'")
+
 ;; C-r : redo
 ;; Unbind needless keys
 (cl-loop with maps = `(evil-normal-state-map

@@ -91,6 +91,17 @@
            collect (cons face (face-all-attributes face))))
 
 ;;;###autoload
+(defun Y/swap-key (keymap &rest keys)
+  ;; "Swap KEYS of KEYMAP."
+  (cl-loop for i from 0 to (1- (length keys)) by 2
+           for this = (nth i keys)
+           for that = (nth (1+ i) keys)
+           for sym-this = (lookup-key keymap this)
+           for sym-that = (lookup-key keymap that)
+           do (define-key keymap this sym-that)
+           do (define-key keymap that sym-this)))
+
+;;;###autoload
 (defun Y/change-style (attributes &optional inhibit)
   "Change looking of window."
   (when (or (not Y/inhibit-change-color)

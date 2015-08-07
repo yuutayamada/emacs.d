@@ -94,8 +94,8 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (21932 36634
-;;;;;;  126532 578000))
+;;;### (autoloads nil "my_function" "my_function.el" (21955 30865
+;;;;;;  232598 41000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -117,6 +117,11 @@ Move buffer or split when buffer was one.
 Change highlight color to which correspond to FACE, BG, FG, UL.
 
 \(fn FACE BG FG UL)" nil nil)
+
+(autoload 'Y/swap-key "my_function" "\
+
+
+\(fn KEYMAP &rest KEYS)" nil nil)
 
 (autoload 'Y/change-style "my_function" "\
 Change looking of window.
@@ -219,8 +224,8 @@ This function distinguishes parenthesis and symbol accordingly.
 
 ;;;***
 
-;;;### (autoloads nil "my_util" "my_util.el" (21953 19693 349465
-;;;;;;  607000))
+;;;### (autoloads nil "my_util" "my_util.el" (21953 19901 709416
+;;;;;;  912000))
 ;;; Generated autoloads from my_util.el
 
 (autoload 'Y/load-packages "my_util" "\
@@ -263,7 +268,7 @@ Add ac-c-headers source to auto-complete source.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_avy" "pkg_conf/init_avy.el"
-;;;;;;  (21951 48541 296848 148000))
+;;;;;;  (21955 27964 670278 974000))
 ;;; Generated autoloads from pkg_conf/init_avy.el
 
 (autoload 'avy-goto-char-by-input-event "pkg_conf/init_avy" "\
@@ -274,7 +279,7 @@ Goto char with avy and move to ‘last-input-event’s char.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_crontab-mode" "pkg_conf/init_crontab-mode.el"
-;;;;;;  (21953 18928 706482 413000))
+;;;;;;  (21953 19901 709416 912000))
 ;;; Generated autoloads from pkg_conf/init_crontab-mode.el
 
 (add-to-list 'auto-mode-alist (cons "\\(\\.cron\\(tab\\)?\\|cron\\(tab\\)?\\.?\\)\\'" 'crontab-mode))
@@ -388,7 +393,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_web-mode" "pkg_conf/init_web-mode.el"
-;;;;;;  (21953 19501 38007 433000))
+;;;;;;  (21953 19901 709416 912000))
 ;;; Generated autoloads from pkg_conf/init_web-mode.el
 
 (add-to-list 'auto-mode-alist (cons (rx "." (or "html" "phtml" "tpl.php" "erb" "mustache" "djhtml" (and (or "a" "g" "j") "sp") (and "as" (or "c" "p") "x")) line-end) 'web-mode))
@@ -410,12 +415,12 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "builtin/init_prog-mode.el" "builtin/init_python.el" "builtin/init_recentf.el"
 ;;;;;;  "builtin/init_remember.el" "builtin/init_ruby-mode.el" "builtin/init_savehist.el"
 ;;;;;;  "builtin/init_server.el" "builtin/init_sgml-mode.el" "builtin/init_sh-script.el"
-;;;;;;  "builtin/init_shr.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
-;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
-;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
-;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "my_autoload.el"
-;;;;;;  "my_font.el" "my_hooks.el" "my_paths.el" "pkg_conf/init_ac_irony.el"
-;;;;;;  "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
+;;;;;;  "builtin/init_shr.el" "builtin/init_simple.el" "builtin/init_tool-bar.el"
+;;;;;;  "builtin/init_tramp.el" "builtin/init_verilog-mode.el" "builtin/init_view.el"
+;;;;;;  "builtin/init_whitespace.el" "builtin/init_windmove.el" "depend/depend_emacs24.el"
+;;;;;;  "depend/depend_emacs25.el" "depend/depend_main.el" "depend/depend_windows.el"
+;;;;;;  "my_autoload.el" "my_font.el" "my_hooks.el" "my_paths.el"
+;;;;;;  "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
 ;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
 ;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
 ;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
@@ -462,7 +467,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
 ;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
 ;;;;;;  "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el" "site-start.el"
-;;;;;;  "style/my_modeline.el") (21953 19725 182687 858000))
+;;;;;;  "style/my_modeline.el") (21955 30872 88736 658000))
 
 ;;;***
 

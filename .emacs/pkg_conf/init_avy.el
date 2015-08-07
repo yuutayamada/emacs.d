@@ -6,13 +6,8 @@
 (require 'avy)
 (require 'cl-lib)
 
-(defconst avy-keys
-  (cl-loop with default = (list ?a ?s ?d ?f ?g ?h ?j ?k ?l ?\;)
-           for c from ?a to ?z
-           if (and (not (member c default))
-                   (not (member c '(?z ?q ?p ?x ?b))))
-           collect c into keys
-           finally return (append default keys)))
+;; Use only home position keys
+(defconst avy-keys (list ?a ?s ?d ?f ?j ?k ?l ?\;))
 
 ;;;###autoload
 (defun avy-goto-char-by-input-event ()

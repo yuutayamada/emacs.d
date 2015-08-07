@@ -307,23 +307,26 @@ Example of my/keys
 
 ;;;###autoload
 (defun Y/show-cheat-sheet ()
-  ""
+  "Popup a buffer by popwin which is related to current ‘major-mode’."
   (interactive)
-  (let* ((file-name (cl-case major-mode
-                      ('mew-summary-mode "mew.org")
-                      ('mew-message-mode "mew.org")
-                      ('c++-mode         "c-mode.org")
-                      ('lisp-mode        "common-lisp.org")
-                      (t nil)))
-         (cheat-sheet-dir "~/share/doc/cheat_sheets/")
-         (major-file
-          (concat cheat-sheet-dir (symbol-name major-mode) ".org"))
-         (true-name
-          (concat cheat-sheet-dir file-name)))
-    (if (and (file-exists-p true-name) file-name)
-        (popwin:find-file true-name)
-      (if (file-exists-p major-file)
-          (popwin:find-file major-file)))))
+  (when (bound-and-true-p Y/cheat-sheet-dir)
+    (let* ((file-name (cl-case major-mode
+                        ('mew-summary-mode "mew.org")
+                        ('mew-message-mode "mew.org")
+                        ('c++-mode         "c-mode.org")
+                        ('lisp-mode        "common-lisp.org")
+                        (t nil)))
+           (name (symbol-name major-mode))
+           (lang-name (substring name 0 (- (length name) 5)))
+           (major-file
+            (format "%s/%s/%s" Y/cheat-sheet-dir lang-name "cheat.org"))
+           (true-name
+            (concat Y/cheat-sheet-dir file-name)))
+      (if (and (file-exists-p true-name) file-name)
+          (popwin:find-file true-name)
+        (if (file-exists-p major-file)
+            (popwin:find-file major-file)
+          (find-file major-file))))))
 
 ;;;###autoload
 (defun my/get-above-dir-name ()

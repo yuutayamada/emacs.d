@@ -3,11 +3,65 @@
 ;;; Commentary:
 ;; MEMO
 ;; vim cheat sheet: http://www.fprintf.net/vimCheatSheet.html
-;; macro: register macro: q [a-zA-Z] and then do something then push q
-;; text-object: http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
-;; To call registered macros, push @ [a-z-A-Z].
+;;   macro register: Push "q" and [a-zA-Z] and then do something then push q
+;;   text-object: http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
+;;   To call registered macros, push @ [a-z-A-Z].
+;;
 ;; Use `evil-add-hjkl-bindings' function to add hjkl binding to a key map.
-;;; Code:
+;;
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; key binding memo ;;
+;;;;;;;;;;;;;;;;;;;;;;
+;; q - macro recording start and end
+;; @ - macro call
+;; m - set marker
+;; ^ - M-m(back to indentation)
+;; ` - goto-mark (m is set marker)
+;; . - repeat
+;; ( - backward sentence begin
+;; ) - forward sentence begin
+;; s - same as "cl" or "vc"
+;; cc - same as S
+;; H - move cursor to top
+;; M - move cursor to middle
+;; L - move cursor to bottom
+;; z<return> - C-l C-l in emacs
+;; z. - C-l
+;; z- - re center bottom
+;; gg - M-<
+;; G - M->
+;; [count] G - goto char
+;; | - move to column
+;; v - visual mode
+;; V - visual line
+;; C-v - visual block | C-x SPC in Emacs
+;; >> - indent
+;; -- key combo --
+;; cis - change inside sentence
+;; cip - change inside paragraph
+;; d) - delete until next sentence begin | M-k
+;; dd - delete line
+;; de - M-d
+;; df{char} - zap-to-char
+;; daw - delete a word
+;; da,w - delete a comma(Camel) word
+;; veu - down case word
+;; veU - capitalize word
+;; -- rectangle mode(C-v) --
+;; r<space> - replace to space
+;; -- Evil surround --
+;; ysiw : surround a word
+;; yss  : surround a whole line
+;;
+;; -- Emacs --
+;; C-x r c  : clear rectangle
+;; C-x r t  : string rectangle(replace)
+;; C-x r o  : open-rectangle
+;; C-x r d  : delete-rectangle
+;; C-M-v    : scroll other window
+;; C-M-S-v  : scroll other window
+;; Code:
 
 (require 'evil)
 (require 'my_autoload)
@@ -45,8 +99,8 @@
   (unless (member major-mode evil-emacs-state-modes)
     ad-do-it))
 
-;; KEY BINDING ;;
-;; Memo
+;; Evil KEY BINDING ;;
+
 ;; Swap some keys before bindings
 (Y/swap-key evil-normal-state-map "j" "gj" "k" "gk")
 (Y/swap-key evil-motion-state-map ":" "'")
@@ -65,11 +119,6 @@
 ;; NORMAL STATE
 (mykie:set-keys evil-normal-state-map
   "U" undo-tree-visualize
-  "f" avy-goto-char
-  "F" avy-goto-word-1
-  ";" evil-ex
-  ;; ","
-  "t" transpose-chars
   "T" Y/reverse-transpose-chars)
 
 (defun Y/toggle-background-color ()

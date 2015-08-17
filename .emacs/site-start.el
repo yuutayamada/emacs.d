@@ -33,6 +33,7 @@
 ;;                         but, no recommended officially
 ;; 6. window-setup-hook  : after frame parameters have been set up
 
+;; memo: https://www.gnu.org/software/emacs/manual/html_node/elisp/Startup-Summary.html#Startup-Summary
 ;;; Code:
 
 ;; Do not configure when --batch option

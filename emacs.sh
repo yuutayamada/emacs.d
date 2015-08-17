@@ -68,7 +68,9 @@ EmacsClient() {
   if test -z $xtermopt; then
     eval "${client} ${background}"
   else
-    eval "xterm -xrm `${xtermopt}` -e \"export EMACSLOADPATH='${Epath}:' && ${client}\" &"
+    iconName="XtermEmacs"
+    opt=`${xtermopt}`
+    xterm -xrm ${opt} -T ${iconName} -e ${client} &
   fi
 }
 

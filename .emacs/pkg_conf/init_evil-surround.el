@@ -11,6 +11,9 @@
 (require 'cl-lib)
 (require 'evil-surround)
 
+(evil-define-key 'normal evil-surround-mode-map "s" 'evil-surround-edit)
+(evil-define-key 'visual evil-surround-mode-map "s" 'evil-surround-region)
+
 ;; (defun Y/get-comment-string ()
 ;;   (cl-case major-mode
 ;;     ;; ysi{;

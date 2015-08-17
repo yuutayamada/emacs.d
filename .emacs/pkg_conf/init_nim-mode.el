@@ -4,6 +4,9 @@
 
 (require 'nim-mode)
 
+;; Indent accordingly by the length of statements.
+(defconst nim-uncompleted-condition-indent 'stmt+1)
+
 (add-hook 'nim-mode-hook
           '(lambda ()
              (require 'flycheck-nim)
@@ -15,13 +18,11 @@
   (format "%s/github.com/nim-lang/Nim/bin/nimsuggest"
           (shell-command-to-string "echo -n `ghq root`")))
 
-(defadvice nim-indent-line (around prevent-indent activate)
-  "Use previous indent level if the previous line is empty line."
-  (when (save-excursion
-          (forward-line -1)
-          (nim-info-current-line-empty-p))
-    (ad-set-arg 0 t))
-  ad-do-it)
+;; (defadvice nim-indent-line (around prevent-indent activate)
+;;   "Use previous indent level."
+;;   (when (and (not noninteractive) (looking-back (rx line-start (0+ space))))
+;;     (ad-set-arg 0 t))
+;;   ad-do-it)
 
 (defun Y/nim-smart-delete-backward-char ()
   "If current line is just an empty line, indent backward.

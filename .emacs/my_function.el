@@ -319,7 +319,7 @@ Example of my/keys
            (name (symbol-name major-mode))
            (lang-name (substring name 0 (- (length name) 5)))
            (major-file
-            (format "%s/%s/%s" Y/cheat-sheet-dir lang-name "cheat.org"))
+            (format "%s/%s/%s" Y/cheat-sheet-dir lang-name "_cheat.org"))
            (true-name
             (concat Y/cheat-sheet-dir file-name)))
       (if (and (file-exists-p true-name) file-name)

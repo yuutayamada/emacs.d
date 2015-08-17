@@ -13,7 +13,9 @@
                 ,(assoc-default 'foreground-color
                                 (cadr window-system-default-frame-alist))))))
 
- ;; font-lock
+ ;;;;;;;;;;;;;;;
+ ;; font-lock ;;
+ ;;;;;;;;;;;;;;;
  ;; On XTerm Emacs some font locks can not display due to the missing
  ;; color name.
  '(font-lock-builtin-face       ((t :foreground "#00ffaf")))
@@ -32,6 +34,9 @@
  ;; override manoj-dark's configuration
  '(font-lock-function-name-face ((t :height unspecified)))
 
+ ;;;;;;;;;;;;;
+ ;; default ;;
+ ;;;;;;;;;;;;;
  ;; grep or etc.
  '(success ((t :foreground "#00ffd7")))
  ;; shadow
@@ -61,6 +66,7 @@
  '(nxml-element-local-name ((t (:foreground "#F92672"))))
  ;; Attribute
  '(nxml-attribute-local-name ((t (:foreground "#66D9EF"))))
+ '(nxml-tag-delimiter ((t :foreground "#A6E22A")))
  ;; Powerline
  '(mode-line          ((t :background "#4169e1"
                           :foreground "#ffffff")))
@@ -68,12 +74,15 @@
                           :background "#1a1eb2")))
  '(powerline-active2  ((t :foreground "white"
                           :background "#000080")))
- ;; Paren
+ ;;;;;;;;;;;
+ ;; Paren ;;
+ ;;;;;;;;;;;
  '(show-paren-match   ((t :foreground "black" :background "#6a5acd")))
  '(paren-face         ((t :foreground "#A6E22A" :background nil)))
- '(nxml-tag-delimiter ((t :foreground "#A6E22A")))
 
- ;; Company-mode
+ ;;;;;;;;;;;;;;;;;;
+ ;; Company-mode ;;
+ ;;;;;;;;;;;;;;;;;;
  '(company-tooltip ((t :inherit 'popup-tip-face
                        :foreground nil
                        :background nil)))
@@ -270,6 +279,9 @@
  ;; SKK
  '(skk-henkan-face-default ((t :foreground "#ffffff"
                                :background "#0000d7")))
+
+ ;; shell
+ '(sh-quoted-exec ((t :inherit 'font-lock-preprocessor-face)))
 
  ;; tabbar
  '(tabbar-default ((t :inherit 'tty-menu-disabled-face

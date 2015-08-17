@@ -32,9 +32,9 @@
  ;; from other color theme.
  '(default ((t (:background "unspecified-bg"))))
 
- ;; Region
- '(region ((t (:background "blue"))))
- '(secondary-selection ((t :backgroud "#00005F")))
+ ;; ;; Region
+ ;; '(region ((t (:background "blue"))))
+ ;; '(secondary-selection ((t :backgroud "#00005F")))
 
  ;; Current line
  ;; '(highlight ((t (:foreground "#000000" :background "#C4BE89"))))
@@ -44,27 +44,25 @@
                               :inverse t
                               :box  (:line-width -1 :color "red")))))
 
- ;; link
- '(link       ((t :foreground "#00d7ff")))
+ ;; ;; link
+ ;; '(link       ((t :foreground "#00d7ff")))
 
  ;; match
- '(match ((t :background "#0000ee")))
+ ;; '(match ((t :background "#0000ee")))
 
- ;; Minibuffer
- '(minibuffer-prompt ((t (:foreground "#Afffff"))))
+ ;; ;; Minibuffer
+ ;; '(minibuffer-prompt ((t (:foreground "#Afffff"))))
 
- ;; Paren
- '(show-paren-match ((t (:foreground "yellow" :background "white"))))
- '(paren-face       ((t (:foreground "#a6e22a" :background nil))))
+ ;; ;; Paren
+ ;; '(show-paren-match ((t (:foreground "yellow" :background "white"))))
+ ;; '(paren-face       ((t (:foreground "#a6e22a" :background nil))))
 
- ;; shadow
- '(shadow ((t (:foreground "#c6c6c6"))))
+ ;; ;; shadow
+ ;; '(shadow ((t (:foreground "#c6c6c6"))))
 
- ;; Org-mode
- '(org-hide ((t (:inherit 'shadow :foreground nil))))
+ ;; ;; Org-mode
+ ;; '(org-hide ((t (:inherit 'shadow :foreground nil))))
 
- ;; shell
- '(sh-quoted-exec ((t :inherit 'font-lock-preprocessor-face)))
  )
 
 ;;;###autoload

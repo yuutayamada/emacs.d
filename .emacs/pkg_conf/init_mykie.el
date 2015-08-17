@@ -107,13 +107,13 @@
   :C-u*3 flip-frame ; swap up and down
   "u" :C-u (undo-tree-visualize)
 
-  ;; Just testing json-encode
+  ;; Just testing
   "w"
   :C-u!   google-translate-at-point
   ;; :C-u*2!
   :C-u*3 (message (format "%s" current-prefix-arg))
   )
-;; 偉人
+
 ;; (assoc-default "Japanese" google-translate-supported-languages-alist)
 ;; C-[a-z] ;;
 (mykie:set-keys nil ; nil means global-map
@@ -177,6 +177,7 @@
 
   "C-j"
   :default        my/newline-and-indent
+  :comment        comment-indent-new-line
   :python-mode    newline-and-indent
   :skk-active     (skk-kakutei)
   :skk-on         (skk-kakutei)
@@ -184,9 +185,9 @@
   :C-u*2          jazzradio
   :email          (message mykie:current-thing)
   :mew-draft-mode newline-and-indent
-  :C-u&eolp       (cl-case major-mode
-                    (org-mode (my/org-capitalize-header-string))
-                    (t (my/fill-current-line)))
+  :C-u!           (save-restriction
+                    (narrow-to-region (point-at-bol) (point-at-eol))
+                    (call-interactively 'fill-paragraph))
   :region         mc/edit-lines
   :region&C-u     mc/mark-all-in-region
 

@@ -5,9 +5,15 @@
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist
-             (cons (concat "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)"
-                           "\\|PULLREQ_EDITMSG\\|COMMIT_EDITMSG\\|TAG_EDITMSG\\)\\'")
-                   'gfm-mode))
+             (cons "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)\\)\\'" 'gfm-mode))
+
+;;;###autoload
+(add-hook 'with-editor-mode-hook ; on magit commit buffer, activates GFM.
+          '(lambda ()
+             (when (string-match
+                    (rx (or "PULLREQ_EDITMSG" "COMMIT_EDITMSG" "TAG_EDITMSG"))
+                    (buffer-name))
+               (gfm-mode))))
 
 ;; http://stackoverflow.com/questions/7694887/is-there-a-command-line-utility-for-rendering-github-flavored-markdown
 (add-hook 'markdown-mode-hook

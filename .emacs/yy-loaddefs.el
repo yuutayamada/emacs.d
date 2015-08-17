@@ -94,8 +94,8 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (21955 30865
-;;;;;;  232598 41000))
+;;;### (autoloads nil "my_function" "my_function.el" (21956 26064
+;;;;;;  725290 89000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -167,7 +167,7 @@ Search FILE recursively to check whether file is exist until home directory.
 \(fn FILE)" nil nil)
 
 (autoload 'Y/show-cheat-sheet "my_function" "\
-
+Popup a buffer by popwin which is related to current ‘major-mode’.
 
 \(fn)" t nil)
 
@@ -268,7 +268,7 @@ Add ac-c-headers source to auto-complete source.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_avy" "pkg_conf/init_avy.el"
-;;;;;;  (21955 27964 670278 974000))
+;;;;;;  (21956 16312 551597 556000))
 ;;; Generated autoloads from pkg_conf/init_avy.el
 
 (autoload 'avy-goto-char-by-input-event "pkg_conf/init_avy" "\
@@ -331,10 +331,12 @@ Setup irony-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_markdown-mode" "pkg_conf/init_markdown-mode.el"
-;;;;;;  (21953 18083 440113 176000))
+;;;;;;  (21970 21020 969883 9000))
 ;;; Generated autoloads from pkg_conf/init_markdown-mode.el
 
-(add-to-list 'auto-mode-alist (cons (concat "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)" "\\|PULLREQ_EDITMSG\\|COMMIT_EDITMSG\\|TAG_EDITMSG\\)\\'") 'gfm-mode))
+(add-to-list 'auto-mode-alist (cons "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)\\)\\'" 'gfm-mode))
+
+(add-hook 'with-editor-mode-hook '(lambda nil (when (string-match (rx (or "PULLREQ_EDITMSG" "COMMIT_EDITMSG" "TAG_EDITMSG")) (buffer-name)) (gfm-mode))))
 
 ;;;***
 
@@ -403,24 +405,24 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;### (autoloads nil nil ("../test.el" "Y-launch.el" "builtin/init_align.el"
 ;;;;;;  "builtin/init_autoinsert.el" "builtin/init_browse-url.el"
 ;;;;;;  "builtin/init_cc-mode.el" "builtin/init_css-mode.el" "builtin/init_cua-base.el"
-;;;;;;  "builtin/init_diff-mode.el" "builtin/init_dired-x.el" "builtin/init_dired.el"
-;;;;;;  "builtin/init_doc-view.el" "builtin/init_ediff.el" "builtin/init_elisp-mode.el"
-;;;;;;  "builtin/init_em-banner.el" "builtin/init_eshell.el" "builtin/init_eww.el"
-;;;;;;  "builtin/init_flycheck.el" "builtin/init_flymake.el" "builtin/init_gnus.el"
-;;;;;;  "builtin/init_grep.el" "builtin/init_ido.el" "builtin/init_indent.el"
-;;;;;;  "builtin/init_info.el" "builtin/init_isearch.el" "builtin/init_ispell.el"
-;;;;;;  "builtin/init_js.el" "builtin/init_lisp-mode.el" "builtin/init_nxml-mode.el"
-;;;;;;  "builtin/init_ob.el" "builtin/init_org-indent.el" "builtin/init_ox-html.el"
-;;;;;;  "builtin/init_ox-latex.el" "builtin/init_paren.el" "builtin/init_po-mode.el"
-;;;;;;  "builtin/init_prog-mode.el" "builtin/init_python.el" "builtin/init_recentf.el"
-;;;;;;  "builtin/init_remember.el" "builtin/init_ruby-mode.el" "builtin/init_savehist.el"
-;;;;;;  "builtin/init_server.el" "builtin/init_sgml-mode.el" "builtin/init_sh-script.el"
-;;;;;;  "builtin/init_shr.el" "builtin/init_simple.el" "builtin/init_tool-bar.el"
-;;;;;;  "builtin/init_tramp.el" "builtin/init_verilog-mode.el" "builtin/init_view.el"
-;;;;;;  "builtin/init_whitespace.el" "builtin/init_windmove.el" "depend/depend_emacs24.el"
-;;;;;;  "depend/depend_emacs25.el" "depend/depend_main.el" "depend/depend_windows.el"
-;;;;;;  "my_autoload.el" "my_font.el" "my_hooks.el" "my_paths.el"
-;;;;;;  "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
+;;;;;;  "builtin/init_diff-mode.el" "builtin/init_dired.el" "builtin/init_doc-view.el"
+;;;;;;  "builtin/init_ediff.el" "builtin/init_elisp-mode.el" "builtin/init_em-banner.el"
+;;;;;;  "builtin/init_eshell.el" "builtin/init_eww.el" "builtin/init_flycheck.el"
+;;;;;;  "builtin/init_flymake.el" "builtin/init_gnus.el" "builtin/init_grep.el"
+;;;;;;  "builtin/init_ido.el" "builtin/init_indent.el" "builtin/init_info.el"
+;;;;;;  "builtin/init_isearch.el" "builtin/init_ispell.el" "builtin/init_js.el"
+;;;;;;  "builtin/init_lisp-mode.el" "builtin/init_nxml-mode.el" "builtin/init_ob.el"
+;;;;;;  "builtin/init_org-indent.el" "builtin/init_ox-html.el" "builtin/init_ox-latex.el"
+;;;;;;  "builtin/init_paren.el" "builtin/init_po-mode.el" "builtin/init_prog-mode.el"
+;;;;;;  "builtin/init_python.el" "builtin/init_recentf.el" "builtin/init_remember.el"
+;;;;;;  "builtin/init_ruby-mode.el" "builtin/init_savehist.el" "builtin/init_server.el"
+;;;;;;  "builtin/init_sgml-mode.el" "builtin/init_sh-script.el" "builtin/init_shr.el"
+;;;;;;  "builtin/init_simple.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
+;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
+;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
+;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "my_autoload.el"
+;;;;;;  "my_font.el" "my_hooks.el" "my_paths.el" "pkg_conf/init_ac_irony.el"
+;;;;;;  "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
 ;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
 ;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
 ;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
@@ -441,9 +443,9 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_helm-go.el" "pkg_conf/init_helm-gtags.el"
 ;;;;;;  "pkg_conf/init_helm-migemo.el" "pkg_conf/init_helm-rb.el"
 ;;;;;;  "pkg_conf/init_highlight-indentation.el" "pkg_conf/init_hl-line.el"
-;;;;;;  "pkg_conf/init_idle-require.el" "pkg_conf/init_image-dired+.el"
-;;;;;;  "pkg_conf/init_info.el" "pkg_conf/init_jade.el" "pkg_conf/init_javadoc-lookup.el"
-;;;;;;  "pkg_conf/init_jedi.el" "pkg_conf/init_js-console.el" "pkg_conf/init_js2-mode.el"
+;;;;;;  "pkg_conf/init_idle-require.el" "pkg_conf/init_info.el" "pkg_conf/init_jade.el"
+;;;;;;  "pkg_conf/init_javadoc-lookup.el" "pkg_conf/init_jedi.el"
+;;;;;;  "pkg_conf/init_js-console.el" "pkg_conf/init_js2-mode.el"
 ;;;;;;  "pkg_conf/init_jstestmacs.el" "pkg_conf/init_keyboard-converter.el"
 ;;;;;;  "pkg_conf/init_keychord.el" "pkg_conf/init_logalimacs.el"
 ;;;;;;  "pkg_conf/init_lookup.el" "pkg_conf/init_lua-mode.el" "pkg_conf/init_magit.el"
@@ -467,7 +469,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
 ;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
 ;;;;;;  "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el" "site-start.el"
-;;;;;;  "style/my_modeline.el") (21955 30872 88736 658000))
+;;;;;;  "style/my_modeline.el") (21970 20936 729047 805000))
 
 ;;;***
 

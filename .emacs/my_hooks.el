@@ -6,7 +6,9 @@
 
 (require 'cl-lib)
 
-;; For Terminal Emacs
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; For Terminal Emacs ;;
+;;;;;;;;;;;;;;;;;;;;;;;;
 (when (getenv "XTERM_VERSION")
   (add-hook 'terminal-init-xterm-hook 'xterm-mouse-mode)
   (add-hook 'terminal-init-xterm-hook 'xterm-keybinder-setup))
@@ -16,10 +18,15 @@
 (add-hook 'terminal-init-xterm-hook
           '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
 
-;; auto capitalize
+;;;;;;;;;;;;;;;;;;;;;
+;; auto capitalize ;;
+;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'after-change-major-mode-hook 'auto-capitalize-mode)
 
-;; New hook from emacs 24.4
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; New hook from emacs 24.4 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; *** New hooks `focus-in-hook', `focus-out-hook'.
 
 ;; Note that you CAN NOT apply `eval-after-load' to `text-mode'
@@ -27,7 +34,9 @@
 ;; due to the lack of `provide' function in those .el files. So you
 ;; should use hooks instead to do so.
 
-;;; files(find-file):
+;;;;;;;;;;;;;;;;;;;;;;
+;; files(find-file) ;;
+;;;;;;;;;;;;;;;;;;;;;;
 ;; git-gutter
 (add-hook 'find-file-hook 'git-gutter-mode)
 ;; Use Evil's normal mode in actual file.
@@ -49,7 +58,9 @@
                               (auto-complete-mode t)
                               (run-with-idle-timer 3 nil 'flyspell-mode t))))
 
-;; view-mode
+;;;;;;;;;;;;;;;
+;; view-mode ;;
+;;;;;;;;;;;;;;;
 (add-hook 'help-mode-hook 'view-mode)
 (add-hook 'Man-mode-hook  'view-mode)
 

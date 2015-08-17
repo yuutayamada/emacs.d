@@ -28,6 +28,10 @@
 ;; C-a | show hidden buffer like .xxx or
 ;; C-t | toggle enabling regexp
 
+;; IDO's keymap:
+;; `ido-common-completion-map', `ido-file-dir-completion-map',
+;; `ido-file-completion-map' and `ido-buffer-completion-map'.
+
 ;;; Code:
 ;; source code: http://www.cua.dk/ido.el
 (require 'ido)

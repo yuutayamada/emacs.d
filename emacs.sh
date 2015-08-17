@@ -35,7 +35,7 @@ EmacsDaemon () {
 
 EmacsDwim() {
   if ! pgrep emacs >/dev/null 2>&1; then
-    EmacsDaemon && EmacsClient $@
+    EmacsDaemon && EmacsClient $*
   elif jobs -s %TerminalEmacs >/dev/null 2>&1; then
     fg %TerminalEmacs
   elif jobs -s %GUI_Emacs     >/dev/null 2>&1; then
@@ -43,26 +43,27 @@ EmacsDwim() {
   elif jobs -s %EmacsClient   >/dev/null 2>&1; then
     fg %EmacsClient
   else
-    EmacsClient $@
+    EmacsClient $*
   fi
 }
 
 TerminalEmacs() {
-  option="-t" background="" EmacsDwim $@
+  option="-t" background="" EmacsDwim $*
 }
 
 GUI_Emacs() {
-  option="-c" background="&" EmacsDwim $@
+  option="-c" background="&" EmacsDwim $*
 }
 
 XtermEmacs() {
   # Use xterm-keybinder.el to use C-M prefix keys on xterm.
-  xtermopt=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/xterm-option TerminalEmacs
+  xtermopt=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/xterm-option \
+          TerminalEmacs $*
 }
 
 EmacsClient() {
   [ ! -z ${EMACS_FRAME_PARAMETERS} ] && fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
-  [ -z "$@" ] && where=`pwd` || where="$@"
+  [ -z "$*" ] && where=`pwd` || where="$*"
   client="${emacsclient} ${fparam} -s ${daemon_name} -q ${option} ${where}"
   if test -z $xtermopt; then
     eval "${client} ${background}"

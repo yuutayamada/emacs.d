@@ -38,6 +38,9 @@
 ;; C-v - visual block | C-x SPC in Emacs
 ;; >> - indent
 ;; -- key combo --
+;;
+;; g~iw, guiw, gUiw - capitalize
+;; ciw - change inside word
 ;; cis - change inside sentence
 ;; cip - change inside paragraph
 ;; d) - delete until next sentence begin | M-k
@@ -50,7 +53,7 @@
 ;; veU - capitalize word
 ;; -- rectangle mode(C-v) --
 ;; r<space> - replace to space
-;; -- Evil surround --
+;; -- Evil surround (I changed the prefix to "s" key) --
 ;; ysiw : surround a word
 ;; yss  : surround a whole line
 ;;
@@ -111,7 +114,7 @@
                        evil-motion-state-map
                        evil-emacs-state-map)
          with avoid-keys = '("C-e" "C-s" "C-t" "C-w" "C-z"
-                             "C-i" "C-o"
+                             "C-i" "C-o" "C-m"
                              "C-^" "C-=" "M-n" "M-p")
          for map in maps
          do (apply `((lambda () (mykie:set-keys ,map ,@avoid-keys)))))

@@ -56,7 +56,7 @@
                               (whitespace-mode t)
                               (pangu-spacing-mode t)
                               (auto-complete-mode t)
-                              (run-with-idle-timer 3 nil 'flyspell-mode t))))
+                              (flyspell-mode t))))
 
 ;;;;;;;;;;;;;;;
 ;; view-mode ;;

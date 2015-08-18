@@ -68,9 +68,8 @@ EmacsClient() {
   if test -z $xtermopt; then
     eval "${client} ${background}"
   else
-    iconName="XtermEmacs"
-    opt=`${xtermopt}`
-    xterm -xrm ${opt} -T ${iconName} -e ${client} &
+    iconName=XtermEmacs
+    eval "xterm -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"
   fi
 }
 

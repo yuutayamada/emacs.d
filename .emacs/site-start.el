@@ -47,15 +47,6 @@
                (message (format "Welcome to Emacs(%s)" emacs-version))))
 
   ;; My core configuration files
-  (add-hook 'after-init-hook
-            '(lambda ()
-               (require 'Y-launch)
-               (when (version< "24.0.0" emacs-version)
-                 (require 'notifications) ; this needs Dbus
-                 (notifications-notify :title "Emacs Daemon"
-                                       :body  "Ready to start!!!"
-                                       :timeout 5000))))
-
   (setq
    ;; Load newer file than old file(this feature is from Emacs 24.4)
    load-prefer-newer t
@@ -69,6 +60,15 @@
    menu-bar-mode nil
    tool-bar-mode nil
    )
+
+  (add-hook 'after-init-hook
+            '(lambda ()
+               (require 'Y-launch)
+               (when (version< "24.0.0" emacs-version)
+                 (require 'notifications) ; this needs Dbus
+                 (notifications-notify :title "Emacs Daemon"
+                                       :body  "Ready to start!!!"
+                                       :timeout 5000))))
 
   ;; truncate line
   (setq-default truncate-lines t)

@@ -16,7 +16,7 @@
 (defconst error-tip-timer-delay 0.3)
 (setq error-tip-notify-keep-messages t)
 ;; You can specify 'normal, 'verbose or nil
-(flycheck-tip-use-timer 'verbose)
+(flycheck-tip-use-timer 'normal)
 ;; add icon
 (let ((pic "~/media/pictures/Clippy2.jpg"))
   (when (file-exists-p pic)

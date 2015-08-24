@@ -7,7 +7,11 @@
 
 (require 'ispell)
 
-(setq ispell-program-name "aspell")
+(setq ispell-program-name "aspell"
+      ;; Use ispell even on camelcase!?
+      ;; http://blog.binchen.org/posts/effective-spell-check-in-emacs.html#sec-2
+      ispell-extra-args
+      '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
 
 ;; work around ispell's highlighting of Japanese characters
 (add-to-list 'ispell-skip-region-alist '("[^\000-\377]+"))

@@ -599,7 +599,7 @@
           (e2wm:stop-management)
         (e2wm:start-management))
   "M-s" magit-status
-  "M-c" (find-file "~/share/doc/study/2015summer")
+  "M-c" (find-file "~/share/doc/study/2015fall")
   "M-h" my/toggle-hide-show
   "M-r" win-switch-menu
   "M-t" toggle-truncate-lines

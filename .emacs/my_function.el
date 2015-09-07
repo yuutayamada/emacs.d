@@ -41,11 +41,14 @@
   "Find file from my favorite resource."
   (interactive)
   (let* ((ghq-dirs (bound-and-true-p Y/ghq-dirs))
+         (my-favor '("~/var/downloads"
+                     "~/var/backups"
+                     "~/share/doc/study/2015fall"))
          (code-dirs (cl-loop with root = "~/code"
                              for dir in (directory-files root)
                              unless (string-match "^\\(\\.\\|\\.\\.\\)$" dir)
                              collect (format "%s/%s" root dir)))
-         (match (ido-completing-read "ghq: " (append ghq-dirs code-dirs))))
+         (match (ido-completing-read "ghq: " (append ghq-dirs code-dirs my-favor))))
     (cond ((bufferp (get-buffer match))
            (switch-to-buffer (get-buffer match)))
           (t (find-file match)))))

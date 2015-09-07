@@ -64,6 +64,26 @@
 (add-hook 'help-mode-hook 'view-mode)
 (add-hook 'Man-mode-hook  'view-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; workaround of <return> and RET keys ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Copy function of RET key because <return> key of global-map takes
+;; over minibuffer's RET.
+(add-hook 'minibuffer-setup-hook
+          #'(lambda ()
+              (define-key minibuffer-local-map (kbd "<return>")
+                (lookup-key minibuffer-local-map (kbd "RET")))))
+;; likewise by major-mode
+(add-hook 'after-change-major-mode-hook
+          #'(lambda ()
+              (let ((map-name (intern (format "%s-map" major-mode))))
+                (condition-case err
+                    (let ((map (symbol-value map-name)))
+                      (when (keymapp map)
+                        (define-key map (kbd "<return>")
+                          (lookup-key map (kbd "RET")))))
+                  (error err)))))
+
 (provide 'my_hooks)
 
 ;; Local Variables:

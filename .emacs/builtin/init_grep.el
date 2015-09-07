@@ -20,7 +20,7 @@ So, I made my own."
           (goto-char (point-min))
           (forward-line (string-to-number n)))))))
 
-(define-key grep-mode-map (kbd "C-o") 'Y/grep-jump-to-file)
+(define-key grep-mode-map (kbd "RET") 'Y/grep-jump-to-file)
 
 ;;; For ag command
 (add-to-list 'grep-mode-font-lock-keywords

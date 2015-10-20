@@ -14,7 +14,10 @@
                        line-end)
                    'web-mode))
 
-(define-key web-mode-map (kbd "<f6>") 'html-mode)
+(add-hook 'web-mode-hook
+          (lambda ()
+            (define-key web-mode-map (kbd "<f6>") 'html-mode)
+            (define-key web-mode-map (kbd "C-c C-c") 'browse-url-of-file)))
 
 (provide 'init_web-mode)
 

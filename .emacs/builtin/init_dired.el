@@ -4,6 +4,12 @@
 ;;; Code:
 
 (require 'mykie)
+
+;; Do not pass "--dired" option because often it destructs my dired buffer, so..
+;; Probably it related to following error (but not sure...):
+;;   "Wrong type argument: number-or-marker-p, //DIRED-OPTIONS//"
+(defconst dired-use-ls-dired nil)
+
 (require 'dired)
 (require 'dired-x)
 

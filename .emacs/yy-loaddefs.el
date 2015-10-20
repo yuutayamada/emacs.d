@@ -56,8 +56,8 @@ Toggle `iso-transl-ctl-x-8-map' keybinds.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_org" "builtin/init_org.el" (21800
-;;;;;;  28599 624594 273000))
+;;;### (autoloads nil "builtin/init_org" "builtin/init_org.el" (22039
+;;;;;;  24938 969219 968000))
 ;;; Generated autoloads from builtin/init_org.el
 
 (autoload 'my/org-dwim "builtin/init_org" "\
@@ -73,6 +73,143 @@ My convinience function for `org-mode'.
 
 (autoload 'Y/smerge-mode-keep-at-point "builtin/init_smerge-mode" "\
 Treat merging at point by smerge way.
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "flycheck_my_function" "flycheck_my_function.el"
+;;;;;;  (22052 30033 280042 376000))
+;;; Generated autoloads from flycheck_my_function.el
+
+(autoload 'other-window-or-split "flycheck_my_function" "\
+Move buffer or split when buffer was one.
+
+\(fn)" t nil)
+
+(autoload 'Y/split-window-spirally "flycheck_my_function" "\
+
+
+\(fn)" t nil)
+
+(autoload 'Y/reverse-transpose-chars "flycheck_my_function" "\
+
+
+\(fn)" t nil)
+
+(autoload 'Y/change-color "flycheck_my_function" "\
+Change highlight color to which correspond to FACE, BG, FG, UL.
+
+\(fn FACE BG FG UL)" nil nil)
+
+(autoload 'Y/swap-key "flycheck_my_function" "\
+
+
+\(fn KEYMAP &rest KEYS)" nil nil)
+
+(autoload 'Y/change-style "flycheck_my_function" "\
+Change looking of window.
+
+\(fn ATTRIBUTES &optional INHIBIT)" nil nil)
+
+(autoload 'my/org-src-code-buffer-p "flycheck_my_function" "\
+
+
+\(fn)" nil nil)
+
+(autoload 'my/kill-line "flycheck_my_function" "\
+
+
+\(fn)" nil nil)
+
+(autoload 'my/screen-shot "flycheck_my_function" "\
+
+
+\(fn)" t nil)
+
+(autoload 'my/remap-semicolon "flycheck_my_function" "\
+Reverse Colon and Semi Colon at specified key MAP.
+
+\(fn MAP)" nil nil)
+
+(autoload 'my/ssh-add "flycheck_my_function" "\
+Add ssh-key if it was needed when using magit. You may neeed ssh-askpath.
+
+Example of my/keys
+ (\"git@github.com\\|https://github.com\" . \"~/.ssh/rsa_github_key\")
+
+\(fn)" t nil)
+
+(autoload 'my/get-aspell-capital-words "flycheck_my_function" "\
+
+
+\(fn FILE)" nil nil)
+
+(autoload 'my/file-exists-p "flycheck_my_function" "\
+Search FILE recursively to check whether file is exist until home directory.
+
+\(fn FILE)" nil nil)
+
+(autoload 'Y/show-cheat-sheet "flycheck_my_function" "\
+Popup a buffer by popwin which is related to current ‘major-mode’.
+
+\(fn)" t nil)
+
+(autoload 'my/get-above-dir-name "flycheck_my_function" "\
+
+
+\(fn)" nil nil)
+
+(autoload 'my/in-dir-p "flycheck_my_function" "\
+
+
+\(fn DIRECTORY)" nil nil)
+
+(autoload 'my/execute-from-current-file "flycheck_my_function" "\
+
+
+\(fn &optional STATEMENT)" t nil)
+
+(autoload 'Y/get-auth-info "flycheck_my_function" "\
+
+
+\(fn MACHINE &rest KEYWORDS)" nil nil)
+
+(autoload 'my/copy-current-file-name "flycheck_my_function" "\
+
+
+\(fn)" t nil)
+
+(autoload 'my/kill-backward-word "flycheck_my_function" "\
+
+
+\(fn)" nil nil)
+
+(autoload 'my/newline-and-indent "flycheck_my_function" "\
+My better newline and indent.
+
+\(fn)" t nil)
+
+(autoload 'my/reset-bg-color "flycheck_my_function" "\
+
+
+\(fn &optional COLOR)" t nil)
+
+(autoload 'Y/eval-and-replace "flycheck_my_function" "\
+Eval and replace.
+This function distinguishes parenthesis and symbol accordingly.
+
+\(fn)" t nil)
+
+(autoload 'Y/echo-current-point "flycheck_my_function" "\
+
+
+\(fn)" t nil)
+
+(autoload 'Y/toggle-truncate-lines "flycheck_my_function" "\
+Almost same as ‘toggle-truncate-lines’.
+But this function doesn't involve at org-mode because org-mode
+use tables and it often tends to need long lines...
 
 \(fn)" t nil)
 
@@ -94,8 +231,8 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (21956 26064
-;;;;;;  725290 89000))
+;;;### (autoloads nil "my_function" "my_function.el" (22052 30101
+;;;;;;  162335 656000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -222,6 +359,11 @@ This function distinguishes parenthesis and symbol accordingly.
 
 \(fn)" t nil)
 
+(autoload 'Y/toggle-truncate-lines "my_function" "\
+My toggle truncate lines.
+
+\(fn)" t nil)
+
 ;;;***
 
 ;;;### (autoloads nil "my_util" "my_util.el" (21953 19901 709416
@@ -331,7 +473,7 @@ Setup irony-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_markdown-mode" "pkg_conf/init_markdown-mode.el"
-;;;;;;  (21970 21020 969883 9000))
+;;;;;;  (21970 21429 352072 665000))
 ;;; Generated autoloads from pkg_conf/init_markdown-mode.el
 
 (add-to-list 'auto-mode-alist (cons "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)\\)\\'" 'gfm-mode))
@@ -395,7 +537,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_web-mode" "pkg_conf/init_web-mode.el"
-;;;;;;  (21953 19901 709416 912000))
+;;;;;;  (22048 4266 192018 161000))
 ;;; Generated autoloads from pkg_conf/init_web-mode.el
 
 (add-to-list 'auto-mode-alist (cons (rx "." (or "html" "phtml" "tpl.php" "erb" "mustache" "djhtml" (and (or "a" "g" "j") "sp") (and "as" (or "c" "p") "x")) line-end) 'web-mode))
@@ -469,7 +611,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
 ;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
 ;;;;;;  "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el" "site-start.el"
-;;;;;;  "style/my_modeline.el") (21970 20936 729047 805000))
+;;;;;;  "style/my_modeline.el") (22050 61429 892292 681000))
 
 ;;;***
 

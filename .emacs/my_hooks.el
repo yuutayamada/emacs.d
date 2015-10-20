@@ -53,7 +53,8 @@
 (cl-loop with hooks = '(markdown-mode-hook org-mode-hook erc-mode-hook)
          for hook in hooks
          do (add-hook hook '(lambda ()
-                              (whitespace-mode t)
+                              (unless (eq 'org-mode major-mode)
+                                (whitespace-mode t))
                               (pangu-spacing-mode t)
                               (auto-complete-mode t)
                               (flyspell-mode t))))

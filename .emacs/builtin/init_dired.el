@@ -10,16 +10,13 @@
 ;; omit needless files
 (add-hook 'dired-mode-hook 'dired-omit-mode)
 (require 'rx)
-(eval-and-compile
-  ;; I needed this ‘eval-and-compile’ to avoid below warning.
-  ;;   dired-insert-directory: Wrong type argument: number-or-marker-p, //DIRED-OPTIONS//
-  (defconst dired-omit-files
-    (apply
-     `((lambda ()
-         (rx (or (and line-start
-                      (or (and (0+ ".") "#")
-                          (and "." (0+ ".") line-end)))
-                 (and (or ,@completion-ignored-extensions) line-end))))))))
+(defconst dired-omit-files ; omit byte files too
+ (apply
+   `((lambda ()
+      (rx (or (and line-start
+                   (or (and (0+ ".") "#")
+                       (and "." (0+ ".") line-end)))
+              (and (or ,@completion-ignored-extensions) line-end)))))))
 
 ;; image dired+
 (add-hook 'dired-mode-hook 'image-diredx-async-mode)

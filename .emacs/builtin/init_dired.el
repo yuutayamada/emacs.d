@@ -11,10 +11,11 @@
 (defconst dired-use-ls-dired nil)
 
 (require 'dired)
-(require 'dired-x)
+(require 'dired-x) ; dired extra library made by Sebastian Kremer
 
 ;; omit needless files
 (add-hook 'dired-mode-hook 'dired-omit-mode)
+
 (require 'rx)
 (defconst dired-omit-files ; omit byte files too
  (apply

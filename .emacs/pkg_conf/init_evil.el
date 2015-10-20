@@ -95,6 +95,7 @@
       (append evil-emacs-state-modes
               '(eww-mode git-commit-mode git-rebase-mode dired-mode
                          mew-message-mode mew-summary-mode
+                         image-mode ; <- image-dired
                          minibuffer-inactive-mode)))
 
 (defadvice evil-normal-state (around Y/prevent-on-emacs-mode activate)

@@ -9,6 +9,9 @@
 ;; To use this setting,
 ;; you should set your Email address to `my/mew-gmail-prefixes'.
 
+;; About gmail:
+;; I needed to check "allow less secure app" here: https://myaccount.google.com/u/1/security
+
 ;;; Code:
 
 (require 'my_autoload)

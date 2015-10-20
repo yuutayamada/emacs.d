@@ -603,7 +603,8 @@
   "M-c" (find-file "~/share/doc/study/2015fall")
   "M-h" my/toggle-hide-show
   "M-r" win-switch-menu
-  "M-t" toggle-truncate-lines
+  "M-t" Y/toggle-truncate-lines
+  ;; toggle-truncate-lines
   "M-g" win-toggle-window
   "M-k" mode-compile-kill
   "M-l" goto-line

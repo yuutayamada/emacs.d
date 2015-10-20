@@ -633,6 +633,15 @@ This function distinguishes parenthesis and symbol accordingly."
   (interactive)
   (print (format "current point is %i" (point))))
 
+;;;###autoload
+(defun Y/toggle-truncate-lines ()
+  "My toggle truncate lines."
+  (interactive)
+  (if (or (string-match "disabled" (toggle-truncate-lines))
+          (eq 'org-mode major-mode))
+      (whitespace-mode 0)
+    (whitespace-mode t)))
+
 ;; for scratch
 (defun test ()
   (interactive)

@@ -92,7 +92,8 @@
    ((org-src-edit-buffer-p)
     (org-edit-src-exit))
    ((org-table-p)
-    (org-table-edit-field 4))
+    ;; (org-table-edit-field 4) ; check whether string is hidden or not
+    (org-table-field-info nil))
    ((org-on-heading-p)
     (org-todo))
    ((org-at-item-checkbox-p)

@@ -69,7 +69,7 @@ EmacsClient() {
     eval "${client} ${background}"
   else
     iconName=XtermEmacs
-    eval "xterm -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"
+    eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"
   fi
 }
 

@@ -73,10 +73,19 @@
 ;; Set default emacs state ;;
 ;; This is an upside using emacs state; using emacs state as default doesn't
 ;; involve evil keymap on other emacs based modes. (i.e., dired)
-(setq evil-default-state 'emacs)
+(setq evil-default-state 'emacs
+      evil-inhibit-esc t)
 ;; Use emacs-state as insert mode.
 ;; Evil uses ESC key as `evil-esc' and I don't like this due to the delay.
 (advice-add 'evil-insert-state :override 'evil-emacs-state)
+(add-hook 'evil-after-load-hook
+          '(lambda ()
+             ;; Only keybind C-[ (not affect to other ESC map)
+             (define-key evil-emacs-state-map   (kbd "A-ESC") 'evil-normal-state)
+             (define-key evil-visual-state-map  (kbd "A-ESC") 'evil-normal-state)
+             (define-key evil-motion-state-map  (kbd "A-ESC") 'evil-normal-state)
+             (define-key evil-replace-state-map (kbd "A-ESC") 'evil-normal-state)
+             (define-key evil-normal-state-map  (kbd "A-ESC") 'evif-force-normal-state)))
 
 ;; Move evil states to emacs state.
 (when (or evil-insert-state-modes evil-motion-state-modes)

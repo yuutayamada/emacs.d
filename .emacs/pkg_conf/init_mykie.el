@@ -225,7 +225,7 @@
                "p" git-gutter:previous-hunk)
 
   "C-o"
-  :default evil-normal-state
+  :default company-ispell
   :evil-normal ffinder-jump
   :C-u helm-c-apropos
 

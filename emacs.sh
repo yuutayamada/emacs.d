@@ -61,12 +61,19 @@ XtermEmacs() {
           TerminalEmacs $*
 }
 
+urxvtEmacs() {
+  # work in progress
+  urxvtopt="foo" TerminalEmacs $*
+}
+
 EmacsClient() {
   [ ! -z ${EMACS_FRAME_PARAMETERS} ] && fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
   [ -z "$*" ] && where=`pwd` || where="$*"
   client="${emacsclient} ${fparam} -s ${daemon_name} -q ${option} ${where}"
-  if test -z $xtermopt; then
+  if [ -z $xtermopt ] && [ -z $urxvtopt ]; then
     eval "${client} ${background}"
+  elif test -z $xtermopt && test -n $urxvtopt; then
+    eval "TERM=xterm-256color urxvt -e ${client}"
   else
     iconName=XtermEmacs
     eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"
@@ -79,6 +86,8 @@ alias e='GUI_Emacs'
 alias t='TerminalEmacs'
 # emacsclient on xterm
 alias c='XtermEmacs'
+# emacsclient on urxvt
+alias u='urxvtEmacs'
 # boot only daemon
 alias ed='EmacsDaemon &'
 

@@ -87,7 +87,7 @@
 ("markdown-mode" markdown-cycle)
 ;; need before load
 ("masaw" masaw masaw-mode)
-("mozc" mozc-mode)
+
 ;; ("my_frameinit" Y/frame-init-func Y/set-default-window-frame-alist)
 ;; ("myanything-c-pdfgrep" my/anything-pdfgrep)
 ;; ("my_sdic" sdic-describe-word-at-point sdic)

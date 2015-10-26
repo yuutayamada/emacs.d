@@ -25,6 +25,12 @@
 ;;;###autoload
 (defun Y/frame-init-func (&optional frame)
   "Init function when Emacs connects new server with FRAME object."
+  ;; http://stackoverflow.com/questions/16677825/emacs-escape-key
+  ;; This key swapping allow you to bind C-[ key!
+  ;; Note that terminal emacs normally can not distinguish ESC and C-[
+  ;; So only change in GUI Emacs
+  (when (display-graphic-p)
+    (keyboard-translate ?\e ?\A-\e))
   (let ((f (or frame (selected-frame))))
     (select-frame f)
     (when (getenv "XTERM_VERSION") (shell-command "transset -a 0.75"))

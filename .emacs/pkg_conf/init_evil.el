@@ -8,63 +8,7 @@
 ;;   To call registered macros, push @ [a-z-A-Z].
 ;;
 ;; Use `evil-add-hjkl-bindings' function to add hjkl binding to a key map.
-;;
-
-;;;;;;;;;;;;;;;;;;;;;;
-;; key binding memo ;;
-;;;;;;;;;;;;;;;;;;;;;;
-;; q - macro recording start and end
-;; @ - macro call
-;; m - set marker
-;; ^ - M-m(back to indentation)
-;; ` - goto-mark (m is set marker)
-;; . - repeat
-;; ( - backward sentence begin
-;; ) - forward sentence begin
-;; s - same as "cl" or "vc"
-;; cc - same as S
-;; H - move cursor to top
-;; M - move cursor to middle
-;; L - move cursor to bottom
-;; z<return> - C-l C-l in emacs
-;; z. - C-l
-;; z- - re center bottom
-;; gg - M-<
-;; G - M->
-;; [count] G - goto char
-;; | - move to column
-;; v - visual mode
-;; V - visual line
-;; C-v - visual block | C-x SPC in Emacs
-;; >> - indent
-;; -- key combo --
-;;
-;; g~iw, guiw, gUiw - capitalize
-;; ciw - change inside word
-;; cis - change inside sentence
-;; cip - change inside paragraph
-;; d) - delete until next sentence begin | M-k
-;; dd - delete line
-;; de - M-d
-;; df{char} - zap-to-char
-;; daw - delete a word
-;; da,w - delete a comma(Camel) word
-;; veu - down case word
-;; veU - capitalize word
-;; -- rectangle mode(C-v) --
-;; r<space> - replace to space
-;; -- Evil surround (I changed the prefix to "s" key) --
-;; ysiw : surround a word
-;; yss  : surround a whole line
-;;
-;; -- Emacs --
-;; C-x r c  : clear rectangle
-;; C-x r t  : string rectangle(replace)
-;; C-x r o  : open-rectangle
-;; C-x r d  : delete-rectangle
-;; C-M-v    : scroll other window
-;; C-M-S-v  : scroll other window
-;; Code:
+;; To see whole evil commands, checks evil-maps.el
 
 ;;; Code:
 (require 'evil)
@@ -113,14 +57,6 @@
   (unless (member major-mode evil-emacs-state-modes)
     ad-do-it))
 
-;; Evil KEY BINDING ;;
-
-;; Swap some keys before bindings
-(Y/swap-key evil-normal-state-map "j" "gj" "k" "gk")
-(Y/swap-key evil-motion-state-map ":" "'")
-
-;; C-r : redo
-;; Unbind needless keys
 (cl-loop with maps = `(evil-normal-state-map
                        evil-motion-state-map
                        evil-emacs-state-map)

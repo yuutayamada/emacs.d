@@ -396,6 +396,8 @@
 (:name let-alist :website "http://elpa.gnu.org/packages/let-alist.html" :description "Easily let-bind values of an assoc-list by their names" :type elpa :builtin "25"))
 (lingr status "installed" recipe
 (:name lingr :type git :url "https://github.com/lugecy/lingr-el.git"))
+(linum-relative status "installed" recipe
+(:name linum-relative :type emacswiki :description "Display relative line number in the left margin" :features linum-relative))
 (lispxmp status "installed" recipe
 (:name lispxmp :description "Automagic emacs lisp code annotation" :type emacswiki :features "lispxmp"))
 (logalimacs status "installed" recipe

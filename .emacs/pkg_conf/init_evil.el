@@ -182,7 +182,8 @@
 ;; MOTION STATE
 (mykie:set-keys evil-motion-state-map
   "+"     evil-numbers/inc-at-pt
-  "-"     evil-numbers/dec-at-pt)
+  "-"     evil-numbers/dec-at-pt
+  "[ TAB" ffinder-jump)
 
 ;; VISUAL STATE
 (mykie:set-keys evil-visual-state-map

@@ -76,14 +76,6 @@
   (transpose-chars -1)
   (backward-char 1))
 
-(defvar Y/inhibit-change-color nil)
-;;;###autoload
-(defun Y/change-color (face bg fg ul)
-  "Change highlight color to which correspond to FACE, BG, FG, UL."
-  (unless Y/inhibit-change-color
-    (set-face-attribute
-     face nil :background bg :foreground fg :underline  ul)))
-
 (defvar Y/mode-line-change-faces
   (cl-loop for face in '(mode-line powerline-active1 powerline-active2)
            if (facep face)
@@ -103,25 +95,6 @@
            for sym-that = (lookup-key keymap that)
            do (define-key keymap this sym-that)
            do (define-key keymap that sym-this)))
-
-;;;###autoload
-(defun Y/change-style (attributes &optional inhibit)
-  "Change looking of window."
-  (when (or (not Y/inhibit-change-color)
-            inhibit)
-    (let* ((faces Y/mode-line-change-faces))
-      (cl-loop for face in faces
-               if attributes
-               do (apply `((lambda () (Y/change-color (quote ,face) ,@attributes))))
-               else do (let ((attrs (assoc-default face Y/default-mode-line-face)))
-                         (Y/change-color
-                          face
-                          (assoc-default :background attrs)
-                          (assoc-default :foreground attrs)
-                          (assoc-default :underline  attrs))))))
-  (cl-case inhibit
-    (1 (setq Y/inhibit-change-color t))
-    (0 (setq Y/inhibit-change-color nil))))
 
 (defun clean-mode-line ()
   "Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'."
@@ -641,6 +614,54 @@ This function distinguishes parenthesis and symbol accordingly."
           (eq 'org-mode major-mode))
       (whitespace-mode 0)
     (whitespace-mode t)))
+
+(defvar Y/mode-line-timer-obj nil)
+(defvar Y/mode-line-color-alist
+  '((default :background "#5f00ff")
+    (picture :background "yellow")
+    (multiple-cursor :background "#5f87ff")
+    ;; For Evil
+    (emacs   :background "#5c5cff")
+    (normal  :background "#e80000")
+    (insert  :background "#00cd00")
+    (visual  :background "#006fa0")
+    (replace :background "#00af87")))
+
+(defun Y/mode-line-color-get-attribute ()
+  ""
+  (or
+   (when (and (eq major-mode 'picture-mode)
+              (or (eq (bound-and-true-p evil-state) 'emacs)
+                  (not (or (bound-and-true-p evil-mode)
+                           (bound-and-true-p evil-local-mode)))))
+     'picture)
+   (when (bound-and-true-p multiple-cursors-mode)
+     'multiple-cursor)
+   (if (or (bound-and-true-p evil-mode)
+           (bound-and-true-p evil-local-mode))
+       (bound-and-true-p evil-state))
+   'default))
+
+(defun Y/compute-mode-line-color ()
+  ""
+  (let ((current (face-attribute 'mode-line :background))
+        (new-color
+         (assoc-default (Y/mode-line-color-get-attribute)
+                        Y/mode-line-color-alist)))
+    (apply `((lambda ()
+               (when (not (equal current (plist-get new-color :background)))
+                 (set-face-attribute 'mode-line nil ,@new-color))))))
+  (setq Y/mode-line-timer-obj nil))
+
+(defun Y/update-mode-line-bg ()
+  ""
+  (unless Y/mode-line-timer-obj
+    (setq Y/mode-line-timer-obj
+          (run-with-timer 0.1 nil 'Y/compute-mode-line-color))))
+
+(setq-default mode-line-format
+              (append mode-line-format
+                      '((:eval (Y/update-mode-line-bg)))))
 
 ;; for scratch
 (defun test ()

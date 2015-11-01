@@ -39,6 +39,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; git-gutter
 (add-hook 'find-file-hook 'git-gutter-mode)
+(add-hook 'git-gutter-mode-on-hook
+          '(lambda ()
+             (setq git-gutter:modified-sign "±")
+             ;; (git-gutter:linum-setup) ; for linum
+             ))
+
 ;; Use Evil's normal mode in actual file.
 (add-hook 'find-file-hook
           '(lambda () ; don't activete normal state at magit's git commit buffer

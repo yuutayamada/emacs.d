@@ -190,6 +190,8 @@
                (noflet dash)))
  (festival status "installed" recipe
            (:name festival :auto-generated t :type emacswiki :description "emacs interface into festival." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/festival.el"))
+ (fish-mode status "installed" recipe
+            (:name fish-mode :type github :pkgname "wwwjfy/emacs-fish"))
  (flycheck status "installed" recipe
            (:name flycheck :type git :depends
                   (f pkg-info)

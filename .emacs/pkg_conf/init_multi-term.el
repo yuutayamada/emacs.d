@@ -1,24 +1,5 @@
 ;;; init_multi-term.el --- init file for multi-term.el
-
-;; Copyright (C) 2013 by Yuta Yamada
-
-;; Author: Yuta Yamada <cokesboy"at"gmail.com>
-
-;;; License:
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;; Commentary:
-
 ;;; Code:
 (require 'multi-term)
 (require 'mykie)
@@ -78,16 +59,6 @@
             emacs24.3
           old-emacs)))
 
-(set-face-attribute 'term-color-blue nil
-                    :background "#483d8b"
-                    :foreground "#7fffd4")
-
-(set-face-attribute 'term-color-magenta nil
-                    :background "#8b008b")
-
-(set-face-attribute 'term-color-red nil
-                    :foreground "#Ff6347")
-
 ;; my-keybinds for keybinds -e
 (defun term-send-forward-char ()
   (interactive)
@@ -105,28 +76,19 @@
   (interactive)
   (term-send-raw-string "\C-n"))
 
-(defun term-send-kill-line ()
-  (interactive)
-  (call-interactively 'kill-line)
-  (term-send-raw-string "\C-k"))
-
 (add-hook 'term-mode-hook
           `(lambda ()
              (mykie:set-keys term-raw-map
-               "C-r"     t helm-shell-history
-               "C-h"     t term-send-backspace
-               "C-y"     t term-paste
-               "C-p"     t term-send-previous-line
-               "C-n"     t term-send-next-line
-               "C-b"     t term-send-backward-char
-               "C-f"     t term-send-forward-char
-               ;; "C-a"     t term-bol ;sbtp-begging-of-line
-               "C-k"     t term-send-kill-line
-               "C-h"     t term-send-backspace
-               "C-y"     t term-paste
-               "C-S-p"   t multi-term-prev
-               "C-S-n"   t multi-term-next
-               ;; "C-o"     t ,(global-key-binding (kbd "C-o"))
+               "C-h"     term-send-backspace
+               "C-y"     term-paste
+               "C-p"     term-send-previous-line
+               "C-n"     term-send-next-line
+               "C-b"     term-send-backward-char
+               "C-f"     term-send-forward-char
+               "C-h"     term-send-backspace
+               "C-y"     term-paste
+               "C-S-p"   multi-term-prev
+               "C-S-n"   multi-term-next
                "ESC ESC" t term-send-raw)))
 
 (provide 'init_multi-term)

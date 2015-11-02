@@ -23,7 +23,6 @@
 ;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'after-change-major-mode-hook 'auto-capitalize-mode)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; New hook from emacs 24.4 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

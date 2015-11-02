@@ -7,23 +7,23 @@
 ;;   You can change a surrounding with cs<old-textobject><new-textobject>.
 ;; Delete surrounding
 ;;   You can delete a surrounding with ds<textobject>.
+
+;; -- Evil surround (I changed the prefix to "s" key) --
+;; ysiw - surround a word
+;; yss  - surround a whole line
+;; ds"  - delete surround "
+;; cs"' - change surround " -> '
+;; cs'<q> or cstq> - change surround ' -> <q>
+;; ss' - surround line by '
+
 ;;; Code:
 (require 'cl-lib)
 (require 'evil-surround)
 
 (evil-define-key 'normal evil-surround-mode-map "s" 'evil-surround-edit)
+(evil-define-key 'normal evil-surround-mode-map "S" 'evil-Surround-edit)
 (evil-define-key 'visual evil-surround-mode-map "s" 'evil-surround-region)
-
-;; (defun Y/get-comment-string ()
-;;   (cl-case major-mode
-;;     ;; ysi{;
-;;     (emacs-lisp-mode (cons ";; " ""))
-;;     (go-mode (cons "/* " " */"))))
-
-;; (add-hook 'prog-mode-hook
-;;           '(lambda ()
-;;              (add-to-list 'evil-surround-pairs-alist
-;;                           (cons (string-to-char ";") 'Y/get-comment-string))))
+(evil-define-key 'visual evil-surround-mode-map "S" 'evil-Surround-region)
 
 (provide 'init_evil-surround)
 

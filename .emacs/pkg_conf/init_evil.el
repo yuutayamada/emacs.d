@@ -91,8 +91,9 @@
                          ;; Space and Tab
                          " " "	")))
            (t (member (vector last-command-event) `(,(kbd "S-SPC"))))))
-   :before (lambda () (Y/change-style '("#00bfff" "red" nil) 1))
-   :after  (lambda () (Y/change-style nil 0)))
+   ;; :before (lambda () (Y/change-style '("#00bfff" "red" nil) 1))
+   ;; :after  (lambda () (Y/change-style nil 0))
+   )
   "q" :default nil ; this means just a quit and do not insert q
   "c" show-cheat-sheet
   "o" evil-normal-state
@@ -167,24 +168,6 @@
   (if (xcc-xterm-p)
       (xcc-change-cursor-color-and-shape-on-evil)
     ad-do-it))
-
-(defun Y/evil-change-highlight ()
-  "Change highlight color of line."
-  (let ((attributes
-         (cl-case evil-state
-           (emacs   '("#444488" "#ffffff" nil))
-           (normal  '("#e80000" "#ffffff" nil))
-           (insert  '("#00cd00" "#ffffff" nil))
-           (visual  '("#006fa0" "#ffffff" nil))
-           (replace '("#00af87" "#ffffff" nil))
-           (t       '(nil nil t)))))
-    (Y/change-style attributes)))
-
-(cl-loop for func in '(evil-change-state evil-refresh-cursor)
-         do (apply `((lambda ()
-                       (advice-add (quote ,func) :after
-                                   (lambda (&rest _args)
-                                     (Y/evil-change-highlight)))))))
 
 ;; turn on evil after saved
 (add-hook 'after-save-hook 'evil-normal-state)

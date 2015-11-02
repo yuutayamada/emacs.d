@@ -511,10 +511,8 @@
                    self-insert-command
                    mc/insert-numbers))
          (eq last-command-event (string-to-char "q"))))
-   :before
-   (lambda () (Y/change-style '("blue" "black" nil) 1))
-   :after
-   (lambda () (Y/change-style nil 0)))
+   ;; :before (lambda () (Y/change-style '("blue" "black" nil) 1))
+   ;; :after  (lambda () (Y/change-style nil 0))
   ;; multiple-cursors ;;
   "q"     :default nil
   "C-s"   mc/mark-next-like-this
@@ -640,7 +638,6 @@
 ;; TOY FUNC ;;
 (defun mykie:vi-faker ()
   (interactive)
-  (Y/change-style '("white" "black" nil) 1)
   (let ((scroll (lambda (direction)
                   (condition-case err
                       (cl-case direction
@@ -677,7 +674,6 @@
      "f" (funcall scroll 'up)
      "b" (funcall scroll 'down)
      "/" (return (call-interactively 'isearch-forward))))
-  (Y/change-style '("white" "black" nil) 0)
   (hs-show-all))
 
 ;; Overridden keys ;;

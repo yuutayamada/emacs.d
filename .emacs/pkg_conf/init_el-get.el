@@ -123,6 +123,9 @@
            :url "http://git.savannah.gnu.org/cgit/emacs.git/plain/lisp/net/eww.el"
            :depends (shr))
     ;; F
+    (:name fish-mode
+           :type github
+           :pkgname "wwwjfy/emacs-fish")
     (:name flycheck
            :type git
            :depends (f pkg-info)

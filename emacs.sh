@@ -63,17 +63,18 @@ XtermEmacs() {
 
 urxvtEmacs() {
   # work in progress
-  urxvtopt="foo" TerminalEmacs $*
+  urxvt_e=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/urxvt-e \
+         TerminalEmacs $*
 }
 
 EmacsClient() {
   [ ! -z ${EMACS_FRAME_PARAMETERS} ] && fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
   [ -z "$*" ] && where=`pwd` || where="$*"
   client="${emacsclient} ${fparam} -s ${daemon_name} -q ${option} ${where}"
-  if [ -z $xtermopt ] && [ -z $urxvtopt ]; then
+  if [ -z $xtermopt ] && [ -z $urxvt_e ]; then
     eval "${client} ${background}"
-  elif test -z $xtermopt && test -n $urxvtopt; then
-    eval "TERM=xterm-256color urxvt -e ${client}"
+  elif test -z $xtermopt && test -n $urxvt_e; then
+    eval "${urxvt_e} ${client} &"
   else
     iconName=XtermEmacs
     eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"

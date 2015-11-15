@@ -297,7 +297,7 @@
 (mykie:set-keys nil
   "C-S-d" doctor
   "C-S-m" mew
-  "C-S-n" global-linum-mode
+  "C-S-n" linum-mode
   "C-S-o" remember
   "C-S-h" helm-descbinds
 
@@ -475,9 +475,9 @@
 
 ;; RET key ;;
 (mykie:set-keys nil
-  "M-RET"        my/multi-term-current-buffer
-  "<C-return>"   cua-set-rectangle-mark
-  "<C-M-return>" my/multi-term
+  "M-RET" sane-term
+  ;; "<C-return>"   cua-set-rectangle-mark
+  ;; "<C-M-return>" my/multi-term
 
   ;; This key bind works if I activates xterm-keybinder's enable C-m
   ;; key feature, but it's currently work in progress.
@@ -513,6 +513,7 @@
          (eq last-command-event (string-to-char "q"))))
    ;; :before (lambda () (Y/change-style '("blue" "black" nil) 1))
    ;; :after  (lambda () (Y/change-style nil 0))
+   )
   ;; multiple-cursors ;;
   "q"     :default nil
   "C-s"   mc/mark-next-like-this
@@ -633,7 +634,10 @@
 
 ;; Escape ;;
 (mykie:set-keys esc-map
-  "ESC" :default magit-status)
+  "ESC" magit-status)
+
+(mykie:set-keys global-map
+  "A-ESC" ESC-prefix)
 
 ;; TOY FUNC ;;
 (defun mykie:vi-faker ()
@@ -732,6 +736,14 @@
 ;;   C-x c h g | Info gnus
 ;;   C-x c h i | Info index elisp
 ;;   C-x c h r | Info index emacs <- why is the suffix r? should be e...
+
+;; -- Emacs --
+;; C-x r c  : clear rectangle
+;; C-x r t  : string rectangle(replace)
+;; C-x r o  : open-rectangle
+;; C-x r d  : delete-rectangle
+;; C-M-v    : scroll other window
+;; C-M-S-v  : scroll other window
 
 (provide 'init_mykie)
 

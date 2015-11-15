@@ -91,6 +91,12 @@
                "C-S-n"   multi-term-next
                "ESC ESC" t term-send-raw)))
 
+;; Omit a few keys
+(setq term-bind-key-alist
+      (cl-loop for (key . func) in term-bind-key-alist
+               unless (or (equal key "C-s") (equal key "C-r"))
+               collect (cons key func)))
+
 (provide 'init_multi-term)
 
 ;; Local Variables:

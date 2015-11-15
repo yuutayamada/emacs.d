@@ -24,7 +24,7 @@
 (require 'package)
 
 ;; MELPA
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 (provide 'init_package)
 

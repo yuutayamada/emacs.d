@@ -1,4 +1,4 @@
-;;; init_avy.el --- init file for avy.el
+;;; init_avy.el --- init file for avy.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

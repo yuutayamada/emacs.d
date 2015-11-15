@@ -1,4 +1,4 @@
-;;; init_nim-mode.el ---
+;;; init_nim-mode.el --- nim-mode's init file -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -25,12 +25,13 @@
 (advice-add 'evil-insert-state :override 'evil-emacs-state)
 (add-hook 'evil-after-load-hook
           '(lambda ()
-             ;; Only keybind C-[ (not affect to other ESC map)
+             ;; Only keybind C-[ (don't affect to other ESC map)
              (define-key evil-emacs-state-map   (kbd "A-ESC") 'evil-normal-state)
              (define-key evil-visual-state-map  (kbd "A-ESC") 'evil-normal-state)
              (define-key evil-motion-state-map  (kbd "A-ESC") 'evil-normal-state)
              (define-key evil-replace-state-map (kbd "A-ESC") 'evil-normal-state)
-             (define-key evil-normal-state-map  (kbd "A-ESC") 'evif-force-normal-state)))
+             (define-key evil-normal-state-map  (kbd "A-ESC") 'evil-force-normal-state)
+             (Y/swap-key evil-motion-state-map ":" "'")))
 
 ;; Move evil states to emacs state.
 (when (or evil-insert-state-modes evil-motion-state-modes)
@@ -50,6 +51,7 @@
               '(eww-mode git-commit-mode git-rebase-mode dired-mode
                          mew-message-mode mew-summary-mode
                          image-mode ; <- image-dired
+                         lisp-interaction-mode
                          minibuffer-inactive-mode)))
 
 (defadvice evil-normal-state (around Y/prevent-on-emacs-mode activate)
@@ -68,8 +70,11 @@
 
 ;; NORMAL STATE
 (mykie:set-keys evil-normal-state-map
-  "U" undo-tree-visualize
+  ;; "U" undo-tree-visualize
   "T" Y/reverse-transpose-chars)
+;; Emacs STATE
+;; (define-key evil-emacs-state-map [escape] 'picture-mode)
+;; (define-key evil-emacs-state-map (kbd "ESC") 'picture-mode)
 
 (defun Y/toggle-background-color ()
   "Toggle background color."
@@ -120,7 +125,10 @@
 (mykie:set-keys evil-motion-state-map
   "+"     evil-numbers/inc-at-pt
   "-"     evil-numbers/dec-at-pt
-  "[ TAB" ffinder-jump)
+  "[ TAB" ffinder-jump
+  "[ n"   git-gutter:next-hunk
+  "[ p"   git-gutter:previous-hunk
+  )
 
 ;; VISUAL STATE
 (mykie:set-keys evil-visual-state-map

@@ -1,5 +1,6 @@
 ;;; my_pkg_colors-theme.el --- my set of color configuration
 ;;; Commentary:
+;; You can check avairable colors in tty-colors.el
 ;;; Code:
 (deftheme my_pkg_colors "my pkg color theme.")
 
@@ -26,17 +27,19 @@
  '(font-lock-preprocessor-face  ((t :foreground "#5f87ff")))
  '(font-lock-function-name-face ((t :foreground "#Afff87")))
  '(font-lock-string-face        ((t :foreground "#2aa198")))
-
- ;; '(font-lock-comment-face       ((t :foreground "#2aa198")))
-
  '(font-lock-warning-face       ((t :foreground "#dc752f"
                                     :background "#292b2e")))
+
  ;; override manoj-dark's configuration
  '(font-lock-function-name-face ((t :height unspecified)))
 
  ;;;;;;;;;;;;;
  ;; default ;;
  ;;;;;;;;;;;;;
+ ;; term
+ '(term-color-magenta ((t :foreground "#ff00ff"
+                          :background "#bb00bb")))
+
  ;; grep or etc.
  '(success ((t :foreground "#00ffd7")))
  ;; shadow
@@ -149,8 +152,11 @@
  ;; Ace jump
  '(ace-jump-face-foreground ((t :background "red"
                                 :foreground "#Ffff00")))
- ;;; avy
- '(avy-lead-face-2 ((t :foreground "black" :background "#Ff00ff")))
+ ;; avy
+ '(avy-lead-face   ((t :foreground "#ff6347" :background "#5c5cff")))
+ '(avy-lead-face-0 ((t :foreground "#000000" :background "#87d7ff")))
+ '(avy-lead-face-1 ((t :foreground "#000000" :background "#00ced1")))
+ '(avy-lead-face-2 ((t :foreground "#000000" :background "#ee9a4d")))
 
  ;; Helm
  '(helm-source-header  ((t :background nil :foreground "#FFFF00")))

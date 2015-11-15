@@ -1,10 +1,14 @@
-;;; init_lisp-mode.el --- init file for common lisp mode
+;;; init_lisp-mode.el --- init file for common lisp mode -*- lexical-binding: t; -*-
 ;;; Commentary:
+;; This will be loaded when emacs activates lisp-interaction-mode,
+;; so putting heavy logic isn't good idea.
 ;;; Code:
 
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-
+(add-hook 'lisp-interaction-mode-hook
+          '(lambda ()
+             (define-key lisp-interaction-mode-map (kbd "A-ESC") 'evil-normal-state)))
 ;; work in progress
 ;; (add-hook 'lisp-mode-hook
 ;;           '(lambda ()

@@ -20,7 +20,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'cl-lib)
 (require 'package)
 
 ;; MELPA

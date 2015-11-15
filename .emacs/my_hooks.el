@@ -9,14 +9,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; For Terminal Emacs ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;
-(when (getenv "XTERM_VERSION")
-  (add-hook 'terminal-init-xterm-hook 'xterm-mouse-mode)
-  (add-hook 'terminal-init-xterm-hook 'xterm-keybinder-setup))
 
-;; Use dark faces on Terminal Emacs (but, it doesn't change background)
-;; see also : https://www.gnu.org/software/emacs/manual/html_node/elisp/Terminal-Parameters.html
-(add-hook 'terminal-init-xterm-hook
-          '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
+;; This hook is activated after initialization of terminal
+(add-hook 'tty-setup-hook
+          '(lambda ()
+             (when (getenv "XTERM_VERSION" (selected-frame))
+               (xterm-keybinder-setup))
+             (when (getenv "COLORTERM" (selected-frame))
+               (urxvt-keybinder-setup "xft:DejaVu Sans Mono" 12))
+             (xterm-mouse-mode t)
+             ;; Set background-mode as dark always
+             ;; This configuration affects inside terminal Emacs under the xterm or urxvt.
+             ;; see also : https://www.gnu.org/software/emacs/manual/html_node/elisp/Terminal-Parameters.html
+             (set-terminal-parameter nil 'background-mode 'dark)))
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; auto capitalize ;;

@@ -73,6 +73,9 @@
   ;; truncate line
   (setq-default truncate-lines t)
 
+  ;; show column number as well
+  (setq column-number-mode t)
+
   ;; initial scratch buffer
   ;; initial major-mode of *scratch* buffer
   ;; (setq initial-major-mode 'emacs-lisp-mode)

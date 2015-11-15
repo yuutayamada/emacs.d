@@ -53,6 +53,8 @@
  (avy status "installed" recipe
       (:name avy :description "Jump to things in Emacs tree-style." :type github :pkgname "abo-abo/avy" :depends
              (cl-lib)))
+ (beacon status "installed" recipe
+         (:name beacon :type github :pkgname "Malabarba/beacon"))
  (bm status "installed" recipe
      (:name bm :pkgname "joodland/bm" :website "http://joodland.github.com/bm/" :type github :description "Visible, persistent, buffer local, bookmarks"))
  (buffer-move status "installed" recipe
@@ -559,6 +561,8 @@
 (:name rust-mode :type github :pkgname "rust-lang/rust-mode" :description "Emacs mode for Rust"))
 (s status "installed" recipe
 (:name s :description "The long lost Emacs string manipulation library." :type github :pkgname "magnars/s.el"))
+(sane-term status "installed" recipe
+(:name sane-term :description "Ansi Term with sane options and the ability to cycle/create terms" :website "https://github.com/adamrt/sane-term" :type github :pkgname "adamrt/sane-term"))
 (scala-mode2 status "installed" recipe
 (:name scala-mode2 :type github :pkgname "hvesalai/scala-mode2"))
 (sdic status "installed" recipe

@@ -56,8 +56,8 @@ Toggle `iso-transl-ctl-x-8-map' keybinds.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_org" "builtin/init_org.el" (22039
-;;;;;;  24938 969219 968000))
+;;;### (autoloads nil "builtin/init_org" "builtin/init_org.el" (22062
+;;;;;;  27943 764420 132000))
 ;;; Generated autoloads from builtin/init_org.el
 
 (autoload 'my/org-dwim "builtin/init_org" "\
@@ -78,145 +78,8 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "flycheck_my_function" "flycheck_my_function.el"
-;;;;;;  (22052 30033 280042 376000))
-;;; Generated autoloads from flycheck_my_function.el
-
-(autoload 'other-window-or-split "flycheck_my_function" "\
-Move buffer or split when buffer was one.
-
-\(fn)" t nil)
-
-(autoload 'Y/split-window-spirally "flycheck_my_function" "\
-
-
-\(fn)" t nil)
-
-(autoload 'Y/reverse-transpose-chars "flycheck_my_function" "\
-
-
-\(fn)" t nil)
-
-(autoload 'Y/change-color "flycheck_my_function" "\
-Change highlight color to which correspond to FACE, BG, FG, UL.
-
-\(fn FACE BG FG UL)" nil nil)
-
-(autoload 'Y/swap-key "flycheck_my_function" "\
-
-
-\(fn KEYMAP &rest KEYS)" nil nil)
-
-(autoload 'Y/change-style "flycheck_my_function" "\
-Change looking of window.
-
-\(fn ATTRIBUTES &optional INHIBIT)" nil nil)
-
-(autoload 'my/org-src-code-buffer-p "flycheck_my_function" "\
-
-
-\(fn)" nil nil)
-
-(autoload 'my/kill-line "flycheck_my_function" "\
-
-
-\(fn)" nil nil)
-
-(autoload 'my/screen-shot "flycheck_my_function" "\
-
-
-\(fn)" t nil)
-
-(autoload 'my/remap-semicolon "flycheck_my_function" "\
-Reverse Colon and Semi Colon at specified key MAP.
-
-\(fn MAP)" nil nil)
-
-(autoload 'my/ssh-add "flycheck_my_function" "\
-Add ssh-key if it was needed when using magit. You may neeed ssh-askpath.
-
-Example of my/keys
- (\"git@github.com\\|https://github.com\" . \"~/.ssh/rsa_github_key\")
-
-\(fn)" t nil)
-
-(autoload 'my/get-aspell-capital-words "flycheck_my_function" "\
-
-
-\(fn FILE)" nil nil)
-
-(autoload 'my/file-exists-p "flycheck_my_function" "\
-Search FILE recursively to check whether file is exist until home directory.
-
-\(fn FILE)" nil nil)
-
-(autoload 'Y/show-cheat-sheet "flycheck_my_function" "\
-Popup a buffer by popwin which is related to current ‘major-mode’.
-
-\(fn)" t nil)
-
-(autoload 'my/get-above-dir-name "flycheck_my_function" "\
-
-
-\(fn)" nil nil)
-
-(autoload 'my/in-dir-p "flycheck_my_function" "\
-
-
-\(fn DIRECTORY)" nil nil)
-
-(autoload 'my/execute-from-current-file "flycheck_my_function" "\
-
-
-\(fn &optional STATEMENT)" t nil)
-
-(autoload 'Y/get-auth-info "flycheck_my_function" "\
-
-
-\(fn MACHINE &rest KEYWORDS)" nil nil)
-
-(autoload 'my/copy-current-file-name "flycheck_my_function" "\
-
-
-\(fn)" t nil)
-
-(autoload 'my/kill-backward-word "flycheck_my_function" "\
-
-
-\(fn)" nil nil)
-
-(autoload 'my/newline-and-indent "flycheck_my_function" "\
-My better newline and indent.
-
-\(fn)" t nil)
-
-(autoload 'my/reset-bg-color "flycheck_my_function" "\
-
-
-\(fn &optional COLOR)" t nil)
-
-(autoload 'Y/eval-and-replace "flycheck_my_function" "\
-Eval and replace.
-This function distinguishes parenthesis and symbol accordingly.
-
-\(fn)" t nil)
-
-(autoload 'Y/echo-current-point "flycheck_my_function" "\
-
-
-\(fn)" t nil)
-
-(autoload 'Y/toggle-truncate-lines "flycheck_my_function" "\
-Almost same as ‘toggle-truncate-lines’.
-But this function doesn't involve at org-mode because org-mode
-use tables and it often tends to need long lines...
-
-\(fn)" t nil)
-
-;;;***
-
-;;;### (autoloads nil "my_daemon" "my_daemon.el" (21825 10582 74777
-;;;;;;  69000))
+;;;### (autoloads nil "my_daemon" "my_daemon.el" (22070 22576 839329
+;;;;;;  585000))
 ;;; Generated autoloads from my_daemon.el
 
 (autoload 'Y/frame-init-func "my_daemon" "\
@@ -231,8 +94,8 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (22052 30101
-;;;;;;  162335 656000))
+;;;### (autoloads nil "my_function" "my_function.el" (22069 54211
+;;;;;;  26067 994000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -250,20 +113,10 @@ Move buffer or split when buffer was one.
 
 \(fn)" t nil)
 
-(autoload 'Y/change-color "my_function" "\
-Change highlight color to which correspond to FACE, BG, FG, UL.
-
-\(fn FACE BG FG UL)" nil nil)
-
 (autoload 'Y/swap-key "my_function" "\
 
 
 \(fn KEYMAP &rest KEYS)" nil nil)
-
-(autoload 'Y/change-style "my_function" "\
-Change looking of window.
-
-\(fn ATTRIBUTES &optional INHIBIT)" nil nil)
 
 (autoload 'my/org-src-code-buffer-p "my_function" "\
 
@@ -483,7 +336,7 @@ Setup irony-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_multi-term" "pkg_conf/init_multi-term.el"
-;;;;;;  (21800 27723 548557 953000))
+;;;;;;  (22070 35773 440869 167000))
 ;;; Generated autoloads from pkg_conf/init_multi-term.el
 
 (autoload 'my/multi-term "pkg_conf/init_multi-term" "\
@@ -537,7 +390,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_web-mode" "pkg_conf/init_web-mode.el"
-;;;;;;  (22048 4266 192018 161000))
+;;;;;;  (22052 32309 381299 889000))
 ;;; Generated autoloads from pkg_conf/init_web-mode.el
 
 (add-to-list 'auto-mode-alist (cons (rx "." (or "html" "phtml" "tpl.php" "erb" "mustache" "djhtml" (and (or "a" "g" "j") "sp") (and "as" (or "c" "p") "x")) line-end) 'web-mode))
@@ -559,12 +412,12 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "builtin/init_python.el" "builtin/init_recentf.el" "builtin/init_remember.el"
 ;;;;;;  "builtin/init_ruby-mode.el" "builtin/init_savehist.el" "builtin/init_server.el"
 ;;;;;;  "builtin/init_sgml-mode.el" "builtin/init_sh-script.el" "builtin/init_shr.el"
-;;;;;;  "builtin/init_simple.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
-;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
-;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
-;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "my_autoload.el"
-;;;;;;  "my_font.el" "my_hooks.el" "my_paths.el" "pkg_conf/init_ac_irony.el"
-;;;;;;  "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
+;;;;;;  "builtin/init_simple.el" "builtin/init_term.el" "builtin/init_tool-bar.el"
+;;;;;;  "builtin/init_tramp.el" "builtin/init_verilog-mode.el" "builtin/init_view.el"
+;;;;;;  "builtin/init_whitespace.el" "builtin/init_windmove.el" "depend/depend_emacs24.el"
+;;;;;;  "depend/depend_emacs25.el" "depend/depend_main.el" "depend/depend_windows.el"
+;;;;;;  "my_autoload.el" "my_font.el" "my_hooks.el" "my_paths.el"
+;;;;;;  "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
 ;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
 ;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
 ;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
@@ -611,7 +464,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
 ;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
 ;;;;;;  "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el" "site-start.el"
-;;;;;;  "style/my_modeline.el") (22050 61429 892292 681000))
+;;;;;;  "style/my_modeline.el") (22070 52629 54719 754000))
 
 ;;;***
 

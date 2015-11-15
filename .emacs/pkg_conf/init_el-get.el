@@ -52,6 +52,14 @@
     (:name bpe
            :type git
            :url "https://github.com/yuutayamada/bpe.git")
+    (:name beacon
+           :type github
+           :depends (seq)
+           :pkgname "Malabarba/beacon")
+    (:name seq
+           :type github
+           :pkgname "NicolasPetton/seq.el"
+           :builtin "25")
     (:name buttercup
            :type github
            :pkgname "jorgenschaefer/emacs-buttercup")

@@ -325,6 +325,9 @@
  '(wgrep-face ((t :bakground "#0000ff")))
  '(wgrep-file-face ((t :bakground "#0000ff")))
  '(wgrep-delete-face ((t :background "#0000ff")))
+
+ ;; beacon.el
+ '(beacon-fallback-background ((t :background "#00bfff" )))
 )
 
 ;;;###autoload

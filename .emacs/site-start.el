@@ -68,7 +68,8 @@
                  (require 'notifications) ; this needs Dbus
                  (notifications-notify :title "Emacs Daemon"
                                        :body  "Ready to start!!!"
-                                       :timeout 5000))))
+                                       :timeout 5000))
+               (run-with-idle-timer 0.5 nil 'beacon-mode)))
 
   ;; truncate line
   (setq-default truncate-lines t)

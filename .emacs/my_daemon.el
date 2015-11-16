@@ -12,6 +12,7 @@
 
 (require 'my_util)
 (require 'my_font)
+(require 'my_autoload)
 
 ;; You may need this config if you specified -Q option because
 ;; the option sets t to `inhibit-x-resources'.
@@ -30,7 +31,9 @@
   ;; Note that terminal emacs normally can not distinguish ESC and C-[
   ;; So only change in GUI Emacs
   (when (display-graphic-p)
-    (keyboard-translate ?\e ?\A-\e))
+    (keyboard-translate ?\e ?\A-\e)
+    (ocodo-svg-modelines-init)
+    (smt/set-theme 'ocodo-mesh-aqua-smt))
   (let ((f (or frame (selected-frame))))
     (select-frame f)
     (when (getenv "XTERM_VERSION") (shell-command "transset -a 0.75"))

@@ -464,6 +464,9 @@
 (:name ob-go :type git :depends
 (org-mode)
 :url "https://github.com/pope/ob-go.git"))
+(ocodo-svg-modelines status "installed" recipe
+(:name ocodo-svg-modelines :description "A collection of beautiful, modern SVG modelines for Emacs" :type github :pkgname "ocodo/ocodo-svg-modelines" :depends
+(svg-mode-line-themes)))
 (open-junk-file status "installed" recipe
 (:name open-junk-file :description "Open a junk (memo) file to try-and-error" :type emacswiki :features "open-junk-file"))
 (org-mode status "installed" recipe
@@ -567,6 +570,8 @@
 (:name scala-mode2 :type github :pkgname "hvesalai/scala-mode2"))
 (sdic status "installed" recipe
 (:name sdic :type git :url "https://github.com/emacsattic/sdic.git"))
+(seq status "installed" recipe
+(:name seq :type github :pkgname "NicolasPetton/seq.el" :builtin "25"))
 (sequential-command status "installed" recipe
 (:name sequential-command :type http :url "http://www.emacswiki.org/emacs/download/sequential-command.el"))
 (sequential-command-config status "installed" recipe
@@ -590,6 +595,8 @@
 (:name sql-indent :type git :url "https://github.com/yuutayamada/sql-indent.git"))
 (sudo-ext status "installed" recipe
 (:name sudo-ext :type http :url "http://www.emacswiki.org/cgi-bin/wiki/download/sudo-ext.el"))
+(svg-mode-line-themes status "installed" recipe
+(:name svg-mode-line-themes :description "Awesome mode-line for emacs!" :type github :pkgname "sabof/svg-mode-line-themes" :depends xmlgen))
 (tabbar status "installed" recipe
 (:name tabbar :description "Display a tab bar in the header line." :type github :pkgname "dholm/tabbar" :lazy t))
 (transpose-frame status "installed" recipe
@@ -621,6 +628,8 @@
 (:name window-layout :description "window layout manager" :website "https://github.com/kiwanami/emacs-window-layout" :type github :pkgname "kiwanami/emacs-window-layout" :features "window-layout"))
 (windows status "installed" recipe
 (:name windows :type http :url "http://www.gentei.org/~yuuji/software/euc/windows.el"))
+(xmlgen status "installed" recipe
+(:name xmlgen :description "Generate xml using sexps with the function `xmlgen'" :type github :pkgname "philjackson/xmlgen"))
 (yaml-mode status "installed" recipe
 (:name yaml-mode :type git :url "https://github.com/yoshiki/yaml-mode"))
 (yasnippet status "installed" recipe

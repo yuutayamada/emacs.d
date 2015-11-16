@@ -556,6 +556,9 @@
     (:name vlf ; view large files
            :type git
            :url "https://github.com/m00natic/vlfi.git")
+    (:name visual-fill-column
+           :type github
+           :pkgname "joostkremers/visual-fill-column")
     (:name w3m
            :type git
            ;; sudo aptitude install jbibtex-base

@@ -602,7 +602,7 @@
   "M-c" (find-file "~/share/doc/study/2015fall")
   "M-h" my/toggle-hide-show
   "M-r" win-switch-menu
-  "M-t" Y/toggle-truncate-lines
+  "M-t" visual-line-mode
   ;; toggle-truncate-lines
   "M-g" win-toggle-window
   "M-k" mode-compile-kill

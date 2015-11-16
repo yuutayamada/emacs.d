@@ -614,6 +614,8 @@
 (progn
 (add-to-list 'auto-mode-alist
 '(".vim\\(rc\\|peratorrc\\)?$" . vimrc-mode)))))
+(visual-fill-column status "installed" recipe
+(:name visual-fill-column :type github :pkgname "joostkremers/visual-fill-column"))
 (vlf status "installed" recipe
 (:name vlf :type git :url "https://github.com/m00natic/vlfi.git"))
 (w3m status "installed" recipe

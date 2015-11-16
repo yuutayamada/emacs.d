@@ -28,6 +28,14 @@
 ;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'after-change-major-mode-hook 'auto-capitalize-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; visual-fill-column ;;
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; What a great package...
+(add-hook 'visual-line-mode-hook 'visual-fill-column-mode)
+(advice-add 'visual-line-mode :after
+            '(lambda () (unless visual-line-mode (visual-fill-column-mode 0))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; New hook from emacs 24.4 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

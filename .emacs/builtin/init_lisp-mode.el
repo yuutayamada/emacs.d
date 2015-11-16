@@ -8,7 +8,7 @@
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 (add-hook 'lisp-interaction-mode-hook
           '(lambda ()
-             (define-key lisp-interaction-mode-map (kbd "A-ESC") 'evil-normal-state)))
+             (define-key lisp-interaction-mode-map (kbd "A-ESC") 'evil-force-normal-state)))
 ;; work in progress
 ;; (add-hook 'lisp-mode-hook
 ;;           '(lambda ()

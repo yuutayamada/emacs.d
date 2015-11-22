@@ -153,7 +153,7 @@
  '(ace-jump-face-foreground ((t :background "red"
                                 :foreground "#Ffff00")))
  ;; avy
- '(avy-lead-face   ((t :foreground "#ff6347" :background "#5c5cff")))
+ '(avy-lead-face   ((t :foreground "#ffffff" :background "#5c5cff")))
  '(avy-lead-face-0 ((t :foreground "#000000" :background "#87d7ff")))
  '(avy-lead-face-1 ((t :foreground "#000000" :background "#00ced1")))
  '(avy-lead-face-2 ((t :foreground "#000000" :background "#ee9a4d")))

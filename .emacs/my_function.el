@@ -364,16 +364,6 @@ Example of my/keys
     (calendar-exit)
     (insert day)))
 
-;;;###autoload
-(defun Y/get-auth-info (machine &rest keywords)
-  ""
-  (cl-loop with info = (car (auth-source-search :host machine :login :port))
-           for kw in keywords
-           for data = (plist-get info kw)
-           if (functionp data)
-           collect (funcall data)
-           else collect data))
-
 (defun my/delete-trailing-space (word)
   ""
   (cl-loop with str = word

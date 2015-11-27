@@ -8,7 +8,6 @@
 ;; A
 ("auto-async-byte-compile" auto-async-byte-compile auto-async-byte-compile-mode
  enable-auto-async-byte-compile-mode)
-("auth-source" auth-source-search)
 ("android-mode" android-create-project android-mode)
 ;; B
 ("browse-url" browse-url-interactive-arg)

@@ -3,6 +3,17 @@
 ;;; Code:
 
 
+;;;### (autoloads nil "builtin/init_auth-source" "builtin/init_auth-source.el"
+;;;;;;  (22104 57664 305180 446000))
+;;; Generated autoloads from builtin/init_auth-source.el
+
+(autoload 'Y/get-auth-info "builtin/init_auth-source" "\
+Get auth info.
+
+\(fn MACHINE &rest KEYWORDS)" nil nil)
+
+;;;***
+
 ;;;### (autoloads nil "builtin/init_autoload" "builtin/init_autoload.el"
 ;;;;;;  (21916 11118 629708 752000))
 ;;; Generated autoloads from builtin/init_autoload.el
@@ -78,8 +89,8 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (22098 33287
-;;;;;;  868103 540000))
+;;;### (autoloads nil "my_function" "my_function.el" (22104 57632
+;;;;;;  968490 897000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -160,11 +171,6 @@ Popup a buffer by popwin which is related to current ‘major-mode’.
 
 \(fn &optional STATEMENT)" t nil)
 
-(autoload 'Y/get-auth-info "my_function" "\
-
-
-\(fn MACHINE &rest KEYWORDS)" nil nil)
-
 (autoload 'my/copy-current-file-name "my_function" "\
 
 
@@ -220,7 +226,7 @@ Load PACKAGES.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_auto-complete" "pkg_conf/init_auto-complete.el"
-;;;;;;  (21916 11116 85624 277000))
+;;;;;;  (22104 57130 132815 949000))
 ;;; Generated autoloads from pkg_conf/init_auto-complete.el
 
 (autoload 'my/ac-add-sources-for-prog "pkg_conf/init_auto-complete" "\
@@ -381,7 +387,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;***
 
 ;;;### (autoloads nil "style/my_modeline" "style/my_modeline.el"
-;;;;;;  (22104 50999 387566 979000))
+;;;;;;  (22104 57035 978437 233000))
 ;;; Generated autoloads from style/my_modeline.el
 
 (autoload 'Y/clean-mode-line "style/my_modeline" "\
@@ -448,17 +454,16 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "pkg_conf/init_package.el" "pkg_conf/init_pangu-spacing.el"
 ;;;;;;  "pkg_conf/init_paredit.el" "pkg_conf/init_perl-mode.el" "pkg_conf/init_picture.el"
 ;;;;;;  "pkg_conf/init_popwin.el" "pkg_conf/init_powerline.el" "pkg_conf/init_python.el"
-;;;;;;  "pkg_conf/init_refe.el" "pkg_conf/init_rsense.el" "pkg_conf/init_rust-mode.el"
-;;;;;;  "pkg_conf/init_sbtp.el" "pkg_conf/init_scala-mode.el" "pkg_conf/init_sdic-inline.el"
-;;;;;;  "pkg_conf/init_sdic.el" "pkg_conf/init_skk-b.el" "pkg_conf/init_skk-server.el"
-;;;;;;  "pkg_conf/init_skk.el" "pkg_conf/init_skype.el" "pkg_conf/init_slime.el"
-;;;;;;  "pkg_conf/init_smart-tabs-mode.el" "pkg_conf/init_smartparens.el"
-;;;;;;  "pkg_conf/init_sql.el" "pkg_conf/init_tabbar.el" "pkg_conf/init_twittering-mode.el"
-;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el"
-;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
-;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
-;;;;;;  "pkg_conf/init_yim.el" "site-start.el") (22104 51040 602099
-;;;;;;  437000))
+;;;;;;  "pkg_conf/init_rust-mode.el" "pkg_conf/init_sbtp.el" "pkg_conf/init_scala-mode.el"
+;;;;;;  "pkg_conf/init_sdic-inline.el" "pkg_conf/init_sdic.el" "pkg_conf/init_skk-b.el"
+;;;;;;  "pkg_conf/init_skk-server.el" "pkg_conf/init_skk.el" "pkg_conf/init_skype.el"
+;;;;;;  "pkg_conf/init_slime.el" "pkg_conf/init_smart-tabs-mode.el"
+;;;;;;  "pkg_conf/init_smartparens.el" "pkg_conf/init_sql.el" "pkg_conf/init_tabbar.el"
+;;;;;;  "pkg_conf/init_twittering-mode.el" "pkg_conf/init_undo-tree.el"
+;;;;;;  "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el"
+;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
+;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "site-start.el")
+;;;;;;  (22104 57369 102536 370000))
 
 ;;;***
 

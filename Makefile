@@ -1,3 +1,5 @@
+# makefile for Travis
+
 EMACS ?= emacs
 EMACS_CLEAN=-Q
 EMACS_BATCH=$(EMACS_CLEAN) --batch

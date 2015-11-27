@@ -68,7 +68,7 @@ urxvtEmacs() {
 
 EmacsClient() {
   [ ! -z ${EMACS_FRAME_PARAMETERS} ] && fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
-  [ -z "$*" ] && where=`pwd` || where="$*"
+  [ -z "$*" ] && where="$PWD" || where="$*"
   client="${emacsclient} ${fparam} -s ${daemon_name} -q ${option} ${where}"
   if [ -z $xtermopt ] && [ -z $urxvt_client ]; then
     eval "${client} ${background}"

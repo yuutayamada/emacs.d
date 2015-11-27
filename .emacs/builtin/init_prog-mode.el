@@ -23,7 +23,7 @@
               (cl-case major-mode
                 ((scala-mode clojure-mode coffee-mode)
                  nil)
-                (t (run-with-idle-timer 3 nil 'flycheck-mode)))
+                (flycheck-mode))
               ;; flyspell-prog-mode
               (run-with-idle-timer 5 nil 'flyspell-prog-mode)
               (unless prettify-symbols-mode

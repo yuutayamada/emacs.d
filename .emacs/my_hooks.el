@@ -66,10 +66,12 @@
              ;; (git-gutter:linum-setup) ; for linum
              ))
 
-;; Use Evil's normal mode in actual file.
+;; Use Evil's normal mode in actual files.
 (add-hook 'find-file-hook
           '(lambda () ; don't activete normal state at magit's git commit buffer
-             (unless (bound-and-true-p with-editor-mode) (evil-normal-state))))
+             (unless (bound-and-true-p with-editor-mode)
+               (require 'evil)
+               (evil-emacs-state))))
 
 ;; auto-insert mode
 ;; https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html

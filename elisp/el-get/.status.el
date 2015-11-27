@@ -464,9 +464,6 @@
 (:name ob-go :type git :depends
 (org-mode)
 :url "https://github.com/pope/ob-go.git"))
-(ocodo-svg-modelines status "installed" recipe
-(:name ocodo-svg-modelines :description "A collection of beautiful, modern SVG modelines for Emacs" :type github :pkgname "ocodo/ocodo-svg-modelines" :depends
-(svg-mode-line-themes)))
 (open-junk-file status "installed" recipe
 (:name open-junk-file :description "Open a junk (memo) file to try-and-error" :type emacswiki :features "open-junk-file"))
 (org-mode status "installed" recipe

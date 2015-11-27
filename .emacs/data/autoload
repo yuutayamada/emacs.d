@@ -6,7 +6,6 @@
 ;; Set pair of file name and function's list
 ;; auto-capitalize(Note I'm using emacswiki's auto-capitalize)
 ;; A
-("auto-complete" ac-set-trigger-key ac-flyspell-workaround)
 ("auto-async-byte-compile" auto-async-byte-compile auto-async-byte-compile-mode
  enable-auto-async-byte-compile-mode)
 ("auth-source" auth-source-search)

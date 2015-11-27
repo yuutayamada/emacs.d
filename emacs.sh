@@ -79,7 +79,7 @@ EmacsClient() {
           -xrm 'URxvt*perl-ext-common:' \
           -xrm 'URxvt*iconName: URxvtEmacs' \
           -keysym.C-0x5b 'string:@a' \
-          -e ${client} > /dev/null 2&>1 &"
+          -e ${client} > /dev/null 2>&1 &"
   else
     iconName=XtermEmacs
     eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"

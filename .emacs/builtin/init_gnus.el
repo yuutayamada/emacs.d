@@ -54,8 +54,6 @@
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 ;; Save group and topic structure before quit Gnus
 (add-hook 'kill-emacs-hook 'gnus-group-exit)
-;; Apply diff face
-(add-hook 'gnus-article-prepare-hook 'my/apply-diff-face)
 
 (let ((coding 'utf-8))
   (setq gnus-article-save-coding-system   coding

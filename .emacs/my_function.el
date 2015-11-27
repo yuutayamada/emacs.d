@@ -335,23 +335,6 @@ Example of my/keys
      "emacs-program" buffer "/bin/sh" "-c" command)
     (switch-to-buffer-other-window original-buffer)))
 
-(defun my/git-diff-from-current-file ()
-  ""
-  (interactive)
-  (let ((current-buffer (current-buffer))
-        (this-file (file-relative-name
-                    buffer-file-name))
-        (buffer (get-buffer-create "*git diff*")))
-    (save-current-buffer
-      (popwin:popup-buffer
-       buffer :stick t :width (/ (frame-width) 2) :position :right)
-      (erase-buffer)
-      (diff-mode)
-      (start-process-shell-command
-       "emacs-my-git-diff" buffer
-       (concat "git --no-pager diff --diff-filter=M --no-color ./"
-               this-file)))))
-
 (defun my-insert-day ()
   ""
   (interactive)

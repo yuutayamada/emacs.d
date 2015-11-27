@@ -20,8 +20,6 @@
 ("cc-mode" c-toggle-auto-newline c-toggle-hungry-state)
 ("cider" cider-mode cider-turn-on-eldoc-mode)
 ("lips-mode" common-lisp-mode lisp-mode)
-;; D
-("diff-mode" diff-mode my/apply-diff-face diff-refine-hunk)
 ;; E
 ("eclim-tip" eclim-tip-cycle eclim-tip-cycle-reverse)
 ("e2wm" e2wm:pst-get-instance e2wm:stop-management e2wm:dp-two e2wm:dp-code)

@@ -156,21 +156,22 @@ For example
   (mew-draft-save-buffer)
   ad-do-it)
 
+(require 'diff-mode)
 (add-hook 'mew-message-hook
-          (lambda ()
-            (let*
-                ((diff-hunk-header "^@@ -[0-9,]+ \\+[0-9,]+ @@[\n ]")
-                 (x-mew
-                  "^X-Mew: Text/Html in Multipart/Alternative as a singlepart")
-                 (x-mew-p (lambda ()
-                            (goto-char (point-min))
-                            (if (re-search-forward x-mew nil t)
-                                t
-                              nil))))
-              (unless (funcall x-mew-p)
-                (goto-char (point-min))
-                (while (re-search-forward diff-hunk-header nil t)
-                  (diff-refine-hunk))))))
+          '(lambda ()
+             (let*
+                 ((diff-hunk-header "^@@ -[0-9,]+ \\+[0-9,]+ @@[\n ]")
+                  (x-mew
+                   "^X-Mew: Text/Html in Multipart/Alternative as a singlepart")
+                  (x-mew-p (lambda ()
+                             (goto-char (point-min))
+                             (if (re-search-forward x-mew nil t)
+                                 t
+                               nil))))
+               (unless (funcall x-mew-p)
+                 (goto-char (point-min))
+                 (while (re-search-forward diff-hunk-header nil t)
+                   (diff-refine-hunk))))))
 
 (add-hook 'mew-message-mode-hook
           (lambda ()

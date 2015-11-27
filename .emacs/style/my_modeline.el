@@ -2,6 +2,19 @@
 ;;; Commentary:
 ;;; Code:
 
+(setq-default mode-line-format
+              '((line-number-mode "L%l")
+                (column-number-mode "C%c")
+                " %[("
+                mode-line-modified
+                "[" mode-line-buffer-identification "]"
+                mode-line-process
+                mode-name
+                minor-mode-alist
+                "%n" ")%]-"
+                (-3 . "%p")
+                "-%-"))
+
 ;;; shorten mode-name of mode-line
 ;; -- http://d.hatena.ne.jp/syohex/20130131/1359646452 --
 (defconst mode-line-cleaner-alist
@@ -22,6 +35,7 @@
     (outline-minor-mode         . "")
     (paredit-mode               . " Pe")
     (ruby-block-mode            . "")
+    (server-buffer-clients      . "")
     (superword-mode             . " ²")
     (subword-mode               . " ,")
     (undo-tree-mode             . "")
@@ -60,23 +74,7 @@
                (when (eq mode major-mode)
                  (setq mode-name mode-str))))))
 
-(setq-default mode-line-format
-              '((line-number-mode "L%l/")
-                (column-number-mode "C%c-")
-                (:eval (if (fboundp 'gnus-mst-notify-modeline-form)
-                           (gnus-mst-notify-modeline-form)))
-                mode-line-buffer-identification
-                display-time-string
-                mode-line-mule-info
-                mode-line-modified
-                " %[("
-                mode-name
-                (which-func-mode ("" which-func-format "-"))
-                mode-line-process
-                minor-mode-alist
-                "%n" ")%]-"
-                (-3 . "%p")
-                "-%-"))
+
 
 (provide 'my_modeline)
 

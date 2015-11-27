@@ -2,7 +2,6 @@
 
 ;;; Commentary:
 ;;; Code:
-
 (defconst sh-indentation 2)
 (defconst sh-basic-offset 2)
 

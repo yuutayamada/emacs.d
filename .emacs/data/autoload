@@ -153,8 +153,6 @@
 ("winner" winner-undo winner-redo)
 ;; Y
 ;; ("yim" helm-skk-rules)
-;; Z
-;; ("zencoding" my/zencoding-expand)
 ;; below packages need specification of INIT
 ;; ("init_iso-transl" Y/iso-transl-toggle-minor-mode)
 ;; ("init_filecache" Y/filecache-ido-find-file)

@@ -28,6 +28,12 @@
 ;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'after-change-major-mode-hook 'auto-capitalize-mode)
 
+;;;;;;;;;;;;;;;;;;;;;
+;; clean mode line ;;
+;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'after-change-major-mode-hook 'Y/clean-mode-line)
+(add-hook 'find-file-hook 'Y/clean-mode-line)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; visual-fill-column ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;

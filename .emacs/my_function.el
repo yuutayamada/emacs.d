@@ -96,20 +96,6 @@
            do (define-key keymap this sym-that)
            do (define-key keymap that sym-this)))
 
-(defun clean-mode-line ()
-  "Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'."
-  (interactive)
-  (when (bound-and-true-p mode-line-cleaner-alist)
-    (cl-loop for (mode . mode-str) in mode-line-cleaner-alist
-             do
-             (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
-               (when old-mode-str
-                 (setcar old-mode-str mode-str))
-               (when (eq mode major-mode)
-                 (setq mode-name mode-str))))))
-(add-hook 'after-change-major-mode-hook 'clean-mode-line)
-(add-hook 'find-file-hook 'clean-mode-line)
-
 (defun my/revert-buffer ()
   ""
   (interactive)

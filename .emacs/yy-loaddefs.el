@@ -380,6 +380,17 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 ;;;***
 
+;;;### (autoloads nil "style/my_modeline" "style/my_modeline.el"
+;;;;;;  (22104 50999 387566 979000))
+;;; Generated autoloads from style/my_modeline.el
+
+(autoload 'Y/clean-mode-line "style/my_modeline" "\
+Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads nil nil ("../test.el" "Y-launch.el" "builtin/init_align.el"
 ;;;;;;  "builtin/init_autoinsert.el" "builtin/init_browse-url.el"
 ;;;;;;  "builtin/init_cc-mode.el" "builtin/init_css-mode.el" "builtin/init_cua-base.el"
@@ -446,8 +457,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el"
 ;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
 ;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
-;;;;;;  "pkg_conf/init_yim.el" "site-start.el" "style/my_modeline.el")
-;;;;;;  (22104 49421 157747 379000))
+;;;;;;  "pkg_conf/init_yim.el" "site-start.el") (22104 51040 602099
+;;;;;;  437000))
 
 ;;;***
 

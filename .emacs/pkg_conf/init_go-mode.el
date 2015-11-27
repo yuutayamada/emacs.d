@@ -33,8 +33,7 @@
 
 (require 'my_autoload)
 (require 'go-mode)
-(require 'init_auto-complete)
-(require 'go-autocomplete) ;; needs gocode to use this feature
+(require 'company-go) ; in the gocode
 
 ;; (require 'init_masaw)
 ;; ;; Reset go-mode-hook
@@ -42,6 +41,7 @@
 
 (add-hook 'go-mode-hook
           '(lambda()
+             (setq-local company-backends '(company-go))
              ;; Use goimports instead of go-fmt
              (setq gofmt-command "goimports") ; goimports
              ;; (define-key go-mode-map (kbd "C-3") 'masaw-mode)

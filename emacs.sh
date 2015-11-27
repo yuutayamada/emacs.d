@@ -62,7 +62,6 @@ XtermEmacs() {
 }
 
 urxvtEmacs() {
-  # work in progress
   urxvt_e=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/urxvt-e \
          TerminalEmacs $*
 }
@@ -74,7 +73,13 @@ EmacsClient() {
   if [ -z $xtermopt ] && [ -z $urxvt_e ]; then
     eval "${client} ${background}"
   elif test -z $xtermopt && test -n $urxvt_e; then
-    eval "${urxvt_e} ${client} &"
+    eval "${urxvt_e} \
+          -depth 32 -bg rgba:0000/0000/0000/a777 \
+          -xrm 'URxvt*perl-ext:' \
+          -xrm 'URxvt*perl-ext-common:' \
+          -xrm 'URxvt*iconName: URxvtEmacs' \
+          -keysym.C-0x5b 'string:@a' \
+          -e ${client} > /dev/null 2&>1 &"
   else
     iconName=XtermEmacs
     eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"

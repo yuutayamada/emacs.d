@@ -49,7 +49,8 @@
  ;; PACKAGE COLORS ;;
  ;;;;;;;;;;;;;;;;;;;;
  ;; hl-line
- '(hl-line ((t :foreground unspecified)))
+ '(hl-line ((t :foreground unspecified
+               :background "#4e4e4e")))
 
  ;; eshell
  '(eshell-prompt ((t :foreground "yellow" :weight bold :slant italic)))

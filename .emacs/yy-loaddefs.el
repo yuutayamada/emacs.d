@@ -78,8 +78,8 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "my_daemon" "my_daemon.el" (22070 22576 839329
-;;;;;;  585000))
+;;;### (autoloads nil "my_daemon" "my_daemon.el" (22089 14256 147418
+;;;;;;  9000))
 ;;; Generated autoloads from my_daemon.el
 
 (autoload 'Y/frame-init-func "my_daemon" "\
@@ -94,8 +94,8 @@ Set `window-system-default-frame-alist' of FRAME.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (22069 54211
-;;;;;;  26067 994000))
+;;;### (autoloads nil "my_function" "my_function.el" (22098 29722
+;;;;;;  148777 80000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -217,6 +217,11 @@ My toggle truncate lines.
 
 \(fn)" t nil)
 
+(autoload 'Y/lookup-stardict "my_function" "\
+Lookup work by stardict.
+
+\(fn)" t nil)
+
 ;;;***
 
 ;;;### (autoloads nil "my_util" "my_util.el" (21953 19901 709416
@@ -263,7 +268,7 @@ Add ac-c-headers source to auto-complete source.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_avy" "pkg_conf/init_avy.el"
-;;;;;;  (21956 16312 551597 556000))
+;;;;;;  (22088 53798 696454 151000))
 ;;; Generated autoloads from pkg_conf/init_avy.el
 
 (autoload 'avy-goto-char-by-input-event "pkg_conf/init_avy" "\
@@ -336,7 +341,7 @@ Setup irony-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_multi-term" "pkg_conf/init_multi-term.el"
-;;;;;;  (22070 35773 440869 167000))
+;;;;;;  (22071 46722 836325 434000))
 ;;; Generated autoloads from pkg_conf/init_multi-term.el
 
 (autoload 'my/multi-term "pkg_conf/init_multi-term" "\
@@ -412,12 +417,12 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "builtin/init_python.el" "builtin/init_recentf.el" "builtin/init_remember.el"
 ;;;;;;  "builtin/init_ruby-mode.el" "builtin/init_savehist.el" "builtin/init_server.el"
 ;;;;;;  "builtin/init_sgml-mode.el" "builtin/init_sh-script.el" "builtin/init_shr.el"
-;;;;;;  "builtin/init_simple.el" "builtin/init_term.el" "builtin/init_tool-bar.el"
-;;;;;;  "builtin/init_tramp.el" "builtin/init_verilog-mode.el" "builtin/init_view.el"
-;;;;;;  "builtin/init_whitespace.el" "builtin/init_windmove.el" "depend/depend_emacs24.el"
-;;;;;;  "depend/depend_emacs25.el" "depend/depend_main.el" "depend/depend_windows.el"
-;;;;;;  "my_autoload.el" "my_font.el" "my_hooks.el" "my_paths.el"
-;;;;;;  "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
+;;;;;;  "builtin/init_simple.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
+;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
+;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
+;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "my_autoload.el"
+;;;;;;  "my_font.el" "my_hooks.el" "my_paths.el" "pkg_conf/init_ac_irony.el"
+;;;;;;  "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
 ;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
 ;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
 ;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
@@ -449,9 +454,9 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_moz.el" "pkg_conf/init_mozc.el" "pkg_conf/init_multiple-cursors.el"
 ;;;;;;  "pkg_conf/init_mykie.el" "pkg_conf/init_newsticker.el" "pkg_conf/init_nim-mode.el"
 ;;;;;;  "pkg_conf/init_node-console.el" "pkg_conf/init_nyan-mode.el"
-;;;;;;  "pkg_conf/init_open-junk-file.el" "pkg_conf/init_org-mobile.el"
-;;;;;;  "pkg_conf/init_org-trello.el" "pkg_conf/init_outline.el"
-;;;;;;  "pkg_conf/init_package.el" "pkg_conf/init_pangu-spacing.el"
+;;;;;;  "pkg_conf/init_ocodo-svg-modelines.el" "pkg_conf/init_open-junk-file.el"
+;;;;;;  "pkg_conf/init_org-mobile.el" "pkg_conf/init_org-trello.el"
+;;;;;;  "pkg_conf/init_outline.el" "pkg_conf/init_package.el" "pkg_conf/init_pangu-spacing.el"
 ;;;;;;  "pkg_conf/init_paredit.el" "pkg_conf/init_perl-mode.el" "pkg_conf/init_picture.el"
 ;;;;;;  "pkg_conf/init_popwin.el" "pkg_conf/init_powerline.el" "pkg_conf/init_python.el"
 ;;;;;;  "pkg_conf/init_refe.el" "pkg_conf/init_rsense.el" "pkg_conf/init_rust-mode.el"
@@ -464,7 +469,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
 ;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
 ;;;;;;  "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el" "site-start.el"
-;;;;;;  "style/my_modeline.el") (22070 52629 54719 754000))
+;;;;;;  "style/my_modeline.el") (22098 29771 634902 523000))
 
 ;;;***
 

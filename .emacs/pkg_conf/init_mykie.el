@@ -446,7 +446,7 @@
 ;; http://stackoverflow.com/questions/1792326/how-do-i-bind-a-command-to-c-i-without-changing-tab
 (mykie:set-keys nil
   "S-TAB"       my/insert ; C-S-TAB
-  "M-TAB"       auto-complete
+  "M-TAB"       company-complete
   [(C-tab)]     fold-dwim-toggle
   [(backtab)]   my/toggle-opacity
   [(super tab)] pcomplete)

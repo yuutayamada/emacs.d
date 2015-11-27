@@ -83,7 +83,6 @@
                               (unless (eq 'org-mode major-mode)
                                 (whitespace-mode t))
                               (pangu-spacing-mode t)
-                              (auto-complete-mode t)
                               (flyspell-mode t))))
 
 ;;;;;;;;;;;;;;;

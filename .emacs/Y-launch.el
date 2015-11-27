@@ -83,7 +83,7 @@
 (defconst idle-require-symbols
   ;; This list should register only kind of utility package or your heavy
   ;; rotation package.
-  '(yasnippet helm auto-complete ispell tramp evil eshell auto-capitalize magit
+  '(yasnippet helm ispell tramp evil eshell auto-capitalize magit
     org filecache helm-elisp flycheck el-get))
 (idle-require-mode t)
 

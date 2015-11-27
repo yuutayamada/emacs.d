@@ -3,7 +3,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'auto-complete)
 (require 'slime)
 (require 'ac-slime)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)

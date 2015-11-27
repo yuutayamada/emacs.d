@@ -3,8 +3,8 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'auto-complete)
 
+(require 'popup)
 (require 'yasnippet)
 (require 'helm-c-yasnippet)
 (require 'my_paths)

@@ -29,7 +29,6 @@
  el-get-package-exists-p el-get-install el-get-list-packages el-get-update
  el-get-remove)
 ("eclim" eclim--project-name my/boot-eclim ac-emacs-eclim-config)
-("evil" evil-normal-state)
 ;; F
 ("flymake-json" flymake-json-maybe-load)
 ("flymake-shell" flymake-shell-load)

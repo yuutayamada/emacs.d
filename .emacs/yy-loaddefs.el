@@ -78,24 +78,8 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "my_daemon" "my_daemon.el" (22089 14256 147418
-;;;;;;  9000))
-;;; Generated autoloads from my_daemon.el
-
-(autoload 'Y/frame-init-func "my_daemon" "\
-Init function when Emacs connects new server with FRAME object.
-
-\(fn &optional FRAME)" nil nil)
-
-(autoload 'Y/set-default-window-frame-alist "my_daemon" "\
-Set `window-system-default-frame-alist' of FRAME.
-
-\(fn FRAME)" nil nil)
-
-;;;***
-
-;;;### (autoloads nil "my_function" "my_function.el" (22098 29722
-;;;;;;  148777 80000))
+;;;### (autoloads nil "my_function" "my_function.el" (22098 33287
+;;;;;;  868103 540000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -218,26 +202,20 @@ My toggle truncate lines.
 \(fn)" t nil)
 
 (autoload 'Y/lookup-stardict "my_function" "\
-Lookup work by stardict.
+Lookup word by stardict.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads nil "my_util" "my_util.el" (21953 19901 709416
-;;;;;;  912000))
+;;;### (autoloads nil "my_util" "my_util.el" (22104 19276 198370
+;;;;;;  256000))
 ;;; Generated autoloads from my_util.el
 
 (autoload 'Y/load-packages "my_util" "\
 Load PACKAGES.
 
 \(fn PACKAGES)" nil nil)
-
-(autoload 'Y/apply-color-theme "my_util" "\
-Use my transparent color theme if it is in terminal Emacs.
-Otherwise, use a dark theme.  The FRAME is frame object.
-
-\(fn NEW-THEME HL-FLAG)" t nil)
 
 ;;;***
 
@@ -454,9 +432,9 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_moz.el" "pkg_conf/init_mozc.el" "pkg_conf/init_multiple-cursors.el"
 ;;;;;;  "pkg_conf/init_mykie.el" "pkg_conf/init_newsticker.el" "pkg_conf/init_nim-mode.el"
 ;;;;;;  "pkg_conf/init_node-console.el" "pkg_conf/init_nyan-mode.el"
-;;;;;;  "pkg_conf/init_ocodo-svg-modelines.el" "pkg_conf/init_open-junk-file.el"
-;;;;;;  "pkg_conf/init_org-mobile.el" "pkg_conf/init_org-trello.el"
-;;;;;;  "pkg_conf/init_outline.el" "pkg_conf/init_package.el" "pkg_conf/init_pangu-spacing.el"
+;;;;;;  "pkg_conf/init_open-junk-file.el" "pkg_conf/init_org-mobile.el"
+;;;;;;  "pkg_conf/init_org-trello.el" "pkg_conf/init_outline.el"
+;;;;;;  "pkg_conf/init_package.el" "pkg_conf/init_pangu-spacing.el"
 ;;;;;;  "pkg_conf/init_paredit.el" "pkg_conf/init_perl-mode.el" "pkg_conf/init_picture.el"
 ;;;;;;  "pkg_conf/init_popwin.el" "pkg_conf/init_powerline.el" "pkg_conf/init_python.el"
 ;;;;;;  "pkg_conf/init_refe.el" "pkg_conf/init_rsense.el" "pkg_conf/init_rust-mode.el"

@@ -16,8 +16,6 @@
 
 (mykie:set-keys lookup-summary-mode-map
   "S-SPC" lookup-summary-previous-page
-  "s"     my/lookup-by-ace-jump
-  "/"     my/lookup-by-ace-jump
   "l"     Y/lookup
   "j"     my/helm-lookup-history)
 
@@ -41,18 +39,6 @@
     (error
      (when (string-match " No entry for query: " (format "%s" err))
        (eiji:search (ad-get-arg 0))))))
-
-(defun my/lookup/ace-jump-action ()
-  "Action for `my/lookup-by-ace-jump."
-  (lookup-pattern (or (word-at-point) ""))
-  (remove-hook 'ace-jump-mode-end-hook 'my/lookup/ace-jump-action))
-
-(defun my/lookup-by-ace-jump ()
-  "Look up word by using ace-jump."
-  (interactive)
-  (add-hook 'ace-jump-mode-end-hook 'my/lookup/ace-jump-action)
-  (ace-jump-do
-   (concat "\\b" (regexp-quote (make-string 1 (read-char "ace-jump: "))))))
 
 (require 'my_function)
 (defun Y/lookup (&optional word)

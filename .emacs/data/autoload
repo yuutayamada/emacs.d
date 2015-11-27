@@ -10,7 +10,6 @@
  enable-auto-async-byte-compile-mode)
 ("auth-source" auth-source-search)
 ("android-mode" android-create-project android-mode)
-("ace-jump-mode" ace-jump-do)
 ;; B
 ("browse-url" browse-url-interactive-arg)
 ;; C

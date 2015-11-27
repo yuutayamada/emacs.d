@@ -103,58 +103,26 @@ file prefix by PREFIX."
                                 (require (quote ,(intern file)))
                               (error err)))))))))
 
-;; Color theme ;;
-;;;###autoload
-(defun Y/apply-color-theme (new-theme hl-flag)
-  "Use my transparent color theme if it is in terminal Emacs.
-Otherwise, use a dark theme.  The FRAME is frame object."
-  (interactive)
-  (let* (old-theme fallback)
-    (unless (eq old-theme new-theme)
-      (condition-case _err
-          (load-theme new-theme t)
-        (error (setq fallback t)))
-      (setq old-theme new-theme))
-    (global-hl-line-mode hl-flag)
-    (load-theme 'my_pkg_colors t) ; Apply my color theme for some packages
-    (when fallback ; if color-theme doesn't find
-      (Y/apply-default-bg-and-fg))))
-
-(defun Y/apply-default-bg-and-fg ()
-  "Change background and foreground."
-  (let* ((set-color (lambda (bg fg)
-                      (unless (equal bg (frame-parameter nil 'background-color))
-                        (set-background-color bg))
-                      (unless (equal fg (frame-parameter nil 'foreground-color))
-                        (set-foreground-color fg))))
-         (pair (if (display-graphic-p)
-                   (Y/emacs-set-color-of-GUI)
-                 ;; Terminal Emacs
-                 (cons "unspecified-bg" "unspecified-fg"))))
-    (funcall set-color (car pair) (cdr pair))))
-
-(defun Y/emacs-set-color-of-GUI ()
-  ""
-  (let ((background-mode (frame-terminal-default-bg-mode nil)))
-    (cons (or (x-get-resource "background" "Background")
-              (if (eq 'dark background-mode)
-                  "black"
-                "white"))
-          (or (x-get-resource "foreground" "Foreground")
-              (if (eq 'dark background-mode)
-                  "white"
-                "black")))))
-
-(defun Y/apply-color-theme-by-display ()
-  "Apply color theme by display graphic type."
-  (cl-case (framep-on-display)
-    ;; 'x' for an Emacs frame that is really an X window,
-    ;; 'w32' for an Emacs frame that is a window on MS-Windows display,
-    ;; 'pc' for a direct-write MS-DOS frame.
-    ;; 'ns' for an Emacs frame on a GNUstep or Macintosh Cocoa display,
-    ((x w32 pc ns) (Y/apply-color-theme 'unspecified 0))
-    ;; nil for a termcap frame (a character-only terminal),
-    (t (Y/apply-color-theme 'fabulous t))))
+(defun Y/frame-init-func (&optional frame)
+  "Init function when Emacs connects new server with FRAME object."
+  (let ((f (or frame (selected-frame))))
+    (select-frame f)
+    (cl-case (framep-on-display)
+      ;; 'x' for an Emacs frame that is really an X window,
+      ;; 'w32' for an Emacs frame that is a window on MS-Windows display,
+      ;; 'pc' for a direct-write MS-DOS frame.
+      ;; 'ns' for an Emacs frame on a GNUstep or Macintosh Cocoa display,
+      ((x w32 pc ns)
+       ;; http://stackoverflow.com/questions/16677825/emacs-escape-key
+       ;; This key swapping allow you to bind C-[ key!
+       ;; Note that terminal emacs normally can not distinguish ESC and C-[
+       ;; So only change in GUI Emacs
+       (keyboard-translate ?\e ?\A-\e)
+       ;; On GUI Emacs, I didn't show Japanese Kanji correctly...
+       (set-locale-environment "ja_JP.UTF-8"))
+      (t ; nil for a termcap frame (a character-only terminal),
+       ;; On Terminal Emacs, this shows eshell prompt string correctly.
+       (set-locale-environment "en_US.UTF-8")))))
 
 (provide 'my_util)
 

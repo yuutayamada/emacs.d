@@ -31,10 +31,6 @@
 ;; see also : http://www.hep.by/gnu/emacs/Fontsets.html
 (defun Y/init-fontset ()
   "Set default(fallback) font."
-  (set-locale-environment
-   (if (display-graphic-p)
-       "ja_JP.UTF-8" ; On GUI Emacs, I didn't show Japanese Kanji correctly...
-     "en_US.UTF-8")) ; On Terminal Emacs, this shows eshell prompt string correctly.
   (condition-case err
       (cl-loop with fs = '("STIX" "STIX Math" "STIXGeneral" "Symbola"
                            "DejaVu Sans Mono")

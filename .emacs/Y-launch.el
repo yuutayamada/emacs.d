@@ -67,14 +67,17 @@
        ))
   (error (message (format "Init function error: %s" err))))
 
+;; common color theme
+(load-theme 'my_pkg t)
+
 ;; Color and Frame config ;;
 (if (not (daemonp))
     ;; Regular Emacs
-    (Y/apply-color-theme (if (display-graphic-p) 'unspecified 'fabulous) 0)
+    (Y/frame-init-func)
   ;; Daemon Emacs ;;
   (when (equal 1 (length (frame-list)))
     (set-frame-name "root") ; Name "root" as base frame name. (emacs --daemon)
-    (require 'my_daemon)))
+    (add-hook 'after-make-frame-functions 'Y/frame-init-func)))
 
 ;; idle require (for lazy loading)
 (defconst idle-require-symbols

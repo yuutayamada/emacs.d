@@ -1,18 +1,11 @@
-;;; my_pkg_colors-theme.el --- my set of color configuration
+;;; my_theme.el --- my set of color configuration
 ;;; Commentary:
 ;; You can check avairable colors in tty-colors.el
 ;;; Code:
-(deftheme my_pkg_colors "my pkg color theme.")
+(deftheme my_pkg "my pkg color theme.")
 
 (custom-theme-set-faces
- 'my_pkg_colors
-
- `(default ((t (:background
-                ,(assoc-default 'background-color
-                                (cadr window-system-default-frame-alist)))
-               (:foreground
-                ,(assoc-default 'foreground-color
-                                (cadr window-system-default-frame-alist))))))
+ 'my_pkg
 
  ;;;;;;;;;;;;;;;
  ;; font-lock ;;
@@ -336,11 +329,11 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'my_pkg_colors)
+(provide-theme 'my_pkg)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; my_pkg_colors-theme.el ends here
+;;; my_theme.el ends here

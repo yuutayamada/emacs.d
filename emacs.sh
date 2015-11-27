@@ -62,22 +62,21 @@ XtermEmacs() {
 }
 
 urxvtEmacs() {
-  urxvt_e=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/urxvt-e \
-         TerminalEmacs $*
+  urxvt_client=`ghq root`/github.com/yuutayamada/emacs.d/elisp/self/xterm-keybinder-el/emacs-urxvt-client \
+              TerminalEmacs $*
 }
 
 EmacsClient() {
   [ ! -z ${EMACS_FRAME_PARAMETERS} ] && fparam="-F '(${EMACS_FRAME_PARAMETERS})'"
   [ -z "$*" ] && where=`pwd` || where="$*"
   client="${emacsclient} ${fparam} -s ${daemon_name} -q ${option} ${where}"
-  if [ -z $xtermopt ] && [ -z $urxvt_e ]; then
+  if [ -z $xtermopt ] && [ -z $urxvt_client ]; then
     eval "${client} ${background}"
-  elif test -z $xtermopt && test -n $urxvt_e; then
-    eval "${urxvt_e} \
+  elif test -z $xtermopt && test -n $urxvt_client; then
+    eval "${urxvt_client} \
           -depth 32 -bg rgba:0000/0000/0000/a777 \
           -xrm 'URxvt*perl-ext:' \
           -xrm 'URxvt*perl-ext-common:' \
-          -xrm 'URxvt*iconName: URxvtEmacs' \
           -keysym.C-0x5b 'string:@a' \
           -e ${client} > /dev/null 2>&1 &"
   else

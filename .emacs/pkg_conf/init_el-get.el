@@ -591,10 +591,7 @@
            :url "https://github.com/yoshiki/yaml-mode")
     (:name yim
            :type git
-           :url "https://github.com/yuutayamada/yim.git")
-    (:name zen-coding
-           :type git
-           :url "https://github.com/rooney/zencoding.git")))
+           :url "https://github.com/yuutayamada/yim.git")))
 
 ;; EL-GET
 ;; if user doesn't have el-get package then load it.

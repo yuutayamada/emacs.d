@@ -636,6 +636,4 @@
 (yatemplate status "installed" recipe
 (:name yatemplate :depends
 (yasnippet)
-:type github :url "https://github.com/mineo/yatemplate.git"))
-(zen-coding status "installed" recipe
-(:name zen-coding :type git :url "https://github.com/rooney/zencoding.git")))
+:type github :url "https://github.com/mineo/yatemplate.git")))

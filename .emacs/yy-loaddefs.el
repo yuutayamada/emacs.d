@@ -468,8 +468,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el"
 ;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
 ;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
-;;;;;;  "pkg_conf/init_yim.el" "pkg_conf/init_zencoding.el" "site-start.el"
-;;;;;;  "style/my_modeline.el") (22098 29771 634902 523000))
+;;;;;;  "pkg_conf/init_yim.el" "site-start.el" "style/my_modeline.el")
+;;;;;;  (22104 49421 157747 379000))
 
 ;;;***
 

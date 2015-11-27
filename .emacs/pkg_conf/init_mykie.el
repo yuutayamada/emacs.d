@@ -314,9 +314,8 @@
   :default magit-status
   :region  align
 
-  ;; "C-."
-  ;; :default
-  "C-," eiji:search)
+  "C-," Y/lookup-stardict
+  )
 
 ;; C-c prefix map ;;
 (mykie:set-keys global-map

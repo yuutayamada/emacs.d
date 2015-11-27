@@ -659,6 +659,24 @@ This function distinguishes parenthesis and symbol accordingly."
     (setq Y/mode-line-timer-obj
           (run-with-timer 0.1 nil 'Y/compute-mode-line-color))))
 
+;;;###autoload
+(defun Y/lookup-stardict()
+  "Lookup word by stardict."
+  ;; http://askubuntu.com/questions/191125/is-there-an-offline-command-line-dictionary
+  (interactive)
+  (let ((buf  "*stardict*"))
+    (get-buffer-create buf)
+    (async-shell-command (format "sdcv --data-dir=%s %s"
+                                 (file-truename "~/share/dict/stardict/")
+                                 (shell-quote-argument
+                                  (read-string "stardict: " (thing-at-point 'word))))
+                         (get-buffer-create buf))
+    (run-with-timer 0.1 nil
+                    `(lambda ()
+                       (unless (equal (buffer-name (current-buffer)) ,buf)
+                         (switch-to-buffer-other-window ,buf))
+                       (goto-char (point-min))))))
+
 (setq-default mode-line-format
               (append mode-line-format
                       '((:eval (Y/update-mode-line-bg)))))

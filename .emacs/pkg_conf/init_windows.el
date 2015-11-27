@@ -76,7 +76,6 @@
 (setq goto-map (keymap--merge-bindings win:switch-map goto-map))
 (global-set-key (kbd "M-g") goto-map) ; use M-g M-g
 
-
 ;;;###autoload
 (defun Y/win-switch-window (char-a-to-z)
   (win:switch-window (1+ (- char-a-to-z ?a))))

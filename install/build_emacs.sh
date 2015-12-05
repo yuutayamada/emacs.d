@@ -28,7 +28,8 @@ git pull git://git.savannah.gnu.org/emacs.git
 ./autogen.sh
 ./configure \
   CFLAGS='-O3' \
-  --with-x-toolkit=lucid --with-dbus -without-toolkit-scroll-bars --without-xim \
+  --with-x-toolkit=lucid --with-dbus -without-toolkit-scroll-bars \
+  --with-xim --without-makeinfo --with-cairo
 
 # make or make bootstrap?
 make

@@ -50,6 +50,9 @@
 (Y/add-after-load-files "init_" (concat config-dir "builtin"))
 (Y/add-after-load-files "init_" package-conf-dir)
 
+;; work around for evil
+(autoload 'evil-normal-state "evil")
+
 (provide 'my_autoload)
 
 ;; Local Variables:

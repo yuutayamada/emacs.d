@@ -36,7 +36,7 @@
 ;; memo: https://www.gnu.org/software/emacs/manual/html_node/elisp/Startup-Summary.html#Startup-Summary
 ;;; Code:
 
-;; Do not configure when --batch option
+;; Do not configure when --batch option is specified
 (unless noninteractive
   ;; Set GC limit to boot rapidly
   (setq gc-cons-threshold (* 1024 1024 1024))

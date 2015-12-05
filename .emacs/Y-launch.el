@@ -1,25 +1,5 @@
-;;; Y-launch.el --- Yuta's Emacs init file           -*- lexical-binding: t; -*-
-
-;; Copyright (C) 2015  Yuta Yamada
-
-;; Author: Yuta Yamada <sleepboy.zzz@gmail.com>
-;; Keywords: convenience
-
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+;;; Y-launch.el --- Yuta's Emacs init file -*- lexical-binding: t; -*-
 ;;; Commentary:
-;;
 ;;; Code:
 
 ;; ‘package--ensure-init-file’ check this ‘package-initialize’s existence in
@@ -58,7 +38,7 @@
 (condition-case err
     ;; Load only necessary files for less loading time
     (Y/load-packages
-     '(depend_main   ; this file should load than other files.
+     '(depend_main   ; this file should be loaded first than other files.
        tabbar        ; turn on tabbar
        my_automode   ; define mode ext
        my_hooks      ; define hooks

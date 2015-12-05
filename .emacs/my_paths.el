@@ -1,4 +1,4 @@
-;;; my_paths.el --- Configuration for directory variables of my Emacs
+;;; my_paths.el --- Configuration for directory variables of my Emacs -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;; Code:

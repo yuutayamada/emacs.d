@@ -39,11 +39,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; What a great package...
 (add-hook 'visual-line-mode-hook 'visual-fill-column-mode)
-(defadvice visual-line-mode (around Y/stop-visual-fill-column-mode activate)
-  "Stop ‘visual-fill-column-mode after visual-line-mode’."
-  ad-do-it
-  (run-with-timer
-   0.1 nil (lambda () (unless visual-line-mode (visual-fill-column-mode 0)))))
+(defadvice visual-fill-column-mode (around Y/stop-visual-fill-column-mode activate)
+  "Stop ‘visual-fill-column-mode in magit."
+  (unless (eq major-mode 'magit-status-mode)
+    ad-do-it))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; New hook from emacs 24.4 ;;

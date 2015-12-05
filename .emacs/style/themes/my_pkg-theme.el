@@ -1,30 +1,17 @@
 ;;; my_theme.el --- my set of color configuration
 ;;; Commentary:
 ;; You can check avairable colors in tty-colors.el
+;; memo:
+;; if you got weird faces on terminal, you may need following configuration:
+;;
+;;   (add-hook 'tty-setup-hook
+;;             '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
+;;
 ;;; Code:
 (deftheme my_pkg "my pkg color theme.")
 
 (custom-theme-set-faces
  'my_pkg
-
- ;;;;;;;;;;;;;;;
- ;; font-lock ;;
- ;;;;;;;;;;;;;;;
- ;; On XTerm Emacs some font locks can not display due to the missing
- ;; color name.
- '(font-lock-builtin-face       ((t :foreground "#00ffaf")))
- '(font-lock-variable-name-face ((t :foreground "#00ffff")))
- '(font-lock-constant-face      ((t :foreground "#a45bad")))
- '(font-lock-keyword-face       ((t :foreground "#237fbf" :weight bold)))
- '(font-lock-type-face          ((t :foreground "#c56ec3" :weight bold)))
- '(font-lock-preprocessor-face  ((t :foreground "#5f87ff")))
- '(font-lock-function-name-face ((t :foreground "#Afff87")))
- '(font-lock-string-face        ((t :foreground "#2aa198")))
- '(font-lock-warning-face       ((t :foreground "#dc752f"
-                                    :background "#292b2e")))
-
- ;; override manoj-dark's configuration
- '(font-lock-function-name-face ((t :height unspecified)))
 
  ;;;;;;;;;;;;;
  ;; default ;;

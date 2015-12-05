@@ -315,7 +315,7 @@ Setup irony-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_markdown-mode" "pkg_conf/init_markdown-mode.el"
-;;;;;;  (21970 21429 352072 665000))
+;;;;;;  (22114 15153 52837 865000))
 ;;; Generated autoloads from pkg_conf/init_markdown-mode.el
 
 (add-to-list 'auto-mode-alist (cons "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)\\)\\'" 'gfm-mode))
@@ -387,7 +387,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_windows" "pkg_conf/init_windows.el"
-;;;;;;  (22104 58514 382067 987000))
+;;;;;;  (22104 58992 198136 471000))
 ;;; Generated autoloads from pkg_conf/init_windows.el
 
 (autoload 'Y/win-switch-window "pkg_conf/init_windows" "\
@@ -474,7 +474,7 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "site-start.el")
-;;;;;;  (22104 58500 605369 868000))
+;;;;;;  (22114 15259 908836 937000))
 
 ;;;***
 

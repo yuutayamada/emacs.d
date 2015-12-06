@@ -46,11 +46,11 @@ EmacsDwim() {
 }
 
 TerminalEmacs() {
-  option="-t" background="" EmacsDwim $*
+  option="-t" EmacsDwim $*
 }
 
 GUI_Emacs() {
-  option="-c" background="&" EmacsDwim $*
+  option="-c" EmacsDwim $*
 }
 
 XtermEmacs() {

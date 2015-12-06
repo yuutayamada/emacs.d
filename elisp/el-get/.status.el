@@ -466,10 +466,6 @@
 :url "https://github.com/pope/ob-go.git"))
 (open-junk-file status "installed" recipe
 (:name open-junk-file :description "Open a junk (memo) file to try-and-error" :type emacswiki :features "open-junk-file"))
-(org-mode status "installed" recipe
-(:name org-mode :type git :description "I added org-mode" :build
-("make clean" "make")
-:url "git://orgmode.org/org-mode.git"))
 (org-trello status "installed" recipe
 (:name org-trello :type git :url "https://github.com/ardumont/org-trello.git" :depends
 (dash request elnode cl-lib json elnode s esxml kv)))

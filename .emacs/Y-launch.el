@@ -15,13 +15,6 @@
   (Y/add-load-path-subdir
    `(,el-get-dir ,package-dir ,config-dir ,dev)))
 
-;; Avoid default org-mode
-(require 'cl-lib)
-(setq load-path
-      (cl-loop for path in load-path
-               unless (string-match "/git.savannah.gnu.org/emacs/lisp/org$" path)
-               collect path))
-
 ;; EL-GET ;;
 ;; If el-get doesn't exist, then download it (with missing packages).
 ;; Otherwise ignore the loading.

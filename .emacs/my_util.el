@@ -118,7 +118,7 @@ file prefix by PREFIX."
        ;; Note that terminal emacs normally can not distinguish ESC and C-[
        ;; So only change in GUI Emacs
        (keyboard-translate ?\e ?\A-\e)
-       ;; On GUI Emacs, I didn't show Japanese Kanji correctly...
+       ;; On GUI Emacs, I didn't see Japanese Kanji correctly...
        (set-locale-environment "ja_JP.UTF-8"))
       (t ; nil for a termcap frame (a character-only terminal),
        ;; On Terminal Emacs, this shows eshell prompt string correctly.

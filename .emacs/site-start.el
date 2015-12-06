@@ -31,7 +31,7 @@
 ;; 5. emacs-startup-hook : after `command-line' function
 ;;    term-setup-hook    : same timing as emacs-statup-hook
 ;;                         but, no recommended officially
-;; 6. window-setup-hook  : after frame parameters have been set up
+;; 6. window-setup-hook  : after frame parameters set up
 
 ;; memo: https://www.gnu.org/software/emacs/manual/html_node/elisp/Startup-Summary.html#Startup-Summary
 ;;; Code:
@@ -56,7 +56,7 @@
    package-enable-at-startup nil
    ;; Basic display. Note that `emacs-basic-display' variable doesn't
    ;; work on Emacs Daemon, so this is better way. (I think)
-   ;; memo: I changed scroll bar on Xresouces
+   ;; memo: I changed scroll bar on Xresources
    menu-bar-mode nil
    tool-bar-mode nil
    )

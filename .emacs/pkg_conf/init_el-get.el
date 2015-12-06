@@ -359,15 +359,14 @@
            :depends (dash request elnode json elnode s esxml kv))
     (:name org-mode
            :type git
-           :description "I added org-mode"
            :build ("make clean" "make")
-           :url "git://orgmode.org/org-mode.git")
+           :url "git://orgmode.org/org-mode.git"
+           :builtin "23")
     (:name orgtbl-aggregate
            :type git
            :url "https://github.com/tbanel/orgaggregate.git")
     (:name ob-go ; org-babel go binding
            :type git
-           :depends (org-mode)
            :url "https://github.com/pope/ob-go.git")
     (:name pangu-spacing
            :type git

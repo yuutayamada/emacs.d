@@ -2,8 +2,8 @@
 
 # USER VARIABLES #
 # Define emacs
-emacs="emacs"
-emacsclient="emacsclient"
+emacs=emacs
+emacsclient=emacsclient
 
 # Set this to add extra directory path
 : epath:=""

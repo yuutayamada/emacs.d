@@ -13,10 +13,12 @@
 ;; This hook is activated after initialization of terminal
 (add-hook 'tty-setup-hook
           '(lambda ()
-             (when (getenv "XTERM_VERSION" (selected-frame))
-               (xterm-keybinder-setup))
-             (when (getenv "COLORTERM" (selected-frame))
-               (urxvt-keybinder-setup "xft:DejaVu Sans Mono" 12))
+             (cl-case (assoc-default 'terminal-initted (terminal-parameters))
+               (terminal-init-xterm
+                (xterm-keybinder-setup))
+               (terminal-init-rxvt
+                (when (getenv "COLORTERM" (selected-frame))
+                  (urxvt-keybinder-setup "xft:DejaVu Sans Mono" 12))))
              (xterm-mouse-mode t)
              ;; Set background-mode as dark always
              ;; This configuration affects inside terminal Emacs under the xterm or urxvt.

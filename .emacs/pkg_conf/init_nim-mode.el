@@ -2,16 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'flycheck-nim)
 (require 'nim-mode)
+(require 'company-nim)
 
 ;; Indent accordingly by the length of statements.
 (defconst nim-uncompleted-condition-indent 'stmt+1)
 
 (add-hook 'nim-mode-hook
-          '(lambda ()
-             (require 'flycheck-nim)
-             (require 'company-nim)
-             (add-to-list 'company-backends 'company-nim)))
+          '(lambda () (add-to-list 'company-backends 'company-nim)))
 
 ;; need to build nimsuggest and move nimsuggest bin file to Nim's bin directory.
 (defconst nim-nimsuggest-path

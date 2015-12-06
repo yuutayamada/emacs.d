@@ -70,6 +70,7 @@ EmacsClient() {
   if [ -z $xtermopt ] && [ -z $urxvt_client ]; then
     ${client} &
   elif test -z $xtermopt && test -n $urxvt_client; then
+    # Emacsclient on URxvt
     ${urxvt_client} \
       -depth 32 -bg rgba:0000/0000/0000/a777 \
       -xrm 'URxvt*perl-ext:' \
@@ -79,6 +80,7 @@ EmacsClient() {
       -e ${client} \
       > /dev/null 2>&1 &
   else
+    # Emacsclient on XTerm
     iconName=XtermEmacs
     eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"
   fi

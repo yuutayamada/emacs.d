@@ -2,15 +2,14 @@
 
 ;;; Commentary:
 ;;; Code:
-
-(let* ((branch
-        (expand-file-name
-         (format "%s../" (car (split-string (getenv "EMACSLOADPATH") ":")))))
-       (user-dir (expand-file-name user-emacs-directory))
+(require 'find-func)
+(defconst user-init-file (find-library-name "Y-launch"))
+(defconst config-dir (file-name-directory user-init-file))
+(let* ((branch    (substring config-dir 0 (- (length config-dir) 7)))
+       (user-dir  (expand-file-name user-emacs-directory))
        (cache-dir (format "%s/emacs/" (getenv "XDG_CACHE_HOME"))))
   (defconst yy/branch branch)
   ;; For My Emacs lisp configuration
-  (defconst config-dir                   (format "%s.emacs/" branch))
   (defconst package-conf-dir             (format "%spkg_conf/"       config-dir))
   (defconst custom-file                  (format "%semacs-custom.el" config-dir))
   (defconst custom-theme-directory       (format "%sstyle/themes"    config-dir))
@@ -22,7 +21,6 @@
   (defconst package-user-dir             (format "%spackage/" elisp-dir))
   ;; Override some variables
   (when (not (string= user-dir (expand-file-name "~/emacs.d")))
-    (defconst user-init-file               (format "%sY-launch" config-dir))
     (defconst eshell-directory-name        (format "%s.eshell/"     user-dir))
     (defconst save-place-file              (format "%s.save-places" user-dir))
     (defconst auto-save-list-file-name     (format "%sauto-save-list/.saves-"

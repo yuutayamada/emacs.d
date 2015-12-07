@@ -5,7 +5,6 @@
 (require 'org-loaddefs)
 (require 'org)
 (require 'init_org-mobile)
-(require 'org-eldoc)
 
 ;; Footer information
 (defconst org-html-postamble "")
@@ -16,13 +15,16 @@
               ;; un-bind needless keybinds
               (mykie:set-keys org-mode-map "C-a" "C-e" "RET" "C-j" "C-," "C-.")
               (org-indent-mode t)
-              (org-eldoc-load)
               ;; this is temporary function to produce a html file for my college homework
               (define-key org-mode-map (kbd "C-x p")
                 '(lambda () (interactive)
                    (cl-loop for (class . prof) in Y/prof-alist
                             if (string-match class (buffer-file-name))
                             do (cl-return (Y/org-html-export-to-html prof class)))))))
+
+;; latest org mode includes this
+(when (require 'org-eldoc nil 'noerror)
+  (add-hook 'org-mode-hook 'org-eldoc-load))
 
 ;;;* org-trello
 (add-hook 'org-mode-hook

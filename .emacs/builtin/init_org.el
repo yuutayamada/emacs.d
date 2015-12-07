@@ -20,7 +20,14 @@
                 '(lambda () (interactive)
                    (cl-loop for (class . prof) in Y/prof-alist
                             if (string-match class (buffer-file-name))
-                            do (cl-return (Y/org-html-export-to-html prof class)))))))
+                            do (cl-return (Y/org-html-export-to-html prof class)))))
+
+              ;; Nim Blogger (work in progress)
+              (with-no-warnings
+                (load "~/local/vcs/github.com/yuutayamada/nim-blogger/misc/nimblogger")
+                (setq nimblogger:blog-name "memo"
+                      nimblogger:command "~/local/vcs/github.com/yuutayamada/nim-blogger/nimblogger")
+                (define-key org-mode-map (kbd "C-S-p") 'nimblogger:post-article))))
 
 ;; latest org mode includes this
 (when (require 'org-eldoc nil 'noerror)

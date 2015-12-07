@@ -107,15 +107,6 @@
     (org-open-at-point))
    (t (org-insert-drawer))))
 
-;; https://support.google.com/blogger/answer/41400?hl=en
-;; work in progress
-;; (let* ((origin (current-buffer))
-;;        (file "~/share/doc/articles/memo/Blogger/emacs/org-mode-tip.html")
-;;        (b (find-file-noselect file)))
-;;   (switch-to-buffer b)
-;;   (setq hoge (libxml-parse-html-region (point-min) (point-max) nil t))
-;;   (switch-to-buffer origin))
-
 (provide 'init_org)
 
 ;; Local Variables:

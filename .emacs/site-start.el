@@ -63,6 +63,16 @@
 
   (add-hook 'after-init-hook
             '(lambda ()
+               ;; org-mode ;;
+               ;; delete built-in org-mode load-path for latest org-mode.
+               (require 'find-func)
+               (require 'cl-lib)
+               (setq load-path
+                     (cl-loop with file = (directory-file-name (file-name-directory (find-library-name "org")))
+                              for f in load-path
+                              unless (equal f file)
+                              collect f))
+               ;; my startup ;;
                (require 'Y-launch)
                (when (version< "24.0.0" emacs-version)
                  (require 'notifications) ; this needs Dbus

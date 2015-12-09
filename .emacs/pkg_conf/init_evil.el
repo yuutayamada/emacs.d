@@ -127,7 +127,8 @@
   "[ TAB" ffinder-jump
   "[ n"   git-gutter:next-hunk
   "[ p"   git-gutter:previous-hunk
-  )
+  "[ b"   (dired "~/share/doc/articles")
+  "[ c"   (dired "~/code/cheat_sheets"))
 
 ;; VISUAL STATE
 (mykie:set-keys evil-visual-state-map

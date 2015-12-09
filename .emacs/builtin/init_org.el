@@ -1,7 +1,6 @@
 ;;; init_org.el --- init file for org-mode
 ;;; Commentary:
 ;;; Code:
-
 (require 'org-loaddefs)
 (require 'org)
 (require 'init_org-mobile)
@@ -71,14 +70,14 @@
               For my college life."
   (interactive)
   (let* ((prof (format "Professor %s" professor))
-         (file (replace-regexp-in-string "_" " " (file-name-base)))
-         (org-html-preamble-format
-          `(("en" ,(mapconcat 'identity `("%a" ,prof ,class ,file "%T") "<br />")))))
-    (call-interactively 'org-html-export-to-html)))
+         (file (replace-regexp-in-string "_" " " (file-name-base))))
+    (cl-letf ((org-html-preamble-format
+               `(("en" ,(mapconcat 'identity `("%a" ,prof ,class ,file "%T") "<br />")))))
+      (call-interactively 'org-html-export-to-html))))
 
 (defun my/org-capitalize-header-string ()
   "Capitalize header string."
-  (if (org-on-heading-p)
+  (if (org-at-heading-p)
       (progn
         (capitalize-region (point-at-bol) (point-at-eol))
         (newline-and-indent))
@@ -100,10 +99,10 @@
     (org-edit-special))
    ((org-src-edit-buffer-p)
     (org-edit-src-exit))
-   ((org-table-p)
+   ((org-at-table-p)
     ;; (org-table-edit-field 4) ; check whether string is hidden or not
     (org-table-field-info nil))
-   ((org-on-heading-p)
+   ((org-at-heading-p)
     (org-todo))
    ((org-at-item-checkbox-p)
     (org-toggle-checkbox))

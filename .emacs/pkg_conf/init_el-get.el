@@ -360,8 +360,7 @@
     (:name org-mode
            :type git
            :build ("make clean" "make")
-           :url "git://orgmode.org/org-mode.git"
-           :builtin "23")
+           :url "git://orgmode.org/org-mode.git")
     (:name orgtbl-aggregate
            :type git
            :url "https://github.com/tbanel/orgaggregate.git")

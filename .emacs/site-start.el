@@ -100,16 +100,6 @@
                               (concat comment " This is scratch buffer.\n")))
                       (run-with-idle-timer 5 nil 'eldoc-mode t))))
 
-  ;; Dame???
-  ;; ;; Decide start up buffer
-  ;; (setq initial-buffer-choice
-  ;;       #'(lambda ()
-  ;;           (when (and (one-window-p)
-  ;;                      (switch-to-buffer (get-buffer "*Messages*")))
-  ;;             (highlight-phrase "error" 'error)
-  ;;             (highlight-phrase "\\(.*newer than byte-compiled.*\n\\|warning\\)"
-  ;;                               'warning))))
-
   ;; Use XDG_CONFIG_HOME as personal configuration file
   (let* ((emacs-conf-dir (format "%s/emacs/" (getenv "XDG_CONFIG_HOME")))
          (emacsrc (format "%semacsrc" emacs-conf-dir)))

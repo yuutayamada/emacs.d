@@ -11,19 +11,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; This hook is activated after initialization of terminal
-(add-hook 'tty-setup-hook
-          '(lambda ()
-             (cl-case (assoc-default 'terminal-initted (terminal-parameters))
-               (terminal-init-xterm
-                (xterm-keybinder-setup))
-               (terminal-init-rxvt
-                (when (getenv "COLORTERM" (selected-frame))
-                  (urxvt-keybinder-setup "xft:DejaVu Sans Mono" 12))))
-             (xterm-mouse-mode t)
-             ;; Set background-mode as dark always
-             ;; This configuration affects inside terminal Emacs under the xterm or urxvt.
-             ;; see also : https://www.gnu.org/software/emacs/manual/html_node/elisp/Terminal-Parameters.html
-             (set-terminal-parameter nil 'background-mode 'dark)))
+(add-hook
+ 'tty-setup-hook
+ '(lambda ()
+    (cl-case (assoc-default 'terminal-initted (terminal-parameters))
+      (terminal-init-xterm
+       (xterm-keybinder-setup))
+      (terminal-init-rxvt
+       (when (getenv "COLORTERM" (selected-frame))
+         (urxvt-keybinder-setup "xft:DejaVu Sans Mono" 12))))
+    (xterm-mouse-mode t)
+    ;; Set background-mode as dark always
+    ;; This configuration affects inside terminal Emacs under the xterm or urxvt.
+    ;; see also : https://www.gnu.org/software/emacs/manual/html_node/elisp/Terminal-Parameters.html
+    (set-terminal-parameter nil 'background-mode 'dark)))
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; auto capitalize ;;

@@ -86,6 +86,9 @@
 
   ;; show column number as well
   (setq column-number-mode t)
+  ;; remember-notes:
+  ;; use org-mode
+  (defconst remember-notes-initial-major-mode 'org-mode)
 
   ;; initial scratch buffer
   ;; initial major-mode of *scratch* buffer

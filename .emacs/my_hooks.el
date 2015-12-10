@@ -36,16 +36,6 @@
 (add-hook 'after-change-major-mode-hook 'Y/clean-mode-line)
 (add-hook 'find-file-hook 'Y/clean-mode-line)
 
-;;;;;;;;;;;;;;;;;;;;;;;;
-;; visual-fill-column ;;
-;;;;;;;;;;;;;;;;;;;;;;;;
-;; What a great package...
-(add-hook 'visual-line-mode-hook 'visual-fill-column-mode)
-(defadvice visual-fill-column-mode (around Y/stop-visual-fill-column-mode activate)
-  "Stop ‘visual-fill-column-mode in magit."
-  (unless (eq major-mode 'magit-status-mode)
-    ad-do-it))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; New hook from emacs 24.4 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

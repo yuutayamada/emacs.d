@@ -601,7 +601,7 @@
   "M-c" (find-file "~/share/doc/study/2015fall")
   "M-h" my/toggle-hide-show
   "M-r" win-switch-menu
-  "M-t" visual-line-mode
+  "M-t" Y/visual-fill-mode
   ;; toggle-truncate-lines
   "M-g" win-toggle-window
   "M-k" mode-compile-kill

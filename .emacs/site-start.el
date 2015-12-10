@@ -122,8 +122,10 @@
   (set-terminal-coding-system 'utf-8) ; for eshell
 
   ;; TITLE ;;
-  (setq frame-title-format (format "emacs@%s : %%f" (system-name)))
-
+  (setq frame-title-format
+        '((:eval (if (not (display-graphic-p))
+                     (send-string-to-terminal (format "\e]0;%s\007" (buffer-name)))
+                   (buffer-name)))))
   ;; LIMIT ;;
   (defconst recentf-max-menu-items  100)
   (defconst recentf-max-saved-items 10000)

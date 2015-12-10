@@ -113,8 +113,6 @@ file prefix by PREFIX."
       ;; 'pc' for a direct-write MS-DOS frame.
       ;; 'ns' for an Emacs frame on a GNUstep or Macintosh Cocoa display,
       ((x w32 pc ns)
-       ;; set title format of the window
-       (setq frame-title-format '(buffer-file-name "%f" ("%b")))
        ;; http://stackoverflow.com/questions/16677825/emacs-escape-key
        ;; This key swapping allow you to bind C-[ key!
        ;; Note that terminal emacs normally can not distinguish ESC and C-[

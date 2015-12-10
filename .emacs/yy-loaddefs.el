@@ -67,14 +67,26 @@ Toggle `iso-transl-ctl-x-8-map' keybinds.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_org" "builtin/init_org.el" (22062
-;;;;;;  27943 764420 132000))
+;;;### (autoloads nil "builtin/init_org" "builtin/init_org.el" (22117
+;;;;;;  54265 997134 159000))
 ;;; Generated autoloads from builtin/init_org.el
 
 (autoload 'my/org-dwim "builtin/init_org" "\
 My convinience function for `org-mode'.
 
 \(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "builtin/init_simple" "builtin/init_simple.el"
+;;;;;;  (22119 40980 466831 384000))
+;;; Generated autoloads from builtin/init_simple.el
+
+(autoload 'Y/visual-fill-mode "builtin/init_simple" "\
+Show filled sentences by visual line mode.
+If ARG is non-nil, turn on visual mode stuff.
+
+\(fn &optional ARG)" t nil)
 
 ;;;***
 
@@ -89,8 +101,8 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (22104 58186
-;;;;;;  450416 51000))
+;;;### (autoloads nil "my_function" "my_function.el" (22119 40939
+;;;;;;  845733 310000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -214,8 +226,8 @@ Lookup word by stardict.
 
 ;;;***
 
-;;;### (autoloads nil "my_util" "my_util.el" (22104 19276 198370
-;;;;;;  256000))
+;;;### (autoloads nil "my_util" "my_util.el" (22115 43420 594619
+;;;;;;  312000))
 ;;; Generated autoloads from my_util.el
 
 (autoload 'Y/load-packages "my_util" "\
@@ -423,22 +435,22 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "builtin/init_python.el" "builtin/init_recentf.el" "builtin/init_remember.el"
 ;;;;;;  "builtin/init_ruby-mode.el" "builtin/init_savehist.el" "builtin/init_server.el"
 ;;;;;;  "builtin/init_sgml-mode.el" "builtin/init_sh-script.el" "builtin/init_shr.el"
-;;;;;;  "builtin/init_simple.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
-;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
-;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
-;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "my_autoload.el"
-;;;;;;  "my_font.el" "my_hooks.el" "my_paths.el" "pkg_conf/init_ac_irony.el"
-;;;;;;  "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
-;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
-;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
-;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
-;;;;;;  "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw-gcal.el"
-;;;;;;  "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el" "pkg_conf/init_clojure-mode.el"
-;;;;;;  "pkg_conf/init_coffee-mode.el" "pkg_conf/init_company-c-headers.el"
-;;;;;;  "pkg_conf/init_company.el" "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el"
-;;;;;;  "pkg_conf/init_el-get.el" "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el"
-;;;;;;  "pkg_conf/init_evil-macros.el" "pkg_conf/init_evil-surround.el"
-;;;;;;  "pkg_conf/init_evil.el" "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
+;;;;;;  "builtin/init_tool-bar.el" "builtin/init_tramp.el" "builtin/init_verilog-mode.el"
+;;;;;;  "builtin/init_view.el" "builtin/init_whitespace.el" "builtin/init_windmove.el"
+;;;;;;  "depend/depend_emacs24.el" "depend/depend_emacs25.el" "depend/depend_main.el"
+;;;;;;  "depend/depend_windows.el" "my_autoload.el" "my_font.el"
+;;;;;;  "my_hooks.el" "my_paths.el" "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el"
+;;;;;;  "pkg_conf/init_ace-jump-mode.el" "pkg_conf/init_android-mode.el"
+;;;;;;  "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el" "pkg_conf/init_auto-async-byte-compile.el"
+;;;;;;  "pkg_conf/init_auto-capitalize.el" "pkg_conf/init_auto-java-complete.el"
+;;;;;;  "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el"
+;;;;;;  "pkg_conf/init_calfw-gcal.el" "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el"
+;;;;;;  "pkg_conf/init_clojure-mode.el" "pkg_conf/init_coffee-mode.el"
+;;;;;;  "pkg_conf/init_company-c-headers.el" "pkg_conf/init_company.el"
+;;;;;;  "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el" "pkg_conf/init_el-get.el"
+;;;;;;  "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el" "pkg_conf/init_evil-macros.el"
+;;;;;;  "pkg_conf/init_evil-surround.el" "pkg_conf/init_evil.el"
+;;;;;;  "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
 ;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_go-mode.el"
 ;;;;;;  "pkg_conf/init_google-translate-default-ui.el" "pkg_conf/init_grammar.el"
 ;;;;;;  "pkg_conf/init_grep-a-lot.el" "pkg_conf/init_hangman.el"
@@ -474,7 +486,7 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "site-start.el")
-;;;;;;  (22114 15259 908836 937000))
+;;;;;;  (22119 38267 72143 466000))
 
 ;;;***
 

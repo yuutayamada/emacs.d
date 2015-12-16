@@ -122,7 +122,11 @@ file prefix by PREFIX."
        (set-locale-environment "ja_JP.UTF-8"))
       (t ; nil for a termcap frame (a character-only terminal),
        ;; On Terminal Emacs, this shows eshell prompt string correctly.
-       (set-locale-environment "en_US.UTF-8")))))
+       (set-locale-environment "en_US.UTF-8")
+       ;; For small size PC
+       (when (< 194 (display-pixel-width))
+         (send-string-to-terminal
+          (format "\33]50;%s:pixelsize=%d\007" "xft:DejaVu Sans Mono" 10)))))))
 
 (provide 'my_util)
 

@@ -32,8 +32,6 @@ Otherwise, work as ‘backward-delete-char‘."
     (backward-delete-char 1)))
 
 (define-key nim-mode-map (kbd "C-h") 'Y/nim-smart-delete-backward-char)
-(define-key nim-mode-map (kbd ";") (lambda () (interactive) (insert ":")))
-(define-key nim-mode-map (kbd ":") (lambda () (interactive) (insert ";")))
 
 (provide 'init_nim-mode)
 

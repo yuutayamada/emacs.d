@@ -57,7 +57,7 @@
       org-default-notes-file (concat org-directory "agenda.org")
       ;;* TODOリストの設定
       org-use-fast-todo-selection t
-      ;; ;; this is for debugging.
+      ;; this is for debugging.
       ;; org-element-use-cache nil
       org-todo-keywords
       '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(x)" "CANCEL(c)"

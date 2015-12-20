@@ -6,6 +6,8 @@
 (require 'nim-mode)
 (require 'company-nim)
 
+(setq nim-use-smie-indent t)
+
 ;; Indent accordingly by the length of statements.
 (defconst nim-uncompleted-condition-indent 'stmt+1)
 
@@ -32,6 +34,20 @@ Otherwise, work as ‘backward-delete-char‘."
     (backward-delete-char 1)))
 
 (define-key nim-mode-map (kbd "C-h") 'Y/nim-smart-delete-backward-char)
+
+(defadvice nim-mode-smie-rules (around output-debug-message activate)
+  "Output debug information."
+  (let ((k (ad-get-arg 0))
+        (v (ad-get-arg 1))
+        (fmt (concat "kind(%s)-Token(%s)-Point(%d)\n"
+                     "Return(%s)-sibling(%s)-parent(%s)-prev(%s)\n"
+                     "hanging(%s==%s)")))
+    ad-do-it
+    (message (format fmt k v (point)
+                     (ignore-errors (smie-rule-sibling-p))
+                     (ignore-errors smie--parent)
+                     (ignore-errors (smie-rule-hanging-p))
+                     ad-return-value))))
 
 (provide 'init_nim-mode)
 

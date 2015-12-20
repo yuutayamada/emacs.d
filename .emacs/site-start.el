@@ -124,7 +124,9 @@
   (defconst recentf-max-saved-items 10000)
   (setq max-lisp-eval-depth         100000
         history-length              10000
-        max-specpdl-size            1000000)
+        max-specpdl-size            1000000
+        ;; minibuffer’s height
+        max-mini-window-height      0.5)
 
   ;;* yes or no -> y or n
   (fset 'yes-or-no-p 'y-or-n-p)

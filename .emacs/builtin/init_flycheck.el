@@ -10,6 +10,11 @@
 (package-initialize)
 
 (require 'flycheck)
+(let ((emacs (file-name-directory (executable-find "emacs"))))
+  (setq flycheck-gcc-include-path (list emacs)
+        flycheck-clang-include-path flycheck-gcc-include-path)
+  ;; for nim
+  (defconst flycheck-nim-args (list (format "--passC:-I%s" emacs))))
 
 ;; Flycheck-tip
 (require 'flycheck-tip)

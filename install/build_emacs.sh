@@ -21,15 +21,15 @@ git clean -xdf
 git checkout master
 git pull git://git.savannah.gnu.org/emacs.git
 
-# git checkout emacs-24
-# git pull
+git checkout emacs-25
+git pull
 
 # configure
 ./autogen.sh
 ./configure \
   CFLAGS='-O3' \
   --with-x-toolkit=lucid --with-dbus -without-toolkit-scroll-bars \
-  --with-xim --without-makeinfo --with-cairo
+  --with-xim --without-makeinfo --with-modules
 
 # make or make bootstrap?
 make

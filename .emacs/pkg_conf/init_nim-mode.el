@@ -40,8 +40,7 @@ Otherwise, work as ‘backward-delete-char‘."
   (let ((k (ad-get-arg 0))
         (v (ad-get-arg 1))
         (fmt (concat "kind(%s)-Token(%s)-Point(%d)\n"
-                     "Return(%s)-sibling(%s)-parent(%s)-prev(%s)\n"
-                     "hanging(%s==%s)")))
+                     "sibling(%s)-parent(%s)-hanging(%s==%s)")))
     ad-do-it
     (message (format fmt k v (point)
                      (ignore-errors (smie-rule-sibling-p))

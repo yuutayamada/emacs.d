@@ -578,11 +578,13 @@
   :C-u     (eiji:search))
 
 ;; C-M- prefix ;;
+;; C-M-a : begging-of-defun
+;; C-M-e : end-of-defun
+;; C-M-h : mark-defun
 (mykie:set-keys global-map
   "C-M-g"
   :default grep
   :C-u     my/refactor
-  "C-M-h" :default howm-menu
   "C-M-n" :default tabbar-forward
   "C-M-p" :default tabbar-backward)
 

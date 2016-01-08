@@ -25,7 +25,6 @@
 
 (setq show-paren-delay 0
       show-paren-style 'mixed)
-(set-face-background 'show-paren-match "#6a5acd")
 
 (provide 'init_paren)
 

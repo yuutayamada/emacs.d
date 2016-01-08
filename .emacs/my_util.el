@@ -126,7 +126,7 @@ file prefix by PREFIX."
        ;; For small size PC
        (when (< 194 (display-pixel-width))
          (send-string-to-terminal
-          (format "\33]50;%s:pixelsize=%d\007" "xft:DejaVu Sans Mono" 11)))))))
+          (format "\33]50;%s:pixelsize=%d\007" "xft:DejaVu Sans Mono" 12)))))))
 
 (provide 'my_util)
 

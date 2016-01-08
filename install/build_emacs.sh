@@ -21,8 +21,8 @@ git clean -xdf
 git checkout master
 git pull git://git.savannah.gnu.org/emacs.git
 
-git checkout emacs-25
-git pull
+# git checkout emacs-25
+# git pull
 
 # configure
 ./autogen.sh

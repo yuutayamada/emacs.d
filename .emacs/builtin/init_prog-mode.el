@@ -36,7 +36,7 @@
               (run-with-idle-timer 5 nil 'flyspell-prog-mode)
               (unless prettify-symbols-mode
                 (prettify-symbols-mode t))
-              (highlight-indentation-current-column-mode)
+              (indent-guide-mode t)
               (rainbow-delimiters-mode)))
 
 (add-hook 'before-save-hook

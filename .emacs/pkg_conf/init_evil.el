@@ -183,6 +183,7 @@
                  (tibus-set-engine "'mozc-jp'")))))
 
 ;; xcc
+(require 'xterm-cursor-changer)
 (defadvice evil-set-cursor (around Y/evil-change-cursor activate)
   "Change cursor shape on xterm Emacs."
   (if (not (xcc-xterm-p))

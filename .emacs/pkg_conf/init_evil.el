@@ -99,7 +99,6 @@
    ;; :after  (lambda () (Y/change-style nil 0))
    )
   "q" :default nil ; this means just a quit and do not insert q
-  "c" show-cheat-sheet
   "o" evil-normal-state
   "g" grep
   "t" tabbar-forward

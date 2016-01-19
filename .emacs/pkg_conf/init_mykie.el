@@ -42,6 +42,10 @@
                 (:evil-emacs  . (eq (bound-and-true-p evil-state) 'emacs))
                 (:evil-normal . (eq (bound-and-true-p evil-state) 'normal))
                 (:evil-insert . (eq (bound-and-true-p evil-state) 'insert))
+                (:multiline-comment
+                 . (let ((ppss (syntax-ppss)))
+                     (and (not (eq t (nth 4 ppss)))
+                          (nth 4 ppss))))
                 (:hs-hidden     . (and mykie:prog-mode-flag
                                        (condition-case err
                                            (hs-already-hidden-p)

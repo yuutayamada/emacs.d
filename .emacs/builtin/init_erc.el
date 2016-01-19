@@ -26,27 +26,24 @@
 (require 'cl-lib)
 
 ;;;###autoload
-(defun Y/start-irc ()
+(defun Y/erc-start-irc ()
   "Connect to IRC."
   (interactive)
-  (let* ((nickname "uta"))
+  (let* ((nickname (downcase (car (split-string (user-full-name) " ")))))
     (setq erc-autojoin-channels-alist
           '(("freenode.net"
-             "#documentcloud" "#emacs" "#git" "#javascript" "#lisp" "#node.js"
-             "#ruby-lang" "#scala" "#evil-mode" "#go-nuts")
+             "#emacs" "#git" "#javascript" "#lisp" "#nim" "#evil-mode" "#go-nuts")
             ("oftc.net"
-             "#awesome" "#debian")
-            ("undernet"
-             "#toronto"))
+             "#awesome" "#debian"))
           erc-nick (append `(,nickname)
                            (cl-loop for i from ?a upto ?z
                                     for string = (char-to-string i)
                                     if (string-match "[a-z]" string)
                                     collect (concat nickname (capitalize string)))))
     (erc-tls :server "irc.oftc.net" :port 6697
-             :full-name "Y eugene Y")
+             :full-name (user-full-name))
     (erc :server "irc.freenode.net" :port 6667
-         :full-name "Y eugene Y")))
+         :full-name (user-full-name))))
 
 ;; For tabbar mode
 (setq erc-header-line-uses-tabbar-p t)

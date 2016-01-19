@@ -1,4 +1,4 @@
-;;; init_mykie.el --- init file for mykie.el
+;;; init_mykie.el --- init file for mykie.el -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013 by Yuta Yamada
 

@@ -64,3 +64,6 @@
 [submodule "elisp/self/nim-mode"]
 	path = elisp/self/nim-mode
 	url = https://github.com/yuutayamada/nim-mode.git
+[submodule "elisp/self/toggle-ibus"]
+	path = elisp/self/toggle-ibus
+	url = https://github.com/yuutayamada/toggle-ibus-el.git

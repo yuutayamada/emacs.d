@@ -19,6 +19,8 @@
                 (t (whitespace-mode t)))
               ;; show paren
               (show-paren-mode t)
+              ;; hideshow
+              (hs-minor-mode t)
               ;; flycheck or other syntax check tool
               (cl-case major-mode
                 ((scala-mode clojure-mode coffee-mode)

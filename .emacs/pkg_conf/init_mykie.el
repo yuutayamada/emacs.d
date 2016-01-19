@@ -180,9 +180,10 @@
   :C-u*2   switch-to-haskell
 
   "C-j"
-  :default        my/newline-and-indent
-  :comment        comment-indent-new-line
-  :python-mode    newline-and-indent
+  :default           my/newline-and-indent
+  :multiline-comment newline
+  :comment           comment-indent-new-line
+  :python-mode       newline-and-indent
   :skk-active     (skk-kakutei)
   :skk-on         (skk-kakutei)
   :C-u&url        (browse-url-at-point)
@@ -467,15 +468,6 @@
   :evil-normal (mykie :prog ffinder-jump-to-begging
                       :org-mode org-cycle))
 
-;; WIP
-(let ((A-i (lookup-key global-map (kbd "A-i"))))
-  (global-set-key (kbd "C-i")
-                  (lambda () (interactive)
-                    (call-interactively
-                     (if (display-graphic-p)
-                         (lookup-key global-map (kbd "A-i"))
-                       (lookup-key global-map [tab]))))))
-
 ;; RET key ;;
 (mykie:set-keys nil
   "M-RET" sane-term
@@ -639,51 +631,10 @@
 
 ;; Escape ;;
 (mykie:set-keys esc-map
-  "ESC" magit-status)
+  "ESC" tibus-toggle)
 
 (mykie:set-keys global-map
   "A-ESC" ESC-prefix)
-
-;; TOY FUNC ;;
-(defun mykie:vi-faker ()
-  (interactive)
-  (let ((scroll (lambda (direction)
-                  (condition-case err
-                      (cl-case direction
-                        (next     (call-interactively 'next-line))
-                        (previous (call-interactively 'previous-line))
-                        (up       (scroll-up-command))
-                        (down     (scroll-down-command)))
-                    (error err)))))
-    (mykie:loop
-     "e" (if (e2wm:pst-get-instance)
-             (e2wm:stop-management)
-           (e2wm:start-management))
-     "1" e2wm:dp-code
-     "2" e2wm:dp-two
-     "3" e2wm:dp-htwo
-     "4" e2wm:dp-doc
-     ">" e2wm:pstset-next-pst-command
-     "<" e2wm:pstset-prev-pst-command
-     ;; show hide
-     "H" hs-hide-all
-     "S" hs-show-all
-     "t" hs-toggle-hiding
-     ;; vi style
-     "h" backward-char
-     "j" (funcall scroll 'next)
-     "k" (funcall scroll 'previous)
-     "l" forward-char
-     ;; window move
-     "B" windmove-left
-     "N" windmove-down
-     "P" windmove-up
-     "F" windmove-right
-     ;; less
-     "f" (funcall scroll 'up)
-     "b" (funcall scroll 'down)
-     "/" (return (call-interactively 'isearch-forward))))
-  (hs-show-all))
 
 ;; Overridden keys ;;
 (defvar my/overriding-mode-map (make-sparse-keymap))

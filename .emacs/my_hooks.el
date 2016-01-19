@@ -103,6 +103,15 @@
                           (lookup-key map (kbd "RET")))))
                   (error err)))))
 
+;; reload xmodmap setting (FIXME)
+(defun Y/reload-xmodmap ()
+  (ignore-errors
+    (call-process-shell-command
+     (format ": xmodmap %s/X11/xmodmap >/dev/null 2>&1"
+             (getenv "XDG_CONFIG_HOME")))))
+
+(add-hook 'tibus-after-toggle-hook 'Y/reload-xmodmap)
+
 (provide 'my_hooks)
 
 ;; Local Variables:

@@ -25,6 +25,12 @@
               (cl-case major-mode
                 ((scala-mode clojure-mode coffee-mode)
                  nil)
+                (nim-mode
+                 (when (and buffer-file-name
+                            (not (member
+                                  (file-name-extension buffer-file-name)
+                                  '("nims" "nimble"))))
+                   (flycheck-mode t)))
                 (t (flycheck-mode t)))
               ;; flyspell-prog-mode
               (run-with-idle-timer 5 nil 'flyspell-prog-mode)

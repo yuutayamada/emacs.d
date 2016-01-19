@@ -343,8 +343,6 @@
 (autoload 'turn-on-hi2 "hi2" nil t)
 :depends
 (haskell-mode)))
-(highlight-indentation status "installed" recipe
-(:name highlight-indentation :description "Function for highlighting indentation" :type git :url "https://github.com/antonj/Highlight-Indentation-for-Emacs"))
 (hl-line+ status "installed" recipe
 (:name hl-line+ :auto-generated t :type emacswiki :description "Extensions to hl-line.el." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/hl-line+.el"))
 (hooglel status "installed" recipe
@@ -357,6 +355,8 @@
 (:name idle-require :type git :url "https://github.com/nschum/idle-require.el.git"))
 (image-dired+ status "installed" recipe
 (:name image-dired+ :type git :description "I added image-dired+" :url "https://github.com/mhayashi1120/Emacs-image-diredx.git"))
+(indent-guide status "installed" recipe
+(:name indent-guide :description "show vertical lines to guide indentation." :website "https://github.com/zk-phi/indent-guide" :type github :pkgname "zk-phi/indent-guide"))
 (inf-ruby status "installed" recipe
 (:name inf-ruby :description "Inferior Ruby Mode - ruby process in a buffer." :type github :pkgname "nonsequitur/inf-ruby"))
 (irony-eldoc status "installed" recipe

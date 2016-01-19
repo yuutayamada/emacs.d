@@ -26,11 +26,11 @@ FILES should put a place where is located to elisp directory.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (21916
-;;;;;;  11116 913651 774000))
+;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (22171
+;;;;;;  54360 387741 862000))
 ;;; Generated autoloads from builtin/init_erc.el
 
-(autoload 'Y/start-irc "builtin/init_erc" "\
+(autoload 'Y/erc-start-irc "builtin/init_erc" "\
 Connect to IRC.
 
 \(fn)" t nil)
@@ -67,8 +67,8 @@ Toggle `iso-transl-ctl-x-8-map' keybinds.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_org" "builtin/init_org.el" (22121
-;;;;;;  64417 392876 230000))
+;;;### (autoloads nil "builtin/init_org" "builtin/init_org.el" (22155
+;;;;;;  34999 581815 820000))
 ;;; Generated autoloads from builtin/init_org.el
 
 (autoload 'my/org-dwim "builtin/init_org" "\
@@ -101,8 +101,8 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (22134 17027
-;;;;;;  69937 444000))
+;;;### (autoloads nil "my_function" "my_function.el" (22165 36901
+;;;;;;  933212 336000))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -485,7 +485,7 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "site-start.el")
-;;;;;;  (22147 6528 472197 286000))
+;;;;;;  (22169 45407 482430 572000))
 
 ;;;***
 

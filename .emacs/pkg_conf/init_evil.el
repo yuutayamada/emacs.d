@@ -169,6 +169,19 @@
 (advice-add 'other-window-or-split :after 'evil-refresh-cursor)
 (add-hook 'find-file-hook 'evil-refresh-cursor)
 
+;; Set IME to English
+(require 'toggle-ibus)
+(add-hook 'evil-normal-state-entry-hook
+          '(lambda () (tibus-set-engine "'xkb:us::eng'")))
+
+(require 'rx)
+(add-hook 'evil-emacs-state-entry-hook
+          '(lambda ()
+             (let ((c (char-before (max (point) (point-min)))))
+               (when (and c (string-match (rx (category japanese))
+                                          (char-to-string c)))
+                 (tibus-set-engine "'mozc-jp'")))))
+
 ;; xcc
 (defadvice evil-set-cursor (around Y/evil-change-cursor activate)
   "Change cursor shape on xterm Emacs."

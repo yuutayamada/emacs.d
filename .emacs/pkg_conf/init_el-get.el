@@ -211,6 +211,9 @@
     (:name less-css-mode
            :type git
            :url "https://github.com/purcell/less-css-mode.git")
+    (:name linum-relative
+           :type github
+           :pkgname "coldnew/linum-relative")
     (:name lingr
            :type git
            :url "https://github.com/lugecy/lingr-el.git")

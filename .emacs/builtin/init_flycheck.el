@@ -6,15 +6,12 @@
 
 (require 'my_autoload)
 
-;; prevents "package XXX is not installable"
-(package-initialize)
-
 (require 'flycheck)
 (let ((emacs (file-name-directory (executable-find "emacs"))))
   (setq flycheck-gcc-include-path (list emacs)
         flycheck-clang-include-path flycheck-gcc-include-path)
   ;; for nim
-  (defconst flycheck-nim-args (list (format "--passC:-I%s" emacs))))
+  (defvar flycheck-nim-args (list (format "--passC:-I%s" emacs))))
 
 ;; Flycheck-tip
 (require 'flycheck-tip)
@@ -26,9 +23,9 @@
 (let ((pic "~/media/pictures/Clippy2.jpg"))
   (when (file-exists-p pic)
     (setq error-tip-notify-parametors
-          '(:title "It looks like you want to know current error(s):"
+          `(:title "It looks like you want to know current error(s):"
                    :category "im.error"
-                   :app-icon pic))))
+                   :app-icon ,pic))))
 
 ;; Flycheck-package ;;
 (setq-default flycheck-emacs-lisp-load-path load-path)

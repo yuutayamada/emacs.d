@@ -34,19 +34,31 @@
 (require 'my_autoload)
 (require 'go-mode)
 (require 'company-go) ; in the gocode
+(require 'commenter)
 
-;; (require 'init_masaw)
-;; ;; Reset go-mode-hook
-;; (setq go-mode-hook nil)
-
-(add-hook 'go-mode-hook
-          '(lambda()
-             (setq-local company-backends '(company-go))
-             ;; Use goimports instead of go-fmt
-             (setq gofmt-command "goimports") ; goimports
-             ;; (define-key go-mode-map (kbd "C-3") 'masaw-mode)
-             (my/remap-semicolon go-mode-map)
-             (go-eldoc-setup)))
+(add-hook
+ 'go-mode-hook
+ '(lambda()
+    (setq-local company-backends '(company-go))
+    ;; Use goimports instead of go-fmt
+    (setq gofmt-command "goimports") ; goimports
+    ;; (define-key go-mode-map (kbd "C-3") 'masaw-mode)
+    (my/remap-semicolon go-mode-map)
+    (setq-local commenter-config
+                '((single
+                   . ((comment-start      . "//")
+                      (comment-end        . "")
+                      (comment-start-skip . "\\(//+\\|/\\*+\\)\\s *")))
+                  (multi
+                   . ((comment-start      . "/* ")
+                      (comment-end        . " */")
+                      (comment-start-skip . "/\\*")
+                      (comment-end-skip   . "\\*/")
+                      (comment-continue   . " * ")
+                      (comment-padding    . " ")
+                      (comment-multi-line . t)))))
+    (commenter-setup)
+    (go-eldoc-setup)))
 
 (defadvice gofmt-before-save
   (around add-guard-conditions activate)

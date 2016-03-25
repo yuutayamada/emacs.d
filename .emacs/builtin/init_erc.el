@@ -29,21 +29,15 @@
 (defun Y/erc-start-irc ()
   "Connect to IRC."
   (interactive)
-  (let* ((nickname (downcase (car (split-string (user-full-name) " ")))))
-    (setq erc-autojoin-channels-alist
-          '(("freenode.net"
-             "#emacs" "#git" "#javascript" "#lisp" "#nim" "#evil-mode" "#go-nuts")
-            ("oftc.net"
-             "#awesome" "#debian"))
-          erc-nick (append `(,nickname)
-                           (cl-loop for i from ?a upto ?z
-                                    for string = (char-to-string i)
-                                    if (string-match "[a-z]" string)
-                                    collect (concat nickname (capitalize string)))))
-    (erc-tls :server "irc.oftc.net" :port 6697
-             :full-name (user-full-name))
-    (erc :server "irc.freenode.net" :port 6667
-         :full-name (user-full-name))))
+  ;; (erc-tls :server "irc.oftc.net" :port 6697
+  ;;          :full-name (user-full-name))
+  (erc :server "irc.freenode.net" :port 6667
+       :full-name (user-full-name)))
+
+(setq erc-quit-reason-various-alist
+      '(("test" "testing IRC software on Emacs")
+        ;; Default message
+        ("^$" "Quit: leaving")))
 
 ;; For tabbar mode
 (setq erc-header-line-uses-tabbar-p t)

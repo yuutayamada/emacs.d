@@ -10,10 +10,6 @@
                   :pkgname "purcell/ac-slime"))
  (ace-isearch status "installed" recipe
               (:name ace-isearch :type git :url "https://GitHub.com/tam17aki/ace-isearch.git"))
- (ace-jump-mode status "installed" recipe
-                (:name ace-jump-mode :website "https://github.com/winterTTr/ace-jump-mode/wiki" :description "A quick cursor location minor mode for emacs." :type github :pkgname "winterTTr/ace-jump-mode" :prepare
-                       (eval-after-load "ace-jump-mode"
-                         '(ace-jump-mode-enable-mark-sync))))
  (ag-el status "installed" recipe
         (:name ag-el :type git :url "https://github.com/Wilfred/ag.el.git"))
  (aggressive-indent-mode status "installed" recipe
@@ -33,12 +29,7 @@
                   (:name auto-capitalize :type git :url "https://github.com/yuutayamada/auto-capitalize-el.git"))
  (auto-complete status "installed" recipe
                 (:name auto-complete :website "https://github.com/auto-complete/auto-complete" :description "The most intelligent auto-completion extension." :type github :pkgname "auto-complete/auto-complete" :depends
-                       (popup fuzzy)
-                       :features auto-complete-config :post-init
-                       (progn
-                         (add-to-list 'ac-dictionary-directories
-                                      (expand-file-name "dict" default-directory))
-                         (ac-config-default))))
+                       (popup fuzzy)))
  (auto-complete-c-headers status "installed" recipe
                           (:name auto-complete-c-headers :website "https://github.com/mooz/auto-complete-c-headers" :description "An auto-complete source for C/C++ header files." :type github :pkgname "mooz/auto-complete-c-headers" :depends auto-complete :prepare
                                  (progn
@@ -88,6 +79,9 @@
                                     '("Cakefile" . coffee-mode)))))
  (company-c-headers status "installed" recipe
                     (:name company-c-headers :type github :pkgname "randomphrase/company-c-headers"))
+ (company-flx status "installed" recipe
+              (:name company-flx :description "Fuzzy matching for company." :type github :pkgname "PythonNut/company-flx" :depends
+                     (company-mode flx)))
  (company-irony status "installed" recipe
                 (:name company-irony :description "company-mode completion back-end for irony-mode" :type github :depends
                        (company-mode irony-mode cl-lib)
@@ -194,6 +188,8 @@
            (:name festival :auto-generated t :type emacswiki :description "emacs interface into festival." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/festival.el"))
  (fish-mode status "installed" recipe
             (:name fish-mode :type github :pkgname "wwwjfy/emacs-fish"))
+ (flx status "installed" recipe
+      (:name flx :description "Fuzzy matching with good sorting in ido" :type github :pkgname "lewang/flx"))
  (flycheck status "installed" recipe
            (:name flycheck :type git :depends
                   (f pkg-info)
@@ -202,10 +198,6 @@
                  (:name flycheck-irony :type github :depends
                         (flycheck irony-mode)
                         :pkgname "Sarcasm/flycheck-irony"))
- (flycheck-nim status "installed" recipe
-               (:name flycheck-nim :type github :depends
-                      (flycheck dash)
-                      :pkgname "ALSchwalm/flycheck-nim"))
  (flycheck-package status "installed" recipe
                    (:name flycheck-package :type github :depends
                           (flycheck)
@@ -522,7 +514,7 @@
 (point-undo status "installed" recipe
 (:name point-undo :auto-generated t :type emacswiki :description "undo/redo position" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/point-undo.el"))
 (popup status "installed" recipe
-(:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :submodule nil :pkgname "auto-complete/popup-el"))
+(:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :submodule nil :depends cl-lib :pkgname "auto-complete/popup-el"))
 (popwin status "installed" recipe
 (:name popwin :description "Popup Window Manager." :website "https://github.com/m2ym/popwin-el" :type github :pkgname "m2ym/popwin-el" :load-path
 ("." "misc")))
@@ -586,6 +578,8 @@
 (:name smartparens :description "Autoinsert pairs of defined brackets and wrap regions" :type github :pkgname "Fuco1/smartparens" :depends dash))
 (smtpmail-multi status "installed" recipe
 (:name smtpmail-multi :type http :url "http://www.emacswiki.org/emacs-en/download/smtpmail-multi.el"))
+(spinner status "installed" recipe
+(:name spinner :description "Emacs mode-line spinner for operations in progress." :type github :pkgname "Bruce-Connor/spinner.el"))
 (splitter status "installed" recipe
 (:name splitter :type http :url "https://raw.githubusercontent.com/chumpage/chumpy-windows/master/splitter.el"))
 (sql-indent status "installed" recipe

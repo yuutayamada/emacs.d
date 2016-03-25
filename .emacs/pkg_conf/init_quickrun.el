@@ -59,10 +59,6 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION."
                  "%c run *.go %o %a")))))
  :override t)
 
-(quickrun-add-command "nim"
-                      '((:remove . ("%n" "nimcache/%S.c" "nimcache/%S.o")))
-                      :override t)
-
 ;; (quickrun-add-command
 ;;  "clojure"
 ;;  '((:command . "clojure")

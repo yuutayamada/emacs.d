@@ -124,6 +124,8 @@
   "+"     evil-numbers/inc-at-pt
   "-"     evil-numbers/dec-at-pt
   "[ TAB" ffinder-jump
+  "[ f"   error-tip-cycle-dwim
+  "[ F"   (error-tip-cycle-dwim t)
   "[ n"   git-gutter:next-hunk
   "[ p"   git-gutter:previous-hunk
   "[ b"   (dired "~/share/doc/articles")

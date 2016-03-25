@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/zsh
+
+# Memo:
+# Use #!/bin/zsh to suppress flycheck error
 
 # USER VARIABLES #
 # Define emacs

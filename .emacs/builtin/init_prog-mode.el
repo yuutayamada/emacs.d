@@ -10,6 +10,8 @@
           #'(lambda ()
               ;; Electric-indent-mode
               (electric-indent-local-mode -1)
+              ;; linum relative
+              ;; (linum-relative-mode t)
               ;; Auto Completion
               (company-mode t)
               ;; indentation and whitespace
@@ -25,12 +27,6 @@
               (cl-case major-mode
                 ((scala-mode clojure-mode coffee-mode)
                  nil)
-                (nim-mode
-                 (when (and buffer-file-name
-                            (not (member
-                                  (file-name-extension buffer-file-name)
-                                  '("nims" "nimble"))))
-                   (flycheck-mode t)))
                 (t (flycheck-mode t)))
               ;; flyspell-prog-mode
               (run-with-idle-timer 5 nil 'flyspell-prog-mode)
@@ -64,7 +60,7 @@
                   (lua-mode
                    (push '("function" . ?ƛ) prettify-symbols-alist))
                   (verilog-mode
-                   (push '("begin" . ?{) prettify-symbols-alist)
+                   (push '("begin" . ?\{) prettify-symbols-alist)
                    (push '("end"   . ?}) prettify-symbols-alist)))))
 
 (provide 'init_prog-mode)

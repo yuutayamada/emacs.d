@@ -26,8 +26,8 @@ FILES should put a place where is located to elisp directory.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (22171
-;;;;;;  54360 387741 862000))
+;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (22173
+;;;;;;  35194 7032 456000))
 ;;; Generated autoloads from builtin/init_erc.el
 
 (autoload 'Y/erc-start-irc "builtin/init_erc" "\
@@ -327,7 +327,7 @@ Setup irony-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_markdown-mode" "pkg_conf/init_markdown-mode.el"
-;;;;;;  (22114 15153 52837 865000))
+;;;;;;  (22201 31979 570289 16000))
 ;;; Generated autoloads from pkg_conf/init_markdown-mode.el
 
 (add-to-list 'auto-mode-alist (cons "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)\\)\\'" 'gfm-mode))
@@ -379,7 +379,7 @@ Whether the point is overlay-ed or not.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_quickrun" "pkg_conf/init_quickrun.el"
-;;;;;;  (21916 11115 865616 970000))
+;;;;;;  (22210 20576 46820 584000))
 ;;; Generated autoloads from pkg_conf/init_quickrun.el
 
 (autoload 'my/quickrun-dwim "pkg_conf/init_quickrun" "\
@@ -438,8 +438,8 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "builtin/init_tramp.el" "builtin/init_verilog-mode.el" "builtin/init_view.el"
 ;;;;;;  "builtin/init_whitespace.el" "builtin/init_windmove.el" "depend/depend_emacs24.el"
 ;;;;;;  "depend/depend_emacs25.el" "depend/depend_main.el" "depend/depend_windows.el"
-;;;;;;  "my_autoload.el" "my_font.el" "my_hooks.el" "my_paths.el"
-;;;;;;  "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el" "pkg_conf/init_ace-jump-mode.el"
+;;;;;;  "emacs-custom.el" "my_autoload.el" "my_font.el" "my_hooks.el"
+;;;;;;  "my_paths.el" "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el"
 ;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
 ;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
 ;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
@@ -485,7 +485,7 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
 ;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "site-start.el")
-;;;;;;  (22169 45407 482430 572000))
+;;;;;;  (22214 27020 869177 559000))
 
 ;;;***
 

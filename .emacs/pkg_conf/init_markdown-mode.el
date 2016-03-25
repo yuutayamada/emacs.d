@@ -3,6 +3,9 @@
 ;;; Code:
 (require 'markdown-mode)
 
+(setq markdown-css-paths
+      "~/local/vcs/github.com/sindresorhus/github-markdown-css/github-markdown.css")
+
 ;;;###autoload
 (add-to-list 'auto-mode-alist
              (cons "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)\\)\\'" 'gfm-mode))

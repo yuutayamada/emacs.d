@@ -28,6 +28,12 @@
     (:name acquire
            :type git
            :url "https://github.com/yuutayamada/acquire-el.git")
+    (:name auto-complete
+       :website "https://github.com/auto-complete/auto-complete"
+       :description "The most intelligent auto-completion extension."
+       :type github
+       :pkgname "auto-complete/auto-complete"
+       :depends (popup fuzzy))
     (:name auto-async-byte-compile
            :type git
            :url "https://github.com/emacsattic/auto-async-byte-compile.git")

@@ -74,7 +74,7 @@
  loga-lookup-in-buffer loga-lookup-in-buffer-light loga-lookup-in-popup
  loga-fallback loga-decide-source-word my/search-pronunciation)
 ("lookup"
- my/lookup-by-ace-jump my/helm-lookup-history myhistory-save-search-history
+ my/helm-lookup-history myhistory-save-search-history
  myhistory-save-remembered-history Y/lookup)
 ;; M
 ;; ("magit" magit-get-top-dir magit-rebase-info magit-anything-modified-p magit-no-commit-p)

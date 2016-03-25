@@ -64,17 +64,6 @@
  '(show-paren-match   ((t :foreground "black" :background "#6a5acd")))
  '(paren-face         ((t :foreground "#A6E22A" :background nil)))
 
- ;;;;;;;;;;;;;;;;;;
- ;; Company-mode ;;
- ;;;;;;;;;;;;;;;;;;
- '(company-tooltip ((t :inherit 'popup-tip-face
-                       :foreground nil
-                       :background nil)))
- '(company-tooltip-selection ((t :inherit 'popup-menu-selection-face
-                                 :background nil)))
- '(company-tooltip-common ((t :foreground "#5f5fff")))
- '(company-tooltip-common-selection ((t :foreground "white")))
-
  ;; DOCTYPE
  '(nxml-markup-declaration-delimiter ((t (:foreground "#74715D"))))
 
@@ -130,9 +119,6 @@
  ;; grammar.el
  '(grammar-error-face  ((t :background "#Ff6347"
                            :foreground "#000000")))
- ;; Ace jump
- '(ace-jump-face-foreground ((t :background "red"
-                                :foreground "#Ffff00")))
  ;; avy
  '(avy-lead-face   ((t :foreground "#ffffff" :background "#5c5cff")))
  '(avy-lead-face-0 ((t :foreground "#000000" :background "#87d7ff")))
@@ -229,19 +215,6 @@
  '(org-code  ((t :inherit 'font-lock-builtin-face)))
  '(org-hide ((t :foreground "black"))) ; set black to hide even transparent terminal Emacs
 
- ;; popup/popwin
- '(popup-menu-selection-face ((t :background "#5c5cff"
-                                 :foreground "#E5e5e5")))
- '(popup-face                ((t :background "#E5e5e5"
-                                 :foreground "#000000")))
- '(popup-isearch-match       ((t :background "#000080")))
- '(popup-menu-face           ((t :foreground "#00bfff"
-                                 :background "#0a0a0a")))
- '(popup-menu-selection-face ((t :foreground "#000000"
-                                 :background "#ffffff")))
- '(popup-tip-face            ((t :foreground "#000000"
-                                 :background "#00ced1")))
-
  ;; highlight-indentation
  '(highlight-indentation-current-column-face ((t :background "grey40")))
  '(highlight-indentation-face                ((t :background "red")))
@@ -325,4 +298,4 @@
 ;; mode: emacs-lisp
 ;; End:
 
-;;; my_theme.el ends here
+;;; my_pkg-theme.el ends here

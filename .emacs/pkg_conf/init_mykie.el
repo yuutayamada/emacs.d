@@ -426,7 +426,6 @@
   [(henkan)]
   :default           (yim-convert)
   :C-u               skk-j-mode-on
-  :gnus-summary-mode (my/lookup-by-ace-jump)
 
   [(hiragana-katakana)] :default yim-abbrev
 
@@ -548,7 +547,7 @@
 
   "M-q"
   :default     (message "M-q")
-  :prog        (my/quickrun-dwim)
+  :prog        quickrun
   :C-u&prog    (my/quickrun-dwim ask)
   :region&prog quickrun-region
 
@@ -596,7 +595,7 @@
           (e2wm:stop-management)
         (e2wm:start-management))
   "M-s" magit-status
-  "M-c" (find-file "~/share/doc/study/2015fall")
+  "M-c" (find-file "~/share/doc/study/2016spring")
   "M-h" my/toggle-hide-show
   "M-r" win-switch-menu
   "M-t" Y/visual-fill-mode

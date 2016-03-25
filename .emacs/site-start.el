@@ -43,7 +43,7 @@
   (add-hook 'emacs-startup-hook
             '(lambda ()
                ;; Refresh GC threshold
-               (setq gc-cons-threshold (* 8 1024 1024))
+               (setq gc-cons-threshold (* 256 1024))
                (message (format "Welcome to Emacs(%s)" emacs-version))))
 
   ;; My core configuration files
@@ -247,6 +247,22 @@
   (add-to-list 'auto-mode-alist (cons "\\..*ignore\\'" 'default-generic-mode))
   ;; X default files
   (add-to-list 'auto-mode-alist (cons (getenv "XAPPLRESDIR") 'conf-xdefaults-mode))
+
+  ;; COMMENT
+  (setq comment-style 'extra-line)
+  (advice-add 'comment-indent :around
+              '(lambda (orig &rest r)
+                 (let ((ppss (syntax-ppss)))
+                   (cond
+                    ((and (not (use-region-p))
+                          comment-use-syntax
+                          (nth 4 ppss))
+                     (if (eq t (nth 4 ppss))
+                         (comment-line 1)
+                       (save-excursion
+                         (goto-char (nth 8 ppss))
+                         (comment-line 1))))
+                    (t (apply orig r))))))
 
   ;; KEY BINDS ;;
 

@@ -1,4 +1,4 @@
-;;; init_prog-mode.el --- Functions related programming
+;;; init_prog-mode.el --- Functions related programming -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -28,12 +28,12 @@
                 ((scala-mode clojure-mode coffee-mode)
                  nil)
                 (t (flycheck-mode t)))
-              ;; flyspell-prog-mode
-              (run-with-idle-timer 5 nil 'flyspell-prog-mode)
               (unless prettify-symbols-mode
                 (prettify-symbols-mode t))
               (indent-guide-mode t)
-              (rainbow-delimiters-mode)))
+              (rainbow-delimiters-mode)
+              ;; flyspell-prog-mode
+              (flyspell-prog-mode)))
 
 (add-hook 'before-save-hook
           #'(lambda ()
@@ -51,17 +51,17 @@
 ;; LISP
 (setq-default lisp--prettify-symbols-alist `(("lambda" . ?ƛ)))
 (advice-add 'prettify-symbols-mode :before
-            #'(lambda (&rest r)
+            #'(lambda (&rest _r)
                 (cl-case major-mode
                   (haskell-mode
-                   (push '("\\" . ?ƛ) prettify-symbols-alist))
+                   (push '("\\"       . ?ƛ) prettify-symbols-alist))
                   (js2-mode
                    (push '("function" . ?ƛ) prettify-symbols-alist))
                   (lua-mode
                    (push '("function" . ?ƛ) prettify-symbols-alist))
                   (verilog-mode
-                   (push '("begin" . ?\{) prettify-symbols-alist)
-                   (push '("end"   . ?}) prettify-symbols-alist)))))
+                   (push '("begin"    . ?\{) prettify-symbols-alist)
+                   (push '("end"      . ?}) prettify-symbols-alist)))))
 
 (provide 'init_prog-mode)
 

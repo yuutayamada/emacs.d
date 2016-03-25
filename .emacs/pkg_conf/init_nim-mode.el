@@ -1,36 +1,106 @@
-;;; init_nim-mode.el --- nim-mode's init file -*- lexical-binding: t; -*-
+;;; init_nim-mode.el --- Configuration for nim-mode -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2016 by Yuta Yamada
+
+;; Author: Yuta Yamada <cokesboy"at"gmail.com>
+
+;;; License:
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 ;;; Commentary:
+
+;; My configuration for ‘nim-mode’.
+
+;; There is another general programming configuration here:
+;; https://github.com/yuutayamada/emacs.d/blob/master/.emacs/builtin/init_prog-mode.el
+
 ;;; Code:
 
-(require 'flycheck-nim)
 (require 'nim-mode)
 (require 'company-nim)
 
+;; This ‘nim-nimsuggest-path’ variable is automatically set the return
+;; value of ‘executable-find’, so if you include nimsuggest to your
+;; PATH, you don’t need this configuration.
+(unless nim-nimsuggest-path
+  (setq nim-nimsuggest-path
+        (format "%s/github.com/yuutayamada/nimsuggest/nimsuggest"
+                (shell-command-to-string "echo -n `ghq root`"))))
+
+(defun Y/nim-mode-common-setup ()
+  "My configuration for ‘nim-mode’ and ‘nimscript-mode’."
+
+  ;; Comment style. see also ‘comment-styles’ variable.
+  (setq-local comment-style 'indent)
+
+  ;; Configuration for company-mode.
+  ;; Note that if you can’t activate auto-complete, please
+  ;; check the value of ‘company-backends’. It check from
+  ;; first element its variable.
+  (add-to-list 'company-backends
+               '(company-nim :with company-nim-builtin))
+
+  ;; My key bindings for nim-mode and nimscript-mode.
+  (define-key nim-mode-map (kbd "C-0") 'my-nim-print)
+  (define-key nim-mode-map (kbd "C-h") 'nim-electric-backward-char)
+
+  ;; If you bind another function to TAB that
+  ;; ‘nim-indent-trigger-commands’ doesn’t include, you have to
+  ;;  add the function to ‘nim-indent-trigger-commands’ to use cycle
+  ;;  indent.
+  ;;
+  ;; For example:
+  ;;   (add-to-list 'nim-indent-trigger-commands 'your-function)
+  ;;
+  ;; Below configuration is workaround for my package
+  ;; https://github.com/yuutayamada/mykie-el
+  ;; Normally above ‘(add-to-list ...)’ is enough though.
+  (define-key nim-mode-map (kbd "TAB")
+    '(lambda ()
+       (interactive)
+       (setq this-command 'indent-for-tab-command)
+       (mykie:global-map:<tab>:key))))
+
+(add-hook 'nim-mode-hook 'Y/nim-mode-common-setup)
+
+;; For flycheck-nim-async.
+;; (flycheck support using nimsuggest’s chk option)
+;; Note that I will change/delete this configuration in future.
+;; (probably flycheck-nim-async will be automatically turn on
+;; if users set ‘nim-nimsuggest-path’)
+(require 'flycheck-nim-async)
+(defconst nimsuggest-vervosity nil)
+
+;; Convenience(?) functions
 (defun nim-electric-backward-char ()
-  "If current line is just an empty line, indent backward.
+  "If the cursor position is top of the line delete char by ‘nim-indent-offset’.
 Otherwise, work as ‘backward-delete-char‘."
   (interactive)
-  (if (and (looking-back (rx line-start (1+ " ")) nil)
-           (not (nth 3 (syntax-ppss)))
-           (not (nth 4 (syntax-ppss))))
-      (nim-indent-line t)
-    (backward-delete-char 1)))
+  (condition-case err
+      (if (and (looking-back (rx line-start (1+ " ")) nil)
+               (not (nth 3 (syntax-ppss)))
+               (not (nth 4 (syntax-ppss))))
+          (nim--indent-line-core t)
+        (backward-delete-char 1))
+    (error (message "%s" err))))
 
-(add-hook 'nim-mode-hook
-          '(lambda ()
-             (define-key nim-mode-map (kbd "C-h")
-               'nim-electric-backward-char)
-             (define-key nim-mode-map (kbd "TAB")
-               (lambda ()
-                 (interactive)
-                 (setq this-command 'indent-for-tab-command)
-                 (mykie:global-map:<tab>:key)))
-             (add-to-list 'company-backends 'company-nim)))
-
-;; need to build nimsuggest and move nimsuggest bin file to Nim's bin directory.
-(defconst nim-nimsuggest-path
-  (format "%s/github.com/nim-lang/nimsuggest/nimsuggest"
-          (shell-command-to-string "echo -n `ghq root`")))
+(defun my-nim-print ()
+  "Just for debugging purpose for nimsuggest."
+  (interactive)
+  (nim-call-epc
+   'sug
+   (lambda (args) (message "%s" args))))
 
 (provide 'init_nim-mode)
 

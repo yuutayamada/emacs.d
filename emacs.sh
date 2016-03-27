@@ -15,7 +15,7 @@ epath_default=$(cd `dirname $0`; pwd)
 Epath="${epath_default}${epath}"
 
 # daemon name
-daemon_name="GNU"
+daemon_name="${USERNAME}"
 
 # Daemon option
 # I wouldn't use -Q option because I couldn't find the way to set `initial-major-mode'.

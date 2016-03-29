@@ -38,6 +38,12 @@
         (format "%s/github.com/yuutayamada/nimsuggest/nimsuggest"
                 (shell-command-to-string "echo -n `ghq root`"))))
 
+;; Modify triple double quote to another form (for ‘pretty-symbol-mode’)
+;; my memo:
+;;   http://unicode.org/cldr/utility/confusables.jsp?a=%22&r=None
+;;   https://en.wikipedia.org/wiki/Quotation_mark
+;; (setq nim-pretty-triple-double-quotes (cons ?« ?»))
+
 (defun Y/nim-mode-common-setup ()
   "My configuration for ‘nim-mode’ and ‘nimscript-mode’."
 

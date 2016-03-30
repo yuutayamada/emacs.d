@@ -478,23 +478,7 @@
   "A-m"
   :default     (newline)
   :C-u         (mykie:do-while "m" my/replicate-current-line)
-  :org-mode    (org-return)
-
-  ;; GUI Emacs can distinguish [return] key(Enter) and C-m key.
-  ;; But, on Terminal, it does not...
-  [return]
-  :default  (newline)
   :org-mode    (org-return))
-
-;; C-m behave as [return]s function on terminal, but
-;; on GUI Emacs, it behave as A-m to use both C-m and return(enter)
-;; key.
-(global-set-key (kbd "C-m")
-                (lambda () (interactive)
-                  (call-interactively
-                   (if (display-graphic-p)
-                       (lookup-key global-map (kbd "A-m"))
-                     (lookup-key global-map [return])))))
 
 ;; TODO: make :on-enter, :on-exit
 (mykie:define-prefix-key global-map "M-j"

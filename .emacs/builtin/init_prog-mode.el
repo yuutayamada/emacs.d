@@ -7,33 +7,33 @@
 (require 'my_autoload)
 
 (add-hook 'prog-mode-hook
-          #'(lambda ()
-              ;; Electric-indent-mode
-              (electric-indent-local-mode -1)
-              ;; linum relative
-              ;; (linum-relative-mode t)
-              ;; Auto Completion
-              (company-mode t)
-              ;; indentation and whitespace
-              (cl-case major-mode
-                ((go-mode sql-mode)
-                 (setq-local indent-tabs-mode t)) ; Use tab instead of space
-                (t (whitespace-mode t)))
-              ;; show paren
-              (show-paren-mode t)
-              ;; hideshow
-              (hs-minor-mode t)
-              ;; flycheck or other syntax check tool
-              (cl-case major-mode
-                ((scala-mode clojure-mode coffee-mode)
-                 nil)
-                (t (flycheck-mode t)))
-              (unless prettify-symbols-mode
-                (prettify-symbols-mode t))
-              (indent-guide-mode t)
-              (rainbow-delimiters-mode)
-              ;; flyspell-prog-mode
-              (flyspell-prog-mode)))
+          '(lambda ()
+             ;; Electric-indent-mode
+             (electric-indent-local-mode -1)
+             ;; linum relative
+             ;; (linum-relative-mode t)
+             ;; Auto Completion
+             (company-mode t)
+             ;; indentation and whitespace
+             (cl-case major-mode
+               ((go-mode sql-mode)
+                (setq-local indent-tabs-mode t)) ; Use tab instead of space
+               (t (whitespace-mode t)))
+             ;; show paren
+             (show-paren-mode t)
+             ;; hideshow
+             (hs-minor-mode t)
+             ;; flycheck or other syntax check tool
+             (cl-case major-mode
+               ((scala-mode clojure-mode coffee-mode)
+                nil)
+               (t (flycheck-mode t)))
+             (unless prettify-symbols-mode
+               (prettify-symbols-mode t))
+             (indent-guide-mode t)
+             (rainbow-delimiters-mode)
+             ;; flyspell-prog-mode
+             (flyspell-prog-mode)))
 
 (add-hook 'before-save-hook
           #'(lambda ()

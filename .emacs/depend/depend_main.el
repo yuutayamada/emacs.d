@@ -2,20 +2,20 @@
 
 ;;; Commentary:
 
+(require 'cl-lib)
+
 ;;; Code:
 (apply `(require ,(intern (format "depend_emacs%i" emacs-major-version))))
 
 ;; OS
-(cond
- ;; for Mac
- ((string-match "apple-darwin" system-configuration)
-  nil)
- ;; for Linux
- ((string-match "linux-gnu" system-configuration)
-  nil)
- ;; for Windows
- ((string-match "mingw" system-configuration)
-  (load "depend_windows")))
+(cl-case system-type
+  (gnu/linux
+   ;; IME (fcitx)
+   (when (fboundp 'fcitx-aggressive-setup)
+     (require 'fcitx)
+     (fcitx-aggressive-setup)))
+  (cygwin
+   (load "depend_windows")))
 
 (provide 'depend_main)
 

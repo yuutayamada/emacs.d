@@ -2,13 +2,14 @@
 ;;; Commentary:
 ;;; Code:
 
-;; ‘package--ensure-init-file’ check this ‘package-initialize’s existence in
-;; ‘user-init-file’. If you omit this, you can not use ‘package-install’.
-;; (package-initialize)
-
 ;; PREREQUISITE CONFIGURATION ;;
 (require 'my_paths)    ; PATH CONFIGURATION
 (require 'my_util)     ; Load general functions
+
+(load "emacs-custom")
+;; ‘package--ensure-init-file’ check this ‘package-initialize’s existence in
+;; ‘user-init-file’. If you omit this, you can not use ‘package-install’.
+(package-initialize)
 
 ;; Prepare load-paths
 (let ((dev (concat elisp-dir "self/")))

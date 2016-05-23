@@ -551,9 +551,6 @@
     (:name transpose-frame
            :type git
            :url "https://github.com/emacsmirror/transpose-frame.git")
-    (:name tron-theme
-           :type git
-           :url "https://github.com/ivanmarcin/emacs-tron-theme.git")
     (:name twittering-mode
            :type git
            :url "https://github.com/hayamiz/twittering-mode.git")
@@ -576,26 +573,9 @@
     (:name web-mode
            :type git
            :url "https://github.com/fxbois/web-mode.git")
-    (:name wgrep
-           :type git
-           :url "https://github.com/mhayashi1120/Emacs-wgrep.git")
     (:name windows
            :type http
            :url "http://www.gentei.org/~yuuji/software/euc/windows.el")
-    (:name yasnippet ; latest version
-           :website "https://github.com/capitaomorte/yasnippet.git"
-           :description "YASnippet is a template system for Emacs."
-           :type github
-           :pkgname "capitaomorte/yasnippet"
-           :features "yasnippet"
-           :compile "yasnippet.el")
-    (:name yatemplate
-           :depends (yasnippet)
-           :type github
-           :url "https://github.com/mineo/yatemplate.git")
-    (:name yaml-mode
-           :type git
-           :url "https://github.com/yoshiki/yaml-mode")
     (:name yim
            :type git
            :url "https://github.com/yuutayamada/yim.git")))

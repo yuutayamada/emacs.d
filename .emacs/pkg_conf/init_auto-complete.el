@@ -6,7 +6,6 @@
 
 (require 'cl-lib)
 (require 'my_autoload)
-(defconst ac-dictionary-directories (concat el-get-dir "auto-complete/dict"))
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)

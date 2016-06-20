@@ -27,7 +27,8 @@
                                                    user-dir))
     (defconst recentf-save-file            (format "%s.recentf"  user-dir))
     (defconst savehist-file                (format "%s.savehist" user-dir))
-    (defconst bookmark-default-file        (format "%sbookmarks" cache-dir))))
+    (defconst bookmark-default-file        (format "%sbookmarks" cache-dir))
+    (defconst mew-rc-file (format "%srcfiles/init-mew" package-conf-dir))))
 
 (provide 'my_paths)
 

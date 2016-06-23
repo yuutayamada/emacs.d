@@ -366,10 +366,6 @@
 (:name logalimacs :type git :url "https://github.com/logaling/logalimacs.git"))
 (logito status "installed" recipe
 (:name logito :type github :pkgname "sigma/logito" :description "logging library for Emacs" :website "http://github.com/sigma/logito"))
-(lookup status "installed" recipe
-(:name lookup :type github :build
-("./autogen.sh && ./configure && make")
-:url "https://github.com/lookup2/lookup2.git"))
 (lua-mode status "installed" recipe
 (:name lua-mode :description "A major-mode for editing Lua scripts" :depends
 (ample-regexps)
@@ -554,11 +550,6 @@
 (:name seqcmd :type github :pkgname "yuutayamada/seqcmd"))
 (set-perl5lib status "installed" recipe
 (:name set-perl5lib :type http :url "http://coderepos.org/share/browser/lang/elisp/set-perl5lib/set-perl5lib.el?format=txt" :description "set path into PERL5LIB if its file path includes 'lib' directory" :website "http://d.hatena.ne.jp/sun-basix/20080117/1200528765" :localname "set-perl5lib.el"))
-(slime status "installed" recipe
-(:name slime :type git :url "https://github.com/slime/slime.git" :load-path
-("./" "./contrib")))
-(slime-js status "installed" recipe
-(:name slime-js :type git :url "https://github.com/swank-js/slime-js.git"))
 (smartparens status "installed" recipe
 (:name smartparens :description "Autoinsert pairs of defined brackets and wrap regions" :type github :pkgname "Fuco1/smartparens" :depends dash))
 (smtpmail-multi status "installed" recipe

@@ -57,7 +57,7 @@ So, I made my own."
 (setq grep-command (cons (concat grep-command-before-query "\"\" .")
                          (+ (length grep-command-before-query) 2)))
 
-(require 'init_grep-a-lot)
+;; (require 'init_grep-a-lot)
 
 (provide 'init_grep)
 

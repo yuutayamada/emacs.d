@@ -1,7 +1,7 @@
 ;;; init_popwin.el --- init file for popwin.el
 ;;; Commentary:
 ;;; Code:
-(require 'init_windows) ; must load windows.el before loading popwin.el
+
 (require 'popwin)
 
 (setq popwin:popup-window-height 0.5
@@ -17,7 +17,6 @@
          ("*Backtrace*")
 
          ("*sdic*" :noselect t)
-         (" *auto-async-byte-compile*" :position right)
          ("*Colors*")
          ("\*grep\*.*" :regexp t :stick t)
          ("*markdown-output*" :noselect)

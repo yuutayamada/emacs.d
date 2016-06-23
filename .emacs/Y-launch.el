@@ -6,65 +6,97 @@
 (require 'my_paths)    ; PATH CONFIGURATION
 (require 'my_util)     ; Load general functions
 
-(load "emacs-custom")
-;; ‘package--ensure-init-file’ check this ‘package-initialize’s existence in
-;; ‘user-init-file’. If you omit this, you can not use ‘package-install’.
-(package-initialize)
-
 ;; Prepare load-paths
 (let ((dev (concat elisp-dir "self/")))
   (Y/add-load-path-subdir
-   `(,el-get-dir ,package-dir ,config-dir ,dev)))
+   `(,package-dir ,config-dir ,dev)))
+
+;; Custom variables ;;
+(load "emacs-custom")
 
 ;; EL-GET ;;
-;; If el-get doesn't exist, then download it (with missing packages).
-;; Otherwise ignore the loading.
-(unless (file-exists-p (concat el-get-dir "el-get/el-get.el"))
-  (require 'init_el-get)
-  (Y/add-load-path-subdir `(,el-get-dir)))
+(add-to-list 'load-path package-conf-dir)
+(require 'init_el-get)
 
 ;; AUTOLOAD CONFIGURATION ;;
 ;; Note: this file should loads after el-get configuration or
 ;; it will fail.
 (require 'my_autoload)
 
-;; INIT SCRIPT ;;
-(condition-case err
-    ;; Load only necessary files for less loading time
-    (Y/load-packages
-     '(depend_main   ; this file should be loaded first than other files.
-       tabbar        ; turn on tabbar
-       my_automode   ; define mode ext
-       my_hooks      ; define hooks
-       init_windows  ; load windows.el before mykie
-       init_mykie    ; define my keybinds
-       ))
-  (error (message (format "Init function error: %s" err))))
+;; Sync all packages for el-get. ‘el-get’ function registers
+;; load-path, path of init-PKGNAME.el.
+;; Note that sometimes el-get’s .loaddefs.el might break, so check
+;; the file if you caught suspicious behavior (probably you can solve
+;; by "el-get-update package")
+(let ((el-get-is-lazy t) ; because my_autoload.el ‘require’ .loaddefs.el
+      (done ; wait until the sync is done
+       (prog1 'sync-completed
+         (el-get 'sync
+                 '(windows ; load windows.el before mykie
+                   evil beacon org-mode popwin auto-compile
+                   helm helm-c-yasnippet yasnippet f dash idle-require
+                   indent-guide rainbow-delimiters git-gutter company-mode
+                   auto-capitalize tabbar magit with-editor
+                   popup flycheck flycheck-tip paredit seqcmd mew)))))
 
-;; common color theme
-(load-theme 'my_pkg t)
+  (when done
+    ;; INIT SCRIPT ;;
+    (condition-case err
+        ;; Load only necessary files for less loading time
+        (Y/load-packages
+         '(depend_main   ; this file should be loaded first than other files.
+           tabbar
+           my_automode   ; define mode ext
+           my_hooks      ; define hooks
+           init_mykie    ; define my keybinds
+           ))
 
-;; Color and Frame config ;;
-(if (not (daemonp))
-    ;; Regular Emacs
-    (Y/frame-init-func)
-  ;; Daemon Emacs ;;
-  (when (equal 1 (length (frame-list)))
-    (set-frame-name "root") ; Name "root" as base frame name. (emacs --daemon)
-    (add-hook 'after-make-frame-functions 'Y/frame-init-func)))
+      (error (message (format "Init function error: %s" err))))
 
-;; idle require (for lazy loading)
-(defconst idle-require-symbols
-  ;; This list should register only kind of utility package or your heavy
-  ;; rotation package.
-  '(yasnippet helm ispell tramp evil eshell auto-capitalize magit
-    org filecache helm-elisp flycheck el-get))
-(idle-require-mode t)
+    ;; COLOR THEME
+    (load-theme 'my_pkg t)
 
-;; Boot Time ;;
-;; Show boot time at *message* buffer
-;; because emacs-init-time is not precise.
-(message-startup-time "total time past")
+    ;; Color and Frame config ;;
+    (if (not (daemonp))
+        ;; Regular Emacs
+        (Y/frame-init-func)
+      ;; Daemon Emacs ;;
+      (when (equal 1 (length (frame-list)))
+        (set-frame-name "root") ; Name "root" as base frame name. (emacs --daemon)
+        (add-hook 'after-make-frame-functions 'Y/frame-init-func)))
+
+    ;; Major-modes
+    (el-get 'sync '(org-mode nim-mode lua-mode web-mode))
+
+    (run-with-idle-timer
+     3.0 nil
+     '(lambda ()
+        (progn
+          ;; When SYNC is `nil' (the default), all installations run
+          ;; concurrently, in the background.
+          (el-get)
+
+          ;; idle require (for lazy loading)
+          (defconst idle-require-symbols
+            '(yasnippet helm ispell tramp eshell auto-capitalize magit
+              org filecache helm-elisp flycheck))
+          (idle-require-mode t))))
+
+    ;; PACKAGE.el ;;
+    ;; ‘package--ensure-init-file’ check this ‘package-initialize’s existence in
+    ;; ‘user-init-file’. If you omit this, you can not use ‘package-install’.
+    (package-initialize)
+    (defconst package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("ELPA"  . "https://tromey.com/elpa/")
+        ("gnu"   . "https://elpa.gnu.org/packages/")))
+
+    ;; Boot Time ;;
+    ;; Show boot time at *message* buffer
+    ;; because emacs-init-time is not precise.
+    (message-startup-time "total time past")
+
+    ))
 
 (provide 'Y-launch)
 ;;; Y-launch.el ends here

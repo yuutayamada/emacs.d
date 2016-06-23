@@ -1,4 +1,4 @@
-;;; init_evil.el --- init file for evil-mode -*- lexical-binding: t; -*-
+;;; init-evil.el --- init file for evil-mode -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; MEMO
@@ -21,17 +21,16 @@
 (setq evil-default-state 'emacs
       evil-inhibit-esc t)
 ;; Use emacs-state as insert mode.
+
 ;; Evil uses ESC key as `evil-esc' and I don't like this due to the delay.
 (advice-add 'evil-insert-state :override 'evil-emacs-state)
-(add-hook 'evil-after-load-hook
-          '(lambda ()
-             ;; Only keybind C-[ (don't affect to other ESC map)
-             (define-key evil-emacs-state-map   (kbd "A-ESC") 'evil-normal-state)
-             (define-key evil-visual-state-map  (kbd "A-ESC") 'evil-normal-state)
-             (define-key evil-motion-state-map  (kbd "A-ESC") 'evil-normal-state)
-             (define-key evil-replace-state-map (kbd "A-ESC") 'evil-normal-state)
-             (define-key evil-normal-state-map  (kbd "A-ESC") 'evil-force-normal-state)
-             (Y/swap-key evil-motion-state-map ":" "'")))
+;; Only keybind C-[ (don't affect to other ESC map)
+(define-key evil-emacs-state-map   (kbd "A-ESC") 'evil-normal-state)
+(define-key evil-visual-state-map  (kbd "A-ESC") 'evil-normal-state)
+(define-key evil-motion-state-map  (kbd "A-ESC") 'evil-normal-state)
+(define-key evil-replace-state-map (kbd "A-ESC") 'evil-normal-state)
+(define-key evil-normal-state-map  (kbd "A-ESC") 'evil-force-normal-state)
+(Y/swap-key evil-motion-state-map ":" "'")
 
 ;; Move evil states to emacs state.
 (when (or evil-insert-state-modes evil-motion-state-modes)
@@ -171,19 +170,6 @@
 (advice-add 'other-window-or-split :after 'evil-refresh-cursor)
 (add-hook 'find-file-hook 'evil-refresh-cursor)
 
-;; Set IME to English
-(require 'toggle-ibus)
-(add-hook 'evil-normal-state-entry-hook
-          '(lambda () (tibus-set-engine "'xkb:us::eng'")))
-
-(require 'rx)
-(add-hook 'evil-emacs-state-entry-hook
-          '(lambda ()
-             (let ((c (char-before (max (point) (point-min)))))
-               (when (and c (string-match (rx (category japanese))
-                                          (char-to-string c)))
-                 (tibus-set-engine "'mozc-jp'")))))
-
 ;; xcc
 (require 'xterm-cursor-changer)
 (defadvice evil-set-cursor (around Y/evil-change-cursor activate)
@@ -198,17 +184,16 @@
 (add-hook 'after-save-hook 'evil-normal-state)
 
 ;; evil surround
-(require 'evil-surround)
-(global-evil-surround-mode 1)
+(add-hook 'evil-mode-hook 'global-evil-surround-mode)
 
 ;; Go through end of line (evil affects M-f command, so this config is essential.)
 (setq evil-move-beyond-eol t)
 
-(provide 'init_evil)
+(provide 'init-evil)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_evil.el ends here
+;;; init-evil.el ends here

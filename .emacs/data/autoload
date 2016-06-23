@@ -6,8 +6,6 @@
 ;; Set pair of file name and function's list
 ;; auto-capitalize(Note I'm using emacswiki's auto-capitalize)
 ;; A
-("auto-async-byte-compile" auto-async-byte-compile auto-async-byte-compile-mode
- enable-auto-async-byte-compile-mode)
 ("android-mode" android-create-project android-mode)
 ;; B
 ("browse-url" browse-url-interactive-arg)
@@ -122,9 +120,6 @@
  sbtp-begging-of-line sbtp-console-send sbtp-console-send-line
  sbtp-console-send-current-page)
 ("scala-mode" my/ensime-goto-next-error scala-mode)
-("smart-tabs-mode"
- smart-tabs-mode smart-tabs-mode-enable smart-tabs-mode-advice
- smart-tabs-insinuate)
 ("s" s-chomp)
 ("skype" skype)
 ("skk-server" skk-server-live-p)
@@ -151,11 +146,6 @@
 ;; ("init_iso-transl" Y/iso-transl-toggle-minor-mode)
 ;; ("init_filecache" Y/filecache-ido-find-file)
 ("init_xmp" xmp)
-;; ("init_ov" Y/ov-toggle-http-overlay Y/ov-turn-off-http-overlay
-;;  Y/ov-turn-on-http-overlay Y/ov-http-overlay-at-point-p)
-("init_windows"
- win-switch-menu resume-windows win-switch-to-window
- my/define-windows-prefix-key)
 
 ;; Local Variables:
 ;; coding: utf-8

@@ -1,6 +1,12 @@
-;;; init_mew.el --- init file for mew.el
+;;; init-mew.el --- init file for mew.el
 
 ;;; Commentary:
+
+;; Make sure "~/.gnupg/gpg-agent.conf"
+;; and Add mew-pinentry to pinentry-program
+;; For example
+;; pinentry-program /home/you/.emacs.d/el-get/mew/bin/mew-pinentry
+
 ;; If first time what use the mew,
 ;; perhaps you should update state that type by C-u Z
 ;; ~/Mail/.mew-passwd.gpg format, it's sample
@@ -27,7 +33,7 @@
 (require 'mew)
 (require 'notifications nil t)
 (require 'auth-source)
-(require 'mew-w3m)
+;; (require 'mew-w3m)
 
 (defadvice mew (around Y/switch-to-m-window activate)
   "Switch m window."
@@ -68,7 +74,7 @@ For example
              finally return alist)))
 
 (setq mew-draft-keep-text-charset t
-      mew-use-w3m-minor-mode t
+      ;; mew-use-w3m-minor-mode t
       mew-mailbox-type 'imap
       mew-ssl-verify-level 0
       ;; Leave mail of pop server after get mail
@@ -175,7 +181,7 @@ For example
 
 (add-hook 'mew-message-mode-hook
           (lambda ()
-            (w3m-minor-mode)
+            ;; (w3m-minor-mode)
             (local-set-key (kbd "O") 'mew-browse-url-at-point)
             (local-set-key (kbd "C-x m") 'mew-browse-url-at-point)))
 
@@ -186,11 +192,11 @@ For example
 ;;            (fboundp 'libxml-parse-html-region))
 ;;   (defconst mew-prog-text/html 'shr-render-region))
 
-(provide 'init_mew)
+(provide 'init-mew)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_mew.el ends here
+;;; init-mew.el ends here

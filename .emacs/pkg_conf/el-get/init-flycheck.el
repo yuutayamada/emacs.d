@@ -1,12 +1,17 @@
-;;; init_flycheck.el --- init file for flycheck.el -*- lexical-binding: t; -*-
+;;; init-flycheck.el --- init file for flycheck.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
 ;;; Code:
 
 (require 'my_autoload)
-
+(require 'el-get)
 (require 'flycheck)
+
+;; Emacs Lisp integration
+(defconst flycheck-emacs-lisp-load-path 'inherit)
+(defconst flycheck-emacs-lisp-package-user-dir config-dir)
+
 (let ((emacs (file-name-directory (executable-find "emacs"))))
   (setq flycheck-gcc-include-path (list emacs)
         flycheck-clang-include-path flycheck-gcc-include-path)
@@ -27,14 +32,14 @@
                    :category "im.error"
                    :app-icon ,pic))))
 
-;; Flycheck-package ;;
-(setq-default flycheck-emacs-lisp-load-path load-path)
-(flycheck-package-setup) ; Add flycheck-package to the flycheck-checker
-
 ;; Prevent flycheck-mode on some context ;;
 (defadvice flycheck-mode (around Y/avoid-flycheck-if-needed activate)
   "Turn off flycheck in specific buffer."
   (unless (or (org-in-src-block-p)
+              (and buffer-file-name
+                   (equal
+                    (file-name-directory buffer-file-name)
+                    el-get-user-package-directory))
               (member (buffer-name) '(".emacs" "*scratch*"))
               (string-match "^\\*Org Src .*\\*" (buffer-name)))
     ad-do-it))
@@ -59,11 +64,11 @@ See URL `http://www.veripool.org/wiki/verilator'."
           line ": " (message) line-end))
   :modes verilog-mode)
 
-(provide 'init_flycheck)
+(provide 'init-flycheck)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_flycheck.el ends here
+;;; init-flycheck.el ends here

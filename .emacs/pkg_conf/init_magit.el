@@ -8,6 +8,7 @@
 (defconst magit-diff-refine-hunk t)
 
 (require 'magit)
+(require 'magit-submodule)
 
 (define-key magit-status-mode-map (kbd "S-SPC") 'magit-diff-show-or-scroll-down)
 (define-key magit-log-mode-map    (kbd "S-SPC") 'magit-diff-show-or-scroll-down)
@@ -19,13 +20,13 @@
   ad-do-it)
 
 ;; Set buffer switch function
-(setq magit-status-buffer-switch-function
+(setq magit-display-buffer-function
       '(lambda (buffer)
          (Y/win-switch-window ?g) ; jump to 'g' window
-         (setq-local magit-restore-window-configuration (current-window-configuration))
          (switch-to-buffer buffer)
          (when (not (one-window-p))
-           (delete-other-windows))))
+           (delete-other-windows))
+         (magit-display-buffer-traditional buffer)))
 
 (defadvice with-editor-finish (around Y/go-back-to-magit-status activate)
   "Go back ‘magit-status’ if there are other un-staged things."

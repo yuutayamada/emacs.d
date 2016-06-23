@@ -15,12 +15,8 @@
 ;; EL-GET
 (message-startup-time "el-get")
 (add-to-list 'load-path el-get-dir)
-;; Note that the .loaddefs is including skk-setup.el loading.
 (require '.loaddefs)
-
-;; Helm
-(message-startup-time "helm-config")
-(require 'helm-config)
+(autoload 'el-get "el-get") ; for ‘el-get’ function
 
 ;; Lookup.el
 (message-startup-time "lookup-autoloads")

@@ -25,11 +25,12 @@
 ;; [?\C->], [?\C-<], [(hiragana-katakana)]
 ;;; Code:
 
-(require 'mykie)
 (require 'my_autoload)
 
+(require 'mykie)
+
 ;; mykie.el setup ;;
-(setq mykie:use-major-mode-key-override 'both
+(setq mykie:use-major-mode-key-override 'global
       mykie:region-conditions
       (append mykie:region-conditions
               '((:evil-visual . (eq (bound-and-true-p evil-visual-selection) 'char))
@@ -60,71 +61,73 @@
                 (:org-header . (and (eq 'org-mode major-mode)
                                     (org-on-heading-p)))
                 ("^:skk-\\(on\\|active\\)$" . (mykie:get-skk-state))))
-      mykie:major-mode-ignore-list '()
+      mykie:major-mode-ignore-list '(magit-status-mode magit-popup-mode)
       mykie:minor-mode-ignore-list '())
 (mykie:initialize)
 
-;; self-insert-command keys ;;
-(mykie:set-keys with-self-key
-  ;; NOTE
-  ;; number keys are NOT allowed :C-u and :region&C-u keywords
-  "1" :region sort-lines
-  "2" :region (sort-lines ; sort-lines with reverse
-               t (region-beginning) (region-end))
-  "3" :region fill-region
-  "4" :region align
+;; ;; self-insert-command keys ;;
+;; (mykie:set-keys with-self-key
+;;   ;; NOTE
+;;   ;; number keys are NOT allowed :C-u and :region&C-u keywords
+;;   "1" :region sort-lines
+;;   "2" :region (sort-lines ; sort-lines with reverse
+;;                t (region-beginning) (region-end))
+;;   "3" :region fill-region
+;;   "4" :region align
 
-  "a"
-  :C-u anzu-query-replace-at-cursor-thing
-  :region align
+;;   "a"
+;;   :C-u anzu-query-replace-at-cursor-thing
+;;   :region align
 
-  "b"
-  :region comment-box
+;;   "b"
+;;   :region comment-box
 
-  "i" :C-u&java-mode add-java-import
-  "c" :C-u (my/open-calendar)
+;;   "i" :C-u&java-mode add-java-import
+;;   ;; "c" :C-u (my/open-calendar)
 
-  "e"
-  :C-u&emacs-lisp-mode Y/eval-and-replace
-  :C-u&lisp-interaction-mode Y/eval-and-replace
+;;   "e"
+;;   :C-u&emacs-lisp-mode Y/eval-and-replace
+;;   :C-u&lisp-interaction-mode Y/eval-and-replace
 
-  "f"
-  :C-u! racer-find-definition
-  :region (mykie:do-while "f" indent-rigidly
-                          "u" undo)
+;;   "f"
+;;   :C-u! racer-find-definition
+;;   :region (mykie:do-while "f" indent-rigidly
+;;                           "u" undo)
 
-  "g"
-  :C-u! my/helm-gtags ; helm-gtags-dwim
-  :region my/ginger-region
+;;   "g"
+;;   :C-u! my/helm-gtags ; helm-gtags-dwim
+;;   :region my/ginger-region
 
-  ;; "l" :C-u Y/lookup
-  "m" :C-u mew
-  "n"
-  :region     rectangle-number-lines
-  ;; Specify starting number by M-N number* or C-u number*
-  :region&C-u (rectangle-number-lines
-               (region-beginning) (region-end) current-prefix-arg)
+;;   ;; "l" :C-u Y/lookup
+;;   "m" :C-u mew
+;;   "n"
+;;   :region     rectangle-number-lines
+;;   ;; Specify starting number by M-N number* or C-u number*
+;;   :region&C-u (rectangle-number-lines
+;;                (region-beginning) (region-end) current-prefix-arg)
 
-  "s"
-  :C-u flop-frame ; swap left and right
-  :C-u*2 transpose-frame
-  :C-u*3 flip-frame ; swap up and down
-  "u" :C-u (undo-tree-visualize)
+;;   "s"
+;;   :C-u flop-frame ; swap left and right
+;;   :C-u*2 transpose-frame
+;;   :C-u*3 flip-frame ; swap up and down
+;;   "u" :C-u (undo-tree-visualize)
 
-  ;; Just testing
-  "w"
-  :C-u!   google-translate-at-point
-  ;; :C-u*2!
-  :C-u*3 (message (format "%s" current-prefix-arg))
-  )
+;;   ;; Just testing
+;;   "w"
+;;   :C-u!   google-translate-at-point
+;;   ;; :C-u*2!
+;;   :C-u*3 (message (format "%s" current-prefix-arg))
+;;   )
 
 ;; (assoc-default "Japanese" google-translate-supported-languages-alist)
+
+;; -------------------------------------------------
 ;; C-[a-z] ;;
 (mykie:set-keys nil ; nil means global-map
 
   "C-a"
-  :default     (seq-home)
-  :org-mode    (org-seq-home)
+  :default     (seqcmd-home)
+  ;; :org-mode    (seqcmd-org-home)
   :comint-mode (sbtp-begging-of-line)
   :C-u         mark-whole-buffer
 
@@ -152,8 +155,8 @@
   :region  comment-dwim
 
   "C-e"
-  :default    (seq-end)
-  :org-mode   (org-seq-end)
+  :default (seqcmd-end)
+  :org-mode   (seqcmd-org-end)
   :C-u        eww
   :C-u*2      (if (bound-and-true-p evil-mode)
                   (evil-mode 0)
@@ -232,7 +235,7 @@
   "C-o"
   :default company-ispell
   :evil-normal ffinder-jump
-  :C-u helm-c-apropos
+  :C-u helm-apropos
 
   "C-p"
   :default    previous-line
@@ -258,8 +261,8 @@
   "C-t"
   :default transpose-chars
   :C-u*2   buttercup-run-at-point
-  :C-u     google-translate-at-point
-  :region  google-translate-at-point
+  ;; :C-u     google-translate-at-point
+  ;; :region  google-translate-at-point
 
   "C-S-t"
   :default Y/reverse-transpose-chars
@@ -338,18 +341,6 @@
   "C-c C-c"
   :default (message "Implement me")
   :grep-mode grep-edit-finish-edit
-  :prog (mykie
-         :default               my/quickrun-dwim
-         :nim-mode              quickrun
-         :org-src               my/run-prog-from-tempfile
-         :coffee-mode           node-console
-         :go-mode               (if (Y/go-mode-deploy-android-app)
-                                    (my/quickrun-dwim))
-         :haskell-mode          my/runghc
-         ;; :ruby-mode             xmp
-         :emacs-lisp-mode       lispxmp
-         :lisp-interaction-mode lispxmp
-         :scala-mode            my/execute-from-current-file)
 
   "C-c i"
   :default nil ; implement me
@@ -418,7 +409,7 @@
   "M-;"  comment-dwim
   "M-]"  bm-previous
   "C-\]" esc-map
-  "C-\\" mozc-mode ; toggle-input-method ;my/festival
+  "C-\\" toggle-input-method
   "C-*"  undo)
 
 ;; Japanese keyboard only ;;
@@ -508,7 +499,7 @@
 ;; M- prefix ;;
 (mykie:set-keys nil
   "M-c"
-  :default seq-capitalize-backward-word
+  :default seqcmd-capitalize-backward-word
 
   "M-h"
   :default mark-paragraph
@@ -519,7 +510,7 @@
   :prog    (mykie :c-mode helm-gtags-select)
 
   "M-l"
-  :default seq-downcase-backward-word
+  :default seqcmd-downcase-backward-word
 
   "M-n"
   :default    (tabbar-forward)
@@ -539,7 +530,7 @@
   :default helm-for-files
 
   "M-u"
-  :default seq-upcase-backward-word
+  :default seqcmd-upcase-backward-word
 
   "M-x"
   :default helm-M-x

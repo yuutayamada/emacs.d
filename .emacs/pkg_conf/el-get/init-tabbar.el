@@ -1,4 +1,4 @@
-;;; init_smart-tabs-mode.el --- init file for smart-tabs-mode.el
+;;; init-tabbar.el --- init file for tabbar.el
 
 ;; Copyright (C) 2013 by Yuta Yamada
 
@@ -21,25 +21,15 @@
 
 ;;; Code:
 
-(require 'my_autoload)
-(eval-after-load "smart-tabs-mode"
-  '(progn
-     ;; Load all the following in one pass
-     (smart-tabs-insinuate 'c 'javascript 'cperl 'python 'ruby)))
+;;;* tabbar
+(require 'tabbar)
+(tabbar-mode t)
 
-(defun my/set-tab-width-locally (&optional width)
-  (interactive)
-  (setq-local tab-width
-              (string-to-number
-               (or width
-                   (read-from-minibuffer "How long do you want tab-width: "
-                                         (number-to-string standard-indent))))))
-
-(provide 'init_smart-tabs-mode)
+(provide 'init-tabbar)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_smart-tabs-mode.el ends here
+;;; init-tabbar.el ends here

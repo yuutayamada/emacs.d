@@ -1,4 +1,4 @@
-;;; init_idle-require.el --- init file for idle-require.el -*- lexical-binding: t; -*-
+;;; init-idle-require.el --- init file for idle-require.el -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -41,11 +41,11 @@
     (add-hook 'focus-in-hook  `(lambda () (Y/idle-require-set-timer ,delay-in  ,break-in)))
     (add-hook 'focus-out-hook `(lambda () (Y/idle-require-set-timer ,delay-out ,break-out)))))
 
-(provide 'init_idle-require)
+(provide 'init-idle-require)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_idle-require.el ends here
+;;; init-idle-require.el ends here

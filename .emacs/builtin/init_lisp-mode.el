@@ -4,7 +4,6 @@
 ;; so putting heavy logic isn't good idea.
 ;;; Code:
 
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 (add-hook 'lisp-interaction-mode-hook
           '(lambda ()

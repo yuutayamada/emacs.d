@@ -3,6 +3,14 @@
 ;;; Code:
 
 
+;;;### (autoloads nil "Y-elisp-mode" "Y-elisp-mode.el" (0 0 0 0))
+;;; Generated autoloads from Y-elisp-mode.el
+
+(defsubst Y-init-elisp-config nil "\
+Setup my Emacs Lisp config." (remove-hook (quote emacs-lisp-mode-hook) (quote Y-init-elisp-config)) (cl-loop with elisp-mode-hooks = (quote (emacs-lisp-mode-hook ielm-mode-hook)) for hook in elisp-mode-hooks do (add-hook hook (quote eldoc-mode))) (add-hook (quote emacs-lisp-mode-hook) (quote (lambda nil (require (quote auto-compile)) (when (fboundp (quote electric-indent-local-mode)) (electric-quote-local-mode t)) (when (and (stringp buffer-file-name) (string-match custom-theme-directory (file-name-directory buffer-file-name))) (rainbow-mode t))))))
+
+;;;***
+
 ;;;### (autoloads nil "builtin/init_auth-source" "builtin/init_auth-source.el"
 ;;;;;;  (22104 57664 305180 446000))
 ;;; Generated autoloads from builtin/init_auth-source.el
@@ -26,8 +34,7 @@ FILES should put a place where is located to elisp directory.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" (22173
-;;;;;;  35194 7032 456000))
+;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" t)
 ;;; Generated autoloads from builtin/init_erc.el
 
 (autoload 'Y/erc-start-irc "builtin/init_erc" "\
@@ -48,11 +55,27 @@ My file cache find-file.
 
 ;;;***
 
+;;;### (autoloads nil "builtin/init_flycheck" "builtin/init_flycheck.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from builtin/init_flycheck.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_flycheck" '("error-tip-timer-delay")))
+
+;;;***
+
 ;;;### (autoloads nil "builtin/init_flyspell" "builtin/init_flyspell.el"
 ;;;;;;  (21916 11116 437635 966000))
 ;;; Generated autoloads from builtin/init_flyspell.el
 
 (defconst flyspell-mode-map 'nil)
+
+;;;***
+
+;;;### (autoloads nil "builtin/init_grep" "builtin/init_grep.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from builtin/init_grep.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_grep" '("grep-" "Y/grep-jump-to-file")))
 
 ;;;***
 
@@ -78,18 +101,6 @@ My convinience function for `org-mode'.
 
 ;;;***
 
-;;;### (autoloads nil "builtin/init_simple" "builtin/init_simple.el"
-;;;;;;  (22129 38706 319584 341000))
-;;; Generated autoloads from builtin/init_simple.el
-
-(autoload 'Y/visual-fill-mode "builtin/init_simple" "\
-Show filled sentences by visual line mode.
-If ARG is non-nil, turn on visual mode stuff.
-
-\(fn &optional ARG)" t nil)
-
-;;;***
-
 ;;;### (autoloads nil "builtin/init_smerge-mode" "builtin/init_smerge-mode.el"
 ;;;;;;  (21802 21765 775219 993000))
 ;;; Generated autoloads from builtin/init_smerge-mode.el
@@ -101,8 +112,14 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "my_function" "my_function.el" (22165 36901
-;;;;;;  933212 336000))
+;;;### (autoloads nil "my_autoload" "my_autoload.el" (0 0 0 0))
+;;; Generated autoloads from my_autoload.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my_autoload" '("Y/autoload-files")))
+
+;;;***
+
+;;;### (autoloads nil "my_function" "my_function.el" (0 0 0 0))
 ;;; Generated autoloads from my_function.el
 
 (autoload 'other-window-or-split "my_function" "\
@@ -224,6 +241,12 @@ Lookup word by stardict.
 
 \(fn)" t nil)
 
+(autoload 'Y/visual-fill-mode "my_function" "\
+Show filled sentences by visual line mode.
+If ARG is non-nil, turn on visual mode stuff.
+
+\(fn &optional ARG)" t nil)
+
 ;;;***
 
 ;;;### (autoloads nil "my_util" "my_util.el" (22136 42571 281124
@@ -238,7 +261,7 @@ Load PACKAGES.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_auto-complete" "pkg_conf/init_auto-complete.el"
-;;;;;;  (22104 57130 132815 949000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_auto-complete.el
 
 (autoload 'my/ac-add-sources-for-prog "pkg_conf/init_auto-complete" "\
@@ -279,6 +302,14 @@ Goto char with avy and move to ‘last-input-event’s char.
 ;;; Generated autoloads from pkg_conf/init_crontab-mode.el
 
 (add-to-list 'auto-mode-alist (cons "\\(\\.cron\\(tab\\)?\\|cron\\(tab\\)?\\.?\\)\\'" 'crontab-mode))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_el-get" "pkg_conf/init_el-get.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_el-get.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_el-get" '("Y/el-get-npm-install-maybe" "el-get-user-package-directory")))
 
 ;;;***
 
@@ -327,7 +358,7 @@ Setup irony-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_markdown-mode" "pkg_conf/init_markdown-mode.el"
-;;;;;;  (22201 31979 570289 16000))
+;;;;;;  t)
 ;;; Generated autoloads from pkg_conf/init_markdown-mode.el
 
 (add-to-list 'auto-mode-alist (cons "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)\\)\\'" 'gfm-mode))
@@ -379,7 +410,7 @@ Whether the point is overlay-ed or not.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_quickrun" "pkg_conf/init_quickrun.el"
-;;;;;;  (22210 20576 46820 584000))
+;;;;;;  t)
 ;;; Generated autoloads from pkg_conf/init_quickrun.el
 
 (autoload 'my/quickrun-dwim "pkg_conf/init_quickrun" "\
@@ -398,14 +429,16 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 ;;;***
 
-;;;### (autoloads nil "pkg_conf/init_windows" "pkg_conf/init_windows.el"
-;;;;;;  (22104 58992 198136 471000))
-;;; Generated autoloads from pkg_conf/init_windows.el
+;;;### (autoloads nil "pkg_conf/init_windows2" "pkg_conf/init_windows2.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_windows2.el
 
-(autoload 'Y/win-switch-window "pkg_conf/init_windows" "\
+(autoload 'Y/win-switch-window "pkg_conf/init_windows2" "\
 
 
 \(fn CHAR-A-TO-Z)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_windows2" '("revive:ignore-buffer-pattern" "win:")))
 
 ;;;***
 
@@ -424,68 +457,61 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "builtin/init_autoinsert.el" "builtin/init_browse-url.el"
 ;;;;;;  "builtin/init_cc-mode.el" "builtin/init_css-mode.el" "builtin/init_cua-base.el"
 ;;;;;;  "builtin/init_diff-mode.el" "builtin/init_dired.el" "builtin/init_doc-view.el"
-;;;;;;  "builtin/init_ediff.el" "builtin/init_elisp-mode.el" "builtin/init_em-banner.el"
-;;;;;;  "builtin/init_eshell.el" "builtin/init_eww.el" "builtin/init_flycheck.el"
-;;;;;;  "builtin/init_flymake.el" "builtin/init_gnus.el" "builtin/init_grep.el"
-;;;;;;  "builtin/init_ido.el" "builtin/init_indent.el" "builtin/init_info.el"
-;;;;;;  "builtin/init_isearch.el" "builtin/init_ispell.el" "builtin/init_js.el"
-;;;;;;  "builtin/init_lisp-mode.el" "builtin/init_nxml-mode.el" "builtin/init_ob.el"
-;;;;;;  "builtin/init_org-indent.el" "builtin/init_ox-html.el" "builtin/init_ox-latex.el"
-;;;;;;  "builtin/init_paren.el" "builtin/init_po-mode.el" "builtin/init_prog-mode.el"
-;;;;;;  "builtin/init_python.el" "builtin/init_recentf.el" "builtin/init_ruby-mode.el"
-;;;;;;  "builtin/init_savehist.el" "builtin/init_server.el" "builtin/init_sgml-mode.el"
-;;;;;;  "builtin/init_sh-script.el" "builtin/init_shr.el" "builtin/init_tool-bar.el"
-;;;;;;  "builtin/init_tramp.el" "builtin/init_verilog-mode.el" "builtin/init_view.el"
-;;;;;;  "builtin/init_whitespace.el" "builtin/init_windmove.el" "depend/depend_emacs24.el"
-;;;;;;  "depend/depend_emacs25.el" "depend/depend_main.el" "depend/depend_windows.el"
-;;;;;;  "emacs-custom.el" "my_autoload.el" "my_font.el" "my_hooks.el"
-;;;;;;  "my_paths.el" "pkg_conf/init_ac_irony.el" "pkg_conf/init_ac_slime.el"
-;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_anzu.el" "pkg_conf/init_arduino-mode.el"
-;;;;;;  "pkg_conf/init_auto-async-byte-compile.el" "pkg_conf/init_auto-capitalize.el"
-;;;;;;  "pkg_conf/init_auto-java-complete.el" "pkg_conf/init_bm.el"
-;;;;;;  "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw-gcal.el"
-;;;;;;  "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el" "pkg_conf/init_clojure-mode.el"
-;;;;;;  "pkg_conf/init_coffee-mode.el" "pkg_conf/init_company-c-headers.el"
+;;;;;;  "builtin/init_ediff.el" "builtin/init_em-banner.el" "builtin/init_epg-config.el"
+;;;;;;  "builtin/init_eshell.el" "builtin/init_eww.el" "builtin/init_flymake.el"
+;;;;;;  "builtin/init_gnus.el" "builtin/init_ido.el" "builtin/init_indent.el"
+;;;;;;  "builtin/init_info.el" "builtin/init_isearch.el" "builtin/init_ispell.el"
+;;;;;;  "builtin/init_js.el" "builtin/init_lisp-mode.el" "builtin/init_nxml-mode.el"
+;;;;;;  "builtin/init_ob.el" "builtin/init_org-indent.el" "builtin/init_ox-html.el"
+;;;;;;  "builtin/init_ox-latex.el" "builtin/init_paren.el" "builtin/init_po-mode.el"
+;;;;;;  "builtin/init_prog-mode.el" "builtin/init_python.el" "builtin/init_recentf.el"
+;;;;;;  "builtin/init_ruby-mode.el" "builtin/init_savehist.el" "builtin/init_server.el"
+;;;;;;  "builtin/init_sgml-mode.el" "builtin/init_sh-script.el" "builtin/init_shr.el"
+;;;;;;  "builtin/init_simple.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
+;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
+;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
+;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "emacs-custom.el"
+;;;;;;  "my_font.el" "my_hooks.el" "my_paths.el" "pkg_conf/init_android-mode.el"
+;;;;;;  "pkg_conf/init_arduino-mode.el" "pkg_conf/init_auto-capitalize.el"
+;;;;;;  "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el"
+;;;;;;  "pkg_conf/init_calfw-gcal.el" "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el"
+;;;;;;  "pkg_conf/init_clojure-mode.el" "pkg_conf/init_company-c-headers.el"
 ;;;;;;  "pkg_conf/init_company.el" "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el"
-;;;;;;  "pkg_conf/init_el-get.el" "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el"
-;;;;;;  "pkg_conf/init_evil-macros.el" "pkg_conf/init_evil-surround.el"
-;;;;;;  "pkg_conf/init_evil.el" "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
+;;;;;;  "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el" "pkg_conf/init_evil-macros.el"
+;;;;;;  "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
 ;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_go-mode.el"
 ;;;;;;  "pkg_conf/init_google-translate-default-ui.el" "pkg_conf/init_grammar.el"
 ;;;;;;  "pkg_conf/init_grep-a-lot.el" "pkg_conf/init_hangman.el"
 ;;;;;;  "pkg_conf/init_haskell-emacs.el" "pkg_conf/init_haskell-font-lock.el"
 ;;;;;;  "pkg_conf/init_haskell-mode.el" "pkg_conf/init_helm-ag-r.el"
-;;;;;;  "pkg_conf/init_helm-ag.el" "pkg_conf/init_helm-config.el"
-;;;;;;  "pkg_conf/init_helm-files.el" "pkg_conf/init_helm-github-issues.el"
-;;;;;;  "pkg_conf/init_helm-go.el" "pkg_conf/init_helm-gtags.el"
-;;;;;;  "pkg_conf/init_helm-migemo.el" "pkg_conf/init_helm-rb.el"
-;;;;;;  "pkg_conf/init_highlight-indentation.el" "pkg_conf/init_hl-line.el"
-;;;;;;  "pkg_conf/init_idle-require.el" "pkg_conf/init_info.el" "pkg_conf/init_jade.el"
+;;;;;;  "pkg_conf/init_helm-ag.el" "pkg_conf/init_helm-files.el"
+;;;;;;  "pkg_conf/init_helm-github-issues.el" "pkg_conf/init_helm-go.el"
+;;;;;;  "pkg_conf/init_helm-gtags.el" "pkg_conf/init_helm-migemo.el"
+;;;;;;  "pkg_conf/init_helm-rb.el" "pkg_conf/init_highlight-indentation.el"
+;;;;;;  "pkg_conf/init_hl-line.el" "pkg_conf/init_info.el" "pkg_conf/init_jade.el"
 ;;;;;;  "pkg_conf/init_javadoc-lookup.el" "pkg_conf/init_jedi.el"
 ;;;;;;  "pkg_conf/init_js-console.el" "pkg_conf/init_js2-mode.el"
 ;;;;;;  "pkg_conf/init_jstestmacs.el" "pkg_conf/init_keyboard-converter.el"
 ;;;;;;  "pkg_conf/init_keychord.el" "pkg_conf/init_logalimacs.el"
 ;;;;;;  "pkg_conf/init_lookup.el" "pkg_conf/init_lua-mode.el" "pkg_conf/init_magit.el"
-;;;;;;  "pkg_conf/init_masaw.el" "pkg_conf/init_mew.el" "pkg_conf/init_migemo.el"
-;;;;;;  "pkg_conf/init_milkboy.el" "pkg_conf/init_mmm-mode.el" "pkg_conf/init_mode-compile.el"
+;;;;;;  "pkg_conf/init_masaw.el" "pkg_conf/init_migemo.el" "pkg_conf/init_milkboy.el"
+;;;;;;  "pkg_conf/init_mmm-mode.el" "pkg_conf/init_mode-compile.el"
 ;;;;;;  "pkg_conf/init_moz.el" "pkg_conf/init_mozc.el" "pkg_conf/init_multiple-cursors.el"
 ;;;;;;  "pkg_conf/init_mykie.el" "pkg_conf/init_newsticker.el" "pkg_conf/init_nim-mode.el"
 ;;;;;;  "pkg_conf/init_node-console.el" "pkg_conf/init_nyan-mode.el"
 ;;;;;;  "pkg_conf/init_open-junk-file.el" "pkg_conf/init_org-mobile.el"
 ;;;;;;  "pkg_conf/init_org-trello.el" "pkg_conf/init_outline.el"
-;;;;;;  "pkg_conf/init_package.el" "pkg_conf/init_pangu-spacing.el"
-;;;;;;  "pkg_conf/init_paredit.el" "pkg_conf/init_perl-mode.el" "pkg_conf/init_picture.el"
-;;;;;;  "pkg_conf/init_popwin.el" "pkg_conf/init_powerline.el" "pkg_conf/init_python.el"
-;;;;;;  "pkg_conf/init_rust-mode.el" "pkg_conf/init_sbtp.el" "pkg_conf/init_scala-mode.el"
-;;;;;;  "pkg_conf/init_sdic-inline.el" "pkg_conf/init_sdic.el" "pkg_conf/init_skk-b.el"
-;;;;;;  "pkg_conf/init_skk-server.el" "pkg_conf/init_skk.el" "pkg_conf/init_skype.el"
-;;;;;;  "pkg_conf/init_slime.el" "pkg_conf/init_smart-tabs-mode.el"
-;;;;;;  "pkg_conf/init_smartparens.el" "pkg_conf/init_sql.el" "pkg_conf/init_tabbar.el"
-;;;;;;  "pkg_conf/init_twittering-mode.el" "pkg_conf/init_undo-tree.el"
-;;;;;;  "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el"
-;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
-;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "site-start.el")
-;;;;;;  (22214 27020 869177 559000))
+;;;;;;  "pkg_conf/init_pangu-spacing.el" "pkg_conf/init_paredit.el"
+;;;;;;  "pkg_conf/init_perl-mode.el" "pkg_conf/init_picture.el" "pkg_conf/init_popwin.el"
+;;;;;;  "pkg_conf/init_powerline.el" "pkg_conf/init_python.el" "pkg_conf/init_rust-mode.el"
+;;;;;;  "pkg_conf/init_sbtp.el" "pkg_conf/init_scala-mode.el" "pkg_conf/init_sdic-inline.el"
+;;;;;;  "pkg_conf/init_sdic.el" "pkg_conf/init_skk-b.el" "pkg_conf/init_skk-server.el"
+;;;;;;  "pkg_conf/init_skk.el" "pkg_conf/init_skype.el" "pkg_conf/init_slime.el"
+;;;;;;  "pkg_conf/init_smartparens.el" "pkg_conf/init_sql.el" "pkg_conf/init_twittering-mode.el"
+;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el"
+;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
+;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
+;;;;;;  "pkg_conf/init_yim.el" "site-start.el") (0 0 0 0))
 
 ;;;***
 

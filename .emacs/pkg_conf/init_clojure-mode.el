@@ -19,6 +19,8 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;; Commentary:
 
+;; clojure-mode and clojure-cheet-sheet
+
 ;;; Code:
 (require 'clojure-mode)
 (require 'my_autoload)

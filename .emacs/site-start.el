@@ -43,7 +43,7 @@
   (add-hook 'emacs-startup-hook
             '(lambda ()
                ;; Refresh GC threshold
-               (setq gc-cons-threshold (* 256 1024))
+               (setq gc-cons-threshold (* 1024 1024))
                (message (format "Welcome to Emacs(%s)" emacs-version))))
 
   ;; My core configuration files
@@ -74,12 +74,15 @@
                               collect f))
                ;; my startup ;;
                (require 'Y-launch)
+
+               ;; setup Emacs Lisp config
+               (add-hook 'emacs-lisp-mode-hook 'Y-init-elisp-config)
+
                (when (version< "24.0.0" emacs-version)
                  (require 'notifications) ; this needs Dbus
                  (notifications-notify :title "Emacs Daemon"
                                        :body  "Ready to start!!!"
-                                       :timeout 5000))
-               (run-with-idle-timer 0.5 nil 'beacon-mode)))
+                                       :timeout 5000))))
 
   ;; truncate line
   (setq-default truncate-lines t)

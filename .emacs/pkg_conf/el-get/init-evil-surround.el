@@ -1,4 +1,4 @@
-;;; init_evil-surround.el --- init file for evil-surround.el
+;;; init-evil-surround.el --- init file for evil-surround.el
 ;;; Commentary:
 ;; Add surrounding
 ;;   You can surround in visual-state with S<textobject> or
@@ -25,11 +25,11 @@
 (evil-define-key 'visual evil-surround-mode-map "s" 'evil-surround-region)
 (evil-define-key 'visual evil-surround-mode-map "S" 'evil-Surround-region)
 
-(provide 'init_evil-surround)
+(provide 'init-evil-surround)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_evil-surround.el ends here
+;;; init-evil-surround.el ends here

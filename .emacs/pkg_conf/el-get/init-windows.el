@@ -1,26 +1,10 @@
-;;; init_windows.el --- init file for windows.el -*- lexical-binding: t; -*-
+;;; init-windows.el --- init file for windows.el -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; Prefix key + C-r -> select save, load, etc.
 ;;; Code:
 ;;;* windows.el configuration
 
-;; Note that those variables should load before the `require windows' or
-;; this configuration will fail.
-(defconst win:switch-prefix (kbd "M-g"))
-(defconst win:use-frame     nil)
-(defconst win:base-key      (1- ?a))         ; starts from a of alphabet
-(defconst win:max-configs   (+ (- ?z ?a) 2)) ; end at z of alphabet
-(defconst win:quick-selection nil)
-(defconst revive:ignore-buffer-pattern "^ \\*")
-
-;; adjust variable of windows.el
-(add-hook 'after-make-frame-functions
-          '(lambda (frame)
-             (select-frame frame)
-             (defconst win:frames-in-nw (if (display-graphic-p) nil t))))
-
-(require 'windows)
-(require 'revive)
+;; (setq write-file-functions '(whitespace-write-file-hook))
 (require 'cl-lib)
 
 ;; init windows.el
@@ -80,11 +64,11 @@
 (defun Y/win-switch-window (char-a-to-z)
   (win:switch-window (1+ (- char-a-to-z ?a))))
 
-(provide 'init_windows)
+(provide 'init-windows)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_windows.el ends here
+;;; init-windows.el ends here

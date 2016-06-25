@@ -74,14 +74,13 @@
     (run-with-idle-timer
      10.0 nil
      '(lambda ()
-        (progn
-          (let ((el-get-is-lazy t))
-            ;; When SYNC is `nil' (the default), all installations run
-            ;; concurrently, in the background.
-            (el-get)
+        (let ((el-get-is-lazy t))
+          ;; When SYNC is `nil' (the default), all installations run
+          ;; concurrently, in the background.
+          (el-get)
 
-            ;; idle require (for lazy loading)
-            (el-get 'sync 'idle-require)))))
+          ;; idle require (for lazy loading)
+          (el-get 'sync 'idle-require))))
 
     ;; PACKAGE.el ;;
     ;; ‘package--ensure-init-file’ check this ‘package-initialize’s existence in

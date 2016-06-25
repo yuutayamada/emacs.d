@@ -270,8 +270,8 @@ You can only use this function inside :build directive."
   el-get-sources
   '(;; A
     (:name auto-capitalize
-           :type git
-           :url "https://github.com/yuutayamada/auto-capitalize-el.git")
+           :type github
+           :pkgname "yuutayamada/auto-capitalize-el")
     ;; B
     (:name bpe
            :type git

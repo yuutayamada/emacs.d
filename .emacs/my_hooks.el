@@ -30,11 +30,6 @@
 (add-hook 'prog-mode-hook '(lambda () (require 'Y-prog-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;
-;; auto capitalize
-;; (el-get 'sync 'auto-capitalize)
-;; (add-hook 'after-change-major-mode-hook 'auto-capitalize-mode)
-
-;;;;;;;;;;;;;;;;;;;;;
 ;; Clean Mode Line
 (add-hook 'after-change-major-mode-hook 'Y/clean-mode-line)
 (add-hook 'find-file-hook 'Y/clean-mode-line)

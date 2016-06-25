@@ -33,7 +33,7 @@
        (prog1 'sync-completed
          (el-get 'sync
                  '(windows ; load windows.el before mykie
-                   s f dash tabbar popwin org-mode helm
+                   s f dash tabbar popwin org-mode helm auto-capitalize
                    ;; General
                    company-mode auto-complete yasnippet)))))
 

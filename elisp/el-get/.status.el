@@ -12,7 +12,7 @@
  (arduino-mode status "installed" recipe
                (:name arduino-mode :website "https://github.com/bookest/arduino-mode" :description "Emacs major mode for Arduino development." :type github :pkgname "bookest/arduino-mode"))
  (auto-capitalize status "installed" recipe
-                  (:name auto-capitalize :type git :url "https://github.com/yuutayamada/auto-capitalize-el.git"))
+                  (:name auto-capitalize :type github :pkgname "yuutayamada/auto-capitalize-el"))
  (auto-compile status "installed" recipe
                (:name auto-compile :type github :pkgname "tarsius/auto-compile" :description "Automatically compile Emacs Lisp libraries." :depends
                       (packed dash)))

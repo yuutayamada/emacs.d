@@ -87,10 +87,6 @@
     ;; ‘package--ensure-init-file’ check this ‘package-initialize’s existence in
     ;; ‘user-init-file’. If you omit this, you can not use ‘package-install’.
     (package-initialize)
-    (defconst package-archives
-      '(("melpa" . "https://melpa.org/packages/")
-        ("ELPA"  . "https://tromey.com/elpa/")
-        ("gnu"   . "https://elpa.gnu.org/packages/")))
 
     ;; Boot Time ;;
     ;; Show boot time at *message* buffer

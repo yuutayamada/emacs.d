@@ -1,4 +1,4 @@
-;;; init_company.el --- init file for company.el
+;;; init-company.el --- init file for company.el
 ;;; Commentary:
 ;;; Code:
 (require 'company)
@@ -12,11 +12,13 @@
 (define-key company-active-map (kbd "TAB") 'company-complete-selection)
 (define-key company-active-map "\C-h" nil)
 
-(provide 'init_company)
+(diminish 'company-mode " ⓒ")
+
+(provide 'init-company)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_company.el ends here
+;;; init-company.el ends here

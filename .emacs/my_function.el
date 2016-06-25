@@ -23,6 +23,7 @@
 (require 'cl-lib)
 (require 'my_paths)
 (require 'my_autoload)
+(require 's)
 
 (defun banish ()
   "Move cursor to corner."
@@ -54,7 +55,7 @@
           (t (find-file match)))))
 
 ;;;###autoload
-(defun other-window-or-split ()
+(defun other-window-or-split (&rest _r)
   "Move buffer or split when buffer was one."
   (interactive)
   (when (one-window-p) (Y/split-window-spirally))
@@ -156,11 +157,15 @@ The SELECTED argument is opacity that window is selected."
   (my/set-opacity (max (- (my/get-opacity) 5) 0)))
 
 ;;;###autoload
-(defun my/org-src-code-buffer-p ()
-  ""
-  (let* ((buffer (buffer-name)))
-    (or (string-match "\*Org Src .+\.org\[ js \]\*" buffer)
-        (string-match "\*Org Src .+\.org\[ javascript \]\*" buffer))))
+(defun Y/org-src-block-p ()
+  "Return t when inside #+begin_src ... ."
+  (and (fboundp 'org-in-src-block-p) (org-in-src-block-p)))
+
+;;;###autoload
+(defun Y/org-src-edit-buffer-p ()
+  "Return t when created other inside *Org Src ...* buffer."
+  (or (and (fboundp 'org-src-edit-buffer-p) (org-src-edit-buffer-p))
+      (string-match "^\\*Org Src .*\\*" (buffer-name))))
 
 (defun my/insert ()
   ""
@@ -192,7 +197,7 @@ The SELECTED argument is opacity that window is selected."
 ;;;###autoload
 (defun my/kill-line ()
   ""
-  (if (not (bound-and-true-p mykie:prog-mode-flag))
+  (if (not (derived-mode-p 'prog-mode))
       (call-interactively 'kill-line)
     (call-interactively 'paredit-kill)
     (indent-for-tab-command)))
@@ -427,26 +432,6 @@ Example of my/keys
   (cl-case major-mode
     (org-mode (org-return-indent))
     (t (electric-newline-and-maybe-indent))))
-
-(defun my/browse-condition-p (&optional url)
-  ""
-  (let ((buffer (buffer-name)))
-    (or (equal major-mode 'twittering-mode)
-        (equal "*Article INBOX*" buffer)
-        (equal "*ger*" buffer)
-        (string-match "^https?://google" url)
-        (string-match "^https?://www.lispworks.com/documentation/" url))))
-
-;; (browse-url-default-browser URL &rest ARGS)
-(defun my/w3m-or-mozila-browser-function (url &rest args)
-  ""
-  (interactive (browse-url-interactive-arg "URL: "))
-  (let
-      ((new-session (car args)))
-    (if (not (my/browse-condition-p url))
-        (browse-url-mozilla url new-session)
-      (other-window-or-split)
-      (w3m-browse-url url new-session))))
 
 (defun my/region-extender (&optional input)
   (interactive)

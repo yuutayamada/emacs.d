@@ -1,10 +1,12 @@
-;;; init_prog-mode.el --- Functions related programming -*- lexical-binding: t; -*-
+;;; Y-prog-mode.el --- config file for prog-mode.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
 ;;; Code:
 (require 'cl-lib)
 (require 'my_autoload)
+
+(el-get 'sync '(indent-guide rainbow-delimiters flycheck))
 
 (add-hook 'prog-mode-hook
           '(lambda ()
@@ -63,11 +65,11 @@
                    (push '("begin"    . ?\{) prettify-symbols-alist)
                    (push '("end"      . ?}) prettify-symbols-alist)))))
 
-(provide 'init_prog-mode)
+(provide 'Y-prog-mode)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_prog-mode.el ends here
+;;; Y-prog-mode.el ends here

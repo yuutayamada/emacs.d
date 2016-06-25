@@ -11,10 +11,6 @@
        (:name anzu :website "https://github.com/syohex/emacs-anzu" :description "A minor mode which displays current match and total matches." :type "github" :branch "master" :pkgname "syohex/emacs-anzu"))
  (arduino-mode status "installed" recipe
                (:name arduino-mode :website "https://github.com/bookest/arduino-mode" :description "Emacs major mode for Arduino development." :type github :pkgname "bookest/arduino-mode"))
- (auto-async-byte-compile status "installed" recipe
-                          (:name auto-async-byte-compile :description "Automatically byte-compile when saved" :website "http://www.emacswiki.org/emacs/AutoAsyncByteCompile" :type emacswiki :post-init
-                                 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
-                                 :features "auto-async-byte-compile"))
  (auto-capitalize status "installed" recipe
                   (:name auto-capitalize :type git :url "https://github.com/yuutayamada/auto-capitalize-el.git"))
  (auto-compile status "installed" recipe
@@ -82,8 +78,6 @@
                        :pkgname "Sarcasm/company-irony"))
  (company-mode status "installed" recipe
                (:name company-mode :website "http://company-mode.github.io/" :description "Modular in-buffer completion framework for Emacs" :type github :pkgname "company-mode/company-mode"))
- (cpp-auto-include status "installed" recipe
-                   (:name cpp-auto-include :type github :pkgname "syohex/emacs-cpp-auto-include"))
  (crontab-mode status "installed" recipe
                (:name crontab-mode :description "Mode for editing crontab files" :type http :url "http://web.archive.org/web/20080716014153/http://www.mahalito.net/~harley/elisp/crontab-mode.el"))
  (css-eldoc status "installed" recipe
@@ -131,8 +125,6 @@
               (:name emacs-async :description "Simple library for asynchronous processing in Emacs" :type github :pkgname "jwiegley/emacs-async"))
  (emacs-fish status "installed" recipe
              (:name emacs-fish :type github :description "Emacs major mode for fish shell scripts." :pkgname "wwwjfy/emacs-fish"))
- (emacs-skype status "installed" recipe
-              (:name emacs-skype :type git :url "https://github.com/kiwanami/emacs-skype.git"))
  (epc status "installed" recipe
       (:name epc :description "An RPC stack for Emacs Lisp" :type github :pkgname "kiwanami/emacs-epc" :depends
              (deferred ctable)))
@@ -288,13 +280,9 @@
 (autoload 'helm-descbinds-install "helm-descbinds"))))
 (helm-ghq status "installed" recipe
 (:name helm-ghq :description "Interfaces of ghq with helm." :type github :pkgname "masutaka/emacs-helm-ghq"))
-(helm-github-issues status "installed" recipe
-(:name helm-github-issues :type git :url "https://github.com/syohex/emacs-helm-github-issues.git"))
 (helm-gtags status "installed" recipe
 (:name helm-gtags :description "GNU GLOBAL Helm interface." :type github :pkgname "syohex/emacs-helm-gtags" :depends
 (helm)))
-(helm-hoogle status "installed" recipe
-(:name helm-hoogle :type git :url "https://github.com/markus1189/helm-hoogle.git"))
 (helm-swoop status "installed" recipe
 (:name helm-swoop :type github :description "Efficiently hopping squeezed lines powered by Emacs helm interface" :pkgname "ShingoFukuyama/helm-swoop" :depends
 (helm)))
@@ -420,6 +408,10 @@
 ("./configure && make")
 :load-path
 ("./" "./contrib" "./doc")))
+(nim-emacs-module status "installed" recipe
+(:name nim-emacs-module :description "Make Emacs functions by Nim" :type github :pkgname "yuutayamada/nim-emacs-module" :minimum-emacs-version "25" :prepare
+(eval-after-load "nim-mode"
+'(el-get 'sync 'nim-emacs-module))))
 (nim-mode status "installed" recipe
 (:name nim-mode :website "https://github.com/nim-lang/nim-mode#readme" :description "Major mode for the Nim programming language" :type github :pkgname "nim-lang/nim-mode" :branch "master" :minimum-emacs-version "24.4" :depends
 (flycheck company-mode epc let-alist commenter)))
@@ -522,13 +514,14 @@
 (:name python-environment :description "Python virtualenv API for Emacs Lisp" :type github :pkgname "tkf/emacs-python-environment" :depends
 (deferred)))
 (queue status "installed" recipe
-(:name queue :type http :url "http://git.savannah.gnu.org/gitweb/?p=emacs/elpa.git;a=blob_plain;f=packages/queue/queue.el;hb=HEAD"))
+(:name queue :description "Queue data structure" :type elpa))
 (quickrun status "installed" recipe
 (:name quickrun :description "Run commands quickly" :website "https://github.com/syohex/emacs-quickrun" :type github :pkgname "syohex/emacs-quickrun" :features "quickrun"))
 (rainbow-delimiters status "installed" recipe
 (:name rainbow-delimiters :website "https://github.com/Fanael/rainbow-delimiters#readme" :description "Color nested parentheses, brackets, and braces according to their depth." :type github :pkgname "Fanael/rainbow-delimiters"))
 (rainbow-mode status "installed" recipe
-(:name rainbow-mode :type http :url "http://git.savannah.gnu.org/gitweb/?p=emacs/elpa.git;a=blob_plain;f=packages/rainbow-mode/rainbow-mode.el;hb=HEAD"))
+(:name rainbow-mode :description "Colorize color names in buffers" :type elpa :prepare
+(autoload 'rainbow-turn-on "rainbow-mode")))
 (request status "installed" recipe
 (:name request :description "Easy HTTP request for Emacs Lisp" :type github :submodule nil :pkgname "tkf/emacs-request"))
 (revive status "installed" recipe

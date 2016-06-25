@@ -46,28 +46,6 @@
                do (autoload function filename nil t))
     (error (print error))))
 
-(defvar Y/autoloads nil)
-(defun Y/get-autoloads ()
-  "Get my autoload configurations."
-  (if (bound-and-true-p config-dir)
-      (let ((f (concat config-dir "data/autoload"))
-            (origin (current-buffer)))
-        (when (file-exists-p f)
-          (let ((buf (find-file-noselect f)))
-            (save-current-buffer
-              (with-temp-buffer
-                (switch-to-buffer buf)
-                (goto-char (point-min))
-                (insert "(setq Y/autoloads '(")
-                (goto-char (point-max))
-                (insert "))")
-                (eval-buffer buf)
-                (revert-buffer nil t)
-                (kill-buffer buf)))
-            (switch-to-buffer origin))
-          Y/autoloads))
-    (error "This function needs `config-dir' variable.")))
-
 ;; START UP TIME
 (defsubst message-startup-time (&optional comment)
   "Display spent time with COMMENT."

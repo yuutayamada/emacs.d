@@ -22,8 +22,7 @@
 ;;; Code:
 
 (eval-when-compile (require 'cl))
-;; load this before use `win-switch-to-window'
-(require 'init_windows)
+
 (require 'twittering-mode)
 (require 'my_autoload)
 (defvar my/twit-users '()) ;; specify username's list without @

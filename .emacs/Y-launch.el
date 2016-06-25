@@ -16,7 +16,7 @@
 
 ;; EL-GET ;;
 (add-to-list 'load-path package-conf-dir)
-(require 'init_el-get)
+(require 'Y-el-get)
 
 ;; AUTOLOAD CONFIGURATION ;;
 ;; Note: this file should loads after el-get configuration or
@@ -33,11 +33,9 @@
        (prog1 'sync-completed
          (el-get 'sync
                  '(windows ; load windows.el before mykie
-                   evil beacon org-mode popwin auto-compile
-                   helm helm-c-yasnippet yasnippet f dash idle-require
-                   indent-guide rainbow-delimiters git-gutter company-mode
-                   auto-capitalize tabbar magit with-editor
-                   popup flycheck flycheck-tip paredit seqcmd mew)))))
+                   s f dash tabbar popwin org-mode helm
+                   ;; General
+                   company-mode auto-complete yasnippet)))))
 
   (when done
     ;; INIT SCRIPT ;;
@@ -45,13 +43,18 @@
         ;; Load only necessary files for less loading time
         (Y/load-packages
          '(depend_main   ; this file should be loaded first than other files.
-           tabbar
+           tabbar s
            my_automode   ; define mode ext
            my_hooks      ; define hooks
            init_mykie    ; define my keybinds
            ))
 
       (error (message (format "Init function error: %s" err))))
+
+    ;; Load files with `with-eval-after-load' func from `package-conf-dir'.
+    (message-startup-time "configuring init files")
+    (Y/add-after-load-files "init_" (concat config-dir "builtin"))
+    (Y/add-after-load-files "init_" package-conf-dir)
 
     ;; COLOR THEME
     (load-theme 'my_pkg t)
@@ -69,18 +72,16 @@
     (el-get 'sync '(org-mode nim-mode lua-mode web-mode))
 
     (run-with-idle-timer
-     3.0 nil
+     10.0 nil
      '(lambda ()
         (progn
-          ;; When SYNC is `nil' (the default), all installations run
-          ;; concurrently, in the background.
-          (el-get)
+          (let ((el-get-is-lazy t))
+            ;; When SYNC is `nil' (the default), all installations run
+            ;; concurrently, in the background.
+            (el-get)
 
-          ;; idle require (for lazy loading)
-          (defconst idle-require-symbols
-            '(yasnippet helm ispell tramp eshell auto-capitalize magit
-              org filecache helm-elisp flycheck))
-          (idle-require-mode t))))
+            ;; idle require (for lazy loading)
+            (el-get 'sync 'idle-require)))))
 
     ;; PACKAGE.el ;;
     ;; ‘package--ensure-init-file’ check this ‘package-initialize’s existence in

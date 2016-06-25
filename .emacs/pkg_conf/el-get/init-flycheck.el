@@ -9,7 +9,6 @@
 (require 'flycheck)
 
 ;; Emacs Lisp integration
-(defconst flycheck-emacs-lisp-load-path 'inherit)
 (defconst flycheck-emacs-lisp-package-user-dir config-dir)
 
 (let ((emacs (file-name-directory (executable-find "emacs"))))
@@ -18,24 +17,10 @@
   ;; for nim
   (defvar flycheck-nim-args (list (format "--passC:-I%s" emacs))))
 
-;; Flycheck-tip
-(require 'flycheck-tip)
-(defconst error-tip-timer-delay 0.3)
-(setq error-tip-notify-keep-messages t)
-;; You can specify 'normal, 'verbose or nil
-(flycheck-tip-use-timer 'normal)
-;; add icon
-(let ((pic "~/media/pictures/Clippy2.jpg"))
-  (when (file-exists-p pic)
-    (setq error-tip-notify-parametors
-          `(:title "It looks like you want to know current error(s):"
-                   :category "im.error"
-                   :app-icon ,pic))))
-
 ;; Prevent flycheck-mode on some context ;;
 (defadvice flycheck-mode (around Y/avoid-flycheck-if-needed activate)
   "Turn off flycheck in specific buffer."
-  (unless (or (org-in-src-block-p)
+  (unless (or (Y/org-src-block-p)
               (and buffer-file-name
                    (equal
                     (file-name-directory buffer-file-name)

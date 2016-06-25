@@ -3,11 +3,19 @@
 ;;; Code:
 
 
+;;;### (autoloads nil "Y-el-get" "Y-el-get.el" (0 0 0 0))
+;;; Generated autoloads from Y-el-get.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-el-get" '("el-get-u" "Y/el-get-npm-install-maybe")))
+
+;;;***
+
 ;;;### (autoloads nil "Y-elisp-mode" "Y-elisp-mode.el" (0 0 0 0))
 ;;; Generated autoloads from Y-elisp-mode.el
 
 (defsubst Y-init-elisp-config nil "\
-Setup my Emacs Lisp config." (remove-hook (quote emacs-lisp-mode-hook) (quote Y-init-elisp-config)) (cl-loop with elisp-mode-hooks = (quote (emacs-lisp-mode-hook ielm-mode-hook)) for hook in elisp-mode-hooks do (add-hook hook (quote eldoc-mode))) (add-hook (quote emacs-lisp-mode-hook) (quote (lambda nil (require (quote auto-compile)) (when (fboundp (quote electric-indent-local-mode)) (electric-quote-local-mode t)) (when (and (stringp buffer-file-name) (string-match custom-theme-directory (file-name-directory buffer-file-name))) (rainbow-mode t))))))
+Setup my Emacs Lisp config.
+This function is called from site-start.el." (el-get (quote sync) (quote (auto-compile paredit))) (paredit-mode 1) (require (quote auto-compile)) (when (fboundp (quote electric-indent-local-mode)) (electric-quote-local-mode t)) (when (and (stringp buffer-file-name) (string-match custom-theme-directory (file-name-directory buffer-file-name))) (rainbow-mode t)))
 
 ;;;***
 
@@ -52,14 +60,6 @@ Connect to IRC.
 My file cache find-file.
 
 \(fn)" t nil)
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_flycheck" "builtin/init_flycheck.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from builtin/init_flycheck.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_flycheck" '("error-tip-timer-delay")))
 
 ;;;***
 
@@ -125,7 +125,7 @@ Treat merging at point by smerge way.
 (autoload 'other-window-or-split "my_function" "\
 Move buffer or split when buffer was one.
 
-\(fn)" t nil)
+\(fn &rest R)" t nil)
 
 (autoload 'Y/split-window-spirally "my_function" "\
 
@@ -142,8 +142,13 @@ Move buffer or split when buffer was one.
 
 \(fn KEYMAP &rest KEYS)" nil nil)
 
-(autoload 'my/org-src-code-buffer-p "my_function" "\
+(autoload 'Y/org-src-block-p "my_function" "\
+Return t when inside #+begin_src ... .
 
+\(fn)" nil nil)
+
+(autoload 'Y/org-src-edit-buffer-p "my_function" "\
+Return t when created other inside *Org Src ...* buffer.
 
 \(fn)" nil nil)
 
@@ -247,10 +252,18 @@ If ARG is non-nil, turn on visual mode stuff.
 
 \(fn &optional ARG)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my_function" '(#("test" 0 4 (fontified nil)) #("Y/" 0 2 (face font-lock-function-name-face fontified nil)) #("my-insert-day" 0 2 (fontified nil) 2 13 (fontified nil)) #("my/" 0 2 (fontified nil) 2 3 (fontified nil)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
+
 ;;;***
 
-;;;### (autoloads nil "my_util" "my_util.el" (22136 42571 281124
-;;;;;;  948000))
+;;;### (autoloads nil "my_paths" "my_paths.el" (0 0 0 0))
+;;; Generated autoloads from my_paths.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my_paths" '("config-dir" "user-init-file")))
+
+;;;***
+
+;;;### (autoloads nil "my_util" "my_util.el" (0 0 0 0))
 ;;; Generated autoloads from my_util.el
 
 (autoload 'Y/load-packages "my_util" "\
@@ -258,16 +271,7 @@ Load PACKAGES.
 
 \(fn PACKAGES)" nil nil)
 
-;;;***
-
-;;;### (autoloads nil "pkg_conf/init_auto-complete" "pkg_conf/init_auto-complete.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from pkg_conf/init_auto-complete.el
-
-(autoload 'my/ac-add-sources-for-prog "pkg_conf/init_auto-complete" "\
-Add ac-sources for each programming-mode.
-
-\(fn)" nil nil)
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my_util" '("Y/" "message-startup-time" "autoloader-autoload")))
 
 ;;;***
 
@@ -302,14 +306,6 @@ Goto char with avy and move to ‘last-input-event’s char.
 ;;; Generated autoloads from pkg_conf/init_crontab-mode.el
 
 (add-to-list 'auto-mode-alist (cons "\\(\\.cron\\(tab\\)?\\|cron\\(tab\\)?\\.?\\)\\'" 'crontab-mode))
-
-;;;***
-
-;;;### (autoloads nil "pkg_conf/init_el-get" "pkg_conf/init_el-get.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from pkg_conf/init_el-get.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_el-get" '("Y/el-get-npm-install-maybe" "el-get-user-package-directory")))
 
 ;;;***
 
@@ -357,6 +353,14 @@ Setup irony-mode.
 
 ;;;***
 
+;;;### (autoloads nil "pkg_conf/init_magit" "pkg_conf/init_magit.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_magit.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_magit" '("magit-diff-refine-hunk")))
+
+;;;***
+
 ;;;### (autoloads nil "pkg_conf/init_markdown-mode" "pkg_conf/init_markdown-mode.el"
 ;;;;;;  t)
 ;;; Generated autoloads from pkg_conf/init_markdown-mode.el
@@ -380,6 +384,22 @@ Setup irony-mode.
 
 
 \(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_mykie" "pkg_conf/init_mykie.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_mykie.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_mykie" '(#("my/overriding-mode-map" 0 22 (fontified nil)))))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_nim-mode" "pkg_conf/init_nim-mode.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_nim-mode.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_nim-mode" '("my-nim-print" "nim" "Y/nim-mode-common-setup")))
 
 ;;;***
 
@@ -421,6 +441,14 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 ;;;***
 
+;;;### (autoloads nil "pkg_conf/init_twittering-mode" "pkg_conf/init_twittering-mode.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_twittering-mode.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_twittering-mode" '("my/twit")))
+
+;;;***
+
 ;;;### (autoloads nil "pkg_conf/init_web-mode" "pkg_conf/init_web-mode.el"
 ;;;;;;  (22052 32309 381299 889000))
 ;;; Generated autoloads from pkg_conf/init_web-mode.el
@@ -429,21 +457,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 ;;;***
 
-;;;### (autoloads nil "pkg_conf/init_windows2" "pkg_conf/init_windows2.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from pkg_conf/init_windows2.el
-
-(autoload 'Y/win-switch-window "pkg_conf/init_windows2" "\
-
-
-\(fn CHAR-A-TO-Z)" nil nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_windows2" '("revive:ignore-buffer-pattern" "win:")))
-
-;;;***
-
 ;;;### (autoloads nil "style/my_modeline" "style/my_modeline.el"
-;;;;;;  (22104 57035 978437 233000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from style/my_modeline.el
 
 (autoload 'Y/clean-mode-line "style/my_modeline" "\
@@ -451,10 +466,12 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 
 \(fn)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "style/my_modeline" '("mode-line-cleaner-alist")))
+
 ;;;***
 
-;;;### (autoloads nil nil ("../test.el" "Y-launch.el" "builtin/init_align.el"
-;;;;;;  "builtin/init_autoinsert.el" "builtin/init_browse-url.el"
+;;;### (autoloads nil nil ("../test.el" "Y-launch.el" "Y-prog-mode.el"
+;;;;;;  "builtin/init_align.el" "builtin/init_autoinsert.el" "builtin/init_browse-url.el"
 ;;;;;;  "builtin/init_cc-mode.el" "builtin/init_css-mode.el" "builtin/init_cua-base.el"
 ;;;;;;  "builtin/init_diff-mode.el" "builtin/init_dired.el" "builtin/init_doc-view.el"
 ;;;;;;  "builtin/init_ediff.el" "builtin/init_em-banner.el" "builtin/init_epg-config.el"
@@ -464,20 +481,19 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "builtin/init_js.el" "builtin/init_lisp-mode.el" "builtin/init_nxml-mode.el"
 ;;;;;;  "builtin/init_ob.el" "builtin/init_org-indent.el" "builtin/init_ox-html.el"
 ;;;;;;  "builtin/init_ox-latex.el" "builtin/init_paren.el" "builtin/init_po-mode.el"
-;;;;;;  "builtin/init_prog-mode.el" "builtin/init_python.el" "builtin/init_recentf.el"
-;;;;;;  "builtin/init_ruby-mode.el" "builtin/init_savehist.el" "builtin/init_server.el"
-;;;;;;  "builtin/init_sgml-mode.el" "builtin/init_sh-script.el" "builtin/init_shr.el"
-;;;;;;  "builtin/init_simple.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
-;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
-;;;;;;  "builtin/init_windmove.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
-;;;;;;  "depend/depend_main.el" "depend/depend_windows.el" "emacs-custom.el"
-;;;;;;  "my_font.el" "my_hooks.el" "my_paths.el" "pkg_conf/init_android-mode.el"
-;;;;;;  "pkg_conf/init_arduino-mode.el" "pkg_conf/init_auto-capitalize.el"
+;;;;;;  "builtin/init_python.el" "builtin/init_recentf.el" "builtin/init_ruby-mode.el"
+;;;;;;  "builtin/init_savehist.el" "builtin/init_server.el" "builtin/init_sgml-mode.el"
+;;;;;;  "builtin/init_sh-script.el" "builtin/init_shr.el" "builtin/init_simple.el"
+;;;;;;  "builtin/init_tool-bar.el" "builtin/init_tramp.el" "builtin/init_verilog-mode.el"
+;;;;;;  "builtin/init_view.el" "builtin/init_whitespace.el" "builtin/init_windmove.el"
+;;;;;;  "depend/depend_emacs24.el" "depend/depend_emacs25.el" "depend/depend_main.el"
+;;;;;;  "depend/depend_windows.el" "emacs-custom.el" "my_font.el"
+;;;;;;  "my_hooks.el" "pkg_conf/init_android-mode.el" "pkg_conf/init_arduino-mode.el"
 ;;;;;;  "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el"
 ;;;;;;  "pkg_conf/init_calfw-gcal.el" "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el"
 ;;;;;;  "pkg_conf/init_clojure-mode.el" "pkg_conf/init_company-c-headers.el"
-;;;;;;  "pkg_conf/init_company.el" "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el"
-;;;;;;  "pkg_conf/init_eldoc.el" "pkg_conf/init_ensime.el" "pkg_conf/init_evil-macros.el"
+;;;;;;  "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el" "pkg_conf/init_eldoc.el"
+;;;;;;  "pkg_conf/init_ensime.el" "pkg_conf/init_evil-macros.el"
 ;;;;;;  "pkg_conf/init_festival.el" "pkg_conf/init_fold_dwim.el"
 ;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_go-mode.el"
 ;;;;;;  "pkg_conf/init_google-translate-default-ui.el" "pkg_conf/init_grammar.el"
@@ -493,11 +509,10 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "pkg_conf/init_js-console.el" "pkg_conf/init_js2-mode.el"
 ;;;;;;  "pkg_conf/init_jstestmacs.el" "pkg_conf/init_keyboard-converter.el"
 ;;;;;;  "pkg_conf/init_keychord.el" "pkg_conf/init_logalimacs.el"
-;;;;;;  "pkg_conf/init_lookup.el" "pkg_conf/init_lua-mode.el" "pkg_conf/init_magit.el"
-;;;;;;  "pkg_conf/init_masaw.el" "pkg_conf/init_migemo.el" "pkg_conf/init_milkboy.el"
-;;;;;;  "pkg_conf/init_mmm-mode.el" "pkg_conf/init_mode-compile.el"
-;;;;;;  "pkg_conf/init_moz.el" "pkg_conf/init_mozc.el" "pkg_conf/init_multiple-cursors.el"
-;;;;;;  "pkg_conf/init_mykie.el" "pkg_conf/init_newsticker.el" "pkg_conf/init_nim-mode.el"
+;;;;;;  "pkg_conf/init_lookup.el" "pkg_conf/init_lua-mode.el" "pkg_conf/init_masaw.el"
+;;;;;;  "pkg_conf/init_migemo.el" "pkg_conf/init_milkboy.el" "pkg_conf/init_mmm-mode.el"
+;;;;;;  "pkg_conf/init_mode-compile.el" "pkg_conf/init_moz.el" "pkg_conf/init_mozc.el"
+;;;;;;  "pkg_conf/init_multiple-cursors.el" "pkg_conf/init_newsticker.el"
 ;;;;;;  "pkg_conf/init_node-console.el" "pkg_conf/init_nyan-mode.el"
 ;;;;;;  "pkg_conf/init_open-junk-file.el" "pkg_conf/init_org-mobile.el"
 ;;;;;;  "pkg_conf/init_org-trello.el" "pkg_conf/init_outline.el"
@@ -507,11 +522,11 @@ Use specified abbreviation of mode-line-name  by `mode-line-cleaner-alist'.
 ;;;;;;  "pkg_conf/init_sbtp.el" "pkg_conf/init_scala-mode.el" "pkg_conf/init_sdic-inline.el"
 ;;;;;;  "pkg_conf/init_sdic.el" "pkg_conf/init_skk-b.el" "pkg_conf/init_skk-server.el"
 ;;;;;;  "pkg_conf/init_skk.el" "pkg_conf/init_skype.el" "pkg_conf/init_slime.el"
-;;;;;;  "pkg_conf/init_smartparens.el" "pkg_conf/init_sql.el" "pkg_conf/init_twittering-mode.el"
-;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el"
-;;;;;;  "pkg_conf/init_winner.el" "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el"
-;;;;;;  "pkg_conf/init_yasnippet.el" "pkg_conf/init_yatemplate.el"
-;;;;;;  "pkg_conf/init_yim.el" "site-start.el") (0 0 0 0))
+;;;;;;  "pkg_conf/init_smartparens.el" "pkg_conf/init_sql.el" "pkg_conf/init_undo-tree.el"
+;;;;;;  "pkg_conf/init_w3m.el" "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el"
+;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yasnippet.el"
+;;;;;;  "pkg_conf/init_yatemplate.el" "pkg_conf/init_yim.el" "site-start.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

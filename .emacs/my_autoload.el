@@ -37,15 +37,6 @@
            (require 'yy-loaddefs)
            (require 'Y-loaddefs))))
 
-;; Load my autoload configurations
-(message-startup-time "autoload...")
-(apply `((lambda () (autoloader-autoloads ,@(Y/get-autoloads)))))
-
-;; Load files with `with-eval-after-load' func from `package-conf-dir'.
-(message-startup-time "configuring init files")
-(Y/add-after-load-files "init_" (concat config-dir "builtin"))
-(Y/add-after-load-files "init_" package-conf-dir)
-
 ;; work around for evil
 (autoload 'evil-normal-state "evil")
 

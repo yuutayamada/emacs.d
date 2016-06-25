@@ -22,10 +22,11 @@
 ;; Set buffer switch function
 (setq magit-display-buffer-function
       '(lambda (buffer)
-         (Y/win-switch-window ?g) ; jump to 'g' window
-         (switch-to-buffer buffer)
-         (when (not (one-window-p))
-           (delete-other-windows))
+         (unless (string-match "\*magit[:-].*" (buffer-name))
+           (Y/win-switch-window ?g) ; jump to 'g' window
+           (switch-to-buffer buffer)
+           (when (not (one-window-p))
+             (delete-other-windows)))
          (magit-display-buffer-traditional buffer)))
 
 (defadvice with-editor-finish (around Y/go-back-to-magit-status activate)

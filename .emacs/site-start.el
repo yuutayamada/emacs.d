@@ -75,9 +75,6 @@
                ;; my startup ;;
                (require 'Y-launch)
 
-               ;; setup Emacs Lisp config
-               (add-hook 'emacs-lisp-mode-hook 'Y-init-elisp-config)
-
                (when (version< "24.0.0" emacs-version)
                  (require 'notifications) ; this needs Dbus
                  (notifications-notify :title "Emacs Daemon"

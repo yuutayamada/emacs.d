@@ -41,6 +41,12 @@
     (add-hook 'focus-in-hook  `(lambda () (Y/idle-require-set-timer ,delay-in  ,break-in)))
     (add-hook 'focus-out-hook `(lambda () (Y/idle-require-set-timer ,delay-out ,break-out)))))
 
+;; Start idle-require
+(defconst idle-require-symbols
+  '(yasnippet helm ispell tramp eshell auto-capitalize magit
+              org filecache helm-elisp flycheck))
+(idle-require-mode t)
+
 (provide 'init-idle-require)
 
 ;; Local Variables:

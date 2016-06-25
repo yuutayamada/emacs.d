@@ -27,6 +27,10 @@
 
 (require 'my_autoload)
 
+(let ((el-get-is-lazy t))
+  (el-get 'sync '(flycheck-tip seqcmd mew twittering-mode git-gutter evil
+                  helm magit with-editor)))
+
 (require 'mykie)
 
 ;; mykie.el setup ;;
@@ -54,9 +58,8 @@
                 (:hidden . (eq 'hide (bound-and-true-p my/hideshow-state)))
                 (:markdown-header . (and (eq 'markdown-mode major-mode)
                                          (string-match "^#+ " (thing-at-point 'line))))
-                (:org-src    . (or (org-in-src-block-p)
-                                   (org-src-edit-buffer-p)
-                                   (string-match "^\\*Org Src .*\\*" (buffer-name))))
+                (:org-src    . (or (Y/org-src-block-p)
+                                   (Y/org-src-edit-buffer-p)))
                 (:org-mobile . (org-mobile-dir-p))
                 (:org-header . (and (eq 'org-mode major-mode)
                                     (org-on-heading-p)))

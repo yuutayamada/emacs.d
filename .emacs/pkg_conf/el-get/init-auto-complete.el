@@ -1,4 +1,4 @@
-;;; init_auto-complete.el --- init file for autocomplete.el -*- lexical-binding: t; -*-
+;;; init-auto-complete.el --- init file for autocomplete.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -59,11 +59,11 @@
 
 (ac-flyspell-workaround) ; to use at flyspell
 
-(provide 'init_auto-complete)
+(provide 'init-auto-complete)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_auto-complete.el ends here
+;;; init-auto-complete.el ends here

@@ -9,10 +9,11 @@
              ;; Override helm-map to use functions of DDSKK
              (mykie:attach-mykie-func-to 'helm)
              ;; Unset key C-h to use normal C-h
-             (define-key helm-map (kbd "C-h") nil)
-             ;; (el-get-bundle helm-migemo)
-             ;; (require 'init_helm-migemo)
-             ))
+             (define-key helm-map (kbd "C-h") nil)))
+
+(add-hook 'helm-after-initialize-hook
+          '(lambda ()
+             (el-get 'sync '(yasnippet helm-c-yasnippet))))
 
 ;; available option: 'same, 'other,'right, 'left, 'below, 'above
 (defconst helm-split-window-default-side 'other)

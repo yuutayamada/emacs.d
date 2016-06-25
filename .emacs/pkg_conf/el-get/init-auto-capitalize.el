@@ -1,4 +1,4 @@
-;;; init_auto-capitalize.el --- init file for auto-capitalize.el
+;;; init-auto-capitalize.el --- init file for auto-capitalize.el
 ;;; Commentary:
 ;;; Code:
 
@@ -28,11 +28,11 @@
                   (and (bound-and-true-p skk-mode)
                        (equal 'latin (skk-current-input-mode)))))))
 
-(provide 'init_auto-capitalize)
+(provide 'init-auto-capitalize)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_auto-capitalize.el ends here
+;;; init-auto-capitalize.el ends here

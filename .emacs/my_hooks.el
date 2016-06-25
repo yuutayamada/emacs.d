@@ -7,8 +7,7 @@
 (require 'cl-lib)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
-;; For Terminal Emacs ;;
-;;;;;;;;;;;;;;;;;;;;;;;;
+;; Terminal Emacs
 
 ;; This hook is activated after initialization of terminal
 (add-hook
@@ -27,13 +26,16 @@
     (set-terminal-parameter nil 'background-mode 'dark)))
 
 ;;;;;;;;;;;;;;;;;;;;;
-;; auto capitalize ;;
+;; prog-mode
+(add-hook 'prog-mode-hook '(lambda () (require 'Y-prog-mode)))
+
 ;;;;;;;;;;;;;;;;;;;;;
+;; auto capitalize
+;; (el-get 'sync 'auto-capitalize)
 ;; (add-hook 'after-change-major-mode-hook 'auto-capitalize-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;
-;; clean mode line ;;
-;;;;;;;;;;;;;;;;;;;;;
+;; Clean Mode Line
 (add-hook 'after-change-major-mode-hook 'Y/clean-mode-line)
 (add-hook 'find-file-hook 'Y/clean-mode-line)
 
@@ -102,6 +104,10 @@
                         (define-key map (kbd "<return>")
                           (lookup-key map (kbd "RET")))))
                   (error err)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Emacs Lisp
+(add-hook 'emacs-lisp-mode-hook 'Y-init-elisp-config)
 
 (provide 'my_hooks)
 

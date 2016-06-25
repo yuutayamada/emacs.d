@@ -31,7 +31,7 @@
       (error (format "%s or %s not found" root gocode))
     (add-to-list 'load-path gocode)))
 
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'go-mode)
 (require 'company-go) ; in the gocode
 (require 'commenter)

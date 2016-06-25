@@ -12,7 +12,7 @@
 
 ;;; Code:
 (require 'evil)
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'cl-lib)
 
 ;; Set default emacs state ;;

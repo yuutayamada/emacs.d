@@ -1,6 +1,16 @@
 ;;; init_org.el --- init file for org-mode
 ;;; Commentary:
 ;;; Code:
+
+;; delete built-in org-mode load-path for latest org-mode.
+(require 'find-func)
+(require 'cl-lib)
+(setq load-path
+      (cl-loop with file = (directory-file-name (file-name-directory (find-library-name "org")))
+               for f in load-path
+               unless (equal f file)
+               collect f))
+
 (require 'org-loaddefs)
 (require 'org)
 (require 'init_org-mobile)

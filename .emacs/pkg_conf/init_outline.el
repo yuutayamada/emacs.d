@@ -25,7 +25,7 @@
 
 ;;; Code:
 (require 'cl-lib)
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'outline)
 (require 'init_mykie)
 

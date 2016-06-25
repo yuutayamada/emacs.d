@@ -4,7 +4,7 @@
 
 ;;; Code:
 (require 'cl-lib)
-(require 'my_autoload)
+(require 'Y-autoload)
 
 (el-get 'sync '(indent-guide rainbow-delimiters flycheck))
 

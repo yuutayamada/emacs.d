@@ -1,9 +1,9 @@
-;;; my_paths.el --- Configuration for directory variables of my Emacs -*- lexical-binding: t; -*-
+;;; Y-paths.el --- Configuration for directory variables of my Emacs -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;; Code:
-(require 'find-func)
-(defconst user-init-file (find-library-name "Y-launch"))
+
+(defconst user-init-file (locate-library "default"))
 (defconst config-dir (file-name-directory user-init-file))
 (let* ((branch    (substring config-dir 0 (- (length config-dir) 7)))
        (user-dir  (expand-file-name user-emacs-directory))
@@ -30,11 +30,11 @@
     (defconst bookmark-default-file        (format "%sbookmarks" cache-dir))
     (defconst mew-rc-file (format "%srcfiles/init-mew" package-conf-dir))))
 
-(provide 'my_paths)
+(provide 'Y-paths)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; my_paths.el ends here
+;;; Y-paths.el ends here

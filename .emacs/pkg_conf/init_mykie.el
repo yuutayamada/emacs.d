@@ -25,12 +25,7 @@
 ;; [?\C->], [?\C-<], [(hiragana-katakana)]
 ;;; Code:
 
-(require 'my_autoload)
-
-(let ((el-get-is-lazy t))
-  (el-get 'sync '(flycheck-tip seqcmd mew twittering-mode git-gutter evil
-                  helm magit with-editor)))
-
+(require 'Y-autoload)
 (require 'mykie)
 
 ;; mykie.el setup ;;

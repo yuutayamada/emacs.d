@@ -1,5 +1,5 @@
 ;;; -*- coding: utf-8; mode: emacs-lisp; -*-
-(require 'my_function)
+(require 'Y-function)
 
 ;; Windows 起動時設定画面
 (if (string-match "mingw" system-configuration)

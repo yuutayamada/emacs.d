@@ -3,7 +3,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'yim)
 ;; (defadvice skk-latin-mode-on (around ad-trash-un-kakutei-string activate)
 ;;   ad-do-it

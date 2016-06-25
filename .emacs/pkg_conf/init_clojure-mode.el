@@ -23,7 +23,7 @@
 
 ;;; Code:
 (require 'clojure-mode)
-(require 'my_autoload)
+(require 'Y-autoload)
 
 (add-hook 'clojure-mode-hook
           (lambda ()

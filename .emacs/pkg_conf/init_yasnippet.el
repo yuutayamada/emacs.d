@@ -7,7 +7,7 @@
 (require 'popup)
 (require 'yasnippet)
 (require 'helm-c-yasnippet)
-(require 'my_paths)
+;; (require 'my_paths)
 
 (defconst yas-snippet-dirs `(,(concat user-emacs-directory "snippets")
                              ,(concat el-get-dir "yasnippet/yasmate/snippets")

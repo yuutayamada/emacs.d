@@ -4,7 +4,7 @@
 ;;; Code:
 
 (require 'flycheck-java)
-(require 'my_autoload)
+(require 'Y-autoload)
 
 (add-hook 'nxml-mode-hook
           (lambda ()

@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'cperl-mode)
 (defalias 'perl-mode 'cperl-mode)
 

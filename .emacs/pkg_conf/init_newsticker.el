@@ -1,7 +1,7 @@
 ;;; -*- coding: utf-8; mode: emacs-lisp; -*-
 
 
-(require 'my_function)
+(require 'Y-function)
 (require 'newsticker)
 (require 'init_w3m)
 

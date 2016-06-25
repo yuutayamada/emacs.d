@@ -13,7 +13,8 @@
 
 (add-hook 'helm-after-initialize-hook
           '(lambda ()
-             (el-get 'sync '(yasnippet helm-c-yasnippet))))
+             (el-get 'sync
+                     '(yasnippet helm-c-yasnippet mew twittering-mode git-gutter))))
 
 ;; available option: 'same, 'other,'right, 'left, 'below, 'above
 (defconst helm-split-window-default-side 'other)

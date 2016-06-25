@@ -4,7 +4,7 @@
 
 ;;; Code:
 
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'el-get)
 (require 'flycheck)
 

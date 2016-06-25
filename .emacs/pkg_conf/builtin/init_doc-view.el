@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'doc-view)
 (require 'init_mykie)
 

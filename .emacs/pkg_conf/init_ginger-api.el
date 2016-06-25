@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'my_paths)
+;; (require 'my_paths)
 (unless (bound-and-true-p ginger-end-point)
   (load (concat el-get-dir "ginger-api/ginger-api")))
 

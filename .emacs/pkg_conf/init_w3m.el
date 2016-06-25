@@ -36,7 +36,7 @@
 (defconst w3m-language "Japanese")
 (defconst w3m-search-default-engin "google-ja")
 
-(require 'my_autoload nil t)
+(require 'Y-autoload nil t)
 (require 'w3m)
 (require 'mykie)
 

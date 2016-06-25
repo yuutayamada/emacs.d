@@ -18,7 +18,7 @@
 (require 'cl-lib)
 (require 'haskell-mode)
 (require 'haskell-mode-autoloads)
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'helm-hoogle)
 
 (require 'haskell-customize)

@@ -4,7 +4,7 @@
 
 ;;; Code:
 
-(require 'my_autoload)
+(require 'Y-autoload)
 
 (add-hook 'kill-emacs-hook 'mc/save-lists)
 

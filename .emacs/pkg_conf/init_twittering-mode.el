@@ -24,7 +24,7 @@
 (eval-when-compile (require 'cl))
 
 (require 'twittering-mode)
-(require 'my_autoload)
+(require 'Y-autoload)
 (defvar my/twit-users '()) ;; specify username's list without @
 (defvar my/twit-password-direcotry "")
 (defvar my/twittering-initial-search nil)

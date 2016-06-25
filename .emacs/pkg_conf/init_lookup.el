@@ -10,7 +10,7 @@
 ;;; Code:
 (require 'lookup)
 (require 'lookup-vars)
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'init_festival)
 (require 'mykie)
 
@@ -40,7 +40,7 @@
      (when (string-match " No entry for query: " (format "%s" err))
        (eiji:search (ad-get-arg 0))))))
 
-(require 'my_function)
+(require 'Y-function)
 (defun Y/lookup (&optional word)
   "Search English word's meaning from my dictionaries.
 If user specified WORD then search form it."

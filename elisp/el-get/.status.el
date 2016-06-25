@@ -88,6 +88,15 @@
        (:name dash :description "A modern list api for Emacs. No 'cl required." :type github :pkgname "magnars/dash.el"))
  (db status "installed" recipe
      (:name db :description "very simple database for emacslisp, can also wrap other databases." :depends kv :type github :pkgname "nicferrier/emacs-db"))
+ (ddskk status "installed" recipe
+        (:name ddskk :load-path
+               ("./" "./nicola" "./experimental" "./bayesian")
+               :website "http://openlab.ring.gr.jp/skk/ddskk.html" :description "A Japanese input method on Emacs." :type github :pkgname "skk-dev/ddskk" :autoloads nil :info "doc/skk.info" :features
+               ("skk-setup")
+               :build
+               `((,el-get-emacs "-batch" "-q" "-no-site-file" "-l" "SKK-MK" "-f" "SKK-MK-compile")
+                 (,el-get-emacs "-batch" "-q" "-no-site-file" "-l" "SKK-MK" "-f" "SKK-MK-compile-info")
+                 ("mv" "skk-setup.el.in" "skk-setup.el"))))
  (deferred status "installed" recipe
    (:name deferred :description "Simple asynchronous functions for emacs lisp." :type github :pkgname "kiwanami/emacs-deferred"))
  (direx status "installed" recipe
@@ -253,7 +262,7 @@
                         (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
                         (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))))
  (helm status "installed" recipe
-       (:name helm :description "Emacs incremental completion and narrowing framework" :type github :pkgname "emacs-helm/helm" :autoloads "helm-autoloads" :build
+       (:name helm :post-init nil :description "Emacs incremental completion and narrowing framework" :type github :pkgname "emacs-helm/helm" :autoloads "helm-autoloads" :build
               (("make"))
               :build/darwin
               `(("make" ,(format "EMACS_COMMAND=%s" el-get-emacs)))
@@ -265,8 +274,7 @@
                    (backup-inhibited t))
               (update-directory-autoloads default-directory)
               nil)
-       :features "helm-config" :post-init
-       (helm-mode)))
+       :features "helm-config"))
 (helm-ag-r status "installed" recipe
 (:name helm-ag-r :type git :url "https://github.com/yuutayamada/helm-ag-r.git"))
 (helm-c-yasnippet status "installed" recipe

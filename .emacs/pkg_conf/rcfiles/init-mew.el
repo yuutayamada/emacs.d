@@ -20,7 +20,7 @@
 
 ;;; Code:
 
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'cl-lib)
 
 ;; Set jvgrep as search program to find Japanese words

@@ -7,7 +7,7 @@
 ;; http://www.lunaryorn.com/2014/07/02/autoloads-in-emacs-lisp.html
 ;;; Code:
 
-(require 'my_paths)
+;; (require 'my_paths)
 (require 'cl-lib)
 (require 'autoload)
 

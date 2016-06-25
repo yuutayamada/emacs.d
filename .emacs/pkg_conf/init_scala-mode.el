@@ -22,7 +22,7 @@
 ;;; Code:
 (require 'scala-mode2)
 (require 'init_ensime)
-(require 'my_autoload)
+(require 'Y-autoload)
 
 ;;; For evil
 (my/evil-inject-hjkl-keybinds+ ensime-compile-result-map)

@@ -22,7 +22,7 @@
 ;;; Code:
 
 (require 'cl-lib)
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'festival)
 (require 'mykie)
 

@@ -29,7 +29,7 @@
     (ad-set-arg 0 (aref win:configs 1)))
   ad-do-it)
 
-(require 'my_autoload)
+(require 'Y-autoload)
 (defadvice win-switch-to-window (around Y/win-switch-fixed-place activate)
   "Configure to move fixed place."
   (if (not (characterp last-input-event))

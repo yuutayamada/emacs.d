@@ -7,7 +7,7 @@
 
 (setq ensime-auto-connect 'always)
 (add-hook 'scala-mode-hook '(lambda ()
-                              (when (my/file-exists-p ".ensime")
+                              (when (locate-dominating-file default-directory ".ensime")
                                 (ensime-scala-mode-hook))))
 
 (defvar my/ensime-current-error-number 0

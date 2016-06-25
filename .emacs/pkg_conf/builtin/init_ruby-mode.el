@@ -24,7 +24,7 @@
 ;; http://cx4a.org/software/rsense/manual.html
 
 ;;; Code:
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'ruby-mode)
 
 (add-hook 'ruby-mode-hook

@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;; TODO: fix this style
-(require 'my_paths)
+;; (require 'my_paths)
 (defconst my/filecache-directories
   `((:recursive . (,config-dir
                    "~/share/doc/study/"

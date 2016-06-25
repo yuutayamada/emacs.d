@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'cl-lib)
 
 (defadvice gnus

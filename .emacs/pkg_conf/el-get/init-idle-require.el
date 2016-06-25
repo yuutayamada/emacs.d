@@ -43,9 +43,7 @@
 
 ;; Start idle-require
 (defconst idle-require-symbols
-  '(yasnippet helm ispell tramp eshell auto-capitalize magit
-              org filecache helm-elisp flycheck))
-(idle-require-mode t)
+  '(yasnippet helm ispell tramp eshell magit org filecache helm-elisp flycheck))
 
 (provide 'init-idle-require)
 

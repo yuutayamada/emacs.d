@@ -1,4 +1,4 @@
-;;; my_util.el --- my init functions -*- lexical-binding: t; -*-
+;;; Y-util.el --- my init functions -*- lexical-binding: t; -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -106,11 +106,11 @@ file prefix by PREFIX."
          (send-string-to-terminal
           (format "\33]50;%s:pixelsize=%d\007" "xft:DejaVu Sans Mono" 12)))))))
 
-(provide 'my_util)
+(provide 'Y-util)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; my_util.el ends here
+;;; Y-util.el ends here

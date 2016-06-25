@@ -5,7 +5,7 @@
 ;;; Code:
 
 (require 'cl-lib)
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)

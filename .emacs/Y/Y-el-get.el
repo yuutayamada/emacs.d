@@ -243,7 +243,7 @@
 ;; .loaddefs.el:7809:140:Warning: assignment to free variable `org-load-hook'
 
 ;;; Code:
-(require 'my_paths)
+;; (require 'my_paths)
 
 (let* ((recipes (concat el-get-dir "el-get/recipes/")))
   (defconst el-get-recipe-path-elpa      (concat recipes "elpa"))
@@ -285,7 +285,10 @@ You can only use this function inside :build directive."
            :url "https://github.com/yuutayamada/capitalizer-el.git")
 
     ;; D
-    (:name ddskk :load-path ("./" "./nicola" "./experimental" "./bayesian"))
+    (:name ddskk
+           :autoloads "skk-autoloads"
+           :features ()
+           :load-path ("./" "./nicola" "./experimental" "./bayesian"))
     ;; E
     (:name eshell-better-prompt
            :type git
@@ -294,6 +297,9 @@ You can only use this function inside :build directive."
     (:name eiji
            :type git
            :url "https://github.com/yuutayamada/eiji.git")
+    ;; H
+    (:name helm :post-init ()) ; avoid helm-mode
+
     ;; G
     (:name ginger-api
            :type git
@@ -410,6 +416,7 @@ You can only use this function inside :build directive."
            :prepare
            (eval-after-load "nim-mode"
              '(el-get 'sync 'nim-emacs-module)))
+
     (:name flycheck-package
            :type github
            :pkgname "purcell/flycheck-package"
@@ -418,10 +425,11 @@ You can only use this function inside :build directive."
            :prepare
            (eval-after-load "flycheck"
              '(progn
-                (unless flycheck-emacs-lisp-load-path
-                  (setq flycheck-emacs-lisp-load-path 'inherit))
                 (el-get 'sync 'flycheck-package)
-                (flycheck-package-setup))))
+                (flycheck-package-setup)))
+           :post-init
+           (unless flycheck-emacs-lisp-load-path
+             (setq flycheck-emacs-lisp-load-path 'inherit)))
 
     (:name evil-anzu
            :type github

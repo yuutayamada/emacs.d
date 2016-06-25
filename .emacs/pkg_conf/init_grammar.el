@@ -20,7 +20,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'grammar)
 (let ((exe-file (concat el-get-dir "grammar/grammar")))
   (if (file-exists-p exe-file)

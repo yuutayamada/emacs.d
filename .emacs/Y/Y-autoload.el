@@ -1,8 +1,15 @@
-;;; my_autoload.el --- autoload definitions
+;;; Y-autoload.el --- autoload definitions
 ;;; Commentary:
 ;;; Code:
-(require 'my_paths)
-(require 'my_util)
+
+(require 'Y-paths)
+(require 'Y-util)
+(require 'Y-el-get)
+
+;; Prepare load-paths
+(let ((dev (concat elisp-dir "self/")))
+  (Y/add-load-path-subdir
+   `(,package-dir ,config-dir ,dev)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AUTOMATICALLY-GENERATED FUNCTION LOADING ;;
@@ -40,11 +47,11 @@
 ;; work around for evil
 (autoload 'evil-normal-state "evil")
 
-(provide 'my_autoload)
+(provide 'Y-autoload)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; my_autoload.el ends here
+;;; Y-autoload.el ends here

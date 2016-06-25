@@ -1,7 +1,7 @@
 ;;; init_sgml-mode.el --- init file for sgml/html-mode
 ;;; Commentary:
 ;;; Code:
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'sgml-mode)
 
 (define-key html-mode-map (kbd "<f6>")

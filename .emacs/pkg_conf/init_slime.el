@@ -4,7 +4,7 @@
 (defconst inferior-lisp-program "clisp -I")
 (defconst slime-net-coding-system 'utf-8-unix)
 
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 'slime)
 (require 'slime-autoloads)
 (require 'slime-repl)

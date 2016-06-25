@@ -8,7 +8,7 @@
 ;; SKK Server and setup google-ime-skk configuration
 (require 'skk-vars)
 (require 'skk-server)
-(require 'my_paths)
+;; (require 'my_paths)
 
 ;; Use environment variables
 ;; same as skk-server-host

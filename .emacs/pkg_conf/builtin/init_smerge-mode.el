@@ -3,7 +3,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'my_autoload)
+(require 'Y-autoload)
 
 ;;;###autoload
 (defun Y/smerge-mode-keep-at-point ()

@@ -1,4 +1,4 @@
-;;; my_function.el --- my convenience functions
+;;; Y-function.el --- my convenience functions
 
 ;; Copyright (C) 2013 by Yuta Yamada
 
@@ -21,8 +21,7 @@
 
 ;;; Code:
 (require 'cl-lib)
-(require 'my_paths)
-(require 'my_autoload)
+(require 'Y-autoload)
 (require 's)
 
 (defun banish ()
@@ -180,7 +179,7 @@ The SELECTED argument is opacity that window is selected."
        (if (eq (face-at-point) 'font-lock-comment-face)
            (funcall insertX "#{}")
          (insert " ->")))
-      (calendar-mode         (my-insert-day))
+      (calendar-mode         (Y/insert-day))
       (emacs-lisp-mode       (test))
       (makefile-gmake-mode   (funcall insertX "$()"))
       (python-mode           (insert "$"))
@@ -233,44 +232,6 @@ Example of my/keys
                                      (concat "ssh-add -l | grep " file)))
                        (shell-command (concat "ssh-add " file))))
                    (expand-file-name remote))))))
-
-(defun my/get-buffer-string-from (file)
-  ""
-  (let* ((current        (current-buffer))
-         (aspell-buffer  (find-file-noselect file))
-         words)
-    (switch-to-buffer aspell-buffer)
-    (setq words (buffer-substring-no-properties (point-min) (point-max)))
-    (switch-to-buffer current)
-    words))
-
-;;;###autoload
-(defun my/get-aspell-capital-words (file)
-  ""
-  (if (file-exists-p file)
-      (cl-loop with personal-dict = (my/get-buffer-string-from file)
-               with words = (split-string personal-dict "\n")
-               with case-fold-search = nil
-               for word in words
-               if (string-match "[A-Z]" word)
-               collect word)
-    (error (format "The file %s doesn't exist" file))))
-
-;;;###autoload
-(defun my/file-exists-p (file)
-  "Search FILE recursively to check whether file is exist until home directory."
-  (let* ((filename (concat "./" file))
-         (home   "~/")
-         (home-p (lambda (dir1 filename)
-                   (equal
-                    (expand-file-name dir1)
-                    (expand-file-name
-                     (file-name-directory filename))))))
-    (while (not (or (file-exists-p filename)
-                    (funcall home-p home filename)))
-      (setq filename (concat "../" filename)))
-    (when (file-exists-p filename)
-      (expand-file-name filename))))
 
 ;;;###autoload
 (defun Y/show-cheat-sheet ()
@@ -340,17 +301,7 @@ Example of my/keys
      "emacs-program" buffer "/bin/sh" "-c" command)
     (switch-to-buffer-other-window original-buffer)))
 
-(defun my-insert-day ()
-  ""
-  (interactive)
-  (let ((day nil)
-        (calendar-date-display-form
-         '("[" year "-" (format "%02d" (string-to-int month))
-           "-" (format "%02d" (string-to-int day)) "]")))
-    (setq day (calendar-date-string
-               (calendar-cursor-to-date t)))
-    (calendar-exit)
-    (insert day)))
+
 
 (defun my/delete-trailing-space (word)
   ""
@@ -430,7 +381,7 @@ Example of my/keys
     (markdown-mode nil)
     (t (delete-trailing-whitespace (point-at-bol) (point-at-eol))))
   (cl-case major-mode
-    (org-mode (org-return-indent))
+    (org-mode (and (fboundp 'org-return-indent) (org-return-indent)))
     (t (electric-newline-and-maybe-indent))))
 
 (defun my/region-extender (&optional input)
@@ -559,50 +510,6 @@ This function distinguishes parenthesis and symbol accordingly."
       (whitespace-mode 0)
     (whitespace-mode t)))
 
-(defvar Y/mode-line-timer-obj nil)
-(defvar Y/mode-line-color-alist
-  '((default :background "#5f00ff")
-    (picture :background "yellow")
-    (multiple-cursor :background "#5f87ff")
-    ;; For Evil
-    (emacs   :background "#5c5cff")
-    (normal  :background "#e80000")
-    (insert  :background "#00cd00")
-    (visual  :background "#006fa0")
-    (replace :background "#00af87")))
-
-(defun Y/mode-line-color-get-attribute ()
-  ""
-  (or
-   (when (and (eq major-mode 'picture-mode)
-              (or (eq (bound-and-true-p evil-state) 'emacs)
-                  (not (or (bound-and-true-p evil-mode)
-                           (bound-and-true-p evil-local-mode)))))
-     'picture)
-   (when (bound-and-true-p multiple-cursors-mode)
-     'multiple-cursor)
-   (if (or (bound-and-true-p evil-mode)
-           (bound-and-true-p evil-local-mode))
-       (bound-and-true-p evil-state))
-   'default))
-
-(defun Y/compute-mode-line-color ()
-  ""
-  (let ((current (face-attribute 'mode-line :background))
-        (new-color
-         (assoc-default (Y/mode-line-color-get-attribute)
-                        Y/mode-line-color-alist)))
-    (apply `((lambda ()
-               (when (not (equal current (plist-get new-color :background)))
-                 (set-face-attribute 'mode-line nil ,@new-color))))))
-  (setq Y/mode-line-timer-obj nil))
-
-(defun Y/update-mode-line-bg ()
-  ""
-  (unless Y/mode-line-timer-obj
-    (setq Y/mode-line-timer-obj
-          (run-with-timer 0.1 nil 'Y/compute-mode-line-color))))
-
 ;;;###autoload
 (defun Y/lookup-stardict()
   "Lookup word by stardict."
@@ -620,10 +527,6 @@ This function distinguishes parenthesis and symbol accordingly."
                        (unless (equal (buffer-name (current-buffer)) ,buf)
                          (switch-to-buffer-other-window ,buf))
                        (goto-char (point-min))))))
-
-(setq-default mode-line-format
-              (append mode-line-format
-                      '((:eval (Y/update-mode-line-bg)))))
 
 ;;;###autoload
 (defun Y/visual-fill-mode (&optional arg)
@@ -643,11 +546,11 @@ If ARG is non-nil, turn on visual mode stuff."
   (interactive)
   nil)
 
-(provide 'my_function)
+(provide 'Y-function)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; my_function.el ends here
+;;; Y-function.el ends here

@@ -417,9 +417,7 @@
 :load-path
 ("./" "./contrib" "./doc")))
 (nim-emacs-module status "installed" recipe
-(:name nim-emacs-module :description "Make Emacs functions by Nim" :type github :pkgname "yuutayamada/nim-emacs-module" :minimum-emacs-version "25" :prepare
-(eval-after-load "nim-mode"
-'(el-get 'sync 'nim-emacs-module))))
+(:name nim-emacs-module :description "Make Emacs functions by Nim" :type github :pkgname "yuutayamada/nim-emacs-module" :minimum-emacs-version "25"))
 (nim-mode status "installed" recipe
 (:name nim-mode :website "https://github.com/nim-lang/nim-mode#readme" :description "Major mode for the Nim programming language" :type github :pkgname "nim-lang/nim-mode" :branch "master" :minimum-emacs-version "24.4" :depends
 (flycheck company-mode epc let-alist commenter)))

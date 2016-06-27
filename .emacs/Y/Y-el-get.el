@@ -412,10 +412,7 @@ You can only use this function inside :build directive."
            :description "Make Emacs functions by Nim"
            :type github
            :pkgname "yuutayamada/nim-emacs-module"
-           :minimum-emacs-version "25"
-           :prepare
-           (eval-after-load "nim-mode"
-             '(el-get 'sync 'nim-emacs-module)))
+           :minimum-emacs-version "25")
 
     (:name flycheck-package
            :type github
@@ -424,12 +421,7 @@ You can only use this function inside :build directive."
            :minimum-emacs-version "24"
            :prepare
            (eval-after-load "flycheck"
-             '(progn
-                (el-get 'sync 'flycheck-package)
-                (flycheck-package-setup)))
-           :post-init
-           (unless flycheck-emacs-lisp-load-path
-             (setq flycheck-emacs-lisp-load-path 'inherit)))
+             '(flycheck-package-setup)))
 
     (:name evil-anzu
            :type github

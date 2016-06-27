@@ -18,7 +18,7 @@
 ;;         -> if no .emacs then try to load ~/.emacs.d/init.el
 ;;      -> load ‘default’.el
 ;;      -> package initialize if user-init-file exists
-;;      -> ‘after-init-hook’
+;;      -> ‘after-init-hook’, ‘delayed-warnings-hook’
 ;;      -> initialize scratch buffer
 ;;      -> ? tty-run-terminal-initialization
 ;;      -> process remaining arg (command-line-1 function)

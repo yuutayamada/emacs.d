@@ -19,7 +19,7 @@
          (el-get 'sync
                  '(windows ; load windows.el before mykie
                    s f dash tabbar popwin auto-capitalize wgrep
-                   multiple-cursors
+                   multiple-cursors avy
                    ;; flycheck
                    flycheck flycheck-tip
                    ;; key binds

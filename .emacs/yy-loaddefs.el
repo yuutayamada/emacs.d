@@ -201,120 +201,7 @@ Load PACKAGES.
 
 \(fn PACKAGES)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-util" '("Y/" "message-startup-time" "autoloader-autoload")))
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_auth-source" "builtin/init_auth-source.el"
-;;;;;;  (22104 57664 305180 446000))
-;;; Generated autoloads from builtin/init_auth-source.el
-
-(autoload 'Y/get-auth-info "builtin/init_auth-source" "\
-Get auth info.
-
-\(fn MACHINE &rest KEYWORDS)" nil nil)
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_autoload" "builtin/init_autoload.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from builtin/init_autoload.el
-
-(autoload 'Y/make-autoload-files "builtin/init_autoload" "\
-Make autoload files from elisp directory.
-FILES should put a place where is located to elisp directory.
-
-\(fn &optional FILES)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_autoload" '(#("Y/update-autoloads" 0 18 (face font-lock-function-name-face fontified nil)))))
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_calendar" "builtin/init_calendar.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from builtin/init_calendar.el
-
-(autoload 'Y/insert-day "builtin/init_calendar" "\
-
-
-\(fn)" t nil)
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_erc" "builtin/init_erc.el" t)
-;;; Generated autoloads from builtin/init_erc.el
-
-(autoload 'Y/erc-start-irc "builtin/init_erc" "\
-Connect to IRC.
-
-\(fn)" t nil)
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_filecache" "builtin/init_filecache.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from builtin/init_filecache.el
-
-(autoload 'Y/filecache-ido-find-file "builtin/init_filecache" "\
-My file cache find-file.
-
-\(fn)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_filecache" '(#("Y/ghq-root" 0 10 (face font-lock-variable-name-face fontified nil)) #("my/filecache-directories" 0 24 (face font-lock-variable-name-face fontified nil)))))
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_flyspell" "builtin/init_flyspell.el"
-;;;;;;  (21916 11116 437635 966000))
-;;; Generated autoloads from builtin/init_flyspell.el
-
-(defconst flyspell-mode-map 'nil)
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_gnus" "builtin/init_gnus.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from builtin/init_gnus.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_gnus" '(#("my/gnus-" 0 8 (fontified nil)) #("nntp-authinfo-file" 0 18 (face font-lock-variable-name-face fontified nil)))))
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_grep" "builtin/init_grep.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from builtin/init_grep.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_grep" '("grep-" "Y/grep-jump-to-file")))
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_iso-transl" "builtin/init_iso-transl.el"
-;;;;;;  (21800 29160 432617 523000))
-;;; Generated autoloads from builtin/init_iso-transl.el
-
-(autoload 'Y/iso-transl-toggle-minor-mode "builtin/init_iso-transl" "\
-Toggle `iso-transl-ctl-x-8-map' keybinds.
-
-\(fn)" t nil)
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_package" "builtin/init_package.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from builtin/init_package.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_package" '("package-archives")))
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_smerge-mode" "builtin/init_smerge-mode.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from builtin/init_smerge-mode.el
-
-(autoload 'Y/smerge-mode-keep-at-point "builtin/init_smerge-mode" "\
-Treat merging at point by smerge way.
-
-\(fn)" t nil)
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-util" '(#("Y/" 0 2 (face font-lock-function-name-face fontified nil)) #("autoloader-autoload" 0 19 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -597,28 +484,13 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;***
 
 ;;;### (autoloads nil nil ("../test.el" "Y/Y-hooks.el" "Y/Y-prog-mode.el"
-;;;;;;  "builtin/init_align.el" "builtin/init_autoinsert.el" "builtin/init_browse-url.el"
-;;;;;;  "builtin/init_cc-mode.el" "builtin/init_css-mode.el" "builtin/init_cua-base.el"
-;;;;;;  "builtin/init_diff-mode.el" "builtin/init_dired.el" "builtin/init_doc-view.el"
-;;;;;;  "builtin/init_ediff.el" "builtin/init_em-banner.el" "builtin/init_epg-config.el"
-;;;;;;  "builtin/init_eshell.el" "builtin/init_eww.el" "builtin/init_flymake.el"
-;;;;;;  "builtin/init_ido.el" "builtin/init_indent.el" "builtin/init_info.el"
-;;;;;;  "builtin/init_isearch.el" "builtin/init_ispell.el" "builtin/init_js.el"
-;;;;;;  "builtin/init_lisp-mode.el" "builtin/init_nxml-mode.el" "builtin/init_ob.el"
-;;;;;;  "builtin/init_ox-html.el" "builtin/init_ox-latex.el" "builtin/init_paren.el"
-;;;;;;  "builtin/init_po-mode.el" "builtin/init_python.el" "builtin/init_recentf.el"
-;;;;;;  "builtin/init_ruby-mode.el" "builtin/init_savehist.el" "builtin/init_server.el"
-;;;;;;  "builtin/init_sgml-mode.el" "builtin/init_sh-script.el" "builtin/init_shr.el"
-;;;;;;  "builtin/init_simple.el" "builtin/init_tool-bar.el" "builtin/init_tramp.el"
-;;;;;;  "builtin/init_verilog-mode.el" "builtin/init_view.el" "builtin/init_whitespace.el"
-;;;;;;  "builtin/init_windmove.el" "default.el" "depend/depend_emacs24.el"
-;;;;;;  "depend/depend_emacs25.el" "depend/depend_main.el" "emacs-custom.el"
-;;;;;;  "pkg_conf/init_android-mode.el" "pkg_conf/init_arduino-mode.el"
-;;;;;;  "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el"
-;;;;;;  "pkg_conf/init_calfw-gcal.el" "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el"
-;;;;;;  "pkg_conf/init_clojure-mode.el" "pkg_conf/init_company-c-headers.el"
-;;;;;;  "pkg_conf/init_eclim.el" "pkg_conf/init_eiji.el" "pkg_conf/init_eldoc.el"
-;;;;;;  "pkg_conf/init_evil-macros.el" "pkg_conf/init_fold_dwim.el"
+;;;;;;  "default.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
+;;;;;;  "depend/depend_main.el" "emacs-custom.el" "pkg_conf/init_android-mode.el"
+;;;;;;  "pkg_conf/init_arduino-mode.el" "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el"
+;;;;;;  "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw-gcal.el"
+;;;;;;  "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el" "pkg_conf/init_clojure-mode.el"
+;;;;;;  "pkg_conf/init_company-c-headers.el" "pkg_conf/init_eclim.el"
+;;;;;;  "pkg_conf/init_eiji.el" "pkg_conf/init_evil-macros.el" "pkg_conf/init_fold_dwim.el"
 ;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_google-translate-default-ui.el"
 ;;;;;;  "pkg_conf/init_grammar.el" "pkg_conf/init_grep-a-lot.el"
 ;;;;;;  "pkg_conf/init_hangman.el" "pkg_conf/init_haskell-emacs.el"

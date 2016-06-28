@@ -2,13 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-;;;###autoload
-(defconst flyspell-mode-map '()) ; Avoid flyspell keybinds
-
-(require 'flyspell)
-
-(setq flyspell-use-meta-tab nil
-      flyspell-auto-correct-previous-pos t)
+(add-hook 'flyspell-mode-hook
+          '(lambda ()
+             (setq flyspell-use-meta-tab nil)
+             (setq flyspell-auto-correct-previous-pos t)
+             (define-key flyspell-mode-map (kbd "C-;") nil)))
 
 (provide 'init_flyspell)
 

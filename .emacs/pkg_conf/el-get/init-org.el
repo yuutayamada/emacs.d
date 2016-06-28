@@ -1,4 +1,4 @@
-;;; init_org.el --- init file for org-mode
+;;; init-org.el --- init file for org-mode
 ;;; Commentary:
 ;;; Code:
 
@@ -123,11 +123,11 @@
     (org-open-at-point))
    (t (org-insert-drawer))))
 
-(provide 'init_org)
+(provide 'init-org)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_org.el ends here
+;;; init-org.el ends here

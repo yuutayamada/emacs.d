@@ -40,10 +40,7 @@
                "C-M-n" (lambda () (interactive) (scroll-down-line 10)))))
 
 ;;; ESHELL-BETTER-PROMPT
-(require 'eshell-better-prompt)
-;; %Y - Year %m - numeric month %d - day of month
-;; %H - hour %M -minute
-(setq eshell-better-prompt-time-format "%Y/%m/%d %H:%M")
+(el-get 'sync 'eshell-better-prompt)
 
 (defvar my/eshell-tmp-buffer nil)
 (defun eshell-for-save-buffer (&optional not-new-buffer)

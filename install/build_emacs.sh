@@ -10,6 +10,7 @@ cd `ghq root`/git.savannah.gnu.org/emacs
 # TODO: organize prerequisite libraries
 # for image
 # apt-get install libXaw3d libxpm libpng libz libjpeg libtiff libgif librsvg2-dev
+# For webkit: libwebkitgtk-3.0-dev
 
 # reset previous things
 # discard stuff from last build
@@ -24,15 +25,16 @@ git pull git://git.savannah.gnu.org/emacs.git
 # git checkout emacs-25
 # git pull
 
-# configure
-./autogen.sh
+# CONFIGURE
+./autogen.sh all
 ./configure \
-  CFLAGS='-O3' \
-  --with-x-toolkit=lucid --with-dbus -without-toolkit-scroll-bars \
-  --with-xim --without-makeinfo --with-modules
+  CFLAGS='-O2' \
+  --with-dbus -without-toolkit-scroll-bars \
+  --with-xim --without-makeinfo --with-x-toolkit=gtk3 --with-xwidgets \
+  --with-cairo --with-modules
+# Memo: cairo and xwidgets need gtk3
 
-# make or make bootstrap?
-make
+make -j5
 
 # memo
 # ./configure \

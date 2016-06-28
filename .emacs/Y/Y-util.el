@@ -47,7 +47,7 @@
     (error (print error))))
 
 ;; START UP TIME
-(defsubst message-startup-time (&optional comment)
+(defsubst Y/message-startup-time (&optional comment)
   "Display spent time with COMMENT."
   (let* ((start (+ (cl-third before-init-time)
                    (* 1000000 (cl-second before-init-time))))

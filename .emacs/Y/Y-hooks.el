@@ -122,7 +122,7 @@
                      (error err)))))
 
    ;; Load files with `with-eval-after-load' func from `package-conf-dir'.
-   (message-startup-time "configuring init files")
+   (Y/message-startup-time "configuring init files")
    (Y/add-after-load-files "init_" (concat package-conf-dir "builtin/"))
    (Y/add-after-load-files "init_" package-conf-dir)
 
@@ -138,7 +138,7 @@
    ;; Boot Time ;;
    ;; Show boot time at *message* buffer
    ;; because emacs-init-time is not precise.
-   (message-startup-time "total time past")))
+   (Y/message-startup-time "total time past")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; New hook from emacs 24.4 ;;

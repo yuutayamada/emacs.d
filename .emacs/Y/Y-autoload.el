@@ -16,17 +16,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; autoload file of git.savannah.gnu.org/emacs/lisp/emacs
-(message-startup-time "loaddefs")
+(Y/message-startup-time "loaddefs")
 (require 'loaddefs)
 
 ;; EL-GET
-(message-startup-time "el-get")
+(Y/message-startup-time "el-get")
 (add-to-list 'load-path el-get-dir)
 (require '.loaddefs)
 (autoload 'el-get "el-get") ; for ‘el-get’ function
 
 ;; Lookup.el
-(message-startup-time "lookup-autoloads")
+(Y/message-startup-time "lookup-autoloads")
 (run-with-idle-timer 3 nil (lambda () (require 'lookup-autoloads nil t))) ; work around test
 
 ;;;;;;;;;;;;;;;;;;;;;;;

@@ -16,6 +16,7 @@
 ;;; Code:
 
 (require 'cl-lib)
+(require 'Y-autoload)
 
 (add-hook
  'emacs-startup-hook
@@ -26,7 +27,6 @@
          '(depend_main   ; this file should be loaded first than other files.
            tabbar s
            init_mykie))
-
       (error (message (format "Init function error: %s" err))))))
 
 ;; This hook is activated after initialization of terminal
@@ -65,16 +65,13 @@
    ;; prog-mode
    (require 'Y-prog-mode)
 
-   ;;;;;;;;;;;;;;;;;;;;;;
-   ;; files(find-file) ;;
-   ;;;;;;;;;;;;;;;;;;;;;;
-   ;; git-gutter
+   ;;;;;;;;;;;;;;;;;;;;;
+   ;; files(find-file)
    (add-hook 'find-file-hook 'git-gutter-mode)
-   (add-hook 'git-gutter-mode-on-hook
-             '(lambda ()
-                (setq git-gutter:modified-sign "±")
-                ;; (git-gutter:linum-setup) ; for linum
-                ))
+   ;; auto-insert mode
+   ;; https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html
+   ;; check point max for lazy loading
+   (add-hook 'find-file-hook #'(lambda () (when (eq (point-max) 1) (auto-insert))))
 
    ;;; Document based mode hooks
    (cl-loop with hooks = '(markdown-mode-hook org-mode-hook erc-mode-hook)
@@ -85,14 +82,8 @@
                                  (pangu-spacing-mode t)
                                  (flyspell-mode t))))
 
-   ;; auto-insert mode
-   ;; https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html
-   ;; check point max for lazy loading
-   (add-hook 'find-file-hook #'(lambda () (when (eq (point-max) 1) (auto-insert))))
-
    ;;;;;;;;;;;;;;;
-   ;; view-mode ;;
-   ;;;;;;;;;;;;;;;
+   ;; view-mode
    (add-hook 'help-mode-hook 'view-mode)
    (add-hook 'Man-mode-hook  'view-mode)
 
@@ -133,23 +124,10 @@
 
    (run-with-idle-timer
     1.0 nil
-    (lambda () (add-to-list 'mode-line-format '(:eval (Y/update-mode-line-bg)))))
-   ;; (require 'yasnippet) (el-get 'sync 'yasnippet)
-   ;; Boot Time ;;
-   ;; Show boot time at *message* buffer
-   ;; because emacs-init-time is not precise.
-   (Y/message-startup-time "total time past")))
+    (lambda () (add-to-list 'mode-line-format '(:eval (Y/update-mode-line-bg)))))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; New hook from emacs 24.4 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; *** New hooks `focus-in-hook', `focus-out-hook'.
-
-;; Note that you CAN NOT apply `eval-after-load' to `text-mode'
-;; `startup',and `files' which is original file of `find-file-hook'
-;; due to the lack of `provide' function in those .el files. So you
-;; should use hooks instead to do so.
-
+;; Memo
+;; use those hooks later: `focus-in-hook', `focus-out-hook'.
 
 (provide 'Y-hooks)
 

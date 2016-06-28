@@ -47,18 +47,24 @@
     (error (print error))))
 
 ;; START UP TIME
-(defsubst Y/message-startup-time (&optional comment)
-  "Display spent time with COMMENT."
-  (let* ((start (+ (cl-third before-init-time)
-                   (* 1000000 (cl-second before-init-time))))
-         (end   (current-time))
-         (e-time (/ (- (+ (cl-third end)
-                          (* 1000000 (cl-second end)))
-                       start)
-                    1000))
-         (msg   (format "%s : %dmsec" comment e-time))
-         (message-log-max 3000))
-    (message msg)))
+(defsubst Y/message-startup-time (&optional comment notification)
+  "Display spent time with COMMENT.
+If you set non-nil to NOTIFICATION, you can see the result in
+notification area."
+  (when (fboundp 'notifications-notify)
+    (let* ((start (+ (cl-third before-init-time)
+                     (* 1000000 (cl-second before-init-time))))
+           (end   (current-time))
+           (e-time (/ (- (+ (cl-third end)
+                            (* 1000000 (cl-second end)))
+                         start)
+                      1000))
+           (msg   (format "%s : %dmsec" comment e-time)))
+      (if (not notification)
+          (message msg)
+        (notifications-notify :title "Emacs"
+                              :body  msg
+                              :timeout 5000)))))
 
 (defvar Y/add-after-load-dir-registered-list nil)
 (defun Y/add-after-load-files (prefix where)

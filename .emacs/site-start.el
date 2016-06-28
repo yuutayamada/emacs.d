@@ -43,11 +43,7 @@
     (add-hook 'window-setup-hook
               `(lambda ()
                  (setq gc-cons-threshold ,original-gc-cons-threshold)
-                 (when (version< "24.0.0" emacs-version)
-                   (require 'notifications) ; this needs Dbus
-                   (notifications-notify :title "Emacs Daemon"
-                                         :body  "Ready to start!!!"
-                                         :timeout 5000)))))
+                 (Y/message-startup-time "Ready to start!" t))))
 
   ;; My core configuration files
   (setq

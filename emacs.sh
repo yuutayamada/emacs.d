@@ -68,7 +68,7 @@ urxvtEmacs() {
 }
 
 EmacsClient() {
-  [ -z "$*" ] && where="$PWD" || where="$*"
+  [ -z "$*" ] && where="$*"
   client=(${emacsclient} -s ${daemon_name} -q ${option} ${where})
   if [ -z $xtermopt ] && [ -z $urxvt_client ]; then
     ${client} &

@@ -42,7 +42,8 @@
 ;; my memo:
 ;;   http://unicode.org/cldr/utility/confusables.jsp?a=%22&r=None
 ;;   https://en.wikipedia.org/wiki/Quotation_mark
-;; (setq nim-pretty-triple-double-quotes (cons ?« ?»))
+;;   http://unicode-table.com/en/search/?q=quotation
+(setq nim-pretty-triple-double-quotes (cons ?„ ?”))
 
 (defun Y/nim-mode-common-setup ()
   "My configuration for ‘nim-mode’ and ‘nimscript-mode’."

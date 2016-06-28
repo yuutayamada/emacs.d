@@ -1,8 +1,14 @@
 [![Build Status](https://travis-ci.org/yuutayamada/emacs.d.png?branch=master)](https://travis-ci.org/yuutayamada/emacs.d)
 
-configuration for my emacs, and elisp.
+Configuration for my .emacs
 
 This repository is still work in progress.
+
+
+## Files and directories description
+- .emacs   : my emacs configuration directory
+- elisp    : emacs extension directory
+- emacs.sh : make aliases to start my emacs
 
 # How to use this repository?
 

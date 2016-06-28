@@ -3,6 +3,13 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Use XDG_CONFIG_HOME as personal configuration file
+(let* ((emacs-conf-dir (format "%s/emacs/" (getenv "XDG_CONFIG_HOME")))
+       (emacsrc (format "%semacsrc" emacs-conf-dir)))
+  (when (file-exists-p emacsrc)
+    (defconst user-emacs-directory emacs-conf-dir)
+    (load emacsrc)))
+
 (defconst user-init-file (locate-library "default"))
 (defconst config-dir (file-name-directory user-init-file))
 (let* ((branch    (substring config-dir 0 (- (length config-dir) 7)))

@@ -6,46 +6,53 @@
 (require 'Y-util)
 (require 'Y-el-get)
 
-;; Prepare load-paths
-(let ((dev (concat elisp-dir "self/")))
-  (Y/add-load-path-subdir
-   `(,package-dir ,config-dir ,dev)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; AUTOMATICALLY-GENERATED FUNCTION LOADING ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; autoload file of git.savannah.gnu.org/emacs/lisp/emacs
-(Y/message-startup-time "loaddefs")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Load Emacs’ autoload files (git.savannah.gnu.org/emacs/lisp/emacs)
+(Y/message-startup-time "Emacs loaddefs")
 (require 'loaddefs)
+;; Then omit org-mode from search path
+(require 'cl-lib)
+(require 'find-func)
+(setq load-path
+      (cl-loop
+       with file = (directory-file-name
+                    (file-name-directory (find-library-name "org")))
+       for f in load-path
+       unless (equal f file)
+       collect f))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Prepare load-paths for this repository
+(Y/message-startup-time "My loaddefs")
+(let ((dev (concat elisp-dir "self/")))
+  (Y/add-load-path-subdir `(,config-dir ,dev)))
+
+(defconst Y/autoload-files
+  `(,(concat config-dir "YY-loaddefs.el")
+    ,(concat elisp-dir  "self/Y-package-loaddefs.el")))
+
+(condition-case err
+    (progn (require 'YY-loaddefs)
+           (add-to-list 'load-path (concat elisp-dir "self"))
+           (require 'Y-package-loaddefs))
+  (error (with-no-warnings
+           (Y/make-autoload-files Y/autoload-files)
+           (require 'YY-loaddefs)
+           (require 'Y-package-loaddefs))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EL-GET
-(Y/message-startup-time "el-get")
+(Y/message-startup-time "el-get loaddefs")
 (add-to-list 'load-path el-get-dir)
 (require '.loaddefs)
 (autoload 'el-get "el-get") ; for ‘el-get’ function
 
-;; Lookup.el
-(Y/message-startup-time "lookup-autoloads")
-(run-with-idle-timer 3 nil (lambda () (require 'lookup-autoloads nil t))) ; work around test
-
-;;;;;;;;;;;;;;;;;;;;;;;
-;; My autoload files ;;
-;;;;;;;;;;;;;;;;;;;;;;;
-(defconst Y/autoload-files `(,(concat elisp-dir  "self/Y-loaddefs.el")
-                             ,(concat config-dir "yy-loaddefs.el")))
-
-(condition-case err
-    (progn (require 'yy-loaddefs)
-           (add-to-list 'load-path (concat elisp-dir "self"))
-           (require 'Y-loaddefs))
-  (error (with-no-warnings
-           (Y/make-autoload-files Y/autoload-files)
-           (require 'yy-loaddefs)
-           (require 'Y-loaddefs))))
 
 ;; work around for evil
 (autoload 'evil-normal-state "evil")
+
+(Y/message-startup-time "Y-autoload done")
 
 (provide 'Y-autoload)
 

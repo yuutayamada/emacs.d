@@ -1,42 +1,40 @@
-;;; init-org.el --- init file for org-mode
+;;; init-org-mode.el --- init file for org-mode
 ;;; Commentary:
 ;;; Code:
 
 ;; delete built-in org-mode load-path for latest org-mode.
-(require 'find-func)
-(require 'cl-lib)
-(setq load-path
-      (cl-loop with file = (directory-file-name (file-name-directory (find-library-name "org")))
-               for f in load-path
-               unless (equal f file)
-               collect f))
-
 (require 'org-loaddefs)
 (require 'org)
 (require 'init_org-mobile)
 
 ;; Footer information
 (defconst org-html-postamble "")
+(setq-default org-startup-indented t)
+
+(defun Y/org-export-html-for-college ()
+  "This is temporary function to produce a html file for my college homework"
+  (interactive)
+  (cl-loop for (class . prof) in Y/prof-alist
+           if (string-match class (buffer-file-name))
+           do (cl-return (Y/org-html-export-to-html prof class))))
+(define-key org-mode-map (kbd "C-x p") 'Y/org-export-html-for-college)
+
+;; Org key bindings
 (require 'mykie)
+;; un-bind needless keybinds
+(mykie:set-keys org-mode-map "C-a" "C-e" "RET" "C-j" "C-," "C-.")
 
 (add-hook 'org-mode-hook
-          #'(lambda ()
-              ;; un-bind needless keybinds
-              (mykie:set-keys org-mode-map "C-a" "C-e" "RET" "C-j" "C-," "C-.")
-              (org-indent-mode t)
-              ;; this is temporary function to produce a html file for my college homework
-              (define-key org-mode-map (kbd "C-x p")
-                '(lambda () (interactive)
-                   (cl-loop for (class . prof) in Y/prof-alist
-                            if (string-match class (buffer-file-name))
-                            do (cl-return (Y/org-html-export-to-html prof class)))))
+          '(lambda ()
+             ;; Nim Blogger (work in progress)
+             (with-no-warnings
+               (load "~/local/vcs/github.com/yuutayamada/nim-blogger/misc/nimblogger")
+               (setq nimblogger:blog-name "memo"
+                     nimblogger:command "~/local/vcs/github.com/yuutayamada/nim-blogger/nimblogger")
+               (define-key org-mode-map (kbd "C-S-p") 'nimblogger:post-article))
 
-              ;; Nim Blogger (work in progress)
-              (with-no-warnings
-                (load "~/local/vcs/github.com/yuutayamada/nim-blogger/misc/nimblogger")
-                (setq nimblogger:blog-name "memo"
-                      nimblogger:command "~/local/vcs/github.com/yuutayamada/nim-blogger/nimblogger")
-                (define-key org-mode-map (kbd "C-S-p") 'nimblogger:post-article))))
+
+             ))
 
 ;; latest org mode includes this
 (when (require 'org-eldoc nil 'noerror)
@@ -123,11 +121,11 @@
     (org-open-at-point))
    (t (org-insert-drawer))))
 
-(provide 'init-org)
+(provide 'init-org-mode)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init-org.el ends here
+;;; init-org-mode.el ends here

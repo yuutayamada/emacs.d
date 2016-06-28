@@ -24,13 +24,6 @@
                              (concat comment " This is scratch buffer.\n")))
                      (run-with-idle-timer 5 nil 'eldoc-mode t))))
 
-;; Use XDG_CONFIG_HOME as personal configuration file
-(let* ((emacs-conf-dir (format "%s/emacs/" (getenv "XDG_CONFIG_HOME")))
-       (emacsrc (format "%semacsrc" emacs-conf-dir)))
-  (when (file-exists-p emacsrc)
-    (setq user-emacs-directory emacs-conf-dir)
-    (load emacsrc)))
-
 ;;* Coding system
 (prefer-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8) ; for eshell

@@ -115,14 +115,6 @@
   (cl-loop for dir in (or dirs `(,config-dir))
            do (byte-recompile-directory dir 0 t)))
 
-;;; For Color and Face
-(defun my/load-color-theme ()
-  "Load my color theme."
-  (interactive)
-  (when (display-graphic-p)
-    (set-background-color "black"))
-  (enable-theme 'opacity))
-
 (defun my/set-opacity (selected)
   "Set opacity.
 The SELECTED argument is opacity that window is selected."

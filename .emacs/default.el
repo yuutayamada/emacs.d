@@ -3,9 +3,6 @@
 
 ;;; Code:
 
-;; Custom variables ;;
-(load "emacs-custom")
-
 (require 'Y-autoload)
 
 ;; Sync all packages for el-get. ‘el-get’ function registers
@@ -13,7 +10,7 @@
 ;; Note that sometimes el-get’s .loaddefs.el might break, so check
 ;; the file if you caught suspicious behavior (probably you can solve
 ;; by "el-get-update package")
-(let ((el-get-is-lazy t) ; because my_autoload.el ‘require’ .loaddefs.el
+(let ((el-get-is-lazy t) ; because Y-autoload.el ‘require’ .loaddefs.el
       (done ; wait until the sync is done
        (prog1 'sync-completed
          (el-get 'sync

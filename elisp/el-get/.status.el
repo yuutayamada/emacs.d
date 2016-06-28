@@ -199,7 +199,9 @@
  (ggtags status "installed" recipe
          (:name ggtags :description "Use GNU Global in Emacs." :type github :pkgname "leoliu/ggtags"))
  (ginger-api status "installed" recipe
-             (:name ginger-api :type git :url "https://gist.github.com/5457732.git"))
+             (:name ginger-api :type git :url "https://gist.github.com/5457732.git" :depends request :features
+                    (ginger-api)
+                    :after nil))
  (ginger-rephrase-api status "installed" recipe
                       (:name ginger-rephrase-api :type git :url "https://gist.github.com/7349439.git"))
  (git-emacs status "installed" recipe
@@ -250,8 +252,6 @@
                     (:name groovy-emacs-mode :description "A groovy major mode, grails minor mode, and a groovy inferior mode." :type github :pkgname "Groovy-Emacs-Modes/groovy-emacs-modes"))
  (hangman status "installed" recipe
           (:name hangman :type git :url "https://github.com/yuutayamada/hangman.git"))
- (haskell-emacs status "installed" recipe
-                (:name haskell-emacs :type github :pkgname "knupfer/haskell-emacs"))
  (haskell-mode status "installed" recipe
                (:name haskell-mode :description "A Haskell editing mode" :type github :pkgname "haskell/haskell-mode" :info "." :build
                       `(("make" ,(format "EMACS=%s" el-get-emacs)
@@ -323,8 +323,6 @@
 (js2-mode status "installed" recipe
 (:name js2-mode :type git :url "https://github.com/mooz/js2-mode.git" :build
 ("make")))
-(jsfmt status "installed" recipe
-(:name jsfmt :type git :url "https://github.com/brettlangdon/jsfmt.el.git"))
 (json-mode status "installed" recipe
 (:name json-mode :build
 `(,(if

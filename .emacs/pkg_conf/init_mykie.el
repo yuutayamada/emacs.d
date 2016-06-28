@@ -388,7 +388,6 @@
 (mykie:set-keys global-map
   "<f1>"     winner-undo
   "<f2>"     winner-redo
-  "S-<f1>"   my/load-color-theme
   "<f5>"     my/revert-buffer
   "<f7>"     point-undo
   "S-<f7>"   point-redo
@@ -396,7 +395,6 @@
   "S-<f8>"   goto-last-change-reverse
   "<f9>"     my/toggle-opacity
   "<f10>"    my/festival-read-buffer
-  "S-<f10>"  my/load-color-theme
   "<f11>"    my/open-calendar
   "<f12>"    helm-skk-rules
   "S-<f12>"  my/screen-shot)

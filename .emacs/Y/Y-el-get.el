@@ -243,7 +243,7 @@
 ;; .loaddefs.el:7809:140:Warning: assignment to free variable `org-load-hook'
 
 ;;; Code:
-;; (require 'my_paths)
+(require 'Y-paths)
 
 (let* ((recipes (concat el-get-dir "el-get/recipes/")))
   (defconst el-get-recipe-path-elpa      (concat recipes "elpa"))
@@ -283,7 +283,6 @@ You can only use this function inside :build directive."
     (:name capitalizer
            :type git
            :url "https://github.com/yuutayamada/capitalizer-el.git")
-
     ;; D
     (:name ddskk
            :autoloads "skk-autoloads"
@@ -293,7 +292,6 @@ You can only use this function inside :build directive."
     (:name eshell-better-prompt
            :type git
            :url "https://github.com/yuutayamada/eshell-better-prompt.git")
-
     (:name eiji
            :type git
            :url "https://github.com/yuutayamada/eiji.git")
@@ -301,12 +299,6 @@ You can only use this function inside :build directive."
     (:name helm :post-init ()) ; avoid helm-mode
 
     ;; G
-    (:name ginger-api
-           :type git
-           :url "https://gist.github.com/5457732.git")
-    (:name ginger-rephrase-api
-           :type git
-           :url "https://gist.github.com/7349439.git")
     (:name grammar
            :type svn
            :url "http://bcui-emacs.googlecode.com/svn/trunk/grammar")
@@ -406,51 +398,6 @@ You can only use this function inside :build directive."
                           (select-frame frame)
                           (defconst win:frames-in-nw (if (display-graphic-p) nil t))))))
     (:name navi2ch :load-path ("." "./contrib"))
-
-    ;; Done PR
-    (:name nim-emacs-module
-           :description "Make Emacs functions by Nim"
-           :type github
-           :pkgname "yuutayamada/nim-emacs-module"
-           :minimum-emacs-version "25")
-
-    (:name flycheck-package
-           :type github
-           :pkgname "purcell/flycheck-package"
-           :depends (flycheck)
-           :minimum-emacs-version "24"
-           :prepare
-           (eval-after-load "flycheck"
-             '(flycheck-package-setup)))
-
-    (:name evil-anzu
-           :type github
-           :pkgname "syohex/emacs-evil-anzu")
-    (:name eww-lnum
-           :type github
-           :description "Hit A Hint implementation for eww"
-           :pkgname "m00natic/eww-lnum")
-    (:name idle-require
-           :descrition "load elisp libraries while Emacs is idle"
-           :type github
-           :pkgname "nschum/idle-require.el")
-    (:name pangu-spacing
-           :description "Minor-mode to add space between Chinese and English characters."
-           :type github
-           :pkgname "coldnew/pangu-spacing")
-    (:name linum-relative
-           :type github
-           :pkgname "coldnew/linum-relative")
-    (:name haskell-emacs
-           :type github
-           :pkgname "knupfer/haskell-emacs")
-    (:name jsfmt
-           :description "Interface to jsfmt command for javascript files"
-           :type github
-           :pkgname "brettlangdon/jsfmt.el")
-    (:name emacs-skype ; buzztaiki/emacs-skype is outdated
-           :type github
-           :pkgname "kiwanami/emacs-skype")
 
     ;; TODO: PR to orgtbl-aggregate
     ;; Fix this warning:

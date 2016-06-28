@@ -1,17 +1,19 @@
-;;; my_theme.el --- my set of color configuration
-;;; Commentary:
-;; You can check avairable colors in tty-colors.el
-;; memo:
-;; if you got weird faces on terminal, you may need following configuration:
+;;; YY-theme.el --- my color configuration
 ;;
-;;   (add-hook 'tty-setup-hook
-;;             '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
+;;; Commentary:
+;;
+;; You can check avairable colors in tty-colors.el
 ;;
 ;;; Code:
-(deftheme my_pkg "my pkg color theme.")
+(deftheme YY "Yuta’s color theme.")
+
+;; If you got weird faces on terminal, you may need to load this theme before
+;; tty-setup-hook
+(add-hook 'tty-setup-hook
+          '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
 
 (custom-theme-set-faces
- 'my_pkg
+ 'YY
 
  ;;;;;;;;;;;;;
  ;; default ;;
@@ -291,11 +293,11 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'my_pkg)
+(provide-theme 'YY)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; my_pkg-theme.el ends here
+;;; YY-theme.el ends here

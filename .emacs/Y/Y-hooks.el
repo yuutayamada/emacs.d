@@ -6,12 +6,13 @@
 ;;
 ;; Order of hooks in startup:
 ;; 1. ‘before-init-hook’ (maybe impossible to set?)
-;; 2. (loading init files): site-start.el, _emacs, .emacs,
-;;    ~/.emacs.d/init.el, default.el
+;; 2. (loading init files):
+;;    site-start.el, _emacs, .emacs, ~/.emacs.d/init.el, default.el
 ;; 3. ‘after-init-hook’
-;; 4. ‘emacs-startup-hook’
-;; 5. ‘tty-setup-hook’
-;; 6. ‘window-setup-hook’
+;; 4. ‘delayed-warnings-hook’
+;; 5. ‘emacs-startup-hook’
+;; 6. ‘tty-setup-hook’
+;; 7. ‘window-setup-hook’
 ;;
 ;;; Code:
 
@@ -19,15 +20,45 @@
 (require 'Y-autoload)
 
 (add-hook
- 'emacs-startup-hook
+ 'after-init-hook
  '(lambda ()
     (condition-case err
         ;; Load only necessary files for less loading time
-        (Y/load-packages
-         '(depend_main   ; this file should be loaded first than other files.
-           tabbar s
-           init_mykie))
-      (error (message (format "Init function error: %s" err))))))
+        (Y/load-packages '(depend_main tabbar s init_mykie))
+      (error (message (format "Init function error: %s" err))))
+    ;; Load files with `with-eval-after-load' func from `package-conf-dir'.
+    (Y/message-startup-time "configuring init files")
+    (Y/add-after-load-files "init_" (concat package-conf-dir "builtin/"))
+    (Y/add-after-load-files "init_" package-conf-dir)))
+
+(add-hook
+ 'emacs-startup-hook
+ '(lambda ()
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; prog-mode configuration
+    (require 'Y-prog-mode)
+
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; Mode Line
+    (add-hook 'after-change-major-mode-hook 'Y/clean-mode-line)
+    (add-hook 'find-file-hook 'Y/clean-mode-line)
+
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; View-mode
+    (add-hook 'help-mode-hook 'view-mode)
+    (add-hook 'Man-mode-hook  'view-mode)
+
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; Emacs Lisp
+    (add-hook 'emacs-lisp-mode-hook 'Y-init-elisp-config)
+
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; files (find-file)
+    ;; Use Evil's normal mode only inside actual files.
+    (add-hook 'find-file-hook
+              '(lambda () (unless (bound-and-true-p with-editor-mode)
+                        (evil-normal-state))))
+    (add-hook 'find-file-hook 'git-gutter-mode)))
 
 ;; This hook is activated after initialization of terminal
 (add-hook
@@ -48,26 +79,6 @@
 (add-hook
  'window-setup-hook
  (lambda ()
-   ;; COLOR THEME
-   (load-theme 'my_pkg t)
-
-   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   ;; Mode Line
-   (add-hook 'after-change-major-mode-hook 'Y/clean-mode-line)
-   (add-hook 'find-file-hook 'Y/clean-mode-line)
-
-   ;; Use Evil's normal mode only inside actual files.
-   (add-hook 'find-file-hook
-             '(lambda () (unless (bound-and-true-p with-editor-mode)
-                      (evil-normal-state))))
-
-   ;;;;;;;;;;;;;;;;;;;;;
-   ;; prog-mode
-   (require 'Y-prog-mode)
-
-   ;;;;;;;;;;;;;;;;;;;;;
-   ;; files(find-file)
-   (add-hook 'find-file-hook 'git-gutter-mode)
    ;; auto-insert mode
    ;; https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html
    ;; check point max for lazy loading
@@ -81,15 +92,6 @@
                                    (whitespace-mode t))
                                  (pangu-spacing-mode t)
                                  (flyspell-mode t))))
-
-   ;;;;;;;;;;;;;;;
-   ;; view-mode
-   (add-hook 'help-mode-hook 'view-mode)
-   (add-hook 'Man-mode-hook  'view-mode)
-
-   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-   ;; Emacs Lisp
-   (add-hook 'emacs-lisp-mode-hook 'Y-init-elisp-config)
 
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
    ;; workaround of <return> and RET keys ;;
@@ -111,11 +113,6 @@
                            (define-key map (kbd "<return>")
                              (lookup-key map (kbd "RET")))))
                      (error err)))))
-
-   ;; Load files with `with-eval-after-load' func from `package-conf-dir'.
-   (Y/message-startup-time "configuring init files")
-   (Y/add-after-load-files "init_" (concat package-conf-dir "builtin/"))
-   (Y/add-after-load-files "init_" package-conf-dir)
 
    ;; Major-modes
    (el-get 'sync '(org-mode nim-mode lua-mode web-mode))

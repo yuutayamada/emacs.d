@@ -2,18 +2,25 @@
 ;;; Commentary:
 ;;; Code:
 
-;; (require 'my_paths)
-(unless (bound-and-true-p ginger-end-point)
-  (load (concat el-get-dir "ginger-api/ginger-api")))
+(require 'el-get)
 
-(unless (fboundp 'ginger-rephrase)
-  (load (concat el-get-dir "ginger-rephrase-api/ginger-rephrase-api")))
+(let ((el-get-is-lazy t))
+  (el-get-bundle! gist:5457732:ginger-api
+    :depends request)
+  (el-get-bundle! gist:7349439:ginger-rephrase-api
+    :depends request))
+
+(require 'cl-lib)
+(cl-loop for file in '("ginger-api/ginger-api" "ginger-rephrase-api/ginger-rephrase-api")
+         if (file-exists-p (concat el-get-dir file ".el"))
+         do (load (concat el-get-dir file)))
 
 ;;;###autoload
-(defun my/ginger-region ()
+(defun Y/ginger-region ()
+  "Check region by ‘ginger-region’ or ‘ginger-rephrase’."
   (interactive)
-  (when (fboundp 'ginger-region)
-    (ginger-region (region-beginning) (region-end))))
+  (call-interactively
+   (if (not prefix-arg) 'ginger-region 'ginger-rephrase)))
 
 (provide 'init_ginger-api)
 

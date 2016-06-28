@@ -112,6 +112,15 @@ file prefix by PREFIX."
          (send-string-to-terminal
           (format "\33]50;%s:pixelsize=%d\007" "xft:DejaVu Sans Mono" 12)))))))
 
+(defsubst Y/custom-theme-random-pick (themes)
+  (let* ((themes
+          (cl-remove-if
+           (lambda (x) (memq x custom-enabled-themes)) themes))
+         (len (length themes))
+         (a-theme (nth (1- (random len)) themes)))
+    ;; (load-theme a-theme)
+    (setq custom-enabled-themes (list a-theme))))
+
 (provide 'Y-util)
 
 ;; Local Variables:

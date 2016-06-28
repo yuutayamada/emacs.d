@@ -1,19 +1,26 @@
-;;; yy-loaddefs.el --- automatically extracted autoloads
+;;; YY-loaddefs.el --- automatically extracted autoloads
 ;;
 ;;; Code:
 
 
+;;;### (autoloads nil "../test" "../test.el" (0 0 0 0))
+;;; Generated autoloads from ../test.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../test" '(#("Y/on-test" 0 9 (face font-lock-variable-name-face fontified nil)))))
+
+;;;***
+
 ;;;### (autoloads nil "Y/Y-autoload" "Y/Y-autoload.el" (0 0 0 0))
 ;;; Generated autoloads from Y/Y-autoload.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-autoload" '(#("Y/autoload-files" 0 16 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-autoload" '("Y/autoload-files")))
 
 ;;;***
 
 ;;;### (autoloads nil "Y/Y-el-get" "Y/Y-el-get.el" (0 0 0 0))
 ;;; Generated autoloads from Y/Y-el-get.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-el-get" '(#("el-get-u" 0 8 (fontified nil face font-lock-function-name-face)) #("Y/el-get-npm-install-maybe" 0 26 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-el-get" '(#("el-get-u" 0 8 (face font-lock-function-name-face fontified nil)) #("Y/el-get-npm-install-maybe" 0 26 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -157,7 +164,7 @@ If ARG is non-nil, turn on visual mode stuff.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-function" '(#("test" 0 4 (fontified nil face font-lock-function-name-face)) #("my/" 0 3 (fontified nil)) #("Y/" 0 2 (fontified nil face font-lock-variable-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-function" '("test" "my/" "Y/" "banish")))
 
 ;;;***
 
@@ -174,7 +181,7 @@ Use specified abbreviation of mode-line-name by `mode-line-cleaner-alist'.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-modeline" '(#("mode-line-cleaner-alist" 0 23 (face font-lock-variable-name-face fontified t)) #("Y/" 0 2 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-modeline" '("mode-line-cleaner-alist" "Y/")))
 
 ;;;***
 
@@ -201,7 +208,7 @@ Load PACKAGES.
 
 \(fn PACKAGES)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-util" '(#("Y/" 0 2 (face font-lock-function-name-face fontified nil)) #("autoloader-autoload" 0 19 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-util" '("Y/" "autoloader-autoload")))
 
 ;;;***
 
@@ -209,12 +216,20 @@ Load PACKAGES.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from depend/depend_windows.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "depend/depend_windows" '(#("my-window-change-char" 0 21 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "depend/depend_windows" '("my-window-change-char")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_android-mode" "pkg_conf/init_android-mode.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_android-mode.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_android-mode" '("Y/")))
 
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_auto-complete-c-headers" "pkg_conf/init_auto-complete-c-headers.el"
-;;;;;;  (21916 11116 813648 453000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_auto-complete-c-headers.el
 
 (autoload 'Y/ac-c-headers-init "pkg_conf/init_auto-complete-c-headers" "\
@@ -228,22 +243,27 @@ Add ac-c-headers source to auto-complete source.
 
 ;;;***
 
-;;;### (autoloads nil "pkg_conf/init_avy" "pkg_conf/init_avy.el"
-;;;;;;  (22088 53798 696454 151000))
-;;; Generated autoloads from pkg_conf/init_avy.el
+;;;### (autoloads nil "pkg_conf/init_calfw-gcal" "pkg_conf/init_calfw-gcal.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_calfw-gcal.el
 
-(autoload 'avy-goto-char-by-input-event "pkg_conf/init_avy" "\
-Goto char with avy and move to ‘last-input-event’s char.
-
-\(fn)" t nil)
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_calfw-gcal" '("cfw:gcal-format-status")))
 
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_crontab-mode" "pkg_conf/init_crontab-mode.el"
-;;;;;;  (21953 19901 709416 912000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_crontab-mode.el
 
 (add-to-list 'auto-mode-alist (cons "\\(\\.cron\\(tab\\)?\\|cron\\(tab\\)?\\.?\\)\\'" 'crontab-mode))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_eclim" "pkg_conf/init_eclim.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_eclim.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_eclim" '("my/boot-eclim" "eclimd-executable")))
 
 ;;;***
 
@@ -255,11 +275,27 @@ Goto char with avy and move to ‘last-input-event’s char.
 
 ;;;***
 
+;;;### (autoloads nil "pkg_conf/init_evil-macros" "pkg_conf/init_evil-macros.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_evil-macros.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_evil-macros" '("Y/")))
+
+;;;***
+
 ;;;### (autoloads nil "pkg_conf/init_festival" "pkg_conf/init_festival.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_festival.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_festival" '(#("my/festival" 0 11 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_festival" '("my/festival")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_fold_dwim" "pkg_conf/init_fold_dwim.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_fold_dwim.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_fold_dwim" '("my/")))
 
 ;;;***
 
@@ -267,8 +303,8 @@ Goto char with avy and move to ‘last-input-event’s char.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_ginger-api.el
 
-(autoload 'my/ginger-region "pkg_conf/init_ginger-api" "\
-
+(autoload 'Y/ginger-region "pkg_conf/init_ginger-api" "\
+Check region by ‘ginger-region’ or ‘ginger-rephrase’.
 
 \(fn)" t nil)
 
@@ -278,15 +314,31 @@ Goto char with avy and move to ‘last-input-event’s char.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_go-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_go-mode" '(#("Y/go-mode-deploy-android-app" 0 28 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_go-mode" '("Y/go-mode-deploy-android-app")))
 
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_google-c-style" "pkg_conf/init_google-c-style.el"
-;;;;;;  (21916 11116 257629 988000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_google-c-style.el
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_google-translate-default-ui"
+;;;;;;  "pkg_conf/init_google-translate-default-ui.el" (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_google-translate-default-ui.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_google-translate-default-ui" '("Y/google-translate-")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_grep-a-lot" "pkg_conf/init_grep-a-lot.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_grep-a-lot.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_grep-a-lot" '("grep-a-lot-buffer-name" "my-grep-a-lot-search-word" "my/remove-buffer-if-exist")))
 
 ;;;***
 
@@ -294,12 +346,20 @@ Goto char with avy and move to ‘last-input-event’s char.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_haskell-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_haskell-mode" '(#("Y/ac-haskell-" 0 13 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_haskell-mode" '("Y/ac-haskell-")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_helm-gtags" "pkg_conf/init_helm-gtags.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_helm-gtags.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_helm-gtags" '("my/helm-gtags")))
 
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_irony" "pkg_conf/init_irony.el"
-;;;;;;  (21916 11117 829682 190000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_irony.el
 
 (add-hook 'c++-mode-hook 'irony-mode)
@@ -313,13 +373,17 @@ Setup irony-mode.
 
 \(fn)" nil nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_irony" '("irony-")))
+
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_java" "pkg_conf/init_java.el"
-;;;;;;  (21916 11116 257629 988000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_java.el
 
 (add-hook 'java-mode-hook 'Y/java-init)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_java" '("Y/java-init" "flymake-java-default-android-sdk-version")))
 
 ;;;***
 
@@ -327,7 +391,7 @@ Setup irony-mode.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_lookup.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_lookup" '(#("Y/lookup" 0 8 (face font-lock-function-name-face fontified nil)) #("ndeb-" 0 5 (fontified nil face font-lock-variable-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_lookup" '("Y/lookup" "ndeb-")))
 
 ;;;***
 
@@ -340,17 +404,27 @@ Setup irony-mode.
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_markdown-mode" "pkg_conf/init_markdown-mode.el"
-;;;;;;  t)
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_markdown-mode.el
 
 (add-to-list 'auto-mode-alist (cons "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)\\)\\'" 'gfm-mode))
 
 (add-hook 'with-editor-mode-hook '(lambda nil (when (string-match (rx (or "PULLREQ_EDITMSG" "COMMIT_EDITMSG" "TAG_EDITMSG")) (buffer-name)) (gfm-mode))))
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_markdown-mode" '("Y/markdown-pr")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_mode-compile" "pkg_conf/init_mode-compile.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_mode-compile.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_mode-compile" '("my/")))
+
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_multi-term" "pkg_conf/init_multi-term.el"
-;;;;;;  (22071 46722 836325 434000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_multi-term.el
 
 (autoload 'my/multi-term "pkg_conf/init_multi-term" "\
@@ -363,13 +437,15 @@ Setup irony-mode.
 
 \(fn)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_multi-term" '("term-send-" "my/multi-term-original-buffer")))
+
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_mykie" "pkg_conf/init_mykie.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_mykie.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_mykie" '(#("my/overriding-mode-map" 0 22 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_mykie" '("my/overriding-mode-map")))
 
 ;;;***
 
@@ -381,16 +457,32 @@ Setup irony-mode.
 
 ;;;***
 
+;;;### (autoloads nil "pkg_conf/init_open-junk-file" "pkg_conf/init_open-junk-file.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_open-junk-file.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_open-junk-file" '("my/open-junk-today")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_org-mobile" "pkg_conf/init_org-mobile.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_org-mobile.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_org-mobile" '("org-mobile-")))
+
+;;;***
+
 ;;;### (autoloads nil "pkg_conf/init_outline" "pkg_conf/init_outline.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_outline.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_outline" '(#("my/" 0 3 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_outline" '("my/")))
 
 ;;;***
 
-;;;### (autoloads nil "pkg_conf/init_ov" "pkg_conf/init_ov.el" (21800
-;;;;;;  29264 928621 855000))
+;;;### (autoloads nil "pkg_conf/init_ov" "pkg_conf/init_ov.el" (0
+;;;;;;  0 0 0))
 ;;; Generated autoloads from pkg_conf/init_ov.el
 
 (autoload 'Y/ov-toggle-http-overlay "pkg_conf/init_ov" "\
@@ -413,18 +505,28 @@ Whether the point is overlay-ed or not.
 
 \(fn)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_ov" '("Y/http-overlay")))
+
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_perl-mode" "pkg_conf/init_perl-mode.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_perl-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_perl-mode" '(#("perl-mode" 0 9 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_perl-mode" '("perl-mode")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_picture" "pkg_conf/init_picture.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_picture.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_picture" '("picture-")))
 
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_quickrun" "pkg_conf/init_quickrun.el"
-;;;;;;  t)
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_quickrun.el
 
 (autoload 'my/quickrun-dwim "pkg_conf/init_quickrun" "\
@@ -435,11 +537,51 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 ;;;***
 
+;;;### (autoloads nil "pkg_conf/init_rust-mode" "pkg_conf/init_rust-mode.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_rust-mode.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_rust-mode" '("my/rustdoc")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_sdic" "pkg_conf/init_sdic.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_sdic.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_sdic" '("my-sdic-describe-word-with-popup" "temp-cancel-read-only")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_sdic-inline" "pkg_conf/init_sdic-inline.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_sdic-inline.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_sdic-inline" '("sdic-inline-pos-tip-show-when-region-selected")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_skk" "pkg_conf/init_skk.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_skk.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_skk" '("skk-")))
+
+;;;***
+
 ;;;### (autoloads nil "pkg_conf/init_skk-server" "pkg_conf/init_skk-server.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_skk-server.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_skk-server" '(#("skk-server-portnum" 0 18 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_skk-server" '("skk-server-portnum")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_skype" "pkg_conf/init_skype.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_skype.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_skype" '("skype")))
 
 ;;;***
 
@@ -447,7 +589,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_slime.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_slime" '(#("slime-net-coding-system" 0 23 (face font-lock-variable-name-face fontified nil)) #("inferior-lisp-program" 0 21 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_slime" '("slime-net-coding-system" "inferior-lisp-program")))
 
 ;;;***
 
@@ -455,7 +597,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_twittering-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_twittering-mode" '(#("my/twit" 0 7 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_twittering-mode" '("my/twit")))
 
 ;;;***
 
@@ -463,12 +605,12 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_w3m.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_w3m" '(#("my/w3m-" 0 2 (fontified nil) 2 7 (face font-lock-function-name-face fontified nil)) #("my-" 0 2 (fontified nil) 2 3 (fontified nil)) #("dired-w3m-find-file" 0 19 (fontified nil)) #("w3m-" 0 4 (fontified nil face font-lock-variable-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_w3m" '("my/w3m-" "my-" "dired-w3m-find-file" "w3m-")))
 
 ;;;***
 
 ;;;### (autoloads nil "pkg_conf/init_web-mode" "pkg_conf/init_web-mode.el"
-;;;;;;  (22052 32309 381299 889000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_web-mode.el
 
 (add-to-list 'auto-mode-alist (cons (rx "." (or "html" "phtml" "tpl.php" "erb" "mustache" "djhtml" (and (or "a" "g" "j") "sp") (and "as" (or "c" "p") "x")) line-end) 'web-mode))
@@ -479,54 +621,47 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_yasnippet.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_yasnippet" '(#("yas-" 0 4 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_yasnippet" '("yas-")))
 
 ;;;***
 
-;;;### (autoloads nil nil ("../test.el" "Y/Y-hooks.el" "Y/Y-prog-mode.el"
-;;;;;;  "default.el" "depend/depend_emacs24.el" "depend/depend_emacs25.el"
-;;;;;;  "depend/depend_main.el" "emacs-custom.el" "pkg_conf/init_android-mode.el"
-;;;;;;  "pkg_conf/init_arduino-mode.el" "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el"
-;;;;;;  "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw-gcal.el"
-;;;;;;  "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el" "pkg_conf/init_clojure-mode.el"
-;;;;;;  "pkg_conf/init_company-c-headers.el" "pkg_conf/init_eclim.el"
-;;;;;;  "pkg_conf/init_eiji.el" "pkg_conf/init_evil-macros.el" "pkg_conf/init_fold_dwim.el"
-;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_google-translate-default-ui.el"
-;;;;;;  "pkg_conf/init_grammar.el" "pkg_conf/init_grep-a-lot.el"
+;;;### (autoloads nil nil ("Y/Y-hooks.el" "Y/Y-prog-mode.el" "default.el"
+;;;;;;  "depend/depend_emacs24.el" "depend/depend_emacs25.el" "depend/depend_main.el"
+;;;;;;  "emacs-custom.el" "pkg_conf/init_arduino-mode.el" "pkg_conf/init_bm.el"
+;;;;;;  "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw.el"
+;;;;;;  "pkg_conf/init_cider.el" "pkg_conf/init_clojure-mode.el"
+;;;;;;  "pkg_conf/init_company-c-headers.el" "pkg_conf/init_eiji.el"
+;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_grammar.el"
 ;;;;;;  "pkg_conf/init_hangman.el" "pkg_conf/init_haskell-emacs.el"
 ;;;;;;  "pkg_conf/init_haskell-font-lock.el" "pkg_conf/init_helm-ag-r.el"
 ;;;;;;  "pkg_conf/init_helm-ag.el" "pkg_conf/init_helm-files.el"
 ;;;;;;  "pkg_conf/init_helm-github-issues.el" "pkg_conf/init_helm-go.el"
-;;;;;;  "pkg_conf/init_helm-gtags.el" "pkg_conf/init_helm-migemo.el"
-;;;;;;  "pkg_conf/init_helm-rb.el" "pkg_conf/init_highlight-indentation.el"
-;;;;;;  "pkg_conf/init_hl-line.el" "pkg_conf/init_info.el" "pkg_conf/init_jade.el"
-;;;;;;  "pkg_conf/init_javadoc-lookup.el" "pkg_conf/init_jedi.el"
-;;;;;;  "pkg_conf/init_js-console.el" "pkg_conf/init_js2-mode.el"
+;;;;;;  "pkg_conf/init_helm-migemo.el" "pkg_conf/init_helm-rb.el"
+;;;;;;  "pkg_conf/init_highlight-indentation.el" "pkg_conf/init_hl-line.el"
+;;;;;;  "pkg_conf/init_info.el" "pkg_conf/init_jade.el" "pkg_conf/init_javadoc-lookup.el"
+;;;;;;  "pkg_conf/init_jedi.el" "pkg_conf/init_js-console.el" "pkg_conf/init_js2-mode.el"
 ;;;;;;  "pkg_conf/init_jstestmacs.el" "pkg_conf/init_keyboard-converter.el"
 ;;;;;;  "pkg_conf/init_keychord.el" "pkg_conf/init_logalimacs.el"
 ;;;;;;  "pkg_conf/init_lua-mode.el" "pkg_conf/init_masaw.el" "pkg_conf/init_migemo.el"
-;;;;;;  "pkg_conf/init_milkboy.el" "pkg_conf/init_mmm-mode.el" "pkg_conf/init_mode-compile.el"
-;;;;;;  "pkg_conf/init_moz.el" "pkg_conf/init_mozc.el" "pkg_conf/init_multiple-cursors.el"
+;;;;;;  "pkg_conf/init_milkboy.el" "pkg_conf/init_mmm-mode.el" "pkg_conf/init_moz.el"
+;;;;;;  "pkg_conf/init_mozc.el" "pkg_conf/init_multiple-cursors.el"
 ;;;;;;  "pkg_conf/init_newsticker.el" "pkg_conf/init_node-console.el"
-;;;;;;  "pkg_conf/init_nyan-mode.el" "pkg_conf/init_open-junk-file.el"
-;;;;;;  "pkg_conf/init_org-indent.el" "pkg_conf/init_org-mobile.el"
+;;;;;;  "pkg_conf/init_nyan-mode.el" "pkg_conf/init_org-indent.el"
 ;;;;;;  "pkg_conf/init_org-trello.el" "pkg_conf/init_pangu-spacing.el"
-;;;;;;  "pkg_conf/init_paredit.el" "pkg_conf/init_picture.el" "pkg_conf/init_popwin.el"
-;;;;;;  "pkg_conf/init_powerline.el" "pkg_conf/init_python.el" "pkg_conf/init_rust-mode.el"
-;;;;;;  "pkg_conf/init_sbtp.el" "pkg_conf/init_scala-mode.el" "pkg_conf/init_sdic-inline.el"
-;;;;;;  "pkg_conf/init_sdic.el" "pkg_conf/init_skk-b.el" "pkg_conf/init_skk.el"
-;;;;;;  "pkg_conf/init_skype.el" "pkg_conf/init_smartparens.el" "pkg_conf/init_sql.el"
+;;;;;;  "pkg_conf/init_paredit.el" "pkg_conf/init_popwin.el" "pkg_conf/init_powerline.el"
+;;;;;;  "pkg_conf/init_python.el" "pkg_conf/init_sbtp.el" "pkg_conf/init_scala-mode.el"
+;;;;;;  "pkg_conf/init_skk-b.el" "pkg_conf/init_smartparens.el" "pkg_conf/init_sql.el"
 ;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el"
 ;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yatemplate.el"
 ;;;;;;  "pkg_conf/init_yim.el" "site-start.el") (0 0 0 0))
 
 ;;;***
 
-(provide 'yy-loaddefs)
+(provide 'YY-loaddefs)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
 ;; coding: utf-8
 ;; End:
-;;; yy-loaddefs.el ends here
+;;; YY-loaddefs.el ends here

@@ -30,8 +30,10 @@ git pull git://git.savannah.gnu.org/emacs.git
 ./configure \
   CFLAGS='-O2' \
   --with-dbus -without-toolkit-scroll-bars \
-  --with-xim --without-makeinfo --with-x-toolkit=gtk3 --with-xwidgets \
-  --with-cairo --with-modules
+  --with-xim --without-makeinfo --with-x-toolkit=gtk3 \
+  --with-modules
+# --with-cairo seems bit buggy --with-xwidgets --with-cairo
+
 # Memo: cairo and xwidgets need gtk3
 
 make -j5

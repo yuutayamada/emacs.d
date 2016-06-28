@@ -39,4 +39,4 @@ tramp
 /.emacs/elnode/*
 /.emacs/srecode-map.el
 /misc/go-skkserv/go-skkserv
-/elisp/self/Y-loaddefs.el
+/elisp/self/Y-package-loaddefs.el

@@ -80,10 +80,11 @@
   ;; Color Theme
   ;; (M-x ‘customize-themes’ makes your theme enable safe load)
   (load custom-file t t)
-  (Y/custom-theme-random-pick
-   '(deeper-blue dichromacy manoj-dark misterioso tango-dark tango
-     tsdh-dark wheatgrass wombat))
-  (push 'YY custom-enabled-themes) ; Ensure my color theme
+  (setq custom-enabled-themes
+        (append (Y/custom-theme-random-pick
+                 '(deeper-blue dichromacy manoj-dark misterioso tango-dark
+                               tsdh-dark wheatgrass wombat))
+                '(YY))) ; Ensure my color theme
 
   ) ; then load default.el
 

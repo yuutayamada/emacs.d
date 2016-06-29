@@ -117,9 +117,8 @@ file prefix by PREFIX."
           (cl-remove-if
            (lambda (x) (memq x custom-enabled-themes)) themes))
          (len (length themes))
-         (a-theme (nth (1- (random len)) themes)))
-    ;; (load-theme a-theme)
-    (setq custom-enabled-themes (list a-theme))))
+         (theme (nth (1- (random len)) themes)))
+    (setq custom-enabled-themes (list theme))))
 
 (defsubst Y/initial-buffer-current-dir-and-buffer-list ()
   (when (or (not (daemonp)) (<= 2 (length (frame-list))))

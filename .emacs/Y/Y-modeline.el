@@ -22,15 +22,15 @@
 
 (defvar Y/mode-line-timer-obj nil)
 (defvar Y/mode-line-color-alist
-  '((default :background "#5f00ff")
-    (picture :background "yellow")
-    (multiple-cursor :background "#5f87ff")
+  '((default :background "#5f00ff" :foreground "white")
+    (picture :background "yellow"  :foreground "white")
+    (multiple-cursor :background "#5f87ff" :foreground "white")
     ;; For Evil
-    (emacs   :background "#5c5cff")
-    (normal  :background "#e80000")
-    (insert  :background "#00cd00")
-    (visual  :background "#006fa0")
-    (replace :background "#00af87")))
+    (emacs   :background "#5c5cff" :foreground "white")
+    (normal  :background "#e80000" :foreground "white")
+    (insert  :background "#00cd00" :foreground "white")
+    (visual  :background "#006fa0" :foreground "white")
+    (replace :background "#00af87" :foreground "black")))
 
 (defun Y/mode-line-color-get-attribute ()
   ""
@@ -49,13 +49,13 @@
 
 (defun Y/compute-mode-line-color ()
   ""
-  (let ((current (face-attribute 'mode-line :background))
-        (new-color (plist-get
-                    (assoc-default (Y/mode-line-color-get-attribute)
-                                   Y/mode-line-color-alist)
-                    :background)))
+  (let* ((current (face-attribute 'mode-line :background))
+         (attrbs (assoc-default (Y/mode-line-color-get-attribute)
+                                Y/mode-line-color-alist))
+         (new-color (plist-get attrbs :background)))
     (unless (equal current new-color)
-      (set-face-attribute 'mode-line nil :background new-color)))
+      (apply `((lambda ()
+                 (set-face-attribute 'mode-line nil ,@attrbs))))))
   (setq Y/mode-line-timer-obj nil))
 
 ;;;###autoload

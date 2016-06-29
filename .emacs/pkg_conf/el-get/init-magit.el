@@ -1,4 +1,4 @@
-;;; init_magit.el --- init file for magit.el -*- lexical-binding: t; -*-
+;;; init-magit.el --- init file for magit.el -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -7,9 +7,6 @@
 ;; ‘all’  show fine differences for all displayed diff hunks.
 (defconst magit-diff-refine-hunk t)
 
-(require 'magit)
-(require 'magit-submodule)
-
 (define-key magit-status-mode-map (kbd "S-SPC") 'magit-diff-show-or-scroll-down)
 (define-key magit-log-mode-map    (kbd "S-SPC") 'magit-diff-show-or-scroll-down)
 (define-key magit-status-mode-map (kbd "A-i")   (lookup-key magit-status-mode-map (kbd "C-i")))
@@ -17,14 +14,12 @@
 (advice-add 'magit-push :before 'Y/ssh-add)
 
 ;; Set buffer switch function
-(setq magit-display-buffer-function
-      '(lambda (buffer)
-         (unless (string-match "\*magit[:-].*" (buffer-name))
-           (Y/win-switch-window ?g) ; jump to 'g' window
-           (switch-to-buffer buffer)
-           (when (not (one-window-p))
-             (delete-other-windows)))
-         (magit-display-buffer-traditional buffer)))
+(defun Y/magit-jump-to-g-window ()
+  (unless (eq ?g (char-to-string (+ win:current-config win:base-key)))
+    (Y/win-switch-window ?g) ; jump to 'g' window
+    (when (not (one-window-p))
+      (delete-other-windows))))
+(add-hook 'magit-status-mode-hook 'Y/magit-jump-to-g-window)
 
 (defadvice with-editor-finish (around Y/go-back-to-magit-status activate)
   "Go back ‘magit-status’ if there are other un-staged things."
@@ -33,11 +28,11 @@
     (when (magit-anything-unstaged-p)
       (magit-status-internal dir))))
 
-(provide 'init_magit)
+(provide 'init-magit)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init_magit.el ends here
+;;; init-magit.el ends here

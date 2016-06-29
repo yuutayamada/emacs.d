@@ -46,6 +46,16 @@
                  (Y/message-startup-time "Ready to start!" t))))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Prepare necessary configurations before loading default.el
+  (add-to-list
+   'load-path (format "%sY/" (file-name-directory (locate-library "site-start"))))
+
+  (require 'Y-hooks)
+  (require 'Y-premitives)
+  (require 'Y-util)
+  ;; don’t load Y-paths here; recentf’s configuration is changed
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Start up configuration
   (setq
    ;; Load newer file than old file(this feature is from Emacs 24.4)
@@ -60,22 +70,11 @@
    menu-bar-mode nil
    tool-bar-mode nil
    ;; If you use ‘emacsclient’ with no target file, then it obeys any
-   ;; string or function value that this variable has.
-   initial-buffer-choice
-   (lambda () (doctor) (erase-buffer) (get-buffer "*doctor*"))
+   ;; string or function value that this variable has. (view-emacs-news)
+   initial-buffer-choice 'Y/initial-buffer-current-dir-and-buffer-list
    ;; I don’t want to load lisp configuration here
    initial-major-mode 'ignore
    )
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Prepare necessary configurations before loading default.el
-  (add-to-list
-   'load-path (format "%sY/" (file-name-directory (locate-library "site-start"))))
-
-  (require 'Y-hooks)
-  (require 'Y-premitives)
-  (require 'Y-util)
-  ;; don’t load Y-paths here; recentf’s configuration is changed
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Color Theme

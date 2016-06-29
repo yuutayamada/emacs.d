@@ -121,6 +121,14 @@ file prefix by PREFIX."
     ;; (load-theme a-theme)
     (setq custom-enabled-themes (list a-theme))))
 
+(defsubst Y/initial-buffer-current-dir-and-buffer-list ()
+  (when (or (not (daemonp)) (<= 2 (length (frame-list))))
+    (when (one-window-p)
+      (split-window-horizontally))
+    (list-buffers)
+    (find-file default-directory))
+  (current-buffer))
+
 (provide 'Y-util)
 
 ;; Local Variables:

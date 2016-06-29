@@ -208,8 +208,8 @@ The SELECTED argument is opacity that window is selected."
   (define-key map (kbd ":") (lambda () (interactive) (insert ";"))))
 
 ;;;###autoload
-(defun my/ssh-add ()
-  "Add ssh-key if it was needed when using magit. You may neeed ssh-askpath.
+(defun Y/ssh-add (&rest _r)
+  "Add ssh-key if it was needed when using magit.  You may neeed ssh-askpath.
 
 Example of my/keys
  (\"git@github.com\\|https://github.com\" . \"~/.ssh/rsa_github_key\")"

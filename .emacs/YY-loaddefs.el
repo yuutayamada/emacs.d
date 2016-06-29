@@ -89,8 +89,8 @@ Reverse Colon and Semi Colon at specified key MAP.
 
 \(fn MAP)" nil nil)
 
-(autoload 'my/ssh-add "Y/Y-function" "\
-Add ssh-key if it was needed when using magit. You may neeed ssh-askpath.
+(autoload 'Y/ssh-add "Y/Y-function" "\
+Add ssh-key if it was needed when using magit.  You may neeed ssh-askpath.
 
 Example of my/keys
  (\"git@github.com\\|https://github.com\" . \"~/.ssh/rsa_github_key\")
@@ -164,7 +164,7 @@ If ARG is non-nil, turn on visual mode stuff.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-function" '("test" "my/" "Y/" "banish")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-function" '(#("test" 0 4 (fontified nil)) #("my/" 0 3 (fontified nil)) #("Y/" 0 2 (fontified nil face font-lock-variable-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -208,7 +208,7 @@ Load PACKAGES.
 
 \(fn PACKAGES)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-util" '("Y/" "autoloader-autoload")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-util" '(#("Y/" 0 2 (fontified nil face font-lock-function-name-face)) #("autoloader-autoload" 0 19 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -399,7 +399,7 @@ Setup irony-mode.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_magit.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_magit" '("magit-diff-refine-hunk")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_magit" '(#("magit-diff-refine-hunk" 0 22 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 

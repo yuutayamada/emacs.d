@@ -1,24 +1,9 @@
-;;; Y-modeline.el --- -*- lexical-binding: t; -*-
+;;; Y-modeline.el --- mode line customization-*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;; Code:
 
 (require 'let-alist)
-
-;; mode-line-format
-;; (setq mode-line-format
-;;       '((line-number-mode "L%l")
-;;         (column-number-mode "C%c")
-;;         " %[("
-;;         mode-line-modified
-;;         "[" mode-line-buffer-identification "]"
-;;         mode-line-process
-;;         mode-name
-;;         minor-mode-alist
-;;         ;; (:eval (Y/update-mode-line-bg))
-;;         "%n" ")%]-"
-;;         (-3 . "%p")
-;;         "-%-"))
 
 (defvar Y/mode-line-timer-obj nil)
 (defvar Y/mode-line-color-alist
@@ -76,6 +61,7 @@
      . ((abbrev-mode                . "")
         (auto-complete-mode         . " Ⓐ")
         (auto-fill-mode             . " ⏎")
+        (auto-revert-mode           . " ↻")
         (auto-capitalize-mode       . " a⇒A")
         (company-mode               . " ℅") ; c/o
         (helm-mode                  . " ⎈")
@@ -84,7 +70,7 @@
         (eldoc-mode                 . " ed")
         (indent-guide-mode          . " ⊨")
         (flyspell-mode              . " S!")
-        (flycheck-mode              . " !")
+        (flycheck-mode              . " !") ; ⚠
         (flymake-mode               . " M!")
         (git-gutter-mode            . "")
         (helm-gtags-mode            . "")
@@ -114,7 +100,15 @@
         (outline-mode               . "Ol")
         (sh-mode                    . "SH")
         (emacs-lisp-mode            . "EL")
-        (markdown-mode              . "Md")))))
+        (markdown-mode              . "Md")))
+    (major-gui
+     . ((nim-mode                   . " 🐻") ; or ♔
+        (rust-mode                  . " ₨")
+        (go-mode                    . " ʕ◔ϖ◔ʔ")
+        (web-mode                   . " ₩")
+        (twittering-mode            . " 🐦") ; or ™
+        (java-mode                  . " ☕") ; or  ⛾
+        ))))
 
 ;;;###autoload
 (defun Y/clean-mode-line ()
@@ -125,7 +119,8 @@
              (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
                (when old-mode-str
                  (setcar old-mode-str mode-str))))
-    (cl-loop for (mode . mode-str) in .major
+    (cl-loop with m = (if (display-graphic-p) .major-gui .major)
+             for (mode . mode-str) in m
              if (eq mode major-mode) do
              (setq mode-name mode-str)
              (cl-return))))

@@ -1,7 +1,8 @@
-;;; init-auto-capitalize.el --- init file for auto-capitalize.el
+;;; init_auto-capitalize.el --- init file for auto-capitalize.el
 ;;; Commentary:
 ;;; Code:
 
+(require 'auto-capitalize)
 (setq auto-capitalize-words
       `("I" "English" "Japan" "ASAP" "Linux" "Japanese" "ASCII" "CPU"
         "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday"
@@ -18,11 +19,11 @@
 
 (auto-capitalize-setup)
 
-(provide 'init-auto-capitalize)
+(provide 'init_auto-capitalize)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init-auto-capitalize.el ends here
+;;; init_auto-capitalize.el ends here

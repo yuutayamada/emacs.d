@@ -1,4 +1,8 @@
-;;; site-start.el ---  -*- lexical-binding: t; -*-
+;;; site-start.el --- my site-start file -*- lexical-binding: t; -*-
+
+;; see also:
+;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html
+;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Startup-Summary.html#Startup-Summary
 
 ;;; Commentary:
 ;;
@@ -30,10 +34,9 @@
 ;;   -> set frame-set-background-mode
 ;;   -> ‘window-setup-hook’
 ;;
-;; memo:
-;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html
-;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Startup-Summary.html#Startup-Summary
+
 ;;; Code:
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Circumvent --batch option
 (unless noninteractive
@@ -43,7 +46,8 @@
     (add-hook 'window-setup-hook
               `(lambda ()
                  (setq gc-cons-threshold ,original-gc-cons-threshold)
-                 (Y/message-startup-time "Ready to start!" t))))
+                 (when (require 'notifications nil t)
+                   (Y/message-startup-time "Ready to start!" t)))))
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Prepare necessary configurations before loading default.el
@@ -85,6 +89,10 @@
                  '(deeper-blue dichromacy manoj-dark misterioso tango-dark
                                tsdh-dark wheatgrass wombat))
                 '(YY))) ; Ensure my color theme
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Emacs Lisp
+  (add-hook 'emacs-lisp-mode-hook 'Y-init-elisp-config)
 
   ) ; then load default.el
 

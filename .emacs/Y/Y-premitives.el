@@ -1,6 +1,4 @@
 
-
-
 ;;; Code:
 ;; truncate line
 (setq-default truncate-lines t)
@@ -10,19 +8,6 @@
 ;; remember-notes:
 ;; use org-mode
 (defconst remember-notes-initial-major-mode 'org-mode)
-
-;; initial scratch buffer
-;; initial major-mode of *scratch* buffer
-;; (setq initial-major-mode 'emacs-lisp-mode)
-(add-hook 'prog-mode-hook
-          #'(lambda () (when (and (eq major-mode initial-major-mode)
-                              (equal "*scratch*" (buffer-name)))
-                     (let ((comment (if (member comment-start '(";"))
-                                        (concat comment-start comment-start)
-                                      comment-start)))
-                       (setq initial-scratch-message
-                             (concat comment " This is scratch buffer.\n")))
-                     (run-with-idle-timer 5 nil 'eldoc-mode t))))
 
 ;;* Coding system
 (prefer-coding-system 'utf-8)

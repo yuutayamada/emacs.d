@@ -12,6 +12,8 @@
           '(lambda ()
              ;; Electric-indent-mode
              (electric-indent-local-mode -1)
+             ;; auto capitalize
+             (auto-capitalize-mode)
              ;; linum relative
              ;; (linum-relative-mode t)
              ;; Auto Completion

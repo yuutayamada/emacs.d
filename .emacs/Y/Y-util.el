@@ -51,20 +51,19 @@
   "Display spent time with COMMENT.
 If you set non-nil to NOTIFICATION, you can see the result in
 notification area."
-  (when (fboundp 'notifications-notify)
-    (let* ((start (+ (cl-third before-init-time)
-                     (* 1000000 (cl-second before-init-time))))
-           (end   (current-time))
-           (e-time (/ (- (+ (cl-third end)
-                            (* 1000000 (cl-second end)))
-                         start)
-                      1000))
-           (msg   (format "%s : %dmsec" comment e-time)))
-      (if (not notification)
-          (message msg)
-        (notifications-notify :title "Emacs"
-                              :body  msg
-                              :timeout 5000)))))
+  (let* ((start (+ (cl-third before-init-time)
+                   (* 1000000 (cl-second before-init-time))))
+         (end   (current-time))
+         (e-time (/ (- (+ (cl-third end)
+                          (* 1000000 (cl-second end)))
+                       start)
+                    1000))
+         (msg   (format "%s : %dmsec" comment e-time)))
+    (message (concat "\n" msg "\n"))
+    (when notification
+      (notifications-notify :title "Emacs"
+                            :body  msg
+                            :timeout 5000))))
 
 (defvar Y/add-after-load-dir-registered-list nil)
 (defun Y/add-after-load-files (prefix where)
@@ -87,6 +86,10 @@ file prefix by PREFIX."
                                 (require (quote ,(intern file)))
                               (error err)))))))))
 
+(defun Y/change-font-on-terminal (size)
+  (send-string-to-terminal
+   (format "\33]50;%s:pixelsize=%d\007" "xft:DejaVu Sans Mono" size)))
+
 (defun Y/frame-init-func (&optional frame)
   "Init function when Emacs connects new server with FRAME object."
   (let ((f (or frame (selected-frame))))
@@ -107,10 +110,13 @@ file prefix by PREFIX."
       (t ; nil for a termcap frame (a character-only terminal),
        ;; On Terminal Emacs, this shows eshell prompt string correctly.
        (set-locale-environment "en_US.UTF-8")
-       ;; For small size PC
-       (when (< 194 (display-pixel-width))
-         (send-string-to-terminal
-          (format "\33]50;%s:pixelsize=%d\007" "xft:DejaVu Sans Mono" 12)))))))
+       ;; Change font size by pixel width
+       (Y/change-font-on-terminal
+        (cond
+         ((>  152 (display-pixel-width)) 10) ; my note
+         ((<= 152 (display-pixel-width)) 12)
+         (t 12)))))))
+
 
 (defsubst Y/custom-theme-random-pick (themes)
   (let* ((themes

@@ -28,9 +28,11 @@
 ;;;;;;  0))
 ;;; Generated autoloads from Y/Y-elisp-mode.el
 
-(defsubst Y-init-elisp-config nil "\
+(autoload 'Y-init-elisp-config "Y/Y-elisp-mode" "\
 Setup my Emacs Lisp config.
-This function is called from site-start.el." (el-get (quote sync) (quote (auto-compile paredit rainbow-mode))) (paredit-mode 1) (require (quote auto-compile)) (when (fboundp (quote electric-indent-local-mode)) (electric-quote-local-mode t)) (when (and (stringp buffer-file-name) (string-match custom-theme-directory (file-name-directory buffer-file-name))) (rainbow-mode t)))
+This function is called from site-start.el.
+
+\(fn)" nil nil)
 
 ;;;***
 
@@ -95,7 +97,7 @@ Add ssh-key if it was needed when using magit.  You may neeed ssh-askpath.
 Example of my/keys
  (\"git@github.com\\|https://github.com\" . \"~/.ssh/rsa_github_key\")
 
-\(fn)" t nil)
+\(fn &rest R)" t nil)
 
 (autoload 'Y/show-cheat-sheet "Y/Y-function" "\
 Popup a buffer by popwin which is related to current ‘major-mode’.
@@ -164,7 +166,7 @@ If ARG is non-nil, turn on visual mode stuff.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-function" '(#("test" 0 4 (fontified nil)) #("my/" 0 3 (fontified nil)) #("Y/" 0 2 (fontified nil face font-lock-variable-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-function" '("test" "my/" "Y/" "banish")))
 
 ;;;***
 
@@ -208,7 +210,14 @@ Load PACKAGES.
 
 \(fn PACKAGES)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-util" '(#("Y/" 0 2 (fontified nil face font-lock-function-name-face)) #("autoloader-autoload" 0 19 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-util" '("Y/" "autoloader-autoload")))
+
+;;;***
+
+;;;### (autoloads nil "default" "default.el" (0 0 0 0))
+;;; Generated autoloads from default.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "default" '("el-get-is-lazy")))
 
 ;;;***
 
@@ -225,6 +234,19 @@ Load PACKAGES.
 ;;; Generated autoloads from pkg_conf/init_android-mode.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_android-mode" '("Y/")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_auto-complete" "pkg_conf/init_auto-complete.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_auto-complete.el
+
+(autoload 'my/ac-add-sources-for-prog "pkg_conf/init_auto-complete" "\
+Add ac-sources for each programming-mode.
+
+\(fn)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_auto-complete" '("my/ac-sources-default")))
 
 ;;;***
 
@@ -399,7 +421,7 @@ Setup irony-mode.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_magit.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_magit" '(#("magit-diff-refine-hunk" 0 22 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_magit" '("Y/magit-jump-to-g-window" "magit-diff-refine-hunk")))
 
 ;;;***
 
@@ -525,6 +547,17 @@ Whether the point is overlay-ed or not.
 
 ;;;***
 
+;;;### (autoloads nil "pkg_conf/init_popup" "pkg_conf/init_popup.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_popup.el
+
+(autoload 'yas-popup-isearch-prompt "pkg_conf/init_popup" "\
+See http://www.emacswiki.org/emacs/Yasnippet.
+
+\(fn PROMPT CHOICES &optional DISPLAY-FN)" nil nil)
+
+;;;***
+
 ;;;### (autoloads nil "pkg_conf/init_quickrun" "pkg_conf/init_quickrun.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_quickrun.el
@@ -621,20 +654,19 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_yasnippet.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_yasnippet" '("yas-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_yasnippet" '("yas-snippet-dirs")))
 
 ;;;***
 
-;;;### (autoloads nil nil ("Y/Y-hooks.el" "Y/Y-prog-mode.el" "default.el"
-;;;;;;  "depend/depend_emacs24.el" "depend/depend_emacs25.el" "depend/depend_main.el"
-;;;;;;  "emacs-custom.el" "pkg_conf/init_arduino-mode.el" "pkg_conf/init_bm.el"
-;;;;;;  "pkg_conf/init_bpe.el" "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw.el"
-;;;;;;  "pkg_conf/init_cider.el" "pkg_conf/init_clojure-mode.el"
-;;;;;;  "pkg_conf/init_company-c-headers.el" "pkg_conf/init_eiji.el"
-;;;;;;  "pkg_conf/init_ger.el" "pkg_conf/init_ggtags.el" "pkg_conf/init_grammar.el"
-;;;;;;  "pkg_conf/init_hangman.el" "pkg_conf/init_haskell-emacs.el"
-;;;;;;  "pkg_conf/init_haskell-font-lock.el" "pkg_conf/init_helm-ag-r.el"
-;;;;;;  "pkg_conf/init_helm-ag.el" "pkg_conf/init_helm-files.el"
+;;;### (autoloads nil nil ("Y/Y-hooks.el" "Y/Y-prog-mode.el" "depend/depend_emacs24.el"
+;;;;;;  "depend/depend_emacs25.el" "depend/depend_main.el" "emacs-custom.el"
+;;;;;;  "pkg_conf/init_arduino-mode.el" "pkg_conf/init_bm.el" "pkg_conf/init_bpe.el"
+;;;;;;  "pkg_conf/init_c-eldoc.el" "pkg_conf/init_calfw.el" "pkg_conf/init_cider.el"
+;;;;;;  "pkg_conf/init_clojure-mode.el" "pkg_conf/init_company-c-headers.el"
+;;;;;;  "pkg_conf/init_company.el" "pkg_conf/init_eiji.el" "pkg_conf/init_ger.el"
+;;;;;;  "pkg_conf/init_ggtags.el" "pkg_conf/init_grammar.el" "pkg_conf/init_hangman.el"
+;;;;;;  "pkg_conf/init_haskell-emacs.el" "pkg_conf/init_haskell-font-lock.el"
+;;;;;;  "pkg_conf/init_helm-ag-r.el" "pkg_conf/init_helm-ag.el" "pkg_conf/init_helm-files.el"
 ;;;;;;  "pkg_conf/init_helm-github-issues.el" "pkg_conf/init_helm-go.el"
 ;;;;;;  "pkg_conf/init_helm-migemo.el" "pkg_conf/init_helm-rb.el"
 ;;;;;;  "pkg_conf/init_highlight-indentation.el" "pkg_conf/init_hl-line.el"

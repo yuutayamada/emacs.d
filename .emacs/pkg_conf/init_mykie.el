@@ -268,7 +268,7 @@
   "C-v"
   :default scroll-up-command
   :C-u     (mykie:vi-faker)
-  :C-u*2   (helm-c-yas-complete)
+  :C-u*2   (helm-yas-complete)
   :region  scroll-up-command
 
   "C-w"
@@ -278,7 +278,7 @@
 
   "C-y"
   :default yank
-  :C-u     (helm-c-yas-complete)
+  :C-u     (helm-yas-complete)
   :C-u*2   (mouse-yank-primary (point))
 
   "C-z" other-window-or-split

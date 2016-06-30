@@ -59,7 +59,7 @@
 (defconst mode-line-cleaner-alist
   `((minor
      . ((abbrev-mode                . "")
-        (auto-complete-mode         . " Ⓐ")
+        ;; (auto-complete-mode         . " AC")
         (auto-fill-mode             . " ⏎")
         (auto-revert-mode           . " ↻")
         (auto-capitalize-mode       . " a⇒A")

@@ -8,9 +8,10 @@
 (deftheme YY "Yuta’s color theme.")
 
 ;; If you got weird faces on terminal, you may need to load this theme before
-;; tty-setup-hook
-(add-hook 'tty-setup-hook
-          '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
+;; tty-setup-hook:
+;;
+;; (add-hook 'tty-setup-hook
+;;           '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
 
 (custom-theme-set-faces
  'YY

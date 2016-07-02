@@ -84,15 +84,7 @@
   ;; Color Theme
   ;; (M-x ‘customize-themes’ makes your theme enable safe load)
   (load custom-file t t)
-  (setq custom-enabled-themes
-        (append (Y/custom-theme-random-pick
-                 '(deeper-blue dichromacy manoj-dark misterioso tango-dark
-                               tsdh-dark wheatgrass wombat))
-                '(YY))) ; Ensure my color theme
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Emacs Lisp
-  (add-hook 'emacs-lisp-mode-hook 'Y-init-elisp-config)
+  (load-theme 'YY t)
 
   ) ; then load default.el
 

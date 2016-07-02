@@ -179,9 +179,8 @@
  (flx status "installed" recipe
       (:name flx :description "Fuzzy matching with good sorting in ido" :type github :pkgname "lewang/flx"))
  (flycheck status "installed" recipe
-           (:name flycheck :after nil :depends
-                  (seq let-alist pkg-info dash)
-                  :type github :pkgname "flycheck/flycheck" :minimum-emacs-version "24.3" :description "On-the-fly syntax checking extension"))
+           (:name flycheck :type github :pkgname "flycheck/flycheck" :minimum-emacs-version "24.3" :description "On-the-fly syntax checking extension" :depends
+                  (dash pkg-info let-alist seq)))
  (flycheck-irony status "installed" recipe
                  (:name flycheck-irony :after nil :description "C, C++ and Objective-C support for Flycheck, using Irony Mode" :type github :pkgname "Sarcasm/flycheck-irony"))
  (flycheck-package status "installed" recipe

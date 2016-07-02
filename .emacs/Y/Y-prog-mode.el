@@ -6,7 +6,7 @@
 (require 'cl-lib)
 (require 'Y-autoload)
 
-(el-get 'sync '(indent-guide rainbow-delimiters flycheck))
+(el-get 'sync '(indent-guide rainbow-delimiters rainbow-mode paredit))
 
 (add-hook 'prog-mode-hook
           '(lambda ()
@@ -49,9 +49,15 @@
                        ((c++-mode arduino-mode) 'cpp-auto-include))))
                 (when cmd (call-interactively cmd)))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Emacs Lisp
+(el-get 'sync 'auto-compile)
+(add-hook 'emacs-lisp-mode-hook 'Y-init-elisp-config)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PRETTIFY-SYMBOLS-MODE ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; LISP
 (setq-default lisp--prettify-symbols-alist `(("lambda" . ?ƛ)))
 (advice-add 'prettify-symbols-mode :before

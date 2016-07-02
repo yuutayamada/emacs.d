@@ -8,6 +8,9 @@
 
 (require 'cl-lib)
 
+(el-get 'sync '(auto-compile))
+(require 'auto-compile)
+
 (cl-loop with elisp-mode-hooks = '(emacs-lisp-mode-hook ielm-mode-hook)
          for hook in elisp-mode-hooks
          do (add-hook hook 'eldoc-mode))
@@ -16,9 +19,6 @@
 (defun Y-init-elisp-config ()
   "Setup my Emacs Lisp config.
 This function is called from site-start.el."
-  ;; (remove-hook 'emacs-lisp-mode-hook 'Y-init-elisp-config)
-  (el-get 'sync '(auto-compile paredit rainbow-mode))
-  (require 'auto-compile)
   (paredit-mode 1)
   (when (fboundp 'electric-indent-local-mode)
     (electric-quote-local-mode t))

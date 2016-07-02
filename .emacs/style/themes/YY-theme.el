@@ -218,9 +218,8 @@
  '(org-code  ((t :inherit 'font-lock-builtin-face)))
  '(org-hide ((t :foreground "black"))) ; set black to hide even transparent terminal Emacs
 
- ;; highlight-indentation
- '(highlight-indentation-current-column-face ((t :background "grey40")))
- '(highlight-indentation-face                ((t :background "red")))
+ ;; indent-guide
+ '(indent-guide-face ((t :foreground "#1c86ee")))
 
  ;; howm
  '(howm-reminder-normal-face ((t :foreground "#90ee90")))

@@ -18,4 +18,7 @@ build: clean-elc
 	git submodule update
 	sh ./install/before_install.sh
 
+howlong:
+	find ./.emacs -name '*.el' | xargs wc -l | tail -1
+
 # .PHONY: all test unit install

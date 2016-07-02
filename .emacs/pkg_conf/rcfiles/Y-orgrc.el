@@ -6,9 +6,41 @@
 
 ;;; Code:
 
+(require 'org-loaddefs)
 (require 'org)
-;; (require 'init_org-mobile)
-;; ;; Org key bindings
+
+;; Variables:
+
+;; Footer information
+(defconst org-html-postamble "")
+;; Org-indent
+(defconst org-startup-indented t)
+(defconst org-indent-boundary-char 32) ; use space as boundary
+
+(setq org-file-apps
+      '((auto-mode . emacs)
+        ("\\.mm\\'" . default)
+        ("\\.x?html?\\'" . default)
+        ("\\.pdf\\'" . "evince %s"))
+      org-support-shift-select t
+      org-edit-src-content-indentation 0
+      org-startup-truncated t
+      org-return-follows-link t
+      org-hide-leading-stars t
+      ;; source code highlighting
+      org-src-fontify-natively t
+      org-directory "~/Dropbox/howm/org/"
+      org-agenda-files (list org-directory)
+      org-default-notes-file (concat org-directory "agenda.org")
+      ;;* TODOリストの設定
+      org-use-fast-todo-selection t
+      ;; this is for debugging.
+      ;; org-element-use-cache nil
+      org-todo-keywords
+      '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(x)" "CANCEL(c)"
+                  "APPT(a)")))
+
+;; Org key bindings
 (require 'mykie)
 ;; un-bind needless keybinds
 (mykie:set-keys org-mode-map "C-a" "C-e" "RET" "C-j" "C-," "C-.")

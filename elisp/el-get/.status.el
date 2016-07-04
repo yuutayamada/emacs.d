@@ -497,6 +497,20 @@
 :pkgname "emacsmirror/paredit"))
 (pcache status "installed" recipe
 (:name pcache :description "persistent caching for Emacs" :type github :pkgname "sigma/pcache"))
+(pdf-tools status "installed" recipe
+(:name pdf-tools :description "pdf tools" :type github :minimum-emacs-version "24.3" :pkgname "politza/pdf-tools" :depends
+(let-alist tablist)
+:prepare
+(setq pdf-info-epdfinfo-program
+(concat
+(el-get-package-directory "pdf-tools")
+"server/epdfinfo"))
+:build
+(("make"))
+:load-path
+(("lisp"))
+:compile
+("lisp/")))
 (pkg-info status "installed" recipe
 (:name pkg-info :description "Provide information about Emacs packages." :type github :pkgname "lunaryorn/pkg-info.el" :depends
 (dash epl)))
@@ -562,6 +576,8 @@
 (:name svg-mode-line-themes :description "Awesome mode-line for emacs!" :type github :pkgname "sabof/svg-mode-line-themes" :depends xmlgen))
 (tabbar status "installed" recipe
 (:name tabbar :description "Display a tab bar in the header line." :type github :pkgname "dholm/tabbar" :lazy t))
+(tablist status "installed" recipe
+(:name tablist :description "Extended Emacs tabulated-list-mode." :website "https://github.com/politza/tablist" :type github :pkgname "politza/tablist"))
 (transpose-frame status "installed" recipe
 (:name transpose-frame :type git :url "https://github.com/emacsmirror/transpose-frame.git"))
 (twittering-mode status "installed" recipe

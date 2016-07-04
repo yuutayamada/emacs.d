@@ -59,7 +59,7 @@ notification area."
                        start)
                     1000))
          (msg   (format "%s : %dmsec" comment e-time)))
-    (message (concat "\n" msg "\n"))
+    (message (concat "STARTUP: " msg))
     (when notification
       (notifications-notify :title "Emacs"
                             :body  msg

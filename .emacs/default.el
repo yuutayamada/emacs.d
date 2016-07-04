@@ -11,7 +11,7 @@
 (Y/add-after-load-files "init_" (concat package-conf-dir "builtin/"))
 (Y/add-after-load-files "init_" package-conf-dir)
 
-(Y/message-startup-time "START: el-get setup")
+(Y/message-startup-time "el-get setup")
 
 ;; Sync all packages for el-get. ‘el-get’ function registers
 ;; load-path, path of init-PKGNAME.el.
@@ -33,7 +33,7 @@
         ;; Regular Emacs
         (Y/frame-init-func)
       ;; Daemon Emacs ;;
-      (Y/message-startup-time "START: frame configuration setup")
+      (Y/message-startup-time "frame configuration setup")
       (when (equal 1 (length (frame-list)))
         (set-frame-name "root") ; Name "root" as base frame name. (emacs --daemon)
         (add-hook 'after-make-frame-functions 'Y/frame-init-func)))
@@ -59,7 +59,7 @@
 (add-hook
  'after-init-hook
  '(lambda ()
-    (Y/message-startup-time "START: after-init hook")
+    (Y/message-startup-time "after-init hook")
     (condition-case err
         ;; Load only necessary files for less loading time
         (Y/load-packages '(windows depend_main tabbar s init_mykie))
@@ -68,7 +68,7 @@
 (add-hook
  'emacs-startup-hook
  '(lambda ()
-    (Y/message-startup-time "START: startup hook")
+    (Y/message-startup-time "startup hook")
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; prog-mode configuration
     (require 'Y-prog-mode)
@@ -97,7 +97,7 @@
 (add-hook
  'tty-setup-hook
  '(lambda ()
-    (Y/message-startup-time "START: tty-setup hook")
+    (Y/message-startup-time "tty-setup hook")
     (cl-case (assoc-default 'terminal-initted (terminal-parameters))
       (terminal-init-xterm
        (xterm-keybinder-setup))
@@ -113,7 +113,7 @@
 (add-hook
  'window-setup-hook
  (lambda ()
-   (Y/message-startup-time "START: window-setup hook")
+   (Y/message-startup-time "window-setup hook")
    ;; auto-insert mode
    ;; https://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html
    ;; check point max for lazy loading

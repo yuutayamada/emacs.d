@@ -6,6 +6,7 @@
 
 (require 'cl-lib)
 
+(require 'init_epg-config)
 (require 'twittering-mode)
 (require 'Y-autoload)
 (defvar my/twit-users '()) ;; specify username's list without @

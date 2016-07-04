@@ -39,15 +39,16 @@
 (setq doc-view-pdftotext-program "/usr/bin/pdftotext")
 
 (mykie:set-keys doc-view-mode-map
-  "n"   :default doc-view-next-line-or-next-page
-  "p"   :default doc-view-previous-line-or-previous-page
-  "v"   :default doc-view-next-page
-  "c"   :default doc-view-previous-page
-  "C-f" :default image-forward-hscroll
-  "C-b" :default image-backward-hscroll
-  "f"   :default image-forward-hscroll
-  "b"   :default image-backward-hscroll
-  "C-s" :default my/anything-pdfgrep)
+  "n"    doc-view-next-line-or-next-page
+  "p"    doc-view-previous-line-or-previous-page
+  "v"    doc-view-next-page
+  "c"    doc-view-previous-page
+  "g"    doc-view-goto-page
+  "C-f"  image-forward-hscroll
+  "C-b"  image-backward-hscroll
+  "f"    image-forward-hscroll
+  "b"    image-backward-hscroll
+  "C-s"  my/anything-pdfgrep)
 
 (add-hook 'view-mode-hook
           '(lambda ()

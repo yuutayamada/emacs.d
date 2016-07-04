@@ -566,7 +566,7 @@
           (e2wm:stop-management)
         (e2wm:start-management))
   "M-s" magit-status
-  "M-c" (find-file "~/share/doc/study/2016spring")
+  "M-d" (find-file "~/share/doc")
   "M-h" my/toggle-hide-show
   "M-r" win-switch-menu
   "M-t" Y/visual-fill-mode

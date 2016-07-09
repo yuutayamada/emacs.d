@@ -172,13 +172,6 @@
 
 ;; xcc
 (require 'xterm-cursor-changer)
-(defadvice evil-set-cursor (around Y/evil-change-cursor activate)
-  "Change cursor shape on xterm Emacs."
-  (if (not (xcc-xterm-p))
-      ad-do-it
-    (setq xcc-use-blink
-          (if (eq 'emacs evil-state) t nil))
-    (xcc-change-cursor-color-and-shape-on-evil)))
 
 ;; turn on evil after saved
 (add-hook 'after-save-hook 'evil-normal-state)

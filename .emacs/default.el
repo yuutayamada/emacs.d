@@ -138,11 +138,7 @@
                  company-mode auto-complete))
 
    (el-get 'sync 'idle-require)
-   (add-hook 'helm-after-initialize-hook 'idle-require-mode)
-
-   (run-with-idle-timer
-    1.0 nil
-    (lambda () (add-to-list 'mode-line-format '(:eval (Y/update-mode-line-bg)))))))
+   (add-hook 'helm-after-initialize-hook 'idle-require-mode)))
 
 
 (provide 'default)

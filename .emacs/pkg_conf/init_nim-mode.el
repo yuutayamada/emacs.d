@@ -30,9 +30,13 @@
 (require 'nim-mode)
 (require 'company-nim)
 
+;; An Emacs package to write Emacs extensions by Nim
+(el-get 'sync 'nim-emacs-module)
+
 ;; This ‘nim-nimsuggest-path’ variable is automatically set the return
 ;; value of ‘executable-find’, so if you include nimsuggest to your
 ;; PATH, you don’t need this configuration.
+;; (ghq: https://github.com/motemen/ghq)
 (unless nim-nimsuggest-path
   (setq nim-nimsuggest-path
         (format "%s/github.com/yuutayamada/nimsuggest/nimsuggest"
@@ -47,7 +51,6 @@
 
 (defun Y/nim-mode-common-setup ()
   "My configuration for ‘nim-mode’ and ‘nimscript-mode’."
-
   ;; Comment style. see also ‘comment-styles’ variable.
   (setq-local comment-style 'indent)
 
@@ -87,7 +90,6 @@
 ;; (probably flycheck-nim-async will be automatically turn on
 ;; if users set ‘nim-nimsuggest-path’)
 (require 'flycheck-nim-async)
-(defconst nimsuggest-vervosity nil)
 
 ;; Convenience(?) functions
 (defun nim-electric-backward-char ()

@@ -159,10 +159,10 @@
 
 ;; HIGHLIGHT Cursor or etc. ;; hollow
 (setq evil-default-cursor      'box ; You can specify: 'hbar or 'box
-      evil-normal-state-cursor  '("#00afff" box)
+      evil-normal-state-cursor  '("white" box)
       evil-insert-state-cursor  '("#4169e1" (bar . 2))
-      evil-emacs-state-cursor   '("#00ced1" (bar . 2))
-      evil-replace-state-cursor '("white"   box)
+      evil-emacs-state-cursor   '("#5f5faf" (bar . 2))
+      evil-replace-state-cursor '("#00ced1"   box)
       evil-cross-lines t
       ;; Do not move eol when normal state
       evil-move-cursor-back t)

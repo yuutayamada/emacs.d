@@ -7166,9 +7166,14 @@ Work in progress.
 
 \(fn &rest R)" t nil)
 
+(autoload 'nim-emacs-module-setup-nim-mode "nim-emacs-module/nim-emacs-module" "\
+Setup for nim-mode.
+
+\(fn)" nil nil)
+
 (with-eval-after-load "nim-mode" (add-hook 'nim-mode-hook 'nim-emacs-module-setup-nim-mode))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-emacs-module/nim-emacs-module" '("nim-emacs-module-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-emacs-module/nim-emacs-module" '(#("nim-emacs-module-" 0 17 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 

@@ -283,6 +283,11 @@ You can only use this function inside :build directive."
     (:name capitalizer
            :type git
            :url "https://github.com/yuutayamada/capitalizer-el.git")
+
+    (:name contrast-color-picker
+           :type github
+           :pkgname "yuutayamada/contrast-color-picker-el")
+
     ;; D
     (:name ddskk
            :autoloads "skk-autoloads"

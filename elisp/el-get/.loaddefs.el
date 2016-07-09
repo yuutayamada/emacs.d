@@ -1046,6 +1046,21 @@ shadow backends that come after it.  Recommended usages:
 
 ;;;***
 
+;;;### (autoloads nil "contrast-color-picker/contrast-color-picker"
+;;;;;;  "contrast-color-picker/contrast-color-picker.el" (0 0 0 0))
+;;; Generated autoloads from contrast-color-picker/contrast-color-picker.el
+
+(autoload 'contrast-color-picker "contrast-color-picker/contrast-color-picker" "\
+Return most contrasted color against COLOR.
+The return color picked from ‘contrast-color-picker-color-candidates’.
+The algorithm is used CIEDE2000. See also ‘color-cie-de2000’ function.
+
+\(fn COLOR)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "contrast-color-picker/contrast-color-picker" '("contrast-color-picker-")))
+
+;;;***
+
 ;;;### (autoloads nil "direx/direx" "direx/direx.el" (0 0 0 0))
 ;;; Generated autoloads from direx/direx.el
 
@@ -7282,7 +7297,7 @@ A major mode for the Nim programming language.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from nim-mode/nim-syntax.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-syntax" '("nim-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-syntax" '("nim")))
 
 ;;;***
 
@@ -7331,8 +7346,6 @@ instead.  The default regex’s matching word is [Package].
 \(fn)" t nil)
 
 (add-to-list 'auto-mode-alist '("\\.nim\\(ble\\|s\\)\\'" . nimscript-mode-maybe))
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nimscript-mode" '("nimscript-keywords")))
 
 ;;;***
 

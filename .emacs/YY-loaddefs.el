@@ -20,7 +20,7 @@
 ;;;### (autoloads nil "Y/Y-el-get" "Y/Y-el-get.el" (0 0 0 0))
 ;;; Generated autoloads from Y/Y-el-get.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-el-get" '(#("el-get-u" 0 8 (face font-lock-function-name-face fontified nil)) #("Y/el-get-npm-install-maybe" 0 26 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-el-get" '(#("el-get-u" 0 8 (fontified nil face font-lock-function-name-face)) #("Y/el-get-npm-install-maybe" 0 26 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -470,7 +470,7 @@ Setup irony-mode.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_mykie.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_mykie" '(#("my/overriding-mode-map" 0 22 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_mykie" '("my/overriding-mode-map")))
 
 ;;;***
 
@@ -686,7 +686,8 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_python.el" "pkg_conf/init_sbtp.el" "pkg_conf/init_scala-mode.el"
 ;;;;;;  "pkg_conf/init_skk-b.el" "pkg_conf/init_smartparens.el" "pkg_conf/init_sql.el"
 ;;;;;;  "pkg_conf/init_undo-tree.el" "pkg_conf/init_wgrep.el" "pkg_conf/init_winner.el"
-;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yatemplate.el"
+;;;;;;  "pkg_conf/init_xmp.el" "pkg_conf/init_xterm-cursor-changer.el"
+;;;;;;  "pkg_conf/init_yaml-mode.el" "pkg_conf/init_yatemplate.el"
 ;;;;;;  "pkg_conf/init_yim.el" "site-start.el") (0 0 0 0))
 
 ;;;***

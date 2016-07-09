@@ -37,22 +37,6 @@
           (funcall get-param 'width)))
     (set-mouse-position (selected-frame) (max width 50) (max height 10))))
 
-(defun Y/ido-find-ghq-dirs ()
-  "Find file from my favorite resource."
-  (interactive)
-  (let* ((ghq-dirs (bound-and-true-p Y/ghq-dirs))
-         (my-favor '("~/var/downloads"
-                     "~/var/backups"
-                     "~/share/doc/study/2015fall"))
-         (code-dirs (cl-loop with root = "~/code"
-                             for dir in (directory-files root)
-                             unless (string-match "^\\(\\.\\|\\.\\.\\)$" dir)
-                             collect (format "%s/%s" root dir)))
-         (match (ido-completing-read "ghq: " (append ghq-dirs code-dirs my-favor))))
-    (cond ((bufferp (get-buffer match))
-           (switch-to-buffer (get-buffer match)))
-          (t (find-file match)))))
-
 ;;;###autoload
 (defun other-window-or-split (&rest _r)
   "Move buffer or split when buffer was one."

@@ -166,24 +166,19 @@ If ARG is non-nil, turn on visual mode stuff.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-function" '("test" "my/" "Y/" "banish")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-function" '(#("test" 0 4 (fontified nil)) #("my/" 0 3 (fontified nil)) #("Y/" 0 2 (fontified nil face font-lock-variable-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
 ;;;### (autoloads nil "Y/Y-modeline" "Y/Y-modeline.el" (0 0 0 0))
 ;;; Generated autoloads from Y/Y-modeline.el
 
-(autoload 'Y/update-mode-line-bg "Y/Y-modeline" "\
-Update mode line background color.
-
-\(fn &rest R)" nil nil)
-
 (autoload 'Y/clean-mode-line "Y/Y-modeline" "\
 Use specified abbreviation of mode-line-name by `mode-line-cleaner-alist'.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-modeline" '("mode-line-cleaner-alist" "Y/")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y/Y-modeline" '("mode-line-cleaner-alist")))
 
 ;;;***
 
@@ -234,6 +229,14 @@ Load PACKAGES.
 ;;; Generated autoloads from pkg_conf/init_android-mode.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_android-mode" '("Y/")))
+
+;;;***
+
+;;;### (autoloads nil "pkg_conf/init_auto-capitalize" "pkg_conf/init_auto-capitalize.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from pkg_conf/init_auto-capitalize.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_auto-capitalize" '("auto-capitalize-aspell-file")))
 
 ;;;***
 
@@ -467,7 +470,7 @@ Setup irony-mode.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_mykie.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_mykie" '("my/overriding-mode-map")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_mykie" '(#("my/overriding-mode-map" 0 22 (fontified nil)))))
 
 ;;;***
 
@@ -475,7 +478,7 @@ Setup irony-mode.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from pkg_conf/init_nim-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_nim-mode" '("my-nim-print" "nim" "Y/nim-mode-common-setup")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pkg_conf/init_nim-mode" '("my-nim-print" "nim-electric-backward-char" "Y/nim-mode-common-setup")))
 
 ;;;***
 
@@ -675,10 +678,9 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  "pkg_conf/init_jstestmacs.el" "pkg_conf/init_keyboard-converter.el"
 ;;;;;;  "pkg_conf/init_keychord.el" "pkg_conf/init_logalimacs.el"
 ;;;;;;  "pkg_conf/init_lua-mode.el" "pkg_conf/init_masaw.el" "pkg_conf/init_migemo.el"
-;;;;;;  "pkg_conf/init_milkboy.el" "pkg_conf/init_mmm-mode.el" "pkg_conf/init_moz.el"
-;;;;;;  "pkg_conf/init_mozc.el" "pkg_conf/init_multiple-cursors.el"
-;;;;;;  "pkg_conf/init_newsticker.el" "pkg_conf/init_node-console.el"
-;;;;;;  "pkg_conf/init_nyan-mode.el" "pkg_conf/init_org-indent.el"
+;;;;;;  "pkg_conf/init_mmm-mode.el" "pkg_conf/init_moz.el" "pkg_conf/init_mozc.el"
+;;;;;;  "pkg_conf/init_multiple-cursors.el" "pkg_conf/init_newsticker.el"
+;;;;;;  "pkg_conf/init_node-console.el" "pkg_conf/init_nyan-mode.el"
 ;;;;;;  "pkg_conf/init_org-trello.el" "pkg_conf/init_pangu-spacing.el"
 ;;;;;;  "pkg_conf/init_paredit.el" "pkg_conf/init_popwin.el" "pkg_conf/init_powerline.el"
 ;;;;;;  "pkg_conf/init_python.el" "pkg_conf/init_sbtp.el" "pkg_conf/init_scala-mode.el"

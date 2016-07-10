@@ -90,7 +90,7 @@
     ;; Use Evil's normal mode only inside actual files.
     (add-hook 'find-file-hook
               '(lambda () (unless (bound-and-true-p with-editor-mode)
-                        (evil-normal-state))))
+                       (evil-normal-state))))
     (add-hook 'find-file-hook 'git-gutter-mode)))
 
 ;; This hook is activated after initialization of terminal

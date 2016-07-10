@@ -30,6 +30,12 @@
           '(lambda () (load (concat package-conf-dir "rcfiles/Y-orgrc") t)))
 
 
+;; Update modeline and cursor colors
+(add-hook 'find-file-hook 'Y-update-modeline)
+(advice-add 'other-window-or-split :after 'Y-update-cursor-&-modeline)
+(add-hook 'xcc-before-send-hook 'Y-update-modeline)
+(add-hook 'xcc-nocalled-hook 'Y-update-modeline)
+
 ;; Memo
 ;; use those hooks later: `focus-in-hook', `focus-out-hook'.
 

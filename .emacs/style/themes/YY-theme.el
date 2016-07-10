@@ -105,12 +105,8 @@
                                          :weight bold)))
 
  ;; flyspell
- ;; Do not coloring duplicated word, draw underline instead.
+ ;; Do not colorize duplicated word, draw underline instead.
  '(flyspell-duplicate  ((t :underline t)))
-
- ;; ;; flymake
- ;; '(flymake-errline  ((t :foreground nil)))
- ;; '(flymake-warnline ((t :foreground nil)))
 
  ;; Gnus
  '(gnus-group-mail-3       ((t :foreground "#87d7ff")))

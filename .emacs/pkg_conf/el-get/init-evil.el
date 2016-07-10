@@ -158,11 +158,13 @@
            collect m))
 
 ;; HIGHLIGHT Cursor or etc. ;; hollow
+;; (rainbow-mode t)
 (setq evil-default-cursor      'box ; You can specify: 'hbar or 'box
       evil-normal-state-cursor  '("#Ff0000" box)
-      evil-insert-state-cursor  '("#4169e1" (bar . 2))
-      evil-emacs-state-cursor   '("#afafff" (bar . 2))
-      evil-replace-state-cursor '("#00ced1"   box)
+      evil-insert-state-cursor  '("#1249e1" (bar . 2))
+      evil-emacs-state-cursor   '("#4169e1" (bar . 2))
+      evil-replace-state-cursor '("#00ced1" box)
+      evil-visual-state-cursor  '("#D7ffaf" hbar)
       evil-cross-lines t
       ;; Do not move eol when normal state
       evil-move-cursor-back t)

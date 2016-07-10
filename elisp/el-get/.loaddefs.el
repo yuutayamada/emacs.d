@@ -1057,7 +1057,7 @@ The algorithm is used CIEDE2000. See also ‘color-cie-de2000’ function.
 
 \(fn COLOR)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "contrast-color/contrast-color" '(#("contrast-color-" 0 5 (face font-lock-function-name-face fontified nil) 5 15 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "contrast-color/contrast-color" '(#("contrast-color-" 0 15 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 

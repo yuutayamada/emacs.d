@@ -3,9 +3,11 @@
 ;;; Code:
 (require 'xterm-cursor-changer)
 
-;; Modeline support
 (el-get 'sync 'contrast-color)
 (require 'contrast-color)
+
+(setq contrast-color-candidates
+      contrast-color-material-colors)
 
 (advice-add 'evil-set-cursor :before
             (lambda (&rest _r)
@@ -14,8 +16,8 @@
               (xcc-change-cursor-color-and-shape-on-evil)))
 
 ;;;###autoload
-(defun xcc-update-modeline (&optional bg-color &rest _r)
-  ""
+(defun Y-update-modeline (&optional bg-color &rest _r)
+  "Update modeline color with BG-COLOR."
   (when (and (null bg-color) (null (bound-and-true-p evil-state)))
     (setq bg-color (car (bound-and-true-p evil-emacs-state-cursor))))
   (when bg-color
@@ -25,12 +27,15 @@
        :background bg-color
        :foreground (contrast-color bg-color)))))
 
-(add-hook 'find-file-hook 'xcc-update-modeline)
-(add-hook 'xcc-before-send-hook 'xcc-update-modeline)
-(add-hook 'xcc-nocalled-hook 'xcc-update-modeline)
-
-(advice-add 'other-window-or-split :after
-            (lambda (&rest _r) (xcc-update-modeline)))
+;;;###autoload
+(defun Y-update-cursor-&-modeline (&rest _r)
+  "Update modeline and cursor colors."
+  (if (bound-and-true-p evil-state)
+      (evil-refresh-cursor (current-buffer))
+    ;; when not evil related buffer
+    (xcc-change-cursor-color-and-shape
+     (face-attribute 'cursor :background nil) 'box)
+    (Y-update-modeline)))
 
 (provide 'init_xterm-cursor-changer)
 

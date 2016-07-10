@@ -284,9 +284,9 @@ You can only use this function inside :build directive."
            :type git
            :url "https://github.com/yuutayamada/capitalizer-el.git")
 
-    (:name contrast-color-picker
+    (:name contrast-color
            :type github
-           :pkgname "yuutayamada/contrast-color-picker-el")
+           :pkgname "yuutayamada/contrast-color-el")
 
     ;; D
     (:name ddskk

@@ -1046,18 +1046,18 @@ shadow backends that come after it.  Recommended usages:
 
 ;;;***
 
-;;;### (autoloads nil "contrast-color-picker/contrast-color-picker"
-;;;;;;  "contrast-color-picker/contrast-color-picker.el" (0 0 0 0))
-;;; Generated autoloads from contrast-color-picker/contrast-color-picker.el
+;;;### (autoloads nil "contrast-color/contrast-color" "contrast-color/contrast-color.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from contrast-color/contrast-color.el
 
-(autoload 'contrast-color-picker "contrast-color-picker/contrast-color-picker" "\
+(autoload 'contrast-color "contrast-color/contrast-color" "\
 Return most contrasted color against COLOR.
-The return color picked from ‘contrast-color-picker-color-candidates’.
+The return color picked from ‘contrast-color-candidates’.
 The algorithm is used CIEDE2000. See also ‘color-cie-de2000’ function.
 
 \(fn COLOR)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "contrast-color-picker/contrast-color-picker" '("contrast-color-picker-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "contrast-color/contrast-color" '(#("contrast-color-" 0 5 (face font-lock-function-name-face fontified nil) 5 15 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 

@@ -78,8 +78,8 @@
                        :pkgname "Sarcasm/company-irony"))
  (company-mode status "installed" recipe
                (:name company-mode :website "http://company-mode.github.io/" :description "Modular in-buffer completion framework for Emacs" :type github :pkgname "company-mode/company-mode"))
- (contrast-color-picker status "installed" recipe
-                        (:name contrast-color-picker :type github :pkgname "yuutayamada/contrast-color-picker-el"))
+ (contrast-color status "installed" recipe
+                 (:name contrast-color :type github :pkgname "yuutayamada/contrast-color-el"))
  (crontab-mode status "installed" recipe
                (:name crontab-mode :description "Mode for editing crontab files" :type http :url "http://web.archive.org/web/20080716014153/http://www.mahalito.net/~harley/elisp/crontab-mode.el"))
  (css-eldoc status "installed" recipe

@@ -2,9 +2,9 @@
 
 ;;; Commentary:
 
-(require 'cl-lib)
-
 ;;; Code:
+
+(require 'cl-lib)
 (apply `(require ,(intern (format "depend_emacs%i" emacs-major-version))))
 
 ;; OS
@@ -13,6 +13,7 @@
    ;; IME (fcitx)
    (when (fboundp 'fcitx-aggressive-setup)
      (require 'fcitx)
+     (defconst fcitx-use-dbus t)
      (fcitx-aggressive-setup)))
   (cygwin
    (load "depend_windows")))

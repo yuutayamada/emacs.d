@@ -29,17 +29,14 @@
   (Y/add-load-path-subdir `(,config-dir ,dev)))
 
 (defconst Y/autoload-files
-  `(,(concat config-dir "YY-loaddefs.el")
+  `(,(concat config-dir "Y/Y-loaddefs.el")
+    ,(concat config-dir "pkg_conf/Y-conf-loaddefs.el")
     ,(concat elisp-dir  "self/Y-package-loaddefs.el")))
 
-(condition-case err
-    (progn (require 'YY-loaddefs)
-           (add-to-list 'load-path (concat elisp-dir "self"))
-           (require 'Y-package-loaddefs))
-  (error (with-no-warnings
-           (Y/make-autoload-files Y/autoload-files)
-           (require 'YY-loaddefs)
-           (require 'Y-package-loaddefs))))
+(require 'Y-loaddefs)
+(require 'Y-conf-loaddefs)
+(add-to-list 'load-path (concat elisp-dir "self"))
+(require 'Y-package-loaddefs)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EL-GET

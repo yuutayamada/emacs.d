@@ -11,7 +11,6 @@
 (setq yas-prompt-functions
       '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
 
-
 ;; memo:
 ;;   ‘yas--keybinding-beyond-yasnippet’ is fallback function
 

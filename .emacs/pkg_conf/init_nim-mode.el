@@ -63,7 +63,7 @@
 
   ;; My key bindings for nim-mode and nimscript-mode.
   (define-key nim-mode-map (kbd "C-0") 'my-nim-print)
-  (define-key nim-mode-map (kbd "C-h") 'nim-electric-backward-char)
+  (define-key nim-mode-map (kbd "C-h") 'nim-electric-backspace)
 
   ;; If you bind another function to TAB that
   ;; ‘nim-indent-trigger-commands’ doesn’t include, you have to
@@ -84,32 +84,14 @@
 
 (add-hook 'nim-mode-hook 'Y/nim-mode-common-setup)
 
-;; For flycheck-nim-async.
-;; (flycheck support using nimsuggest’s chk option)
-;; Note that I will change/delete this configuration in future.
-;; (probably flycheck-nim-async will be automatically turn on
-;; if users set ‘nim-nimsuggest-path’)
-(require 'flycheck-nim-async)
-
-;; Convenience(?) functions
-(defun nim-electric-backward-char ()
-  "If the cursor position is top of the line delete char by ‘nim-indent-offset’.
-Otherwise, work as ‘backward-delete-char‘."
-  (interactive)
-  (condition-case err
-      (if (and (looking-back (rx line-start (1+ " ")) nil)
-               (not (nth 3 (syntax-ppss)))
-               (not (nth 4 (syntax-ppss))))
-          (nim--indent-line-core t)
-        (backward-delete-char 1))
-    (error (message "%s" err))))
-
 (defun my-nim-print ()
   "Just for debugging purpose for nimsuggest."
   (interactive)
-  (nim-call-epc
-   'sug
-   (lambda (args) (message "%s" args))))
+  (let ((nim-suggest-ignore-dir-regex ""))
+    (nim-call-epc
+     ;; con dus
+     'sug ; def ;dus ; sug ; 'dus ; 9, 3
+     (lambda (args) (message "%s" args)))))
 
 (provide 'init_nim-mode)
 

@@ -83,10 +83,6 @@
 ;;   "i" :C-u&java-mode add-java-import
 ;;   ;; "c" :C-u (my/open-calendar)
 
-;;   "e"
-;;   :C-u&emacs-lisp-mode Y/eval-and-replace
-;;   :C-u&lisp-interaction-mode Y/eval-and-replace
-
 ;;   "f"
 ;;   :C-u! racer-find-definition
 ;;   :region (mykie:do-while "f" indent-rigidly
@@ -181,7 +177,7 @@
   :C-u*2   switch-to-haskell
 
   "C-j"
-  :default           my/newline-and-indent
+  :default newline-and-indent
   :multiline-comment newline
   :comment           comment-indent-new-line
   :python-mode       newline-and-indent
@@ -375,7 +371,10 @@
   :default my/open-junk-today
   :C-u     open-junk-file
 
-  "C-f" ido-find-file)
+  "C-f" ido-find-file
+  "C-e"
+  :default eval-last-sexp
+  :C-u*2 replace-last-sexp)
 
 ;; I couldn't bind C-x C-c pair on above ctl-x-map...
 (mykie:set-keys nil
@@ -448,6 +447,7 @@
   :evil-normal (mykie :prog ffinder-jump-to-begging
                       :org-mode org-cycle))
 
+
 (mykie:global-set-key (kbd "A-i")
   :default indent-for-tab-command
   :markdown-header markdown-cycle
@@ -456,7 +456,7 @@
 
 ;; RET key ;;
 (mykie:set-keys nil
-  "M-RET" sane-term
+  "M-RET" fish
   ;; "<C-return>"   cua-set-rectangle-mark
   ;; "<C-M-return>" my/multi-term
 

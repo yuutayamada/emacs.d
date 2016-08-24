@@ -6,9 +6,6 @@
 (el-get 'sync 'contrast-color)
 (require 'contrast-color)
 
-(setq contrast-color-candidates
-      contrast-color-material-colors)
-
 (advice-add 'evil-set-cursor :before
             (lambda (&rest _r)
               (setq xcc-use-blink

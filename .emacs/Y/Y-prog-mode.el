@@ -11,7 +11,8 @@
 (add-hook 'prog-mode-hook
           '(lambda ()
              ;; Electric-indent-mode
-             (electric-indent-local-mode -1)
+             ;; should turn off python or haskell?
+             ;; (electric-indent-local-mode -1)
              ;; auto capitalize
              (auto-capitalize-mode)
              ;; linum relative

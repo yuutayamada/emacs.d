@@ -83,8 +83,6 @@
     (add-hook 'help-mode-hook 'view-mode)
     (add-hook 'Man-mode-hook  'view-mode)
 
-
-
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; files (find-file)
     ;; Use Evil's normal mode only inside actual files.
@@ -93,22 +91,27 @@
                        (evil-normal-state))))
     (add-hook 'find-file-hook 'git-gutter-mode)))
 
+(defun tty-setup-once ()
+  "Setup configuration for terminal Emacs at startup."
+  ;; Note that this function is defined to prevent loading multiple times.
+  ;; Somehow I discovered M-x term loads ‘tty-setup-hook’ at same time.
+  (Y/message-startup-time "tty-setup hook")
+  (cl-case (assoc-default 'terminal-initted (terminal-parameters))
+    (terminal-init-xterm
+     (xterm-keybinder-setup))
+    (terminal-init-rxvt
+     (when (getenv "COLORTERM" (selected-frame))
+       (urxvt-keybinder-setup "xft:DejaVu Sans Mono" 12))))
+  (xterm-mouse-mode t)
+  ;; Set background-mode as dark always
+  ;; This configuration affects inside terminal Emacs under the xterm or urxvt.
+  ;; see also : https://www.gnu.org/software/emacs/manual/html_node/elisp/Terminal-Parameters.html
+  (set-terminal-parameter nil 'background-mode 'dark)
+  (remove-hook 'tty-setup-hook 'tty-setup-once))
+
 ;; This hook is activated after initialization of terminal
-(add-hook
- 'tty-setup-hook
- '(lambda ()
-    (Y/message-startup-time "tty-setup hook")
-    (cl-case (assoc-default 'terminal-initted (terminal-parameters))
-      (terminal-init-xterm
-       (xterm-keybinder-setup))
-      (terminal-init-rxvt
-       (when (getenv "COLORTERM" (selected-frame))
-         (urxvt-keybinder-setup "xft:DejaVu Sans Mono" 12))))
-    (xterm-mouse-mode t)
-    ;; Set background-mode as dark always
-    ;; This configuration affects inside terminal Emacs under the xterm or urxvt.
-    ;; see also : https://www.gnu.org/software/emacs/manual/html_node/elisp/Terminal-Parameters.html
-    (set-terminal-parameter nil 'background-mode 'dark)))
+;; or after M-x term. (not so sure)
+(add-hook 'tty-setup-hook 'tty-setup-once)
 
 (add-hook
  'window-setup-hook
@@ -133,9 +136,9 @@
    (el-get 'sync '(org-mode nim-mode lua-mode web-mode))
 
    ;; Convenient & key binds driven
-   (el-get nil '(magit multiple-cursors avy helm-c-yasnippet yasnippet
-                 git-gutter mew twittering-mode
-                 company-mode auto-complete))
+   (el-get 'sync '(magit multiple-cursors avy helm-c-yasnippet yasnippet
+                   git-gutter mew twittering-mode
+                   company-mode auto-complete))
 
    (el-get 'sync 'idle-require)
    (add-hook 'helm-after-initialize-hook 'idle-require-mode)))

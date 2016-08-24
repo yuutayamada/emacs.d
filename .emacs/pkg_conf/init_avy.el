@@ -1,4 +1,4 @@
-;;; init-avy.el --- init file for avy.el -*- lexical-binding: t; -*-
+;;; init_avy.el --- init file for avy.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -19,11 +19,11 @@
     (let ((keyseq (string-to-list (key-description (vector last-input-event)))))
       (avy-goto-char (car (last keyseq))))))
 
-(provide 'init-avy)
+(provide 'init_avy)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init-avy.el ends here
+;;; init_avy.el ends here

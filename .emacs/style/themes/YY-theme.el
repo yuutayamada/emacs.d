@@ -119,10 +119,10 @@
  '(grammar-error-face  ((t :background "#Ff6347"
                            :foreground "#000000")))
  ;; avy
- '(avy-lead-face   ((t :foreground "#ffffff" :background "#5c5cff")))
- '(avy-lead-face-0 ((t :foreground "#000000" :background "#87d7ff")))
- '(avy-lead-face-1 ((t :foreground "#000000" :background "#00ced1")))
- '(avy-lead-face-2 ((t :foreground "#000000" :background "#ee9a4d")))
+ '(avy-lead-face   ((t :foreground "#c6ff00" :background "#5c5cff")))
+ '(avy-lead-face-0 ((t :foreground "#3e2723" :background "#87d7ff")))
+ '(avy-lead-face-1 ((t :foreground "#6200ea" :background "#00ced1")))
+ '(avy-lead-face-2 ((t :foreground "#1a237e" :background "#ee9a4d")))
 
  ;; Helm
  '(helm-source-header  ((t :background nil :foreground "#FFFF00")))

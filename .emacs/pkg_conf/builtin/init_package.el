@@ -2,8 +2,9 @@
 
 ;;; Commentary:
 
-;;; Code:
+;;
 
+;;; Code:
 (defconst package-archives
   '(("melpa" . "https://melpa.org/packages/")
     ("ELPA"  . "https://tromey.com/elpa/")

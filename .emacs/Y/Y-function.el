@@ -23,6 +23,7 @@
 (require 'cl-lib)
 (require 'Y-autoload)
 (require 's)
+(require 'subr-x)
 
 (defun banish ()
   "Move cursor to corner."
@@ -455,23 +456,6 @@ Example of my/keys
           :buffer "*helm-characters*"
           :candidates-in-buffer t))
 
-;; Eval and replace
-;;;###autoload
-(defun Y/eval-and-replace ()
-  "Eval and replace.
-This function distinguishes parenthesis and symbol accordingly."
-  (interactive)
-  (let ((thing (cond ((eq (char-before) ?\))
-                      'paren)
-                     ((thing-at-point 'symbol)
-                      'sym)))
-        (start (nth 2 (syntax-ppss (point))))
-        (end   (point))
-        (result (eval-last-sexp t)))
-    (delete-region start end)
-    (cl-case thing
-      (paren (insert result)))))
-
 ;;;###autoload
 (defun Y/echo-current-point ()
   (interactive)
@@ -516,6 +500,25 @@ If ARG is non-nil, turn on visual mode stuff."
       ;; "1" means truncate (don’t word wrap)
       (toggle-truncate-lines 1))
     (visual-fill-column-mode toggle)))
+
+;;;###autoload
+(defun replace-last-sexp ()
+  "Replace last sexp."
+  (interactive)
+  (when-let ((value (eval (elisp--preceding-sexp))))
+    (kill-sexp -1)
+    (insert (format "%S" value))))
+
+;;;###autoload
+(defun fish ()
+  "Dedicated function for fish shell to avoid misconfiguration.
+
+In fact, ‘shell’ command with fish shell didn't work properly."
+  (interactive)
+  (if-let ((fish (executable-find "fish")))
+      (let ((sane-term-shell-command fish))
+        (sane-term))
+    (error "There is no fish command")))
 
 ;; for scratch
 (defun test ()

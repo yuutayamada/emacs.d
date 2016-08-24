@@ -1293,6 +1293,28 @@ Display a list of packages.
 
 ;;;***
 
+;;;### (autoloads nil "emacs-fish/fish-mode" "emacs-fish/fish-mode.el"
+;;;;;;  (22461 1195 509869 741000))
+;;; Generated autoloads from emacs-fish/fish-mode.el
+
+(autoload 'fish_indent-before-save "emacs-fish/fish-mode" "\
+
+
+\(fn)" t nil)
+
+(autoload 'fish-mode "emacs-fish/fish-mode" "\
+Major mode for editing fish shell files.
+
+\(fn)" t nil)
+
+(add-to-list 'auto-mode-alist '("\\.fish\\'" . fish-mode))
+
+(add-to-list 'auto-mode-alist '("/fish_funced\\..*\\'" . fish-mode))
+
+(add-to-list 'interpreter-mode-alist '("fish" . fish-mode))
+
+;;;***
+
 ;;;### (autoloads nil "evil-numbers/evil-numbers" "evil-numbers/evil-numbers.el"
 ;;;;;;  (21688 19147 280763 27000))
 ;;; Generated autoloads from evil-numbers/evil-numbers.el
@@ -8656,6 +8678,22 @@ Resume window/buffer configuration.
 Configuration should be saved by save-current-configuration.
 
 \(fn &optional NUM)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "sane-term/sane-term" "sane-term/sane-term.el"
+;;;;;;  (22461 2738 923701 409000))
+;;; Generated autoloads from sane-term/sane-term.el
+
+(autoload 'sane-term-create "sane-term/sane-term" "\
+Create new term buffer.
+
+\(fn)" t nil)
+
+(autoload 'sane-term "sane-term/sane-term" "\
+Cycle through term buffers, creating if necessary.
+
+\(fn)" t nil)
 
 ;;;***
 

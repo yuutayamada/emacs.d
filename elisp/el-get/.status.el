@@ -35,6 +35,8 @@
  (avy status "installed" recipe
       (:name avy :description "Jump to things in Emacs tree-style." :type github :pkgname "abo-abo/avy" :depends
              (cl-lib)))
+ (bats-mode status "installed" recipe
+            (:name bats-mode :description "A major-mode for editing Bats test files." :pkgname "dougm/bats-mode" :type github))
  (beacon status "installed" recipe
          (:name beacon :description "A light following your cursor around so you don't lose it!" :type github :pkgname "Malabarba/beacon" :depends seq))
  (bm status "installed" recipe
@@ -326,13 +328,7 @@
 ("make")))
 (json-mode status "installed" recipe
 (:name json-mode :build
-`(,(if
-(and
-(not
-(executable-find "jsonlint"))
-(executable-find "npm"))
-'("npm" "install" "jsonlint" "-g")
-""))
+`(,(Y/el-get-npm-install-maybe "jsonlint"))
 :description "Major mode for editing JSON files, extends the builtin js-mode to add better syntax highlighting for JSON." :type github :pkgname "joshwnj/json-mode" :depends
 (json-snatcher json-reformat)))
 (json-reformat status "installed" recipe

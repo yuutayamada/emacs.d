@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads nil "ac-irony/ac-irony" "ac-irony/ac-irony.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (21876 61505 163160 140000))
 ;;; Generated autoloads from ac-irony/ac-irony.el
 
 (defvar ac-source-irony '((cache) (requires . -1) (limit) (prefix . ac-irony-prefix) (candidates . ac-irony-candidates)))
@@ -21,7 +21,7 @@
 
 ;;;***
 
-;;;### (autoloads nil "ag/ag" "ag/ag.el" (0 0 0 0))
+;;;### (autoloads nil "ag/ag" "ag/ag.el" (22376 64854 302531 342000))
 ;;; Generated autoloads from ag/ag.el
 
 (autoload 'ag "ag/ag" "\
@@ -133,7 +133,7 @@ Kill all `ag-mode' buffers other than the current buffer.
 ;;;***
 
 ;;;### (autoloads nil "ample-regexps/ample-regexps" "ample-regexps/ample-regexps.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3282 4021 942000))
 ;;; Generated autoloads from ample-regexps/ample-regexps.el
 
 (autoload 'define-arx "ample-regexps/ample-regexps" "\
@@ -187,7 +187,8 @@ Run `re-builder' using arx form named ARX-NAME.
 
 ;;;***
 
-;;;### (autoloads nil "anzu/anzu" "anzu/anzu.el" (0 0 0 0))
+;;;### (autoloads nil "anzu/anzu" "anzu/anzu.el" (22390 64129 665890
+;;;;;;  716000))
 ;;; Generated autoloads from anzu/anzu.el
 
 (autoload 'anzu-mode "anzu/anzu" "\
@@ -252,12 +253,10 @@ See `anzu-mode' for more information on Anzu mode.
 
 \(fn ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "anzu/anzu" '("anzu-")))
-
 ;;;***
 
 ;;;### (autoloads nil "auto-capitalize/auto-capitalize" "auto-capitalize/auto-capitalize.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22384 14989 953368 751000))
 ;;; Generated autoloads from auto-capitalize/auto-capitalize.el
 
 (autoload 'auto-capitalize-mode "auto-capitalize/auto-capitalize" "\
@@ -282,21 +281,19 @@ This sets `auto-capitalize' to nil.
 
 (autoload 'enable-auto-capitalize-mode "auto-capitalize/auto-capitalize" "\
 Enable `auto-capitalize' mode in this buffer.
-This sets `auto-capitalize' to `query'.
+This sets `auto-capitalize-state' to t.
 
 \(fn)" t nil)
 
 (autoload 'auto-capitalize-setup "auto-capitalize/auto-capitalize" "\
-
+Setup auto-capitalize.
 
 \(fn)" nil nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "auto-capitalize/auto-capitalize" '(#("auto-capitalize" 0 13 (fontified nil face font-lock-function-name-face) 13 15 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 
 ;;;### (autoloads nil "auto-compile/auto-compile" "auto-compile/auto-compile.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 10425 791205 493000))
 ;;; Generated autoloads from auto-compile/auto-compile.el
 
 (autoload 'auto-compile-mode "auto-compile/auto-compile" "\
@@ -407,12 +404,10 @@ Also see the related `auto-compile-on-save-mode'.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "auto-compile/auto-compile" '("auto-compile-" "mode-line-" "turn-on-auto-compile-mode")))
-
 ;;;***
 
 ;;;### (autoloads nil "auto-complete/auto-complete" "auto-complete/auto-complete.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22374 13467 139277 947000))
 ;;; Generated autoloads from auto-complete/auto-complete.el
 
 (autoload 'auto-complete "auto-complete/auto-complete" "\
@@ -450,7 +445,7 @@ See `auto-complete-mode' for more information on Auto-Complete mode.
 ;;;***
 
 ;;;### (autoloads nil "auto-complete/auto-complete-config" "auto-complete/auto-complete-config.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22374 13467 139277 947000))
 ;;; Generated autoloads from auto-complete/auto-complete-config.el
 
 (autoload 'ac-config-default "auto-complete/auto-complete-config" "\
@@ -460,7 +455,8 @@ See `auto-complete-mode' for more information on Auto-Complete mode.
 
 ;;;***
 
-;;;### (autoloads nil "avy/avy" "avy/avy.el" (0 0 0 0))
+;;;### (autoloads nil "avy/avy" "avy/avy.el" (22376 36251 147027
+;;;;;;  74000))
 ;;; Generated autoloads from avy/avy.el
 
 (autoload 'avy-goto-char "avy/avy" "\
@@ -629,8 +625,25 @@ The window scope is determined by `avy-all-windows' (ARG negates it).
 
 ;;;***
 
+;;;### (autoloads nil "bats-mode/bats-mode" "bats-mode/bats-mode.el"
+;;;;;;  (22417 3144 441588 611000))
+;;; Generated autoloads from bats-mode/bats-mode.el
+
+(autoload 'bats-mode "bats-mode/bats-mode" "\
+Major mode for editing and running Bats tests.
+
+See URL `https://github.com/sstephenson/bats'.
+
+\\{bats-mode-map}
+
+\(fn)" t nil)
+
+(add-to-list 'auto-mode-alist '("\\.bats\\'" . bats-mode))
+
+;;;***
+
 ;;;### (autoloads nil "buttercup/buttercup" "buttercup/buttercup.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3757 484086 949000))
 ;;; Generated autoloads from buttercup/buttercup.el
 
 (autoload 'buttercup-run-at-point "buttercup/buttercup" "\
@@ -653,24 +666,8 @@ current directory.
 
 ;;;***
 
-;;;### (autoloads nil "chumpy-windows/spaces" "chumpy-windows/spaces.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from chumpy-windows/spaces.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "chumpy-windows/spaces" '("sp-")))
-
-;;;***
-
-;;;### (autoloads nil "chumpy-windows/splitter" "chumpy-windows/splitter.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from chumpy-windows/splitter.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "chumpy-windows/splitter" '("spl-")))
-
-;;;***
-
 ;;;### (autoloads nil "chumpy-windows/window-jump" "chumpy-windows/window-jump.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 2406 955851 116000))
 ;;; Generated autoloads from chumpy-windows/window-jump.el
 
 (autoload 'window-jump-left "chumpy-windows/window-jump" "\
@@ -693,12 +690,10 @@ Move to the window above the current window.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "chumpy-windows/window-jump" '("wj-" "window-jump" "-wj-inf")))
-
 ;;;***
 
 ;;;### (autoloads nil "commenter/commenter" "commenter/commenter.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 22138 612137 875000))
 ;;; Generated autoloads from commenter/commenter.el
 
 (autoload 'commenter-setup "commenter/commenter" "\
@@ -706,12 +701,10 @@ Add advises to ‘comment-normalize-vars’.
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "commenter/commenter" '("commenter-")))
-
 ;;;***
 
 ;;;### (autoloads nil "company-c-headers/company-c-headers" "company-c-headers/company-c-headers.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 64024 707744 701000))
 ;;; Generated autoloads from company-c-headers/company-c-headers.el
 
 (autoload 'company-c-headers "company-c-headers/company-c-headers" "\
@@ -722,7 +715,7 @@ Company backend for C/C++ header files.
 ;;;***
 
 ;;;### (autoloads nil "company-flx/company-flx" "company-flx/company-flx.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3299 883495 623000))
 ;;; Generated autoloads from company-flx/company-flx.el
 
 (defvar company-flx-mode nil "\
@@ -743,7 +736,7 @@ company-flx minor mode
 ;;;***
 
 ;;;### (autoloads nil "company-irony/company-irony" "company-irony/company-irony.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3299 323535 3000))
 ;;; Generated autoloads from company-irony/company-irony.el
 
 (autoload 'company-irony "company-irony/company-irony" "\
@@ -765,7 +758,7 @@ include these commands by default.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company" "company-mode/company.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22422 60144 81287 532000))
 ;;; Generated autoloads from company-mode/company.el
 
 (autoload 'company-mode "company-mode/company" "\
@@ -836,7 +829,7 @@ inserted.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-abbrev" "company-mode/company-abbrev.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-abbrev.el
 
 (autoload 'company-abbrev "company-mode/company-abbrev" "\
@@ -847,7 +840,7 @@ inserted.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-bbdb" "company-mode/company-bbdb.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-bbdb.el
 
 (autoload 'company-bbdb "company-mode/company-bbdb" "\
@@ -858,7 +851,7 @@ inserted.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-css" "company-mode/company-css.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-css.el
 
 (autoload 'company-css "company-mode/company-css" "\
@@ -869,7 +862,7 @@ inserted.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-dabbrev" "company-mode/company-dabbrev.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-dabbrev.el
 
 (autoload 'company-dabbrev "company-mode/company-dabbrev" "\
@@ -880,7 +873,7 @@ dabbrev-like `company-mode' completion backend.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-dabbrev-code" "company-mode/company-dabbrev-code.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22422 60144 81287 532000))
 ;;; Generated autoloads from company-mode/company-dabbrev-code.el
 
 (autoload 'company-dabbrev-code "company-mode/company-dabbrev-code" "\
@@ -893,7 +886,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-elisp" "company-mode/company-elisp.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-elisp.el
 
 (autoload 'company-elisp "company-mode/company-elisp" "\
@@ -904,7 +897,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-etags" "company-mode/company-etags.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-etags.el
 
 (autoload 'company-etags "company-mode/company-etags" "\
@@ -915,7 +908,7 @@ comments or strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-files" "company-mode/company-files.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22422 60144 81287 532000))
 ;;; Generated autoloads from company-mode/company-files.el
 
 (autoload 'company-files "company-mode/company-files" "\
@@ -928,7 +921,7 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-gtags" "company-mode/company-gtags.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-gtags.el
 
 (autoload 'company-gtags "company-mode/company-gtags" "\
@@ -939,7 +932,7 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-ispell" "company-mode/company-ispell.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-ispell.el
 
 (autoload 'company-ispell "company-mode/company-ispell" "\
@@ -950,7 +943,7 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-keywords" "company-mode/company-keywords.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-keywords.el
 
 (autoload 'company-keywords "company-mode/company-keywords" "\
@@ -961,7 +954,7 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-nxml" "company-mode/company-nxml.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-nxml.el
 
 (autoload 'company-nxml "company-mode/company-nxml" "\
@@ -972,7 +965,7 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-oddmuse" "company-mode/company-oddmuse.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-oddmuse.el
 
 (autoload 'company-oddmuse "company-mode/company-oddmuse" "\
@@ -983,7 +976,7 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-semantic" "company-mode/company-semantic.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-semantic.el
 
 (autoload 'company-semantic "company-mode/company-semantic" "\
@@ -994,7 +987,7 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-tempo" "company-mode/company-tempo.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-tempo.el
 
 (autoload 'company-tempo "company-mode/company-tempo" "\
@@ -1005,7 +998,7 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-xcode" "company-mode/company-xcode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-xcode.el
 
 (autoload 'company-xcode "company-mode/company-xcode" "\
@@ -1016,7 +1009,7 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-yasnippet" "company-mode/company-yasnippet.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63959 617909 412000))
 ;;; Generated autoloads from company-mode/company-yasnippet.el
 
 (autoload 'company-yasnippet "company-mode/company-yasnippet" "\
@@ -1047,7 +1040,7 @@ shadow backends that come after it.  Recommended usages:
 ;;;***
 
 ;;;### (autoloads nil "contrast-color/contrast-color" "contrast-color/contrast-color.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22406 62961 3932 912000))
 ;;; Generated autoloads from contrast-color/contrast-color.el
 
 (autoload 'contrast-color "contrast-color/contrast-color" "\
@@ -1057,11 +1050,15 @@ The algorithm is used CIEDE2000. See also ‘color-cie-de2000’ function.
 
 \(fn COLOR)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "contrast-color/contrast-color" '(#("contrast-color-" 0 15 (face font-lock-variable-name-face fontified nil)))))
+(autoload 'contrast-color-set "contrast-color/contrast-color" "\
+Set list of COLORS to ‘contrast-color-candidates’.
+
+\(fn COLORS)" nil nil)
 
 ;;;***
 
-;;;### (autoloads nil "direx/direx" "direx/direx.el" (0 0 0 0))
+;;;### (autoloads nil "direx/direx" "direx/direx.el" (22376 64179
+;;;;;;  456067 857000))
 ;;; Generated autoloads from direx/direx.el
 
 (autoload 'direx:jump-to-directory "direx/direx" "\
@@ -1077,7 +1074,7 @@ The algorithm is used CIEDE2000. See also ‘color-cie-de2000’ function.
 ;;;***
 
 ;;;### (autoloads nil "direx/direx-project" "direx/direx-project.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 64179 456067 857000))
 ;;; Generated autoloads from direx/direx-project.el
 
 (autoload 'direx-project:jump-to-project-root "direx/direx-project" "\
@@ -1093,7 +1090,7 @@ The algorithm is used CIEDE2000. See also ‘color-cie-de2000’ function.
 ;;;***
 
 ;;;### (autoloads nil "dockerfile-mode/dockerfile-mode" "dockerfile-mode/dockerfile-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3299 295536 972000))
 ;;; Generated autoloads from dockerfile-mode/dockerfile-mode.el
 
 (autoload 'dockerfile-build-buffer "dockerfile-mode/dockerfile-mode" "\
@@ -1116,7 +1113,8 @@ A major mode to edit Dockerfiles.
 
 ;;;***
 
-;;;### (autoloads nil "el-get/el-get" "el-get/el-get.el" (0 0 0 0))
+;;;### (autoloads nil "el-get/el-get" "el-get/el-get.el" (22378 52597
+;;;;;;  244422 678000))
 ;;; Generated autoloads from el-get/el-get.el
 
 (autoload 'el-get-version "el-get/el-get" "\
@@ -1213,12 +1211,10 @@ already installed packages is considered.
 
 \(fn &optional SYNC &rest PACKAGES)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "el-get/el-get" '(#("el-get-" 0 7 (fontified nil face font-lock-function-name-face)))))
-
 ;;;***
 
 ;;;### (autoloads nil "el-get/el-get-bundle" "el-get/el-get-bundle.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22337 17619 415359 710000))
 ;;; Generated autoloads from el-get/el-get-bundle.el
 
 (autoload 'el-get-bundle-el-get "el-get/el-get-bundle" "\
@@ -1268,7 +1264,7 @@ required.
 ;;;***
 
 ;;;### (autoloads nil "el-get/el-get-check" "el-get/el-get-check.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22175 12872 742065 737000))
 ;;; Generated autoloads from el-get/el-get-check.el
 
 (autoload 'el-get-check-recipe "el-get/el-get-check" "\
@@ -1287,7 +1283,7 @@ object or a file path.
 ;;;***
 
 ;;;### (autoloads nil "el-get/el-get-list-packages" "el-get/el-get-list-packages.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22337 17619 415359 710000))
 ;;; Generated autoloads from el-get/el-get-list-packages.el
 
 (autoload 'el-get-list-packages "el-get/el-get-list-packages" "\
@@ -1298,7 +1294,7 @@ Display a list of packages.
 ;;;***
 
 ;;;### (autoloads nil "evil-numbers/evil-numbers" "evil-numbers/evil-numbers.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (21688 19147 280763 27000))
 ;;; Generated autoloads from evil-numbers/evil-numbers.el
 
 (autoload 'evil-numbers/inc-at-pt "evil-numbers/evil-numbers" "\
@@ -1322,7 +1318,8 @@ This function uses `evil-numbers/inc-at-pt'
 
 ;;;***
 
-;;;### (autoloads nil "fcitx/fcitx" "fcitx/fcitx.el" (0 0 0 0))
+;;;### (autoloads nil "fcitx/fcitx" "fcitx/fcitx.el" (22378 3811
+;;;;;;  908936 353000))
 ;;; Generated autoloads from fcitx/fcitx.el
 
 (autoload 'fcitx-prefix-keys-add "fcitx/fcitx" "\
@@ -1422,7 +1419,7 @@ Aggressive setup for `fcitx'.
 ;;;***
 
 ;;;### (autoloads nil "flycheck-irony/flycheck-irony" "flycheck-irony/flycheck-irony.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22372 51388 778550 839000))
 ;;; Generated autoloads from flycheck-irony/flycheck-irony.el
 
 (autoload 'flycheck-irony-setup "flycheck-irony/flycheck-irony" "\
@@ -1435,7 +1432,7 @@ Add `irony' to `flycheck-checkers'.
 ;;;***
 
 ;;;### (autoloads nil "flycheck-package/flycheck-package" "flycheck-package/flycheck-package.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 33916 684158 369000))
 ;;; Generated autoloads from flycheck-package/flycheck-package.el
 
 (autoload 'flycheck-package-setup "flycheck-package/flycheck-package" "\
@@ -1444,12 +1441,10 @@ Add `flycheck-emacs-lisp-package' to `flycheck-checkers'.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck-package/flycheck-package" '("flycheck-package--")))
-
 ;;;***
 
 ;;;### (autoloads nil "flycheck-tip/eclim-tip" "flycheck-tip/eclim-tip.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 40776 476739 24000))
 ;;; Generated autoloads from flycheck-tip/eclim-tip.el
 
 (autoload 'eclim-tip-cycle "flycheck-tip/eclim-tip" "\
@@ -1465,7 +1460,7 @@ Add `flycheck-emacs-lisp-package' to `flycheck-checkers'.
 ;;;***
 
 ;;;### (autoloads nil "flycheck-tip/error-tip" "flycheck-tip/error-tip.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22414 58305 315825 527000))
 ;;; Generated autoloads from flycheck-tip/error-tip.el
 
 (autoload 'error-tip-error-p "flycheck-tip/error-tip" "\
@@ -1487,12 +1482,10 @@ Same as ‘error-tip-cycle-dwim’, but it jumps to inverse direction.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck-tip/error-tip" '(#("error-tip-" 0 10 (fontified nil face font-lock-function-name-face)))))
-
 ;;;***
 
 ;;;### (autoloads nil "flycheck-tip/flycheck-tip" "flycheck-tip/flycheck-tip.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 40776 476739 24000))
 ;;; Generated autoloads from flycheck-tip/flycheck-tip.el
 
 (autoload 'flycheck-tip-cycle "flycheck-tip/flycheck-tip" "\
@@ -1507,12 +1500,10 @@ Do `flycheck-tip-cycle by reverse order.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck-tip/flycheck-tip" '("flycheck-tip-")))
-
 ;;;***
 
 ;;;### (autoloads nil "flycheck-tip/flymake-tip" "flycheck-tip/flymake-tip.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 40776 476739 24000))
 ;;; Generated autoloads from flycheck-tip/flymake-tip.el
 
 (autoload 'flymake-tip-cycle "flycheck-tip/flymake-tip" "\
@@ -1525,12 +1516,10 @@ Do `flycheck-tip-cycle by reverse order.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck-tip/flymake-tip" '("flymake-tip-collect-current-line-errors")))
-
 ;;;***
 
 ;;;### (autoloads nil "flycheck/flycheck" "flycheck/flycheck.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22422 60162 354090 739000))
 ;;; Generated autoloads from flycheck/flycheck.el
 
 (autoload 'flycheck-manual "flycheck/flycheck" "\
@@ -1751,27 +1740,10 @@ Use this together with the `option', `option-list' and
 
 (function-put 'flycheck-def-option-var 'doc-string-elt '4)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck/flycheck" '("flycheck-" "list-flycheck-errors" "help-flycheck-checker-d" "read-flycheck-")))
-
 ;;;***
 
-;;;### (autoloads nil "flycheck/flycheck-buttercup" "flycheck/flycheck-buttercup.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from flycheck/flycheck-buttercup.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck/flycheck-buttercup" '("flycheck-buttercup-format-error-list")))
-
-;;;***
-
-;;;### (autoloads nil "flycheck/flycheck-ert" "flycheck/flycheck-ert.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from flycheck/flycheck-ert.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck/flycheck-ert" '("flycheck-ert-")))
-
-;;;***
-
-;;;### (autoloads nil "ggtags/ggtags" "ggtags/ggtags.el" (0 0 0 0))
+;;;### (autoloads nil "ggtags/ggtags" "ggtags/ggtags.el" (22376 61916
+;;;;;;  851022 316000))
 ;;; Generated autoloads from ggtags/ggtags.el
 
 (autoload 'ggtags-find-project "ggtags/ggtags" "\
@@ -1812,7 +1784,7 @@ A function suitable for `hippie-expand-try-functions-list'.
 ;;;***
 
 ;;;### (autoloads nil "ginger-api/ginger-api" "ginger-api/ginger-api.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22386 297 10472 890000))
 ;;; Generated autoloads from ginger-api/ginger-api.el
 
 (autoload 'ginger-region "ginger-api/ginger-api" "\
@@ -1820,12 +1792,10 @@ A function suitable for `hippie-expand-try-functions-list'.
 
 \(fn BEG END)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ginger-api/ginger-api" '(#("ginger-end-point" 0 16 (face font-lock-variable-name-face fontified nil)))))
-
 ;;;***
 
 ;;;### (autoloads nil "git-gutter/git-gutter" "git-gutter/git-gutter.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22377 26533 565077 860000))
 ;;; Generated autoloads from git-gutter/git-gutter.el
 
 (autoload 'git-gutter:linum-setup "git-gutter/git-gutter" "\
@@ -1873,7 +1843,7 @@ Toggle to show diff information.
 ;;;***
 
 ;;;### (autoloads nil "git-messenger/git-messenger" "git-messenger/git-messenger.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 61126 731624 466000))
 ;;; Generated autoloads from git-messenger/git-messenger.el
 
 (autoload 'git-messenger:popup-message "git-messenger/git-messenger" "\
@@ -1884,7 +1854,7 @@ Toggle to show diff information.
 ;;;***
 
 ;;;### (autoloads nil "go-eldoc/go-eldoc" "go-eldoc/go-eldoc.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63592 439277 811000))
 ;;; Generated autoloads from go-eldoc/go-eldoc.el
 
 (autoload 'go-eldoc-setup "go-eldoc/go-eldoc" "\
@@ -1894,8 +1864,8 @@ Set up eldoc function and enable eldoc-mode.
 
 ;;;***
 
-;;;### (autoloads nil "go-mode/go-mode" "go-mode/go-mode.el" (0 0
-;;;;;;  0 0))
+;;;### (autoloads nil "go-mode/go-mode" "go-mode/go-mode.el" (22378
+;;;;;;  3300 443456 413000))
 ;;; Generated autoloads from go-mode/go-mode.el
 
 (autoload 'go-mode "go-mode/go-mode" "\
@@ -1988,7 +1958,7 @@ Tries to look for a URL at point.
 ;;;***
 
 ;;;### (autoloads nil "grep-a-lot/grep-a-lot" "grep-a-lot/grep-a-lot.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3303 339255 476000))
 ;;; Generated autoloads from grep-a-lot/grep-a-lot.el
 
 (autoload 'grep-a-lot-advise "grep-a-lot/grep-a-lot" "\
@@ -2006,7 +1976,7 @@ grep search results buffers.
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/ghc-core" "haskell-mode/ghc-core.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 688516 326000))
 ;;; Generated autoloads from haskell-mode/ghc-core.el
 
 (let ((loads (get 'ghc-core 'custom-loads))) (if (member '"haskell-mode/ghc-core" loads) nil (put 'ghc-core 'custom-loads (cons '"haskell-mode/ghc-core" loads))))
@@ -2025,12 +1995,10 @@ Major mode for GHC Core files.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/ghc-core" '("ghc-core-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/ghci-script-mode" "haskell-mode/ghci-script-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 688516 326000))
 ;;; Generated autoloads from haskell-mode/ghci-script-mode.el
 
 (autoload 'ghci-script-mode "haskell-mode/ghci-script-mode" "\
@@ -2040,12 +2008,10 @@ Major mode for working with .ghci files.
 
 (add-to-list 'auto-mode-alist '("\\.ghci\\'" . ghci-script-mode))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/ghci-script-mode" '("ghci-script-mode-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell" "haskell-mode/haskell.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 696516 595000))
 ;;; Generated autoloads from haskell-mode/haskell.el
 
 (autoload 'interactive-haskell-mode "haskell-mode/haskell" "\
@@ -2156,12 +2122,10 @@ Dump minimal imports.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell" '("haskell-" "xref-prompt-for-identifier" "interactive-haskell-mode-map")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-align-imports" "haskell-mode/haskell-align-imports.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 688516 326000))
 ;;; Generated autoloads from haskell-mode/haskell-align-imports.el
 
 (autoload 'haskell-align-imports "haskell-mode/haskell-align-imports" "\
@@ -2169,12 +2133,10 @@ Align all the imports in the buffer.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-align-imports" '("haskell-align-imports-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-c2hs" "haskell-mode/haskell-c2hs.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 688516 326000))
 ;;; Generated autoloads from haskell-mode/haskell-c2hs.el
 
 (add-to-list 'auto-mode-alist '("\\.chs\\'" . haskell-c2hs-mode))
@@ -2184,12 +2146,10 @@ Mode for editing *.chs files of the c2hs haskell tool.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-c2hs" '("haskell-c2hs-font-lock-keywords")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-cabal" "haskell-mode/haskell-cabal.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-cabal.el
 
 (add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
@@ -2226,30 +2186,18 @@ OTHER-WINDOW use `find-file-other-window'.
 
 (let ((loads (get 'haskell-cabal 'custom-loads))) (if (member '"haskell-mode/haskell-cabal" loads) nil (put 'haskell-cabal 'custom-loads (cons '"haskell-mode/haskell-cabal" loads))))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-cabal" '("haskell-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-checkers" "haskell-mode/haskell-checkers.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-checkers.el
 
 (let ((loads (get 'haskell-checkers 'custom-loads))) (if (member '"haskell-mode/haskell-checkers" loads) nil (put 'haskell-checkers 'custom-loads (cons '"haskell-mode/haskell-checkers" loads))))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-checkers" '("haskell-")))
-
-;;;***
-
-;;;### (autoloads nil "haskell-mode/haskell-collapse" "haskell-mode/haskell-collapse.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-collapse.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-collapse" '("haskell-collapse")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-commands" "haskell-mode/haskell-commands.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-commands.el
 
 (autoload 'haskell-process-restart "haskell-mode/haskell-commands" "\
@@ -2366,12 +2314,10 @@ Find use cases of the identifier at point and highlight them all.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-commands" '("haskell-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-compile" "haskell-mode/haskell-compile.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-compile.el
 
 (let ((loads (get 'haskell-compile 'custom-loads))) (if (member '"haskell-mode/haskell-compile" loads) nil (put 'haskell-compile 'custom-loads (cons '"haskell-mode/haskell-compile" loads))))
@@ -2399,20 +2345,10 @@ node `(haskell-mode)compilation' for more details.
 
 \(fn &optional EDIT-COMMAND)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-compile" '("haskell-compil")))
-
-;;;***
-
-;;;### (autoloads nil "haskell-mode/haskell-complete-module" "haskell-mode/haskell-complete-module.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-complete-module.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-complete-module" '("haskell-complete-module")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-completions" "haskell-mode/haskell-completions.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-completions.el
 
 (let ((loads (get 'haskell-completions 'custom-loads))) (if (member '"haskell-mode/haskell-completions" loads) nil (put 'haskell-completions 'custom-loads (cons '"haskell-mode/haskell-completions" loads))))
@@ -2425,24 +2361,20 @@ GHC's options, and language extensions, but not identifiers.
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-completions" '("haskell-completions-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-customize" "haskell-mode/haskell-customize.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-customize.el
 
 (let ((loads (get 'haskell 'custom-loads))) (if (member '"haskell-mode/haskell-customize" loads) nil (put 'haskell 'custom-loads (cons '"haskell-mode/haskell-customize" loads))))
 
 (let ((loads (get 'haskell-interactive 'custom-loads))) (if (member '"haskell-mode/haskell-customize" loads) nil (put 'haskell-interactive 'custom-loads (cons '"haskell-mode/haskell-customize" loads))))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-customize" '("haskell-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-debug" "haskell-mode/haskell-debug.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-debug.el
 
 (let ((loads (get 'haskell-debug 'custom-loads))) (if (member '"haskell-mode/haskell-debug" loads) nil (put 'haskell-debug 'custom-loads (cons '"haskell-mode/haskell-debug" loads))))
@@ -2465,12 +2397,10 @@ Face for headings." :group (quote haskell-debug))
 (defface haskell-debug-muted-face '((t :foreground "#999")) "\
 Face for muteds." :group (quote haskell-debug))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-debug" '("haskell-debug")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-decl-scan" "haskell-mode/haskell-decl-scan.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-decl-scan.el
 
 (let ((loads (get 'haskell-decl-scan 'custom-loads))) (if (member '"haskell-mode/haskell-decl-scan" loads) nil (put 'haskell-decl-scan 'custom-loads (cons '"haskell-mode/haskell-decl-scan" loads))))
@@ -2525,12 +2455,10 @@ Invokes `haskell-decl-scan-mode-hook' on activation.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-decl-scan" '("haskell-d" "literate-haskell-ds-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-doc" "haskell-mode/haskell-doc.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-doc.el
 
 (let ((loads (get 'haskell-doc 'custom-loads))) (if (member '"haskell-mode/haskell-doc" loads) nil (put 'haskell-doc 'custom-loads (cons '"haskell-mode/haskell-doc" loads))))
@@ -2560,12 +2488,10 @@ current buffer.
 
 \(fn &optional SYM)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-doc" '("haskell-" "turn-off-haskell-doc")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-font-lock" "haskell-mode/haskell-font-lock.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-font-lock.el
 
 (let ((loads (get 'haskell-appearance 'custom-loads))) (if (member '"haskell-mode/haskell-font-lock" loads) nil (put 'haskell-appearance 'custom-loads (cons '"haskell-mode/haskell-font-lock" loads))))
@@ -2592,20 +2518,10 @@ Face used to highlight LiquidHaskell annotations ({-@ ... @-})." :group (quote h
 Face with which to fontify literate comments.
 Inherit from `default' to avoid fontification of them." :group (quote haskell-appearance))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-font-lock" '("haskell-")))
-
-;;;***
-
-;;;### (autoloads nil "haskell-mode/haskell-ghc-support" "haskell-mode/haskell-ghc-support.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-ghc-support.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-ghc-support" '("haskell-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-hoogle" "haskell-mode/haskell-hoogle.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-hoogle.el
 
 (autoload 'haskell-hoogle "haskell-mode/haskell-hoogle" "\
@@ -2632,12 +2548,10 @@ Do a Hayoo search for QUERY.
 
 (defalias 'hayoo 'haskell-hayoo)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-hoogle" '("haskell-h")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-indent" "haskell-mode/haskell-indent.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-indent.el
 
 (let ((loads (get 'haskell-indent 'custom-loads))) (if (member '"haskell-mode/haskell-indent" loads) nil (put 'haskell-indent 'custom-loads (cons '"haskell-mode/haskell-indent" loads))))
@@ -2676,12 +2590,10 @@ Invokes `haskell-indent-hook' if not nil.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-indent" '("turn-off-haskell-indent" "haskell-indent-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-indentation" "haskell-mode/haskell-indentation.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-indentation.el
 
 (let ((loads (get 'haskell-indentation 'custom-loads))) (if (member '"haskell-mode/haskell-indentation" loads) nil (put 'haskell-indentation 'custom-loads (cons '"haskell-mode/haskell-indentation" loads))))
@@ -2698,12 +2610,10 @@ Turn on the haskell-indentation minor mode.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-indentation" '("haskell-indentation-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-interactive-mode" "haskell-mode/haskell-interactive-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-interactive-mode.el
 
 (defface haskell-interactive-face-prompt '((t :inherit font-lock-function-name-face)) "\
@@ -2742,20 +2652,10 @@ function `haskell-presentation-present', depending on variable
 
 \(fn LINE)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-interactive-mode" '("haskell-")))
-
-;;;***
-
-;;;### (autoloads nil "haskell-mode/haskell-lexeme" "haskell-mode/haskell-lexeme.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-lexeme.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-lexeme" '("haskell-lexeme-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-load" "haskell-mode/haskell-load.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-load.el
 
 (defface haskell-error-face '((((supports :underline (:style wave))) :underline (:style wave :color "#dc322f")) (t :inherit error)) "\
@@ -2778,12 +2678,10 @@ running context across :load/:reloads in GHCi.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-load" '("haskell-" "last-overlay-in-if" "first-overlay-in-if" "overlay-start" "with-overlay-properties")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-menu" "haskell-mode/haskell-menu.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 692516 460000))
 ;;; Generated autoloads from haskell-mode/haskell-menu.el
 
 (autoload 'haskell-menu "haskell-mode/haskell-menu" "\
@@ -2791,12 +2689,10 @@ Launch the Haskell sessions menu.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-menu" '("haskell-menu-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-mode" "haskell-mode/haskell-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 696516 595000))
 ;;; Generated autoloads from haskell-mode/haskell-mode.el
 
 (autoload 'haskell-version "haskell-mode/haskell-mode" "\
@@ -2910,12 +2806,10 @@ generated.
 
 \(fn &optional AND-THEN-FIND-THIS-TAG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-mode" '("haskell-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-modules" "haskell-mode/haskell-modules.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 696516 595000))
 ;;; Generated autoloads from haskell-mode/haskell-modules.el
 
 (autoload 'haskell-session-installed-modules "haskell-mode/haskell-modules" "\
@@ -2935,12 +2829,10 @@ If DONTCREATE is non-nil don't create a new session.
 
 \(fn SESSION &optional DONTCREATE)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-modules" '("haskell-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-move-nested" "haskell-mode/haskell-move-nested.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 696516 595000))
 ;;; Generated autoloads from haskell-mode/haskell-move-nested.el
 
 (autoload 'haskell-move-nested "haskell-mode/haskell-move-nested" "\
@@ -2971,12 +2863,10 @@ of the region instead.
 
 \(fn COLS)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-move-nested" '("haskell-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-navigate-imports" "haskell-mode/haskell-navigate-imports.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 696516 595000))
 ;;; Generated autoloads from haskell-mode/haskell-navigate-imports.el
 
 (autoload 'haskell-navigate-imports "haskell-mode/haskell-navigate-imports" "\
@@ -2995,44 +2885,10 @@ Return to the non-import point we were at before going to the module list.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-navigate-imports" '("haskell-navigate-imports-")))
-
-;;;***
-
-;;;### (autoloads nil "haskell-mode/haskell-presentation-mode" "haskell-mode/haskell-presentation-mode.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-presentation-mode.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-presentation-mode" '("haskell-presentation-")))
-
-;;;***
-
-;;;### (autoloads nil "haskell-mode/haskell-process" "haskell-mode/haskell-process.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-process.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-process" '("haskell-")))
-
-;;;***
-
-;;;### (autoloads nil "haskell-mode/haskell-repl" "haskell-mode/haskell-repl.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-repl.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-repl" '("haskell-interactive-")))
-
-;;;***
-
-;;;### (autoloads nil "haskell-mode/haskell-sandbox" "haskell-mode/haskell-sandbox.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-sandbox.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-sandbox" '("haskell-sandbox-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-session" "haskell-mode/haskell-session.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 696516 595000))
 ;;; Generated autoloads from haskell-mode/haskell-session.el
 
 (autoload 'haskell-session-maybe "haskell-mode/haskell-session" "\
@@ -3045,12 +2901,10 @@ Get the session process.
 
 \(fn S)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-session" '("haskell-session")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-sort-imports" "haskell-mode/haskell-sort-imports.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 696516 595000))
 ;;; Generated autoloads from haskell-mode/haskell-sort-imports.el
 
 (autoload 'haskell-sort-imports "haskell-mode/haskell-sort-imports" "\
@@ -3062,20 +2916,11 @@ within that region.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-sort-imports" '("haskell-sort-imports-")))
-
-;;;***
-
-;;;### (autoloads nil "haskell-mode/haskell-string" "haskell-mode/haskell-string.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-string.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-string" '("haskell-string-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/haskell-unicode-input-method"
-;;;;;;  "haskell-mode/haskell-unicode-input-method.el" (0 0 0 0))
+;;;;;;  "haskell-mode/haskell-unicode-input-method.el" (22378 11977
+;;;;;;  696516 595000))
 ;;; Generated autoloads from haskell-mode/haskell-unicode-input-method.el
 
 (autoload 'turn-on-haskell-unicode-input-method "haskell-mode/haskell-unicode-input-method" "\
@@ -3086,16 +2931,8 @@ See Info node `Unicode(haskell-mode)' for more details.
 
 ;;;***
 
-;;;### (autoloads nil "haskell-mode/haskell-utils" "haskell-mode/haskell-utils.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from haskell-mode/haskell-utils.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/haskell-utils" '("haskell-")))
-
-;;;***
-
 ;;;### (autoloads nil "haskell-mode/highlight-uses-mode" "haskell-mode/highlight-uses-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 696516 595000))
 ;;; Generated autoloads from haskell-mode/highlight-uses-mode.el
 
 (autoload 'highlight-uses-mode "haskell-mode/highlight-uses-mode" "\
@@ -3103,12 +2940,10 @@ Minor mode for highlighting and jumping between uses.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/highlight-uses-mode" '("highlight-uses-mode-")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/inf-haskell" "haskell-mode/inf-haskell.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 696516 595000))
 ;;; Generated autoloads from haskell-mode/inf-haskell.el
 
 (let ((loads (get 'inferior-haskell 'custom-loads))) (if (member '"haskell-mode/inf-haskell" loads) nil (put 'inferior-haskell 'custom-loads (cons '"haskell-mode/inf-haskell" loads))))
@@ -3181,23 +3016,19 @@ Minor mode for enabling inf-haskell process interaction.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/inf-haskell" '("inf" "haskell-p")))
-
 ;;;***
 
 ;;;### (autoloads nil "haskell-mode/w3m-haddock" "haskell-mode/w3m-haddock.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 11977 700516 729000))
 ;;; Generated autoloads from haskell-mode/w3m-haddock.el
 
 (defface w3m-haddock-heading-face '((((class color)) :inherit highlight)) "\
 Face for quarantines." :group (quote haskell))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "haskell-mode/w3m-haddock" '("w3m-haddock-" "haskell-w3m-")))
-
 ;;;***
 
 ;;;### (autoloads nil "helm-ag-r/helm-ag-r" "helm-ag-r/helm-ag-r.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (21688 19147 656763 21000))
 ;;; Generated autoloads from helm-ag-r/helm-ag-r.el
 
 (autoload 'helm-ag-r-shell-history "helm-ag-r/helm-ag-r" "\
@@ -3233,7 +3064,7 @@ Search from git repository.
 ;;;***
 
 ;;;### (autoloads nil "helm-c-yasnippet/helm-c-yasnippet" "helm-c-yasnippet/helm-c-yasnippet.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 36395 18864 589000))
 ;;; Generated autoloads from helm-c-yasnippet/helm-c-yasnippet.el
 
 (autoload 'helm-yas-complete "helm-c-yasnippet/helm-c-yasnippet" "\
@@ -3254,7 +3085,7 @@ Create a snippet from region.
 ;;;***
 
 ;;;### (autoloads nil "helm-descbinds/helm-descbinds" "helm-descbinds/helm-descbinds.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63290 89939 779000))
 ;;; Generated autoloads from helm-descbinds/helm-descbinds.el
 
 (defvar helm-descbinds-mode nil "\
@@ -3308,7 +3139,7 @@ useful, yet they are listed for completeness.
 ;;;***
 
 ;;;### (autoloads nil "helm-ghq/helm-ghq" "helm-ghq/helm-ghq.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63431 142386 155000))
 ;;; Generated autoloads from helm-ghq/helm-ghq.el
 
 (autoload 'helm-ghq "helm-ghq/helm-ghq" "\
@@ -3319,7 +3150,7 @@ useful, yet they are listed for completeness.
 ;;;***
 
 ;;;### (autoloads nil "helm-gtags/helm-gtags" "helm-gtags/helm-gtags.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63236 200188 827000))
 ;;; Generated autoloads from helm-gtags/helm-gtags.el
 
 (autoload 'helm-gtags-clear-all-cache "helm-gtags/helm-gtags" "\
@@ -3456,7 +3287,7 @@ the mode if ARG is omitted or nil, and toggle it if ARG is `toggle'.
 ;;;***
 
 ;;;### (autoloads nil "helm-swoop/helm-swoop" "helm-swoop/helm-swoop.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63401 669471 731000))
 ;;; Generated autoloads from helm-swoop/helm-swoop.el
 
 (autoload 'helm-swoop-back-to-last-point "helm-swoop/helm-swoop" "\
@@ -3525,7 +3356,8 @@ Start helm-swoop without pre input query.
 
 ;;;***
 
-;;;### (autoloads nil "hi2/hi2" "hi2/hi2.el" (0 0 0 0))
+;;;### (autoloads nil "hi2/hi2" "hi2/hi2.el" (21756 59396 733722
+;;;;;;  249000))
 ;;; Generated autoloads from hi2/hi2.el
 
 (autoload 'hi2-mode "hi2/hi2" "\
@@ -3544,7 +3376,7 @@ Turn on the hi2 minor mode.
 ;;;***
 
 ;;;### (autoloads nil "hl-line+/hl-line+" "hl-line+/hl-line+.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3305 631098 772000))
 ;;; Generated autoloads from hl-line+/hl-line+.el
 
 (defface hl-line '((t (:background "SlateGray3"))) "\
@@ -3600,8 +3432,8 @@ With a prefix argument, highlight for that many seconds.
 
 ;;;***
 
-;;;### (autoloads nil "htmlize/htmlize" "htmlize/htmlize.el" (0 0
-;;;;;;  0 0))
+;;;### (autoloads nil "htmlize/htmlize" "htmlize/htmlize.el" (22378
+;;;;;;  3301 959350 779000))
 ;;; Generated autoloads from htmlize/htmlize.el
 
 (autoload 'htmlize-buffer "htmlize/htmlize" "\
@@ -3667,7 +3499,7 @@ HTMLize dired-marked files.
 ;;;***
 
 ;;;### (autoloads nil "idle-require/idle-require" "idle-require/idle-require.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 20780 594593 963000))
 ;;; Generated autoloads from idle-require/idle-require.el
 
 (autoload 'idle-require "idle-require/idle-require" "\
@@ -3690,7 +3522,7 @@ Loading all autoload functions can easily triple Emacs' memory footprint.
 ;;;***
 
 ;;;### (autoloads nil "image-dired+/image-dired+" "image-dired+/image-dired+.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63665 217432 330000))
 ;;; Generated autoloads from image-dired+/image-dired+.el
 
 (autoload 'imagex-dired-show-image-thumbnails "image-dired+/image-dired+" "\
@@ -3739,7 +3571,7 @@ Extension for `image-dired' asynchrounous image thumbnail.
 ;;;***
 
 ;;;### (autoloads nil "indent-guide/indent-guide" "indent-guide/indent-guide.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22377 26365 271830 776000))
 ;;; Generated autoloads from indent-guide/indent-guide.el
 
 (autoload 'indent-guide-mode "indent-guide/indent-guide" "\
@@ -3772,7 +3604,7 @@ See `indent-guide-mode' for more information on Indent-Guide mode.
 ;;;***
 
 ;;;### (autoloads nil "inf-ruby/inf-ruby" "inf-ruby/inf-ruby.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3283 988096 509000))
 ;;; Generated autoloads from inf-ruby/inf-ruby.el
 
 (defvar ruby-source-modes '(ruby-mode enh-ruby-mode) "\
@@ -3864,7 +3696,7 @@ Run custom console.rb, Pry, or bundle console, in DIR.
 ;;;***
 
 ;;;### (autoloads nil "irony-eldoc/irony-eldoc" "irony-eldoc/irony-eldoc.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 63707 422669 293000))
 ;;; Generated autoloads from irony-eldoc/irony-eldoc.el
 
 (autoload 'irony-eldoc "irony-eldoc/irony-eldoc" "\
@@ -3892,8 +3724,8 @@ Notes:
 
 ;;;***
 
-;;;### (autoloads nil "irony-mode/irony" "irony-mode/irony.el" (0
-;;;;;;  0 0 0))
+;;;### (autoloads nil "irony-mode/irony" "irony-mode/irony.el" (22378
+;;;;;;  3285 268144 725000))
 ;;; Generated autoloads from irony-mode/irony.el
 
 (defvar irony-additional-clang-options nil "\
@@ -3933,7 +3765,7 @@ Get the type of symbol under cursor.
 ;;;***
 
 ;;;### (autoloads nil "irony-mode/irony-cdb" "irony-mode/irony-cdb.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22236 25551 312123 876000))
 ;;; Generated autoloads from irony-mode/irony-cdb.el
 
 (autoload 'irony-cdb-autosetup-compile-options "irony-mode/irony-cdb" "\
@@ -3949,7 +3781,7 @@ Get the type of symbol under cursor.
 ;;;***
 
 ;;;### (autoloads nil "irony-mode/irony-cdb-clang-complete" "irony-mode/irony-cdb-clang-complete.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (21876 56290 903744 69000))
 ;;; Generated autoloads from irony-mode/irony-cdb-clang-complete.el
 
 (autoload 'irony-cdb-clang-complete "irony-mode/irony-cdb-clang-complete" "\
@@ -3960,7 +3792,7 @@ Get the type of symbol under cursor.
 ;;;***
 
 ;;;### (autoloads nil "irony-mode/irony-cdb-json" "irony-mode/irony-cdb-json.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3285 264144 574000))
 ;;; Generated autoloads from irony-mode/irony-cdb-json.el
 
 (autoload 'irony-cdb-json "irony-mode/irony-cdb-json" "\
@@ -4001,7 +3833,7 @@ Select CDB that is most recently modified.
 ;;;***
 
 ;;;### (autoloads nil "irony-mode/irony-cdb-libclang" "irony-mode/irony-cdb-libclang.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22236 25551 312123 876000))
 ;;; Generated autoloads from irony-mode/irony-cdb-libclang.el
 
 (autoload 'irony-cdb-libclang "irony-mode/irony-cdb-libclang" "\
@@ -4012,7 +3844,7 @@ Select CDB that is most recently modified.
 ;;;***
 
 ;;;### (autoloads nil "irony-mode/irony-completion" "irony-mode/irony-completion.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22236 25551 312123 876000))
 ;;; Generated autoloads from irony-mode/irony-completion.el
 
 (autoload 'irony-completion-at-point "irony-mode/irony-completion" "\
@@ -4027,7 +3859,8 @@ Select CDB that is most recently modified.
 
 ;;;***
 
-;;;### (autoloads nil "jedi/jedi" "jedi/jedi.el" (0 0 0 0))
+;;;### (autoloads nil "jedi/jedi" "jedi/jedi.el" (22379 560 18093
+;;;;;;  799000))
 ;;; Generated autoloads from jedi/jedi.el
 
 (autoload 'jedi:ac-setup "jedi/jedi" "\
@@ -4056,12 +3889,10 @@ Complete code at point.
 
 (setq jedi:setup-function #'jedi:ac-setup jedi:mode-function #'jedi:auto-complete-mode)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jedi/jedi" '("jedi:")))
-
 ;;;***
 
-;;;### (autoloads nil "jedi/jedi-core" "jedi/jedi-core.el" (0 0 0
-;;;;;;  0))
+;;;### (autoloads nil "jedi/jedi-core" "jedi/jedi-core.el" (22374
+;;;;;;  52893 248939 507000))
 ;;; Generated autoloads from jedi/jedi-core.el
 
 (autoload 'jedi:start-dedicated-server "jedi/jedi-core" "\
@@ -4153,7 +3984,7 @@ Blocking version `jedi:install-server'.
 ;;;***
 
 ;;;### (autoloads nil "js2-mode/js2-imenu-extras" "js2-mode/js2-imenu-extras.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (21688 19147 744763 19000))
 ;;; Generated autoloads from js2-mode/js2-imenu-extras.el
 
 (autoload 'js2-imenu-extras-setup "js2-mode/js2-imenu-extras" "\
@@ -4169,7 +4000,7 @@ Toggle Imenu support for frameworks and structural patterns.
 ;;;***
 
 ;;;### (autoloads nil "js2-mode/js2-mode" "js2-mode/js2-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3290 716155 783000))
 ;;; Generated autoloads from js2-mode/js2-mode.el
 
 (autoload 'js2-highlight-unused-variables-mode "js2-mode/js2-mode" "\
@@ -4205,7 +4036,7 @@ variables (`sgml-basic-offset' et al) locally, like so:
 ;;;***
 
 ;;;### (autoloads nil "json-mode/json-mode" "json-mode/json-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22447 20739 655320 717000))
 ;;; Generated autoloads from json-mode/json-mode.el
 
 (autoload 'json-mode "json-mode/json-mode" "\
@@ -4214,6 +4045,8 @@ Major mode for editing JSON files
 \(fn)" t nil)
 
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
+
+(add-to-list 'auto-mode-alist '("\\.jsonld$" . json-mode))
 
 (autoload 'json-mode-show-path "json-mode/json-mode" "\
 
@@ -4228,7 +4061,7 @@ Beautify / pretty-print the active region (or the entire buffer if no active reg
 ;;;***
 
 ;;;### (autoloads nil "json-reformat/json-reformat" "json-reformat/json-reformat.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 61971 436066 698000))
 ;;; Generated autoloads from json-reformat/json-reformat.el
 
 (autoload 'json-reformat-region "json-reformat/json-reformat" "\
@@ -4243,7 +4076,7 @@ and `json-reformat:pretty-string?'.
 ;;;***
 
 ;;;### (autoloads nil "json-snatcher/json-snatcher" "json-snatcher/json-snatcher.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 64583 363170 373000))
 ;;; Generated autoloads from json-snatcher/json-snatcher.el
 
 (autoload 'jsons-print-path "json-snatcher/json-snatcher" "\
@@ -4254,7 +4087,7 @@ Print the path to the JSON value under point, and save it in the kill ring.
 ;;;***
 
 ;;;### (autoloads nil "key-chord/key-chord" "key-chord/key-chord.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3294 979844 512000))
 ;;; Generated autoloads from key-chord/key-chord.el
 
 (autoload 'key-chord-mode "key-chord/key-chord" "\
@@ -4310,7 +4143,7 @@ If COMMAND is nil, the key-chord is removed.
 ;;;***
 
 ;;;### (autoloads nil "less-css-mode/less-css-mode" "less-css-mode/less-css-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 6607 765945 525000))
 ;;; Generated autoloads from less-css-mode/less-css-mode.el
 
 (autoload 'less-css-compile "less-css-mode/less-css-mode" "\
@@ -4327,12 +4160,10 @@ Special commands:
 
 (add-to-list 'auto-mode-alist '("\\.less\\'" . less-css-mode))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "less-css-mode/less-css-mode" '("less-css-")))
-
 ;;;***
 
 ;;;### (autoloads nil "linum-relative/linum-relative" "linum-relative/linum-relative.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3287 972246 827000))
 ;;; Generated autoloads from linum-relative/linum-relative.el
 
 (autoload 'linum-relative-toggle "linum-relative/linum-relative" "\
@@ -4375,7 +4206,7 @@ Turn on `linum-relative-mode' in helm.
 ;;;***
 
 ;;;### (autoloads nil "logalimacs/logalimacs" "logalimacs/logalimacs.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (21688 19147 92763 30000))
 ;;; Generated autoloads from logalimacs/logalimacs.el
 
 (autoload 'loga-interactive-command "logalimacs/logalimacs" "\
@@ -4423,7 +4254,7 @@ Toggle loga-fly-mode-on and loga-fly-mode-off.
 ;;;***
 
 ;;;### (autoloads nil "lua-mode/lua-mode" "lua-mode/lua-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 62513 955900 751000))
 ;;; Generated autoloads from lua-mode/lua-mode.el
 
 (autoload 'lua-mode "lua-mode/lua-mode" "\
@@ -4447,7 +4278,7 @@ When called interactively, switch to the process buffer.
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/git-commit" "magit/lisp/git-commit.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/git-commit.el
 
 (defvar global-git-commit-mode t "\
@@ -4469,12 +4300,10 @@ provide such a commit message.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/git-commit" '("git-commit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/git-rebase" "magit/lisp/git-rebase.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/git-rebase.el
 
 (autoload 'git-rebase-mode "magit/lisp/git-rebase" "\
@@ -4491,12 +4320,10 @@ running 'man git-rebase' at the command line) for details.
 
 (add-to-list 'auto-mode-alist (cons git-rebase-filename-regexp 'git-rebase-mode))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/git-rebase" '("git-rebase-")))
-
 ;;;***
 
-;;;### (autoloads nil "magit/lisp/magit" "magit/lisp/magit.el" (0
-;;;;;;  0 0 0))
+;;;### (autoloads nil "magit/lisp/magit" "magit/lisp/magit.el" (22379
+;;;;;;  19970 246323 254000))
 ;;; Generated autoloads from magit/lisp/magit.el
 
 (autoload 'magit-status "magit/lisp/magit" "\
@@ -4961,12 +4788,10 @@ Git, and Emacs in the echo area.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit" '("magit-" "ido-enter-magit-status")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-apply" "magit/lisp/magit-apply.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/magit-apply.el
 
 (autoload 'magit-stage-file "magit/lisp/magit-apply" "\
@@ -5000,12 +4825,10 @@ Remove all changes from the staging area.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-apply" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-autorevert" "magit/lisp/magit-autorevert.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/magit-autorevert.el
 
 (defvar magit-revert-buffers t)
@@ -5032,12 +4855,10 @@ See `auto-revert-mode' for more information on Auto-Revert mode.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-autorevert" '("auto-revert-buffer" "magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-bisect" "magit/lisp/magit-bisect.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/magit-bisect.el
  (autoload 'magit-bisect-popup "magit-bisect" nil t)
 
@@ -5086,12 +4907,10 @@ bisect run'.
 
 \(fn CMDLINE &optional BAD GOOD)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-bisect" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-blame" "magit/lisp/magit-blame.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/magit-blame.el
  (autoload 'magit-blame-popup "magit-blame" nil t)
 
@@ -5113,12 +4932,10 @@ only arguments available from `magit-blame-popup' should be used.
 
 \(fn REVISION FILE &optional ARGS)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-blame" '("magit-blame-" "auto-revert-handler--unless-magit-blame-mode")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-commit" "magit/lisp/magit-commit.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/magit-commit.el
 
 (autoload 'magit-commit "magit/lisp/magit-commit" "\
@@ -5198,12 +5015,10 @@ Create a squash commit targeting COMMIT and instantly rebase.
 
 \(fn &optional COMMIT ARGS)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-commit" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-diff" "magit/lisp/magit-diff.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/magit-diff.el
 
 (autoload 'magit-diff-popup "magit/lisp/magit-diff" "\
@@ -5285,12 +5100,10 @@ for a revision.
 
 \(fn REV &optional ARGS FILES MODULE)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-diff" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-ediff" "magit/lisp/magit-ediff.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/magit-ediff.el
  (autoload 'magit-ediff-popup "magit-ediff" nil t)
 
@@ -5376,12 +5189,10 @@ stash that were staged.
 
 \(fn STASH)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-ediff" '("magit-ediff-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-extras" "magit/lisp/magit-extras.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 238323 67000))
 ;;; Generated autoloads from magit/lisp/magit-extras.el
 
 (autoload 'magit-run-git-gui "magit/lisp/magit-extras" "\
@@ -5449,20 +5260,10 @@ on a position in a file-visiting buffer.
 
 \(fn &optional WHOAMI FILE-NAME)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-extras" '("magit-git")))
-
-;;;***
-
-;;;### (autoloads nil "magit/lisp/magit-git" "magit/lisp/magit-git.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from magit/lisp/magit-git.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-git" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-log" "magit/lisp/magit-log.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 242323 160000))
 ;;; Generated autoloads from magit/lisp/magit-log.el
 
 (autoload 'magit-log-buffer-file-popup "magit/lisp/magit-log" "\
@@ -5537,36 +5338,10 @@ Show commits in a branch that are not merged in the upstream branch.
 
 \(fn HEAD UPSTREAM)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-log" '("magit-")))
-
-;;;***
-
-;;;### (autoloads nil "magit/lisp/magit-mode" "magit/lisp/magit-mode.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from magit/lisp/magit-mode.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-mode" '("magit-" "disable-magit-save-buffers" "inhibit-magit-refresh")))
-
-;;;***
-
-;;;### (autoloads nil "magit/lisp/magit-popup" "magit/lisp/magit-popup.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from magit/lisp/magit-popup.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-popup" '("magit-")))
-
-;;;***
-
-;;;### (autoloads nil "magit/lisp/magit-process" "magit/lisp/magit-process.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from magit/lisp/magit-process.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-process" '("magit-" "tramp-sh-handle-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-remote" "magit/lisp/magit-remote.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 242323 160000))
 ;;; Generated autoloads from magit/lisp/magit-remote.el
 
 (autoload 'magit-clone "magit/lisp/magit-remote" "\
@@ -5796,20 +5571,10 @@ is asked to pull.  START has to be reachable from that commit.
 
 \(fn URL START END)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-remote" '("magit-")))
-
-;;;***
-
-;;;### (autoloads nil "magit/lisp/magit-section" "magit/lisp/magit-section.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from magit/lisp/magit-section.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-section" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-sequence" "magit/lisp/magit-sequence.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 242323 160000))
 ;;; Generated autoloads from magit/lisp/magit-sequence.el
 
 (autoload 'magit-sequencer-continue "magit/lisp/magit-sequence" "\
@@ -5957,12 +5722,10 @@ Abort the current rebase operation, restoring the original branch.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-sequence" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-stash" "magit/lisp/magit-stash.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 242323 160000))
 ;;; Generated autoloads from magit/lisp/magit-stash.el
  (autoload 'magit-stash-popup "magit-stash" nil t)
 
@@ -6059,12 +5822,10 @@ Show all diffs of a stash in a buffer.
 
 \(fn STASH &optional ARGS FILES)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-stash" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-submodule" "magit/lisp/magit-submodule.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 242323 160000))
 ;;; Generated autoloads from magit/lisp/magit-submodule.el
  (autoload 'magit-submodule-popup "magit-submodule" nil t)
 
@@ -6142,12 +5903,10 @@ These sections can be expanded to show the respective commits.
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-submodule" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-subtree" "magit/lisp/magit-subtree.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 242323 160000))
 ;;; Generated autoloads from magit/lisp/magit-subtree.el
  (autoload 'magit-subtree-popup "magit-subtree" nil t)
 
@@ -6181,20 +5940,10 @@ Extract the history of the subtree PREFIX.
 
 \(fn PREFIX COMMIT ARGS)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-subtree" '("magit-")))
-
-;;;***
-
-;;;### (autoloads nil "magit/lisp/magit-utils" "magit/lisp/magit-utils.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from magit/lisp/magit-utils.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-utils" '("magit-")))
-
 ;;;***
 
 ;;;### (autoloads nil "magit/lisp/magit-wip" "magit/lisp/magit-wip.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22379 19970 242323 160000))
 ;;; Generated autoloads from magit/lisp/magit-wip.el
 
 (defvar magit-wip-after-save-mode nil "\
@@ -6260,12 +6009,10 @@ command which is about to be called are committed.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "magit/lisp/magit-wip" '("magit-wip-")))
-
 ;;;***
 
 ;;;### (autoloads nil "markdown-mode/markdown-mode" "markdown-mode/markdown-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 60814 534809 291000))
 ;;; Generated autoloads from markdown-mode/markdown-mode.el
 
 (autoload 'markdown-mode "markdown-mode/markdown-mode" "\
@@ -6273,11 +6020,9 @@ Major mode for editing Markdown files.
 
 \(fn)" t nil)
 
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode) t)
 
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode) t)
 
 (autoload 'gfm-mode "markdown-mode/markdown-mode" "\
 Major mode for editing GitHub Flavored Markdown files.
@@ -6286,7 +6031,7 @@ Major mode for editing GitHub Flavored Markdown files.
 
 ;;;***
 
-;;;### (autoloads nil "mew/mew" "mew/mew.el" (0 0 0 0))
+;;;### (autoloads nil "mew/mew" "mew/mew.el" (22379 7267 983478 612000))
 ;;; Generated autoloads from mew/mew.el
 
 (autoload 'mew "mew/mew" "\
@@ -6334,492 +6079,10 @@ CONTINUE, YANK-ACTION and SEND-ACTIONS are ignored.
 
 \(fn &optional TO SUBJECT OTHER-HEADERS CONTINUE SWITCH-FUNCTION YANK-ACTION SEND-ACTIONS &rest DUMMY)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew" '(#("mew-" 0 4 (fontified nil)))))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-addrbook" "mew/mew-addrbook.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from mew/mew-addrbook.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-addrbook" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-attach" "mew/mew-attach.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-attach.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-attach" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-auth" "mew/mew-auth.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-auth.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-auth" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-blvs" "mew/mew-blvs.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-blvs.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-blvs" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-bq" "mew/mew-bq.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-bq.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-bq" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-cache" "mew/mew-cache.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-cache.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-cache" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-complete" "mew/mew-complete.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from mew/mew-complete.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-complete" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-config" "mew/mew-config.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-config.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-config" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-const" "mew/mew-const.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-const.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-const" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-darwin" "mew/mew-darwin.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-darwin.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-darwin" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-decode" "mew/mew-decode.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-decode.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-decode" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-demo" "mew/mew-demo.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-demo.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-demo" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-draft" "mew/mew-draft.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-draft.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-draft" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-edit" "mew/mew-edit.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-edit.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-edit" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-encode" "mew/mew-encode.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-encode.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-encode" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-env" "mew/mew-env.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-env.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-env" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-exec" "mew/mew-exec.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-exec.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-exec" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-ext" "mew/mew-ext.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-ext.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-ext" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-fib" "mew/mew-fib.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-fib.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-fib" '("mew-fib-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-func" "mew/mew-func.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-func.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-func" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-gemacs" "mew/mew-gemacs.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-gemacs.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-gemacs" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-header" "mew/mew-header.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-header.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-header" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-highlight" "mew/mew-highlight.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from mew/mew-highlight.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-highlight" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-imap" "mew/mew-imap.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-imap.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-imap" '("mew-imap-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-imap2" "mew/mew-imap2.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-imap2.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-imap2" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-key" "mew/mew-key.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-key.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-key" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-lang-jp" "mew/mew-lang-jp.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from mew/mew-lang-jp.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-lang-jp" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-lang-kr" "mew/mew-lang-kr.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from mew/mew-lang-kr.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-lang-kr" '("mew-thread-indent-strings")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-lang-latin" "mew/mew-lang-latin.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from mew/mew-lang-latin.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-lang-latin" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-local" "mew/mew-local.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-local.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-local" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-mark" "mew/mew-mark.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-mark.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-mark" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-message" "mew/mew-message.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from mew/mew-message.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-message" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-mime" "mew/mew-mime.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-mime.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-mime" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-minibuf" "mew/mew-minibuf.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from mew/mew-minibuf.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-minibuf" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-mule" "mew/mew-mule.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-mule.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-mule" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-mule3" "mew/mew-mule3.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-mule3.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-mule3" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-net" "mew/mew-net.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-net.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-net" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-nntp" "mew/mew-nntp.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-nntp.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-nntp" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-nntp2" "mew/mew-nntp2.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-nntp2.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-nntp2" '("mew-nntp2-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-passwd" "mew/mew-passwd.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-passwd.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-passwd" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-pgp" "mew/mew-pgp.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-pgp.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-pgp" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-pick" "mew/mew-pick.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-pick.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-pick" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-pop" "mew/mew-pop.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-pop.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-pop" '("mew-pop-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-refile" "mew/mew-refile.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-refile.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-refile" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-scan" "mew/mew-scan.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-scan.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-scan" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-search" "mew/mew-search.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-search.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-search" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-smime" "mew/mew-smime.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-smime.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-smime" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-smtp" "mew/mew-smtp.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-smtp.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-smtp" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-sort" "mew/mew-sort.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-sort.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-sort" '("mew-s")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-ssh" "mew/mew-ssh.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-ssh.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-ssh" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-ssl" "mew/mew-ssl.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-ssl.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-ssl" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-summary" "mew/mew-summary.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from mew/mew-summary.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-summary" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-summary2" "mew/mew-summary2.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from mew/mew-summary2.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-summary2" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-summary3" "mew/mew-summary3.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from mew/mew-summary3.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-summary3" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-summary4" "mew/mew-summary4.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from mew/mew-summary4.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-summary4" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-syntax" "mew/mew-syntax.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-syntax.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-syntax" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-thread" "mew/mew-thread.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from mew/mew-thread.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-thread" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-unix" "mew/mew-unix.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-unix.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-unix" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-vars" "mew/mew-vars.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-vars.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-vars" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-vars2" "mew/mew-vars2.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-vars2.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-vars2" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-vars3" "mew/mew-vars3.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-vars3.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-vars3" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-varsx" "mew/mew-varsx.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-varsx.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-varsx" '("mew-defvar")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-virtual" "mew/mew-virtual.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from mew/mew-virtual.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-virtual" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/mew-win32" "mew/mew-win32.el" (0 0 0 0))
-;;; Generated autoloads from mew/mew-win32.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/mew-win32" '("mew-")))
-
-;;;***
-
-;;;### (autoloads nil "mew/temp" "mew/temp.el" (0 0 0 0))
-;;; Generated autoloads from mew/temp.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mew/temp" '("mew-compile")))
-
 ;;;***
 
 ;;;### (autoloads nil "minor-mode-hack/minor-mode-hack" "minor-mode-hack/minor-mode-hack.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3302 271329 188000))
 ;;; Generated autoloads from minor-mode-hack/minor-mode-hack.el
 
 (autoload 'raise-minor-mode-map-alist "minor-mode-hack/minor-mode-hack" "\
@@ -6840,7 +6103,7 @@ Show priority of `minor-mode-map-alist'.
 ;;;***
 
 ;;;### (autoloads nil "multiple-cursors/mc-edit-lines" "multiple-cursors/mc-edit-lines.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3289 388254 158000))
 ;;; Generated autoloads from multiple-cursors/mc-edit-lines.el
 
 (autoload 'mc/edit-lines "multiple-cursors/mc-edit-lines" "\
@@ -6870,8 +6133,8 @@ Add one cursor to the beginning of each line in the active region.
 ;;;***
 
 ;;;### (autoloads nil "multiple-cursors/mc-hide-unmatched-lines-mode"
-;;;;;;  "multiple-cursors/mc-hide-unmatched-lines-mode.el" (0 0 0
-;;;;;;  0))
+;;;;;;  "multiple-cursors/mc-hide-unmatched-lines-mode.el" (22378
+;;;;;;  3289 388254 158000))
 ;;; Generated autoloads from multiple-cursors/mc-hide-unmatched-lines-mode.el
 
 (autoload 'mc-hide-unmatched-lines-mode "multiple-cursors/mc-hide-unmatched-lines-mode" "\
@@ -6886,7 +6149,7 @@ mode. To leave this mode press <return> or \"C-g\"
 ;;;***
 
 ;;;### (autoloads nil "multiple-cursors/mc-mark-more" "multiple-cursors/mc-mark-more.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3289 388254 158000))
 ;;; Generated autoloads from multiple-cursors/mc-mark-more.el
 
 (autoload 'mc/mark-next-like-this "multiple-cursors/mc-mark-more" "\
@@ -7076,7 +6339,7 @@ Mark the tag we're in and its pair for renaming.
 ;;;***
 
 ;;;### (autoloads nil "multiple-cursors/mc-mark-pop" "multiple-cursors/mc-mark-pop.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (21688 19147 924763 16000))
 ;;; Generated autoloads from multiple-cursors/mc-mark-pop.el
 
 (autoload 'mc/mark-pop "multiple-cursors/mc-mark-pop" "\
@@ -7088,7 +6351,7 @@ to the popped mark.
 ;;;***
 
 ;;;### (autoloads nil "multiple-cursors/mc-separate-operations" "multiple-cursors/mc-separate-operations.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3289 388254 158000))
 ;;; Generated autoloads from multiple-cursors/mc-separate-operations.el
 
 (autoload 'mc/insert-numbers "multiple-cursors/mc-separate-operations" "\
@@ -7128,7 +6391,7 @@ Aligns all cursors with whitespace like `mc/vertical-align' does
 ;;;***
 
 ;;;### (autoloads nil "multiple-cursors/multiple-cursors-core" "multiple-cursors/multiple-cursors-core.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3289 388254 158000))
 ;;; Generated autoloads from multiple-cursors/multiple-cursors-core.el
 
 (autoload 'multiple-cursors-mode "multiple-cursors/multiple-cursors-core" "\
@@ -7139,7 +6402,8 @@ Mode while multiple cursors are active.
 ;;;***
 
 ;;;### (autoloads nil "multiple-cursors/rectangular-region-mode"
-;;;;;;  "multiple-cursors/rectangular-region-mode.el" (0 0 0 0))
+;;;;;;  "multiple-cursors/rectangular-region-mode.el" (22378 3289
+;;;;;;  392253 861000))
 ;;; Generated autoloads from multiple-cursors/rectangular-region-mode.el
 
 (autoload 'set-rectangular-region-anchor "multiple-cursors/rectangular-region-mode" "\
@@ -7158,7 +6422,7 @@ A mode for creating a rectangular region to edit
 ;;;***
 
 ;;;### (autoloads nil "nim-emacs-module/nim-emacs-module" "nim-emacs-module/nim-emacs-module.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22399 12521 345293 770000))
 ;;; Generated autoloads from nim-emacs-module/nim-emacs-module.el
 
 (autoload 'nim-emacs-module-insert-template "nim-emacs-module/nim-emacs-module" "\
@@ -7188,12 +6452,10 @@ Setup for nim-mode.
 
 (with-eval-after-load "nim-mode" (add-hook 'nim-mode-hook 'nim-emacs-module-setup-nim-mode))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-emacs-module/nim-emacs-module" '(#("nim-emacs-module-" 0 17 (fontified nil face font-lock-function-name-face)))))
-
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/company-nim" "nim-mode/company-nim.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22419 62492 311391 434000))
 ;;; Generated autoloads from nim-mode/company-nim.el
 
 (autoload 'company-nim "nim-mode/company-nim" "\
@@ -7206,20 +6468,25 @@ Setup for nim-mode.
 
 \(fn COMMAND &optional ARG &rest IGNORED)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/company-nim" '("company-nim" "nim-doc-buffer")))
-
 ;;;***
 
-;;;### (autoloads nil "nim-mode/flycheck-nim-async" "nim-mode/flycheck-nim-async.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from nim-mode/flycheck-nim-async.el
+;;;### (autoloads nil "nim-mode/flycheck-nimsuggest" "nim-mode/flycheck-nimsuggest.el"
+;;;;;;  (22420 8579 729766 487000))
+;;; Generated autoloads from nim-mode/flycheck-nimsuggest.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/flycheck-nim-async" '("flycheck-" "nimsuggest-check-output")))
+(autoload 'flycheck-nim-nimsuggest-start "nim-mode/flycheck-nimsuggest" "\
+Start nimsuggest’s ‘chk’ method syntax check with CHECKER.
+
+CALLBACK is the status callback passed by Flycheck.
+
+\(fn CHECKER CALLBACK)" nil nil)
+
+(eval-after-load "flycheck" '(progn (flycheck-define-generic-checker 'nim-nimsuggest "A syntax checker for Nim lang using nimsuggest.\n\nSee URL `'." :start 'flycheck-nim-nimsuggest-start :modes '(nim-mode nimscript-mode) :predicate (lambda nil (and (nim-suggest-available-p) nim-use-flycheck-nimsuggest))) (add-to-list 'flycheck-checkers 'nim-nimsuggest)))
 
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-compile" "nim-mode/nim-compile.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22420 232 828198 892000))
 ;;; Generated autoloads from nim-mode/nim-compile.el
 
 (autoload 'nim-compile "nim-mode/nim-compile" "\
@@ -7227,12 +6494,10 @@ Setup for nim-mode.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-compile" '("nim-")))
-
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-eldoc" "nim-mode/nim-eldoc.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22424 58035 837767 551000))
 ;;; Generated autoloads from nim-mode/nim-eldoc.el
 
 (autoload 'nim-eldoc-setup "nim-mode/nim-eldoc" "\
@@ -7240,30 +6505,12 @@ Setup eldoc configuration for nim-mode.
 
 \(fn)" nil nil)
 
-(add-hook 'nim-mode-hook 'nim-eldoc-setup)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-eldoc" '("nim-eldoc-")))
-
-;;;***
-
-;;;### (autoloads nil "nim-mode/nim-fill" "nim-mode/nim-fill.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from nim-mode/nim-fill.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-fill" '("nim-fill-")))
-
-;;;***
-
-;;;### (autoloads nil "nim-mode/nim-helper" "nim-mode/nim-helper.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from nim-mode/nim-helper.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-helper" '("nim-")))
+(add-hook 'nim-common-init-hook 'nim-eldoc-setup)
 
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-mode" "nim-mode/nim-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22420 116 452735 867000))
 ;;; Generated autoloads from nim-mode/nim-mode.el
 
 (autoload 'nim-mode "nim-mode/nim-mode" "\
@@ -7273,60 +6520,21 @@ A major mode for the Nim programming language.
 
 (add-to-list 'auto-mode-alist '("\\.nim\\'" . nim-mode))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-mode" '("nim-")))
-
-;;;***
-
-;;;### (autoloads nil "nim-mode/nim-smie" "nim-mode/nim-smie.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from nim-mode/nim-smie.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-smie" '("nim-")))
-
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-suggest" "nim-mode/nim-suggest.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22446 48911 180141 53000))
 ;;; Generated autoloads from nim-mode/nim-suggest.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-suggest" '("nim")))
+(autoload 'nim-suggest-available-p "nim-mode/nim-suggest" "\
+Return non-nil if nimsuggest is available in current buffer.
 
-;;;***
-
-;;;### (autoloads nil "nim-mode/nim-syntax" "nim-mode/nim-syntax.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from nim-mode/nim-syntax.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-syntax" '("nim")))
-
-;;;***
-
-;;;### (autoloads nil "nim-mode/nim-thing-at-point" "nim-mode/nim-thing-at-point.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from nim-mode/nim-thing-at-point.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-thing-at-point" '("nim-")))
-
-;;;***
-
-;;;### (autoloads nil "nim-mode/nim-util" "nim-mode/nim-util.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from nim-mode/nim-util.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-util" '("nim-")))
-
-;;;***
-
-;;;### (autoloads nil "nim-mode/nim-vars" "nim-mode/nim-vars.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from nim-mode/nim-vars.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-vars" '("nim")))
+\(fn)" nil nil)
 
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nimscript-mode" "nim-mode/nimscript-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22409 22373 994677 133000))
 ;;; Generated autoloads from nim-mode/nimscript-mode.el
 
 (autoload 'nimscript-mode "nim-mode/nimscript-mode" "\
@@ -7349,22 +6557,8 @@ instead.  The default regex’s matching word is [Package].
 
 ;;;***
 
-;;;### (autoloads nil "nim-mode/ob-nim" "nim-mode/ob-nim.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from nim-mode/ob-nim.el
-
-(autoload 'org-babel-execute:nim "nim-mode/ob-nim" "\
-Execute a block of nim code with org-babel.
-This function is called by `org-babel-execute-src-block'.
-
-\(fn BODY PARAMS)" nil nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/ob-nim" '("org-babel-")))
-
-;;;***
-
 ;;;### (autoloads nil "org-mode/contrib/lisp/htmlize" "org-mode/contrib/lisp/htmlize.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 662804 864000))
 ;;; Generated autoloads from org-mode/contrib/lisp/htmlize.el
 
 (autoload 'htmlize-buffer "org-mode/contrib/lisp/htmlize" "\
@@ -7430,7 +6624,7 @@ HTMLize dired-marked files.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-annotate-file" "org-mode/contrib/lisp/org-annotate-file.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 585716 513000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-annotate-file.el
 
 (autoload 'org-annotate-file "org-mode/contrib/lisp/org-annotate-file" "\
@@ -7450,7 +6644,7 @@ The annotation will link to ANNOTATED-BUFFER if specified,
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-bullets" "org-mode/contrib/lisp/org-bullets.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 585716 513000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-bullets.el
 
 (autoload 'org-bullets-mode "org-mode/contrib/lisp/org-bullets" "\
@@ -7461,7 +6655,7 @@ UTF-8 bullets for `org-mode'.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-contacts" "org-mode/contrib/lisp/org-contacts.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 662804 864000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-contacts.el
 
 (autoload 'org-contacts "org-mode/contrib/lisp/org-contacts" "\
@@ -7472,7 +6666,7 @@ Create agenda view for contacts matching NAME.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-eldoc" "org-mode/contrib/lisp/org-eldoc.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 662804 864000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-eldoc.el
 
 (autoload 'org-eldoc-load "org-mode/contrib/lisp/org-eldoc" "\
@@ -7485,7 +6679,7 @@ Set up org-eldoc documentation function.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-link-edit" "org-mode/contrib/lisp/org-link-edit.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 589716 628000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-link-edit.el
 
 (autoload 'org-link-edit-forward-slurp "org-mode/contrib/lisp/org-link-edit" "\
@@ -7569,7 +6763,7 @@ If N is negative, barf trailing blobs instead of leading blobs.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-passwords" "org-mode/contrib/lisp/org-passwords.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 593716 743000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-passwords.el
 
 (autoload 'org-passwords-mode "org-mode/contrib/lisp/org-passwords" "\
@@ -7594,7 +6788,7 @@ With a double prefix arg \\[universal-argument] \\[universal-argument], open the
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-registry" "org-mode/contrib/lisp/org-registry.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 593716 743000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-registry.el
 
 (autoload 'org-registry-show "org-mode/contrib/lisp/org-registry" "\
@@ -7632,7 +6826,7 @@ Update the registry for the current Org file.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-screenshot" "org-mode/contrib/lisp/org-screenshot.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 593716 743000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-screenshot.el
 
 (autoload 'org-screenshot-take "org-mode/contrib/lisp/org-screenshot" "\
@@ -7676,7 +6870,7 @@ Open A Dired buffer with unused screenshots marked
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-toc" "org-mode/contrib/lisp/org-toc.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 593716 743000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-toc.el
 
 (autoload 'org-toc-show "org-mode/contrib/lisp/org-toc" "\
@@ -7687,7 +6881,7 @@ Show the table of contents of the current Org-mode buffer.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/org-track" "org-mode/contrib/lisp/org-track.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 593716 743000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-track.el
 
 (autoload 'org-track-fetch-package "org-mode/contrib/lisp/org-track" "\
@@ -7709,7 +6903,7 @@ DIRECTORY is where the directory org-mode/ lives (i.e. the
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/ox-freemind" "org-mode/contrib/lisp/ox-freemind.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 597716 857000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-freemind.el
 
 (autoload 'org-freemind-export-to-freemind "org-mode/contrib/lisp/ox-freemind" "\
@@ -7745,7 +6939,7 @@ Return output file's name.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/ox-koma-letter" "org-mode/contrib/lisp/ox-koma-letter.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 597716 857000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-koma-letter.el
 
 (autoload 'org-koma-letter-export-as-latex "org-mode/contrib/lisp/ox-koma-letter" "\
@@ -7846,7 +7040,7 @@ Return PDF file's name.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/ox-rss" "org-mode/contrib/lisp/ox-rss.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 597716 857000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-rss.el
 
 (autoload 'org-rss-export-as-rss "org-mode/contrib/lisp/ox-rss" "\
@@ -7911,7 +7105,7 @@ Return output file name.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/contrib/lisp/ox-taskjuggler" "org-mode/contrib/lisp/ox-taskjuggler.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 35108 597716 857000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-taskjuggler.el
 
 (autoload 'org-taskjuggler-export "org-mode/contrib/lisp/ox-taskjuggler" "\
@@ -7998,7 +7192,7 @@ the reports is done using the TaskJuggler GUI.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/lisp/org" "org-mode/lisp/org.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 698806 746000))
 ;;; Generated autoloads from org-mode/lisp/org.el
 
 (autoload 'org-babel-do-load-languages "org-mode/lisp/org" "\
@@ -8217,7 +7411,7 @@ Call the customize function with org as argument.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/lisp/org-agenda" "org-mode/lisp/org-agenda.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 678805 701000))
 ;;; Generated autoloads from org-mode/lisp/org-agenda.el
 
 (autoload 'org-toggle-sticky-agenda "org-mode/lisp/org-agenda" "\
@@ -8490,8 +7684,16 @@ to override `appt-message-warning-time'.
 
 ;;;***
 
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/org-bbdb"
+;;;;;;  "org-mode/lisp/org-bbdb.el" (22418 64075 682805 909000))
+;;; Generated autoloads from org-mode/lisp/org-bbdb.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/org-bbdb" '("org-bbdb-")))
+
+;;;***
+
 ;;;### (autoloads nil "org-mode/lisp/org-capture" "org-mode/lisp/org-capture.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 682805 909000))
 ;;; Generated autoloads from org-mode/lisp/org-capture.el
 
 (autoload 'org-capture-string "org-mode/lisp/org-capture" "\
@@ -8533,8 +7735,16 @@ Set `org-capture-templates' to be similar to `org-remember-templates'.
 
 ;;;***
 
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/org-clock"
+;;;;;;  "org-mode/lisp/org-clock.el" (22418 64075 682805 909000))
+;;; Generated autoloads from org-mode/lisp/org-clock.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/org-clock" '("org-")))
+
+;;;***
+
 ;;;### (autoloads nil "org-mode/lisp/org-colview" "org-mode/lisp/org-colview.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 682805 909000))
 ;;; Generated autoloads from org-mode/lisp/org-colview.el
 
 (autoload 'org-columns-remove-overlays "org-mode/lisp/org-colview" "\
@@ -8603,7 +7813,7 @@ Turn on or update column view in the agenda.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/lisp/org-compat" "org-mode/lisp/org-compat.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 682805 909000))
 ;;; Generated autoloads from org-mode/lisp/org-compat.el
 
 (autoload 'org-check-version "org-mode/lisp/org-compat" "\
@@ -8613,8 +7823,48 @@ Try very hard to provide sensible version strings.
 
 ;;;***
 
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/org-element"
+;;;;;;  "org-mode/lisp/org-element.el" (22418 64075 686806 119000))
+;;; Generated autoloads from org-mode/lisp/org-element.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/org-element" '("org-element-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/org-feed"
+;;;;;;  "org-mode/lisp/org-feed.el" (22418 64075 686806 119000))
+;;; Generated autoloads from org-mode/lisp/org-feed.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/org-feed" '("org-feed-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/org-id"
+;;;;;;  "org-mode/lisp/org-id.el" (22418 64075 686806 119000))
+;;; Generated autoloads from org-mode/lisp/org-id.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/org-id" '("org-id-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/org-indent"
+;;;;;;  "org-mode/lisp/org-indent.el" (22418 64075 686806 119000))
+;;; Generated autoloads from org-mode/lisp/org-indent.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/org-indent" '("org-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/org-irc"
+;;;;;;  "org-mode/lisp/org-irc.el" (22418 64075 686806 119000))
+;;; Generated autoloads from org-mode/lisp/org-irc.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/org-irc" '("org-irc-")))
+
+;;;***
+
 ;;;### (autoloads nil "org-mode/lisp/org-lint" "org-mode/lisp/org-lint.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 686806 119000))
 ;;; Generated autoloads from org-mode/lisp/org-lint.el
 
 (autoload 'org-lint "org-mode/lisp/org-lint" "\
@@ -8631,7 +7881,7 @@ ARG can also be a list of checker names, as symbols, to run.
 ;;;***
 
 ;;;### (autoloads nil "org-mode/lisp/org-macs" "org-mode/lisp/org-macs.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64075 686806 119000))
 ;;; Generated autoloads from org-mode/lisp/org-macs.el
 
 (autoload 'org-load-noerror-mustsuffix "org-mode/lisp/org-macs" "\
@@ -8641,8 +7891,24 @@ Load FILE with optional arguments NOERROR and MUSTSUFFIX.
 
 ;;;***
 
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/org-mobile"
+;;;;;;  "org-mode/lisp/org-mobile.el" (22418 64075 686806 119000))
+;;; Generated autoloads from org-mode/lisp/org-mobile.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/org-mobile" '("org-mobile-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/org-table"
+;;;;;;  "org-mode/lisp/org-table.el" (22418 64075 690806 328000))
+;;; Generated autoloads from org-mode/lisp/org-table.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/org-table" '("org")))
+
+;;;***
+
 ;;;### (autoloads nil "org-mode/lisp/org-version" "org-mode/lisp/org-version.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22418 64076 298838 121000))
 ;;; Generated autoloads from org-mode/lisp/org-version.el
 
 (autoload 'org-release "org-mode/lisp/org-version" "\
@@ -8662,15 +7928,56 @@ The location of ODT styles.")
 
 ;;;***
 
-;;;### (autoloads nil "packed/packed" "packed/packed.el" (0 0 0 0))
-;;; Generated autoloads from packed/packed.el
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/ox"
+;;;;;;  "org-mode/lisp/ox.el" (22418 64075 702806 956000))
+;;; Generated autoloads from org-mode/lisp/ox.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "packed/packed" '("packed-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/ox" '("org-export-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/ox-html"
+;;;;;;  "org-mode/lisp/ox-html.el" (22418 64075 698806 746000))
+;;; Generated autoloads from org-mode/lisp/ox-html.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/ox-html" '("org-html-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/ox-latex"
+;;;;;;  "org-mode/lisp/ox-latex.el" (22418 64075 698806 746000))
+;;; Generated autoloads from org-mode/lisp/ox-latex.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/ox-latex" '("org-latex-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/ox-odt"
+;;;;;;  "org-mode/lisp/ox-odt.el" (22418 64075 702806 956000))
+;;; Generated autoloads from org-mode/lisp/ox-odt.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/ox-odt" '("org-odt-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/ox-org"
+;;;;;;  "org-mode/lisp/ox-org.el" (22418 64075 702806 956000))
+;;; Generated autoloads from org-mode/lisp/ox-org.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/ox-org" '("org-org-")))
+
+;;;***
+
+;;;### (autoloads "actual autoloads are elsewhere" "org-mode/lisp/ox-publish"
+;;;;;;  "org-mode/lisp/ox-publish.el" (22418 64075 702806 956000))
+;;; Generated autoloads from org-mode/lisp/ox-publish.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "org-mode/lisp/ox-publish" '("org-publish-")))
 
 ;;;***
 
 ;;;### (autoloads nil "pangu-spacing/pangu-spacing" "pangu-spacing/pangu-spacing.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3290 224192 144000))
 ;;; Generated autoloads from pangu-spacing/pangu-spacing.el
 
 (autoload 'pangu-spacing-mode "pangu-spacing/pangu-spacing" "\
@@ -8702,8 +8009,8 @@ See `pangu-spacing-mode' for more information on Pangu-Spacing mode.
 
 ;;;***
 
-;;;### (autoloads nil "paredit/paredit" "paredit/paredit.el" (0 0
-;;;;;;  0 0))
+;;;### (autoloads nil "paredit/paredit" "paredit/paredit.el" (22378
+;;;;;;  3861 197843 105000))
 ;;; Generated autoloads from paredit/paredit.el
 
 (autoload 'paredit-mode "paredit/paredit" "\
@@ -8725,7 +8032,7 @@ Turn on pseudo-structural editing of Lisp code.
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-annot" "pdf-tools/lisp/pdf-annot.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-annot.el
 
 (autoload 'pdf-annot-minor-mode "pdf-tools/lisp/pdf-annot" "\
@@ -8735,28 +8042,10 @@ Support for PDF Annotations.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-annot" '("pdf-annot-")))
-
-;;;***
-
-;;;### (autoloads nil "pdf-tools/lisp/pdf-cache" "pdf-tools/lisp/pdf-cache.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from pdf-tools/lisp/pdf-cache.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-cache" '("page" "pdf-cache-" "textregions" "boundingbox" "define-pdf-cache-function")))
-
-;;;***
-
-;;;### (autoloads nil "pdf-tools/lisp/pdf-dev" "pdf-tools/lisp/pdf-dev.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from pdf-tools/lisp/pdf-dev.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-dev" '("pdf-dev-")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-history" "pdf-tools/lisp/pdf-history.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-history.el
 
 (autoload 'pdf-history-minor-mode "pdf-tools/lisp/pdf-history" "\
@@ -8770,20 +8059,10 @@ may be naviagted with the following keys.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-history" '("pdf-history-")))
-
-;;;***
-
-;;;### (autoloads nil "pdf-tools/lisp/pdf-info" "pdf-tools/lisp/pdf-info.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from pdf-tools/lisp/pdf-info.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-info" '("pdf-info-")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-isearch" "pdf-tools/lisp/pdf-isearch.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-isearch.el
 
 (autoload 'pdf-isearch-minor-mode "pdf-tools/lisp/pdf-isearch" "\
@@ -8819,12 +8098,10 @@ that not every isearch command work as expected.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-isearch" '("pdf-isearch-")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-links" "pdf-tools/lisp/pdf-links.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-links.el
 
 (autoload 'pdf-links-minor-mode "pdf-tools/lisp/pdf-links" "\
@@ -8854,12 +8131,10 @@ scroll the current page.
 
 \(fn LINK)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-links" '("pdf-links-")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-misc" "pdf-tools/lisp/pdf-misc.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-misc.el
 
 (autoload 'pdf-misc-minor-mode "pdf-tools/lisp/pdf-misc" "\
@@ -8884,12 +8159,10 @@ Provide a right-click context menu in PDF buffers.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-misc" '("pdf-misc-")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-occur" "pdf-tools/lisp/pdf-occur.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-occur.el
 
 (autoload 'pdf-occur "pdf-tools/lisp/pdf-occur" "\
@@ -8950,12 +8223,10 @@ and otherwise fallback to `dired-do-search'.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-occur" '("pdf-occur-")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-outline" "pdf-tools/lisp/pdf-outline.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-outline.el
 
 (autoload 'pdf-outline-minor-mode "pdf-tools/lisp/pdf-outline" "\
@@ -8982,12 +8253,10 @@ Enable imenu in the current PDF buffer.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-outline" '("pdf-outline")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-sync" "pdf-tools/lisp/pdf-sync.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-sync.el
 
 (autoload 'pdf-sync-minor-mode "pdf-tools/lisp/pdf-sync" "\
@@ -9018,12 +8287,10 @@ with AUCTeX.
 
 (define-obsolete-variable-alias 'pdf-sync-display-pdf-action 'pdf-sync-forward-display-action nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-sync" '("pdf-sync-")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-tools" "pdf-tools/lisp/pdf-tools.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-tools.el
 
 (defvar pdf-tools-handle-upgrades t "\
@@ -9064,20 +8331,10 @@ See `pdf-view-mode' and `pdf-tools-enabled-modes'.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-tools" '("pdf-tools-")))
-
-;;;***
-
-;;;### (autoloads nil "pdf-tools/lisp/pdf-util" "pdf-tools/lisp/pdf-util.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from pdf-tools/lisp/pdf-util.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-util" '("pdf-util-" "display-buffer-split-below-and-attach")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-view" "pdf-tools/lisp/pdf-view.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22395 7662 380911 654000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-view.el
 
 (autoload 'pdf-view-bookmark-jump-handler "pdf-tools/lisp/pdf-view" "\
@@ -9087,12 +8344,10 @@ See also `pdf-view-bookmark-make-record'.
 
 \(fn BMK)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-view" '("pdf-view-")))
-
 ;;;***
 
 ;;;### (autoloads nil "pdf-tools/lisp/pdf-virtual" "pdf-tools/lisp/pdf-virtual.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 52907 37251 684000))
 ;;; Generated autoloads from pdf-tools/lisp/pdf-virtual.el
 
 (autoload 'pdf-virtual-edit-mode "pdf-tools/lisp/pdf-virtual" "\
@@ -9125,12 +8380,10 @@ Enable recognition and handling of VPDF files.
 
 \(fn &optional FILENAMES BUFFER-NAME DISPLAY-P)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pdf-tools/lisp/pdf-virtual" '("pdf-virtual-")))
-
 ;;;***
 
 ;;;### (autoloads nil "pkg-info/pkg-info" "pkg-info/pkg-info.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 59395 288747 683000))
 ;;; Generated autoloads from pkg-info/pkg-info.el
 
 (autoload 'pkg-info-library-original-version "pkg-info/pkg-info" "\
@@ -9240,7 +8493,8 @@ version.
 
 ;;;***
 
-;;;### (autoloads nil "popwin/popwin" "popwin/popwin.el" (0 0 0 0))
+;;;### (autoloads nil "popwin/popwin" "popwin/popwin.el" (21771 57258
+;;;;;;  436288 175000))
 ;;; Generated autoloads from popwin/popwin.el
 
 (autoload 'popwin:popup-buffer "popwin/popwin" "\
@@ -9306,7 +8560,7 @@ Display *Messages* buffer in a popup window.
 ;;;***
 
 ;;;### (autoloads nil "puppet-mode/puppet-mode" "puppet-mode/puppet-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3437 264996 5000))
 ;;; Generated autoloads from puppet-mode/puppet-mode.el
 
 (autoload 'puppet-mode "puppet-mode/puppet-mode" "\
@@ -9318,18 +8572,17 @@ Display *Messages* buffer in a popup window.
 
 ;;;***
 
-;;;### (autoloads nil "queue/queue" "queue/queue.el" (0 0 0 0))
+;;;### (autoloads nil "queue/queue" "queue/queue.el" (22382 8153
+;;;;;;  364493 939000))
 ;;; Generated autoloads from queue/queue.el
 
 (defalias 'make-queue 'queue-create "\
 Create an empty queue data structure.")
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "queue/queue" '("queue")))
-
 ;;;***
 
 ;;;### (autoloads nil "rainbow-delimiters/rainbow-delimiters" "rainbow-delimiters/rainbow-delimiters.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 36587 883859 154000))
 ;;; Generated autoloads from rainbow-delimiters/rainbow-delimiters.el
 
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters/rainbow-delimiters" "\
@@ -9350,7 +8603,7 @@ Disable `rainbow-delimiters-mode'.
 ;;;***
 
 ;;;### (autoloads nil "rainbow-mode/rainbow-mode" "rainbow-mode/rainbow-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22381 59481 644842 585000))
 ;;; Generated autoloads from rainbow-mode/rainbow-mode.el
 
 (autoload 'rainbow-mode "rainbow-mode/rainbow-mode" "\
@@ -9359,11 +8612,10 @@ This will fontify with colors the string like \"#aabbcc\" or \"blue\".
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "rainbow-mode/rainbow-mode" '("rainbow-")))
-
 ;;;***
 
-;;;### (autoloads nil "revive/revive" "revive/revive.el" (0 0 0 0))
+;;;### (autoloads nil "revive/revive" "revive/revive.el" (22378 3446
+;;;;;;  944733 801000))
 ;;; Generated autoloads from revive/revive.el
 
 (autoload 'current-window-configuration-printable "revive/revive" "\
@@ -9407,7 +8659,8 @@ Configuration should be saved by save-current-configuration.
 
 ;;;***
 
-;;;### (autoloads nil "seqcmd/seqcmd" "seqcmd/seqcmd.el" (0 0 0 0))
+;;;### (autoloads nil "seqcmd/seqcmd" "seqcmd/seqcmd.el" (22382 27063
+;;;;;;  572477 267000))
 ;;; Generated autoloads from seqcmd/seqcmd.el
 
 (autoload 'seqcmd-home "seqcmd")
@@ -9426,12 +8679,10 @@ If you use `org-mode', rebind C-a and C-e.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "seqcmd/seqcmd" '("seqcmd-")))
-
 ;;;***
 
 ;;;### (autoloads nil "smtpmail-multi/smtpmail-multi" "smtpmail-multi/smtpmail-multi.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3447 188727 475000))
 ;;; Generated autoloads from smtpmail-multi/smtpmail-multi.el
 
 (autoload 'smtpmail-multi-change "smtpmail-multi/smtpmail-multi" "\
@@ -9454,8 +8705,8 @@ Send mail using smtp server selected by the `smtpmail-multi-select' function.
 
 ;;;***
 
-;;;### (autoloads nil "tablist/tablist" "tablist/tablist.el" (0 0
-;;;;;;  0 0))
+;;;### (autoloads nil "tablist/tablist" "tablist/tablist.el" (22393
+;;;;;;  51212 989924 118000))
 ;;; Generated autoloads from tablist/tablist.el
 
 (autoload 'tablist-minor-mode "tablist/tablist" "\
@@ -9472,20 +8723,10 @@ the mode if ARG is omitted or nil, and toggle it if ARG is `toggle'.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "tablist/tablist" '("tablist-")))
-
-;;;***
-
-;;;### (autoloads nil "tablist/tablist-filter" "tablist/tablist-filter.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from tablist/tablist-filter.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "tablist/tablist-filter" '("tablist-filter-")))
-
 ;;;***
 
 ;;;### (autoloads nil "twittering-mode/twittering-mode" "twittering-mode/twittering-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22393 24061 615129 924000))
 ;;; Generated autoloads from twittering-mode/twittering-mode.el
 
 (autoload 'twit "twittering-mode/twittering-mode" "\
@@ -9493,12 +8734,10 @@ Start twittering-mode.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "twittering-mode/twittering-mode" '("twittering-" "debug-print" "case-string" "list-push" "assocref")))
-
 ;;;***
 
 ;;;### (autoloads nil "undo-tree/undo-tree" "undo-tree/undo-tree.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 62231 529474 147000))
 ;;; Generated autoloads from undo-tree/undo-tree.el
 
 (autoload 'undo-tree-mode "undo-tree/undo-tree" "\
@@ -9546,7 +8785,7 @@ See `undo-tree-mode' for more information on Undo-Tree mode.
 ;;;***
 
 ;;;### (autoloads nil "vimrc-mode/vimrc-mode" "vimrc-mode/vimrc-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3437 580987 115000))
 ;;; Generated autoloads from vimrc-mode/vimrc-mode.el
  (add-to-list 'auto-mode-alist '("\\.vim\\'" . vimrc-mode))
  (add-to-list 'auto-mode-alist '("[._]?g?vimrc\\'" . vimrc-mode))
@@ -9560,7 +8799,7 @@ Major mode for editing `vimrc', `xxx.vim' and `.exrc' configuration files.
 ;;;***
 
 ;;;### (autoloads nil "visual-fill-column/visual-fill-column" "visual-fill-column/visual-fill-column.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3711 791523 318000))
 ;;; Generated autoloads from visual-fill-column/visual-fill-column.el
 
 (autoload 'visual-fill-column-mode "visual-fill-column/visual-fill-column" "\
@@ -9605,7 +8844,7 @@ windows with wide margins.
 
 ;;;***
 
-;;;### (autoloads nil "web/web" "web/web.el" (0 0 0 0))
+;;;### (autoloads nil "web/web" "web/web.el" (22378 3442 92862 570000))
 ;;; Generated autoloads from web/web.el
 
 (autoload 'web-http-call "web/web" "\
@@ -9722,8 +8961,8 @@ Get the specified URL into the BUFFER.
 
 ;;;***
 
-;;;### (autoloads nil "windows/windows" "windows/windows.el" (0 0
-;;;;;;  0 0))
+;;;### (autoloads nil "windows/windows" "windows/windows.el" (22376
+;;;;;;  60489 707295 474000))
 ;;; Generated autoloads from windows/windows.el
 
 (autoload 'win-switch-to-window "windows/windows" "\
@@ -9774,7 +9013,7 @@ Non-nil for optional argument PRESERVE keeps current buffers.
 ;;;***
 
 ;;;### (autoloads nil "yaml-mode/yaml-mode" "yaml-mode/yaml-mode.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22376 36910 892602 335000))
 ;;; Generated autoloads from yaml-mode/yaml-mode.el
 
 (let ((loads (get 'yaml 'custom-loads))) (if (member '"yaml-mode/yaml-mode" loads) nil (put 'yaml 'custom-loads (cons '"yaml-mode/yaml-mode" loads))))
@@ -9791,7 +9030,7 @@ Simple mode to edit YAML.
 ;;;***
 
 ;;;### (autoloads nil "yatemplate/yatemplate" "yatemplate/yatemplate.el"
-;;;;;;  (0 0 0 0))
+;;;;;;  (22378 3899 182615 938000))
 ;;; Generated autoloads from yatemplate/yatemplate.el
 
 (defvar yatemplate-dir (locate-user-emacs-file "templates") "\
@@ -9806,113 +9045,38 @@ Fill `auto-insert-alist'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("ample-regexps/init-tryout.el" "auto-complete/auto-complete-pkg.el"
-;;;;;;  "avy/avy-test.el" "buttercup/buttercup-compat.el" "buttercup/buttercup-pkg.el"
-;;;;;;  "calfw-gcal/calfw-gcal.el" "company-mode/company-capf.el"
-;;;;;;  "company-mode/company-clang.el" "company-mode/company-cmake.el"
-;;;;;;  "company-mode/company-eclim.el" "company-mode/company-template.el"
-;;;;;;  "company-mode/company-tests.el" "el-get/el-get-autoloading.el"
-;;;;;;  "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
-;;;;;;  "el-get/el-get-core.el" "el-get/el-get-custom.el" "el-get/el-get-dependencies.el"
-;;;;;;  "el-get/el-get-install.el" "el-get/el-get-methods.el" "el-get/el-get-notify.el"
-;;;;;;  "el-get/el-get-recipes.el" "el-get/el-get-status.el" "epl/epl.el"
-;;;;;;  "esxml/css-lite.el" "esxml/esxml-form-tests.el" "esxml/esxml-form.el"
-;;;;;;  "esxml/esxml-html.el" "esxml/esxml.el" "esxml/esxpath.el"
-;;;;;;  "fakir/fakir-tests.el" "fakir/fakir.el" "fuzzy/fuzzy.el"
-;;;;;;  "go-mode/go-mode-autoloads.el" "google/google.el" "haskell-mode/haskell-compat.el"
-;;;;;;  "haskell-mode/haskell-mode-autoloads.el" "haskell-mode/haskell-mode-pkg.el"
-;;;;;;  "irony-mode/irony-diagnostics.el" "irony-mode/irony-snippet.el"
-;;;;;;  "jedi/test-jedi.el" "jedi/tryout-jedi.el" "js2-mode/js2-old-indent.el"
-;;;;;;  "jstestmacs/jstestmacs.el" "kv/kv-tests.el" "kv/kv.el" "lingr/lingr.el"
-;;;;;;  "lispxmp/lispxmp.el" "logalimacs/po-mode-fix.el" "logito/logito.el"
-;;;;;;  "lua-mode/init-tryout.el" "magit/lisp/magit-autoloads.el"
-;;;;;;  "magit/lisp/magit-core.el" "migemo/migemo.el" "multiple-cursors/mc-cycle-cursors.el"
-;;;;;;  "multiple-cursors/multiple-cursors-pkg.el" "multiple-cursors/multiple-cursors.el"
-;;;;;;  "myhistory/myhistory.el" "nim-mode/nim-rx.el" "ob-go/ob-go.el"
-;;;;;;  "ob-go/test-ob-go.el" "open-junk-file/open-junk-file.el"
-;;;;;;  "org-mode/contrib/lisp/ob-eukleides.el" "org-mode/contrib/lisp/ob-fomus.el"
-;;;;;;  "org-mode/contrib/lisp/ob-julia.el" "org-mode/contrib/lisp/ob-mathematica.el"
-;;;;;;  "org-mode/contrib/lisp/ob-mathomatic.el" "org-mode/contrib/lisp/ob-oz.el"
-;;;;;;  "org-mode/contrib/lisp/ob-stata.el" "org-mode/contrib/lisp/ob-tcl.el"
-;;;;;;  "org-mode/contrib/lisp/org-bibtex-extras.el" "org-mode/contrib/lisp/org-bookmark.el"
-;;;;;;  "org-mode/contrib/lisp/org-checklist.el" "org-mode/contrib/lisp/org-choose.el"
-;;;;;;  "org-mode/contrib/lisp/org-collector.el" "org-mode/contrib/lisp/org-contribdir.el"
-;;;;;;  "org-mode/contrib/lisp/org-depend.el" "org-mode/contrib/lisp/org-download.el"
-;;;;;;  "org-mode/contrib/lisp/org-drill.el" "org-mode/contrib/lisp/org-ebib.el"
-;;;;;;  "org-mode/contrib/lisp/org-effectiveness.el" "org-mode/contrib/lisp/org-elisp-symbol.el"
-;;;;;;  "org-mode/contrib/lisp/org-eval-light.el" "org-mode/contrib/lisp/org-eval.el"
-;;;;;;  "org-mode/contrib/lisp/org-eww.el" "org-mode/contrib/lisp/org-expiry.el"
-;;;;;;  "org-mode/contrib/lisp/org-git-link.el" "org-mode/contrib/lisp/org-index.el"
-;;;;;;  "org-mode/contrib/lisp/org-interactive-query.el" "org-mode/contrib/lisp/org-invoice.el"
-;;;;;;  "org-mode/contrib/lisp/org-learn.el" "org-mode/contrib/lisp/org-license.el"
-;;;;;;  "org-mode/contrib/lisp/org-loaddefs.el" "org-mode/contrib/lisp/org-mac-iCal.el"
-;;;;;;  "org-mode/contrib/lisp/org-mac-link.el" "org-mode/contrib/lisp/org-mairix.el"
-;;;;;;  "org-mode/contrib/lisp/org-man.el" "org-mode/contrib/lisp/org-mew.el"
-;;;;;;  "org-mode/contrib/lisp/org-mime.el" "org-mode/contrib/lisp/org-notify.el"
-;;;;;;  "org-mode/contrib/lisp/org-notmuch.el" "org-mode/contrib/lisp/org-panel.el"
-;;;;;;  "org-mode/contrib/lisp/org-screen.el" "org-mode/contrib/lisp/org-secretary.el"
-;;;;;;  "org-mode/contrib/lisp/org-static-mathjax.el" "org-mode/contrib/lisp/org-sudoku.el"
-;;;;;;  "org-mode/contrib/lisp/org-velocity.el" "org-mode/contrib/lisp/org-vm.el"
-;;;;;;  "org-mode/contrib/lisp/org-wikinodes.el" "org-mode/contrib/lisp/org-wl.el"
-;;;;;;  "org-mode/contrib/lisp/orgtbl-sqlinsert.el" "org-mode/contrib/lisp/ox-bibtex.el"
-;;;;;;  "org-mode/contrib/lisp/ox-confluence.el" "org-mode/contrib/lisp/ox-deck.el"
-;;;;;;  "org-mode/contrib/lisp/ox-extra.el" "org-mode/contrib/lisp/ox-gfm.el"
-;;;;;;  "org-mode/contrib/lisp/ox-groff.el" "org-mode/contrib/lisp/ox-s5.el"
-;;;;;;  "org-mode/lisp/ob-C.el" "org-mode/lisp/ob-J.el" "org-mode/lisp/ob-R.el"
-;;;;;;  "org-mode/lisp/ob-abc.el" "org-mode/lisp/ob-asymptote.el"
-;;;;;;  "org-mode/lisp/ob-awk.el" "org-mode/lisp/ob-calc.el" "org-mode/lisp/ob-clojure.el"
-;;;;;;  "org-mode/lisp/ob-comint.el" "org-mode/lisp/ob-coq.el" "org-mode/lisp/ob-core.el"
-;;;;;;  "org-mode/lisp/ob-css.el" "org-mode/lisp/ob-ditaa.el" "org-mode/lisp/ob-dot.el"
-;;;;;;  "org-mode/lisp/ob-ebnf.el" "org-mode/lisp/ob-emacs-lisp.el"
-;;;;;;  "org-mode/lisp/ob-eval.el" "org-mode/lisp/ob-exp.el" "org-mode/lisp/ob-forth.el"
-;;;;;;  "org-mode/lisp/ob-fortran.el" "org-mode/lisp/ob-gnuplot.el"
-;;;;;;  "org-mode/lisp/ob-groovy.el" "org-mode/lisp/ob-haskell.el"
-;;;;;;  "org-mode/lisp/ob-io.el" "org-mode/lisp/ob-java.el" "org-mode/lisp/ob-js.el"
-;;;;;;  "org-mode/lisp/ob-keys.el" "org-mode/lisp/ob-latex.el" "org-mode/lisp/ob-ledger.el"
-;;;;;;  "org-mode/lisp/ob-lilypond.el" "org-mode/lisp/ob-lisp.el"
-;;;;;;  "org-mode/lisp/ob-lob.el" "org-mode/lisp/ob-makefile.el"
-;;;;;;  "org-mode/lisp/ob-matlab.el" "org-mode/lisp/ob-maxima.el"
-;;;;;;  "org-mode/lisp/ob-mscgen.el" "org-mode/lisp/ob-ocaml.el"
-;;;;;;  "org-mode/lisp/ob-octave.el" "org-mode/lisp/ob-org.el" "org-mode/lisp/ob-perl.el"
-;;;;;;  "org-mode/lisp/ob-picolisp.el" "org-mode/lisp/ob-plantuml.el"
-;;;;;;  "org-mode/lisp/ob-processing.el" "org-mode/lisp/ob-python.el"
-;;;;;;  "org-mode/lisp/ob-ref.el" "org-mode/lisp/ob-ruby.el" "org-mode/lisp/ob-sass.el"
-;;;;;;  "org-mode/lisp/ob-scala.el" "org-mode/lisp/ob-scheme.el"
-;;;;;;  "org-mode/lisp/ob-screen.el" "org-mode/lisp/ob-sed.el" "org-mode/lisp/ob-shell.el"
-;;;;;;  "org-mode/lisp/ob-shen.el" "org-mode/lisp/ob-sql.el" "org-mode/lisp/ob-sqlite.el"
-;;;;;;  "org-mode/lisp/ob-stan.el" "org-mode/lisp/ob-table.el" "org-mode/lisp/ob-tangle.el"
-;;;;;;  "org-mode/lisp/ob.el" "org-mode/lisp/org-archive.el" "org-mode/lisp/org-attach.el"
-;;;;;;  "org-mode/lisp/org-bbdb.el" "org-mode/lisp/org-bibtex.el"
-;;;;;;  "org-mode/lisp/org-clock.el" "org-mode/lisp/org-crypt.el"
-;;;;;;  "org-mode/lisp/org-ctags.el" "org-mode/lisp/org-datetree.el"
-;;;;;;  "org-mode/lisp/org-docview.el" "org-mode/lisp/org-element.el"
-;;;;;;  "org-mode/lisp/org-entities.el" "org-mode/lisp/org-eshell.el"
-;;;;;;  "org-mode/lisp/org-faces.el" "org-mode/lisp/org-feed.el"
-;;;;;;  "org-mode/lisp/org-footnote.el" "org-mode/lisp/org-gnus.el"
-;;;;;;  "org-mode/lisp/org-habit.el" "org-mode/lisp/org-id.el" "org-mode/lisp/org-indent.el"
-;;;;;;  "org-mode/lisp/org-info.el" "org-mode/lisp/org-inlinetask.el"
-;;;;;;  "org-mode/lisp/org-install.el" "org-mode/lisp/org-irc.el"
-;;;;;;  "org-mode/lisp/org-list.el" "org-mode/lisp/org-macro.el"
-;;;;;;  "org-mode/lisp/org-mhe.el" "org-mode/lisp/org-mobile.el"
-;;;;;;  "org-mode/lisp/org-mouse.el" "org-mode/lisp/org-pcomplete.el"
-;;;;;;  "org-mode/lisp/org-plot.el" "org-mode/lisp/org-protocol.el"
-;;;;;;  "org-mode/lisp/org-rmail.el" "org-mode/lisp/org-src.el" "org-mode/lisp/org-table.el"
-;;;;;;  "org-mode/lisp/org-timer.el" "org-mode/lisp/org-w3m.el" "org-mode/lisp/ox-ascii.el"
-;;;;;;  "org-mode/lisp/ox-beamer.el" "org-mode/lisp/ox-html.el" "org-mode/lisp/ox-icalendar.el"
-;;;;;;  "org-mode/lisp/ox-latex.el" "org-mode/lisp/ox-man.el" "org-mode/lisp/ox-md.el"
-;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
-;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "paredit/test.el"
-;;;;;;  "pcache/pcache.el" "point-undo/point-undo.el" "popup/popup.el"
-;;;;;;  "popwin/misc/popwin-browse-kill-ring.el" "popwin/misc/popwin-pp.el"
-;;;;;;  "popwin/misc/popwin-term.el" "popwin/misc/popwin-w3m.el"
-;;;;;;  "popwin/misc/popwin-yatex.el" "queue/queue-autoloads.el"
-;;;;;;  "queue/queue-pkg.el" "rainbow-delimiters/rainbow-delimiters-test.el"
-;;;;;;  "rainbow-mode/rainbow-mode-autoloads.el" "rainbow-mode/rainbow-mode-pkg.el"
-;;;;;;  "request/request-deferred.el" "request/request.el" "ruby-block/ruby-block.el"
-;;;;;;  "s/s.el" "splitter/splitter.el" "sudo-ext/sudo-ext.el" "twittering-mode/test.el"
-;;;;;;  "viewer/viewer.el" "web/web-file-upload.el" "web/web-test.el"
-;;;;;;  "with-editor/with-editor.el" "yatemplate/test-yatemplate.el")
-;;;;;;  (0 0 0 0))
+;;;### (autoloads nil nil ("chumpy-windows/spaces.el" "chumpy-windows/splitter.el"
+;;;;;;  "epc/epcs.el" "epc/test-epc.el" "flycheck/flycheck-buttercup.el"
+;;;;;;  "flycheck/flycheck-ert.el" "haskell-mode/haskell-collapse.el"
+;;;;;;  "haskell-mode/haskell-complete-module.el" "haskell-mode/haskell-ghc-support.el"
+;;;;;;  "haskell-mode/haskell-lexeme.el" "haskell-mode/haskell-presentation-mode.el"
+;;;;;;  "haskell-mode/haskell-process.el" "haskell-mode/haskell-repl.el"
+;;;;;;  "haskell-mode/haskell-sandbox.el" "haskell-mode/haskell-string.el"
+;;;;;;  "haskell-mode/haskell-utils.el" "magit/lisp/magit-git.el"
+;;;;;;  "magit/lisp/magit-mode.el" "magit/lisp/magit-popup.el" "magit/lisp/magit-process.el"
+;;;;;;  "magit/lisp/magit-section.el" "magit/lisp/magit-utils.el"
+;;;;;;  "mew/mew-addrbook.el" "mew/mew-attach.el" "mew/mew-auth.el"
+;;;;;;  "mew/mew-blvs.el" "mew/mew-bq.el" "mew/mew-cache.el" "mew/mew-complete.el"
+;;;;;;  "mew/mew-config.el" "mew/mew-const.el" "mew/mew-darwin.el"
+;;;;;;  "mew/mew-decode.el" "mew/mew-demo.el" "mew/mew-draft.el"
+;;;;;;  "mew/mew-edit.el" "mew/mew-encode.el" "mew/mew-env.el" "mew/mew-exec.el"
+;;;;;;  "mew/mew-ext.el" "mew/mew-fib.el" "mew/mew-func.el" "mew/mew-gemacs.el"
+;;;;;;  "mew/mew-header.el" "mew/mew-highlight.el" "mew/mew-imap.el"
+;;;;;;  "mew/mew-imap2.el" "mew/mew-key.el" "mew/mew-lang-jp.el"
+;;;;;;  "mew/mew-lang-kr.el" "mew/mew-lang-latin.el" "mew/mew-local.el"
+;;;;;;  "mew/mew-mark.el" "mew/mew-message.el" "mew/mew-mime.el"
+;;;;;;  "mew/mew-minibuf.el" "mew/mew-mule.el" "mew/mew-mule3.el"
+;;;;;;  "mew/mew-net.el" "mew/mew-nntp.el" "mew/mew-nntp2.el" "mew/mew-passwd.el"
+;;;;;;  "mew/mew-pgp.el" "mew/mew-pick.el" "mew/mew-pop.el" "mew/mew-refile.el"
+;;;;;;  "mew/mew-scan.el" "mew/mew-search.el" "mew/mew-smime.el"
+;;;;;;  "mew/mew-smtp.el" "mew/mew-sort.el" "mew/mew-ssh.el" "mew/mew-ssl.el"
+;;;;;;  "mew/mew-summary.el" "mew/mew-summary2.el" "mew/mew-summary3.el"
+;;;;;;  "mew/mew-summary4.el" "mew/mew-syntax.el" "mew/mew-thread.el"
+;;;;;;  "mew/mew-unix.el" "mew/mew-vars.el" "mew/mew-vars2.el" "mew/mew-vars3.el"
+;;;;;;  "mew/mew-varsx.el" "mew/mew-virtual.el" "mew/mew-win32.el"
+;;;;;;  "mew/temp.el" "nim-mode/nim-fill.el" "nim-mode/nim-helper.el"
+;;;;;;  "nim-mode/nim-rx.el" "packed/packed.el") (22379 22202 886248
+;;;;;;  993000))
 
 ;;;***
 

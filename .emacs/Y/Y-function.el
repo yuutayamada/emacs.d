@@ -24,6 +24,7 @@
 (require 'Y-autoload)
 (require 's)
 (require 'subr-x)
+(require 'thingatpt)
 
 (defun banish ()
   "Move cursor to corner."

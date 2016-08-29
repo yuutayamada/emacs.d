@@ -244,7 +244,7 @@
  (google-translate status "installed" recipe
                    (:name google-translate :description "Emacs interface to Google Translate" :type github :pkgname "atykhonov/google-translate"))
  (goto-chg status "installed" recipe
-           (:name goto-chg :description "Goto the point of the most recent edit in the buffer." :type emacswiki :features goto-chg))
+           (:name goto-chg :description "Goto the point of the most recent edit in the buffer." :type emacswiki))
  (gradle-mode status "installed" recipe
               (:name gradle-mode :type github :pkgname "jacobono/emacs-gradle-mode" :description "Minor mode for emacs to run gradle from emacs and not have to go to a terminal!"))
  (grammar status "installed" recipe
@@ -349,8 +349,6 @@
 (:name let-alist :description "Easily let-bind values of an assoc-list by their names." :builtin "25.0.50" :type elpa :url "https://elpa.gnu.org/packages/let-alist.html"))
 (lingr status "installed" recipe
 (:name lingr :type git :url "https://github.com/lugecy/lingr-el.git"))
-(linum-relative status "installed" recipe
-(:name linum-relative :type github :pkgname "coldnew/linum-relative"))
 (lispxmp status "installed" recipe
 (:name lispxmp :description "Automagic emacs lisp code annotation" :type emacswiki :features "lispxmp"))
 (logalimacs status "installed" recipe
@@ -416,6 +414,14 @@
 (nim-mode status "installed" recipe
 (:name nim-mode :website "https://github.com/nim-lang/nim-mode#readme" :description "Major mode for the Nim programming language" :type github :pkgname "nim-lang/nim-mode" :branch "master" :minimum-emacs-version "24.4" :depends
 (flycheck company-mode epc let-alist commenter)))
+(nlinum status "installed" recipe
+(:name nlinum :type elpa :features
+(nlinum)
+:after nil))
+(nlinum-relative status "installed" recipe
+(:name nlinum-relative :type github :pkgname "CodeFalling/nlinum-relative" :features
+(nlinum-relative)
+:after nil))
 (noflet status "installed" recipe
 (:name noflet :description "nic's overriding flet, for fleting functions for the purpose of decorating them" :type github :pkgname "nicferrier/emacs-noflet"))
 (nyan-mode status "installed" recipe

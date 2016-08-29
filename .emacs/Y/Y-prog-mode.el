@@ -15,8 +15,6 @@
              ;; (electric-indent-local-mode -1)
              ;; auto capitalize
              (auto-capitalize-mode)
-             ;; linum relative
-             ;; (linum-relative-mode t)
              ;; Auto Completion
              (company-mode t)
              ;; indentation and whitespace

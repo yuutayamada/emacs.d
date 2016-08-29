@@ -1283,7 +1283,7 @@ object or a file path.
 ;;;***
 
 ;;;### (autoloads nil "el-get/el-get-list-packages" "el-get/el-get-list-packages.el"
-;;;;;;  (22337 17619 415359 710000))
+;;;;;;  (22463 54479 31413 959000))
 ;;; Generated autoloads from el-get/el-get-list-packages.el
 
 (autoload 'el-get-list-packages "el-get/el-get-list-packages" "\
@@ -1817,7 +1817,7 @@ A function suitable for `hippie-expand-try-functions-list'.
 ;;;***
 
 ;;;### (autoloads nil "git-gutter/git-gutter" "git-gutter/git-gutter.el"
-;;;;;;  (22377 26533 565077 860000))
+;;;;;;  (22463 56570 582486 363000))
 ;;; Generated autoloads from git-gutter/git-gutter.el
 
 (autoload 'git-gutter:linum-setup "git-gutter/git-gutter" "\
@@ -4184,49 +4184,6 @@ Special commands:
 
 ;;;***
 
-;;;### (autoloads nil "linum-relative/linum-relative" "linum-relative/linum-relative.el"
-;;;;;;  (22378 3287 972246 827000))
-;;; Generated autoloads from linum-relative/linum-relative.el
-
-(autoload 'linum-relative-toggle "linum-relative/linum-relative" "\
-Toggle between linum-relative and linum.
-
-\(fn)" t nil)
-
-(autoload 'linum-relative-mode "linum-relative/linum-relative" "\
-Display relative line numbers for current buffer.
-
-\(fn &optional ARG)" t nil)
-
-(defvar linum-relative-global-mode nil "\
-Non-nil if Linum-Relative-Global mode is enabled.
-See the `linum-relative-global-mode' command
-for a description of this minor mode.
-Setting this variable directly does not take effect;
-either customize it (see the info node `Easy Customization')
-or call the function `linum-relative-global-mode'.")
-
-(custom-autoload 'linum-relative-global-mode "linum-relative/linum-relative" nil)
-
-(autoload 'linum-relative-global-mode "linum-relative/linum-relative" "\
-Toggle Linum-Relative mode in all buffers.
-With prefix ARG, enable Linum-Relative-Global mode if ARG is positive;
-otherwise, disable it.  If called from Lisp, enable the mode if
-ARG is omitted or nil.
-
-Linum-Relative mode is enabled in all buffers where
-`(lambda nil (unless (linum-relative-in-helm-p) (linum-relative-mode 1)))' would do it.
-See `linum-relative-mode' for more information on Linum-Relative mode.
-
-\(fn &optional ARG)" t nil)
-
-(autoload 'helm-linum-relative-mode "linum-relative/linum-relative" "\
-Turn on `linum-relative-mode' in helm.
-
-\(fn &optional ARG)" t nil)
-
-;;;***
-
 ;;;### (autoloads nil "logalimacs/logalimacs" "logalimacs/logalimacs.el"
 ;;;;;;  (21688 19147 92763 30000))
 ;;; Generated autoloads from logalimacs/logalimacs.el
@@ -6532,7 +6489,7 @@ Setup eldoc configuration for nim-mode.
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-mode" "nim-mode/nim-mode.el"
-;;;;;;  (22420 116 452735 867000))
+;;;;;;  (22465 43977 588963 189000))
 ;;; Generated autoloads from nim-mode/nim-mode.el
 
 (autoload 'nim-mode "nim-mode/nim-mode" "\
@@ -6545,7 +6502,7 @@ A major mode for the Nim programming language.
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-suggest" "nim-mode/nim-suggest.el"
-;;;;;;  (22446 48911 180141 53000))
+;;;;;;  (22465 59242 834171 682000))
 ;;; Generated autoloads from nim-mode/nim-suggest.el
 
 (autoload 'nim-suggest-available-p "nim-mode/nim-suggest" "\
@@ -6556,7 +6513,7 @@ Return non-nil if nimsuggest is available in current buffer.
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nimscript-mode" "nim-mode/nimscript-mode.el"
-;;;;;;  (22409 22373 994677 133000))
+;;;;;;  (22465 44197 437473 47000))
 ;;; Generated autoloads from nim-mode/nimscript-mode.el
 
 (autoload 'nimscript-mode "nim-mode/nimscript-mode" "\
@@ -6576,6 +6533,97 @@ instead.  The default regex’s matching word is [Package].
 \(fn)" t nil)
 
 (add-to-list 'auto-mode-alist '("\\.nim\\(ble\\|s\\)\\'" . nimscript-mode-maybe))
+
+;;;***
+
+;;;### (autoloads nil "nlinum-relative/nlinum-relative" "nlinum-relative/nlinum-relative.el"
+;;;;;;  (22463 54351 991392 518000))
+;;; Generated autoloads from nlinum-relative/nlinum-relative.el
+
+(autoload 'nlinum-relative-on "nlinum-relative/nlinum-relative" "\
+Turn ON nlinum-relative.
+
+\(fn)" t nil)
+
+(autoload 'nlinum-relative-off "nlinum-relative/nlinum-relative" "\
+Turn OFF nlinum-relative.
+
+\(fn)" t nil)
+
+(autoload 'nlinum-relative-toggle "nlinum-relative/nlinum-relative" "\
+Toggle between linum-relative and linum.
+
+\(fn)" t nil)
+
+(autoload 'nlinum-relative-mode "nlinum-relative/nlinum-relative" "\
+Display relative line numbers for current buffer.
+
+\(fn &optional ARG)" t nil)
+
+(defvar global-nlinum-relative-mode nil "\
+Non-nil if Global Nlinum-Relative mode is enabled.
+See the `global-nlinum-relative-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `global-nlinum-relative-mode'.")
+
+(custom-autoload 'global-nlinum-relative-mode "nlinum-relative/nlinum-relative" nil)
+
+(autoload 'global-nlinum-relative-mode "nlinum-relative/nlinum-relative" "\
+Toggle Nlinum-Relative mode in all buffers.
+With prefix ARG, enable Global Nlinum-Relative mode if ARG is positive;
+otherwise, disable it.  If called from Lisp, enable the mode if
+ARG is omitted or nil.
+
+Nlinum-Relative mode is enabled in all buffers where
+`(lambda nil (unless (minibufferp) (nlinum-relative-mode)))' would do it.
+See `nlinum-relative-mode' for more information on Nlinum-Relative mode.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'nlinum-relative-setup-evil "nlinum-relative/nlinum-relative" "\
+Setup nlinum-relative-mode for evil
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "nlinum/nlinum" "nlinum/nlinum.el" (22463 54724
+;;;;;;  203216 169000))
+;;; Generated autoloads from nlinum/nlinum.el
+
+(autoload 'nlinum-mode "nlinum/nlinum" "\
+Toggle display of line numbers in the left margin (Linum mode).
+With a prefix argument ARG, enable Linum mode if ARG is positive,
+and disable it otherwise.  If called from Lisp, enable the mode
+if ARG is omitted or nil.
+
+Linum mode is a buffer-local minor mode.
+
+\(fn &optional ARG)" t nil)
+
+(defvar global-nlinum-mode nil "\
+Non-nil if Global Nlinum mode is enabled.
+See the `global-nlinum-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `global-nlinum-mode'.")
+
+(custom-autoload 'global-nlinum-mode "nlinum/nlinum" nil)
+
+(autoload 'global-nlinum-mode "nlinum/nlinum" "\
+Toggle Nlinum mode in all buffers.
+With prefix ARG, enable Global Nlinum mode if ARG is positive;
+otherwise, disable it.  If called from Lisp, enable the mode if
+ARG is omitted or nil.
+
+Nlinum mode is enabled in all buffers where
+`(lambda nil (unless (minibufferp) (nlinum-mode)))' would do it.
+See `nlinum-mode' for more information on Nlinum mode.
+
+\(fn &optional ARG)" t nil)
 
 ;;;***
 
@@ -9084,37 +9132,42 @@ Fill `auto-insert-alist'.
 ;;;***
 
 ;;;### (autoloads nil nil ("chumpy-windows/spaces.el" "chumpy-windows/splitter.el"
-;;;;;;  "epc/epcs.el" "epc/test-epc.el" "flycheck/flycheck-buttercup.el"
-;;;;;;  "flycheck/flycheck-ert.el" "haskell-mode/haskell-collapse.el"
-;;;;;;  "haskell-mode/haskell-complete-module.el" "haskell-mode/haskell-ghc-support.el"
-;;;;;;  "haskell-mode/haskell-lexeme.el" "haskell-mode/haskell-presentation-mode.el"
-;;;;;;  "haskell-mode/haskell-process.el" "haskell-mode/haskell-repl.el"
-;;;;;;  "haskell-mode/haskell-sandbox.el" "haskell-mode/haskell-string.el"
-;;;;;;  "haskell-mode/haskell-utils.el" "magit/lisp/magit-git.el"
-;;;;;;  "magit/lisp/magit-mode.el" "magit/lisp/magit-popup.el" "magit/lisp/magit-process.el"
-;;;;;;  "magit/lisp/magit-section.el" "magit/lisp/magit-utils.el"
-;;;;;;  "mew/mew-addrbook.el" "mew/mew-attach.el" "mew/mew-auth.el"
-;;;;;;  "mew/mew-blvs.el" "mew/mew-bq.el" "mew/mew-cache.el" "mew/mew-complete.el"
-;;;;;;  "mew/mew-config.el" "mew/mew-const.el" "mew/mew-darwin.el"
-;;;;;;  "mew/mew-decode.el" "mew/mew-demo.el" "mew/mew-draft.el"
-;;;;;;  "mew/mew-edit.el" "mew/mew-encode.el" "mew/mew-env.el" "mew/mew-exec.el"
-;;;;;;  "mew/mew-ext.el" "mew/mew-fib.el" "mew/mew-func.el" "mew/mew-gemacs.el"
-;;;;;;  "mew/mew-header.el" "mew/mew-highlight.el" "mew/mew-imap.el"
-;;;;;;  "mew/mew-imap2.el" "mew/mew-key.el" "mew/mew-lang-jp.el"
-;;;;;;  "mew/mew-lang-kr.el" "mew/mew-lang-latin.el" "mew/mew-local.el"
-;;;;;;  "mew/mew-mark.el" "mew/mew-message.el" "mew/mew-mime.el"
-;;;;;;  "mew/mew-minibuf.el" "mew/mew-mule.el" "mew/mew-mule3.el"
-;;;;;;  "mew/mew-net.el" "mew/mew-nntp.el" "mew/mew-nntp2.el" "mew/mew-passwd.el"
-;;;;;;  "mew/mew-pgp.el" "mew/mew-pick.el" "mew/mew-pop.el" "mew/mew-refile.el"
-;;;;;;  "mew/mew-scan.el" "mew/mew-search.el" "mew/mew-smime.el"
-;;;;;;  "mew/mew-smtp.el" "mew/mew-sort.el" "mew/mew-ssh.el" "mew/mew-ssl.el"
-;;;;;;  "mew/mew-summary.el" "mew/mew-summary2.el" "mew/mew-summary3.el"
-;;;;;;  "mew/mew-summary4.el" "mew/mew-syntax.el" "mew/mew-thread.el"
-;;;;;;  "mew/mew-unix.el" "mew/mew-vars.el" "mew/mew-vars2.el" "mew/mew-vars3.el"
-;;;;;;  "mew/mew-varsx.el" "mew/mew-virtual.el" "mew/mew-win32.el"
-;;;;;;  "mew/temp.el" "nim-mode/nim-fill.el" "nim-mode/nim-helper.el"
-;;;;;;  "nim-mode/nim-rx.el" "packed/packed.el") (22379 22202 886248
-;;;;;;  993000))
+;;;;;;  "el-get/el-get-autoloading.el" "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
+;;;;;;  "el-get/el-get-core.el" "el-get/el-get-custom.el" "el-get/el-get-dependencies.el"
+;;;;;;  "el-get/el-get-install.el" "el-get/el-get-methods.el" "el-get/el-get-notify.el"
+;;;;;;  "el-get/el-get-recipes.el" "el-get/el-get-status.el" "epc/epcs.el"
+;;;;;;  "epc/test-epc.el" "flycheck/flycheck-buttercup.el" "flycheck/flycheck-ert.el"
+;;;;;;  "haskell-mode/haskell-collapse.el" "haskell-mode/haskell-complete-module.el"
+;;;;;;  "haskell-mode/haskell-ghc-support.el" "haskell-mode/haskell-lexeme.el"
+;;;;;;  "haskell-mode/haskell-presentation-mode.el" "haskell-mode/haskell-process.el"
+;;;;;;  "haskell-mode/haskell-repl.el" "haskell-mode/haskell-sandbox.el"
+;;;;;;  "haskell-mode/haskell-string.el" "haskell-mode/haskell-utils.el"
+;;;;;;  "magit/lisp/magit-git.el" "magit/lisp/magit-mode.el" "magit/lisp/magit-popup.el"
+;;;;;;  "magit/lisp/magit-process.el" "magit/lisp/magit-section.el"
+;;;;;;  "magit/lisp/magit-utils.el" "mew/mew-addrbook.el" "mew/mew-attach.el"
+;;;;;;  "mew/mew-auth.el" "mew/mew-blvs.el" "mew/mew-bq.el" "mew/mew-cache.el"
+;;;;;;  "mew/mew-complete.el" "mew/mew-config.el" "mew/mew-const.el"
+;;;;;;  "mew/mew-darwin.el" "mew/mew-decode.el" "mew/mew-demo.el"
+;;;;;;  "mew/mew-draft.el" "mew/mew-edit.el" "mew/mew-encode.el"
+;;;;;;  "mew/mew-env.el" "mew/mew-exec.el" "mew/mew-ext.el" "mew/mew-fib.el"
+;;;;;;  "mew/mew-func.el" "mew/mew-gemacs.el" "mew/mew-header.el"
+;;;;;;  "mew/mew-highlight.el" "mew/mew-imap.el" "mew/mew-imap2.el"
+;;;;;;  "mew/mew-key.el" "mew/mew-lang-jp.el" "mew/mew-lang-kr.el"
+;;;;;;  "mew/mew-lang-latin.el" "mew/mew-local.el" "mew/mew-mark.el"
+;;;;;;  "mew/mew-message.el" "mew/mew-mime.el" "mew/mew-minibuf.el"
+;;;;;;  "mew/mew-mule.el" "mew/mew-mule3.el" "mew/mew-net.el" "mew/mew-nntp.el"
+;;;;;;  "mew/mew-nntp2.el" "mew/mew-passwd.el" "mew/mew-pgp.el" "mew/mew-pick.el"
+;;;;;;  "mew/mew-pop.el" "mew/mew-refile.el" "mew/mew-scan.el" "mew/mew-search.el"
+;;;;;;  "mew/mew-smime.el" "mew/mew-smtp.el" "mew/mew-sort.el" "mew/mew-ssh.el"
+;;;;;;  "mew/mew-ssl.el" "mew/mew-summary.el" "mew/mew-summary2.el"
+;;;;;;  "mew/mew-summary3.el" "mew/mew-summary4.el" "mew/mew-syntax.el"
+;;;;;;  "mew/mew-thread.el" "mew/mew-unix.el" "mew/mew-vars.el" "mew/mew-vars2.el"
+;;;;;;  "mew/mew-vars3.el" "mew/mew-varsx.el" "mew/mew-virtual.el"
+;;;;;;  "mew/mew-win32.el" "mew/temp.el" "nim-mode/nim-fill.el" "nim-mode/nim-helper.el"
+;;;;;;  "nim-mode/nim-rx.el" "nim-mode/nim-smie.el" "nim-mode/nim-syntax.el"
+;;;;;;  "nim-mode/nim-thing-at-point.el" "nim-mode/nim-util.el" "nim-mode/nim-vars.el"
+;;;;;;  "nlinum/nlinum-autoloads.el" "nlinum/nlinum-pkg.el" "packed/packed.el")
+;;;;;;  (22465 52074 115619 448000))
 
 ;;;***
 

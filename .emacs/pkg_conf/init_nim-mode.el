@@ -28,8 +28,8 @@
 ;;; Code:
 
 (require 'nim-mode)
-(require 'company-nim)
 
+(require 'el-get)
 ;; An Emacs package to write Emacs extensions by Nim
 (el-get 'sync 'nim-emacs-module)
 
@@ -39,8 +39,10 @@
 ;; (ghq: https://github.com/motemen/ghq)
 (unless nim-nimsuggest-path
   (setq nim-nimsuggest-path
-        (format "%s/github.com/yuutayamada/nimsuggest/nimsuggest"
+        (format "%s/github.com/yuutayamada/nimsuggest/nimsuggest_mr"
                 (shell-command-to-string "echo -n `ghq root`"))))
+
+(require 'nim-suggest)
 
 ;; Modify triple double quote to another form (for ‘pretty-symbol-mode’)
 ;; my memo:
@@ -54,12 +56,7 @@
   ;; Comment style. see also ‘comment-styles’ variable.
   (setq-local comment-style 'indent)
 
-  ;; Configuration for company-mode.
-  ;; Note that if you can’t activate auto-complete, please
-  ;; check the value of ‘company-backends’. It check from
-  ;; first element its variable.
-  (add-to-list 'company-backends
-               '(company-nim :with company-nim-builtin))
+  (nimsuggest-mode +1)
 
   ;; My key bindings for nim-mode and nimscript-mode.
   (define-key nim-mode-map (kbd "C-0") 'my-nim-print)

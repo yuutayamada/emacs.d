@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/yuutayamada/emacs.d.png?branch=master)](https://travis-ci.org/yuutayamada/emacs.d)
 
-Configuration for my .emacs
+Artificial handcrafted configuration for my Emacs
 
 ## Files or directories description
 - .emacs   : my emacs configuration directory

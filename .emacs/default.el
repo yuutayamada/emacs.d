@@ -143,6 +143,5 @@
    (el-get 'sync 'idle-require)
    (add-hook 'helm-after-initialize-hook 'idle-require-mode)))
 
-
 (provide 'default)
 ;;; default.el ends here

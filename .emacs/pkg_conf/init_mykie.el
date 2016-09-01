@@ -451,18 +451,18 @@
   [(backtab)]   my/toggle-opacity
   [(super tab)] pcomplete)
 
-(mykie:global-set-key [tab]
-  :default indent-for-tab-command
-  :markdown-header markdown-cycle
-  :evil-normal (mykie :prog ffinder-jump-to-begging
-                      :org-mode org-cycle))
+(defun Y/mykie-tab ()
+  "My tab function."
+  (mykie
+   :default indent-for-tab-command
+   :markdown-header markdown-cycle
+   :evil-normal (mykie :prog ffinder-jump-to-begging
+                       :org-mode org-cycle)))
 
-
-(mykie:global-set-key (kbd "A-i")
-  :default indent-for-tab-command
-  :markdown-header markdown-cycle
-  :evil-normal (mykie :prog ffinder-jump-to-begging
-                      :org-mode org-cycle))
+(global-set-key [tab] 'Y/mykie-tab)
+;; xterm-keybinder allow you to distinguish C-i and TAB.
+;; see also ‘xterm-keybinder-enable-C-i-C-m’
+(global-set-key (kbd "A-i") 'Y/mykie-tab)
 
 ;; RET key ;;
 (mykie:set-keys nil

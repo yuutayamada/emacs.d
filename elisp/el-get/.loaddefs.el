@@ -407,7 +407,7 @@ Also see the related `auto-compile-on-save-mode'.
 ;;;***
 
 ;;;### (autoloads nil "auto-complete/auto-complete" "auto-complete/auto-complete.el"
-;;;;;;  (22374 13467 139277 947000))
+;;;;;;  (22470 15925 516847 148000))
 ;;; Generated autoloads from auto-complete/auto-complete.el
 
 (autoload 'auto-complete "auto-complete/auto-complete" "\
@@ -445,7 +445,7 @@ See `auto-complete-mode' for more information on Auto-Complete mode.
 ;;;***
 
 ;;;### (autoloads nil "auto-complete/auto-complete-config" "auto-complete/auto-complete-config.el"
-;;;;;;  (22374 13467 139277 947000))
+;;;;;;  (22470 15925 516847 148000))
 ;;; Generated autoloads from auto-complete/auto-complete-config.el
 
 (autoload 'ac-config-default "auto-complete/auto-complete-config" "\
@@ -6433,24 +6433,8 @@ Setup for nim-mode.
 
 ;;;***
 
-;;;### (autoloads nil "nim-mode/company-nim" "nim-mode/company-nim.el"
-;;;;;;  (22419 62492 311391 434000))
-;;; Generated autoloads from nim-mode/company-nim.el
-
-(autoload 'company-nim "nim-mode/company-nim" "\
-`company-mode` backend for nimsuggest.
-
-\(fn COMMAND &optional ARG &rest IGNORED)" t nil)
-
-(autoload 'company-nim-builtin "nim-mode/company-nim" "\
-`company-mode` backend for Nim’s primitive functions.
-
-\(fn COMMAND &optional ARG &rest IGNORED)" t nil)
-
-;;;***
-
 ;;;### (autoloads nil "nim-mode/flycheck-nimsuggest" "nim-mode/flycheck-nimsuggest.el"
-;;;;;;  (22420 8579 729766 487000))
+;;;;;;  (22469 52259 75011 925000))
 ;;; Generated autoloads from nim-mode/flycheck-nimsuggest.el
 
 (autoload 'flycheck-nim-nimsuggest-start "nim-mode/flycheck-nimsuggest" "\
@@ -6460,7 +6444,10 @@ CALLBACK is the status callback passed by Flycheck.
 
 \(fn CHECKER CALLBACK)" nil nil)
 
-(eval-after-load "flycheck" '(progn (flycheck-define-generic-checker 'nim-nimsuggest "A syntax checker for Nim lang using nimsuggest.\n\nSee URL `'." :start 'flycheck-nim-nimsuggest-start :modes '(nim-mode nimscript-mode) :predicate (lambda nil (and (nim-suggest-available-p) nim-use-flycheck-nimsuggest))) (add-to-list 'flycheck-checkers 'nim-nimsuggest)))
+(autoload 'flycheck-nimsuggest-setup "nim-mode/flycheck-nimsuggest" "\
+Setup flycheck configuration for nimsuggest.
+
+\(fn)" nil nil)
 
 ;;;***
 
@@ -6476,7 +6463,7 @@ CALLBACK is the status callback passed by Flycheck.
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-eldoc" "nim-mode/nim-eldoc.el"
-;;;;;;  (22424 58035 837767 551000))
+;;;;;;  (22468 63054 318251 924000))
 ;;; Generated autoloads from nim-mode/nim-eldoc.el
 
 (autoload 'nim-eldoc-setup "nim-mode/nim-eldoc" "\
@@ -6489,7 +6476,7 @@ Setup eldoc configuration for nim-mode.
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-mode" "nim-mode/nim-mode.el"
-;;;;;;  (22465 43977 588963 189000))
+;;;;;;  (22469 61082 216404 412000))
 ;;; Generated autoloads from nim-mode/nim-mode.el
 
 (autoload 'nim-mode "nim-mode/nim-mode" "\
@@ -6502,7 +6489,7 @@ A major mode for the Nim programming language.
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-suggest" "nim-mode/nim-suggest.el"
-;;;;;;  (22465 59242 834171 682000))
+;;;;;;  (22469 58121 75504 891000))
 ;;; Generated autoloads from nim-mode/nim-suggest.el
 
 (autoload 'nim-suggest-available-p "nim-mode/nim-suggest" "\
@@ -6510,10 +6497,15 @@ Return non-nil if nimsuggest is available in current buffer.
 
 \(fn)" nil nil)
 
+(autoload 'nimsuggest-mode "nim-mode/nim-suggest" "\
+Minor mode for nimsuggest.
+
+\(fn &optional ARG)" t nil)
+
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nimscript-mode" "nim-mode/nimscript-mode.el"
-;;;;;;  (22465 44197 437473 47000))
+;;;;;;  (22469 55890 944194 431000))
 ;;; Generated autoloads from nim-mode/nimscript-mode.el
 
 (autoload 'nimscript-mode "nim-mode/nimscript-mode" "\
@@ -9131,8 +9123,9 @@ Fill `auto-insert-alist'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("chumpy-windows/spaces.el" "chumpy-windows/splitter.el"
-;;;;;;  "el-get/el-get-autoloading.el" "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
+;;;### (autoloads nil nil ("auto-complete/auto-complete-pkg.el" "chumpy-windows/spaces.el"
+;;;;;;  "chumpy-windows/splitter.el" "el-get/el-get-autoloading.el"
+;;;;;;  "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
 ;;;;;;  "el-get/el-get-core.el" "el-get/el-get-custom.el" "el-get/el-get-dependencies.el"
 ;;;;;;  "el-get/el-get-install.el" "el-get/el-get-methods.el" "el-get/el-get-notify.el"
 ;;;;;;  "el-get/el-get-recipes.el" "el-get/el-get-status.el" "epc/epcs.el"
@@ -9163,11 +9156,12 @@ Fill `auto-insert-alist'.
 ;;;;;;  "mew/mew-summary3.el" "mew/mew-summary4.el" "mew/mew-syntax.el"
 ;;;;;;  "mew/mew-thread.el" "mew/mew-unix.el" "mew/mew-vars.el" "mew/mew-vars2.el"
 ;;;;;;  "mew/mew-vars3.el" "mew/mew-varsx.el" "mew/mew-virtual.el"
-;;;;;;  "mew/mew-win32.el" "mew/temp.el" "nim-mode/nim-fill.el" "nim-mode/nim-helper.el"
-;;;;;;  "nim-mode/nim-rx.el" "nim-mode/nim-smie.el" "nim-mode/nim-syntax.el"
-;;;;;;  "nim-mode/nim-thing-at-point.el" "nim-mode/nim-util.el" "nim-mode/nim-vars.el"
-;;;;;;  "nlinum/nlinum-autoloads.el" "nlinum/nlinum-pkg.el" "packed/packed.el")
-;;;;;;  (22465 52074 115619 448000))
+;;;;;;  "mew/mew-win32.el" "mew/temp.el" "nim-mode/company-nim.el"
+;;;;;;  "nim-mode/nim-fill.el" "nim-mode/nim-helper.el" "nim-mode/nim-rx.el"
+;;;;;;  "nim-mode/nim-smie.el" "nim-mode/nim-syntax.el" "nim-mode/nim-thing-at-point.el"
+;;;;;;  "nim-mode/nim-util.el" "nim-mode/nim-vars.el" "nlinum/nlinum-autoloads.el"
+;;;;;;  "nlinum/nlinum-pkg.el" "packed/packed.el") (22465 52074 115619
+;;;;;;  448000))
 
 ;;;***
 

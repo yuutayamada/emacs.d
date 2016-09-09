@@ -6,14 +6,14 @@
 ;;;### (autoloads nil "../default" "../default.el" (0 0 0 0))
 ;;; Generated autoloads from ../default.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '("el-get-is-lazy")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '("tty-setup-once" "el-get-is-lazy")))
 
 ;;;***
 
 ;;;### (autoloads nil "Y-autoload" "Y-autoload.el" (0 0 0 0))
 ;;; Generated autoloads from Y-autoload.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-autoload" '(#("Y/autoload-files" 0 16 (face font-lock-variable-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-autoload" '("Y/autoload-files")))
 
 ;;;***
 
@@ -164,7 +164,14 @@ Replace last sexp.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '(#("test" 0 4 (fontified nil)) #("my/" 0 3 (fontified nil)) #("Y/" 0 2 (fontified t face font-lock-variable-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified t)))))
+(autoload 'fish "Y-function" "\
+Dedicated function for fish shell to avoid misconfiguration.
+
+In fact, ‘shell’ command with fish shell didn't work properly.
+
+\(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '(#("test" 0 4 (face font-lock-function-name-face fontified nil)) #("my/" 0 3 (fontified nil)) #("Y/" 0 2 (fontified nil face font-lock-variable-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 

@@ -13,4 +13,11 @@
 (define-key company-active-map (kbd "TAB") 'company-complete-selection)
 (define-key company-active-map "\C-h" nil)
 
-;;; init-company-mode.el ends here
+(provide 'init_company)
+
+;; Local Variables:
+;; coding: utf-8
+;; mode: emacs-lisp
+;; End:
+
+;;; init_company.el ends here

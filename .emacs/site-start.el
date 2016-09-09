@@ -57,7 +57,6 @@
   (require 'Y-hooks)
   (require 'Y-premitives)
   (require 'Y-util)
-  ;; don’t load Y-paths here; recentf’s configuration is changed
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Start up configuration

@@ -133,7 +133,7 @@
                                  (flyspell-mode t))))
 
    ;; Major-modes
-   (el-get 'sync '(org-mode nim-mode lua-mode web-mode))
+   (el-get 'sync '(org-mode nim-mode lua-mode markdown-mode))
 
    ;; Convenient & key binds driven
    (el-get 'sync '(magit multiple-cursors avy helm-c-yasnippet yasnippet

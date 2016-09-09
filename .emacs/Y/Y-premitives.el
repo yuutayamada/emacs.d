@@ -1,5 +1,9 @@
+;;; Y-premitives.el --- -*- lexical-binding: t; -*-
+
+;;; Commentary:
 
 ;;; Code:
+
 ;; truncate line
 (setq-default truncate-lines t)
 
@@ -171,6 +175,8 @@
 ;; C-x V -> find variable definition
 (find-function-setup-keys)
 
+;; Bind C-h as backspace key:
+(require 'term/bobcat) ; may don’t need this if you use xterm-keybinder
 (global-set-key (kbd "C-h")   'delete-backward-char)
 (global-set-key (kbd "M-;")   'comment-dwim)
 (global-set-key (kbd "C-x b") 'ido-switch-buffer)

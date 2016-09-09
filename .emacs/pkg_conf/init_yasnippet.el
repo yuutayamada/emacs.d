@@ -4,9 +4,7 @@
 
 ;;; Code:
 
-(defconst yas-snippet-dirs `(,(concat user-emacs-directory "snippets")
-                             ,(concat el-get-dir "yasnippet/yasmate/snippets")
-                             ,(concat el-get-dir "yasnippet/snippets")))
+(require 'yasnippet)
 
 (setq yas-prompt-functions
       '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
@@ -15,9 +13,15 @@
 ;;   ‘yas--keybinding-beyond-yasnippet’ is fallback function
 
 ;; (mykie:set-keys yas-minor-mode-map "TAB" yas-expand)
+;; (define-key yas-minor-mode-map (kbd "C-S-TAB") 'yas-expand)
+(yas-global-mode)
 
-;; turn on yas global mode
-(run-with-idle-timer 2.0 nil 'yas-global-mode)
+;;;###autoload
+(defun Y/generic-yas (func)
+  "Call FUNC.
+Reduce loading time using autoload cookie."
+  (interactive)
+  (call-interactively func))
 
 (provide 'init_yasnippet)
 

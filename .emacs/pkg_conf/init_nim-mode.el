@@ -26,11 +26,10 @@
 ;; https://github.com/yuutayamada/emacs.d/blob/master/.emacs/builtin/init_prog-mode.el
 
 ;;; Code:
-
 (require 'nim-mode)
 
 (require 'el-get)
-;; An Emacs package to write Emacs extensions by Nim
+;; An Emacs package to write Emacs extensions by Nim (totally optional)
 (el-get 'sync 'nim-emacs-module)
 
 ;; This ‘nim-nimsuggest-path’ variable is automatically set the return
@@ -38,46 +37,17 @@
 ;; PATH, you don’t need this configuration.
 ;; (ghq: https://github.com/motemen/ghq)
 (unless nim-nimsuggest-path
-  (setq nim-nimsuggest-path
-        (format "%s/github.com/yuutayamada/nimsuggest/nimsuggest_mr"
-                (shell-command-to-string "echo -n `ghq root`"))))
+  (let ((sug "%s/github.com/yuutayamada/nimsuggest/nimsuggest"))
+    (setq nim-nimsuggest-path
+          (format sug (shell-command-to-string "echo -n `ghq root`")))))
 
 (require 'nim-suggest)
-
-;; Modify triple double quote to another form (for ‘pretty-symbol-mode’)
-;; my memo:
-;;   http://unicode.org/cldr/utility/confusables.jsp?a=%22&r=None
-;;   https://en.wikipedia.org/wiki/Quotation_mark
-;;   http://unicode-table.com/en/search/?q=quotation
-(setq nim-pretty-triple-double-quotes (cons ?„ ?”))
+(add-hook 'nim-mode-hook 'nimsuggest-mode)
 
 (defun Y/nim-mode-common-setup ()
   "My configuration for ‘nim-mode’ and ‘nimscript-mode’."
-  ;; Comment style. see also ‘comment-styles’ variable.
-  (setq-local comment-style 'indent)
-
-  (nimsuggest-mode +1)
-
   ;; My key bindings for nim-mode and nimscript-mode.
-  (define-key nim-mode-map (kbd "C-0") 'my-nim-print)
-  (define-key nim-mode-map (kbd "C-h") 'nim-electric-backspace)
-
-  ;; If you bind another function to TAB that
-  ;; ‘nim-indent-trigger-commands’ doesn’t include, you have to
-  ;;  add the function to ‘nim-indent-trigger-commands’ to use cycle
-  ;;  indent.
-  ;;
-  ;; For example:
-  ;;   (add-to-list 'nim-indent-trigger-commands 'your-function)
-  ;;
-  ;; Below configuration is workaround for my package
-  ;; https://github.com/yuutayamada/mykie-el
-  ;; Normally above ‘(add-to-list ...)’ is enough though.
-  (define-key nim-mode-map (kbd "TAB")
-    '(lambda ()
-       (interactive)
-       (setq this-command 'indent-for-tab-command)
-       (mykie:global-map:<tab>:key))))
+  (define-key nim-mode-map (kbd "C-0") 'my-nim-print))
 
 (add-hook 'nim-mode-hook 'Y/nim-mode-common-setup)
 

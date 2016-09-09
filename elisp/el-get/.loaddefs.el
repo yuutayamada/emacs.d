@@ -715,7 +715,7 @@ Company backend for C/C++ header files.
 ;;;***
 
 ;;;### (autoloads nil "company-flx/company-flx" "company-flx/company-flx.el"
-;;;;;;  (22378 3299 883495 623000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from company-flx/company-flx.el
 
 (defvar company-flx-mode nil "\
@@ -732,6 +732,8 @@ or call the function `company-flx-mode'.")
 company-flx minor mode
 
 \(fn &optional ARG)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "company-flx/company-flx" '("company-flx-")))
 
 ;;;***
 
@@ -1040,7 +1042,7 @@ shadow backends that come after it.  Recommended usages:
 ;;;***
 
 ;;;### (autoloads nil "contrast-color/contrast-color" "contrast-color/contrast-color.el"
-;;;;;;  (22406 62961 3932 912000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from contrast-color/contrast-color.el
 
 (autoload 'contrast-color "contrast-color/contrast-color" "\
@@ -1054,6 +1056,8 @@ The algorithm is used CIEDE2000. See also ‘color-cie-de2000’ function.
 Set list of COLORS to ‘contrast-color-candidates’.
 
 \(fn COLORS)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "contrast-color/contrast-color" '("contrast-color-")))
 
 ;;;***
 
@@ -1440,6 +1444,32 @@ Aggressive setup for `fcitx'.
 
 ;;;***
 
+;;;### (autoloads nil "flx/flx" "flx/flx.el" (0 0 0 0))
+;;; Generated autoloads from flx/flx.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flx/flx" '("flx-")))
+
+;;;***
+
+;;;### (autoloads nil "flx/flx-ido" "flx/flx-ido.el" (0 0 0 0))
+;;; Generated autoloads from flx/flx-ido.el
+
+(defvar flx-ido-mode nil "\
+Non-nil if Flx-Ido mode is enabled.
+See the `flx-ido-mode' command
+for a description of this minor mode.")
+
+(custom-autoload 'flx-ido-mode "flx/flx-ido" nil)
+
+(autoload 'flx-ido-mode "flx/flx-ido" "\
+Toggle flx ido mode
+
+\(fn &optional ARG)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flx/flx-ido" '("flx-")))
+
+;;;***
+
 ;;;### (autoloads nil "flycheck-irony/flycheck-irony" "flycheck-irony/flycheck-irony.el"
 ;;;;;;  (22372 51388 778550 839000))
 ;;; Generated autoloads from flycheck-irony/flycheck-irony.el
@@ -1507,7 +1537,7 @@ Same as ‘error-tip-cycle-dwim’, but it jumps to inverse direction.
 ;;;***
 
 ;;;### (autoloads nil "flycheck-tip/flycheck-tip" "flycheck-tip/flycheck-tip.el"
-;;;;;;  (22376 40776 476739 24000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from flycheck-tip/flycheck-tip.el
 
 (autoload 'flycheck-tip-cycle "flycheck-tip/flycheck-tip" "\
@@ -1521,6 +1551,8 @@ Move to previous error if REVERSE is non-nil.
 Do `flycheck-tip-cycle by reverse order.
 
 \(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck-tip/flycheck-tip" '("flycheck-tip-")))
 
 ;;;***
 
@@ -1541,7 +1573,7 @@ Do `flycheck-tip-cycle by reverse order.
 ;;;***
 
 ;;;### (autoloads nil "flycheck/flycheck" "flycheck/flycheck.el"
-;;;;;;  (22422 60162 354090 739000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from flycheck/flycheck.el
 
 (autoload 'flycheck-manual "flycheck/flycheck" "\
@@ -1761,6 +1793,8 @@ Use this together with the `option', `option-list' and
 (function-put 'flycheck-def-option-var 'lisp-indent-function '3)
 
 (function-put 'flycheck-def-option-var 'doc-string-elt '4)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck/flycheck" '(#("flycheck-" 0 9 (fontified nil)) #("list-flycheck-errors" 0 20 (fontified nil)) #("help-flycheck-checker-d" 0 23 (fontified nil)) #("read-flycheck-" 0 14 (fontified nil)))))
 
 ;;;***
 
@@ -5991,7 +6025,7 @@ command which is about to be called are committed.
 ;;;***
 
 ;;;### (autoloads nil "markdown-mode/markdown-mode" "markdown-mode/markdown-mode.el"
-;;;;;;  (22376 60814 534809 291000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from markdown-mode/markdown-mode.el
 
 (autoload 'markdown-mode "markdown-mode/markdown-mode" "\
@@ -6007,6 +6041,8 @@ Major mode for editing Markdown files.
 Major mode for editing GitHub Flavored Markdown files.
 
 \(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "markdown-mode/markdown-mode" '(#("markdown" 0 8 (fontified nil)) #("gfm-" 0 4 (fontified nil)))))
 
 ;;;***
 
@@ -6434,7 +6470,7 @@ Setup for nim-mode.
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/flycheck-nimsuggest" "nim-mode/flycheck-nimsuggest.el"
-;;;;;;  (22469 52259 75011 925000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from nim-mode/flycheck-nimsuggest.el
 
 (autoload 'flycheck-nim-nimsuggest-start "nim-mode/flycheck-nimsuggest" "\
@@ -6448,6 +6484,10 @@ CALLBACK is the status callback passed by Flycheck.
 Setup flycheck configuration for nimsuggest.
 
 \(fn)" nil nil)
+
+(eval-after-load "flycheck" '(progn (flycheck-define-generic-checker 'nim-nimsuggest "A syntax checker for Nim lang using nimsuggest.\n\nSee URL `https://github.com/nim-lang/nimsuggest'." :start 'flycheck-nim-nimsuggest-start :modes '(nim-mode nimscript-mode) :predicate (lambda nil (and (bound-and-true-p nim-use-flycheck-nimsuggest) (nim-suggest-available-p)))) (add-to-list 'flycheck-checkers 'nim-nimsuggest)))
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/flycheck-nimsuggest" '("flycheck-nimsuggest-patterns")))
 
 ;;;***
 
@@ -6463,20 +6503,20 @@ Setup flycheck configuration for nimsuggest.
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-eldoc" "nim-mode/nim-eldoc.el"
-;;;;;;  (22468 63054 318251 924000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from nim-mode/nim-eldoc.el
 
-(autoload 'nim-eldoc-setup "nim-mode/nim-eldoc" "\
-Setup eldoc configuration for nim-mode.
+(autoload 'nim-eldoc-function "nim-mode/nim-eldoc" "\
+Return a doc string appropriate for the current context, or nil.
 
-\(fn)" nil nil)
+\(fn)" t nil)
 
-(add-hook 'nim-common-init-hook 'nim-eldoc-setup)
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-eldoc" '("nim-eldoc-")))
 
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-mode" "nim-mode/nim-mode.el"
-;;;;;;  (22469 61082 216404 412000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from nim-mode/nim-mode.el
 
 (autoload 'nim-mode "nim-mode/nim-mode" "\
@@ -6486,10 +6526,12 @@ A major mode for the Nim programming language.
 
 (add-to-list 'auto-mode-alist '("\\.nim\\'" . nim-mode))
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-mode" '("nim-")))
+
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nim-suggest" "nim-mode/nim-suggest.el"
-;;;;;;  (22469 58121 75504 891000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from nim-mode/nim-suggest.el
 
 (autoload 'nim-suggest-available-p "nim-mode/nim-suggest" "\
@@ -6501,6 +6543,8 @@ Return non-nil if nimsuggest is available in current buffer.
 Minor mode for nimsuggest.
 
 \(fn &optional ARG)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-suggest" '("nim")))
 
 ;;;***
 
@@ -9156,12 +9200,10 @@ Fill `auto-insert-alist'.
 ;;;;;;  "mew/mew-summary3.el" "mew/mew-summary4.el" "mew/mew-syntax.el"
 ;;;;;;  "mew/mew-thread.el" "mew/mew-unix.el" "mew/mew-vars.el" "mew/mew-vars2.el"
 ;;;;;;  "mew/mew-vars3.el" "mew/mew-varsx.el" "mew/mew-virtual.el"
-;;;;;;  "mew/mew-win32.el" "mew/temp.el" "nim-mode/company-nim.el"
-;;;;;;  "nim-mode/nim-fill.el" "nim-mode/nim-helper.el" "nim-mode/nim-rx.el"
-;;;;;;  "nim-mode/nim-smie.el" "nim-mode/nim-syntax.el" "nim-mode/nim-thing-at-point.el"
-;;;;;;  "nim-mode/nim-util.el" "nim-mode/nim-vars.el" "nlinum/nlinum-autoloads.el"
-;;;;;;  "nlinum/nlinum-pkg.el" "packed/packed.el") (22465 52074 115619
-;;;;;;  448000))
+;;;;;;  "mew/mew-win32.el" "mew/temp.el" "nim-mode/nim-fill.el" "nim-mode/nim-helper.el"
+;;;;;;  "nim-mode/nim-rx.el" "nim-mode/nim-smie.el" "nim-mode/nim-syntax.el"
+;;;;;;  "nim-mode/nim-thing-at-point.el" "nim-mode/nim-util.el" "nlinum/nlinum-autoloads.el"
+;;;;;;  "nlinum/nlinum-pkg.el" "packed/packed.el") (0 0 0 0))
 
 ;;;***
 

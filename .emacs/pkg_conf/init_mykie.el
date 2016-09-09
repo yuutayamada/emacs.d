@@ -173,11 +173,6 @@
   :C-u (mykie
         :C-u*2 (my/copy-current-file-name)
         t (forward-char 1))
-  "C-h"
-  :default delete-backward-char
-  :ido     ido-delete-backward-updir
-  :C-u     helm-descbinds
-  :C-u*2   switch-to-haskell
 
   "C-j"
   :default newline-and-indent
@@ -267,7 +262,7 @@
   "C-v"
   :default scroll-up-command
   :C-u     (mykie:vi-faker)
-  :C-u*2   (helm-yas-complete)
+  :C-u*2   (Y/generic-yas 'helm-yas-complete)
   :region  scroll-up-command
 
   "C-w"
@@ -277,7 +272,7 @@
 
   "C-y"
   :default yank
-  :C-u     (helm-yas-complete)
+  :C-u     (Y/generic-yas 'helm-yas-complete)
   :C-u*2   (mouse-yank-primary (point))
 
   "C-z" other-window-or-split
@@ -413,6 +408,7 @@
 (mykie:set-keys nil
   "M-;"  comment-dwim
   "M-]"  bm-previous
+  "M-/"  company-yasnippet
   "C-\]" esc-map
   "C-\\" toggle-input-method
   "C-*"  undo)

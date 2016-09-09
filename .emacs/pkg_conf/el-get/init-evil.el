@@ -62,7 +62,7 @@
                        evil-emacs-state-map)
          with avoid-keys = '("C-e" "C-s" "C-t" "C-w" "C-z"
                              "C-i" "C-o" "C-m"
-                             "C-^" "C-=" "M-n" "M-p")
+                             "C-^" "C-=" "M-n" "M-p" "M-.")
          for map in maps
          do (apply `((lambda () (mykie:set-keys ,map ,@avoid-keys)))))
 

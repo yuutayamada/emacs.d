@@ -1,10 +1,12 @@
 ;;; init_markdown-mode.el --- init file for markdown-mode
 ;;; Commentary:
 ;;; Code:
+
 (require 'markdown-mode)
 
-(setq markdown-css-paths
-      "~/local/vcs/github.com/sindresorhus/github-markdown-css/github-markdown.css")
+(let ((gfm-css "~/local/vcs/github.com/sindresorhus/github-markdown-css/github-markdown.css"))
+  (when (file-exists-p gfm-css)
+    (setq markdown-css-paths `(,gfm-css))))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist

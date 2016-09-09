@@ -72,8 +72,11 @@
                     (:name company-c-headers :description "Company mode backend for C/C++ header files." :type github :pkgname "randomphrase/company-c-headers" :depends
                            (company-mode)))
  (company-flx status "installed" recipe
-              (:name company-flx :description "Fuzzy matching for company." :type github :pkgname "PythonNut/company-flx" :depends
-                     (company-mode flx)))
+              (:name company-flx :features
+                     (company-flx)
+                     :after nil :depends
+                     (flx company-mode)
+                     :description "Fuzzy matching for company." :type github :pkgname "PythonNut/company-flx"))
  (company-irony status "installed" recipe
                 (:name company-irony :description "company-mode completion back-end for irony-mode" :type github :depends
                        (company-mode irony-mode cl-lib)

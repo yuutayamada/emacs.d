@@ -20,8 +20,6 @@
   "Setup my Emacs Lisp config.
 This function is called from site-start.el."
   (paredit-mode 1)
-  (when (fboundp 'electric-indent-local-mode)
-    (electric-quote-local-mode t))
   (when (and (stringp buffer-file-name)
              (string-match custom-theme-directory
                            (file-name-directory buffer-file-name)))

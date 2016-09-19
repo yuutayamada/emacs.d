@@ -405,10 +405,10 @@
 
 ;; NON ALPHABETICAL CHARACTER ;;
 ;; Do not bind "M-[" because it will take over F5-F10 keybind of terminal Emacs.
+;; M-/ -- `dabbrev-expand'
 (mykie:set-keys nil
   "M-;"  comment-dwim
   "M-]"  bm-previous
-  "M-/"  company-yasnippet
   "C-\]" esc-map
   "C-\\" toggle-input-method
   "C-*"  undo)
@@ -440,9 +440,10 @@
 ;; TABS ;;
 ;; memo: there is a difference between <tab> and TAB
 ;; http://stackoverflow.com/questions/1792326/how-do-i-bind-a-command-to-c-i-without-changing-tab
+;; 2016/9/18: removed M-TAB a.k.a C-M-i key's function because Emacs
+;; binds `symbol-complete', which use capf (`completion-at-point').
 (mykie:set-keys nil
   "S-TAB"       my/insert ; C-S-TAB
-  "M-TAB"       company-complete
   [(C-tab)]     fold-dwim-toggle
   [(backtab)]   my/toggle-opacity
   [(super tab)] pcomplete)

@@ -307,16 +307,8 @@ You can only use this function inside :build directive."
     (:name grammar
            :type svn
            :url "http://bcui-emacs.googlecode.com/svn/trunk/grammar")
-    ;; L
-    (:name lookup
-           :type github
-           ;; Don't forget! ndeb needs eblook command
-           :build ("./autogen.sh && ./configure && make")
-           :url "https://github.com/lookup2/lookup2.git")
 
-    (:name less-css-mode
-           ;; For flycheck’s less checker
-           :build `(,(Y/el-get-npm-install-maybe "less" "lessc")))
+    ;; H
     (:name helm-ag-r
            :type git
            :url "https://github.com/yuutayamada/helm-ag-r.git")
@@ -344,6 +336,25 @@ You can only use this function inside :build directive."
     (:name hangman
            :type git
            :url "https://github.com/yuutayamada/hangman.git")
+
+    ;; L
+    (:name lookup
+           :type github
+           ;; Don't forget! ndeb needs eblook command
+           :build ("./autogen.sh && ./configure && make")
+           :url "https://github.com/lookup2/lookup2.git")
+
+    (:name less-css-mode
+           ;; For flycheck’s less checker
+           :build `(,(Y/el-get-npm-install-maybe "less" "lessc")))
+
+    ;; N
+    (:name nim-mode
+           :type github
+           :pkgname "yuutayamada/nim-mode"
+           :depends (flycheck company-mode epc let-alist commenter))
+
+    ;; J
     (:name json-mode
            ;; Install jsonlint for flycheck
            :build `(,(Y/el-get-npm-install-maybe "jsonlint")))

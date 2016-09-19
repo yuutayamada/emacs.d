@@ -41,7 +41,6 @@
     (setq nim-nimsuggest-path
           (format sug (shell-command-to-string "echo -n `ghq root`")))))
 
-(require 'nim-suggest)
 (add-hook 'nim-mode-hook 'nimsuggest-mode)
 
 (defun Y/nim-mode-common-setup ()

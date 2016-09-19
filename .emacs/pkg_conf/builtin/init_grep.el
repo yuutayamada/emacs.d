@@ -5,6 +5,8 @@
 (require 'grep)
 (require 'thingatpt)
 
+(el-get 'sync 'wgrep)
+
 (defun Y/grep-jump-to-file ()
   "Sadly my ‘compile-goto-erorr’ doesn't work now...
 So, I made my own."

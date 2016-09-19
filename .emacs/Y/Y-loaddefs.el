@@ -6,7 +6,7 @@
 ;;;### (autoloads nil "../default" "../default.el" (0 0 0 0))
 ;;; Generated autoloads from ../default.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '("tty-setup-once" "el-get-is-lazy")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '(#("tty-setup-once" 0 14 (face font-lock-function-name-face fontified nil)) #("el-get-is-lazy" 0 14 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 

@@ -6,7 +6,7 @@
 ;;;### (autoloads nil "../default" "../default.el" (0 0 0 0))
 ;;; Generated autoloads from ../default.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '("tty-setup-once" "el-get-is-lazy")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '(#("tty-setup-once" 0 14 (face font-lock-function-name-face fontified nil)) #("el-get-is-lazy" 0 14 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 
@@ -326,10 +326,14 @@ Goto char with avy and move to ‘last-input-event’s char.
 
 ;;;***
 
-;;;### (autoloads nil "init_company" "init_company.el" (0 0 0 0))
-;;; Generated autoloads from init_company.el
+;;;### (autoloads nil "init_company-flx" "init_company-flx.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from init_company-flx.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_company" '(#("company-flx-limit" 0 17 (face font-lock-variable-name-face fontified nil)))))
+(autoload 'Y/company-flx-setup "init_company-flx" "\
+
+
+\(fn)" nil nil)
 
 ;;;***
 
@@ -525,7 +529,7 @@ Setup irony-mode.
 ;;;### (autoloads nil "init_nim-mode" "init_nim-mode.el" (0 0 0 0))
 ;;; Generated autoloads from init_nim-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_nim-mode" '(#("my-nim-print" 0 12 (fontified nil face font-lock-function-name-face)) #("Y/nim-mode-common-setup" 0 15 (fontified nil face font-lock-function-name-face) 15 23 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_nim-mode" '("my-nim-print" "Y/nim-mode-common-setup")))
 
 ;;;***
 
@@ -682,6 +686,13 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 ;;;***
 
+;;;### (autoloads nil "init_web-mode" "init_web-mode.el" (0 0 0 0))
+;;; Generated autoloads from init_web-mode.el
+
+(add-to-list 'auto-mode-alist (cons (rx "." (or "html" "phtml" "tpl.php" "erb" "mustache" "djhtml" (and (or "a" "g" "j") "sp") (and "as" (or "c" "p") "x")) line-end) 'web-mode))
+
+;;;***
+
 ;;;### (autoloads nil "init_xterm-cursor-changer" "init_xterm-cursor-changer.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from init_xterm-cursor-changer.el
@@ -756,13 +767,13 @@ My convinience function for `org-mode'.
 ;;;;;;  "el-get/init-helm.el" "el-get/init-tabbar.el" "init_arduino-mode.el"
 ;;;;;;  "init_bm.el" "init_bpe.el" "init_c-eldoc.el" "init_calfw.el"
 ;;;;;;  "init_cider.el" "init_clojure-mode.el" "init_company-c-headers.el"
-;;;;;;  "init_eiji.el" "init_ger.el" "init_ggtags.el" "init_grammar.el"
-;;;;;;  "init_hangman.el" "init_haskell-emacs.el" "init_haskell-font-lock.el"
-;;;;;;  "init_helm-ag-r.el" "init_helm-ag.el" "init_helm-files.el"
-;;;;;;  "init_helm-github-issues.el" "init_helm-go.el" "init_helm-migemo.el"
-;;;;;;  "init_helm-rb.el" "init_highlight-indentation.el" "init_hl-line.el"
-;;;;;;  "init_info.el" "init_jade.el" "init_javadoc-lookup.el" "init_jedi.el"
-;;;;;;  "init_js-console.el" "init_js2-mode.el" "init_jstestmacs.el"
+;;;;;;  "init_company.el" "init_eiji.el" "init_ger.el" "init_ggtags.el"
+;;;;;;  "init_grammar.el" "init_hangman.el" "init_haskell-emacs.el"
+;;;;;;  "init_haskell-font-lock.el" "init_helm-ag-r.el" "init_helm-ag.el"
+;;;;;;  "init_helm-files.el" "init_helm-github-issues.el" "init_helm-go.el"
+;;;;;;  "init_helm-migemo.el" "init_helm-rb.el" "init_highlight-indentation.el"
+;;;;;;  "init_hl-line.el" "init_info.el" "init_jade.el" "init_javadoc-lookup.el"
+;;;;;;  "init_jedi.el" "init_js-console.el" "init_js2-mode.el" "init_jstestmacs.el"
 ;;;;;;  "init_keyboard-converter.el" "init_keychord.el" "init_logalimacs.el"
 ;;;;;;  "init_lua-mode.el" "init_masaw.el" "init_migemo.el" "init_mmm-mode.el"
 ;;;;;;  "init_moz.el" "init_mozc.el" "init_multiple-cursors.el" "init_newsticker.el"
@@ -770,10 +781,9 @@ My convinience function for `org-mode'.
 ;;;;;;  "init_org-trello.el" "init_pangu-spacing.el" "init_paredit.el"
 ;;;;;;  "init_popwin.el" "init_powerline.el" "init_python.el" "init_sbtp.el"
 ;;;;;;  "init_scala-mode.el" "init_skk-b.el" "init_smartparens.el"
-;;;;;;  "init_sql.el" "init_undo-tree.el" "init_web-mode.el" "init_wgrep.el"
-;;;;;;  "init_winner.el" "init_xmp.el" "init_yaml-mode.el" "init_yatemplate.el"
-;;;;;;  "init_yim.el" "obsolete/init_actionscript-mode.el") (0 0
-;;;;;;  0 0))
+;;;;;;  "init_sql.el" "init_undo-tree.el" "init_wgrep.el" "init_winner.el"
+;;;;;;  "init_xmp.el" "init_yaml-mode.el" "init_yatemplate.el" "init_yim.el"
+;;;;;;  "obsolete/init_actionscript-mode.el") (0 0 0 0))
 
 ;;;***
 

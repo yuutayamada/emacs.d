@@ -93,12 +93,7 @@
         (lambda ()
           (funcall (if (display-graphic-p)
                        (cdr Y/original-cut-and-paste)
-                     (lambda ()
-                       ;; After I changed xmodmap, I got strange error:
-                       ;; "xmodmap: please release the following keys within 2 seconds:..."
-                       ;; I'm not sure about the true reason, but the
-                       ;; ‘eshell-command-result’ was the work around.
-                       (eshell-command-result "xsel -b -o"))))))
+                     (lambda () (shell-command-to-string "sh -c 'xsel -b -o'"))))))
 
   (setq interprogram-cut-function
         (lambda (text &optional _rest)

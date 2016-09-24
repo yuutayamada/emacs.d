@@ -666,6 +666,50 @@ current directory.
 
 ;;;***
 
+;;;### (autoloads nil "camcorder/camcorder" "camcorder/camcorder.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from camcorder/camcorder.el
+
+(let ((loads (get 'camcorder 'custom-loads))) (if (member '"camcorder/camcorder" loads) nil (put 'camcorder 'custom-loads (cons '"camcorder/camcorder" loads))))
+
+(defconst camcorder-version "0.1" "\
+Version of the camcorder package.")
+
+(autoload 'camcorder-version "camcorder/camcorder" "\
+Version of the camcorder package.
+
+\(fn)" t nil)
+
+(autoload 'camcorder-record "camcorder/camcorder" "\
+Open a new Emacs frame and start recording.
+You can customize the size and properties of this frame with
+`camcorder-frame-parameters'.
+
+\(fn)" t nil)
+
+(autoload 'camcorder-start "camcorder/camcorder" nil nil nil)
+
+(defvar camcorder-mode nil "\
+Non-nil if Camcorder mode is enabled.
+See the `camcorder-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `camcorder-mode'.")
+
+(custom-autoload 'camcorder-mode "camcorder/camcorder" nil)
+
+(autoload 'camcorder-mode "camcorder/camcorder" "\
+Toggle Camcorder mode on or off.
+With a prefix argument ARG, enable Camcorder mode if ARG is
+positive, and disable it otherwise.  If called from Lisp, enable
+the mode if ARG is omitted or nil, and toggle it if ARG is `toggle'.
+\\{camcorder-mode-map}
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
 ;;;### (autoloads nil "chumpy-windows/window-jump" "chumpy-windows/window-jump.el"
 ;;;;;;  (22379 2406 955851 116000))
 ;;; Generated autoloads from chumpy-windows/window-jump.el
@@ -945,13 +989,15 @@ File paths with spaces are only supported inside strings.
 ;;;***
 
 ;;;### (autoloads nil "company-mode/company-keywords" "company-mode/company-keywords.el"
-;;;;;;  (22376 63959 617909 412000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from company-mode/company-keywords.el
 
 (autoload 'company-keywords "company-mode/company-keywords" "\
 `company-mode' backend for programming language keywords.
 
 \(fn COMMAND &optional ARG &rest IGNORED)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "company-mode/company-keywords" '("company-keywords-")))
 
 ;;;***
 
@@ -6436,6 +6482,92 @@ A mode for creating a rectangular region to edit
 
 ;;;***
 
+;;;### (autoloads nil "names/names" "names/names.el" (0 0 0 0))
+;;; Generated autoloads from names/names.el
+
+(defvar names--inside-make-autoload nil "\
+Used in `make-autoload' to indicate we're making autoloads.")
+
+(autoload 'define-namespace "names/names" "\
+Inside the namespace NAME, execute BODY.
+NAME can be any symbol (not quoted), but it's highly recommended
+to use some form of separator (such as :, /, or -). For a
+complete description of this macro, please visit the frontpage
+with \\[names-view-manual].
+
+In summary, this macro has two main effects:
+
+1. Any definitions inside BODY will have NAME prepended to the
+symbol given. Ex:
+
+    (define-namespace foo-
+    (defvar bar 1 \"docs\")
+    )
+
+expands to
+
+    (defvar foo-bar 1 \"docs\")
+
+
+2. Any function calls and variable names get NAME prepended to
+them if such a variable or function exists. Ex:
+
+    (define-namespace foo:
+    (defun message (x y) nil)
+    (message \"%s\" my-var)
+    )
+
+expands to
+
+    (defun foo:message (x y) nil)
+    (foo:message \"%s\" my-var)
+
+Note how `message' is expanded to `foo:message' in the second
+form, because that function exists. Meanwhile, `bar' is left
+untouched because `foo:bar' is not a known variable name.
+
+===============================
+
+AUTOLOAD
+
+In order for `define-namespace' to work with \";;;###autoload\"
+comments must replace all instances of \";;;###autoload\" inside
+your `define-namespace' with `:autoload'.
+Afterwards, add an \";;;###autoload\" comment just above your
+`define-namespace'.
+
+===============================
+
+KEYWORDS
+
+Immediately after NAME you may add keywords which customize the
+behaviour of `define-namespace'. For a list of possible keywords
+and a description of their effects, see the variable
+`names--keyword-list'.
+
+\(fn NAME [KEYWORD ...] BODY)" nil t)
+
+(function-put 'define-namespace 'lisp-indent-function '(lambda (&rest x) 0))
+
+(eval-after-load 'find-func '(defadvice find-function-search-for-symbol (around names-around-find-function-search-for-symbol-advice (symbol type library) activate) "Make sure `find-function-search-for-symbol' understands namespaces." ad-do-it (ignore-errors (unless (cdr ad-return-value) (with-current-buffer (car ad-return-value) (search-forward-regexp "^(define-namespace\\_>") (skip-chars-forward "\n[:blank:]") (let* ((names--regexp (concat "\\`" (regexp-quote (symbol-name (read (current-buffer)))))) (short-symbol (let ((name (symbol-name symbol))) (when (string-match names--regexp name) (intern (replace-match "" nil nil name)))))) (when short-symbol (ad-set-arg 0 short-symbol) ad-do-it)))))))
+
+(defadvice make-autoload (around names-before-make-autoload-advice (form file &optional expansion) activate) "\
+Make sure `make-autoload' understands `define-namespace'.
+Use the `names--inside-make-autoload' variable to indicate to
+`define-namespace' that we're generating autoloads." (require (quote names)) (if (null (eq (car-safe form) (quote define-namespace))) ad-do-it (setq names--inside-make-autoload t) (setq form (macroexpand form)) (setq names--inside-make-autoload nil) (if (version< emacs-version "24.3") (setq ad-return-value (cons (quote progn) (mapcar (lambda (x) (names--make-autoload-compat x file)) (cdr form)))) (ad-set-arg 2 (quote expansion)) (ad-set-arg 0 form) ad-do-it)))
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "names/names" '("names-")))
+
+;;;***
+
+;;;### (autoloads nil "names/names-dev" "names/names-dev.el" (0 0
+;;;;;;  0 0))
+;;; Generated autoloads from names/names-dev.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "names/names-dev" '("names-" "find-function-read")))
+
+;;;***
+
 ;;;### (autoloads nil "nim-emacs-module/nim-emacs-module" "nim-emacs-module/nim-emacs-module.el"
 ;;;;;;  (22399 12521 345293 770000))
 ;;; Generated autoloads from nim-emacs-module/nim-emacs-module.el
@@ -6491,14 +6623,44 @@ Setup flycheck configuration for nimsuggest.
 
 ;;;***
 
+;;;### (autoloads nil "nim-mode/nim-capf" "nim-mode/nim-capf.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from nim-mode/nim-capf.el
+
+(autoload 'nim-capf-nimsuggest-completion-at-point "nim-mode/nim-capf" "\
+Complete the symbol at point using nimsuggest.
+
+\(fn)" nil nil)
+
+(autoload 'nim-builtin-completion-at-point "nim-mode/nim-capf" "\
+Complete the symbol at point for .nim files.
+
+\(fn)" nil nil)
+
+(autoload 'nimscript-builtin-completion-at-point "nim-mode/nim-capf" "\
+Complete the symbol at point for nimscript files.
+
+\(fn)" nil nil)
+
+(autoload 'nim-capf-setup "nim-mode/nim-capf" "\
+Setup.
+
+\(fn)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-capf" '(#("nim-capf-" 0 9 (face font-lock-function-name-face fontified nil)))))
+
+;;;***
+
 ;;;### (autoloads nil "nim-mode/nim-compile" "nim-mode/nim-compile.el"
-;;;;;;  (22420 232 828198 892000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from nim-mode/nim-compile.el
 
 (autoload 'nim-compile "nim-mode/nim-compile" "\
 
 
 \(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-compile" '("nim-")))
 
 ;;;***
 
@@ -6512,6 +6674,22 @@ Return a doc string appropriate for the current context, or nil.
 \(fn)" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-eldoc" '("nim-eldoc-")))
+
+;;;***
+
+;;;### (autoloads nil "nim-mode/nim-fill" "nim-mode/nim-fill.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from nim-mode/nim-fill.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-fill" '("nim-fill-")))
+
+;;;***
+
+;;;### (autoloads nil "nim-mode/nim-helper" "nim-mode/nim-helper.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from nim-mode/nim-helper.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-helper" '("nim-")))
 
 ;;;***
 
@@ -6530,6 +6708,14 @@ A major mode for the Nim programming language.
 
 ;;;***
 
+;;;### (autoloads nil "nim-mode/nim-smie" "nim-mode/nim-smie.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from nim-mode/nim-smie.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-smie" '("nim-")))
+
+;;;***
+
 ;;;### (autoloads nil "nim-mode/nim-suggest" "nim-mode/nim-suggest.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from nim-mode/nim-suggest.el
@@ -6544,12 +6730,44 @@ Minor mode for nimsuggest.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-suggest" '("nim")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-suggest" '(#("nim" 0 3 (face font-lock-function-name-face fontified nil)))))
+
+;;;***
+
+;;;### (autoloads nil "nim-mode/nim-syntax" "nim-mode/nim-syntax.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from nim-mode/nim-syntax.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-syntax" '("nim")))
+
+;;;***
+
+;;;### (autoloads nil "nim-mode/nim-thing-at-point" "nim-mode/nim-thing-at-point.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from nim-mode/nim-thing-at-point.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-thing-at-point" '("nim-")))
+
+;;;***
+
+;;;### (autoloads nil "nim-mode/nim-util" "nim-mode/nim-util.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from nim-mode/nim-util.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-util" '("nim-")))
+
+;;;***
+
+;;;### (autoloads nil "nim-mode/nim-vars" "nim-mode/nim-vars.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from nim-mode/nim-vars.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-vars" '("nim")))
 
 ;;;***
 
 ;;;### (autoloads nil "nim-mode/nimscript-mode" "nim-mode/nimscript-mode.el"
-;;;;;;  (22469 55890 944194 431000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from nim-mode/nimscript-mode.el
 
 (autoload 'nimscript-mode "nim-mode/nimscript-mode" "\
@@ -6569,6 +6787,8 @@ instead.  The default regex’s matching word is [Package].
 \(fn)" t nil)
 
 (add-to-list 'auto-mode-alist '("\\.nim\\(ble\\|s\\)\\'" . nimscript-mode-maybe))
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nimscript-mode" '("nimscirpt-mode-syntax-table")))
 
 ;;;***
 
@@ -8827,6 +9047,30 @@ Send mail using smtp server selected by the `smtpmail-multi-select' function.
 
 ;;;***
 
+;;;### (autoloads nil "suggestion-box/suggestion-box" "suggestion-box/suggestion-box.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from suggestion-box/suggestion-box.el
+
+(autoload 'suggestion-box-find-backend "suggestion-box/suggestion-box" "\
+
+
+\(fn)" nil nil)
+
+(autoload 'suggestion-box "suggestion-box/suggestion-box" "\
+Show convenience information on the cursor.
+The STRING can be put text property.  See also `suggestion-box-h-embed-normalize'.
+
+\(fn STRING)" nil nil)
+
+(autoload 'suggestion-box-put "suggestion-box/suggestion-box" "\
+
+
+\(fn TEXT &key BACKEND HANDLER DATA)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "suggestion-box/suggestion-box" '(#("suggestion-box-" 0 15 (face font-lock-function-name-face fontified nil)))))
+
+;;;***
+
 ;;;### (autoloads nil "tablist/tablist" "tablist/tablist.el" (22393
 ;;;;;;  51212 989924 118000))
 ;;; Generated autoloads from tablist/tablist.el
@@ -9200,9 +9444,7 @@ Fill `auto-insert-alist'.
 ;;;;;;  "mew/mew-summary3.el" "mew/mew-summary4.el" "mew/mew-syntax.el"
 ;;;;;;  "mew/mew-thread.el" "mew/mew-unix.el" "mew/mew-vars.el" "mew/mew-vars2.el"
 ;;;;;;  "mew/mew-vars3.el" "mew/mew-varsx.el" "mew/mew-virtual.el"
-;;;;;;  "mew/mew-win32.el" "mew/temp.el" "nim-mode/nim-fill.el" "nim-mode/nim-helper.el"
-;;;;;;  "nim-mode/nim-rx.el" "nim-mode/nim-smie.el" "nim-mode/nim-syntax.el"
-;;;;;;  "nim-mode/nim-thing-at-point.el" "nim-mode/nim-util.el" "nlinum/nlinum-autoloads.el"
+;;;;;;  "mew/mew-win32.el" "mew/temp.el" "nim-mode/nim-rx.el" "nlinum/nlinum-autoloads.el"
 ;;;;;;  "nlinum/nlinum-pkg.el" "packed/packed.el") (0 0 0 0))
 
 ;;;***

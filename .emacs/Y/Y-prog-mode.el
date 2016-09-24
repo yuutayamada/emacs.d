@@ -6,7 +6,8 @@
 (require 'cl-lib)
 (require 'Y-autoload)
 
-(el-get 'sync '(indent-guide rainbow-delimiters rainbow-mode paredit))
+(el-get 'sync '(indent-guide rainbow-delimiters rainbow-mode paredit
+                suggestion-box))
 
 (add-hook 'prog-mode-hook
           '(lambda ()

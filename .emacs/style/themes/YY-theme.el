@@ -19,6 +19,21 @@
  ;;;;;;;;;;;;;
  ;; default ;;
  ;;;;;;;;;;;;;
+ '(font-lock-doc-face               ((t :foreground "#7fc1ca")))
+ '(font-lock-string-face            ((t :foreground "#7DC1CA")))
+ '(font-lock-comment-face           ((t :foreground "#7a8c98")))
+ '(font-lock-comment-delimiter-face ((t :foreground "#617d89")))
+ '(font-lock-keyword-face           ((t :foreground "#9A93E1")))
+ '(font-lock-builtin-face           ((t :foreground "#DADA93")))
+ '(font-lock-preprocessor-face      ((t :foreground "#556873")))
+ '(font-lock-function-name-face     ((t :foreground "#e6eef3")))
+ '(font-lock-type-face              ((t :foreground "#A8CE93")))
+ '(font-lock-constant-face          ((t :foreground "#899ba6")))
+ '(font-lock-variable-name-face     ((t :foreground "#83afe5")))
+ '(font-lock-negation-char-face     ((t :foreground "#d18ec2")))
+ '(font-lock-warning-face           ((t :foreground "#df8c8c")))
+ '(region                           ((t :background "#1e272c")))
+
  ;; term
  '(term-color-magenta ((t :foreground "#ff00ff"
                           :background "#bb00bb")))

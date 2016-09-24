@@ -382,6 +382,11 @@ You can only use this function inside :build directive."
     (:name skk-b
            :type git
            :url "https://github.com/yuutayamada/skk-b-el.git")
+    (:name suggestion-box
+           :type github
+           :pkgname "yuutayamada/suggestion-box-el"
+           :depends (popup))
+
     (:name smtpmail-multi
            :type http
            :url "http://www.emacswiki.org/emacs-en/download/smtpmail-multi.el")

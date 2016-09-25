@@ -13,42 +13,86 @@
 ;; (add-hook 'tty-setup-hook
 ;;           '(lambda () (set-terminal-parameter nil 'background-mode 'dark)))
 
+
+;; http://www.trevordmiller.com/nova/
+;; https://github.com/trevordmiller/nova-vim/blob/master/colors/nova.vim
+(defconst nova-theme-colors
+    '((:value/state   . ("#7fb1ba" . "#00cdcd"))
+      (:identifier    . ("#83afe5"))
+      (:global        . ("#9A93E1"))
+      (:emphasis      . ("#d18ec2"))
+      (:action-needed . ("#df8c8c"))
+      (:special       . ("#F2c38F"))
+      (:statement     . ("#DADA93"))
+      (:type          . ("#A8CE93"))
+      (:deco1         . ("#1e272c" . "#1c1c1c"))
+      (:deco2         . ("#6A7d89" . "#808080"))
+      (:deco3         . ("#556873" . "#6c6c6c"))
+      (:default-back  . ("#3c4c55" . "#4d4d4d"))
+      (:trivial       . ("#899ba6" . "#949494"))
+      (:default-text  . ("#c5d4dd"))
+      (:deco-white    . ("#e6eef3"))))
+
+(defun nova (keyword)
+  (let ((res (alist-get keyword nova-theme-colors)))
+    (car res)))
+
+;; In terminal Emacs, always use transparent bg even though color
+;; theme specify the background color.
+(defconst window-system-default-frame-alist
+  `((nil . ((background-color . "unspecified-bg")
+            (foreground-color . ,(nova :default-text))))
+
+    ;; for check: (Y/set-bg-color "#4d4d4d" '(100 100))
+    (x   . ((background-color . ,(nova :default-back))
+            (foreground-color . ,(nova :default-text))))))
+
 (custom-theme-set-faces
  'YY
 
  ;;;;;;;;;;;;;
  ;; default ;;
  ;;;;;;;;;;;;;
- '(font-lock-doc-face               ((t :foreground "#7fc1ca")))
- '(font-lock-string-face            ((t :foreground "#7DC1CA")))
- '(font-lock-comment-face           ((t :foreground "#7a8c98")))
- '(font-lock-comment-delimiter-face ((t :foreground "#617d89")))
- '(font-lock-keyword-face           ((t :foreground "#9A93E1")))
- '(font-lock-builtin-face           ((t :foreground "#DADA93")))
- '(font-lock-preprocessor-face      ((t :foreground "#556873")))
- '(font-lock-function-name-face     ((t :foreground "#e6eef3")))
- '(font-lock-type-face              ((t :foreground "#A8CE93")))
- '(font-lock-constant-face          ((t :foreground "#899ba6")))
- '(font-lock-variable-name-face     ((t :foreground "#83afe5")))
- '(font-lock-negation-char-face     ((t :foreground "#d18ec2")))
- '(font-lock-warning-face           ((t :foreground "#df8c8c")))
- '(region                           ((t :background "#1e272c")))
+ `(font-lock-doc-face               ((t :foreground ,(nova :special))))
+ `(font-lock-string-face            ((t :foreground ,(nova :value/state))))
+ `(font-lock-comment-face           ((t :foreground ,(nova :deco2))))
+ `(font-lock-comment-delimiter-face ((t :foreground ,(nova :deco2))))
+ `(font-lock-keyword-face           ((t :foreground ,(nova :global))))
+ `(font-lock-builtin-face           ((t :foreground ,(nova :statement))))
+ `(font-lock-preprocessor-face      ((t :foreground ,(nova :trivial))))
+ `(font-lock-function-name-face     ((t :foreground ,(nova :identifier))))
+ `(font-lock-type-face              ((t :foreground ,(nova :type))))
+ `(font-lock-constant-face          ((t :foreground ,(nova :deco-white))))
+ `(font-lock-variable-name-face     ((t :foreground ,(nova :deco-white))))
+ `(region                           ((t :foreground ,(nova :deco1)
+                                        :background ,(nova :emphasis))))
+
+ `(font-lock-negation-char-face     ((t :foreground ,(nova :emphasis))))
+ `(font-lock-warning-face           ((t :foreground ,(nova :action-needed))))
+
+ `(hl-line ((t :foreground unspecified
+               :background ,(nova :deco3))))
 
  ;; term
- '(term-color-magenta ((t :foreground "#ff00ff"
-                          :background "#bb00bb")))
+ `(term-color-magenta ((t :foreground ,(nova :special)
+                          :background ,(nova :statement))))
+ `(term-color-blue ((t :foreground ,(nova :identifier)
+                       :background ,(nova :global))))
+ `(term-color-green ((t :foreground ,(nova :value/state)
+                        :background ,(nova :type))))
+ `(term-color-red ((t :foreground ,(nova :action-needed)
+                      :background ,(nova :emphasis))))
 
  ;; grep or etc.
  '(success ((t :foreground "#00ffd7")))
  ;; shadow
- '(shadow  ((t :foreground "#505050")))
+ `(shadow  ((t :foreground ,(nova :deco3))))
 
  ;;;;;;;;;;;;;;;;;;;;
  ;; PACKAGE COLORS ;;
  ;;;;;;;;;;;;;;;;;;;;
  ;; hl-line
- '(hl-line ((t :foreground unspecified
-               :background "#4e4e4e")))
+
 
  ;; eshell
  '(eshell-prompt ((t :foreground "yellow" :weight bold :slant italic)))

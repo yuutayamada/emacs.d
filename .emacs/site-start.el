@@ -85,15 +85,6 @@
   (load custom-file t t)
   (load-theme 'YY t)
 
-  ;; In terminal Emacs, always use transparent bg even though color
-  ;; theme specify the background color.
-  (defconst window-system-default-frame-alist
-    '((nil . ((background-color . "unspecified-bg")
-              (foreground-color . "#C5D4DD")))
-      ;; http://www.trevordmiller.com/nova/
-      (x   . ((background-color . "#3C4C55")
-              (foreground-color . "#C5D4DD")))))
-
   ) ; then load default.el
 
 (provide 'site-start)

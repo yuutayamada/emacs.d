@@ -115,22 +115,7 @@ file prefix by PREFIX."
         (cond
          ((>  152 (display-pixel-width)) 10) ; my note
          ((<= 152 (display-pixel-width)) 12)
-         (t 12)))
-       (when (bound-and-true-p nova-theme-colors)
-         (Y/terminal-nova-workaround nova-theme-colors))))))
-
-(defvar Y/done-flag nil)
-(defun Y/terminal-nova-workaround (theme-colors)
-  (unless Y/done-flag
-    (cl-loop with f = (lambda (nox-color)
-                        (cl-mapcar (lambda (x) (truncate (min 65535 (* 256 256 x))))
-                                   (color-name-to-rgb nox-color)))
-           for (_ . (c1 . c2)) in theme-colors
-           if c2 do
-           (let* ((idxc1 (tty-color-translate c1))
-                  (name1 (car (tty-color-by-index idxc1)))
-                  (idxc2 (tty-color-translate c2)))
-             (tty-color-define name1 idxc2 (funcall f c1) (selected-frame))))))
+         (t 12)))))))
 
 (defsubst Y/custom-theme-random-pick (themes)
   (let* ((themes

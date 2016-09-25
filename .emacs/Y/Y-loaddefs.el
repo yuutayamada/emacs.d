@@ -6,7 +6,7 @@
 ;;;### (autoloads nil "../default" "../default.el" (0 0 0 0))
 ;;; Generated autoloads from ../default.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '(#("tty-setup-once" 0 14 (face font-lock-function-name-face fontified nil)) #("el-get-is-lazy" 0 14 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '("tty-setup-once" "el-get-is-lazy")))
 
 ;;;***
 
@@ -133,7 +133,7 @@ My better newline and indent.
 
 \(fn)" t nil)
 
-(autoload 'my/reset-bg-color "Y-function" "\
+(autoload 'Y/set-bg-color "Y-function" "\
 
 
 \(fn &optional COLOR)" t nil)
@@ -171,7 +171,7 @@ In fact, ‘shell’ command with fish shell didn't work properly.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '(#("test" 0 4 (face font-lock-function-name-face fontified nil)) #("my/" 0 3 (fontified nil)) #("Y/" 0 2 (fontified nil face font-lock-variable-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '(#("test" 0 4 (fontified nil)) #("my/" 0 3 (fontified nil face font-lock-function-name-face)) #("Y/" 0 2 (fontified nil face font-lock-variable-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -209,7 +209,7 @@ Load PACKAGES.
 
 \(fn PACKAGES)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-util" '("Y/" "autoloader-autoload")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-util" '(#("Y/" 0 2 (fontified nil face font-lock-function-name-face)) #("autoloader-autoload" 0 19 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 

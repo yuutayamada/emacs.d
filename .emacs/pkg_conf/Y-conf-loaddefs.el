@@ -6,7 +6,7 @@
 ;;;### (autoloads nil "../default" "../default.el" (0 0 0 0))
 ;;; Generated autoloads from ../default.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '(#("tty-setup-once" 0 14 (face font-lock-function-name-face fontified nil)) #("el-get-is-lazy" 0 14 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '("tty-setup-once" "el-get-is-lazy")))
 
 ;;;***
 
@@ -195,6 +195,14 @@ Treat merging at point by smerge way.
 
 ;;;***
 
+;;;### (autoloads nil "builtin/init_term" "builtin/init_term.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from builtin/init_term.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_term" '("Y-term-mode-line-colors")))
+
+;;;***
+
 ;;;### (autoloads nil "builtin/init_verilog-mode" "builtin/init_verilog-mode.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from builtin/init_verilog-mode.el
@@ -331,7 +339,7 @@ Goto char with avy and move to ‘last-input-event’s char.
 ;;; Generated autoloads from init_company-flx.el
 
 (autoload 'Y/company-flx-setup "init_company-flx" "\
-
+Set up fuzzy matching.
 
 \(fn)" nil nil)
 

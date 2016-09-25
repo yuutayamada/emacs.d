@@ -25,7 +25,7 @@
        (prog1 'sync-completed
          (el-get
           'sync
-          '(windows names s f dash tabbar popwin wgrep auto-capitalize
+          '(windows s f dash tabbar popwin wgrep auto-capitalize
             evil seqcmd helm fcitx flycheck flycheck-tip)))))
 
   (when done

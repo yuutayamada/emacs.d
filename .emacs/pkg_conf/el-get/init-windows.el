@@ -52,7 +52,7 @@
                 (macroexpand
                  `(lingr-login ,@(Y/get-auth-info "lingr" :user :secret))))))
             (`"m" (delete-other-windows) (mew))
-            ;; (`"o" (find-file "~/Dropbox/MobileOrg/todo.org"))
+            (`"o" (Y/set-bg-color  "unspecified-bg"))
             ;; (`"t" (twit))
             ))))))
 

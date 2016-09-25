@@ -1,4 +1,4 @@
-;;; Y-function.el --- my convenience functions
+;;; Y-function.el --- my convenience functions -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013 by Yuta Yamada
 
@@ -101,37 +101,37 @@
   (cl-loop for dir in (or dirs `(,config-dir))
            do (byte-recompile-directory dir 0 t)))
 
-(defun my/set-opacity (selected)
-  "Set opacity.
-The SELECTED argument is opacity that window is selected."
-  (let ((not-selected 100))
-    (set-frame-parameter
-     (selected-frame) 'alpha `(,selected ,not-selected))))
+(defvar Y/opacity-data nil)
+(defun Y/toggle-opacity ()
+  "Toggle opacity."
+  (let* ((dg (display-graphic-p))
+         (directive (if dg 'alpha 'background-color))
+         (var  (frame-parameter (selected-frame) directive)))
+    (cl-case directive
+      (background-color
+       (cond
+        ((equal "unspecified-bg" var)
+         (Y/set-bg-color (if dg (car Y/opacity-data) (cdr Y/opacity-data))))
+        (t (setq Y/opacity-data (cons (car Y/opacity-data) var))
+           (Y/set-bg-color "unspecified-bg"))))
+      (alpha
+       (if-let ((alpha var))
+           (if (equal alpha '(70 70))
+               (Y/set-bg-color nil '(100 100))
+             (Y/set-bg-color nil '(70 70)))
+         (Y/set-bg-color nil '(70 70)))))))
 
-(defun my/toggle-opacity ()
-  "Toggle opacity configuration."
+;;;###autoload
+(defun Y/set-bg-color (color &optional alpha)
+  "Set bg COLOR with ALPHA if needed."
   (interactive)
-  (let* ((opacity (my/get-opacity))
-         (high 100)
-         (low 45))
-    (if (< 50 opacity)
-        (my/set-opacity low)
-      (my/set-opacity high))))
-
-(defun my/get-opacity ()
-  "Get current opacity."
-  (or (cadr (assoc 'alpha (frame-parameters)))
-      50))
-
-(defun my/increase-opacity ()
-  "Increase opacity."
-  (interactive)
-  (my/set-opacity (min (+ (my/get-opacity) 5) 100)))
-
-(defun my/decrease-opacity ()
-  "Decrease opacity."
-  (interactive)
-  (my/set-opacity (max (- (my/get-opacity) 5) 0)))
+  (if (display-graphic-p (selected-frame))
+      ;; GUI      unspecified-bg
+      (if (or alpha (equal "unspecified-bg" color))
+          (set-frame-parameter (selected-frame) 'alpha (or alpha '(70 0)))
+        (set-frame-parameter (selected-frame) 'background-color color))
+    ;; NOX
+    (set-frame-parameter (selected-frame) 'background-color color)))
 
 ;;;###autoload
 (defun Y/org-src-block-p ()
@@ -201,15 +201,14 @@ Example of my/keys
  (\"git@github.com\\|https://github.com\" . \"~/.ssh/rsa_github_key\")"
   (interactive)
   (when (bound-and-true-p my/keys)
-    (let* ((p (point))
-           (remote-url (shell-command-to-string "echo -n `git remote -v`")))
-      (cl-loop for (regex . remote) in my/keys
-               if (string-match regex remote-url)
-               do ((lambda (file)
-                     (unless (zerop (shell-command
-                                     (concat "ssh-add -l | grep " file)))
-                       (shell-command (concat "ssh-add " file))))
-                   (expand-file-name remote))))))
+    (cl-loop with remote-url = (shell-command-to-string "echo -n `git remote -v`")
+             with f = (lambda (file)
+                        (unless (zerop (shell-command
+                                        (concat "ssh-add -l | grep " file)))
+                          (shell-command (concat "ssh-add " file))))
+             for (regex . remote) in my/keys
+             if (string-match regex remote-url)
+             do (funcall f (expand-file-name remote)))))
 
 ;;;###autoload
 (defun Y/show-cheat-sheet ()
@@ -362,18 +361,18 @@ Example of my/keys
     (org-mode (and (fboundp 'org-return-indent) (org-return-indent)))
     (t (electric-newline-and-maybe-indent))))
 
-(defun my/region-extender (&optional input)
-  (interactive)
-  (set-mark
-   (save-excursion
-     (goto-char (mark))
-     (call-interactively
-      (pcase input
-        (`"n"  'next-line)
-        (`"p"  'previous-line)
-        (`"b"  'backward-char)
-        (input 'forward-char)))
-     (point))))
+;; (defun my/region-extender (&optional input)
+;;   (interactive)
+;;   (set-mark
+;;    (save-excursion
+;;      (goto-char (mark))
+;;      (call-interactively
+;;       (pcase input
+;;         (`"n"  'next-line)
+;;         (`"p"  'previous-line)
+;;         (`"b"  'backward-char)
+;;         (input 'forward-char)))
+;;      (point))))
 
 (defun my/lookup-android-docs ()
   "Lookup android document from local file."
@@ -431,13 +430,6 @@ Example of my/keys
                           'japanese-jisx0208
                           (cons font+size u)))))))
 
-;;;###autoload
-(defun my/reset-bg-color (&optional color)
-  (interactive)
-  (when (or (not (display-graphic-p (selected-frame)))
-            color)
-    (set-frame-parameter (selected-frame) 'background-color color)))
-
 (defun my/helm-characterers (&optional start end)
   "Show chractors."
   (interactive)
@@ -445,8 +437,8 @@ Example of my/keys
         `(((name . "helm-test-code")
            (candidates .
                        (lambda ()
-                         (cl-loop with start = (or start 0)
-                                  with end = (or end 10000)
+                         (cl-loop with start = (or ,start 0)
+                                  with end = (or ,end 10000)
                                   for i from start to end
                                   collect (format "    %i: %s    " i (char-to-string i)))))
            (action . (lambda (arg) (insert arg)))))
@@ -516,10 +508,10 @@ If ARG is non-nil, turn on visual mode stuff."
 
 In fact, ‘shell’ command with fish shell didn't work properly."
   (interactive)
-  (if-let ((fish (executable-find "fish")))
-      (let ((sane-term-shell-command fish))
-        (sane-term))
-    (error "There is no fish command")))
+  (let ((fish (executable-find "fish")))
+    (if-let ((sane-term-shell-command fish))
+        (sane-term)
+      (error "There is no fish command"))))
 
 ;; for scratch
 (defun test ()

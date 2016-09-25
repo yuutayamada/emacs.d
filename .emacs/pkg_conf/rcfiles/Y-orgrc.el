@@ -5,7 +5,7 @@
 ;;
 
 ;;; Code:
-
+(require 'seqcmd)
 (require 'org-loaddefs)
 (require 'org)
 
@@ -15,7 +15,8 @@
 (defconst org-html-postamble "")
 ;; Org-indent
 (defconst org-startup-indented t)
-(defconst org-indent-boundary-char 32) ; use space as boundary
+(defconst org-indent-indentation-per-level 1)
+(defconst org-indent-boundary-char ?\s) ; use space as boundary
 
 (setq org-file-apps
       '((auto-mode . emacs)
@@ -24,6 +25,7 @@
         ("\\.pdf\\'" . "evince %s"))
       org-support-shift-select t
       org-edit-src-content-indentation 0
+      org-use-speed-commands t
       org-startup-truncated t
       org-return-follows-link t
       org-hide-leading-stars t

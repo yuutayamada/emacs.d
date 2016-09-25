@@ -25,6 +25,9 @@
 (require 'tabbar)
 (tabbar-mode t)
 
+(setq tabbar-separator-value nil)
+(setq tabbar-separator (list 1)) ; this doesn't allow float number in nox
+
 (provide 'init-tabbar)
 
 ;; Local Variables:

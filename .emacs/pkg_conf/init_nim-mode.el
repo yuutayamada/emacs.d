@@ -30,7 +30,7 @@
 
 (require 'el-get)
 ;; An Emacs package to write Emacs extensions by Nim (totally optional)
-(el-get 'sync 'nim-emacs-module)
+(el-get 'sync 'nim-emacs-module 'suggestion-box 'suggestion-box-nim)
 
 ;; This ‘nim-nimsuggest-path’ variable is automatically set the return
 ;; value of ‘executable-find’, so if you include nimsuggest to your
@@ -42,6 +42,7 @@
           (format sug (shell-command-to-string "echo -n `ghq root`")))))
 
 (add-hook 'nim-mode-hook 'nimsuggest-mode)
+(add-to-list 'nim-capf-after-exit-function-hook 'suggestion-box-nim-by-type)
 
 (defun Y/nim-mode-common-setup ()
   "My configuration for ‘nim-mode’ and ‘nimscript-mode’."
@@ -50,6 +51,7 @@
 
 (add-hook 'nim-mode-hook 'Y/nim-mode-common-setup)
 
+(require 'nim-suggest)
 (defun my-nim-print ()
   "Just for debugging purpose for nimsuggest."
   (interactive)

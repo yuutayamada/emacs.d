@@ -5,14 +5,16 @@
 ;; Minor-mode to add space between Chinese and English characters.
 ;; https://github.com/coldnew/pangu-spacing
 ;; http://rubikitch.com/2015/02/04/pangu-spacing/
+
+(el-get 'sync 'pangu-spacing)
 (require 'pangu-spacing)
 
 (setq pangu-spacing-chinese-before-english-regexp
       (rx (group-n 1 (category japanese))
-          (group-n 2 (in "a-zA-Z0-9"))))
+          (group-n 2 (in "a-zA-Z"))))
 
 (setq pangu-spacing-chinese-after-english-regexp
-      (rx (group-n 1 (in "a-zA-Z0-9"))
+      (rx (group-n 1 (in "a-zA-Z"))
           (group-n 2 (category japanese))))
 
 ;; TODO : fix typo

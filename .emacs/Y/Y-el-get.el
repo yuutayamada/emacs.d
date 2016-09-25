@@ -288,6 +288,11 @@ You can only use this function inside :build directive."
            :type github
            :pkgname "yuutayamada/contrast-color-el")
 
+    ;; https://github.com/Malabarba/camcorder.el.git
+    (:name camcorder
+           :type github
+           :pkgname "yuutayamada/camcorder.el")
+
     ;; D
     (:name ddskk
            :autoloads "skk-autoloads"
@@ -386,7 +391,10 @@ You can only use this function inside :build directive."
            :type github
            :pkgname "yuutayamada/suggestion-box-el"
            :depends (popup))
-
+    (:name suggestion-box-nim
+           :type github
+           :pkgname "yuutayamada/suggestion-box-nim-el"
+           :depends (suggestion-box))
     (:name smtpmail-multi
            :type http
            :url "http://www.emacswiki.org/emacs-en/download/smtpmail-multi.el")

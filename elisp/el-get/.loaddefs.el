@@ -666,50 +666,6 @@ current directory.
 
 ;;;***
 
-;;;### (autoloads nil "camcorder/camcorder" "camcorder/camcorder.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from camcorder/camcorder.el
-
-(let ((loads (get 'camcorder 'custom-loads))) (if (member '"camcorder/camcorder" loads) nil (put 'camcorder 'custom-loads (cons '"camcorder/camcorder" loads))))
-
-(defconst camcorder-version "0.1" "\
-Version of the camcorder package.")
-
-(autoload 'camcorder-version "camcorder/camcorder" "\
-Version of the camcorder package.
-
-\(fn)" t nil)
-
-(autoload 'camcorder-record "camcorder/camcorder" "\
-Open a new Emacs frame and start recording.
-You can customize the size and properties of this frame with
-`camcorder-frame-parameters'.
-
-\(fn)" t nil)
-
-(autoload 'camcorder-start "camcorder/camcorder" nil nil nil)
-
-(defvar camcorder-mode nil "\
-Non-nil if Camcorder mode is enabled.
-See the `camcorder-mode' command
-for a description of this minor mode.
-Setting this variable directly does not take effect;
-either customize it (see the info node `Easy Customization')
-or call the function `camcorder-mode'.")
-
-(custom-autoload 'camcorder-mode "camcorder/camcorder" nil)
-
-(autoload 'camcorder-mode "camcorder/camcorder" "\
-Toggle Camcorder mode on or off.
-With a prefix argument ARG, enable Camcorder mode if ARG is
-positive, and disable it otherwise.  If called from Lisp, enable
-the mode if ARG is omitted or nil, and toggle it if ARG is `toggle'.
-\\{camcorder-mode-map}
-
-\(fn &optional ARG)" t nil)
-
-;;;***
-
 ;;;### (autoloads nil "chumpy-windows/window-jump" "chumpy-windows/window-jump.el"
 ;;;;;;  (22379 2406 955851 116000))
 ;;; Generated autoloads from chumpy-windows/window-jump.el
@@ -6482,92 +6438,6 @@ A mode for creating a rectangular region to edit
 
 ;;;***
 
-;;;### (autoloads nil "names/names" "names/names.el" (0 0 0 0))
-;;; Generated autoloads from names/names.el
-
-(defvar names--inside-make-autoload nil "\
-Used in `make-autoload' to indicate we're making autoloads.")
-
-(autoload 'define-namespace "names/names" "\
-Inside the namespace NAME, execute BODY.
-NAME can be any symbol (not quoted), but it's highly recommended
-to use some form of separator (such as :, /, or -). For a
-complete description of this macro, please visit the frontpage
-with \\[names-view-manual].
-
-In summary, this macro has two main effects:
-
-1. Any definitions inside BODY will have NAME prepended to the
-symbol given. Ex:
-
-    (define-namespace foo-
-    (defvar bar 1 \"docs\")
-    )
-
-expands to
-
-    (defvar foo-bar 1 \"docs\")
-
-
-2. Any function calls and variable names get NAME prepended to
-them if such a variable or function exists. Ex:
-
-    (define-namespace foo:
-    (defun message (x y) nil)
-    (message \"%s\" my-var)
-    )
-
-expands to
-
-    (defun foo:message (x y) nil)
-    (foo:message \"%s\" my-var)
-
-Note how `message' is expanded to `foo:message' in the second
-form, because that function exists. Meanwhile, `bar' is left
-untouched because `foo:bar' is not a known variable name.
-
-===============================
-
-AUTOLOAD
-
-In order for `define-namespace' to work with \";;;###autoload\"
-comments must replace all instances of \";;;###autoload\" inside
-your `define-namespace' with `:autoload'.
-Afterwards, add an \";;;###autoload\" comment just above your
-`define-namespace'.
-
-===============================
-
-KEYWORDS
-
-Immediately after NAME you may add keywords which customize the
-behaviour of `define-namespace'. For a list of possible keywords
-and a description of their effects, see the variable
-`names--keyword-list'.
-
-\(fn NAME [KEYWORD ...] BODY)" nil t)
-
-(function-put 'define-namespace 'lisp-indent-function '(lambda (&rest x) 0))
-
-(eval-after-load 'find-func '(defadvice find-function-search-for-symbol (around names-around-find-function-search-for-symbol-advice (symbol type library) activate) "Make sure `find-function-search-for-symbol' understands namespaces." ad-do-it (ignore-errors (unless (cdr ad-return-value) (with-current-buffer (car ad-return-value) (search-forward-regexp "^(define-namespace\\_>") (skip-chars-forward "\n[:blank:]") (let* ((names--regexp (concat "\\`" (regexp-quote (symbol-name (read (current-buffer)))))) (short-symbol (let ((name (symbol-name symbol))) (when (string-match names--regexp name) (intern (replace-match "" nil nil name)))))) (when short-symbol (ad-set-arg 0 short-symbol) ad-do-it)))))))
-
-(defadvice make-autoload (around names-before-make-autoload-advice (form file &optional expansion) activate) "\
-Make sure `make-autoload' understands `define-namespace'.
-Use the `names--inside-make-autoload' variable to indicate to
-`define-namespace' that we're generating autoloads." (require (quote names)) (if (null (eq (car-safe form) (quote define-namespace))) ad-do-it (setq names--inside-make-autoload t) (setq form (macroexpand form)) (setq names--inside-make-autoload nil) (if (version< emacs-version "24.3") (setq ad-return-value (cons (quote progn) (mapcar (lambda (x) (names--make-autoload-compat x file)) (cdr form)))) (ad-set-arg 2 (quote expansion)) (ad-set-arg 0 form) ad-do-it)))
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "names/names" '("names-")))
-
-;;;***
-
-;;;### (autoloads nil "names/names-dev" "names/names-dev.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from names/names-dev.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "names/names-dev" '("names-" "find-function-read")))
-
-;;;***
-
 ;;;### (autoloads nil "nim-emacs-module/nim-emacs-module" "nim-emacs-module/nim-emacs-module.el"
 ;;;;;;  (22399 12521 345293 770000))
 ;;; Generated autoloads from nim-emacs-module/nim-emacs-module.el
@@ -6647,7 +6517,7 @@ Setup.
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-capf" '(#("nim-capf-" 0 9 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-capf" '("nim-capf-")))
 
 ;;;***
 
@@ -6730,7 +6600,7 @@ Minor mode for nimsuggest.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-suggest" '(#("nim" 0 3 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-suggest" '("nim")))
 
 ;;;***
 
@@ -9047,27 +8917,41 @@ Send mail using smtp server selected by the `smtpmail-multi-select' function.
 
 ;;;***
 
+;;;### (autoloads nil "suggestion-box-nim/suggestion-box-nim" "suggestion-box-nim/suggestion-box-nim.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from suggestion-box-nim/suggestion-box-nim.el
+
+(autoload 'suggestion-box-nim-by-type "suggestion-box-nim/suggestion-box-nim" "\
+Make suggestion-box for STR.
+
+\(fn STR)" nil nil)
+
+;;;***
+
 ;;;### (autoloads nil "suggestion-box/suggestion-box" "suggestion-box/suggestion-box.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from suggestion-box/suggestion-box.el
 
 (autoload 'suggestion-box-find-backend "suggestion-box/suggestion-box" "\
-
+Find backend available backend.  See also `suggestion-box-backend-functions'.
 
 \(fn)" nil nil)
 
 (autoload 'suggestion-box "suggestion-box/suggestion-box" "\
 Show convenience information on the cursor.
-The STRING can be put text property.  See also `suggestion-box-h-embed-normalize'.
+The argument STRING can be string or text propertied string.
+See also `suggestion-box-h-embed-normalize' for more example.
 
 \(fn STRING)" nil nil)
 
 (autoload 'suggestion-box-put "suggestion-box/suggestion-box" "\
-
+Put text property to TEXT object.
+You can use :backend, :handler, and :data keywords to add property.
+See also `suggestion-box-h-embed-normalize' function for more example.
 
 \(fn TEXT &key BACKEND HANDLER DATA)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "suggestion-box/suggestion-box" '(#("suggestion-box-" 0 15 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "suggestion-box/suggestion-box" '(#("suggestion-box-" 0 15 (fontified nil)))))
 
 ;;;***
 
@@ -9408,44 +9292,6 @@ The directory containing file templates.")
 Fill `auto-insert-alist'.
 
 \(fn)" nil nil)
-
-;;;***
-
-;;;### (autoloads nil nil ("auto-complete/auto-complete-pkg.el" "chumpy-windows/spaces.el"
-;;;;;;  "chumpy-windows/splitter.el" "el-get/el-get-autoloading.el"
-;;;;;;  "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
-;;;;;;  "el-get/el-get-core.el" "el-get/el-get-custom.el" "el-get/el-get-dependencies.el"
-;;;;;;  "el-get/el-get-install.el" "el-get/el-get-methods.el" "el-get/el-get-notify.el"
-;;;;;;  "el-get/el-get-recipes.el" "el-get/el-get-status.el" "epc/epcs.el"
-;;;;;;  "epc/test-epc.el" "flycheck/flycheck-buttercup.el" "flycheck/flycheck-ert.el"
-;;;;;;  "haskell-mode/haskell-collapse.el" "haskell-mode/haskell-complete-module.el"
-;;;;;;  "haskell-mode/haskell-ghc-support.el" "haskell-mode/haskell-lexeme.el"
-;;;;;;  "haskell-mode/haskell-presentation-mode.el" "haskell-mode/haskell-process.el"
-;;;;;;  "haskell-mode/haskell-repl.el" "haskell-mode/haskell-sandbox.el"
-;;;;;;  "haskell-mode/haskell-string.el" "haskell-mode/haskell-utils.el"
-;;;;;;  "magit/lisp/magit-git.el" "magit/lisp/magit-mode.el" "magit/lisp/magit-popup.el"
-;;;;;;  "magit/lisp/magit-process.el" "magit/lisp/magit-section.el"
-;;;;;;  "magit/lisp/magit-utils.el" "mew/mew-addrbook.el" "mew/mew-attach.el"
-;;;;;;  "mew/mew-auth.el" "mew/mew-blvs.el" "mew/mew-bq.el" "mew/mew-cache.el"
-;;;;;;  "mew/mew-complete.el" "mew/mew-config.el" "mew/mew-const.el"
-;;;;;;  "mew/mew-darwin.el" "mew/mew-decode.el" "mew/mew-demo.el"
-;;;;;;  "mew/mew-draft.el" "mew/mew-edit.el" "mew/mew-encode.el"
-;;;;;;  "mew/mew-env.el" "mew/mew-exec.el" "mew/mew-ext.el" "mew/mew-fib.el"
-;;;;;;  "mew/mew-func.el" "mew/mew-gemacs.el" "mew/mew-header.el"
-;;;;;;  "mew/mew-highlight.el" "mew/mew-imap.el" "mew/mew-imap2.el"
-;;;;;;  "mew/mew-key.el" "mew/mew-lang-jp.el" "mew/mew-lang-kr.el"
-;;;;;;  "mew/mew-lang-latin.el" "mew/mew-local.el" "mew/mew-mark.el"
-;;;;;;  "mew/mew-message.el" "mew/mew-mime.el" "mew/mew-minibuf.el"
-;;;;;;  "mew/mew-mule.el" "mew/mew-mule3.el" "mew/mew-net.el" "mew/mew-nntp.el"
-;;;;;;  "mew/mew-nntp2.el" "mew/mew-passwd.el" "mew/mew-pgp.el" "mew/mew-pick.el"
-;;;;;;  "mew/mew-pop.el" "mew/mew-refile.el" "mew/mew-scan.el" "mew/mew-search.el"
-;;;;;;  "mew/mew-smime.el" "mew/mew-smtp.el" "mew/mew-sort.el" "mew/mew-ssh.el"
-;;;;;;  "mew/mew-ssl.el" "mew/mew-summary.el" "mew/mew-summary2.el"
-;;;;;;  "mew/mew-summary3.el" "mew/mew-summary4.el" "mew/mew-syntax.el"
-;;;;;;  "mew/mew-thread.el" "mew/mew-unix.el" "mew/mew-vars.el" "mew/mew-vars2.el"
-;;;;;;  "mew/mew-vars3.el" "mew/mew-varsx.el" "mew/mew-virtual.el"
-;;;;;;  "mew/mew-win32.el" "mew/temp.el" "nim-mode/nim-rx.el" "nlinum/nlinum-autoloads.el"
-;;;;;;  "nlinum/nlinum-pkg.el" "packed/packed.el") (0 0 0 0))
 
 ;;;***
 

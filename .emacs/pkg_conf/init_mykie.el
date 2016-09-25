@@ -228,6 +228,7 @@
   :default company-ispell
   :evil-normal ffinder-jump
   :C-u helm-apropos
+  :C-u*2 Y/toggle-opacity
 
   "C-p"
   :default    previous-line
@@ -395,7 +396,7 @@
   "S-<f7>"   point-redo
   "<f8>"     goto-last-change
   "S-<f8>"   goto-last-change-reverse
-  "<f9>"     my/toggle-opacity
+  "<f9>"     Y/toggle-opacity
   "<f10>"    my/festival-read-buffer
   "<f11>"    my/open-calendar
   "<f12>"    helm-skk-rules

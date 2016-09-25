@@ -1,7 +1,7 @@
 ;;; depend_main.el --- init file for depending on Emacs version or terminal
 
 ;;; Commentary:
-
+;;
 ;;; Code:
 
 (require 'cl-lib)
@@ -10,9 +10,10 @@
 ;; OS
 (cl-case system-type
   (gnu/linux
+   ;; Sep 27, 2016: comment out. Somehow I could use mozc fcitx without this.
+   ;; Do I really need this?
    ;; IME (fcitx)
-   (when (fboundp 'fcitx-aggressive-setup)
-     (require 'fcitx)
+   (when (and (fboundp 'fcitx-aggressive-setup) (require 'fcitx))
      (defconst fcitx-use-dbus t)
      (fcitx-aggressive-setup)))
   (cygwin

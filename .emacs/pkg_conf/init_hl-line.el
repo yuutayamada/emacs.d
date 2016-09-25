@@ -3,7 +3,8 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'hl-line+)
+(el-get-bundle 'hl-line+)
+
 (toggle-hl-line-when-idle t)
 
 (provide 'init_hl-line)

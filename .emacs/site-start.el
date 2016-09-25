@@ -83,7 +83,7 @@
   ;; Color Theme
   ;; (M-x ‘customize-themes’ makes your theme enable safe load)
   (load custom-file t t)
-  (load-theme 'YY t)
+  (load-theme 'jaqen t)
 
   ) ; then load default.el
 

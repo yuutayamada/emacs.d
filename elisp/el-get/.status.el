@@ -53,8 +53,7 @@
  (calfw-gcal status "installed" recipe
              (:name calfw-gcal :type git :url "https://github.com/myuhe/calfw-gcal.el.git"))
  (camcorder status "installed" recipe
-            (:name camcorder :website "https://github.com/Bruce-Connor/camcorder.el" :description "Tool for capturing screencasts directly from Emacs." :type github :pkgname "Bruce-Connor/camcorder.el" :depends
-                   (cl-lib names)))
+            (:name camcorder :type github :pkgname "yuutayamada/camcorder.el"))
  (chumpy-windows status "installed" recipe
                  (:name chumpy-windows :description "Emacs window management utilities: window-jump.el, spaces.el, splitter.el" :type github :pkgname "chumpage/chumpy-windows"))
  (cl-lib status "installed" recipe
@@ -410,8 +409,6 @@
 (:name multiple-cursors :description "An experiment in adding multiple cursors to emacs" :type github :pkgname "magnars/multiple-cursors.el"))
 (myhistory status "installed" recipe
 (:name myhistory :type git :url "https://github.com/yuutayamada/myhistory.git"))
-(names status "installed" recipe
-(:name names :description "A Namespace implementation for Emacs-Lisp" :website "https://github.com/Bruce-Connor/names" :type github :depends cl-lib :pkgname "Bruce-Connor/names"))
 (navi2ch status "installed" recipe
 (:name navi2ch :type git :url "https://github.com/naota/navi2ch.git" :build
 ("./configure && make")
@@ -587,6 +584,9 @@
 (suggestion-box status "installed" recipe
 (:name suggestion-box :type github :pkgname "yuutayamada/suggestion-box-el" :depends
 (popup)))
+(suggestion-box-nim status "installed" recipe
+(:name suggestion-box-nim :type github :pkgname "yuutayamada/suggestion-box-nim-el" :depends
+(suggestion-box)))
 (svg-mode-line-themes status "installed" recipe
 (:name svg-mode-line-themes :description "Awesome mode-line for emacs!" :type github :pkgname "sabof/svg-mode-line-themes" :depends xmlgen))
 (tabbar status "installed" recipe

@@ -312,9 +312,7 @@
   :region  (if buffer-read-only
                (helm-resume current-prefix-arg)
              (comment-dwim current-prefix-arg))
-  :C-u     (cl-case major-mode
-             (eshell-mode (delete-window))
-             (t (eshell)))
+  :C-u fish
   :default (helm-resume current-prefix-arg)
 
   "C-'"

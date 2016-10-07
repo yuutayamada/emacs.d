@@ -313,7 +313,7 @@
   :region  (if buffer-read-only
                (helm-resume current-prefix-arg)
              (comment-dwim current-prefix-arg))
-  :C-u fish
+  :C-u! sane-term ; fish shell
   :default (helm-resume current-prefix-arg)
 
   "C-'"

@@ -502,17 +502,6 @@ If ARG is non-nil, turn on visual mode stuff."
     (kill-sexp -1)
     (insert (format "%S" value))))
 
-;;;###autoload
-(defun fish ()
-  "Dedicated function for fish shell to avoid misconfiguration.
-
-In fact, ‘shell’ command with fish shell didn't work properly."
-  (interactive)
-  (let ((fish (executable-find "fish")))
-    (if-let ((sane-term-shell-command fish))
-        (sane-term)
-      (error "There is no fish command"))))
-
 ;; for scratch
 (defun test ()
   (interactive)

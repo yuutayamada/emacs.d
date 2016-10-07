@@ -530,7 +530,7 @@ Setup irony-mode.
 ;;;### (autoloads nil "init_mykie" "init_mykie.el" (0 0 0 0))
 ;;; Generated autoloads from init_mykie.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_mykie" '("my/overriding-mode-map" "Y/mykie-tab")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_mykie" '(#("my/overriding-mode-map" 0 22 (fontified nil)) #("Y/mykie-tab" 0 11 (fontified nil)))))
 
 ;;;***
 
@@ -635,6 +635,14 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 ;;;***
 
+;;;### (autoloads nil "init_sane-term" "init_sane-term.el" (0 0 0
+;;;;;;  0))
+;;; Generated autoloads from init_sane-term.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_sane-term" '("sane-term-shell-command")))
+
+;;;***
+
 ;;;### (autoloads nil "init_sdic" "init_sdic.el" (0 0 0 0))
 ;;; Generated autoloads from init_sdic.el
 
@@ -684,6 +692,18 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;; Generated autoloads from init_twittering-mode.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_twittering-mode" '("my/twit")))
+
+;;;***
+
+;;;### (autoloads nil "init_visual-fill-column" "init_visual-fill-column.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from init_visual-fill-column.el
+
+(autoload 'Y/visual-fill-mode "init_visual-fill-column" "\
+Show filled sentences by visual line mode.
+If ARG is non-nil, turn on visual mode stuff.
+
+\(fn &optional ARG)" t nil)
 
 ;;;***
 

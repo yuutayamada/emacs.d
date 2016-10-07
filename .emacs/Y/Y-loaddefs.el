@@ -65,6 +65,11 @@ Move buffer or split when buffer was one.
 
 \(fn KEYMAP &rest KEYS)" nil nil)
 
+(autoload 'Y/set-bg-color "Y-function" "\
+Set bg COLOR with ALPHA if needed.
+
+\(fn COLOR &optional ALPHA)" t nil)
+
 (autoload 'Y/org-src-block-p "Y-function" "\
 Return t when inside #+begin_src ... .
 
@@ -133,11 +138,6 @@ My better newline and indent.
 
 \(fn)" t nil)
 
-(autoload 'Y/set-bg-color "Y-function" "\
-
-
-\(fn &optional COLOR)" t nil)
-
 (autoload 'Y/echo-current-point "Y-function" "\
 
 
@@ -153,25 +153,12 @@ Lookup word by stardict.
 
 \(fn)" t nil)
 
-(autoload 'Y/visual-fill-mode "Y-function" "\
-Show filled sentences by visual line mode.
-If ARG is non-nil, turn on visual mode stuff.
-
-\(fn &optional ARG)" t nil)
-
 (autoload 'replace-last-sexp "Y-function" "\
 Replace last sexp.
 
 \(fn)" t nil)
 
-(autoload 'fish "Y-function" "\
-Dedicated function for fish shell to avoid misconfiguration.
-
-In fact, ‘shell’ command with fish shell didn't work properly.
-
-\(fn)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '(#("test" 0 4 (fontified nil)) #("my/" 0 3 (fontified nil face font-lock-function-name-face)) #("Y/" 0 2 (fontified nil face font-lock-variable-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '(#("test" 0 4 (face font-lock-function-name-face fontified nil)) #("my/" 0 3 (fontified nil face font-lock-function-name-face)) #("Y/" 0 2 (fontified nil face font-lock-function-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -209,7 +196,7 @@ Load PACKAGES.
 
 \(fn PACKAGES)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-util" '(#("Y/" 0 2 (fontified nil face font-lock-function-name-face)) #("autoloader-autoload" 0 19 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-util" '("Y/" "autoloader-autoload")))
 
 ;;;***
 

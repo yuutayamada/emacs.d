@@ -6,7 +6,7 @@
 (require 'cl-lib)
 (defadvice what-cursor-position (around Y/add-extra-info activate)
   "Add extra info."
-  (message "%s\nsyntax: %s\nface: %s\nppss: %s" ad-do-it
+  (message "%s\nsyntax: %s\nface: %s\ntext-prop: %s\nppss: %s" ad-do-it
            (let ((c (char-syntax (string-to-char (thing-at-point 'char)))))
              (format "(%c) - %s"
                      c
@@ -28,6 +28,7 @@
                        (?\\ "escape character")
                        (?@  "inherit from `standard-syntax-table'"))))
            (face-at-point)
+           (text-properties-at (point))
            (cl-loop with desc = `("0. depth in parens."
                                   "1. character address of start of innermost containing list; nil if none."
                                   "2. character address of start of last complete sexp terminated."

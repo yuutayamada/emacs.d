@@ -233,19 +233,6 @@ Example of my/keys
             (popwin:find-file major-file)
           (find-file major-file))))))
 
-;;;###autoload
-(defun my/get-above-dir-name ()
-  ""
-  (let* ((dirs (split-string (file-name-as-directory default-directory) "/"))
-         (last (- (length dirs) 2)))
-    (nth last dirs)))
-
-;;;###autoload
-(defun my/in-dir-p (directory)
-  ""
-  (string-match (format "^%s" (expand-file-name directory))
-                (expand-file-name default-directory)))
-
 ;; 華氏 = Fahrenheit: 華氏の換算式=(9/5)x摂氏+32
 ;; 摂氏 = Celsius:    摂氏の換算式=(5/9)x(華氏-32)
 (defun my/compute-Celsius ()
@@ -429,25 +416,6 @@ Example of my/keys
         (set-fontset-font (frame-parameter nil 'font)
                           'japanese-jisx0208
                           (cons font+size u)))))))
-
-(defun my/helm-characterers (&optional start end)
-  "Show chractors."
-  (interactive)
-  (helm :sources
-        `(((name . "helm-test-code")
-           (candidates .
-                       (lambda ()
-                         (cl-loop with start = (or ,start 0)
-                                  with end = (or ,end 10000)
-                                  for i from start to end
-                                  collect (format "    %i: %s    " i (char-to-string i)))))
-           (action . (lambda (arg) (insert arg)))))
-          :requires-pattern 2
-          :candidate-numer-limit 4000
-          :input-idle-delay 0.3
-          :prompt "helm-characters: "
-          :buffer "*helm-characters*"
-          :candidates-in-buffer t))
 
 ;;;###autoload
 (defun Y/echo-current-point ()

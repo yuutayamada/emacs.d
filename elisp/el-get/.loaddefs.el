@@ -1048,7 +1048,7 @@ shadow backends that come after it.  Recommended usages:
 ;;; Generated autoloads from context-kill/context-kill.el
 
 (autoload 'context-kill "context-kill/context-kill" "\
-A.k.a, `kill-line' DWIM.
+Kill something; a.k.a, `kill-line' DWIM.
 
 \(fn)" t nil)
 
@@ -1356,6 +1356,126 @@ If a region is active, decrement all the numbers at a point by `amount'.
 This function uses `evil-numbers/inc-at-pt'
 
 \(fn AMOUNT)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-command-window" "evil/evil-command-window.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from evil/evil-command-window.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-command-window" '("evil-command-window")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-commands" "evil/evil-commands.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from evil/evil-commands.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-commands" '("evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-common" "evil/evil-common.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from evil/evil-common.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-common" '("evil-" "forward-evil-" "bounds-of-evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-core" "evil/evil-core.el" (0 0 0
+;;;;;;  0))
+;;; Generated autoloads from evil/evil-core.el
+ (autoload 'evil-mode "evil")
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-core" '("evil-" "turn-o")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-digraphs" "evil/evil-digraphs.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from evil/evil-digraphs.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-digraphs" '("evil-digraph")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-ex" "evil/evil-ex.el" (0 0 0 0))
+;;; Generated autoloads from evil/evil-ex.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-ex" '("evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-integration" "evil/evil-integration.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from evil/evil-integration.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-integration" '("evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-jumps" "evil/evil-jumps.el" (0 0
+;;;;;;  0 0))
+;;; Generated autoloads from evil/evil-jumps.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-jumps" '("evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-macros" "evil/evil-macros.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from evil/evil-macros.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-macros" '("evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-maps" "evil/evil-maps.el" (0 0 0
+;;;;;;  0))
+;;; Generated autoloads from evil/evil-maps.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-maps" '("evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-repeat" "evil/evil-repeat.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from evil/evil-repeat.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-repeat" '("evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-search" "evil/evil-search.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from evil/evil-search.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-search" '("evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-states" "evil/evil-states.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from evil/evil-states.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-states" '(#("evil-" 0 5 (face font-lock-function-name-face fontified nil)))))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-tests" "evil/evil-tests.el" (0 0
+;;;;;;  0 0))
+;;; Generated autoloads from evil/evil-tests.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-tests" '("evil-")))
+
+;;;***
+
+;;;### (autoloads nil "evil/evil-vars" "evil/evil-vars.el" (0 0 0
+;;;;;;  0))
+;;; Generated autoloads from evil/evil-vars.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "evil/evil-vars" '("evil-")))
 
 ;;;***
 
@@ -9305,6 +9425,11 @@ The directory containing file templates.")
 Fill `auto-insert-alist'.
 
 \(fn)" nil nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("evil/evil-pkg.el" "evil/evil-types.el"
+;;;;;;  "evil/evil.el") (0 0 0 0))
 
 ;;;***
 

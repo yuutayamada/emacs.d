@@ -156,9 +156,11 @@
            if (and m (lookup-key (symbol-value m) (kbd key)))
            collect m))
 
-;; HIGHLIGHT Cursor or etc. ;; hollow
-;; (rainbow-mode t)
+;; Configuration
 (setq evil-cross-lines t
+      ;; Go through end of line (evil affects M-f command, so this
+      ;; config is essential.)
+      evil-move-beyond-eol t
       ;; Do not move eol when normal state
       evil-move-cursor-back t)
 
@@ -173,9 +175,6 @@
 
 ;; evil surround
 (add-hook 'evil-mode-hook 'global-evil-surround-mode)
-
-;; Go through end of line (evil affects M-f command, so this config is essential.)
-(setq evil-move-beyond-eol t)
 
 (provide 'init-evil)
 

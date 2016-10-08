@@ -158,13 +158,7 @@
 
 ;; HIGHLIGHT Cursor or etc. ;; hollow
 ;; (rainbow-mode t)
-(setq evil-default-cursor      'box ; You can specify: 'hbar or 'box
-      evil-normal-state-cursor  `(,(jaqen :sansa) box)
-      evil-insert-state-cursor  `(,(jaqen :jon)  (bar . 2))
-      evil-emacs-state-cursor   `(,(jaqen :bran) (bar . 2))
-      evil-replace-state-cursor `(,(jaqen :reek)  box)
-      evil-visual-state-cursor  `(,(jaqen :hodor) hbar)
-      evil-cross-lines t
+(setq evil-cross-lines t
       ;; Do not move eol when normal state
       evil-move-cursor-back t)
 

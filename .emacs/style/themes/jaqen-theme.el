@@ -428,6 +428,15 @@ Note this function is designed internal use only."
  `(beacon-fallback-background ((t :background ,(jaqen :sansa))))
 )
 
+(with-eval-after-load "evil-states"
+  (setq-default
+   evil-default-cursor      'box ; You can specify: 'hbar or 'box
+   evil-normal-state-cursor  `(,(jaqen :sansa) box)
+   evil-insert-state-cursor  `(,(jaqen :jon)  (bar . 2))
+   evil-emacs-state-cursor   `(,(jaqen :bran) (bar . 2))
+   evil-replace-state-cursor `(,(jaqen :reek)  box)
+   evil-visual-state-cursor  `(,(jaqen :hodor) hbar)))
+
 ;;;###autoload
 (when load-file-name
   (add-to-list 'custom-theme-load-path

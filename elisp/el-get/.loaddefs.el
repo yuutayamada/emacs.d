@@ -1043,6 +1043,19 @@ shadow backends that come after it.  Recommended usages:
 
 ;;;***
 
+;;;### (autoloads nil "context-kill/context-kill" "context-kill/context-kill.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from context-kill/context-kill.el
+
+(autoload 'context-kill "context-kill/context-kill" "\
+A.k.a, `kill-line' DWIM.
+
+\(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "context-kill/context-kill" '("context-kill-")))
+
+;;;***
+
 ;;;### (autoloads nil "contrast-color/contrast-color" "contrast-color/contrast-color.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from contrast-color/contrast-color.el
@@ -8951,7 +8964,7 @@ See also `suggestion-box-h-embed-normalize' function for more example.
 
 \(fn TEXT &key BACKEND HANDLER DATA)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "suggestion-box/suggestion-box" '(#("suggestion-box-" 0 15 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "suggestion-box/suggestion-box" '("suggestion-box-")))
 
 ;;;***
 

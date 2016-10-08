@@ -288,6 +288,10 @@ You can only use this function inside :build directive."
            :type github
            :pkgname "yuutayamada/contrast-color-el")
 
+    (:name context-kill
+           :type github
+           :pkgname "yuutayamada/context-kill-el")
+
     ;; https://github.com/Malabarba/camcorder.el.git
     (:name camcorder
            :type github

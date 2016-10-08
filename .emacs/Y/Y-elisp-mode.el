@@ -7,7 +7,7 @@
 ;;; Code:
 
 (require 'cl-lib)
-
+(require 'Y-autoload)
 (el-get 'sync '(auto-compile))
 (require 'auto-compile)
 

@@ -192,8 +192,8 @@
   :region&C-u     mc/mark-all-in-region
 
   "C-k"
-  :default    (my/kill-line)
-  :haskell-mode kill-line
+  :default kill-line
+  :prog context-kill
   :grep-mode  kill-this-buffer
   :skk-active (yim-convert-to-katakana)
   :skk-on     (backward-char)
@@ -256,9 +256,6 @@
   :C-u*2   buttercup-run-at-point
   ;; :C-u     google-translate-at-point
   ;; :region  google-translate-at-point
-
-  "C-S-t"
-  :default Y/reverse-transpose-chars
 
   "C-v"
   :default scroll-up-command
@@ -391,7 +388,6 @@
 (mykie:set-keys global-map
   "<f1>"     winner-undo
   "<f2>"     winner-redo
-  "<f5>"     my/revert-buffer
   "<f7>"     point-undo
   "S-<f7>"   point-redo
   "<f8>"     goto-last-change
@@ -470,7 +466,6 @@
   ;; key feature, but it's currently work in progress.
   "A-m"
   :default     (newline)
-  :C-u         (mykie:do-while "m" my/replicate-current-line)
   :org-mode    (org-return))
 
 ;; TODO: make :on-enter, :on-exit

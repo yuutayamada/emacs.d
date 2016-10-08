@@ -51,19 +51,9 @@ Move buffer or split when buffer was one.
 \(fn &rest R)" t nil)
 
 (autoload 'Y/split-window-spirally "Y-function" "\
-
-
-\(fn)" t nil)
-
-(autoload 'Y/reverse-transpose-chars "Y-function" "\
-
+Split window spirally.
 
 \(fn)" t nil)
-
-(autoload 'Y/swap-key "Y-function" "\
-
-
-\(fn KEYMAP &rest KEYS)" nil nil)
 
 (autoload 'Y/set-bg-color "Y-function" "\
 Set bg COLOR with ALPHA if needed.
@@ -77,11 +67,6 @@ Return t when inside #+begin_src ... .
 
 (autoload 'Y/org-src-edit-buffer-p "Y-function" "\
 Return t when created other inside *Org Src ...* buffer.
-
-\(fn)" nil nil)
-
-(autoload 'my/kill-line "Y-function" "\
-
 
 \(fn)" nil nil)
 
@@ -107,16 +92,6 @@ Example of my/keys
 Popup a buffer by popwin which is related to current ‘major-mode’.
 
 \(fn)" t nil)
-
-(autoload 'my/get-above-dir-name "Y-function" "\
-
-
-\(fn)" nil nil)
-
-(autoload 'my/in-dir-p "Y-function" "\
-
-
-\(fn DIRECTORY)" nil nil)
 
 (autoload 'my/execute-from-current-file "Y-function" "\
 
@@ -158,7 +133,7 @@ Replace last sexp.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '(#("test" 0 4 (face font-lock-function-name-face fontified nil)) #("my/" 0 3 (fontified nil face font-lock-function-name-face)) #("Y/" 0 2 (fontified nil face font-lock-function-name-face)) #("banish" 0 6 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '(#("test" 0 4 (fontified nil)) #("my/" 0 3 (fontified nil)) #("Y/" 0 2 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 

@@ -22,22 +22,17 @@
 ;;; Code:
 (require 'cl-lib)
 (require 'Y-autoload)
-(require 's)
 (require 'subr-x)
 (require 'thingatpt)
 
-(defun banish ()
-  "Move cursor to corner."
+(defun Y/banish-cursor ()
+  "Move cursor to corner.  This function is only worked in GUI Emacs."
   (interactive)
-  (let* ((get-param (lambda (search-param)
-                      (cl-loop for parametor in (frame-parameters nil)
-                               if (equal search-param (car parametor))
-                               do (cl-return (cdr parametor)))))
-         (height
-          (- (funcall get-param 'height) 1))
-         (width
-          (funcall get-param 'width)))
-    (set-mouse-position (selected-frame) (max width 50) (max height 10))))
+  (let ((f (selected-frame)))
+    (when (frame-visible-p f)
+      (let* ((height (1- (frame-height)))
+             (width  (frame-width)))
+        (set-mouse-position (selected-frame) (max width 50) (max height 10))))))
 
 ;;;###autoload
 (defun other-window-or-split (&rest _r)
@@ -47,59 +42,16 @@
   (if current-prefix-arg
       (other-window -1)
     (other-window 1))
-  (banish))
+  (Y/banish-cursor))
 
 ;;;###autoload
 (defun Y/split-window-spirally ()
+  "Split window spirally."
   (interactive)
-  (if (< (window-height) (window-width))
-      (split-window-horizontally)
-    (split-window-vertically)))
-
-;;;###autoload
-(defun Y/reverse-transpose-chars ()
-  (interactive)
-  (transpose-chars -1)
-  (backward-char 1))
-
-(defvar Y/mode-line-change-faces
-  (cl-loop for face in '(mode-line powerline-active1 powerline-active2)
-           if (facep face)
-           collect face))
-
-(defvar Y/default-mode-line-face
-  (cl-loop for face in Y/mode-line-change-faces
-           collect (cons face (face-all-attributes face))))
-
-;;;###autoload
-(defun Y/swap-key (keymap &rest keys)
-  ;; "Swap KEYS of KEYMAP."
-  (cl-loop for i from 0 to (1- (length keys)) by 2
-           for this = (nth i keys)
-           for that = (nth (1+ i) keys)
-           for sym-this = (lookup-key keymap this)
-           for sym-that = (lookup-key keymap that)
-           do (define-key keymap this sym-that)
-           do (define-key keymap that sym-this)))
-
-(defun my/revert-buffer ()
-  ""
-  (interactive)
-  (if (buffer-modified-p (current-buffer))
-      (revert-buffer)
-    (revert-buffer nil t)))
-
-(defun my/chomp (string)
-  "Chomp STRING."
-  (let ((str string))
-    (when (equal (elt str (- (length str) 1)) ?\n)
-      (substring str 0 (- (length str) 1)))))
-
-(defun my/byte-compile (&optional dirs)
-  "Byte-compile DIRS(if specified) or my configuration files."
-  (interactive)
-  (cl-loop for dir in (or dirs `(,config-dir))
-           do (byte-recompile-directory dir 0 t)))
+  (let* ((ratio (/ (frame-width) (frame-height))))
+    (if (< (* ratio (window-height)) (window-width))
+        (split-window-horizontally) ; |
+      (split-window-vertically))))  ; -
 
 (defvar Y/opacity-data nil)
 (defun Y/toggle-opacity ()
@@ -165,19 +117,6 @@
       (snippet-mode          (funcall insertX "${:}" 2))
       (gold-mode             (funcall insertX "{{}}" 2))
       ((jade-mode ruby-mode) (funcall insertX "#{}")))))
-
-(defun my/echo-text-properties-at-point ()
-  "Print point's text-proerties."
-  (interactive)
-  (print (text-properties-at (point))))
-
-;;;###autoload
-(defun my/kill-line ()
-  ""
-  (if (not (derived-mode-p 'prog-mode))
-      (call-interactively 'kill-line)
-    (call-interactively 'paredit-kill)
-    (indent-for-tab-command)))
 
 ;;;###autoload
 (defun my/screen-shot ()
@@ -314,28 +253,6 @@ Example of my/keys
               (forward-char))
             (backward-word)
             (kill-word 1)))))))
-
-(defun my/fill-current-line ()
-  ""
-  (interactive)
-  (mykie
-   :comment (let ((fill-prefix comment-start))
-              (fill-region (point-at-bol) (point-at-eol)))
-   :default (fill-region (point-at-bol) (point-at-eol))))
-
-(defun my/replicate-current-line ()
-  ""
-  (let ((current-line
-         (s-chomp (substring-no-properties (thing-at-point 'line)))))
-    (newline-and-indent)
-    (insert current-line)
-    (save-excursion
-      (save-restriction
-        (narrow-to-region (point-at-bol) (point-at-eol))
-        (beginning-of-line)
-        (when (search-forward-regexp "[0-9]+" nil t)
-          (evil-numbers/inc-at-pt 1))))
-    (indent-for-tab-command)))
 
 ;;;###autoload
 (defun my/newline-and-indent ()

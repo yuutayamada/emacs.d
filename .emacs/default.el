@@ -25,7 +25,7 @@
        (prog1 'sync-completed
          (el-get
           'sync
-          '(windows s f dash tabbar popwin wgrep auto-capitalize
+          '(windows f dash tabbar popwin wgrep auto-capitalize
             evil seqcmd helm fcitx flycheck flycheck-tip)))))
 
   (when done
@@ -62,7 +62,7 @@
     (Y/message-startup-time "after-init hook")
     (condition-case err
         ;; Load only necessary files for less loading time
-        (Y/load-packages '(windows depend_main tabbar s init_mykie))
+        (Y/load-packages '(windows depend_main tabbar init_mykie))
       (error (message (format "Init function error: %s" err))))))
 
 (add-hook

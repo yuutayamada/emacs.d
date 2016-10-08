@@ -223,7 +223,7 @@ Treat merging at point by smerge way.
 ;;;;;;  0 0 0))
 ;;; Generated autoloads from el-get/init-evil.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "el-get/init-evil" '("Y/toggle-background-color" "Y-evil-key-exist-p")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "el-get/init-evil" '(#("Y/toggle-background-color" 0 1 (fontified nil face font-lock-function-name-face) 1 25 (fontified nil face font-lock-function-name-face)) #("Y-evil-key-exist-p" 0 1 (fontified nil face font-lock-function-name-face) 1 18 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -591,6 +591,16 @@ Whether the point is overlay-ed or not.
 
 ;;;***
 
+;;;### (autoloads nil "init_paredit" "init_paredit.el" (0 0 0 0))
+;;; Generated autoloads from init_paredit.el
+
+(autoload 'Y/paredit-kill "init_paredit" "\
+Wrapper for `paredit-kill'.
+
+\(fn)" nil nil)
+
+;;;***
+
 ;;;### (autoloads nil "init_perl-mode" "init_perl-mode.el" (0 0 0
 ;;;;;;  0))
 ;;; Generated autoloads from init_perl-mode.el
@@ -806,12 +816,12 @@ My convinience function for `org-mode'.
 ;;;;;;  "init_lua-mode.el" "init_masaw.el" "init_migemo.el" "init_mmm-mode.el"
 ;;;;;;  "init_moz.el" "init_mozc.el" "init_multiple-cursors.el" "init_newsticker.el"
 ;;;;;;  "init_nlinum-relative.el" "init_node-console.el" "init_nyan-mode.el"
-;;;;;;  "init_org-trello.el" "init_pangu-spacing.el" "init_paredit.el"
-;;;;;;  "init_popwin.el" "init_powerline.el" "init_python.el" "init_sbtp.el"
-;;;;;;  "init_scala-mode.el" "init_skk-b.el" "init_smartparens.el"
-;;;;;;  "init_sql.el" "init_undo-tree.el" "init_wgrep.el" "init_winner.el"
-;;;;;;  "init_xmp.el" "init_yaml-mode.el" "init_yatemplate.el" "init_yim.el"
-;;;;;;  "obsolete/init_actionscript-mode.el") (0 0 0 0))
+;;;;;;  "init_org-trello.el" "init_pangu-spacing.el" "init_popwin.el"
+;;;;;;  "init_powerline.el" "init_python.el" "init_sbtp.el" "init_scala-mode.el"
+;;;;;;  "init_skk-b.el" "init_smartparens.el" "init_sql.el" "init_undo-tree.el"
+;;;;;;  "init_wgrep.el" "init_winner.el" "init_xmp.el" "init_yaml-mode.el"
+;;;;;;  "init_yatemplate.el" "init_yim.el" "obsolete/init_actionscript-mode.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

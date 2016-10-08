@@ -30,7 +30,6 @@
 (define-key evil-motion-state-map  (kbd "A-ESC") 'evil-normal-state)
 (define-key evil-replace-state-map (kbd "A-ESC") 'evil-normal-state)
 (define-key evil-normal-state-map  (kbd "A-ESC") 'evil-force-normal-state)
-(Y/swap-key evil-motion-state-map ":" "'")
 
 ;; Move evil states to emacs state.
 (when (or evil-insert-state-modes evil-motion-state-modes)

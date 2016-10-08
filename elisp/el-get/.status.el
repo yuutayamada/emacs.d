@@ -85,6 +85,8 @@
                        :pkgname "Sarcasm/company-irony"))
  (company-mode status "installed" recipe
                (:name company-mode :website "http://company-mode.github.io/" :description "Modular in-buffer completion framework for Emacs" :type github :pkgname "company-mode/company-mode"))
+ (context-kill status "installed" recipe
+               (:name context-kill :type github :pkgname "yuutayamada/context-kill-el"))
  (contrast-color status "installed" recipe
                  (:name contrast-color :type github :pkgname "yuutayamada/contrast-color-el"))
  (crontab-mode status "installed" recipe

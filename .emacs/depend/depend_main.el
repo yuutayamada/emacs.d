@@ -5,7 +5,6 @@
 ;;; Code:
 
 (require 'cl-lib)
-(apply `(require ,(intern (format "depend_emacs%i" emacs-major-version))))
 
 ;; OS
 (cl-case system-type
@@ -18,6 +17,10 @@
      (fcitx-aggressive-setup)))
   (cygwin
    (load "depend_windows")))
+
+(condition-case err
+    (apply `(require ,(intern (format "depend_emacs%i" emacs-major-version))))
+  (error err))
 
 (provide 'depend_main)
 

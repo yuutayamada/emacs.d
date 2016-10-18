@@ -1,4 +1,4 @@
-;;; jaqen-theme.el --- a color theme which aimed to use both nox and gui versions' Emacs
+;;; jaqen-theme.el --- a soft dark color theme which aimed to use both nox and gui versions' Emacs -*- lexical-binding: t; -*-
 ;;
 ;;; Commentary:
 ;;
@@ -44,6 +44,7 @@ Emacs")
     (:whiteWakers . (:r-fg :hl-fg))))
 
 (defvar jaqen-face-colors
+  ;; https://www.google.com/search?client=ubuntu&channel=fs&q=game+of+thrones+names&ie=utf-8&oe=utf-8
   '((:jon      . ("#83AFE5"))
     (:sam      . ("#5FAFFF"))
     (:sansa    . ("#9A93E1"))
@@ -62,7 +63,10 @@ Emacs")
     (:tyrion   . ("#899BA6" . "#949494"))
     (:cersei   . ("#C5D4DD"))
     (:jaime    . ("#E6EEF3"))
-    (:joffrey  . ("#005f87"))
+    (:joffrey  . ("#005f87")) ; lannistar: tommen, myrcella
+    ;; targaryen: viserys
+    ;; stark: benjen
+    ;; Tyrell: loras, margaery
     ))
 
 (add-hook 'after-make-frame-functions 'jaqen-adapt-terminal-colors)

@@ -1929,7 +1929,23 @@ Use this together with the `option', `option-list' and
 
 (function-put 'flycheck-def-option-var 'doc-string-elt '4)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck/flycheck" '(#("flycheck-" 0 9 (fontified nil)) #("list-flycheck-errors" 0 20 (fontified nil)) #("help-flycheck-checker-d" 0 23 (fontified nil)) #("read-flycheck-" 0 14 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck/flycheck" '("flycheck-" "list-flycheck-errors" "help-flycheck-checker-d" "read-flycheck-")))
+
+;;;***
+
+;;;### (autoloads nil "flycheck/flycheck-buttercup" "flycheck/flycheck-buttercup.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from flycheck/flycheck-buttercup.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck/flycheck-buttercup" '("flycheck-buttercup-format-error-list")))
+
+;;;***
+
+;;;### (autoloads nil "flycheck/flycheck-ert" "flycheck/flycheck-ert.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from flycheck/flycheck-ert.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck/flycheck-ert" '("flycheck-ert-")))
 
 ;;;***
 

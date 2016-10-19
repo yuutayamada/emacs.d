@@ -14,7 +14,10 @@
 ;; M-x wgrep-save-all-buffers
 ;;; Code:
 
+(require 'Y-autoload)
+(el-get 'sync 'wgrep)
 (require 'wgrep)
+
 ;; To save buffer automatically when `wgrep-finish-edit'.
 (setq wgrep-auto-save-buffer t)
 ;; You can change the default key binding to switch to wgrep.

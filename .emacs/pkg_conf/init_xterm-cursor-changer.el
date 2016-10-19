@@ -1,10 +1,9 @@
+
 ;;; Commentary:
 ;;
 ;;; Code:
 (require 'xterm-cursor-changer)
-
-(el-get 'sync 'contrast-color)
-(require 'contrast-color)
+(require 'Y-autoload)
 
 (advice-add 'evil-set-cursor :before
             (lambda (&rest _r)
@@ -27,7 +26,8 @@
 ;;;###autoload
 (defun Y-update-cursor-&-modeline (&rest _r)
   "Update modeline and cursor colors."
-  (if (bound-and-true-p evil-state)
+  (if (and (bound-and-true-p evil-state)
+           (fboundp 'evil-refresh-cursor))
       (evil-refresh-cursor (current-buffer))
     ;; when not evil related buffer
     (xcc-change-cursor-color-and-shape

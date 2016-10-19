@@ -4,11 +4,13 @@
 
 ;;; Code:
 
-(require 'cl-lib)
+(require 'Y-autoload)
+(el-get 'sync 'twittering-mode)
 
+(require 'cl-lib)
 (require 'init_epg-config)
 (require 'twittering-mode)
-(require 'Y-autoload)
+
 (defvar my/twit-users '()) ;; specify username's list without @
 (defvar my/twit-password-direcotry "")
 (defvar my/twittering-initial-search nil)
@@ -23,11 +25,8 @@
                  (concat "Set twittering-private-info-file to "
                          twittering-private-info-file)))))
 
-(defadvice twit (around Y/set-privete-file activate)
-  ""
-  (unless (get-buffer ":home")
-    (my/twit-select-user-name))
-  ad-do-it)
+;;;###autoload
+(advice-add 'twit :before 'my/twit-select-user-name)
 
 (setq twittering-initial-timeline-spec-string
       (append

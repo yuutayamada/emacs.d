@@ -28,7 +28,7 @@
 ;;; Code:
 (require 'nim-mode)
 
-(require 'el-get)
+(require 'Y-autoload)
 ;; An Emacs package to write Emacs extensions by Nim (totally optional)
 (el-get 'sync 'nim-emacs-module 'suggestion-box 'suggestion-box-nim)
 

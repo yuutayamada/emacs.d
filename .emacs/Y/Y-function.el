@@ -1,22 +1,5 @@
 ;;; Y-function.el --- my convenience functions -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2013 by Yuta Yamada
-
-;; Author: Yuta Yamada <cokesboy"at"gmail.com>
-
-;;; License:
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;; Commentary:
 
 ;;; Code:
@@ -180,30 +163,6 @@ Example of my/keys
   (let ((Fahrenheit
          (string-to-number (read-from-minibuffer "What is Fahrenheit?: "))))
     (minibuffer-message (* 0.555 (- Fahrenheit 32)))))
-
-;;;###autoload
-(defun my/execute-from-current-file (&optional statement)
-  ""
-  (interactive)
-  (let*
-      ((original-buffer (current-buffer))
-       (code    (shell-quote-argument (or statement (buffer-string))))
-       (program (cl-case major-mode
-                  (ruby-mode  "ruby -e ")
-                  (cperl-mode "perl -e ")
-                  (scala-mode "scala -e ")))
-       (command (concat program code))
-       (buffer  (get-buffer-create "*execute program*")))
-    (condition-case error (kill-process buffer)
-      (error error))
-    (save-current-buffer
-      (popwin:popup-buffer
-       buffer :stick t :width (/ (frame-width) 2) :position :right)
-      (erase-buffer))
-    (start-process
-     "emacs-program" buffer "/bin/sh" "-c" command)
-    (switch-to-buffer-other-window original-buffer)))
-
 
 
 (defun my/delete-trailing-space (word)

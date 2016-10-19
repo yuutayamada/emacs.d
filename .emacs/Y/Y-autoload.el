@@ -5,8 +5,9 @@
 (require 'Y-paths)
 (require 'Y-util)
 (require 'Y-el-get)
+(autoload 'el-get "el-get") ; for ‘el-get’ function
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Load Emacs’ autoload files (git.savannah.gnu.org/emacs/lisp/emacs)
 (Y/message-startup-time "Emacs loaddefs")
 (require 'loaddefs)
@@ -22,7 +23,6 @@
        collect f))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Prepare load-paths for this repository
 (Y/message-startup-time "My loaddefs")
 (let ((dev (concat elisp-dir "self/")))
@@ -38,12 +38,11 @@
 (add-to-list 'load-path (concat elisp-dir "self"))
 (require 'Y-package-loaddefs)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; EL-GET
 (Y/message-startup-time "el-get loaddefs")
 (add-to-list 'load-path el-get-dir)
 (require '.loaddefs)
-(autoload 'el-get "el-get") ; for ‘el-get’ function
 
 
 ;; work around for evil

@@ -13,7 +13,7 @@
 
 (Y/message-startup-time "el-get setup")
 
-;; Sync all packages for el-get. ‘el-get’ function registers
+;; Sync some packages for el-get. ‘el-get’ function registers
 ;; load-path, path of init-PKGNAME.el.
 ;; Note that sometimes el-get’s .loaddefs.el might break, so check
 ;; the file if you caught suspicious behavior (probably you can solve
@@ -25,8 +25,8 @@
        (prog1 'sync-completed
          (el-get
           'sync
-          '(windows f dash tabbar popwin wgrep auto-capitalize
-            evil seqcmd helm fcitx flycheck flycheck-tip)))))
+          '(windows tabbar popwin auto-capitalize
+            evil seqcmd helm fcitx flycheck)))))
 
   (when done
     (if (not (daemonp))
@@ -69,21 +69,18 @@
  'emacs-startup-hook
  '(lambda ()
     (Y/message-startup-time "startup hook")
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
     ;; prog-mode configuration
     (require 'Y-prog-mode)
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Mode Line
-    (add-hook 'after-change-major-mode-hook 'Y/clean-mode-line)
+    (add-hook 'after-change-major-mode-hook 'Y/clean-mode-line) ; kind of diminish-mode
     (add-hook 'find-file-hook 'Y/clean-mode-line)
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; View-mode
     (add-hook 'help-mode-hook 'view-mode)
     (add-hook 'Man-mode-hook  'view-mode)
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; files (find-file)
     ;; Use Evil's normal mode only inside actual files.
     (add-hook 'find-file-hook
@@ -96,7 +93,8 @@
   ;; Note that this function is defined to prevent loading multiple times.
   ;; Somehow I discovered M-x term loads ‘tty-setup-hook’ at same time.
   (Y/message-startup-time "tty-setup hook")
-  (cl-case (assoc-default 'terminal-initted (terminal-parameters))
+
+  (cl-case (alist-get 'terminal-initted (terminal-parameters))
     (terminal-init-xterm
      (xterm-keybinder-setup))
     (terminal-init-rxvt
@@ -136,12 +134,21 @@
    (el-get 'sync '(org-mode nim-mode lua-mode markdown-mode))
 
    ;; Convenient & key binds driven
-   (el-get 'sync '(magit multiple-cursors avy helm-c-yasnippet yasnippet
-                   git-gutter mew twittering-mode
-                   company-mode auto-complete))
+   (el-get 'sync '(multiple-cursors git-gutter company-mode auto-complete))
 
+   ;; Load frequency used packages in the idle time.
    (el-get 'sync 'idle-require)
-   (add-hook 'helm-after-initialize-hook 'idle-require-mode)))
+   (run-with-idle-timer (* idle-update-delay 20) nil 'idle-require-mode t)))
+
+
+;;; Install all packages:
+;;
+;; Use this to install all packages that described in .status.el of
+;; el-get directory. Probably this is only needed first you use this
+;; configuration:
+;;
+;;   (el-get-with-status-sources nil (el-get)) ; <- C-x C-e
+
 
 (provide 'default)
 ;;; default.el ends here

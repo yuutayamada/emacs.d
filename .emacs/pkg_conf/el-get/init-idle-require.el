@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+(add-hook 'idle-require-mode-hook
+          '(lambda () (el-get 'sync 'magit 'yasnippet)))
+
 (require 'idle-require)
 
 ;; Initial `idle-require' timer configuration.

@@ -1990,17 +1990,6 @@ A function suitable for `hippie-expand-try-functions-list'.
 
 ;;;***
 
-;;;### (autoloads nil "ginger-api/ginger-api" "ginger-api/ginger-api.el"
-;;;;;;  (22386 297 10472 890000))
-;;; Generated autoloads from ginger-api/ginger-api.el
-
-(autoload 'ginger-region "ginger-api/ginger-api" "\
-
-
-\(fn BEG END)" t nil)
-
-;;;***
-
 ;;;### (autoloads nil "git-gutter/git-gutter" "git-gutter/git-gutter.el"
 ;;;;;;  (22463 56570 582486 363000))
 ;;; Generated autoloads from git-gutter/git-gutter.el
@@ -9124,14 +9113,24 @@ the mode if ARG is omitted or nil, and toggle it if ARG is `toggle'.
 
 ;;;***
 
+;;;### (autoloads nil "twittering-mode/test" "twittering-mode/test.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from twittering-mode/test.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "twittering-mode/test" '("test-" "defcase")))
+
+;;;***
+
 ;;;### (autoloads nil "twittering-mode/twittering-mode" "twittering-mode/twittering-mode.el"
-;;;;;;  (22393 24061 615129 924000))
+;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from twittering-mode/twittering-mode.el
 
 (autoload 'twit "twittering-mode/twittering-mode" "\
 Start twittering-mode.
 
 \(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "twittering-mode/twittering-mode" '("twittering-" "debug-print" "case-string" "list-push" "assocref")))
 
 ;;;***
 

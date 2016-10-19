@@ -8,6 +8,7 @@
 ;; (defconst lookup-default-dictionary-options '((:stemmer . stem-english)))
 ;; (defconst lookup-max-history 0) ; 0 means unlimited
 ;;; Code:
+
 (require 'lookup)
 (require 'lookup-vars)
 (require 'Y-autoload)

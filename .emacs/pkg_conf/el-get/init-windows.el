@@ -64,6 +64,10 @@
 (defun Y/win-switch-window (char-a-to-z)
   (win:switch-window (1+ (- char-a-to-z ?a))))
 
+;;;###autoload
+(defun Y/win-current-alpha ()
+  (+ win:current-config win:base-key))
+
 (provide 'init-windows)
 
 ;; Local Variables:

@@ -1,6 +1,7 @@
 ;;; init-flycheck-tip.el ---                         -*- lexical-binding: t; -*-
 
 ;; Flycheck-tip
+
 (require 'flycheck-tip)
 (setq flycheck-display-errors-function 'ignore)
 (defconst error-tip-timer-delay 0.3)

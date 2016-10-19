@@ -5,7 +5,8 @@
 
 ;;; Code:
 
-(el-get 'sync 'with-editor)
+(require 'Y-autoload)
+(el-get 'sync 'magit) ; 'with-editor
 
 (require 'magit)
 ;; nil    never show fine differences.
@@ -19,14 +20,22 @@
 
 (advice-add 'magit-push-popup :before 'Y/ssh-add)
 
+;;;###autoload
+(defun Y/magit-status ()
+  "Call `magit-status'."
+  (interactive)
+  (let ((default-directory default-directory))
+    (Y/magit-jump-to-g-window)
+    (call-interactively 'magit-status)))
+
 ;; Set buffer switch function
 (defun Y/magit-jump-to-g-window ()
-  (unless (eq ?g (char-to-string (+ win:current-config win:base-key)))
+  "Jump to g window of windows.el."
+  (unless (eq ?g (Y/win-current-alpha))
     (Y/win-switch-window ?g) ; jump to 'g' window
     (when (not (one-window-p))
       (delete-other-windows)
       (split-window-horizontally))))
-(add-hook 'magit-status-mode-hook 'Y/magit-jump-to-g-window)
 
 (defadvice with-editor-finish (around Y/go-back-to-magit-status activate)
   "Go back ‘magit-status’ if there are other un-staged things."

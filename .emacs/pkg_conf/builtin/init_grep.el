@@ -2,10 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'grep)
+(require 'init_wgrep)
 (require 'thingatpt)
-
-(el-get 'sync 'wgrep)
 
 (defun Y/grep-jump-to-file ()
   "Sadly my ‘compile-goto-erorr’ doesn't work now...

@@ -96,7 +96,6 @@
 ;;   :region my/ginger-region
 
 ;;   ;; "l" :C-u Y/lookup
-;;   "m" :C-u mew
 ;;   "n"
 ;;   :region     rectangle-number-lines
 ;;   ;; Specify starting number by M-N number* or C-u number*
@@ -294,7 +293,7 @@
 ;; Testing without :default            ;;
 (mykie:set-keys nil
   "C-S-d" doctor
-  "C-S-m" mew
+  "C-S-m" Y/mew
   "C-S-n"
   (if (bound-and-true-p nlinum-mode)
       (progn
@@ -314,7 +313,7 @@
   :default (helm-resume current-prefix-arg)
 
   "C-'"
-  :default magit-status
+  :default Y/magit-status
   :region  align
 
   "C-," Y/lookup-stardict
@@ -420,7 +419,7 @@
   :default (when (and (bound-and-true-p evil-mode)
                       (not (member major-mode evil-emacs-state-modes)))
              (call-interactively 'evil-normal-state))
-  :repeat magit-status
+  :repeat Y/magit-status
 
   "<C-muhenkan>"
   :default buf-move-down
@@ -439,8 +438,8 @@
 ;; binds `symbol-complete', which use capf (`completion-at-point').
 (mykie:set-keys nil
   "S-TAB"       my/insert ; C-S-TAB
-  [(C-tab)]     fold-dwim-toggle
-  [(backtab)]   my/toggle-opacity
+  ;; [(C-tab)]     fold-dwim-toggle
+  [(backtab)]   Y/toggle-opacity
   [(super tab)] pcomplete)
 
 (defun Y/mykie-tab ()
@@ -566,7 +565,7 @@
   "0" (if (e2wm:pst-get-instance)
           (e2wm:stop-management)
         (e2wm:start-management))
-  "M-s" magit-status
+  "M-s" Y/magit-status
   "M-d" (find-file "~/share/doc")
   "M-h" my/toggle-hide-show
   "M-r" win-switch-menu
@@ -626,9 +625,9 @@
          for char = (if (eq c ?\s) "SPC" (string c))
          for Char = (when C (if (eq c ?\s) "SPC" (downcase (string C))))
          if char
-         do (global-set-key (kbd (format "H-%s" char)) 'avy-goto-char-by-input-event)
+         do (global-set-key (kbd (format "H-%s" char)) 'Y/avy-goto-char-by-input-event)
          if Char
-         do (global-set-key (kbd (format "H-S-%s" Char)) 'avy-goto-char-by-input-event))
+         do (global-set-key (kbd (format "H-S-%s" Char)) 'Y/avy-goto-char-by-input-event))
 
 ;; Mouse
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Mouse-Buttons.html

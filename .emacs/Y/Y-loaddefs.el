@@ -13,7 +13,7 @@
 ;;;### (autoloads nil "Y-autoload" "Y-autoload.el" (0 0 0 0))
 ;;; Generated autoloads from Y-autoload.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-autoload" '("Y/autoload-files")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-autoload" '(#("Y/autoload-files" 0 16 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 
@@ -93,11 +93,6 @@ Popup a buffer by popwin which is related to current ‘major-mode’.
 
 \(fn)" t nil)
 
-(autoload 'my/execute-from-current-file "Y-function" "\
-
-
-\(fn &optional STATEMENT)" t nil)
-
 (autoload 'my/copy-current-file-name "Y-function" "\
 
 
@@ -133,7 +128,7 @@ Replace last sexp.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '(#("test" 0 4 (fontified nil)) #("my/" 0 3 (fontified nil)) #("Y/" 0 2 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-function" '("test" "my/" "Y/")))
 
 ;;;***
 

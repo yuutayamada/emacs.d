@@ -208,10 +208,6 @@
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
  (ggtags status "installed" recipe
          (:name ggtags :description "Use GNU Global in Emacs." :type github :pkgname "leoliu/ggtags"))
- (ginger-api status "installed" recipe
-             (:name ginger-api :type git :url "https://gist.github.com/5457732.git" :depends request :features
-                    (ginger-api)
-                    :after nil))
  (ginger-rephrase-api status "installed" recipe
                       (:name ginger-rephrase-api :type git :url "https://gist.github.com/7349439.git"))
  (git-emacs status "installed" recipe
@@ -571,8 +567,6 @@
 (:name seqcmd :type github :pkgname "yuutayamada/seqcmd"))
 (set-perl5lib status "installed" recipe
 (:name set-perl5lib :type http :url "http://coderepos.org/share/browser/lang/elisp/set-perl5lib/set-perl5lib.el?format=txt" :description "set path into PERL5LIB if its file path includes 'lib' directory" :website "http://d.hatena.ne.jp/sun-basix/20080117/1200528765" :localname "set-perl5lib.el"))
-(smartparens status "installed" recipe
-(:name smartparens :description "Autoinsert pairs of defined brackets and wrap regions" :type github :pkgname "Fuco1/smartparens" :depends dash))
 (smtpmail-multi status "installed" recipe
 (:name smtpmail-multi :type http :url "http://www.emacswiki.org/emacs-en/download/smtpmail-multi.el"))
 (spinner status "installed" recipe

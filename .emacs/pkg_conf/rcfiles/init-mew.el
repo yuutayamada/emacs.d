@@ -21,6 +21,8 @@
 ;;; Code:
 
 (require 'Y-autoload)
+(el-get 'sync 'mew)
+
 (require 'cl-lib)
 
 ;; Set jvgrep as search program to find Japanese words
@@ -35,10 +37,12 @@
 (require 'auth-source)
 ;; (require 'mew-w3m)
 
-(defadvice mew (around Y/switch-to-m-window activate)
+;;;###autoload
+(defun Y/mew ()
   "Switch m window."
+  (interactive)
   (Y/win-switch-window ?m)
-  ad-do-it)
+  (call-interactively 'mew))
 
 (define-key mew-draft-header-map (kbd "C-c C-i") 'helm-ag-r-google-contacts-list)
 (define-key mew-draft-body-map   (kbd "C-c C-k") 'mew-draft-kill)

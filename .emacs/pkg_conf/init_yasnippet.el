@@ -3,6 +3,8 @@
 ;;; Commentary:
 
 ;;; Code:
+(require 'Y-autoload)
+(el-get 'sync 'yasnippet 'helm-c-yasnippet)
 
 (require 'yasnippet)
 

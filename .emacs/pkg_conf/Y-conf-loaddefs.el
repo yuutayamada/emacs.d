@@ -124,7 +124,7 @@ My file cache find-file.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from builtin/init_grep.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_grep" '("grep-" "Y/grep-jump-to-file")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_grep" '(#("grep-" 0 5 (fontified t face font-lock-function-name-face)) #("Y/grep-jump-to-file" 0 19 (face font-lock-function-name-face fontified t)))))
 
 ;;;***
 
@@ -223,7 +223,7 @@ Treat merging at point by smerge way.
 ;;;;;;  0 0 0))
 ;;; Generated autoloads from el-get/init-evil.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "el-get/init-evil" '(#("Y/toggle-background-color" 0 1 (fontified nil face font-lock-function-name-face) 1 25 (fontified nil face font-lock-function-name-face)) #("Y-evil-key-exist-p" 0 1 (fontified nil face font-lock-function-name-face) 1 18 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "el-get/init-evil" '("Y/toggle-background-color" "Y-evil-key-exist-p")))
 
 ;;;***
 
@@ -267,6 +267,11 @@ Treat merging at point by smerge way.
 
 
 \(fn CHAR-A-TO-Z)" nil nil)
+
+(autoload 'Y/win-current-alpha "el-get/init-windows" "\
+
+
+\(fn)" nil nil)
 
 ;;;***
 
@@ -317,12 +322,12 @@ Add ac-c-headers source to auto-complete source.
 ;;;### (autoloads nil "init_avy" "init_avy.el" (0 0 0 0))
 ;;; Generated autoloads from init_avy.el
 
-(autoload 'avy-goto-char-by-input-event "init_avy" "\
+(autoload 'Y/avy-goto-char-by-input-event "init_avy" "\
 Goto char with avy and move to ‘last-input-event’s char.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_avy" '("avy-keys")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_avy" '(#("avy-keys" 0 8 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 
@@ -353,13 +358,6 @@ Set up fuzzy matching.
 
 ;;;***
 
-;;;### (autoloads nil "init_eclim" "init_eclim.el" (0 0 0 0))
-;;; Generated autoloads from init_eclim.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_eclim" '("my/boot-eclim" "eclimd-executable")))
-
-;;;***
-
 ;;;### (autoloads nil "init_ensime" "init_ensime.el" (0 0 0 0))
 ;;; Generated autoloads from init_ensime.el
 
@@ -379,14 +377,6 @@ Set up fuzzy matching.
 ;;; Generated autoloads from init_festival.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_festival" '("my/festival")))
-
-;;;***
-
-;;;### (autoloads nil "init_fold_dwim" "init_fold_dwim.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from init_fold_dwim.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_fold_dwim" '("my/")))
 
 ;;;***
 
@@ -485,6 +475,11 @@ Setup irony-mode.
 ;;;### (autoloads nil "init_magit" "init_magit.el" (0 0 0 0))
 ;;; Generated autoloads from init_magit.el
 
+(autoload 'Y/magit-status "init_magit" "\
+Call `magit-status'.
+
+\(fn)" t nil)
+
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_magit" '("Y/magit-jump-to-g-window" "magit-diff-refine-hunk")))
 
 ;;;***
@@ -530,14 +525,14 @@ Setup irony-mode.
 ;;;### (autoloads nil "init_mykie" "init_mykie.el" (0 0 0 0))
 ;;; Generated autoloads from init_mykie.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_mykie" '(#("my/overriding-mode-map" 0 22 (fontified nil)) #("Y/mykie-tab" 0 11 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_mykie" '(#("my/overriding-mode-map" 0 22 (face font-lock-variable-name-face fontified nil)) #("Y/mykie-tab" 0 11 (fontified nil)))))
 
 ;;;***
 
 ;;;### (autoloads nil "init_nim-mode" "init_nim-mode.el" (0 0 0 0))
 ;;; Generated autoloads from init_nim-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_nim-mode" '("my-nim-print" "Y/nim-mode-common-setup")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_nim-mode" '(#("my-nim-print" 0 12 (face font-lock-function-name-face fontified nil)) #("Y/nim-mode-common-setup" 0 23 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -554,50 +549,6 @@ Setup irony-mode.
 ;;; Generated autoloads from init_org-mobile.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_org-mobile" '("org-mobile-")))
-
-;;;***
-
-;;;### (autoloads nil "init_outline" "init_outline.el" (0 0 0 0))
-;;; Generated autoloads from init_outline.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_outline" '("my/")))
-
-;;;***
-
-;;;### (autoloads nil "init_ov" "init_ov.el" (0 0 0 0))
-;;; Generated autoloads from init_ov.el
-
-(autoload 'Y/ov-toggle-http-overlay "init_ov" "\
-Overlay https?:// link.
-
-\(fn)" t nil)
-
-(autoload 'Y/ov-turn-off-http-overlay "init_ov" "\
-Turn off overlay.
-
-\(fn)" t nil)
-
-(autoload 'Y/ov-turn-on-http-overlay "init_ov" "\
-Turn on overlay.
-
-\(fn)" t nil)
-
-(autoload 'Y/ov-http-overlay-at-point-p "init_ov" "\
-Whether the point is overlay-ed or not.
-
-\(fn)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_ov" '("Y/http-overlay")))
-
-;;;***
-
-;;;### (autoloads nil "init_paredit" "init_paredit.el" (0 0 0 0))
-;;; Generated autoloads from init_paredit.el
-
-(autoload 'Y/paredit-kill "init_paredit" "\
-Wrapper for `paredit-kill'.
-
-\(fn)" nil nil)
 
 ;;;***
 
@@ -683,13 +634,6 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 ;;;***
 
-;;;### (autoloads nil "init_skype" "init_skype.el" (0 0 0 0))
-;;; Generated autoloads from init_skype.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_skype" '("skype")))
-
-;;;***
-
 ;;;### (autoloads nil "init_slime" "init_slime.el" (0 0 0 0))
 ;;; Generated autoloads from init_slime.el
 
@@ -701,7 +645,9 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from init_twittering-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_twittering-mode" '("my/twit")))
+(advice-add 'twit :before 'my/twit-select-user-name)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_twittering-mode" '(#("my/twit" 0 7 (fontified t face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -784,6 +730,11 @@ My convinience function for `org-mode'.
 ;;;;;;  0 0 0))
 ;;; Generated autoloads from rcfiles/init-mew.el
 
+(autoload 'Y/mew "rcfiles/init-mew" "\
+Switch m window.
+
+\(fn)" t nil)
+
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "rcfiles/init-mew" '("mew" "my/")))
 
 ;;;***
@@ -815,13 +766,12 @@ My convinience function for `org-mode'.
 ;;;;;;  "init_keyboard-converter.el" "init_keychord.el" "init_logalimacs.el"
 ;;;;;;  "init_lua-mode.el" "init_masaw.el" "init_migemo.el" "init_mmm-mode.el"
 ;;;;;;  "init_moz.el" "init_mozc.el" "init_multiple-cursors.el" "init_newsticker.el"
-;;;;;;  "init_nlinum-relative.el" "init_node-console.el" "init_nyan-mode.el"
-;;;;;;  "init_org-trello.el" "init_pangu-spacing.el" "init_popwin.el"
+;;;;;;  "init_nlinum-relative.el" "init_node-console.el" "init_org-trello.el"
+;;;;;;  "init_pangu-spacing.el" "init_paredit.el" "init_popwin.el"
 ;;;;;;  "init_powerline.el" "init_python.el" "init_sbtp.el" "init_scala-mode.el"
-;;;;;;  "init_skk-b.el" "init_smartparens.el" "init_sql.el" "init_undo-tree.el"
-;;;;;;  "init_wgrep.el" "init_winner.el" "init_xmp.el" "init_yaml-mode.el"
-;;;;;;  "init_yatemplate.el" "init_yim.el" "obsolete/init_actionscript-mode.el")
-;;;;;;  (0 0 0 0))
+;;;;;;  "init_skk-b.el" "init_sql.el" "init_undo-tree.el" "init_wgrep.el"
+;;;;;;  "init_winner.el" "init_xmp.el" "init_yatemplate.el" "init_yim.el"
+;;;;;;  "obsolete/init_actionscript-mode.el") (0 0 0 0))
 
 ;;;***
 

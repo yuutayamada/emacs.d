@@ -3,6 +3,10 @@
 ;;; Commentary:
 
 ;;; Code:
+
+(require 'Y-autoload)
+
+(el-get 'sync 'avy)
 (require 'avy)
 (require 'cl-lib)
 
@@ -10,7 +14,7 @@
 (defconst avy-keys (list ?a ?s ?d ?f ?j ?k ?l ?\;))
 
 ;;;###autoload
-(defun avy-goto-char-by-input-event ()
+(defun Y/avy-goto-char-by-input-event ()
   "Goto char with avy and move to ‘last-input-event’s char."
   (interactive)
   (if (characterp last-input-event)

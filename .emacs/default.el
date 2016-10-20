@@ -6,6 +6,10 @@
 
 (require 'Y-autoload)
 
+;; Color theme
+(el-get 'sync 'color-theme-jaqen)
+(load-theme 'jaqen t)
+
 ;; Load files with `with-eval-after-load' func from `package-conf-dir'.
 (Y/message-startup-time "configuring init files")
 (Y/add-after-load-files "init_" (concat package-conf-dir "builtin/"))

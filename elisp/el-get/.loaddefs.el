@@ -692,6 +692,16 @@ Move to the window above the current window.
 
 ;;;***
 
+;;;### (autoloads nil "color-theme-jaqen/jaqen-theme" "color-theme-jaqen/jaqen-theme.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from color-theme-jaqen/jaqen-theme.el
+
+(when load-file-name (add-to-list 'custom-theme-load-path (file-name-as-directory (file-name-directory load-file-name))))
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "color-theme-jaqen/jaqen-theme" '("jaqen")))
+
+;;;***
+
 ;;;### (autoloads nil "commenter/commenter" "commenter/commenter.el"
 ;;;;;;  (22379 22138 612137 875000))
 ;;; Generated autoloads from commenter/commenter.el

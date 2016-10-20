@@ -80,11 +80,8 @@
    initial-major-mode 'ignore
    )
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Color Theme
-  ;; (M-x ‘customize-themes’ makes your theme enable safe load)
+  ;; Custom configuration
   (load custom-file t t)
-  (load-theme 'jaqen t)
 
   ) ; then load default.el
 

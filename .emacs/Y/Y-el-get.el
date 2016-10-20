@@ -268,7 +268,16 @@ You can only use this function inside :build directive."
 ;; EL-GET SOURCES
 (defconst
   el-get-sources
-  '(;; A
+  '(
+    (:name color-theme-jaqen
+           :description ""
+           :website "https://github.com/yuutayamada/emacs-jaqen-theme"
+           :minimum-emacs-version "24"
+           :type github
+           :pkgname "yuutayamada/emacs-jaqen-theme"
+           :prepare (add-to-list 'custom-theme-load-path default-directory))
+
+    ;; A
     (:name auto-capitalize
            :type github
            :pkgname "yuutayamada/auto-capitalize-el")

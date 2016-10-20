@@ -67,6 +67,9 @@
                                     '("\\.coffee$" . coffee-mode))
                        (add-to-list 'auto-mode-alist
                                     '("Cakefile" . coffee-mode)))))
+ (color-theme-jaqen status "installed" recipe
+                    (:name color-theme-jaqen :description "" :website "https://github.com/yuutayamada/emacs-jaqen-theme" :minimum-emacs-version "24" :type github :pkgname "yuutayamada/emacs-jaqen-theme" :prepare
+                           (add-to-list 'custom-theme-load-path default-directory)))
  (commenter status "installed" recipe
             (:name commenter :website "https://github.com/yuutayamada/commenter#readme" :description "multiline-comment support package" :type github :pkgname "yuutayamada/commenter" :branch "master" :minimum-emacs-version "24.4" :depends
                    (let-alist)))

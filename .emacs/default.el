@@ -134,11 +134,8 @@
                                  (auto-capitalize-mode t)
                                  (flyspell-mode t))))
 
-   ;; Major-modes
-   (el-get 'sync '(org-mode nim-mode lua-mode markdown-mode))
-
    ;; Convenient & key binds driven
-   (el-get 'sync '(multiple-cursors git-gutter company-mode auto-complete))
+   (el-get 'sync '(multiple-cursors git-gutter company-mode auto-complete org-mode))
 
    ;; Load frequency used packages in the idle time.
    (el-get 'sync 'idle-require)
@@ -151,7 +148,7 @@
 ;; el-get directory. Probably this is only needed first you use this
 ;; configuration:
 ;;
-;;   (el-get-with-status-sources nil (el-get)) ; <- C-x C-e
+;;   (el-get-with-status-sources nil (el-get)) <- C-x C-e after close parenthesis
 
 
 (provide 'default)

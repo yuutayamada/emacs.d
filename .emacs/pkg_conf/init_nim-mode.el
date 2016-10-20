@@ -26,9 +26,14 @@
 ;; https://github.com/yuutayamada/emacs.d/blob/master/.emacs/builtin/init_prog-mode.el
 
 ;;; Code:
-(require 'nim-mode)
 
 (require 'Y-autoload)
+
+;;;###autoload
+(el-get 'sync 'nim-mode)
+
+(require 'nim-mode)
+
 ;; An Emacs package to write Emacs extensions by Nim (totally optional)
 (el-get 'sync 'nim-emacs-module 'suggestion-box 'suggestion-box-nim)
 

@@ -2,6 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'Y-autoload)
+
+;;;###autoload
+(el-get 'sync 'markdown-mode)
+
 (require 'markdown-mode)
 
 (let ((gfm-css "~/local/vcs/github.com/sindresorhus/github-markdown-css/github-markdown.css"))

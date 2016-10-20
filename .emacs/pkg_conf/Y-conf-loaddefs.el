@@ -6,7 +6,7 @@
 ;;;### (autoloads nil "../default" "../default.el" (0 0 0 0))
 ;;; Generated autoloads from ../default.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '("tty-setup-once" "el-get-is-lazy")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "../default" '(#("tty-setup-once" 0 14 (face font-lock-function-name-face fontified nil)) #("el-get-is-lazy" 0 14 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 
@@ -472,6 +472,13 @@ Setup irony-mode.
 
 ;;;***
 
+;;;### (autoloads nil "init_lua-mode" "init_lua-mode.el" (0 0 0 0))
+;;; Generated autoloads from init_lua-mode.el
+
+(el-get 'sync 'lua-mode)
+
+;;;***
+
 ;;;### (autoloads nil "init_magit" "init_magit.el" (0 0 0 0))
 ;;; Generated autoloads from init_magit.el
 
@@ -487,6 +494,8 @@ Call `magit-status'.
 ;;;### (autoloads nil "init_markdown-mode" "init_markdown-mode.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from init_markdown-mode.el
+
+(el-get 'sync 'markdown-mode)
 
 (add-to-list 'auto-mode-alist (cons "\\(?:\\.\\(?:\\(?:m\\(?:arkdown\\|d\\(?:own\\)?\\|kdn?\\)\\)\\)\\)\\'" 'gfm-mode))
 
@@ -532,7 +541,9 @@ Call `magit-status'.
 ;;;### (autoloads nil "init_nim-mode" "init_nim-mode.el" (0 0 0 0))
 ;;; Generated autoloads from init_nim-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_nim-mode" '(#("my-nim-print" 0 12 (face font-lock-function-name-face fontified nil)) #("Y/nim-mode-common-setup" 0 23 (face font-lock-function-name-face fontified nil)))))
+(el-get 'sync 'nim-mode)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_nim-mode" '(#("my-nim-print" 0 12 (fontified nil)) #("Y/nim-mode-common-setup" 0 23 (fontified nil)))))
 
 ;;;***
 
@@ -764,8 +775,8 @@ Switch m window.
 ;;;;;;  "init_hl-line.el" "init_info.el" "init_jade.el" "init_javadoc-lookup.el"
 ;;;;;;  "init_jedi.el" "init_js-console.el" "init_js2-mode.el" "init_jstestmacs.el"
 ;;;;;;  "init_keyboard-converter.el" "init_keychord.el" "init_logalimacs.el"
-;;;;;;  "init_lua-mode.el" "init_masaw.el" "init_migemo.el" "init_mmm-mode.el"
-;;;;;;  "init_moz.el" "init_mozc.el" "init_multiple-cursors.el" "init_newsticker.el"
+;;;;;;  "init_masaw.el" "init_migemo.el" "init_mmm-mode.el" "init_moz.el"
+;;;;;;  "init_mozc.el" "init_multiple-cursors.el" "init_newsticker.el"
 ;;;;;;  "init_nlinum-relative.el" "init_node-console.el" "init_org-trello.el"
 ;;;;;;  "init_pangu-spacing.el" "init_paredit.el" "init_popwin.el"
 ;;;;;;  "init_powerline.el" "init_python.el" "init_sbtp.el" "init_scala-mode.el"

@@ -2,6 +2,10 @@
 
 ;;; Code:
 
+(require 'Y-autoload)
+;;;###autoload
+(el-get 'sync 'lua-mode)
+
 (require 'lua-mode)
 (setq lua-indent-level 2)
 

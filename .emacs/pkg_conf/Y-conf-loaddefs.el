@@ -688,6 +688,13 @@ If ARG is non-nil, turn on visual mode stuff.
 
 ;;;***
 
+;;;### (autoloads nil "init_wgrep" "init_wgrep.el" (0 0 0 0))
+;;; Generated autoloads from init_wgrep.el
+
+(el-get 'sync 'wgrep)
+
+;;;***
+
 ;;;### (autoloads nil "init_xterm-cursor-changer" "init_xterm-cursor-changer.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from init_xterm-cursor-changer.el
@@ -780,9 +787,9 @@ Switch m window.
 ;;;;;;  "init_nlinum-relative.el" "init_node-console.el" "init_org-trello.el"
 ;;;;;;  "init_pangu-spacing.el" "init_paredit.el" "init_popwin.el"
 ;;;;;;  "init_powerline.el" "init_python.el" "init_sbtp.el" "init_scala-mode.el"
-;;;;;;  "init_skk-b.el" "init_sql.el" "init_undo-tree.el" "init_wgrep.el"
-;;;;;;  "init_winner.el" "init_xmp.el" "init_yatemplate.el" "init_yim.el"
-;;;;;;  "obsolete/init_actionscript-mode.el") (0 0 0 0))
+;;;;;;  "init_skk-b.el" "init_sql.el" "init_undo-tree.el" "init_winner.el"
+;;;;;;  "init_xmp.el" "init_yatemplate.el" "init_yim.el" "obsolete/init_actionscript-mode.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

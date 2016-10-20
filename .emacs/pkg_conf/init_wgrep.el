@@ -15,7 +15,10 @@
 ;;; Code:
 
 (require 'Y-autoload)
+
+;;;###autoload
 (el-get 'sync 'wgrep)
+
 (require 'wgrep)
 
 ;; To save buffer automatically when `wgrep-finish-edit'.

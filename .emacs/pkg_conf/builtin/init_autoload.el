@@ -1,13 +1,14 @@
 ;;; init_autoload.el --- init file for autoload.el   -*- lexical-binding: t; -*-
 
 ;;; Commentary:
+
 ;; My autoload support functions
 ;; I heavily stole from :
 ;; http://www.emacswiki.org/emacs/UpdateAutoloads
 ;; http://www.lunaryorn.com/2014/07/02/autoloads-in-emacs-lisp.html
+
 ;;; Code:
 
-;; (require 'my_paths)
 (require 'cl-lib)
 (require 'autoload)
 

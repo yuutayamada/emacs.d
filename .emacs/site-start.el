@@ -1,12 +1,13 @@
 ;;; site-start.el --- my site-start file -*- lexical-binding: t; -*-
 
-;; see also:
+;;; Commentary:
+
+;; What is site-start.el?:
 
 ;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html
 ;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Startup-Summary.html#Startup-Summary
 
-;;; Commentary:
-;;
+
 ;; Order of loading files (from startup.el) ;;
 ;;
 ;;   1. site-start.el (--no-site-file to prevent)
@@ -38,7 +39,6 @@
 
 ;;; Code:
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Circumvent --batch option
 (unless noninteractive
   ;; Expand GC limit to boot rapidly
@@ -50,7 +50,7 @@
                  (when (require 'notifications nil t)
                    (Y/message-startup-time "Ready to start!" t)))))
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   ;; Prepare necessary configurations before loading default.el
   (add-to-list
    'load-path (format "%sY/" (file-name-directory (locate-library "site-start"))))
@@ -59,7 +59,7 @@
   (require 'Y-premitives)
   (require 'Y-util)
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   ;; Start up configuration
   (setq
    ;; Load newer file than old file(this feature is from Emacs 24.4)

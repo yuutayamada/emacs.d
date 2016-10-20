@@ -1,5 +1,7 @@
-;;; Y-autoload.el --- autoload definitions
+;;; Y-autoload.el --- autoload definitions -*- lexical-binding: t; -*-
+
 ;;; Commentary:
+
 ;;; Code:
 
 (require 'Y-paths)
@@ -11,7 +13,8 @@
 ;; Load Emacs’ autoload files (git.savannah.gnu.org/emacs/lisp/emacs)
 (Y/message-startup-time "Emacs loaddefs")
 (require 'loaddefs)
-;; Then omit org-mode from search path
+
+;; Omit default org-mode from search path to use latest org-mode.
 (require 'cl-lib)
 (require 'find-func)
 (setq load-path
@@ -28,6 +31,7 @@
 (let ((dev (concat elisp-dir "self/")))
   (Y/add-load-path-subdir `(,config-dir ,dev)))
 
+;; see also `Y/make-autoload-files'
 (defconst Y/autoload-files
   `(,(concat config-dir "Y/Y-loaddefs.el")
     ,(concat config-dir "pkg_conf/Y-conf-loaddefs.el")

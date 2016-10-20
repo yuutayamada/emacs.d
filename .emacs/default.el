@@ -4,6 +4,7 @@
 
 ;;; Code:
 
+(defconst el-get-is-lazy t) ; because Y-autoload.el ‘require’ el-get's .loaddefs.el
 (require 'Y-autoload)
 
 ;; Color theme
@@ -22,8 +23,6 @@
 ;; Note that sometimes el-get’s .loaddefs.el might break, so check
 ;; the file if you caught suspicious behavior (probably you can solve
 ;; by "el-get-update package")
-
-(defconst el-get-is-lazy t) ; because Y-autoload.el ‘require’ .loaddefs.el
 
 (let ((done ; wait until the sync is done
        (prog1 'sync-completed

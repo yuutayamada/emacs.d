@@ -601,10 +601,10 @@
 
 ;; Escape ;;
 (mykie:set-keys esc-map
-  "ESC" tibus-toggle)
+  "ESC" helm-colors)
 
 (mykie:set-keys global-map
-  "A-ESC" ESC-prefix)
+  "A-ESC" evil-mode)
 
 ;; Overridden keys ;;
 (defvar my/overriding-mode-map (make-sparse-keymap))

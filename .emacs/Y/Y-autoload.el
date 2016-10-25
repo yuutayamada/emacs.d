@@ -2,18 +2,17 @@
 
 ;;; Commentary:
 
+;; Load autoload files and used to be loaded from other configuration
+;; files to suppress byte compile warnings.
+
 ;;; Code:
 
 (require 'Y-paths)
 (require 'Y-util)
 (require 'Y-el-get)
-(autoload 'el-get "el-get") ; for ‘el-get’ function
 
 
-;; Load Emacs’ autoload files (git.savannah.gnu.org/emacs/lisp/emacs)
-(Y/message-startup-time "Emacs loaddefs")
-(require 'loaddefs)
-
+;; FIXME: what is the proper way to use git version's org-mode?
 ;; Omit default org-mode from search path to use latest org-mode.
 (require 'cl-lib)
 (require 'find-func)
@@ -25,11 +24,19 @@
        unless (equal f file)
        collect f))
 
+(el-get 'sync 'org-mode) ; git version
+
+
+;; Load Emacs’ autoload files (git.savannah.gnu.org/emacs/lisp/emacs)
+(Y/message-startup-time "Emacs loaddefs")
+(require 'loaddefs)
+
 
 ;; Prepare load-paths for this repository
 (Y/message-startup-time "My loaddefs")
 (let ((dev (concat elisp-dir "self/")))
   (Y/add-load-path-subdir `(,config-dir ,dev)))
+
 
 ;; see also `Y/make-autoload-files'
 (defconst Y/autoload-files
@@ -43,14 +50,15 @@
 (require 'Y-package-loaddefs)
 
 
-;; EL-GET
+;; EL-GET autoload file
 (Y/message-startup-time "el-get loaddefs")
 (add-to-list 'load-path el-get-dir)
 (require '.loaddefs)
 
 
-;; work around for evil
+;; autoload for evil
 (autoload 'evil-normal-state "evil")
+
 
 (Y/message-startup-time "Y-autoload done")
 

@@ -1,4 +1,4 @@
-;;; init-flycheck.el --- init file for flycheck.el -*- lexical-binding: t; -*-
+;;; init_flycheck.el --- init file for flycheck.el -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -50,11 +50,11 @@ See URL `http://www.veripool.org/wiki/verilator'."
           line ": " (message) line-end))
   :modes verilog-mode)
 
-(provide 'init-flycheck)
+(provide 'init_flycheck)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; mode: emacs-lisp
 ;; End:
 
-;;; init-flycheck.el ends here
+;;; init_flycheck.el ends here

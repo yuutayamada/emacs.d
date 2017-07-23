@@ -136,6 +136,8 @@
    ;; Convenient & key binds driven
    (el-get 'sync '(multiple-cursors git-gutter company-mode auto-complete org-mode))
 
+   ;; (el-get 'sync 'camcorder)
+   ;; (require 'camcorder)
    ;; Load frequency used packages in the idle time.
    (el-get 'sync 'idle-require)
    (run-with-idle-timer (* idle-update-delay 20) nil 'idle-require-mode t)))

@@ -543,7 +543,7 @@
 (queue status "installed" recipe
 (:name queue :description "Queue data structure" :type elpa))
 (quickrun status "installed" recipe
-(:name quickrun :description "Run commands quickly" :website "https://github.com/syohex/emacs-quickrun" :type github :pkgname "syohex/emacs-quickrun" :features "quickrun"))
+(:name quickrun :description "Run commands quickly" :website "https://github.com/syohex/emacs-quickrun" :type github :pkgname "syohex/emacs-quickrun"))
 (rainbow-delimiters status "installed" recipe
 (:name rainbow-delimiters :website "https://github.com/Fanael/rainbow-delimiters#readme" :description "Color nested parentheses, brackets, and braces according to their depth." :type github :pkgname "Fanael/rainbow-delimiters"))
 (rainbow-mode status "installed" recipe

@@ -28,11 +28,13 @@
 ;;; Code:
 
 (require 'Y-autoload)
+(el-get 'sync 'quickrun)
 
 ;;;###autoload
 (el-get 'sync 'nim-mode)
 
 (require 'nim-mode)
+(defconst flycheck-nimsuggest-error-parser 'flycheck-nimsuggest-error-parser)
 
 ;; An Emacs package to write Emacs extensions by Nim (totally optional)
 (el-get 'sync 'nim-emacs-module 'suggestion-box 'suggestion-box-nim)
@@ -64,8 +66,13 @@
     (nim-call-epc
      ;; con dus
      'sug ; def ;dus ; sug ; 'dus ; 9, 3
-     (lambda (args) (message "%s" args)))))
+     (lambda (args)
+       (message "%s" args)))))
 
+;; Error from syntax checker nim-nimsuggest: (wrong-type-argument stringp ((chk skUnknown nil ??? Error -1 -1 invalid module name: '' 0) (chk skUnknown nil ??? Error -1 -1 cannot open '' 0)))
+(define-key nim-mode-map (kbd "C-0") 'my-nim-print)
+
+;; (require 'flycheck-nimsuggest)
 (provide 'init_nim-mode)
 
 ;; Local Variables:

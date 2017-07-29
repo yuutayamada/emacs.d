@@ -41,7 +41,6 @@
   "'"        helm-ag-r-from-git-repo
   "="        dired-up-directory
   "C-t"      dired-display-file
-  "M-RET"    my/multi-term-current-buffer
   [tab]      (Y-open-file-as-root (dired-file-name-at-point))
   "r"        wdired-change-to-wdired-mode
   "C-o"      ; nil

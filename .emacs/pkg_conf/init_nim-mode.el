@@ -34,7 +34,6 @@
 (el-get 'sync 'nim-mode)
 
 (require 'nim-mode)
-(defconst flycheck-nimsuggest-error-parser 'flycheck-nimsuggest-error-parser)
 
 ;; An Emacs package to write Emacs extensions by Nim (totally optional)
 (el-get 'sync 'nim-emacs-module 'suggestion-box 'suggestion-box-nim)

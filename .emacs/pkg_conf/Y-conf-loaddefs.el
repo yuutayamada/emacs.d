@@ -50,7 +50,7 @@ FILES should put a place where is located to elisp directory.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from builtin/init_dired.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_dired" '("Y-open-file-as-root" "image-dired-gallery-dir" "dired-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_dired" '(#("Y-open-file-as-root" 0 19 (face font-lock-function-name-face fontified nil)) #("image-dired-gallery-dir" 0 23 (face font-lock-variable-name-face fontified nil)) #("dired-" 0 6 (fontified nil face font-lock-variable-name-face)))))
 
 ;;;***
 
@@ -101,14 +101,6 @@ My file cache find-file.
 \(fn)" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_filecache" '("Y/ghq-root" "my/filecache-directories")))
-
-;;;***
-
-;;;### (autoloads nil "builtin/init_flymake" "builtin/init_flymake.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from builtin/init_flymake.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "builtin/init_flymake" '("flymake-simple-")))
 
 ;;;***
 
@@ -227,14 +219,6 @@ Treat merging at point by smerge way.
 
 ;;;***
 
-;;;### (autoloads nil "el-get/init-flycheck" "el-get/init-flycheck.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from el-get/init-flycheck.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "el-get/init-flycheck" '("flycheck-emacs-lisp-")))
-
-;;;***
-
 ;;;### (autoloads nil "el-get/init-flycheck-tip" "el-get/init-flycheck-tip.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from el-get/init-flycheck-tip.el
@@ -327,7 +311,7 @@ Goto char with avy and move to ‘last-input-event’s char.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_avy" '(#("avy-keys" 0 8 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_avy" '("avy-keys")))
 
 ;;;***
 
@@ -377,6 +361,13 @@ Set up fuzzy matching.
 ;;; Generated autoloads from init_festival.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_festival" '("my/festival")))
+
+;;;***
+
+;;;### (autoloads nil "init_flycheck" "init_flycheck.el" (0 0 0 0))
+;;; Generated autoloads from init_flycheck.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_flycheck" '("flycheck-emacs-lisp-")))
 
 ;;;***
 
@@ -513,28 +504,10 @@ Call `magit-status'.
 
 ;;;***
 
-;;;### (autoloads nil "init_multi-term" "init_multi-term.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from init_multi-term.el
-
-(autoload 'my/multi-term "init_multi-term" "\
-
-
-\(fn &optional SWITCH)" t nil)
-
-(autoload 'my/multi-term-current-buffer "init_multi-term" "\
-
-
-\(fn)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_multi-term" '("term-send-" "my/multi-term-original-buffer")))
-
-;;;***
-
 ;;;### (autoloads nil "init_mykie" "init_mykie.el" (0 0 0 0))
 ;;; Generated autoloads from init_mykie.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_mykie" '(#("my/overriding-mode-map" 0 22 (face font-lock-variable-name-face fontified nil)) #("Y/mykie-tab" 0 11 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_mykie" '(#("my/overriding-mode-map" 0 22 (fontified nil)) #("Y/mykie-tab" 0 11 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -543,7 +516,7 @@ Call `magit-status'.
 
 (el-get 'sync 'nim-mode)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_nim-mode" '(#("my-nim-print" 0 12 (fontified nil)) #("Y/nim-mode-common-setup" 0 23 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_nim-mode" '("my-nim-print" "Y/nim-mode-common-setup")))
 
 ;;;***
 
@@ -658,7 +631,7 @@ You can specify 'ask and 'compile-only as symbol to DIRECTION.
 
 (advice-add 'twit :before 'my/twit-select-user-name)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_twittering-mode" '(#("my/twit" 0 7 (fontified t face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init_twittering-mode" '("my/twit")))
 
 ;;;***
 

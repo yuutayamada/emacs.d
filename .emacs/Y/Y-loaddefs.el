@@ -13,7 +13,7 @@
 ;;;### (autoloads nil "Y-autoload" "Y-autoload.el" (0 0 0 0))
 ;;; Generated autoloads from Y-autoload.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-autoload" '(#("Y/autoload-files" 0 16 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "Y-autoload" '("Y/autoload-files")))
 
 ;;;***
 

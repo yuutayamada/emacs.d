@@ -28,8 +28,6 @@
 (require 'Y-autoload)
 (require 'mykie)
 
-(el-get-bundle! elpa:nlinum)
-(el-get-bundle! "CodeFalling/nlinum-relative")
 
 ;; mykie.el setup ;;
 (setq mykie:use-major-mode-key-override 'global
@@ -295,12 +293,12 @@
   "C-S-d" doctor
   "C-S-m" Y/mew
   "C-S-n"
-  (if (bound-and-true-p nlinum-mode)
+  (if (bound-and-true-p display-line-numbers-mode)
       (progn
         (git-gutter-mode +1)
-        (nlinum-mode 0))
+        (display-line-numbers-mode -1))
     (git-gutter-mode -1)
-    (nlinum-relative-mode t))
+    (display-line-numbers-mode +1))
 
   "C-S-o" remember
   "C-S-h" helm-descbinds

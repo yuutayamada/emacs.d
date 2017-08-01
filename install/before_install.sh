@@ -6,8 +6,8 @@ sudo apt-get update -qq
 sudo apt-get install -y texinfo install-info eblook
 # For lookup.el(ndeb)
 sudo apt-get install -y eblook
-# For copying on terminal
-sudo apt-get install -y xclip
+# For copying on terminal (I just like xsel than xclip)
+sudo apt-get install -y xsel
 # For pdf-tools
 sudo apt install -y libpng-dev libz-dev libpoppler-glib-dev libpoppler-private-dev imagemagick
 # $ cd /path/to/pdf-tools

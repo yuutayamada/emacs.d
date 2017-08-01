@@ -9,6 +9,8 @@
 
 (require 'markdown-mode)
 
+(setq markdown-fontify-code-blocks-natively t)
+
 (let ((gfm-css "~/local/vcs/github.com/sindresorhus/github-markdown-css/github-markdown.css"))
   (when (file-exists-p gfm-css)
     (setq markdown-css-paths `(,gfm-css))))

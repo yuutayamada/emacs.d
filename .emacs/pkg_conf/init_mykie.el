@@ -298,7 +298,9 @@
         (git-gutter-mode +1)
         (display-line-numbers-mode -1))
     (git-gutter-mode -1)
-    (display-line-numbers-mode +1))
+    ;; this future was supported from Emacs 26.1
+    (display-line-numbers-mode +1)
+    (setq display-line-numbers 'visual))
 
   "C-S-o" remember
   "C-S-h" helm-descbinds

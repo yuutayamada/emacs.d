@@ -28,7 +28,7 @@
        (prog1 'sync-completed
          (el-get
           'sync
-          '(windows tabbar popwin auto-capitalize
+          '(windows tabbar popwin auto-capitalize contrast-color
             evil seqcmd helm fcitx flycheck)))))
 
   (when done
@@ -134,11 +134,12 @@
                                  (flyspell-mode t))))
 
    ;; Convenient & key binds driven
-   (el-get 'sync '(multiple-cursors git-gutter company-mode auto-complete org-mode))
+   (el-get 'sync '(multiple-cursors git-gutter company-mode auto-complete org-mode magit))
 
    ;; (el-get 'sync 'camcorder)
    ;; (require 'camcorder)
    ;; Load frequency used packages in the idle time.
+   (defvar idle-require-symbols '(magit helm))
    (el-get 'sync 'idle-require)
    (run-with-idle-timer (* idle-update-delay 20) nil 'idle-require-mode t)))
 

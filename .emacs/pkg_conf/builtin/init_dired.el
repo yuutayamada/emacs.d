@@ -5,6 +5,9 @@
 
 (require 'mykie)
 
+(require 'el-get)
+(el-get-bundle! image-dired+)
+
 ;; Do not pass "--dired" option because often it destructs my dired buffer, so..
 ;; Probably it related to following error (but not sure...):
 ;;   "Wrong type argument: number-or-marker-p, //DIRED-OPTIONS//"

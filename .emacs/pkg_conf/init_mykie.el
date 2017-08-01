@@ -442,6 +442,7 @@
 
 (defun Y/mykie-tab ()
   "My tab function."
+  (interactive)
   (mykie
    :default indent-for-tab-command
    :markdown-header markdown-cycle

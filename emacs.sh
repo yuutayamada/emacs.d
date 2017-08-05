@@ -76,8 +76,7 @@ EmacsClient() {
     # Emacsclient on URxvt
     ${urxvt_client} \
       -depth 32 -bg rgba:0000/0000/0000/a777 \
-      -xrm 'URxvt*perl-ext:' \
-      -xrm 'URxvt*perl-ext-common:' \
+      -pe '-matcher' \
       -title "urxvtEmacs" \
       -keysym.C-0x5b 'string:@a' \
       -e ${client} \

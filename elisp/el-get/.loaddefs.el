@@ -1042,6 +1042,29 @@ Sets up preferred newline behavior. Not set by default. Meant
 
 ;;;***
 
+;;;### (autoloads nil "helm-c-yasnippet/helm-c-yasnippet" "helm-c-yasnippet/helm-c-yasnippet.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from helm-c-yasnippet/helm-c-yasnippet.el
+
+(autoload 'helm-yas-complete "helm-c-yasnippet/helm-c-yasnippet" "\
+List of yasnippet snippets using `helm' interface.
+
+\(fn)" t nil)
+
+(autoload 'helm-yas-visit-snippet-file "helm-c-yasnippet/helm-c-yasnippet" "\
+List of yasnippet snippet files
+
+\(fn)" t nil)
+
+(autoload 'helm-yas-create-snippet-on-region "helm-c-yasnippet/helm-c-yasnippet" "\
+Create a snippet from region.
+
+\(fn &optional START END FILE-NAME)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "helm-c-yasnippet/helm-c-yasnippet" '("helm-")))
+
+;;;***
+
 ;;;### (autoloads nil "idle-require/idle-require" "idle-require/idle-require.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from idle-require/idle-require.el
@@ -3905,7 +3928,7 @@ A major mode for the Nim programming language.
 
 (add-to-list 'auto-mode-alist '("\\.nim\\'" . nim-mode))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-mode" '("nim-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-mode" '(#("nim-" 0 4 (fontified nil)))))
 
 ;;;***
 
@@ -4588,6 +4611,24 @@ This will fontify with colors the string like \"#aabbcc\" or \"blue\".
 
 ;;;***
 
+;;;### (autoloads nil "sane-term/sane-term" "sane-term/sane-term.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from sane-term/sane-term.el
+
+(autoload 'sane-term-create "sane-term/sane-term" "\
+Create new term buffer.
+
+\(fn)" t nil)
+
+(autoload 'sane-term "sane-term/sane-term" "\
+Cycle through term buffers, creating if necessary.
+
+\(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sane-term/sane-term" '("sane-term-")))
+
+;;;***
+
 ;;;### (autoloads nil "suggestion-box-nim/suggestion-box-nim" "suggestion-box-nim/suggestion-box-nim.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from suggestion-box-nim/suggestion-box-nim.el
@@ -4661,6 +4702,73 @@ the mode if ARG is omitted or nil, and toggle it if ARG is `toggle'.
 ;;; Generated autoloads from with-editor/with-editor.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "with-editor/with-editor" '("with-editor" "start-file-process--with-editor-process-filter" "server-" "shell-command-")))
+
+;;;***
+
+;;;### (autoloads nil "yasnippet/yasnippet" "yasnippet/yasnippet.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from yasnippet/yasnippet.el
+
+(autoload 'yas-minor-mode "yasnippet/yasnippet" "\
+Toggle YASnippet mode.
+
+When YASnippet mode is enabled, `yas-expand', normally bound to
+the TAB key, expands snippets of code depending on the major
+mode.
+
+With no argument, this command toggles the mode.
+positive prefix argument turns on the mode.
+Negative prefix argument turns off the mode.
+
+Key bindings:
+\\{yas-minor-mode-map}
+
+\(fn &optional ARG)" t nil)
+
+(defvar yas-global-mode nil "\
+Non-nil if Yas-Global mode is enabled.
+See the `yas-global-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `yas-global-mode'.")
+
+(custom-autoload 'yas-global-mode "yasnippet/yasnippet" nil)
+
+(autoload 'yas-global-mode "yasnippet/yasnippet" "\
+Toggle Yas minor mode in all buffers.
+With prefix ARG, enable Yas-Global mode if ARG is positive;
+otherwise, disable it.  If called from Lisp, enable the mode if
+ARG is omitted or nil.
+
+Yas minor mode is enabled in all buffers where
+`yas-minor-mode-on' would do it.
+See `yas-minor-mode' for more information on Yas minor mode.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'snippet-mode "yasnippet/yasnippet" "\
+A mode for editing yasnippets
+
+\(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "yasnippet/yasnippet" '("yas-" "help-snippet-def" "snippet-mode-map" "last-buffer-undo-list")))
+
+;;;***
+
+;;;### (autoloads nil "yasnippet/yasnippet-debug" "yasnippet/yasnippet-debug.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from yasnippet/yasnippet-debug.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "yasnippet/yasnippet-debug" '("yas-")))
+
+;;;***
+
+;;;### (autoloads nil "yasnippet/yasnippet-tests" "yasnippet/yasnippet-tests.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from yasnippet/yasnippet-tests.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "yasnippet/yasnippet-tests" '("yas-")))
 
 ;;;***
 

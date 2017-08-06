@@ -288,7 +288,7 @@
               :features "helm-config"))
  (helm-ag-r status "required" recipe
             (:name helm-ag-r :type git :url "https://github.com/yuutayamada/helm-ag-r.git"))
- (helm-c-yasnippet status "required" recipe
+ (helm-c-yasnippet status "installed" recipe
                    (:name helm-c-yasnippet :type github :pkgname "emacs-jp/helm-c-yasnippet" :description "Helm source for yasnippet.el." :features helm-c-yasnippet :depends
                           (helm yasnippet)))
  (helm-descbinds status "required" recipe
@@ -558,7 +558,7 @@
             (:name rust-mode :type github :pkgname "rust-lang/rust-mode" :description "Emacs mode for Rust"))
  (s status "required" recipe
     (:name s :description "The long lost Emacs string manipulation library." :type github :pkgname "magnars/s.el"))
- (sane-term status "required" recipe
+ (sane-term status "installed" recipe
             (:name sane-term :description "Ansi Term with sane options and the ability to cycle/create terms" :website "https://github.com/adamrt/sane-term" :type github :pkgname "adamrt/sane-term"))
  (seq status "installed" recipe
       (:name seq :description "Sequence manipulation library for Emacs" :builtin "25" :type github :pkgname "NicolasPetton/seq.el"))
@@ -644,7 +644,7 @@
          (:name xmlgen :description "Generate xml using sexps with the function `xmlgen'" :type github :pkgname "philjackson/xmlgen"))
  (yaml-mode status "required" recipe
             (:name yaml-mode :description "Simple major mode to edit YAML file for emacs" :type github :pkgname "yoshiki/yaml-mode"))
- (yasnippet status "required" recipe
+ (yasnippet status "installed" recipe
             (:name yasnippet :website "https://github.com/capitaomorte/yasnippet.git" :description "YASnippet is a template system for Emacs." :type github :pkgname "capitaomorte/yasnippet" :compile "yasnippet.el" :submodule nil :build
                    (("git" "submodule" "update" "--init" "--" "snippets"))))
  (yatemplate status "required" recipe

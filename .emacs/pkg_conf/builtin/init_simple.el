@@ -43,7 +43,10 @@
                                   "6. the minimum paren-depth encountered during this scan."
                                   "7. style of comment, if any."
                                   "8. character address of start of comment or string; nil if not in one."
-                                  "9. Intermediate data for continuation of parsing (subject to change).")
+                                  "9. a list of currently open parenthesis positions, starting with the outermost parenthesis."
+                                  ;; emacs-version: "26.0.50"
+                                  "10. non-nil when the last character scanned might be the first character of a two character construct, i.e., a comment delimiter or escaped character.  Its value is the syntax of that last character."
+                                  )
                     for p in (syntax-ppss (point))
                     for description = (car desc) do
                     (setq desc (cdr desc))

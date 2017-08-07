@@ -102,7 +102,8 @@
      (xterm-keybinder-setup))
     (terminal-init-rxvt
      (when (getenv "COLORTERM" (selected-frame))
-       (urxvt-keybinder-setup "xft:DejaVu Sans Mono" 12))))
+       ;; TODO: get data from: `font-get-system-normal-font'
+       (urxvt-keybinder-setup "xft:Inconsolata Nerd Font Mono" 16))))
   (xterm-mouse-mode t)
   ;; Set background-mode as dark always
   ;; This configuration affects inside terminal Emacs under the xterm or urxvt.

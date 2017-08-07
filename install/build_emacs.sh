@@ -10,7 +10,10 @@ cd `ghq root`/git.savannah.gnu.org/emacs
 # TODO: organize prerequisite libraries
 # for image
 # apt-get install libXaw3d libxpm libpng libz libjpeg libtiff libgif librsvg2-dev
+# gnutls
 # For webkit: libwebkitgtk-3.0-dev
+
+
 
 # reset previous things
 # discard stuff from last build
@@ -19,7 +22,8 @@ git reset --hard HEAD
 git clean -xdf
 
 # update to latest
-git checkout master
+# Use specific point to prevent segfault of Emacs
+git checkout 9df49cd
 git pull git://git.savannah.gnu.org/emacs.git
 
 # git checkout emacs-25

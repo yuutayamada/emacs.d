@@ -25,13 +25,18 @@ git pull git://git.savannah.gnu.org/emacs.git
 # git checkout emacs-25
 # git pull
 
+# use an X toolkit (KIT one of: yes or gtk, gtk2, gtk3, lucid or athena, motif, no)
+toolkit=--with-x-toolkit=lucid
+experimental=--with-xwidgets --with-x-toolkit=gtk3 --with-cairo
+
 # CONFIGURE
 ./autogen.sh all
 ./configure \
   CFLAGS='-O2' \
   --with-dbus -without-toolkit-scroll-bars \
-  --with-xim --without-makeinfo --with-x-toolkit=gtk3 \
-  --with-modules --with-cairo
+  --with-xim --without-makeinfo --with-modules\
+  $toolkit
+
 # Memo for Emacs 25
 # --with-cairo, --with-xwidgets, --with-modules
 # (cairo and xwidgets need gtk3)

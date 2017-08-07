@@ -7,7 +7,7 @@
 (require 'Y-autoload)
 
 (el-get 'sync '(indent-guide rainbow-delimiters rainbow-mode paredit
-                suggestion-box))
+                suggestion-box form-feed))
 
 (add-hook 'prog-mode-hook
           '(lambda ()
@@ -37,7 +37,10 @@
              (indent-guide-mode t)
              (rainbow-delimiters-mode)
              ;; flyspell-prog-mode
-             (flyspell-prog-mode)))
+             (flyspell-prog-mode)
+             ;; Display  as horizontal line
+             (defconst form-feed-line-width 80)
+             (form-feed-mode t)))
 
 (add-hook 'before-save-hook
           #'(lambda ()

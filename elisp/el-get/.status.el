@@ -204,6 +204,8 @@
  (flycheck-tip status "installed" recipe
                (:name flycheck-tip :type github :pkgname "yuutayamada/flycheck-tip" :description "show you error by popup-tip" :depends
                       (flycheck popup)))
+ (form-feed status "installed" recipe
+            (:name form-feed :website "https://github.com/wasamasa/form-feed#readme" :description "Display ^L glyphs as horizontal lines" :type github :pkgname "wasamasa/form-feed"))
  (fuzzy status "installed" recipe
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
  (ggtags status "required" recipe

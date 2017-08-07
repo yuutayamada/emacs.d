@@ -962,6 +962,23 @@ Use this together with the `option', `option-list' and
 
 ;;;***
 
+;;;### (autoloads nil "form-feed/form-feed" "form-feed/form-feed.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from form-feed/form-feed.el
+
+(autoload 'form-feed-mode "form-feed/form-feed" "\
+Toggle form-feed-mode.
+
+This minor mode displays page delimiters which usually appear as ^L
+glyphs on a single line as horizontal lines spanning the entire
+window.
+
+\(fn &optional ARG)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "form-feed/form-feed" '("form-feed-")))
+
+;;;***
+
 ;;;### (autoloads nil "fuzzy/fuzzy" "fuzzy/fuzzy.el" (0 0 0 0))
 ;;; Generated autoloads from fuzzy/fuzzy.el
 

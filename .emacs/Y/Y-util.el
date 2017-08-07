@@ -86,10 +86,6 @@ file prefix by PREFIX."
                                 (require (quote ,(intern file)))
                               (error err)))))))))
 
-(defun Y/change-font-on-terminal (size)
-  (send-string-to-terminal
-   (format "\33]50;%s:pixelsize=%d\007" "xft:DejaVu Sans Mono" size)))
-
 (defun Y/frame-init-func (&optional frame)
   "Init function when Emacs connects new server with FRAME object."
   (let ((f (or frame (selected-frame))))
@@ -109,13 +105,7 @@ file prefix by PREFIX."
        (set-locale-environment "ja_JP.UTF-8"))
       (t ; nil for a termcap frame (a character-only terminal),
        ;; On Terminal Emacs, this shows eshell prompt string correctly.
-       (set-locale-environment "en_US.UTF-8")
-       ;; Change font size by pixel width
-       (Y/change-font-on-terminal
-        (cond
-         ((>  152 (display-pixel-width)) 10) ; my note
-         ((<= 152 (display-pixel-width)) 12)
-         (t 12)))))))
+       (set-locale-environment "en_US.UTF-8")))))
 
 (defsubst Y/custom-theme-random-pick (themes)
   (let* ((themes

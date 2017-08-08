@@ -14,6 +14,9 @@ sudo apt install -y libpng-dev libz-dev libpoppler-glib-dev libpoppler-private-d
 # $ make install-server-deps # optional
 # $ make -s
 
+# Emacs:
+# libxml2-dev, libgnutls-dev, libgbm-dev, libselinux-dev, libotf-dev, libsystemd-dev,
+# libm17m-dev, librsvg2-dev
 
 # Checkers
 # VERILOG

@@ -3,6 +3,75 @@
 ;;; Code:
 
 
+;;;### (autoloads nil "anzu/anzu" "anzu/anzu.el" (0 0 0 0))
+;;; Generated autoloads from anzu/anzu.el
+
+(autoload 'anzu-mode "anzu/anzu" "\
+minor-mode which display search information in mode-line.
+
+\(fn &optional ARG)" t nil)
+
+(defvar global-anzu-mode nil "\
+Non-nil if Global Anzu mode is enabled.
+See the `global-anzu-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `global-anzu-mode'.")
+
+(custom-autoload 'global-anzu-mode "anzu/anzu" nil)
+
+(autoload 'global-anzu-mode "anzu/anzu" "\
+Toggle Anzu mode in all buffers.
+With prefix ARG, enable Global Anzu mode if ARG is positive;
+otherwise, disable it.  If called from Lisp, enable the mode if
+ARG is omitted or nil.
+
+Anzu mode is enabled in all buffers where
+`anzu--turn-on' would do it.
+See `anzu-mode' for more information on Anzu mode.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'anzu-query-replace-at-cursor "anzu/anzu" "\
+Replace symbol at cursor with to-string.
+
+\(fn)" t nil)
+
+(autoload 'anzu-query-replace-at-cursor-thing "anzu/anzu" "\
+Replace symbol at cursor within `anzu-replace-at-cursor-thing' area.
+
+\(fn)" t nil)
+
+(autoload 'anzu-query-replace "anzu/anzu" "\
+anzu version of `query-replace'.
+
+\(fn ARG)" t nil)
+
+(autoload 'anzu-query-replace-regexp "anzu/anzu" "\
+anzu version of `query-replace-regexp'.
+
+\(fn ARG)" t nil)
+
+(autoload 'anzu-replace-at-cursor-thing "anzu/anzu" "\
+anzu-query-replace-at-cursor-thing without query.
+
+\(fn)" t nil)
+
+(autoload 'anzu-isearch-query-replace "anzu/anzu" "\
+anzu version of `isearch-query-replace'.
+
+\(fn ARG)" t nil)
+
+(autoload 'anzu-isearch-query-replace-regexp "anzu/anzu" "\
+anzu version of `isearch-query-replace-regexp'.
+
+\(fn ARG)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "anzu/anzu" '("anzu-")))
+
+;;;***
+
 ;;;### (autoloads nil "auto-capitalize/auto-capitalize" "auto-capitalize/auto-capitalize.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from auto-capitalize/auto-capitalize.el

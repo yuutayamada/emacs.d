@@ -7,7 +7,7 @@
                 (:name ample-regexps :description "Compose and reuse Emacs regular expressions with ease" :type github :pkgname "immerrr/ample-regexps.el"))
  (android-mode status "required" recipe
                (:name android-mode :website "https://github.com/remvee/android-mode" :description "Emacs minor mode for Android application development" :type github :pkgname "remvee/android-mode"))
- (anzu status "required" recipe
+ (anzu status "installed" recipe
        (:name anzu :website "https://github.com/syohex/emacs-anzu" :description "A minor mode which displays current match and total matches." :type "github" :branch "master" :pkgname "syohex/emacs-anzu"))
  (arduino-mode status "required" recipe
                (:name arduino-mode :website "https://github.com/bookest/arduino-mode" :description "Emacs major mode for Arduino development." :type github :pkgname "bookest/arduino-mode"))
@@ -166,8 +166,12 @@
               `(("make" ,(format "EMACS=%s" el-get-emacs)
                  "info" "all"))
               :info "doc"))
- (evil-anzu status "required" recipe
-            (:name evil-anzu :type git :url "https://github.com/syohex/emacs-evil-anzu.git"))
+ (evil-anzu status "installed" recipe
+            (:name evil-anzu :features
+                   (evil-anzu)
+                   :after nil :depends
+                   (anzu evil)
+                   :description "anzu for evil-mode" :type github :pkgname "syohex/emacs-evil-anzu"))
  (evil-numbers status "required" recipe
                (:name evil-numbers :website "http://github.com/cofi/evil-numbers" :description "Increment/decrement numbers in Evil, the extensible vim\n       emulation layer. Like C-a/C-x in vim.\n\n       After installation, you will need to add a key-binding for evil-numbers.\n       For example:\n\n       (define-key evil-normal-state-map (kbd \"C-c +\") 'evil-numbers/inc-at-pt)\n       (define-key evil-normal-state-map (kbd \"C-c -\") 'evil-numbers/dec-at-pt)" :type github :pkgname "cofi/evil-numbers" :features evil-numbers :depends evil))
  (evil-surround status "required" recipe

@@ -28,10 +28,11 @@
 (require 'Y-autoload)
 (require 'mykie)
 
+(el-get-bundle! context-kill) ; somehow this doesn't allow autoload...
 (el-get-bundle! seqcmd) ; somehow this doesn't allow autoload...
 (require 'seqcmd)
 
-(el-get-bundle! context-kill) ; somehow this doesn't allow autoload...
+(el-get-bundle! evil-anzu)
 
 ;; mykie.el setup ;;
 (setq mykie:use-major-mode-key-override 'global

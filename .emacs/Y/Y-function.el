@@ -39,22 +39,23 @@
 (defvar Y/opacity-data nil)
 (defun Y/toggle-opacity ()
   "Toggle opacity."
-  (let* ((dg (display-graphic-p))
+  (let* ((opacity '(70 70))
+         (dg (display-graphic-p))
          (directive (if dg 'alpha 'background-color))
          (var  (frame-parameter (selected-frame) directive)))
     (cl-case directive
-      (background-color
+      (background-color ; NOX
        (cond
         ((equal "unspecified-bg" var)
          (Y/set-bg-color (if dg (car Y/opacity-data) (cdr Y/opacity-data))))
         (t (setq Y/opacity-data (cons (car Y/opacity-data) var))
            (Y/set-bg-color "unspecified-bg"))))
-      (alpha
+      (alpha ; GUI
        (if-let ((alpha var))
-           (if (equal alpha '(70 70))
+           (if (equal alpha opacity)
                (Y/set-bg-color nil '(100 100))
-             (Y/set-bg-color nil '(70 70)))
-         (Y/set-bg-color nil '(70 70)))))))
+             (Y/set-bg-color nil opacity))
+         (Y/set-bg-color nil opacity))))))
 
 ;;;###autoload
 (defun Y/set-bg-color (color &optional alpha)
@@ -63,6 +64,7 @@
   (if (display-graphic-p (selected-frame))
       ;; GUI      unspecified-bg
       (if (or alpha (equal "unspecified-bg" color))
+          ;; Loading `unspecified-bg' would cause annoying bug, so prevent it!
           (set-frame-parameter (selected-frame) 'alpha (or alpha '(70 0)))
         (set-frame-parameter (selected-frame) 'background-color color))
     ;; NOX

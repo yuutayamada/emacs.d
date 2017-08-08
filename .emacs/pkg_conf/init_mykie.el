@@ -34,6 +34,10 @@
 
 (el-get-bundle! evil-anzu)
 
+;; Regain Emacs' old return behavior
+(setq electric-indent-chars (delq ?\n electric-indent-chars))
+
+
 ;; mykie.el setup ;;
 (setq mykie:use-major-mode-key-override 'global
       mykie:region-conditions
@@ -69,6 +73,7 @@
       mykie:minor-mode-ignore-list '())
 (mykie:initialize)
 
+
 ;; ;; self-insert-command keys ;;
 ;; (mykie:set-keys with-self-key
 ;;   ;; NOTE
@@ -120,7 +125,7 @@
 
 ;; (assoc-default "Japanese" google-translate-supported-languages-alist)
 
-;; -------------------------------------------------
+
 ;; C-[a-z] ;;
 (mykie:set-keys nil ; nil means global-map
 
@@ -287,10 +292,13 @@
   ;; "C-8" (cider-turn-on-eldoc-mode)
   )
 
+
 ;; SUPER KEY BINDING ;;
 (mykie:set-keys global-map
   "s-s" t win-switch-menu)
 
+
+
 ;; RESTRICTED KEYBINDS                 ;;
 ;; Below keys Can not uses at terminal ;;
 ;; Testing without :default            ;;
@@ -324,6 +332,7 @@
   "C-," Y/lookup-stardict
   )
 
+
 ;; C-c prefix map ;;
 (mykie:set-keys global-map
   "C-c s"
@@ -361,6 +370,7 @@
   "C-c C-o"
   :default pane-toggle-window-structure)
 
+
 ;; C-x keymap ;;
 ;; Default keymap for C-x commands.
 ;; The normal global definition of the character C-x indirects to this keymap.
@@ -388,6 +398,7 @@
   :default save-buffers-kill-terminal ; kill daemon as well
   )
 
+
 ;; f0-9 ;;
 (mykie:set-keys global-map
   "<f1>"     winner-undo
@@ -402,6 +413,7 @@
   "<f12>"    helm-skk-rules
   "S-<f12>"  my/screen-shot)
 
+
 ;; NON ALPHABETICAL CHARACTER ;;
 ;; Do not bind "M-[" because it will take over F5-F10 keybind of terminal Emacs.
 ;; M-/ -- `dabbrev-expand'
@@ -412,6 +424,7 @@
   "C-\\" toggle-input-method
   "C-*"  undo)
 
+
 ;; Japanese keyboard only ;;
 (mykie:set-keys nil
   [(henkan)]
@@ -436,6 +449,7 @@
              (error (buf-move-right)))
   :C-u     git-messenger:popup-message)
 
+
 ;; TABS ;;
 ;; memo: there is a difference between <tab> and TAB
 ;; http://stackoverflow.com/questions/1792326/how-do-i-bind-a-command-to-c-i-without-changing-tab
@@ -461,6 +475,7 @@
 ;; see also ‘xterm-keybinder-enable-C-i-C-m’
 (global-set-key (kbd "A-i") 'Y/mykie-tab)
 
+
 ;; RET key ;;
 (mykie:set-keys nil
   "M-RET" fish
@@ -473,6 +488,7 @@
   :default     (newline)
   :org-mode    (org-return))
 
+
 ;; TODO: make :on-enter, :on-exit
 (mykie:define-prefix-key global-map "M-j"
   (:exit
@@ -498,6 +514,7 @@
   "C-M-s" mc/sort-regions
   "C-M-r" mc/reverse-regions)
 
+
 ;; M- prefix ;;
 (mykie:set-keys nil
   "M-c"
@@ -549,6 +566,7 @@
   :region  kill-ring-save
   :C-u     (eiji:search))
 
+
 ;; C-M- prefix ;;
 ;; C-M-a : begging-of-defun
 ;; C-M-e : end-of-defun
@@ -560,6 +578,7 @@
   "C-M-n" :default tabbar-forward
   "C-M-p" :default tabbar-backward)
 
+
 ;; M-g prefix ;;
 ;; (goto-map & windows.el prefix keymap) ;;
 ;; Note that windows.el uses a to z key to switch window(frame), so
@@ -585,6 +604,7 @@
   "M-a" loga-add
   )
 
+
 ;; Arrow keys ;;
 (mykie:set-keys global-map
   "<S-up>"       :default windmove-up
@@ -594,6 +614,7 @@
   "<C-S-up>"     :default my/increase-opacity
   "<C-S-down>"   :default my/decrease-opacity)
 
+
 ;; SPACE key ;;
 (mykie:set-keys nil
   "C-SPC"
@@ -605,6 +626,7 @@
   "S-SPC" :default scroll-down-command
   )
 
+
 ;; Escape ;;
 (mykie:set-keys esc-map
   "ESC" helm-colors)
@@ -612,6 +634,7 @@
 (mykie:set-keys global-map
   "A-ESC" evil-mode)
 
+
 ;; Overridden keys ;;
 (defvar my/overriding-mode-map (make-sparse-keymap))
 (mykie:set-keys my/overriding-mode-map
@@ -625,6 +648,7 @@
 (advice-add (global-key-binding (kbd "C-s")) :before
             (lambda () (require 'init_isearch)))
 
+
 ;; Bind Hyper key to jump over buffer.
 (require 'xterm-keybinder)
 (cl-loop for (c . C) in xterm-keybinder-key-pairs
@@ -635,6 +659,7 @@
          if Char
          do (global-set-key (kbd (format "H-S-%s" Char)) 'Y/avy-goto-char-by-input-event))
 
+
 ;; Mouse
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Mouse-Buttons.html
 (mykie:set-keys nil
@@ -647,7 +672,7 @@
   ;; [drag-mouse-1] mouse-set-region
   ;; [down-mouse-1] mouse-drag-region
   ;; middle click
-  [mouse-2] mouse-yank-primary
+  [mouse-2] x-clipboard-yank ; mouse-yank-primary
   ;; right click
   [mouse-3] mouse-save-then-kill)
 

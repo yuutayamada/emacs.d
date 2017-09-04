@@ -70,10 +70,13 @@ urxvtEmacs() {
 EmacsClient() {
   [ -z "$*" ] && where="$*"
   client=(${emacsclient} -s ${daemon_name} -q ${option} ${where})
-  if [ -z $xtermopt ] && [ -z $urxvt_client ]; then
-    ${client} &
-  elif test -z $xtermopt && test -n $urxvt_client; then
-    # Emacsclient on URxvt
+
+  if [ -n $xtermopt ]; then
+    # Emacsclient on XTerm
+    iconName=XtermEmacs
+    eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"
+  elif [ -n $urxvt_client ]; then
+    # Emacsclient on urxvtc
     ${urxvt_client} \
       -depth 32 -bg rgba:0000/0000/0000/a777 \
       -pe '-matcher' \
@@ -81,10 +84,12 @@ EmacsClient() {
       -keysym.C-0x5b 'string:@a' \
       -e ${client} \
       > /dev/null 2>&1 &
-  else
-    # Emacsclient on XTerm
-    iconName=XtermEmacs
-    eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"
+  elif [ "-t" = $option ]; then
+    # Terminal emacs with same window of terminal emulator
+    ${client}
+  elif [ "-c" = $option ]; then
+    # GUI Emacs
+    ${client} &
   fi
 }
 

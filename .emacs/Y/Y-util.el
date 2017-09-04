@@ -106,6 +106,14 @@ file prefix by PREFIX."
        ;; Sorry mouse, you should disappear from my world...
        (mouse-avoidance-mode 'banish))
       (t ; nil for a termcap frame (a character-only terminal),
+
+       ;; TODO: if you boot emacs with -t option of emacsclient, you
+       ;; may want to activate `evil-esc-mode' to use C-[ key, but
+       ;; currently I don't need it because I use urxvtc with new
+       ;; frame with xterm-keybinder, but for future improvement I
+       ;; would leave this...
+       ;; (evil-esc-mode t)
+
        ;; On Terminal Emacs, this shows eshell prompt string correctly.
        (set-locale-environment "en_US.UTF-8")))))
 

@@ -70,25 +70,29 @@ urxvtEmacs() {
 EmacsClient() {
   [ -z "$*" ] && where="$*"
   client=(${emacsclient} -s ${daemon_name} -q ${option} ${where})
-
-  if [ -n $xtermopt ]; then
-    # Emacsclient on XTerm
-    iconName=XtermEmacs
-    eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"
-  elif [ -n $urxvt_client ]; then
-    # Emacsclient on urxvtc
-    ${urxvt_client} \
-      -depth 32 -bg rgba:0000/0000/0000/a777 \
-      -pe '-matcher' \
-      -title "urxvtEmacs" \
-      -keysym.C-0x5b 'string:@a' \
-      -e ${client} \
-      > /dev/null 2>&1 &
-  elif [ "-t" = $option ]; then
-    # Terminal emacs with same window of terminal emulator
-    ${client}
+  # -t, -nw, or --tty: Open Emacs with new frame on the current terminal
+  if [ "-t" = $option ]; then
+    if [ -z $xtermopt ] && [ -z $urxvt_client ]; then
+      # Terminal emacs with same window of terminal emulator
+      ${client}
+    elif [ -n $xtermopt ] && [ -z $urxvt_client ]; then
+      # Emacsclient on XTerm
+      iconName=XtermEmacs
+      eval "xterm -j -s -samename -xrm `${xtermopt}` -T ${iconName} -e \"${client}\" &"
+    elif [ -n $urxvt_client ]; then
+      # Emacsclient on urxvtc
+      ${urxvt_client} \
+        -depth 32 -bg rgba:0000/0000/0000/a777 \
+        -pe '-matcher' \
+        -title "urxvtEmacs" \
+        -keysym.C-0x5b 'string:@a' \
+        -e ${client} \
+        > /dev/null 2>&1 &
+    else
+      # don't know
+    fi
+  # create new frame; GUI Emacs
   elif [ "-c" = $option ]; then
-    # GUI Emacs
     ${client} &
   fi
 }

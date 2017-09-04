@@ -227,6 +227,15 @@ Also see the related `auto-compile-on-save-mode'.
 
 ;;;***
 
+;;;### (autoloads nil "auto-complete-c-headers/auto-complete-c-headers"
+;;;;;;  "auto-complete-c-headers/auto-complete-c-headers.el" (0 0
+;;;;;;  0 0))
+;;; Generated autoloads from auto-complete-c-headers/auto-complete-c-headers.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "auto-complete-c-headers/auto-complete-c-headers" '("achead:")))
+
+;;;***
+
 ;;;### (autoloads nil "auto-complete/auto-complete" "auto-complete/auto-complete.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from auto-complete/auto-complete.el
@@ -1151,6 +1160,62 @@ Create a snippet from region.
 
 ;;;***
 
+;;;### (autoloads nil "helm-descbinds/helm-descbinds" "helm-descbinds/helm-descbinds.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from helm-descbinds/helm-descbinds.el
+
+(defvar helm-descbinds-mode nil "\
+Non-nil if Helm-Descbinds mode is enabled.
+See the `helm-descbinds-mode' command
+for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `helm-descbinds-mode'.")
+
+(custom-autoload 'helm-descbinds-mode "helm-descbinds/helm-descbinds" nil)
+
+(autoload 'helm-descbinds-mode "helm-descbinds/helm-descbinds" "\
+Use `helm' for `describe-bindings'.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'helm-descbinds-install "helm-descbinds/helm-descbinds" "\
+Use `helm-descbinds' as a replacement of `describe-bindings'.
+
+\(fn)" t nil)
+
+(autoload 'helm-descbinds-uninstall "helm-descbinds/helm-descbinds" "\
+Restore original `describe-bindings'.
+
+\(fn)" t nil)
+
+(autoload 'helm-descbinds "helm-descbinds/helm-descbinds" "\
+A convenient helm version of `describe-bindings'.
+
+Turning on `helm-descbinds-mode' is the recommended way to
+install this command to replace `describe-bindings'.
+
+You complete against a list of keys + command pairs presented in
+a similar way as `describe-bindings' does, split into sections
+defined by the types of the key bindings (minor and major modes,
+global bindings, etc).
+
+The default action executes a command as if the binding had been
+entered, or narrows the commands according to a prefix key,
+respectively.
+
+The persistent action pops up a help buffer for the selected
+command without quitting.
+
+For key translation maps, the default actions are not very
+useful, yet they are listed for completeness.
+
+\(fn &optional PREFIX BUFFER)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "helm-descbinds/helm-descbinds" '("helm-descbind")))
+
+;;;***
+
 ;;;### (autoloads nil "idle-require/idle-require" "idle-require/idle-require.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from idle-require/idle-require.el
@@ -1262,6 +1327,172 @@ See `indent-guide-mode' for more information on Indent-Guide mode.
 
 ;;;***
 
+;;;### (autoloads nil "irony-mode/irony" "irony-mode/irony.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from irony-mode/irony.el
+
+(defvar irony-additional-clang-options nil "\
+Additional command line options to pass down to libclang.
+
+Please, do NOT use this variable to add header search paths, only
+additional warnings or compiler options.
+
+These compiler options will be prepended to the command line, in
+order to not override the value coming from a compilation
+database.")
+
+(custom-autoload 'irony-additional-clang-options "irony-mode/irony" t)
+
+(autoload 'irony-mode "irony-mode/irony" "\
+Minor mode for C, C++ and Objective-C, powered by libclang.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'irony-version "irony-mode/irony" "\
+Return the version number of the file irony.el.
+
+If called interactively display the version in the echo area.
+
+\(fn &optional SHOW-VERSION)" t nil)
+
+(autoload 'irony-server-kill "irony-mode/irony" "\
+Kill the running irony-server process, if any.
+
+\(fn)" t nil)
+
+(autoload 'irony-get-type "irony-mode/irony" "\
+Get the type of symbol under cursor.
+
+\(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "irony-mode/irony" '("irony-")))
+
+;;;***
+
+;;;### (autoloads nil "irony-mode/irony-cdb" "irony-mode/irony-cdb.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from irony-mode/irony-cdb.el
+
+(autoload 'irony-cdb-autosetup-compile-options "irony-mode/irony-cdb" "\
+
+
+\(fn)" t nil)
+
+(autoload 'irony-cdb-menu "irony-mode/irony-cdb" "\
+
+
+\(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "irony-mode/irony-cdb" '("irony-cdb-")))
+
+;;;***
+
+;;;### (autoloads nil "irony-mode/irony-cdb-clang-complete" "irony-mode/irony-cdb-clang-complete.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from irony-mode/irony-cdb-clang-complete.el
+
+(autoload 'irony-cdb-clang-complete "irony-mode/irony-cdb-clang-complete" "\
+
+
+\(fn COMMAND &rest ARGS)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "irony-mode/irony-cdb-clang-complete" '("irony-cdb-clang-complete--")))
+
+;;;***
+
+;;;### (autoloads nil "irony-mode/irony-cdb-json" "irony-mode/irony-cdb-json.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from irony-mode/irony-cdb-json.el
+
+(autoload 'irony-cdb-json "irony-mode/irony-cdb-json" "\
+
+
+\(fn COMMAND &rest ARGS)" nil nil)
+
+(autoload 'irony-cdb-json-add-compile-commands-path "irony-mode/irony-cdb-json" "\
+Add an out-of-source compilation database.
+
+Files below the PROJECT-ROOT directory will use the JSON
+Compilation Database as specified by COMPILE-COMMANDS-PATH.
+
+The JSON Compilation Database are often generated in the build
+directory. This functions helps mapping out-of-source build
+directories to project directory.
+
+\(fn PROJECT-ROOT COMPILE-COMMANDS-PATH)" t nil)
+
+(autoload 'irony-cdb-json-select "irony-mode/irony-cdb-json" "\
+Select CDB to use with a prompt.
+
+It is useful when you have several CDBs with the same project
+root.
+
+The completion function used internally is `completing-read' so
+it could easily be used with other completion functions by
+temporarily using a let-bind on `completing-read-function'. Or
+even helm by enabling `helm-mode' before calling the function.
+
+\(fn)" t nil)
+
+(autoload 'irony-cdb-json-select-most-recent "irony-mode/irony-cdb-json" "\
+Select CDB that is most recently modified.
+
+\(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "irony-mode/irony-cdb-json" '("irony-cdb-json--")))
+
+;;;***
+
+;;;### (autoloads nil "irony-mode/irony-cdb-libclang" "irony-mode/irony-cdb-libclang.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from irony-mode/irony-cdb-libclang.el
+
+(autoload 'irony-cdb-libclang "irony-mode/irony-cdb-libclang" "\
+
+
+\(fn COMMAND &rest ARGS)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "irony-mode/irony-cdb-libclang" '("irony-cdb-libclang--")))
+
+;;;***
+
+;;;### (autoloads nil "irony-mode/irony-completion" "irony-mode/irony-completion.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from irony-mode/irony-completion.el
+
+(autoload 'irony-completion-at-point "irony-mode/irony-completion" "\
+
+
+\(fn)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "irony-mode/irony-completion" '("irony-")))
+
+;;;***
+
+;;;### (autoloads nil "irony-mode/irony-diagnostics" "irony-mode/irony-diagnostics.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from irony-mode/irony-diagnostics.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "irony-mode/irony-diagnostics" '("irony-diagnostics-")))
+
+;;;***
+
+;;;### (autoloads nil "irony-mode/irony-iotask" "irony-mode/irony-iotask.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from irony-mode/irony-iotask.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "irony-mode/irony-iotask" '("irony-iotask-")))
+
+;;;***
+
+;;;### (autoloads nil "irony-mode/irony-snippet" "irony-mode/irony-snippet.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from irony-mode/irony-snippet.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "irony-mode/irony-snippet" '("irony-snippet-")))
+
+;;;***
+
 ;;;### (autoloads nil "lua-mode/init-tryout" "lua-mode/init-tryout.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from lua-mode/init-tryout.el
@@ -1319,7 +1550,7 @@ provide such a commit message.
 
 \(fn &optional ARG)" t nil)
 
-(defconst git-commit-filename-regexp "/\\(\\(\\(COMMIT\\|NOTES\\|PULLREQ\\|TAG\\)_EDIT\\|MERGE_\\|\\)MSG\\|BRANCH_DESCRIPTION\\)\\'")
+(defconst git-commit-filename-regexp "/\\(\\(\\(COMMIT\\|NOTES\\|PULLREQ\\|TAG\\)_EDIT\\|MERGE_\\|\\)MSG\\|\\(BRANCH\\|EDIT\\)_DESCRIPTION\\)\\'")
 
 (autoload 'git-commit-setup "magit/lisp/git-commit" "\
 
@@ -1375,7 +1606,7 @@ Merge commit REV into the current branch; and edit message.
 Perform the merge and prepare a commit message but let the user
 edit it.
 
-\(git merge --edit --no-ff [ARGS] rev)
+\(git merge --edit --no-ff [ARGS] REV)
 
 \(fn REV &optional ARGS)" t nil)
 
@@ -1384,7 +1615,7 @@ Merge commit REV into the current branch; pretending it failed.
 Pretend the merge failed to give the user the opportunity to
 inspect the merge and change the commit message.
 
-\(git merge --no-commit --no-ff [ARGS] rev)
+\(git merge --no-commit --no-ff [ARGS] REV)
 
 \(fn REV &optional ARGS)" t nil)
 
@@ -2027,7 +2258,7 @@ Amend the last commit, without editing the message.
 
 With a prefix argument keep the committer date, otherwise change
 it.  The option `magit-commit-extend-override-date' can be used
-to inverse the meaning of the prefix argument.
+to inverse the meaning of the prefix argument.  
 \(git commit
 --amend --no-edit)
 
@@ -2607,7 +2838,8 @@ Show log for all references and `HEAD'.
 (autoload 'magit-log-buffer-file "magit/lisp/magit-log" "\
 Show log for the blob or file visited in the current buffer.
 With a prefix argument or when `--follow' is part of
-`magit-log-arguments', then follow renames.
+`magit-log-arguments', then follow renames.  When the region is
+active, restrict the log to the lines that the region touches.
 
 \(fn &optional FOLLOW BEG END)" t nil)
 
@@ -3312,7 +3544,15 @@ Unregister the submodule at PATH.
 
 \(fn PATH)" t nil)
 
-(autoload 'magit-insert-submodules "magit/lisp/magit-submodule" "\
+(autoload 'magit-insert-modules "magit/lisp/magit-submodule" "\
+Insert submodule sections.
+Hook `magit-module-sections-hook' controls which module sections
+are inserted, and option `magit-insert-modules-nested' controls
+whether they are wrapped in an additional section.
+
+\(fn)" nil nil)
+
+(autoload 'magit-insert-modules-overview "magit/lisp/magit-submodule" "\
 Insert sections for all modules.
 For each section insert the path and the output of `git describe --tags'.
 
@@ -3956,7 +4196,7 @@ Setup.
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-capf" '("nim-capf-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-capf" '("nim-c")))
 
 ;;;***
 
@@ -3970,7 +4210,7 @@ All output is written into the *nim-compile* buffer.
 
 \(fn &optional COMMAND)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-compile" '(#("nim-" 0 4 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-compile" '("nim-")))
 
 ;;;***
 
@@ -4014,7 +4254,7 @@ A major mode for the Nim programming language.
 
 (add-to-list 'auto-mode-alist '("\\.nim\\'" . nim-mode))
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-mode" '(#("nim-" 0 4 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-mode" '("nim-")))
 
 ;;;***
 
@@ -4049,14 +4289,6 @@ Minor mode for nimsuggest.
 ;;; Generated autoloads from nim-mode/nim-syntax.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-syntax" '("nim")))
-
-;;;***
-
-;;;### (autoloads nil "nim-mode/nim-thing-at-point" "nim-mode/nim-thing-at-point.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from nim-mode/nim-thing-at-point.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "nim-mode/nim-thing-at-point" '("nim-")))
 
 ;;;***
 
@@ -4861,8 +5093,8 @@ A mode for editing yasnippets
 ;;;### (autoloads nil nil ("auto-complete/auto-complete-pkg.el" "magit/lisp/magit-autoloads.el"
 ;;;;;;  "magit/lisp/magit-core.el" "magit/lisp/magit-obsolete.el"
 ;;;;;;  "multiple-cursors/multiple-cursors-pkg.el" "multiple-cursors/multiple-cursors.el"
-;;;;;;  "nim-mode/company-nim.el" "nim-mode/nim-rx.el" "rainbow-mode/rainbow-mode-autoloads.el"
-;;;;;;  "rainbow-mode/rainbow-mode-pkg.el") (0 0 0 0))
+;;;;;;  "rainbow-mode/rainbow-mode-autoloads.el" "rainbow-mode/rainbow-mode-pkg.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

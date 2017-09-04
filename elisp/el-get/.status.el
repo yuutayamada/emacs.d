@@ -24,7 +24,7 @@
                          (add-to-list 'ac-dictionary-directories
                                       (expand-file-name "dict" default-directory))
                          (ac-config-default))))
- (auto-complete-c-headers status "required" recipe
+ (auto-complete-c-headers status "installed" recipe
                           (:name auto-complete-c-headers :website "https://github.com/mooz/auto-complete-c-headers" :description "An auto-complete source for C/C++ header files." :type github :pkgname "mooz/auto-complete-c-headers" :depends auto-complete :prepare
                                  (progn
                                    (defun ac--c-headers-init nil
@@ -297,7 +297,7 @@
  (helm-c-yasnippet status "installed" recipe
                    (:name helm-c-yasnippet :type github :pkgname "emacs-jp/helm-c-yasnippet" :description "Helm source for yasnippet.el." :features helm-c-yasnippet :depends
                           (helm yasnippet)))
- (helm-descbinds status "required" recipe
+ (helm-descbinds status "installed" recipe
                  (:name helm-descbinds :type github :pkgname "emacs-helm/helm-descbinds" :description "Yet Another `describe-bindings' with `helm'." :depends
                         (helm)
                         :prepare
@@ -332,10 +332,12 @@
            (:name inf-ruby :description "Inferior Ruby Mode - ruby process in a buffer." :type github :pkgname "nonsequitur/inf-ruby"))
  (irony-eldoc status "required" recipe
               (:name irony-eldoc :description "irony-mode support for eldoc-mode" :type github :pkgname "ikirill/irony-eldoc"))
- (irony-mode status "required" recipe
-             (:name irony-mode :description "A C/C++ minor mode for Emacs powered by libclang" :type github :pkgname "Sarcasm/irony-mode" :depends
+ (irony-mode status "installed" recipe
+             (:name irony-mode :features
+                    (irony-mode)
+                    :after nil :depends
                     (cl-lib)
-                    :compile "\\.el$"))
+                    :description "A C/C++ minor mode for Emacs powered by libclang" :type github :pkgname "Sarcasm/irony-mode" :compile "\\.el$"))
  (jedi status "required" recipe
        (:name jedi :description "An awesome Python auto-completion for Emacs" :type github :pkgname "tkf/emacs-jedi" :submodule nil :depends
               (epc auto-complete python-environment)))

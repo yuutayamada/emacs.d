@@ -8,15 +8,6 @@
 (require 'subr-x)
 (require 'thingatpt)
 
-(defun Y/banish-cursor ()
-  "Move cursor to corner.  This function is only worked in GUI Emacs."
-  (interactive)
-  (let ((f (selected-frame)))
-    (when (frame-visible-p f)
-      (let* ((height (1- (frame-height)))
-             (width  (frame-width)))
-        (set-mouse-position (selected-frame) (max width 50) (max height 10))))))
-
 ;;;###autoload
 (defun other-window-or-split (&rest _r)
   "Move buffer or split when buffer was one."
@@ -24,8 +15,7 @@
   (when (one-window-p) (Y/split-window-spirally))
   (if current-prefix-arg
       (other-window -1)
-    (other-window 1))
-  (Y/banish-cursor))
+    (other-window 1)))
 
 ;;;###autoload
 (defun Y/split-window-spirally ()

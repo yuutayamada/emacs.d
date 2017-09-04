@@ -102,7 +102,9 @@ file prefix by PREFIX."
        ;; So only change in GUI Emacs
        (keyboard-translate ?\e ?\A-\e)
        ;; On GUI Emacs, I didn't see Japanese Kanji correctly...
-       (set-locale-environment "ja_JP.UTF-8"))
+       (set-locale-environment "ja_JP.UTF-8")
+       ;; Sorry mouse, you should disappear from my world...
+       (mouse-avoidance-mode 'banish))
       (t ; nil for a termcap frame (a character-only terminal),
        ;; On Terminal Emacs, this shows eshell prompt string correctly.
        (set-locale-environment "en_US.UTF-8")))))

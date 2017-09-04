@@ -54,7 +54,7 @@
         (emacs-lisp-mode            . "EL")
         (markdown-mode              . "Md")))
     (major-gui
-     . ((nim-mode                   . " 🐻") ; or ♔
+     . ((nim-mode                   . " ") ; need nerd font
         (rust-mode                  . " ₨")
         (go-mode                    . " ʕ◔ϖ◔ʔ")
         (web-mode                   . " ₩")

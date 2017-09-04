@@ -11,6 +11,8 @@
 ;; Emacs Lisp integration
 (defconst flycheck-emacs-lisp-package-user-dir config-dir)
 (defconst flycheck-emacs-lisp-load-path 'inherit)
+(defconst flycheck-help-echo-function nil)
+(defconst flycheck-display-errors-function nil)
 
 (let ((emacs (file-name-directory (executable-find "emacs"))))
   (setq flycheck-gcc-include-path (list emacs)
